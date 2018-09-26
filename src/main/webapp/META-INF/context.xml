@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/web">
+    <Resource auth="Container" driverClassName="org.postgresql.Driver" maxIdle="100" maxActive="100" 
+              maxWait="40000" name="jdbc/dbweb" password="userWebApp" 
+              type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/WebApp" 
+              username="userWebApp">
+    </Resource>
+</Context>

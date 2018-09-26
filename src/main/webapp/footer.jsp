@@ -1,0 +1,47 @@
+<footer class="footer footer-four">
+    <div class="primary-footer brand-bg text-center">
+        <div class="container">
+            <a href="#top" class="page-scroll btn-floating btn-large pink back-top waves-effect waves-light" data-section="#top">
+                <i class="material-icons">&#xE316;</i>
+            </a>
+            <ul class="social-link tt-animate ltr mt-20">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+            </ul>
+            <hr class="mt-15">
+            <div class="row">
+                <div class="col-md-12">
+                    <br>
+                    <span class="copy-text">Copyright &copy; 2018 <a href="#">Peam</a> &nbsp; | &nbsp;  Todos los derechos reservados &nbsp; | &nbsp;  Diseñado por <a href="#">Sistemas - Peam</a></span>
+                    <!--h6 style="color: #ffffff"><strong>Ubícanos</strong></h6-->
+                    <br>
+                    <div class="footer-intro" style="margin-top: 10px">
+                        <h6 style="color: #ffffff"><i class="fa fa-map-marker" aria-hidden="true"></i> Calle La Marginal N° 233 Sector Uchuglla - Moyobamba - San Martín - Perú<h6>
+                                <h6 style="color: #ffffff"><i class="fa fa-phone" aria-hidden="true"></i> (042) 562522</h6>
+                                <h6 style="color: #ffffff"><i class="fa fa-envelope" aria-hidden="true"></i> Lunes a Viernes: De 7:30 a 13:00 horas / 14:30 a 17:00 horas</h6>
+                                </div>
+                                </div><!-- /.col-md-12 -->
+                                </div><!-- /.row -->
+                                </div><!-- /.container -->
+                                </div><!-- /.primary-footer -->
+                                <div class="secondary-footer brand-bg darken-2 text-center" style="padding-bottom: 0px">
+                                    <div class="container">
+                                        <h6 style="color: #ffffff">Responsable del Acceso a la Información Pública y Libro de Reclamaciones: <strong style="color:#87ceeb">Ing. Ernesto Segundo Ríos Sandoval</strong> | <a href="http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=98428" target="_blank" style="color: #ffffff"> Designado por Resolución Gerencial: 024-2018-GRSM-PEAM-01.00</a></h6>
+                                        <h6 style="color: #ffffff">Responsable del Portal de Transparencia Estándar y Portal Institucional: <strong style="color:#87ceeb">Ing. Ernesto Segundo Ríos Sandoval</strong> | <a href="http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=97250" style="color: #ffffff"> Designado por Resolución Gerencial: 245-2017-GRSM-PEAM-01.00</a></h6>
+                                    </div><!-- /.container -->
+                                </div><!-- /.secondary-footer -->
+                                </footer>
+                                <!-- Preloader -->
+                                <div id="preloader">
+                                    <div class="preloader-position"> 
+                                        <img src="<%out.print(getServletContext().getContextPath());%>/assets/img/logo-colored.png" alt="logo" >
+                                        <div class="progress">
+                                            <div class="indeterminate"></div>
+                                        </div>
+                                    </div>
+                                </div>
