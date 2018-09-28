@@ -1,5 +1,5 @@
 <footer class="footer footer-four">
-    <div class="primary-footer brand-bg text-center">
+    <div class="primary-footer light-green text-center">
         <div class="container">
             <a href="#top" class="page-scroll btn-floating btn-large pink back-top waves-effect waves-light" data-section="#top">
                 <i class="material-icons">&#xE316;</i>
@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <br>
-                    <span class="copy-text">Copyright &copy; 2018 <a href="#">Peam</a> &nbsp; | &nbsp;  Todos los derechos reservados &nbsp; | &nbsp;  Diseñado por <a href="#">Sistemas - Peam</a></span>
+                    <span style="color: #a20505">Copyright &copy; 2018 <strong style="cursor: pointer">Peam</strong> &nbsp; | &nbsp;  Todos los derechos reservados &nbsp;</span>
                     <!--h6 style="color: #ffffff"><strong>Ubícanos</strong></h6-->
                     <br>
                     <div class="footer-intro" style="margin-top: 10px">
@@ -29,10 +29,10 @@
                                 </div><!-- /.row -->
                                 </div><!-- /.container -->
                                 </div><!-- /.primary-footer -->
-                                <div class="secondary-footer brand-bg darken-2 text-center" style="padding-bottom: 0px">
+                                <div class="secondary-footer light-green darken-2 text-center" style="padding-bottom: 0px">
                                     <div class="container">
-                                        <h6 style="color: #ffffff">Responsable del Acceso a la Información Pública y Libro de Reclamaciones: <strong style="color:#87ceeb">Ing. Ernesto Segundo Ríos Sandoval</strong> | <a href="http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=98428" target="_blank" style="color: #ffffff"> Designado por Resolución Gerencial: 024-2018-GRSM-PEAM-01.00</a></h6>
-                                        <h6 style="color: #ffffff">Responsable del Portal de Transparencia Estándar y Portal Institucional: <strong style="color:#87ceeb">Ing. Ernesto Segundo Ríos Sandoval</strong> | <a href="http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=97250" style="color: #ffffff"> Designado por Resolución Gerencial: 245-2017-GRSM-PEAM-01.00</a></h6>
+                                        <h6 style="color: #ffffff">Responsable del Acceso a la Información Pública y Libro de Reclamaciones: <strong style="color:#a20505">Ing. Ernesto Segundo Ríos Sandoval</strong> | <a href="http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=98428" target="_blank" style="color: #ffffff"> Designado por Resolución Gerencial: 024-2018-GRSM-PEAM-01.00</a></h6>
+                                        <h6 style="color: #ffffff">Responsable del Portal de Transparencia Estándar y Portal Institucional: <strong style="color:#a20505">Ing. Ernesto Segundo Ríos Sandoval</strong> | <a href="http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=97250" style="color: #ffffff"> Designado por Resolución Gerencial: 245-2017-GRSM-PEAM-01.00</a></h6>
                                     </div><!-- /.container -->
                                 </div><!-- /.secondary-footer -->
                                 </footer>

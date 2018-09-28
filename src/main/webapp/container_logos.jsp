@@ -1,16 +1,18 @@
 <div class="container">
     <div class="row" style="margin-top: 5px; margin-bottom: 5px">
-        <div class="col-md-3 contenedor-lg-logos" style="padding-top: 20px">
-
-        </div>
         <div class="col-md-2 contenedor-lg-logos" style="width: 160px">
             <a href="#">
                 <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo-goresam.png" alt="" style="height: 80px"/>
             </a>
-        </div>
+        </div>            
         <div class="col-md-1 contenedor-lg-logos" style="width: 160px">
             <a href="#">
                 <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo-peam.png" alt="" style="height: 80px"/>
+            </a>
+        </div>
+        <div class="col-md-6 col-xs-10 contenedor-lg-logos" style="padding-top: 20px">
+            <a href="index.html">
+                <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo-peam-large.png" alt=""/>
             </a>
         </div>
         <div class="col-md-2 contenedor-lg-logos" style="padding-top: 10px;width: 160px">
@@ -45,8 +47,3 @@
         </div>
     </div>
 </div>
-<!--div class="col-md-6 col-xs-10" style="padding-top: 20px">
-            <a href="index.html">
-                <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo-peam-large.png" alt=""/>
-            </a>
-        </div-->

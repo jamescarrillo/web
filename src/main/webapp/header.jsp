@@ -1,6 +1,23 @@
 <header id="header" class="tt-nav nav-border-bottom">
     <div class="header-sticky light-header">
         <div class="container">
+            <!--div class="search-wrapper">
+                <div class="search-trigger pull-right">
+                    <div class="search-btn"></div>
+                    <i class="material-icons">?</i>
+                </div>
+                <i class="search-close material-icons">?</i>
+                <div class="search-form-wrapper">
+                    <form action="#" class="white-form">
+                        <div class="input-field">
+                            <input type="text" name="search" id="search">
+                            <label for="search" class="">Search Here...</label>
+                        </div>
+                        <button class="btn pink search-button waves-effect waves-light" type="submit"><i class="material-icons">?</i></button>
+
+                    </form>
+                </div>
+            </div-->
             <div id="materialize-menu" class="menuzord">
                 <!--logo start-->
                 <a href="<%out.print(getServletContext().getContextPath());%>/index" class="logo-brand" style="margin-left: 0px">

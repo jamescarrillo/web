@@ -1,5 +1,10 @@
 $(document).ready(function () {
 
+    $('#mydatepicker1').datepicker({
+        format: 'dd/mm/yyyy',
+        todayHighlight: true
+    });
+
     $("#FrmFuncionarios").submit(function () {
         $("#NumPagina").val(1);
         $("#nombreFormulario").val("FrmCicloAcademico");
@@ -44,8 +49,35 @@ $(document).ready(function () {
         $("#btnBuscar").trigger("click");
     });
 
-    valicacionesCampos();
-    $('#modalCargando').modal("show");
+    $('#btnSeleccionarCv').click(function () {
+        $('#fileCV').trigger('click');
+    });
+
+    $("#fileCV").change(function () {
+        $('#txtValidacionCv').val('SI');
+        readViewNameFile(this, 'txtNombreCv');
+    });
+
+    $('#btnSeleccionarFoto').click(function () {
+        $('#fileFoto').trigger('click');
+    });
+
+    $("#fileFoto").change(function () {
+        //CAMPO QUE VALIDARA SI SELECCIONO FILE
+        $('#txtValidacionFoto').val('SI');
+        readImageSelected(this, 'visorFoto');
+    });
+
+    $('#btnEliminarFoto').click(function () {
+        $("#fileFoto").val(null);
+        $("#txtNombreFoto").val("");
+        var urlLogo = getContexApp() + "/peam_resources_app/conf_app/img/default_user.png";
+        $('#visorFoto').attr('src', urlLogo);
+        $('#txtValidacionFoto').val('DEFECTO');
+    });
+
+    //valicacionesCampos();
+    //$('#modalCargando').modal("show");
 
 });
 

@@ -8,8 +8,6 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css" rel="stylesheet">
         <!-- FontAwesome CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- magnific-popup -->
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/magnific-popup.css" rel="stylesheet">
         <!-- owl.carousel -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/owl.carousel/assets/owl.theme.default.min.css" rel="stylesheet">
@@ -23,6 +21,8 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/shortcodes/shortcodes.css" rel="stylesheet">
         <!-- Style CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/style_web.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/skins/corporate.css" rel="stylesheet">
         <!-- RS5.0 Main Stylesheet -->
         <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/settings.css">
         <!-- RS5.0 Layers and Navigation Styles -->
@@ -179,7 +179,7 @@
                     <div class="clients-grid">
                         <div class="row">
                             <div class="col-md-3 col-sm-6">
-                                <div class="border-box text-center">
+                                <div class="text-center">
                                     <a href="#">
                                         <i class="fa fa-home fa-5x" aria-hidden="true"></i>
                                         <h5>DIRECCIÓN DE <br>INFRAESTRUCTURA</h5>
@@ -187,7 +187,7 @@
                                 </div><!-- /.border-box -->
                             </div><!-- /.col-md-3 -->
                             <div class="col-md-3 col-sm-6">
-                                <div class="border-box text-center">
+                                <div class="text-center">
                                     <a href="#">
                                         <i class="fa fa-pagelines fa-5x" aria-hidden="true"></i>
                                         <h5>DIRECCIÓN DE <br>MANEJO AMBIENTAL</h5>
@@ -195,7 +195,7 @@
                                 </div><!-- /.border-box -->
                             </div><!-- /.col-md-3 -->
                             <div class="col-md-3 col-sm-6">
-                                <div class="border-box text-center">
+                                <div class="text-center">
                                     <a href="#">
                                         <i class="fa fa-truck fa-5x" aria-hidden="true"></i>
                                         <h5>DIRECCIÓN DE DESARROLLO AGROPECUARIO</h5>
@@ -204,10 +204,10 @@
                                 </div><!-- /.border-box -->
                             </div><!-- /.col-md-3 -->
                             <div class="col-md-3 col-sm-6">
-                                <div class="border-box text-center">
+                                <div class="text-center">
                                     <a href="#">
                                         <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
-                                        <h5>ÁREA DE <br>ESTUDIOS</h5>
+                                        <h5>ESTUDIOS</h5>
                                     </a>
                                 </div><!-- /.border-box -->
                             </div><!-- /.col-md-3 -->
@@ -271,10 +271,11 @@
             </div>
             <div class="container-fluid">
                 <div class="row no-gutter">
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-lg-1 col-md-2 col-sm-4">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
-                             padding-bottom: 20px">
+                             padding-bottom: 20px; 
+                             ">
                             <div class="icon mb-10">
                                 <i class="material-icons brand-icon">description</i>
                             </div>
@@ -284,10 +285,11 @@
                         </div><!-- /.featured-item -->
                     </div><!-- /.col-md-3 -->
 
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-lg-2 col-md-3 col-sm-4">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
-                             padding-bottom: 20px">
+                             padding-bottom: 20px;
+                             ">
                             <div class="icon mb-10">
                                 <i class="material-icons brand-icon">gavel</i>
                             </div>
@@ -297,10 +299,11 @@
                         </div><!-- /.featured-item -->
                     </div><!-- /.col-md-3 -->
 
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-lg-1 col-md-2 col-sm-4">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
-                             padding-bottom: 20px">
+                             padding-bottom: 20px;
+                             ">
                             <div class="icon mb-10">
                                 <i class="material-icons brand-icon">folder_open</i>
                             </div>
@@ -310,10 +313,11 @@
                         </div><!-- /.featured-item -->
                     </div><!-- /.col-md-3 -->
 
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-lg-2 col-md-3 col-sm-4">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
-                             padding-bottom: 20px">
+                             padding-bottom: 20px;
+                             ">
                             <div class="icon mb-10">
                                 <i class="material-icons brand-icon">local_library</i>
                             </div>
@@ -322,30 +326,45 @@
                             </div>
                         </div><!-- /.featured-item -->
                     </div><!-- /.col-md-3 -->
-                    <div class="col-md-2 col-sm-4">
+                    <div class="col-lg-3 col-md-4 col-sm-4">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
-                             padding-bottom: 20px">
+                             padding-bottom: 20px;
+                             ">
                             <div class="icon mb-10">
                                 <i class="material-icons brand-icon">open_in_new</i>
                             </div>
                             <div class="desc">
                                 <a href="#"><h4 style="margin-bottom: 0px">SOLICITUD DE ACCESO A INFORMACIÓN</h4></a>
                             </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-3 -->
-                    <div class="col-md-2 col-sm-4">
+                        </div>
+                    </div>
+                    <div class="col-lg-1 col-md-4 col-sm-4">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
-                             padding-bottom: 20px">
+                             padding-bottom: 20px;
+                             ">
                             <div class="icon mb-10">
                                 <i class="material-icons brand-icon">insert_drive_file</i>
                             </div>
                             <div class="desc">
                                 <a href="#"><h3>RESOLUCIONES</h3></a>
                             </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-3 -->
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-sm-4">
+                        <div class="featured-item border-box hover brand-hover" style="
+                             padding-top: 20px;
+                             padding-bottom: 20px;
+                             ">
+                            <div class="icon mb-10">
+                                <i class="material-icons brand-icon">insert_drive_file</i>
+                            </div>
+                            <div class="desc">
+                                <a href="#"><h3>CONTROL INTERNO</h3></a>
+                            </div>
+                        </div>
+                    </div>
                 </div><!-- /.row -->
             </div>
         </section>
@@ -357,10 +376,12 @@
                     <h3 class="section-title"><strong>Convocatorias</strong></h3>
                 </div>
                 <div class="row">
-                    <div class="col-md-4 mb-50">
+                    <div class="col-md-6 mb-50">
                         <div class="featured-item feature-icon icon-hover icon-hover-blue icon-outline">
-                            <div class="icon">
-                                <i class="material-icons colored brand-icon">supervisor_account</i>
+                            <div class="icon" style="border: none">
+                                <a>
+                                    <i class="material-icons colored brand-icon">supervisor_account</i>
+                                </a>
                             </div>
                             <div class="desc">
                                 <h2 class="mt-20">Selección de Personal</h2>
@@ -368,24 +389,13 @@
                         </div><!-- /.featured-item -->
                     </div><!-- /.col-md-4 -->
 
-                    <div class="col-md-4 mb-50">
+                    <div class="col-md-6 mb-50">
                         <div class="featured-item feature-icon icon-hover icon-hover-blue icon-outline">
                             <div class="icon">
                                 <i class="material-icons colored brand-icon">widgets</i>
                             </div>
                             <div class="desc">
                                 <h2 class="mt-10">Bienes, Servicios, Obras y Conseciones</h2>
-                            </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-4 -->
-
-                    <div class="col-md-4 mb-50">
-                        <div class="featured-item feature-icon icon-hover icon-hover-blue icon-outline">
-                            <div class="icon">
-                                <i class="material-icons colored brand-icon">surround_sound</i>
-                            </div>
-                            <div class="desc">
-                                <h2 class="mt-20">Comunicados</h2>
                             </div>
                         </div><!-- /.featured-item -->
                     </div><!-- /.col-md-4 -->
@@ -622,7 +632,6 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/owl.carousel/owl.carousel.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
 
         <!-- RS5.0 Core JS Files -->

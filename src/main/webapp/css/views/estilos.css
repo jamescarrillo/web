@@ -163,3 +163,10 @@
     max-height: calc(85vh - 200px) !important;
     overflow-y: auto;
 }
+
+.a-top:hover {
+    /*color: #03a9f4;*/
+    color: #a20505 !important;
+    outline: none;
+    text-decoration: none;
+}

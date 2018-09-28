@@ -5,11 +5,13 @@
         <%@ include file = "../../../att_head.jsp" %> 
         <!-- Bootstrap Core CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/style.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css" rel="stylesheet">
         <!-- You can change the theme colors from here -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/colors/blue.css" id="theme" rel="stylesheet">
+        <!--link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet"-->
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -149,38 +151,146 @@
                 <div class="modal fade" id="ventanaMan" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
-                            <form id="FrmCargoModal" class="form-material">
+                            <form id="FrmCargoModal" class="floating-labels">
                                 <div class="modal-header">
                                     <h6 class="modal-title" id="txtTituloModalMan"></h6>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="form-group col-md-3 col-12">
-                                            <input class="form-control form-control-sm" id="txtDniER" name="txtDniER" type="text" placeholder="DNI">
-                                            <div id="validarNombre" class="err-validation">Ingrese Campo</div>
+                                <div class="modal-body p-0">
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li class="nav-item"> <a class="nav-link active show" data-toggle="tab" href="#home8" role="tab" aria-selected="true"><span><i class="ti-home"></i> DATOS LABORALES</span></a></li>
+                                        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#profile8" role="tab" aria-selected="false"><span><i class="ti-user"></i></span> DATOS ADICIONALES</a> </li>
+                                    </ul>
+                                    <div class="tab-content tabcontent-border">
+                                        <div class="tab-pane p-20 active show" id="home8" role="tabpanel">
+                                            <div class="row">
+                                                <div class="form-group col-12 m-b-25">
+                                                    <input class="form-control input-sm" id="txtNombreCompletoER" name="txtNombreCompletoER" type="text">
+                                                    <span class="bar"></span>
+                                                    <label for="txtNombreCompletoER">NOMBRE COMPLETO</label>
+                                                </div>
+                                                <div class="form-group col-md-6 col-12 m-b-25">
+                                                    <input class="form-control input-sm" id="txtDniER" name="txtDniER" type="text">
+                                                    <span class="bar"></span>
+                                                    <label for="txtDniER">DNI</label>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <input type="text" class="form-control input-sm" id="mydatepicker1" placeholder="">
+                                                    <span class="bar"></span>
+                                                    <label for="mdate">FECHA DESIGNACIÓN</label>
+                                                </div>
+                                                <div class="form-group col-12 m-b-25">
+                                                    <input class="form-control input-sm" id="txtDesignadoPorER" name="txtDesignadoPorER" type="text">
+                                                    <span class="bar"></span>
+                                                    <label for="txtDesignadoPorER">DESIGNADO POR</label>
+                                                </div>
+                                                <div class="form-group col-12 m-b-25">
+                                                    <select id="comboOficinaER" name="comboOficinaER" class="form-control input-sm p-0">
+                                                        <option value=""></option>
+                                                        <option value="1">SI</option>
+                                                        <option value="0">NO</option>
+                                                    </select>
+                                                    <span class="bar"></span>
+                                                    <label for="comboOficinaER">OFICINA</label>
+                                                </div>
+                                                <div class="form-group col-md-6 col-12 m-b-25">
+                                                    <input class="form-control input-sm" id="txtCargoER" name="txtCargoER" type="text">
+                                                    <span class="bar"></span>
+                                                    <label for="txtCargoER">CARGO</label>
+                                                </div>
+                                                <div class="form-group col-md-6 col-12 m-b-25">
+                                                    <input class="form-control input-sm" id="txtNivelER" name="txtNivelER" type="text">
+                                                    <span class="bar"></span>
+                                                    <label for="txtNivelER">NIVEL</label>
+                                                </div>
+                                                <div class="form-group col-md-6 col-12 m-b-25">
+                                                    <input class="form-control input-sm" id="txtRegimenLaboralER" name="txtRegimenLaboralER" type="text">
+                                                    <span class="bar"></span>
+                                                    <label for="txtRegimenLaboralER">REGIMEN LABORAL</label>
+                                                </div>
+                                                <div class="form-group col-md-6 col-12 m-b-25">
+                                                    <input class="form-control input-sm" id="txtRetribucionMensualER" name="txtRetribucionMensualER" type="text">
+                                                    <span class="bar"></span>
+                                                    <label for="txtRetribucionMensualER">RETRIBUCIÓN MENSUAL</label>
+                                                </div>
+
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-9 col-12">
-                                            <input class="form-control form-control-sm" id="txtNombreCompletoER" name="txtNombreCompletoER" type="text" placeholder="NOMBRE COMPLETO">
-                                            <div id="validarNombre" class="err-validation">Ingrese Campo</div>
-                                        </div>
-                                        <div class="form-group col-md-6 col-12">
-                                            <input class="form-control form-control-sm" id="txtCargoER" name="txtCargoER" type="text" placeholder="CARGO">
-                                            <div id="validarCargo" class="err-validation">Ingrese Campo</div>
-                                        </div>
-                                        <div class="form-group col-md-6 col-12">
-                                            <input class="form-control form-control-sm" id="txtOficinaER" name="txtOficinaER" type="text" placeholder="OFICINA">
-                                            <div id="validarCargo" class="err-validation">Ingrese Campo</div>
-                                        </div>
-                                        <div class="form-group col-md-6 col-12">
-                                            <input class="form-control form-control-sm" id="txtNivelER" name="txtNivelER" type="text" placeholder="NIVEL">
-                                            <div id="validarCargo" class="err-validation">Ingrese Campo</div>
-                                        </div>
-                                        <div class="form-group col-md-6 col-12">
-                                            <input class="form-control form-control-sm" id="txtRegimenLaboralER" name="txtRegimenLaboralER" type="text" placeholder="REGIMEN LABORAL">
-                                            <div id="validarCargo" class="err-validation">Ingrese Campo</div>
+                                        <div class="tab-pane p-20" id="profile8" role="tabpanel">
+                                            <div class="row">
+                                                <div class="form-group col-md-8 col-12 m-b-25">
+                                                    <input class="form-control input-sm" id="txtProfesionER" name="txtProfesionER" type="text">
+                                                    <span class="bar"></span>
+                                                    <label for="txtProfesionER">PROFESIÓN</label>
+                                                </div>
+                                                <div class="form-group col-md-4 col-sm-6 col-12 m-b-25">
+                                                    <input class="form-control input-sm" id="txtTelefonoER" name="txtTelefonoER" type="text">
+                                                    <span class="bar"></span>
+                                                    <label for="txtTelefonoER">TELÉFONO</label>
+                                                </div>
+                                                <div class="form-group col-md-4 col-sm-6 col-12 m-b-25">
+                                                    <input class="form-control input-sm" id="txtFaxER" name="txtFaxER" type="text">
+                                                    <span class="bar"></span>
+                                                    <label for="txtFaxER">FAX</label>
+                                                </div>
+                                                <div class="form-group col-md-4 col-sm-6 col-12 m-b-25">
+                                                    <input class="form-control input-sm" id="txtEmailER" name="txtEmailER" type="text">
+                                                    <span class="bar"></span>
+                                                    <label for="txtEmailER">EMAIL</label>
+                                                </div>
+                                                <div class="form-group col-md-4 col-sm-6 col-12 m-b-25">
+                                                    <select id="comboDestacadoER" name="comboDestacadoER" class="form-control input-sm p-0" style="height: 45px;">
+                                                        <option></option>
+                                                        <option value="1">SI</option>
+                                                        <option value="0">NO</option>
+                                                    </select>
+                                                    <span class="bar"></span>
+                                                    <label for="comboDestacadoER">DESTACADO</label>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="">HOJA DE VIDA (PDF)</label>
+                                                        <div style="display: inline">
+                                                            <input id="fileCV" name="fileCV" type="file" style="display: none" >
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control input-sm" id="txtNombreCv" disabled="">
+                                                                <button type="button" id="btnSeleccionarCv" class="btn btn-info btn-sm"><i class="fa fa-folder-open"></i></button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <small>Seleccione Archivo < 1000 KB</small>
+                                                            <input type="hidden" id="txtCv" name="txtCv" value="">
+                                                            <input type="hidden" class="form-control form-control-sm" id="txtNombreFileResultadoActual" name="txtNombreFileResultadoActual" value="">
+                                                            <input type="hidden" id="txtValidacionCv" name="txtValidacionCv" value="">
+                                                            <div id="validarResultado" class="err-validation-file">Seleccione Adjunto!</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group col-12">
+                                                    <div class="row justify-content-sm-center">
+                                                        <div class="col-sm-4 col-12 text-center">
+                                                            <div class="card border-primary borde-redondeado mb-2">
+                                                                <div class="card-body p-2">
+                                                                    <div class="text-center">
+                                                                        <img id="visorFoto" src='<%out.print(getServletContext().getContextPath());%>/peam_resources_app/conf_app/img/default_user.png' alt="user-img" class="rounded mx-auto d-block" style="width: 80px; height: 80px">
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" id="btnEliminarFoto" class="btn btn-secondary btn-sm"><i class="fa fa-trash"></i></button>
+                                                            <div style="display: inline">
+                                                                <input id="fileFoto" name="fileFoto" type="file" style="display: none" >
+                                                                <button type="button" id="btnSeleccionarFoto" class="btn btn-info btn-sm"><i class="fa fa-folder-open"></i></button>
+                                                                <input type="hidden" id="txtNombreFoto" name="txtNombreFoto" value="">
+                                                                <input type="hidden" id="txtValidacionFoto" name="txtValidacionFoto" value="">
+                                                            </div>
+                                                            <br>
+                                                            <small>Seleccione Foto < 1000 KB</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <input type="hidden" id="txtIdFuncionarioER" name="txtIdFuncionarioER" value="">
@@ -189,7 +299,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                                    <button type="submit" id="btnGuardar" class="btn btn-outline-primary btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
+                                    <button type="submit" id="btnGuardar" class="btn btn-outline-info btn-sm"><i class="fa fa-floppy-o"></i> GUARDAR</button>
                                 </div>
                             </form>
                         </div>
@@ -227,10 +337,17 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
         <!--Custom JavaScript -->
         <script src="<%out.print(getServletContext().getContextPath());%>/js/custom.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/moment/moment.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+
         <!-- ============================================================== -->
         <!-- This page plugins -->
         <!-- ============================================================== -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
+
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/directivos.js"></script>
 
     </body>
