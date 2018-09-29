@@ -2,15 +2,28 @@ $(window).resize(function () {
     //aqui el codigo que se ejecutara cuando se redimencione la ventana
     //var alto = $(window).height();
     var ancho = $(window).width();
-    if (ancho <= 768) {
-        //PEQUEÑOS DESABILITAMOS
-        $('.contenedor-lg-logos').css('display', 'none');
-        $('.contenedor-sm-logos').css('display', 'none');
-    } else if (ancho > 768 && ancho < 1200) {
-        $('.contenedor-lg-logos').css('display', 'none');
-        $('.contenedor-sm-logos').css('display', 'block');
+    if (ancho <= 770) {
+        $('#row_logos_lg').css('display', 'none');
+        $('#row_logos_md').css('display', 'none');
+        $('#row_logos_sm').css('display', 'none');
+    } else if (ancho <= 1000) {
+        $('#row_logos_lg').css('display', 'none');
+        $('#row_logos_md').css('display', 'none');
+        $('#row_logos_sm').css('display', 'block');
+    } else if (ancho > 1000 && ancho < 1200) {
+        $('#row_logos_lg').css('display', 'none');
+        $('#row_logos_md').css('display', 'block');
+        $('#row_logos_sm').css('display', 'none');
     } else {
-        $('.contenedor-lg-logos').css('display', 'block');
-        $('.contenedor-sm-logos').css('display', 'none');
+        $('#row_logos_lg').css('display', 'block');
+        $('#row_logos_md').css('display', 'none');
+        $('#row_logos_sm').css('display', 'none');
     }
+    /*
+    if (ancho > 1200) {
+        $('#menu-list').css('margin-right', '40px');
+    } else {
+        $('#menu-list').css('margin-right', '0px');
+    }
+    */
 });

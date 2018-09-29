@@ -166,14 +166,13 @@
                             <a href="#" class="btn btn-lg  waves-effect waves-light">Leer más</a>
                         </div>
                     </li>
-                    <!-- slide 2 end -->
                 </ul>             
-            </div><!-- end revolution slider -->
-        </section><!-- end of slider wrapper -->
+            </div>
+        </section>
         <section class="section-padding">
             <div class="container">
                 <div class="text-center">
-                    <h1><strong>Líneas de Acción</strong></h1>
+                    <h2 class="h1-title section-title"><strong>Nuestras Líneas de Acción</strong></h2>
                 </div>
                 <div class="row">
                     <div class="clients-grid">
@@ -221,8 +220,7 @@
                  padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center mb-80">
-                    <h2 class="section-title text-uppercase"><strong>Noticias</strong></h2>
-                    <p class="section-sub">Quisque non erat mi. Etiam congue et augue sed tempus. Aenean sed ipsum luctus, scelerisque ipsum nec, iaculis justo. Sed at vestibulum purus, sit amet viverra diam. Nulla ac nisi rhoncus,</p>
+                    <h1 class="h1-title section-title"><strong>Noticias</strong></h1>
                 </div>
                 <div class="clients-grid gutter">
                 </div><!-- /.clients-grid -->
@@ -244,80 +242,188 @@
 
                             <div class="team-title">
                                 <h3><a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">John Smith</font></font></a></h3>
-                                <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gerenta General</font></font></span>
-                            </div><!-- /.team-title -->
-
-                            <ul class="team-social-links list-inline">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-envelope-o"></i></a></li>
-                            </ul>
-
-                        </div><!-- /.team-wrapper -->
-                    </div><!-- /.col-md-3 -->
-
-                </div><!-- /.row -->
-
-            </div><!-- /.container -->
+                                <span class="mb-10"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gerenta General</font></font></span>
+                                <h5><i class="fa fa-phone"></i> 949836533</h5>
+                                <h5 class="mb-30"><i class="fa fa-envelope-o"></i> jamescc821@gmail.com</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class="section-padding" style="
                  padding-top: 0px;
                  padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-title"><strong>Favoritos</strong></h2>
+                    <h1 class="h1-title section-title"><strong>Gestión Transparente</strong></h1>
                 </div>
             </div>
             <div class="container-fluid">
                 <div class="row no-gutter">
-                    <div class="col-lg-1 col-md-2 col-sm-4">
+                    <div class="col-lg-2 col-lg-offset-1 col-sm-4 col-md-offset-0 col-sm-offset-0">
+                        <div class="featured-item border-box hover brand-hover" style="
+                             padding-top: 20px;
+                             padding-bottom: 0px;
+                             height: 145px;
+                             border: none">
+                            <div class="icon mb-5">
+                                <i class="fa fa-files-o" aria-hidden="true" style="color: #71c44c"></i>
+                            </div>
+                            <div class="desc mt-10">
+                                <a href="#"><h3>DOCUMENTOS NORMATIVOS Y DE GESTIÓN</h3></a>                              
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-4">
+                        <div class="featured-item border-box hover brand-hover" style="
+                             padding-top: 20px;
+                             padding-bottom: 0px;
+                             height: 145px;
+                             border: none">
+                            <div class="icon mb-5">
+                                <!--i class="material-icons brand-icon">trending_up</i-->
+                                <i class="fa fa-money" aria-hidden="true" style="color: #71c44c"></i>
+                            </div>
+                            <div class="desc mt-10">
+                                <a href="#"><h3>PRESUPUESTOS Y FINANZAS</h3></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-4">
+                        <div class="featured-item border-box hover brand-hover" style="
+                             padding-top: 20px;
+                             padding-bottom: 0px;
+                             height: 145px;
+                             border: none">
+                            <div class="icon mb-5">
+                                <i class="material-icons brand-icon">supervisor_account</i>
+                            </div>
+                            <div class="desc">
+                                <a href="#"><h3>PROYECTOS DE INVERSIÓN</h3></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4">
+                        <div class="featured-item border-box hover brand-hover" style="
+                             padding-top: 20px;
+                             padding-bottom: 0px;
+                             height: 145px;
+                             border: none">
+                            <div class="icon mb-5">
+                                <!--i class="material-icons brand-icon">supervisor_account</i-->
+                                <i class="fa fa-users" aria-hidden="true" style="color: #71c44c"></i>
+                            </div>
+                            <div class="desc mt-10">
+                                <a href="#"><h3>RECURSOS HUMANOS</h3></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4">
+                        <div class="featured-item border-box hover brand-hover" style="
+                             padding-top: 20px;
+                             padding-bottom: 20px;
+                             height: 145px;
+                             border: none">
+                            <div class="icon mb-5">
+                                <i class="material-icons brand-icon">insert_drive_file</i>
+                            </div>
+                            <div class="desc">
+                                <a href="#"><h4 style="margin-bottom: 0px">ADQUISICIONES Y CONTRATACIONES</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-lg-offset-4 col-md-3 col-md-offset-0 col-sm-4">
+                        <div class="featured-item border-box hover brand-hover" style="
+                             padding-top: 20px;
+                             padding-bottom: 20px;
+                             height: 145px;
+                             border: none">
+                            <div class="icon mb-5">
+                                <!--i class="material-icons brand-icon">cached</i-->
+                                <i class="fa fa-book" aria-hidden="true" style="color: #71c44c"></i>
+                            </div>
+                            <div class="desc mt-10">
+                                <a href="#"><h4 style="margin-bottom: 0px">AGENDA INSTITUCIONAL</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4">
+                        <div class="featured-item border-box hover brand-hover" style="
+                             padding-top: 20px;
+                             padding-bottom: 20px;
+                             height: 145px;
+                             border: none">
+                            <div class="icon mb-5">
+                                <i class="material-icons brand-icon">info</i>
+                            </div>
+                            <div class="desc">
+                                <a href="#"><h4 style="margin-bottom: 0px">INFORMACIÓN ADICIONAL</h4></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="section-padding" style="
+                 padding-top: 0px;
+                 padding-bottom: 50px;">
+            <div class="container">
+                <div class="text-center">
+                    <h1 class="h1-title section-title"><strong>Favoritos</strong></h1>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row no-gutter">
+                    <div class="col-lg-2 col-lg-offset-1 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-0">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
                              padding-bottom: 20px; 
-                             ">
+                             border: 0px;
+                             height: 145px;">
                             <div class="icon mb-10">
                                 <i class="material-icons brand-icon">description</i>
                             </div>
-                            <div class="desc">
+                            <div class="desc mt-15">
                                 <a href="#"><h3>TUPA</h3></a>                              
                             </div>
                         </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-3 -->
-
+                    </div>
                     <div class="col-lg-2 col-md-3 col-sm-4">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
                              padding-bottom: 20px;
-                             ">
+                             border: 0px;
+                             height: 145px">
                             <div class="icon mb-10">
                                 <i class="material-icons brand-icon">gavel</i>
                             </div>
-                            <div class="desc">
+                            <div class="desc mt-15">
                                 <a href="#"><h3>CÓDIGO DE ÉTICA</h3></a>
                             </div>
                         </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-3 -->
-
-                    <div class="col-lg-1 col-md-2 col-sm-4">
-                        <div class="featured-item border-box hover brand-hover" style="
-                             padding-top: 20px;
-                             padding-bottom: 20px;
-                             ">
-                            <div class="icon mb-10">
-                                <i class="material-icons brand-icon">folder_open</i>
-                            </div>
-                            <div class="desc">
-                                <a href="#"><h3>SISGEDO</h3></a>
-                            </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-3 -->
-
+                    </div>
                     <div class="col-lg-2 col-md-3 col-sm-4">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
                              padding-bottom: 20px;
-                             ">
+                             border: 0px;
+                             height: 145px">
+                            <div class="icon">
+                                <!--i class="material-icons brand-icon">folder_open</i-->
+                                <i class="fa fa-folder-open" aria-hidden="true" style="color: #71c44c"></i>
+                            </div>
+                            <div class="desc mt-30">
+                                <a href="#"><h3>SISGEDO</h3></a>
+                            </div>
+                        </div><!-- /.featured-item -->
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-4">
+                        <div class="featured-item border-box hover brand-hover" style="
+                             padding-top: 20px;
+                             padding-bottom: 20px;
+                             border: 0px;
+                             height: 145px">
                             <div class="icon mb-10">
                                 <i class="material-icons brand-icon">local_library</i>
                             </div>
@@ -325,47 +431,52 @@
                                 <a href="#"><h4 style="margin-bottom: 0px">LIBRO DE RECLAMACIONES</h4></a>
                             </div>
                         </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-3 -->
-                    <div class="col-lg-3 col-md-4 col-sm-4">
+                    </div>
+                    <div class="col-lg-2 col-sm-4">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
                              padding-bottom: 20px;
-                             ">
-                            <div class="icon mb-10">
-                                <i class="material-icons brand-icon">open_in_new</i>
+                             border: 0px;
+                             height: 145px">
+                            <div class="icon">
+                                <!--i class="material-icons brand-icon">open_in_new</i-->
+                                <i class="fa fa-share-square-o" aria-hidden="true" style="color: #71c44c"></i>
                             </div>
-                            <div class="desc">
+                            <div class="desc mt-20">
                                 <a href="#"><h4 style="margin-bottom: 0px">SOLICITUD DE ACCESO A INFORMACIÓN</h4></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-1 col-md-4 col-sm-4">
+                    <div class="col-lg-2 col-lg-offset-4 col-sm-4">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
                              padding-bottom: 20px;
-                             ">
-                            <div class="icon mb-10">
-                                <i class="material-icons brand-icon">insert_drive_file</i>
+                             border: 0px;
+                             height: 145px">
+                            <div class="icon">
+                                <!--i class="material-icons brand-icon">insert_drive_file</i-->
+                                <i class="fa fa-file-text" aria-hidden="true" style="color: #71c44c"></i>
                             </div>
-                            <div class="desc">
+                            <div class="desc mt-30">
                                 <a href="#"><h3>RESOLUCIONES</h3></a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-md-4 col-sm-4">
+                    <div class="col-lg-2 col-sm-4">
                         <div class="featured-item border-box hover brand-hover" style="
                              padding-top: 20px;
                              padding-bottom: 20px;
-                             ">
+                             border: 0px;
+                             height: 145px">
                             <div class="icon mb-10">
-                                <i class="material-icons brand-icon">insert_drive_file</i>
+                                <i class="material-icons brand-icon">share</i>
                             </div>
-                            <div class="desc">
+                            <div class="desc mt-15">
                                 <a href="#"><h3>CONTROL INTERNO</h3></a>
                             </div>
                         </div>
                     </div>
-                </div><!-- /.row -->
+                </div>
             </div>
         </section>
         <section class="section-padding" style="
@@ -373,41 +484,48 @@
                  padding-bottom: 20px;">
             <div class="container">
                 <div class="text-center">
-                    <h3 class="section-title"><strong>Convocatorias</strong></h3>
+                    <h1 class="h1-title section-title"><strong>Convocatorias</strong></h1>
                 </div>
                 <div class="row">
                     <div class="col-md-6 mb-50">
-                        <div class="featured-item feature-icon icon-hover icon-hover-blue icon-outline">
+                        <div class="featured-item feature-icon icon-hover icon-hover-green icon-outline">
                             <div class="icon" style="border: none">
                                 <a>
                                     <i class="material-icons colored brand-icon">supervisor_account</i>
                                 </a>
                             </div>
                             <div class="desc">
-                                <h2 class="mt-20">Selección de Personal</h2>
+                                <h2 class="mt-20">
+                                    <a>
+                                        Selección de Personal
+                                    </a>
+                                </h2>
                             </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-4 -->
-
+                        </div>
+                    </div>
                     <div class="col-md-6 mb-50">
-                        <div class="featured-item feature-icon icon-hover icon-hover-blue icon-outline">
-                            <div class="icon">
+                        <div class="featured-item feature-icon icon-hover icon-hover-green icon-outline">
+                            <div class="icon" style="border:none">
                                 <i class="material-icons colored brand-icon">widgets</i>
                             </div>
                             <div class="desc">
-                                <h2 class="mt-10">Bienes, Servicios, Obras y Conseciones</h2>
+                                <h2 class="mt-20">
+                                    <a>
+                                        Bienes, Servicios, Obras y Conseciones
+                                    </a>
+                                </h2>
                             </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-4 -->
+                        </div>
+                    </div>
                 </div>
-            </div><!-- /.container -->
+            </div>
         </section>
         <section class="section-padding" style="
                  padding-top: 0px;
                  padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-title"><strong>Galería</strong></h2>
+                    <h1 class="h1-title section-title"><strong>Galería</strong></h1>
                 </div>
                 <div class="row">
                     <div class="col-md-8 col-md-offset-2">
@@ -433,189 +551,35 @@
 
             </div><!-- /.container -->
         </section>
-        <!--div class="row">
-            <div class="col-sm-3 col-md-2">
-              <div class="thumbnail">
-                <img src="https://farm1.staticflickr.com/853/28971176087_70e01e9ffb.jpg" alt="">
-                <div class="text-center">
-                        <button type="button" class="waves-effect waves-circle waves-light btn-floating btn-small grey lighten" tooltip="Mensajio">Ver</button>
-                        <button type="button" class="waves-effect waves-circle waves-light btn-floating btn-small blue">Flikr</button>
-                </div>
-              </div>
-            </div>
-          </div-->
-        <!--section class="row" style="
-        padding-top: 0px;
-        padding-bottom: 50px;">
-        <div class="row">
-            <div class="col-sm-6 col-xs-12">
-                    
-            </div>
-        </div>
-        </section-->
         <section class="section-padding" style="
                  padding-top: 0px;
                  padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-title"><strong>Multimedia</strong></h2>
+                    <h1 class="h1-title section-title"><strong>Multimedia</strong></h1>
                 </div>
                 <div class="row">
                     <div class="col-md-6 col-xs-12">
                         <div class="featured-item flat-border-box" style="padding: 25px">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+                                <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/EuESIXO4-Ms?rel=0" allowfullscreen></iframe>
                             </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-4 -->
+                        </div>
+                    </div>
                     <div class="col-md-6 col-xs-12">
                         <div class="featured-item flat-border-box" style="padding: 25px">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0" allowfullscreen></iframe>
+                                <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/p3pFBNsHJPg?rel=0" allowfullscreen></iframe>
                             </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-4 -->
-
+                        </div>
+                    </div>
                     <div class="col-md-12 mt-10 text-center">
                         <a class="waves-effect waves-light btn">Ver todos</a>
                     </div>
-                </div><!-- /.row -->
-
-            </div><!-- /.container -->
-        </section>
-        <section class="section-padding" style="
-                 padding-top: 0px;
-                 padding-bottom: 50px;">
-
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-title"><strong>Gestión Transparente</strong></h2>
                 </div>
+
             </div>
-            <div class="container-fluid">
-                <div class="row no-gutter">
-                    <div class="col-md-2 col-md-offset-1 col-sm-6 col-sm-offset-0">
-                        <div class="featured-item border-box hover brand-hover" style="
-                             padding-top: 20px;
-                             padding-bottom: 0px">
-                            <div class="icon mb-5">
-                                <i class="material-icons brand-icon">folder_open</i>
-                            </div>
-                            <div class="desc">
-                                <a href="#"><h3>DOCUMENTOS DE GESTIÓN</h3></a>                              
-                            </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-3 -->
-
-                    <div class="col-md-2 col-sm-6">
-                        <div class="featured-item border-box hover brand-hover" style="
-                             padding-top: 20px;
-                             padding-bottom: 0px">
-                            <div class="icon mb-5">
-                                <i class="material-icons brand-icon">trending_up</i>
-                            </div>
-                            <div class="desc">
-                                <a href="#"><h3>PRESUPUESTOS Y FINANZAS</h3></a>
-                            </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-3 -->
-
-                    <div class="col-md-2 col-sm-4">
-                        <div class="featured-item border-box hover brand-hover" style="
-                             padding-top: 20px;
-                             padding-bottom: 0px">
-                            <div class="icon mb-5">
-                                <i class="material-icons brand-icon">supervisor_account</i>
-                            </div>
-                            <div class="desc">
-                                <a href="#"><h3>RECURSOS HUMANOS</h3></a>
-                            </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-3 -->
-
-                    <div class="col-md-2 col-sm-4">
-                        <div class="featured-item border-box hover brand-hover" style="
-                             padding-top: 20px;
-                             padding-bottom: 20px">
-                            <div class="icon mb-5">
-                                <i class="material-icons brand-icon">local_library</i>
-                            </div>
-                            <div class="desc">
-                                <a href="#"><h4 style="margin-bottom: 0px">ADQUISICIONES Y CONTRATACIONES</h4></a>
-                            </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.col-md-3 -->
-                    <div class="col-md-2 col-sm-4">
-                        <div class="featured-item border-box hover brand-hover" style="
-                             padding-top: 20px;
-                             padding-bottom: 20px">
-                            <div class="icon mb-5">
-                                <i class="material-icons brand-icon">cached</i>
-                            </div>
-                            <div class="desc">
-                                <a href="#"><h4 style="margin-bottom: 0px">MODIFICACIONES DEL PAC</h4></a>
-                            </div>
-                        </div><!-- /.featured-item -->
-                    </div><!-- /.row -->
-                </div>
         </section>
-        <!--section class="section-padding" tyle="
-        padding-top: 0px;
-        padding-bottom: 50px;">
-                <div class="container">
-                  <div class="featured-carousel brand-dot">
-                      <div class="featured-item border-box radius-4 hover brand-hover" style="padding-top: 20px;
-                      padding-bottom: 20px; padding-left: 10px; padding-right: 10px;">
-                          <div class="icon">
-                              <i class="material-icons brand-icon">&#xE32A;</i>
-                          </div>
-                      </div>
-    
-                      <div class="featured-item border-box radius-4 hover brand-hover" style="padding-top: 20px;
-                      padding-bottom: 20px; padding-left: 10px; padding-right: 10px;">
-                          <div class="icon">
-                              <i class="material-icons brand-icon">&#xE851;</i>
-                          </div>
-                      </div>
-    
-                      <div class="featured-item border-box radius-4 hover brand-hover" style="padding-top: 20px;
-                      padding-bottom: 20px; padding-left: 10px; padding-right: 10px;">
-                          <div class="icon">
-                              <i class="material-icons brand-icon">&#xE8AF;</i>
-                          </div>
-                      </div>
-    
-                      <div class="featured-item border-box radius-4 hover brand-hover" style="padding-top: 20px;
-                      padding-bottom: 20px; padding-left: 10px; padding-right: 10px;">
-                          <div class="icon">
-                              <i class="material-icons brand-icon">&#xE91D;</i>
-                          </div>
-                      </div>
-    
-                      <div class="featured-item border-box radius-4 hover brand-hover" style="padding-top: 20px;
-                      padding-bottom: 20px; padding-left: 10px; padding-right: 10px;">
-                          <div class="icon">
-                              <i class="material-icons brand-icon">&#xE8CB;</i>
-                          </div>
-                      </div>
-    
-                      <div class="featured-item border-box radius-4 hover brand-hover" style="padding-top: 20px;
-                      padding-bottom: 20px; padding-left: 10px; padding-right: 10px;">
-                          <div class="icon">
-                              <i class="material-icons brand-icon">&#xE8DC;</i>
-                          </div>
-                      </div>
-    
-                      <div class="featured-item border-box radius-4 hover brand-hover" style="padding-top: 20px;
-                      padding-bottom: 20px; padding-left: 10px; padding-right: 10px;">
-                          <div class="icon">
-                              <i class="material-icons brand-icon">&#xE02C;</i>
-                          </div>
-                      </div>
-                  </div>
-    
-                </div>
-            </section-->
         <%@ include file = "footer.jsp" %>  
         <!-- jQuery -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery-2.1.3.min.js"></script>

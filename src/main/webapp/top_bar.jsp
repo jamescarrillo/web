@@ -2,14 +2,14 @@
     <div class="container">
         <div class="row">
             <!-- Social Icon -->
-            <div class="col-md-4">
+            <div class="col-lg-4 col-md-3">
                 <!-- Social Icon -->
                 <ul class="list-inline social-top tt-animate btt">
                     <li><a href="#"><i class="fa fa-facebook" style="color: #a20505"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter" style="color: #a20505"></i></a></li>
                 </ul>
             </div>
-            <div class="col-md-8 text-right">
+            <div class="col-lg-8 col-me-9 text-right">
                 <ul class="topbar-cta no-margin">
                     <li class="mr-20 li-top">
                         <a class="a-top"><i class="material-icons mr-10">&#xE0B9;</i>info@peam.com</a>

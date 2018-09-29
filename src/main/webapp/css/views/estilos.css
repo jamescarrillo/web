@@ -170,3 +170,17 @@
     outline: none;
     text-decoration: none;
 }
+
+.h1-title {
+    position: relative;
+    display: inline-block;
+}
+
+.h1-title:after {
+    content: "";
+    border: 1px solid #a20505;
+    bottom: 0;
+    display: block;
+    margin-top: 3px;
+    width: 70px;
+}

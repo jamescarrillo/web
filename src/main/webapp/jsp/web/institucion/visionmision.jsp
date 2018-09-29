@@ -22,11 +22,9 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/shortcodes/shortcodes.css" rel="stylesheet">
         <!-- Style CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/style_web.css" rel="stylesheet">
-        <!-- RS5.0 Main Stylesheet -->
-        <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/settings.css">
-        <!-- RS5.0 Layers and Navigation Styles -->
-        <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/layers.css">
-        <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/navigation.css">
+        <link href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/skins/corporate.css" rel="stylesheet">
+        
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -42,7 +40,7 @@
         <%@ include file = "../../../header.jsp" %> 
         <section class="padding-bottom-100">
             <div class="container">
-                <div class="text-center mb-30 mt-40">
+                <div class="text-center mb-30" style="margin-top: 60px;">
                     <h2><strong>VISION Y MISION</strong></h2>
                     <p>PROYECTO ESPECIAL ALTO MAYO</p>
                 </div>

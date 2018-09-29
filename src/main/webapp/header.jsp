@@ -1,32 +1,32 @@
 <header id="header" class="tt-nav nav-border-bottom">
     <div class="header-sticky light-header">
         <div class="container">
-            <!--div class="search-wrapper">
+            <div class="search-wrapper">
                 <div class="search-trigger pull-right">
                     <div class="search-btn"></div>
-                    <i class="material-icons">?</i>
+                    <i class="material-icons">search</i>
                 </div>
-                <i class="search-close material-icons">?</i>
+                <i class="search-close material-icons">close</i>
                 <div class="search-form-wrapper">
                     <form action="#" class="white-form">
                         <div class="input-field">
                             <input type="text" name="search" id="search">
-                            <label for="search" class="">Search Here...</label>
+                            <label for="search" class="">Busca aquí...</label>
                         </div>
-                        <button class="btn pink search-button waves-effect waves-light" type="submit"><i class="material-icons">?</i></button>
+                        <button class="btn search-button waves-effect waves-light" type="submit" style="background-color:  #a20505"><i class="material-icons">search</i></button>
 
                     </form>
                 </div>
-            </div-->
+            </div>
             <div id="materialize-menu" class="menuzord">
                 <!--logo start-->
-                <a href="<%out.print(getServletContext().getContextPath());%>/index" class="logo-brand" style="margin-left: 0px">
+                <a href="<%out.print(getServletContext().getContextPath());%>/index" class="logo-brand" style="margin-left: 0px;margin-right: 0px">
                     <!--img class="retina" src="assets/img/logo.png" alt=""/-->
-                    <img class="retina" src="<%out.print(getServletContext().getContextPath());%>/assets/img/logo-colored.png" alt=""/>
+                    <img class="retina" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo_peam_combinado.png" alt=""/>
                 </a>
                 <!--logo end-->
                 <!--mega menu start-->
-                <ul class="menuzord-menu pull-right" id="menu-list" style="margin-right: 50px">
+                <ul class="menuzord-menu pull-right" id="menu-list">
                     <li><a href="<%out.print(getServletContext().getContextPath());%>/index">Inicio</a></li>
                     <li><a href="javascript:void(0)">Peam</a>
                         <div class="megamenu">
@@ -93,14 +93,15 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="javascript:void(0)">Aplicaciones</a>
+                    <li><a href="javascript:void(0)">Servicios</a>
                         <div class="megamenu">
                             <div class="megamenu-row">
                                 <div class="col12">
                                     <h2>Apps</h2>
                                     <ul class="list-unstyled">
-                                        <li><a href="shortcode-accordion.html">Gestor de Contenidos</a></li>
-                                        <li><a href="shortcode-alert.html">Correo</a></li>
+                                        <li><a href="">Gestor de Contenidos</a></li>
+                                        <li><a href="https://correo.peam.gob.pe/">Correo</a></li>
+                                        <li><a>Intranet</a></li>
                                         <li><a href="shortcode-blog.html">Servicios</a></li>
                                         <li><a href="shortcode-button.html">Glosario</a></li>
                                         <li><a href="shortcode-clients.html">Mapa de Sitio</a></li>

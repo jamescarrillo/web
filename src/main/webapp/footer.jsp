@@ -1,7 +1,7 @@
 <footer class="footer footer-four">
     <div class="primary-footer light-green text-center">
         <div class="container">
-            <a href="#top" class="page-scroll btn-floating btn-large pink back-top waves-effect waves-light" data-section="#top">
+            <a href="#top" class="page-scroll btn-floating btn-large back-top waves-effect waves-light" style="background-color:  #a20505" data-section="#top">
                 <i class="material-icons">&#xE316;</i>
             </a>
             <ul class="social-link tt-animate ltr mt-20">
@@ -21,7 +21,7 @@
                     <!--h6 style="color: #ffffff"><strong>Ubícanos</strong></h6-->
                     <br>
                     <div class="footer-intro" style="margin-top: 10px">
-                        <h6 style="color: #ffffff"><i class="fa fa-map-marker" aria-hidden="true"></i> Calle La Marginal N° 233 Sector Uchuglla - Moyobamba - San Martín - Perú<h6>
+                        <h6 style="color: #ffffff"><a style="color: #ffffff" href="https://www.google.com/maps/@-6.043346,-76.971502,15z?hl=es" target="_blank"><i class="fa fa-map-marker" aria-hidden="true"></i></a> Calle La Marginal N° 233 Sector Uchuglla - Moyobamba - San Martín - Perú </h6>
                                 <h6 style="color: #ffffff"><i class="fa fa-phone" aria-hidden="true"></i> (042) 562522</h6>
                                 <h6 style="color: #ffffff"><i class="fa fa-envelope" aria-hidden="true"></i> Lunes a Viernes: De 7:30 a 13:00 horas / 14:30 a 17:00 horas</h6>
                                 </div>
