@@ -11,6 +11,7 @@
 	href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css"
 	rel="stylesheet">
 <!-- FontAwesome CSS -->
+
 <link
 	href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css"
 	rel="stylesheet">
