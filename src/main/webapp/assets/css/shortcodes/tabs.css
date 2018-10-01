@@ -188,7 +188,8 @@ Border Tabs
 }
 
 .border-tab.transparent-nav .nav-tabs>li.active::after {
-    border-bottom: 3px solid #03a9f4;
+    /*border-bottom: 3px solid #03a9f4;*/
+    border-bottom: 3px solid #8bc34a;
 }
 
 .border-tab.transparent-nav .nav-tabs>li.active>a, 
@@ -197,7 +198,8 @@ Border Tabs
 .border-tab.transparent-nav .nav-tabs.nav-justified>.active>a, 
 .border-tab.transparent-nav .nav-tabs.nav-justified>.active>a:focus, 
 .border-tab.transparent-nav .nav-tabs.nav-justified>.active>a:hover {
-    color: #03a9f4;
+    /*color: #03a9f4;*/
+    color: #8bc34a;
 }
 
 

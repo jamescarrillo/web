@@ -460,7 +460,8 @@ Owl Carousel Customize
 /*colored dot*/
 .brand-dot.owl-theme .owl-dots .owl-dot.active span, 
 .brand-dot.owl-theme .owl-dots .owl-dot:hover span {
-    background: #03a9f4;
+    /*background: #03a9f4;*/
+    background: #8bc34a;
 }
 
 

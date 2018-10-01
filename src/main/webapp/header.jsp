@@ -99,7 +99,7 @@
                                 <div class="col12">
                                     <h2>Apps</h2>
                                     <ul class="list-unstyled">
-                                        <li><a href="">Gestor de Contenidos</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/login">Gestor de Contenidos</a></li>
                                         <li><a href="https://correo.peam.gob.pe/">Correo</a></li>
                                         <li><a>Intranet</a></li>
                                         <li><a href="shortcode-blog.html">Servicios</a></li>

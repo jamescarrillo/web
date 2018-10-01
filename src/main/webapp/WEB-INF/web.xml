@@ -10,7 +10,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>login</welcome-file>
+        <welcome-file>index</welcome-file>
     </welcome-file-list>
     <context-param>
         <param-name>name.app.page</param-name>
