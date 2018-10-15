@@ -18,7 +18,7 @@
         <!-- Bootstrap Core CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/css/sweetalert.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/style.css" rel="stylesheet">
         <!-- You can change the theme colors from here -->
@@ -144,8 +144,6 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/login.js"></script>
-
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/login.js"></script>
     </body>
-
 </html>

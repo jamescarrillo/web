@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gob.peam.web.service.session;
+package gob.peam.web.api.session;
 
 import com.google.gson.Gson;
 import gob.peam.web.dao.UsuarioDAO;
@@ -63,8 +63,7 @@ public class SessionController extends HttpServlet {
                 String respuesta;
                 Usuario usuario = usuarioDAO.getUserValidation(login);
                 if (usuario != null) {
-                    System.out.println("comparando " + usuario.getUsua_clave() + " con  "+ Encriptar.md5(Encriptar.md5(Encriptar.md5(pass))) + " viene : " + pass);
-                    if (!usuario.isUsua_estado()) {
+                    if (!usuario.getUsua_estado()) {
                         respuesta = "El Usuario ingresado no está habilitado";
                     } else if (usuario.getUsua_clave().equals(Encriptar.md5(Encriptar.md5(Encriptar.md5(pass))))) {
                         //MANDAMOS AL INDEX

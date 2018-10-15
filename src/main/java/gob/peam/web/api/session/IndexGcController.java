@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gob.peam.web.service.session;
+package gob.peam.web.api.session;
 
 import gob.peam.web.model.Usuario;
 import java.io.IOException;
@@ -19,11 +19,11 @@ import javax.servlet.http.HttpSession;
  *
  * @author James Carrillo
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/login"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "IndexGcController", urlPatterns = {"/indexgc"})
+public class IndexGcController extends HttpServlet {
 
     private HttpSession session;
-    private Usuario user;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -37,7 +37,7 @@ public class LoginController extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         RequestDispatcher dp;
-        dp = request.getRequestDispatcher("login.jsp");
+        dp = request.getRequestDispatcher("index_gc.jsp");
         dp.forward(request, response);
     }
 
@@ -54,11 +54,10 @@ public class LoginController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         session = request.getSession();
-        user = (Usuario) session.getAttribute("user");
-        if (user == null) {
-            processRequest(request, response);
+        if ((Usuario) session.getAttribute("user") == null) {
+            response.sendRedirect("login");
         } else {
-            response.sendRedirect("index");
+            processRequest(request, response);
         }
     }
 
@@ -74,11 +73,10 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         session = request.getSession();
-        user = (Usuario) session.getAttribute("user");
-        if (user == null) {
-            processRequest(request, response);
+        if ((Usuario) session.getAttribute("user") == null) {
+            response.sendRedirect("login");
         } else {
-            response.sendRedirect("index");
+            processRequest(request, response);
         }
     }
 

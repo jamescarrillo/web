@@ -11,20 +11,17 @@ package gob.peam.web.model;
  */
 public class Directorio {
     
-    private int id;
+    private Integer id;
     private String oficina;
     private String anexo;
     private String seccion;
-    private boolean estado;
+    private Boolean estado;
 
-    public Directorio() {
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -52,12 +49,12 @@ public class Directorio {
         this.seccion = seccion;
     }
 
-    public boolean isEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
-    
+
 }

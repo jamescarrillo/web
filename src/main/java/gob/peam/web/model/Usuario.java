@@ -13,20 +13,20 @@ import java.sql.Date;
  */
 public class Usuario {
 
-    private int usua_id;
+    private Integer usua_id;
     private String usua_login;
     private String usua_clave;
     private java.sql.Date usua_fecha_registro;
     private java.sql.Date usua_fecha_caducidad;
-    private boolean usua_estado;
+    private Boolean usua_estado;
     private String usua_firma_digital;
     private Persona persona;
 
-    public int getUsua_id() {
+    public Integer getUsua_id() {
         return usua_id;
     }
 
-    public void setUsua_id(int usua_id) {
+    public void setUsua_id(Integer usua_id) {
         this.usua_id = usua_id;
     }
 
@@ -62,11 +62,11 @@ public class Usuario {
         this.usua_fecha_caducidad = usua_fecha_caducidad;
     }
 
-    public boolean isUsua_estado() {
+    public Boolean getUsua_estado() {
         return usua_estado;
     }
 
-    public void setUsua_estado(boolean usua_estado) {
+    public void setUsua_estado(Boolean usua_estado) {
         this.usua_estado = usua_estado;
     }
 
@@ -85,5 +85,5 @@ public class Usuario {
     public void setPersona(Persona persona) {
         this.persona = persona;
     }
-    
+
 }

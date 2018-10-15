@@ -10,21 +10,21 @@ package gob.peam.web.model;
  * @author James Carrillo
  */
 public class Persona {
-    
-    private int pers_id;
+
+    private Integer pers_id;
     private String pers_dni;
     private String pers_nombre;
     private String pers_apellido_paterno;
     private String pers_apellido_materno;
-    private boolean pers_estado;
+    private Boolean pers_estado;
     private String pers_iniciales;
     private String pers_cargo;
 
-    public int getPers_id() {
+    public Integer getPers_id() {
         return pers_id;
     }
 
-    public void setPers_id(int pers_id) {
+    public void setPers_id(Integer pers_id) {
         this.pers_id = pers_id;
     }
 
@@ -60,11 +60,11 @@ public class Persona {
         this.pers_apellido_materno = pers_apellido_materno;
     }
 
-    public boolean isPers_estado() {
+    public Boolean getPers_estado() {
         return pers_estado;
     }
 
-    public void setPers_estado(boolean pers_estado) {
+    public void setPers_estado(Boolean pers_estado) {
         this.pers_estado = pers_estado;
     }
 
@@ -83,5 +83,5 @@ public class Persona {
     public void setPers_cargo(String pers_cargo) {
         this.pers_cargo = pers_cargo;
     }
-    
+
 }

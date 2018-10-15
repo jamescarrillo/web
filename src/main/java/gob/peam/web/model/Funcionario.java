@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class Funcionario {
 
-    private int id;
+    private Integer id;
     private String organigrama;
     private String tratamiento;
     private String nombres_apellidos;
@@ -29,20 +29,17 @@ public class Funcionario {
     private String profesion;
     private String resumen;
     private String regimen_laboral;
-    private double retribucion_mensual;
+    private Double retribucion_mensual;
     private String hoja_vida;
-    private boolean estado;
-    private boolean destacado;
+    private Boolean estado;
+    private Boolean destacado;
     private java.sql.Date fecha_inicio;
 
-    public Funcionario() {
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -166,11 +163,11 @@ public class Funcionario {
         this.regimen_laboral = regimen_laboral;
     }
 
-    public double getRetribucion_mensual() {
+    public Double getRetribucion_mensual() {
         return retribucion_mensual;
     }
 
-    public void setRetribucion_mensual(double retribucion_mensual) {
+    public void setRetribucion_mensual(Double retribucion_mensual) {
         this.retribucion_mensual = retribucion_mensual;
     }
 
@@ -182,19 +179,19 @@ public class Funcionario {
         this.hoja_vida = hoja_vida;
     }
 
-    public boolean isEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 
-    public boolean isDestacado() {
+    public Boolean getDestacado() {
         return destacado;
     }
 
-    public void setDestacado(boolean destacado) {
+    public void setDestacado(Boolean destacado) {
         this.destacado = destacado;
     }
 
@@ -205,7 +202,5 @@ public class Funcionario {
     public void setFecha_inicio(Date fecha_inicio) {
         this.fecha_inicio = fecha_inicio;
     }
-    
-    
-    
+
 }

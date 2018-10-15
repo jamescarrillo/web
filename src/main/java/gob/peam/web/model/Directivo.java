@@ -13,7 +13,7 @@ import java.sql.Date;
  */
 public class Directivo {
     
-    private int id;
+    private Integer id;
     private String tratamiento;
     private String nombres_apellidos;
     private String cargo;
@@ -29,18 +29,15 @@ public class Directivo {
     private String resumen;
     private String institucion;
     private String regimen_laboral;
-    private double retribucion_mensual;
+    private Double retribucion_mensual;
     private String hoja_vida;
-    private boolean estado;
+    private Boolean estado;
 
-    public Directivo() {
-    }
-
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -164,11 +161,11 @@ public class Directivo {
         this.regimen_laboral = regimen_laboral;
     }
 
-    public double getRetribucion_mensual() {
+    public Double getRetribucion_mensual() {
         return retribucion_mensual;
     }
 
-    public void setRetribucion_mensual(double retribucion_mensual) {
+    public void setRetribucion_mensual(Double retribucion_mensual) {
         this.retribucion_mensual = retribucion_mensual;
     }
 
@@ -180,13 +177,13 @@ public class Directivo {
         this.hoja_vida = hoja_vida;
     }
 
-    public boolean isEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
-    
-    
+
+   
 }

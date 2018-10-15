@@ -9,9 +9,10 @@
             <!-- User profile text-->
             <div class="profile-text"> <a href="#" class="dropdown-toggle u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><%out.print(((Usuario) request.getSession().getAttribute("user")).getPersona().getPers_nombre() + " " + ((Usuario) request.getSession().getAttribute("user")).getPersona().getPers_apellido_paterno());%></a>
                 <div class="dropdown-menu animated flipInY"> 
-                    <a href="perfil" class="dropdown-item"><i class="ti-user"></i> Mi Perfil</a> 
+                    <a href="<%out.print(getServletContext().getContextPath());%>/perfil" class="dropdown-item"><i class="ti-user"></i> Mi Perfil</a> 
                     <div class="dropdown-divider"></div> 
-                    <a href="cerrarsession" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar Sesión</a> </div>
+                    <a href="<%out.print(getServletContext().getContextPath());%>/cerrarsession" class="dropdown-item"><i class="fa fa-power-off"></i> Cerrar Sesión</a> 
+                </div>
             </div>
         </div>
         <!-- End User profile text-->
@@ -110,6 +111,7 @@
     <div class="sidebar-footer">
         <!-- item--><a href="javascript:void(0)" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
         <!-- item--><a href="javascript:void(0)" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-        <!-- item--><a href="cerrarsession" class="link" data-toggle="tooltip" title="Cerrar Sesión"><i class="mdi mdi-power"></i></a> </div>
+        <!-- item--><a href="<%out.print(getServletContext().getContextPath());%>/cerrarsession" class="link" data-toggle="tooltip" title="Cerrar Sesión"><i class="mdi mdi-power"></i></a>
+    </div>
     <!-- End Bottom points-->
 </aside>

@@ -28,22 +28,6 @@ function addCalendarDivs(ids, formato) {
     }
 }
 
-function getDateJs(date) {
-    //------------->MM/DD/YYYY
-    //VIENE DE LA BBDD DD/MM/YYYY
-    var valores = date.split("/");
-    return valores[1] + "/" + valores[0] + "/" + valores[2];
-}
-
-function getDateFullJs(datefull) {
-    //------------->MM/DD/YYYY
-    //VIENE DE LA BBDD DD/MM/YYYY HH:MM:SS
-    var valoresfull = datefull.split(" ");
-    var valores = valoresfull[0].split("/");
-    var valoresh = valoresfull[1].split(":");
-    return new Date(valores[2], valores[1], valores[0], valoresh[0], valoresh[1], valoresh[2], 0);
-}
-
 function getRandomInt(min, max) {
     // Retorna un entero aleatorio entre min (incluido) y max (excluido)
     // ¡Usando Math.round() te dará una distribución no-uniforme!
@@ -61,7 +45,6 @@ function readImageSelected(input, idvisor) {
         //$('#' + idname).val(input.files[0].name);
     }
 }
-
 
 function readViewNameFile(input, idtxtname) {
     if (input.files && input.files[0]) {
@@ -84,6 +67,8 @@ function printDiv(nombreDiv) {
     document.body.innerHTML = contenidoOriginal;
 }
 
+/*
 function getContexApp(){
     return "/web";
 }
+*/

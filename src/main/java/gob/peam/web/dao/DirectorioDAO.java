@@ -6,8 +6,8 @@
 package gob.peam.web.dao;
 
 import gob.peam.web.model.Directorio;
-import gob.peam.web.utilities.BeanCrud;
-import gob.peam.web.utilities.BeanPagination;
+import gob.peam.web.utilities.BEAN_CRUD;
+import gob.peam.web.utilities.BEAN_PAGINATION;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,8 +25,8 @@ public class DirectorioDAO {
 
     private DataSource pool;
 
-    private BeanPagination getPagination(HashMap<String, Object> parametros, Connection conn) throws SQLException {
-        BeanPagination beanpagination = new BeanPagination();
+    private BEAN_PAGINATION getPagination(HashMap<String, Object> parametros, Connection conn) throws SQLException {
+        BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
         PreparedStatement pst;
         ResultSet rs;
         try {
@@ -35,7 +35,7 @@ public class DirectorioDAO {
             pst.setString(1, String.valueOf(parametros.get("FILTER")));
             rs = pst.executeQuery();
             while (rs.next()) {
-                beanpagination.setCount_filter(rs.getInt("CANT"));
+                beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
             }
             pst = conn.prepareStatement("SELECT * FROM WEB.F00003 WHERE "
                     + String.valueOf(parametros.get("FIELD_FILTER")) + " LIKE CONCAT('%',?,'%') ORDER BY "
@@ -52,7 +52,7 @@ public class DirectorioDAO {
                 obj.setEstado(rs.getBoolean("ESTADO"));
                 list.add(obj);
             }
-            beanpagination.setList(list);
+            beanpagination.setLIST(list);
             rs.close();
             pst.close();
         } catch (SQLException ex) {
@@ -61,8 +61,8 @@ public class DirectorioDAO {
         return beanpagination;
     }
 
-    public BeanPagination getPagination(HashMap<String, Object> parametros) throws SQLException {
-        BeanPagination beansPagination = null;
+    public BEAN_PAGINATION getPagination(HashMap<String, Object> parametros) throws SQLException {
+        BEAN_PAGINATION beansPagination = null;
         try (Connection conn = pool.getConnection()) {
             beansPagination = getPagination(parametros, conn);
         } catch (SQLException e) {
@@ -71,8 +71,8 @@ public class DirectorioDAO {
         return beansPagination;
     }
 
-    public BeanCrud add(Directorio obj, HashMap<String, Object> parametros) throws SQLException {
-        BeanCrud beancrud = new BeanCrud();
+    public BEAN_CRUD add(Directorio obj, HashMap<String, Object> parametros) throws SQLException {
+        BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
@@ -81,11 +81,11 @@ public class DirectorioDAO {
             pst.setString(1, obj.getOficina());
             pst.setString(2, obj.getSeccion());
             pst.setString(3, obj.getAnexo());
-            pst.setBoolean(4, obj.isEstado());
+            pst.setBoolean(4, obj.getEstado());
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMessageServer("registered");
-            beancrud.setBeanPagination(getPagination(parametros, conn));
+            beancrud.setMESSAGE_SERVER("registered");
+            beancrud.setBEAN_PAGINATION(getPagination(parametros, conn));
             pst.close();
         } catch (SQLException ex) {
             throw ex;
@@ -93,8 +93,8 @@ public class DirectorioDAO {
         return beancrud;
     }
 
-    public BeanCrud update(Directorio obj, HashMap<String, Object> parametros) throws SQLException {
-        BeanCrud beancrud = new BeanCrud();
+    public BEAN_CRUD update(Directorio obj, HashMap<String, Object> parametros) throws SQLException {
+        BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
@@ -104,12 +104,12 @@ public class DirectorioDAO {
             pst.setString(1, obj.getOficina());
             pst.setString(2, obj.getSeccion());
             pst.setString(3, obj.getAnexo());
-            pst.setBoolean(4, obj.isEstado());
+            pst.setBoolean(4, obj.getEstado());
             pst.setInt(5, obj.getId());
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMessageServer("modified");
-            beancrud.setBeanPagination(getPagination(parametros, conn));
+            beancrud.setMESSAGE_SERVER("modified");
+            beancrud.setBEAN_PAGINATION(getPagination(parametros, conn));
             pst.close();
         } catch (SQLException ex) {
             throw ex;
@@ -117,8 +117,8 @@ public class DirectorioDAO {
         return beancrud;
     }
 
-    public BeanCrud delete(Directorio obj, HashMap<String, Object> parametros) throws SQLException {
-        BeanCrud beancrud = new BeanCrud();
+    public BEAN_CRUD delete(Directorio obj, HashMap<String, Object> parametros) throws SQLException {
+        BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
@@ -127,8 +127,8 @@ public class DirectorioDAO {
             pst.setInt(1, obj.getId());
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMessageServer("deleted");
-            beancrud.setBeanPagination(getPagination(parametros, conn));
+            beancrud.setMESSAGE_SERVER("deleted");
+            beancrud.setBEAN_PAGINATION(getPagination(parametros, conn));
             pst.close();
         } catch (SQLException ex) {
             throw ex;

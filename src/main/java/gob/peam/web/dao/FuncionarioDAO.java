@@ -5,11 +5,9 @@
  */
 package gob.peam.web.dao;
 
-import gob.peam.web.model.Directivo;
-import gob.peam.web.model.Directorio;
 import gob.peam.web.model.Funcionario;
-import gob.peam.web.utilities.BeanCrud;
-import gob.peam.web.utilities.BeanPagination;
+import gob.peam.web.utilities.BEAN_CRUD;
+import gob.peam.web.utilities.BEAN_PAGINATION;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,6 +16,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.sql.DataSource;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  *
@@ -25,52 +25,61 @@ import javax.sql.DataSource;
  */
 public class FuncionarioDAO {
 
-    private DataSource pool;
+    private final Log logger = LogFactory.getLog(FuncionarioDAO.class);
+    private final DataSource pool;
 
-    private BeanPagination getPagination(HashMap<String, Object> parametros, Connection conn) throws SQLException {
-        BeanPagination beanpagination = new BeanPagination();
+    public FuncionarioDAO(DataSource pool) {
+        this.pool = pool;
+    }
+
+    private BEAN_PAGINATION getPagination(HashMap<String, Object> parameters, Connection conn) throws SQLException {
+        BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
+        List<Funcionario> list = new ArrayList<>();
         PreparedStatement pst;
         ResultSet rs;
         try {
-            pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.F000013 WHERE "
-                    + String.valueOf(parametros.get("FIELD_FILTER")) + " LIKE CONCAT('%',?,'%')");
-            pst.setString(1, String.valueOf(parametros.get("FILTER")));
+            pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.F00013 WHERE "
+                    + "LOWER(NOMBRES_APELLIDOS) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            this.logger.info("[1] " + pst);
             rs = pst.executeQuery();
             while (rs.next()) {
-                beanpagination.setCount_filter(rs.getInt("CANT"));
+                beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
+                if (rs.getInt("CANT") > 0) {
+                    pst = conn.prepareStatement("SELECT * FROM WEB.F00013 WHERE "
+                            + "LOWER(NOMBRES_APELLIDOS) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
+                            + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
+                    pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    this.logger.info("[2] " + pst);
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
+                        Funcionario obj = new Funcionario();
+                        obj.setId(rs.getInt("ID"));
+                        obj.setOrganigrama(rs.getString("ORGANIGRAMA"));
+                        obj.setTratamiento(rs.getString("TRATAMIENTO"));
+                        obj.setNombres_apellidos(rs.getString("NOMBRES_APELLIDOS"));
+                        obj.setCargo(rs.getString("CARGO"));
+                        obj.setNivel_remunerativo(rs.getString("NIVEL_REMUNERATIVO"));
+                        obj.setNumero_dni(rs.getString("NUMERO_DNI"));
+                        obj.setResolucion(rs.getString("RESOLUCION"));
+                        obj.setFecha_designacion(rs.getDate("FECHA_DESIGNACION"));
+                        obj.setTelefono(rs.getString("TELEFONO"));
+                        obj.setFax(rs.getString("FAX"));
+                        obj.setE_mail(rs.getString("E_MAIL"));
+                        obj.setFoto(rs.getString("FOTO"));
+                        obj.setProfesion(rs.getString("PROFESION"));
+                        obj.setResumen(rs.getString("RESUMEN"));
+                        obj.setRegimen_laboral(rs.getString("REGIMEN_LABORAL"));
+                        obj.setRetribucion_mensual(rs.getDouble("RETRIBUCION_MENSUAL"));
+                        obj.setHoja_vida(rs.getString("HOJA_VIDA"));
+                        obj.setEstado(rs.getBoolean("ESTADO"));
+                        obj.setDestacado(rs.getBoolean("DESTACADO"));
+                        obj.setFecha_inicio(rs.getDate("FECHA_INICIO"));
+                        list.add(obj);
+                    }
+                }
             }
-            pst = conn.prepareStatement("SELECT * FROM WEB.F000013 WHERE "
-                    + String.valueOf(parametros.get("FIELD_FILTER")) + " LIKE CONCAT('%',?,'%') ORDER BY "
-                    + String.valueOf(parametros.get("SQL_ORDERS")) + " " + parametros.get("LIMIT"));
-            pst.setString(1, String.valueOf(parametros.get("FILTER")));
-            rs = pst.executeQuery();
-            List list = new ArrayList<>();
-            while (rs.next()) {
-                Funcionario obj = new Funcionario();
-                obj.setId(rs.getInt("ID"));
-                obj.setOrganigrama(rs.getString("ORGANIGRAMA"));
-                obj.setTratamiento(rs.getString("TRATAMIENTO"));
-                obj.setNombres_apellidos(rs.getString("NOMBRES_APELLIDOS"));
-                obj.setCargo(rs.getString("CARGO"));
-                obj.setNivel_remunerativo(rs.getString("NIVEL_REMUNERATIVO"));
-                obj.setNumero_dni(rs.getString("NUMERO_DNI"));
-                obj.setResolucion(rs.getString("RESOLUCION"));
-                obj.setFecha_designacion(rs.getDate("FECHA_DESIGNACION"));
-                obj.setTelefono(rs.getString("TELEFONO"));
-                obj.setFax(rs.getString("FAX"));
-                obj.setE_mail(rs.getString("E_MAIL"));
-                obj.setFoto(rs.getString("FOTO"));
-                obj.setProfesion(rs.getString("PROFESION"));
-                obj.setResumen(rs.getString("RESUMEN"));
-                obj.setRegimen_laboral(rs.getString("REGIMEN_LABORAL"));
-                obj.setRetribucion_mensual(rs.getDouble("RETRIBUCION_MENSUAL"));
-                obj.setHoja_vida(rs.getString("HOJA_VIDA"));
-                obj.setEstado(rs.getBoolean("ESTADO"));
-                obj.setDestacado(rs.getBoolean("DESTACADO"));
-                obj.setFecha_inicio(rs.getDate("FECHA_INICIO"));
-                list.add(obj);
-            }
-            beanpagination.setList(list);
+            beanpagination.setLIST(list);
             rs.close();
             pst.close();
         } catch (SQLException ex) {
@@ -79,23 +88,23 @@ public class FuncionarioDAO {
         return beanpagination;
     }
 
-    public BeanPagination getPagination(HashMap<String, Object> parametros) throws SQLException {
-        BeanPagination beansPagination = null;
+    public BEAN_PAGINATION getPagination(HashMap<String, Object> parameters) throws SQLException {
+        BEAN_PAGINATION beansPagination = null;
         try (Connection conn = pool.getConnection()) {
-            beansPagination = getPagination(parametros, conn);
+            beansPagination = getPagination(parameters, conn);
         } catch (SQLException e) {
             throw e;
         }
         return beansPagination;
     }
 
-    public BeanCrud add(Funcionario obj, HashMap<String, Object> parametros) throws SQLException {
-        BeanCrud beancrud = new BeanCrud();
+    public BEAN_CRUD add(Funcionario obj, HashMap<String, Object> parameters) throws SQLException {
+        BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("INSERT INTO WEB.F000013(ID,ORGANIGRAMA,TRATAMIENDO,NOMBRES_APELLIDOS,CARGO,NIVEL_REMUNERATIVO,"
+            pst = conn.prepareStatement("INSERT INTO WEB.F00013(ID,ORGANIGRAMA,TRATAMIENDO,NOMBRES_APELLIDOS,CARGO,NIVEL_REMUNERATIVO,"
                     + "NUMERO_DNI,RESOLUCION,FECHA_DESIGNACION,TELEFONO,FAX,E_MAIL,FOTO,PROFESION,RESUMEN,"
                     + "REGIMEN_LABORAL,RETRIBUCION_MENSUAL,HOJA_VIDA,ESTADO) "
                     + "VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.f00013),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -116,13 +125,13 @@ public class FuncionarioDAO {
             pst.setString(15, obj.getRegimen_laboral());
             pst.setDouble(16, obj.getRetribucion_mensual());
             pst.setString(17, obj.getHoja_vida());
-            pst.setBoolean(18, obj.isEstado());
-            pst.setBoolean(19, obj.isDestacado());
+            pst.setBoolean(18, obj.getEstado());
+            pst.setBoolean(19, obj.getDestacado());
             pst.setDate(20, obj.getFecha_inicio());
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMessageServer("registered");
-            beancrud.setBeanPagination(getPagination(parametros, conn));
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
             throw ex;
@@ -130,13 +139,13 @@ public class FuncionarioDAO {
         return beancrud;
     }
 
-    public BeanCrud update(Funcionario obj, HashMap<String, Object> parametros) throws SQLException {
-        BeanCrud beancrud = new BeanCrud();
+    public BEAN_CRUD update(Funcionario obj, HashMap<String, Object> parameters) throws SQLException {
+        BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.F000013 SET ORGANIGRAMA = ?,TRATAMIENDO = ?,NOMBRES_APELLIDOS = ?,CARGO = ?,NIVEL_REMUNERATIVO = ?,"
+            pst = conn.prepareStatement("UPDATE WEB.F00013 SET ORGANIGRAMA = ?,TRATAMIENDO = ?,NOMBRES_APELLIDOS = ?,CARGO = ?,NIVEL_REMUNERATIVO = ?,"
                     + "NUMERO_DNI = ?,RESOLUCION = ?,FECHA_DESIGNACION = ?,TELEFONO = ?,FAX = ?, E_MAIL = ?,FOTO = ?,PROFESION = ?, RESUMEN = ?,"
                     + "REGIMEN_LABORAL = ?,RETRIBUCION_MENSUAL = ?,HOJA_VIDA = ?, ESTADO = ? WHERE ID = ?");
             pst.setString(1, obj.getOrganigrama());
@@ -156,14 +165,14 @@ public class FuncionarioDAO {
             pst.setString(15, obj.getRegimen_laboral());
             pst.setDouble(16, obj.getRetribucion_mensual());
             pst.setString(17, obj.getHoja_vida());
-            pst.setBoolean(18, obj.isEstado());
-            pst.setBoolean(19, obj.isDestacado());
+            pst.setBoolean(18, obj.getEstado());
+            pst.setBoolean(19, obj.getDestacado());
             pst.setDate(20, obj.getFecha_inicio());
             pst.setInt(21, obj.getId());
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMessageServer("modified");
-            beancrud.setBeanPagination(getPagination(parametros, conn));
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
             throw ex;
@@ -171,18 +180,18 @@ public class FuncionarioDAO {
         return beancrud;
     }
 
-    public BeanCrud delete(Directorio obj, HashMap<String, Object> parametros) throws SQLException {
-        BeanCrud beancrud = new BeanCrud();
+    public BEAN_CRUD delete(Funcionario obj, HashMap<String, Object> parameters) throws SQLException {
+        BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("DELETE FROM WEB.F000013 WHERE ID = ?");
+            pst = conn.prepareStatement("DELETE FROM WEB.F00013 WHERE ID = ?");
             pst.setInt(1, obj.getId());
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMessageServer("deleted");
-            beancrud.setBeanPagination(getPagination(parametros, conn));
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
             throw ex;

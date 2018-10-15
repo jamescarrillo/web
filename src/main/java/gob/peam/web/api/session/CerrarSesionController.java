@@ -3,11 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gob.peam.web.service.session;
+package gob.peam.web.api.session;
 
-import gob.peam.web.model.Usuario;
 import java.io.IOException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,10 +17,8 @@ import javax.servlet.http.HttpSession;
  *
  * @author James Carrillo
  */
-@WebServlet(name = "IndexGcController", urlPatterns = {"/indexgc"})
-public class IndexGcController extends HttpServlet {
-
-    private HttpSession session;
+@WebServlet(name = "CerrarSesionController", urlPatterns = {"/cerrarsession"})
+public class CerrarSesionController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -36,9 +32,9 @@ public class IndexGcController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        RequestDispatcher dp;
-        dp = request.getRequestDispatcher("index_gc.jsp");
-        dp.forward(request, response);
+        HttpSession session = request.getSession();
+        session.invalidate();
+        response.sendRedirect("login");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -53,12 +49,7 @@ public class IndexGcController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        session = request.getSession();
-        if ((Usuario) session.getAttribute("user") == null) {
-            response.sendRedirect("login");
-        } else {
-            processRequest(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**
@@ -72,12 +63,7 @@ public class IndexGcController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        session = request.getSession();
-        if ((Usuario) session.getAttribute("user") == null) {
-            response.sendRedirect("login");
-        } else {
-            processRequest(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**

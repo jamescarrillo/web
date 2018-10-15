@@ -4,7 +4,7 @@
     <!-- Logo -->
     <!-- ============================================================== -->
     <div class="navbar-header">
-        <a class="navbar-brand" href="indexgc">
+        <a class="navbar-brand" href="<%out.print(getServletContext().getContextPath());%>/indexgc">
             <!-- Logo icon -->
             <b>
                 <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -50,14 +50,14 @@
                                 <div class="u-text">
                                     <h4><%out.print(((Usuario) request.getSession().getAttribute("user")).getPersona().getPers_nombre() + " " + ((Usuario) request.getSession().getAttribute("user")).getPersona().getPers_apellido_paterno());%></h4>
                                     <p class="text-muted"><%out.print(((Usuario) request.getSession().getAttribute("user")).getPersona().getPers_cargo());%></p>
-                                    <a href="perfil" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a>
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/perfil" class="btn btn-rounded btn-danger btn-sm">Ver Perfil</a>
                                 </div>
                             </div>
                         </li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="perfil"><i class="ti-user"></i> Mi Perfil</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/perfil"><i class="ti-user"></i> Mi Perfil</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="cerrarsession"><i class="fa fa-power-off"></i> Cerrar Sesión</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/cerrarsession"><i class="fa fa-power-off"></i> Cerrar Sesión</a></li>
                     </ul>
                 </div>
             </li>

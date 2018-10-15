@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
     <head>
-        <%@ include file = "att_head.jsp" %> 
+        <%@ include file = "att_head_gc.jsp" %> 
         <!-- Bootstrap Core CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- Custom CSS -->
