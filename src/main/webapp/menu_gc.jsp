@@ -22,19 +22,19 @@
                 <li class="nav-small-cap">APP</li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false" title="Agenda institucional"><i class="mdi mdi-book-open"></i><span class="hide-menu">Agenda Inst.</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#" title="Agenda Gerencial">Agenda Gerencial</a></li>
-                        <li><a href="#" title="Director de desarrollo Agropecuario">Dir. Desarrollo Agro</a></li>
-                        <li><a href="#" title="Director de Infraestructura">Dir. de Infraestructura</a></li>
-                        <li><a href="#" title="Director de Manejo Ambiental">Director M. Ambiental</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/agendainstitucional/agendagerencial" title="Agenda Gerencial">Agenda Gerencial</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/agendainstitucional/directordesarrollo" title="Director de desarrollo Agropecuario">Dir. Desarrollo Agro</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/agendainstitucional/directorinfraestructura" title="Director de Infraestructura">Dir. de Infraestructura</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/agendainstitucional/directormanejoambiental" title="Director de Manejo Ambiental">Director M. Ambiental</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-folder-multiple-outline"></i><span class="hide-menu">Convocatorias</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#" title="Adicionales de Obras">Ad. de Obras</a></li>
-                        <li><a href="#" title="Comites Encargados">Comites Encargados</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/adicionalobras" title="Adicionales de Obras">Ad. de Obras</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/comitesencargados" title="Comites Encargados">Comites Encargados</a></li>
                         <li><a href="#" title="Convocatorias Bienes/Servicios/Conseciones">Convocatorias B/S/C</a></li>
                         <li><a href="#" title="Convocatorias Personal">Convocatorias Personal</a></li>
-                        <li><a href="#" title="Liquidación Final de Obras">Liquidación Final Obras</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/liquidacionobras" title="Liquidación Final de Obras">Liquidación Final Obras</a></li>
                         <li><a href="#" title="Penalidades">Penalidades</a></li>
                         <li><a href="#" title="Procesos Exonerados">Procesos Exonerados</a></li>
                         <li><a href="#" title="Subpervisión de Contratos">Supervisión Contratos</a></li>
