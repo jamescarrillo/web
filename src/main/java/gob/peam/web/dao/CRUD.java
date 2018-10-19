@@ -22,5 +22,12 @@ public interface CRUD<T> {
 
     BEAN_PAGINATION getPagination(HashMap<String, Object> parameters) throws SQLException;
 
-    BEAN_CRUD add(T obj, HashMap<String, Object> parameters);
+    BEAN_CRUD add(T obj, HashMap<String, Object> parameters) throws SQLException;
+
+    BEAN_CRUD update(T obj, HashMap<String, Object> parameters) throws SQLException;
+
+    BEAN_CRUD delete(long id, HashMap<String, Object> parameters) throws SQLException;
+
+    T get(long id) throws SQLException;
+
 }

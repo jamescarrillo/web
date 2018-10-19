@@ -14,7 +14,6 @@
                             <label for="search" class="">Busca aquí...</label>
                         </div>
                         <button class="btn search-button waves-effect waves-light" type="submit" style="background-color:  #a20505"><i class="material-icons">search</i></button>
-
                     </form>
                 </div>
             </div>

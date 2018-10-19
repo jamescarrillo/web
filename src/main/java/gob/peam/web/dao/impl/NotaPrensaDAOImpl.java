@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gob.peam.web.dao;
-
-import gob.peam.web.model.Directivo;
+package gob.peam.web.dao.impl;
 
 /**
  *
- * @author JamesCarrillo
+ * @author James Carrillo
  */
-public interface DirectivoDAO extends CRUD<Directivo> {
-
+public class NotaPrensaDAOImpl {
+    
 }

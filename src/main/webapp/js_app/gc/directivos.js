@@ -37,6 +37,16 @@ $(document).ready(function () {
     $('#btnAbrirNuevoFuncionario').click(function () {
         $('#FrmFuncionariosModal input').val("");
         $('#FrmFuncionariosModal select').val("-1");
+        $('#FrmFuncionariosModal input').parent().removeClass("has-danger");
+        $('#FrmFuncionariosModal select').parent().removeClass("has-danger");
+        /*
+        $('#FrmFuncionariosModal input').each(function (index, value) {
+            $(value.parentElement).removeClass('has-danger');
+        });
+        $('#FrmFuncionariosModal select').each(function (index, value) {
+            $(value.parentElement).removeClass('has-danger');
+        });
+        */
         $('#actionFuncionarios').val("addFuncionario");
         $('#txtTituloModalManFuncionarios').html("REGISTRAR FUNCIONARIO");
         $('#ventanaManFuncionarios').modal("show");

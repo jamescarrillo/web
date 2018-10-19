@@ -133,11 +133,11 @@
                     <!-- slide 2 start -->
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
+                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-1.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
+                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-1.jpg"
                                                  alt="" data-bgposition="center center" data-bgfit="cover"
                                                  data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
                                                  data-no-retina> <!-- LAYER NR. 1 -->
@@ -191,11 +191,11 @@
                     <!-- slide 3 start -->
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
+                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-1.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
+                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-1.jpg"
                                                  alt="" data-bgposition="center center" data-bgfit="cover"
                                                  data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
                                                  data-no-retina> <!-- LAYER NR. 1 -->
@@ -249,11 +249,11 @@
                     <!-- slide 4 start -->
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
+                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-1.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
+                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-1.jpg"
                                                  alt="" data-bgposition="center center" data-bgfit="cover"
                                                  data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
                                                  data-no-retina> <!-- LAYER NR. 1 -->
@@ -307,11 +307,11 @@
                     <!-- slide 5 start -->
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
+                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-1.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
+                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-1.jpg"
                                                  alt="" data-bgposition="center center" data-bgfit="cover"
                                                  data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
                                                  data-no-retina> <!-- LAYER NR. 1 -->

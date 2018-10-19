@@ -9,9 +9,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import gob.peam.web.dao.DirectivoDAO;
 import gob.peam.web.dao.FuncionarioDAO;
+import gob.peam.web.dao.impl.DirectivoDAOImpl;
+import gob.peam.web.dao.impl.FuncionarioDAOImpl;
 import gob.peam.web.model.Directivo;
 import gob.peam.web.model.Funcionario;
 import gob.peam.web.utilities.BEAN_CRUD;
+import gob.peam.web.utilities.Utilities;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -66,8 +69,8 @@ public class GestionTransparenteAPI extends HttpServlet {
         this.parameters = new HashMap<>();
         this.jsonROOT = new HashMap<>();
         this.action = "";
-        this.directivoDAO = new DirectivoDAO(this.pool);
-        this.funcionarioDAO = new FuncionarioDAO(this.pool);
+        this.directivoDAO = new DirectivoDAOImpl(this.pool);
+        this.funcionarioDAO = new FuncionarioDAOImpl(this.pool);
     }
 
     /**
@@ -118,7 +121,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                             procesarFuncionario(this.funcionarioDAO.update(getFuncionario(request), getParametersFuncionarios(request)), response);
                             break;
                         case "deleteFuncionario":
-                            procesarFuncionario(this.funcionarioDAO.delete(getFuncionario(request), getParametersFuncionarios(request)), response);
+                            procesarFuncionario(this.funcionarioDAO.delete(Long.parseLong(request.getParameter("txtIdFuncionarioER")), getParametersFuncionarios(request)), response);
                             break;
                         case "paginarDirectivo":
                             procesarDirectivo(new BEAN_CRUD(this.directivoDAO.getPagination(getParametersDirectivos(request))), request, response);
@@ -130,7 +133,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                             procesarDirectivo(this.directivoDAO.update(getDirectivo(request), getParametersDirectivos(request)), request, response);
                             break;
                         case "deleteDirectivo":
-                            procesarDirectivo(this.directivoDAO.delete(getDirectivo(request), getParametersDirectivos(request)), request, response);
+                            procesarDirectivo(this.directivoDAO.delete(Long.parseLong(request.getParameter("txtIdFuncionarioER")), getParametersDirectivos(request)), request, response);
                             break;
                         default:
                             request.getRequestDispatcher("/jsp/gc/gestion_transparente/directivos.jsp").forward(request, response);
@@ -224,9 +227,27 @@ public class GestionTransparenteAPI extends HttpServlet {
         if (request.getParameter("action").equals("updateFuncioanario")) {
             funcionario.setId(Integer.parseInt(request.getParameter("")));
         }
-        funcionario.setNumero_dni(request.getParameter(""));
-        funcionario.setNombres_apellidos(request.getParameter(""));
-
+        funcionario.setOrganigrama(request.getParameter("comboOficinaER"));
+        funcionario.setTratamiento(request.getParameter("txtTratamientoER"));
+        funcionario.setNombres_apellidos(request.getParameter("txtNombreCompletoER"));
+        funcionario.setCargo(request.getParameter("txtCargoER"));
+        funcionario.setNivel_remunerativo(request.getParameter("txtNivelER"));
+        funcionario.setNumero_dni(request.getParameter("txtDniER"));
+        funcionario.setResolucion(request.getParameter("txtDesignadoPorER"));
+        if (!request.getParameter("datePickerFechaDesignacion").equals("")) {
+            funcionario.setFecha_designacion(Utilities.getDateSQLFORMAT(request.getParameter("datePickerFechaDesignacion"), "dd/MM/yyyy"));
+        }
+        funcionario.setTelefono(request.getParameter("txtTelefonoER"));
+        funcionario.setFax(request.getParameter("txtFaxER"));
+        funcionario.setE_mail(request.getParameter("txtEmailER"));
+        funcionario.setFoto(request.getParameter(""));
+        funcionario.setProfesion(request.getParameter(""));
+        funcionario.setResumen(request.getParameter("txtResumenER"));
+        funcionario.setRetribucion_mensual(Double.parseDouble(request.getParameter("")));
+        funcionario.setHoja_vida(request.getParameter(""));
+        funcionario.setEstado(Boolean.parseBoolean(request.getParameter("comboEstadoER")));
+        funcionario.setDestacado(Boolean.parseBoolean(request.getParameter("comboDestacadoER")));
+        funcionario.setFecha_inicio(Utilities.getDateSQLFORMAT(request.getParameter(""), "dd/MM/yyyy"));
         return funcionario;
     }
 

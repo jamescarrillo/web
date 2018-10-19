@@ -25,7 +25,7 @@ function validarErrores() {
         data: $('#FrmLogin').serialize(),
         success: function (jsonResponse) {
             $('#modalCargando').modal('hide');
-            //console.log(jsonResponse.AUTENTICACION);
+            console.log(jsonResponse);
             if (jsonResponse.AUTENTICACION === "CORRECTO") {
                 $(location).attr('href', 'indexgc');
             } else {
@@ -39,7 +39,6 @@ function validarErrores() {
                             buttonsStyling: false
                         }
                 );
-
                 if (jsonResponse.AUTENTICACION.toLowerCase() === "el usuario ingresado no existe") {
                     $('#txtUsuario').val("");
                     $('#txtPass').val("");
@@ -54,12 +53,14 @@ function validarErrores() {
                 }
             }
         },
-        error: function () {
+        error: function (xhr, status, error) {
             $('#modalCargando').modal("hide");
+            var errorMessage = xhr.status + ': ' + xhr.statusText;
+            console.log('Error - ' + errorMessage);
             swal(
                     {
-                        title: "RedPos!",
-                        text: "Error en el servidor",
+                        title: "PEAM!",
+                        text: "Error en el servidor " + errorMessage,
                         type: "error",
                         showCancelButton: false,
                         confirmButtonColor: '#3085d6',

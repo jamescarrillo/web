@@ -13,7 +13,7 @@
         <!-- You can change the theme colors from here -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/colors/blue.css" id="theme" rel="stylesheet">
 
-<!--link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet"-->
+        <!--link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet"-->
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -237,7 +237,7 @@
                                                 </div>
                                                 <div class="form-group col-md-6 mb-3">
                                                     <label for="datePickerFechaDesignacion">FECHA DESIGNACIÓN</label>
-                                                    <input type="text" class="form-control form-control-sm" id="datePickerFechaDesignacion" placeholder="DD/MM/AAAA"> 
+                                                    <input type="text" class="form-control form-control-sm" id="datePickerFechaDesignacion" name="datePickerFechaDesignacion" placeholder="DD/MM/AAAA"> 
                                                 </div>
                                                 <div class="form-group col-12 mb-3">
                                                     <label for="txtDesignadoPorER">DESIGNADO POR</label>

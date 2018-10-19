@@ -3,15 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gob.peam.web.api.session;
+package gob.peam.web.api;
 
-import com.google.gson.Gson;
-import gob.peam.web.dao.impl.UsuarioDAO;
-import gob.peam.web.model.Usuario;
-import gob.peam.web.utilities.Encriptar;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.Resource;
@@ -20,28 +19,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 /**
  *
- * @author James Carrillo
+ * @author JamesCarrillo
  */
-@WebServlet(name = "SessionController", urlPatterns = {"/session"})
-public class SessionController extends HttpServlet {
+@WebServlet(name = "ConexionAPI", urlPatterns = {"/conexion"})
+public class ConexionAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
-
-    private UsuarioDAO usuarioDAO;
-    private Gson json;
-
-    @Override
-    public void init() throws ServletException {
-        super.init(); //To change body of generated methods, choose Tools | Templates.
-        usuarioDAO = new UsuarioDAO(pool);
-        json = new Gson();
-    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -54,39 +42,38 @@ public class SessionController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        if (session.getAttribute("user") == null) {
-            // si no hay sesiones iniciadas
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet ConexionAPI</title>");
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet ConexionAPI at " + request.getContextPath() + "</h1>");
             try {
-                String login = request.getParameter("txtUsuario") == null ? "" : request.getParameter("txtUsuario");
-                String pass = request.getParameter("txtPass") == null ? "" : request.getParameter("txtPass");
-                String respuesta;
-                Usuario usuario = usuarioDAO.getUserValidation(login);
-                if (usuario != null) {
-                    if (!usuario.getUsua_estado()) {
-                        respuesta = "El Usuario ingresado no está habilitado";
-                    } else if (usuario.getUsua_clave().equals(Encriptar.md5(Encriptar.md5(Encriptar.md5(pass))))) {
-                        //MANDAMOS AL INDEX
-                        respuesta = "CORRECTO";
-                        session.setAttribute("user", usuario);
-                    } else {
-                        respuesta = "Contraseña incorrecta";
+                Connection conn = this.pool.getConnection();
+                if (conn != null) {
+                    out.println("conectado exitosamente!");
+                    out.println("<br>");
+                    ResultSet rs;
+                    try (PreparedStatement pst = conn.prepareStatement("SELECT * FROM ADMINISTRACION.PERSONA LIMIT 10 OFFSET 0")) {
+                        rs = pst.executeQuery();
+                        while (rs.next()) {
+                            out.print(rs.getString("PERS_NOMBRE") + " - " + rs.getString("PERS_APELLIDO_PATERNO"));
+                        }
                     }
+                    rs.close();
                 } else {
-                    respuesta = "El Usuario ingresado no existe";
+                    out.println("no conecto");
                 }
-                HashMap<String, Object> JSONROOT = new HashMap<>();
-                JSONROOT.put("AUTENTICACION", respuesta);
-                String cadenajson = json.toJson(JSONROOT);
-                response.setContentType("application/json");
-                response.getWriter().write(cadenajson);
             } catch (SQLException ex) {
-                Logger.getLogger(SessionController.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (Exception ex) {
-                Logger.getLogger(SessionController.class.getName()).log(Level.SEVERE, null, ex);
+                out.println("error: " + ex);
+                Logger.getLogger(ConexionAPI.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } else {
-            response.sendRedirect("indexgc");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 
