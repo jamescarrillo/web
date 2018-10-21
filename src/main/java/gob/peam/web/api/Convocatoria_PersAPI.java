@@ -79,6 +79,12 @@ public class Convocatoria_PersAPI extends HttpServlet {
                 case "addConvocatoriaPers":
                     procesarConvocatoria_Pers(this.convocatoria_persDAO.add(getConvocatoria_Pers(request), getParametersConvocatoria_Pers(request)), response);
                     break;
+                case "updateConvocatoriaPers":
+                    procesarConvocatoria_Pers(this.convocatoria_persDAO.update(getConvocatoria_Pers(request), getParametersConvocatoria_Pers(request)), response);
+                    break;
+                case "deleteConvocatoriaPers":
+                    procesarConvocatoria_Pers(this.convocatoria_persDAO.delete(Long.parseLong(request.getParameter("txtCoperIdER")), getParametersConvocatoria_Pers(request)), response);
+                    break;
                 default:
                     request.getRequestDispatcher("/jsp/gc/convocatorias/convocatoria_pers.jsp").forward(request, response);
                     break;
@@ -158,6 +164,7 @@ public class Convocatoria_PersAPI extends HttpServlet {
                 * Integer.parseInt(request.getParameter("sizePageConvocatoriaPers")));
         return this.parameters;
     }
+
     private Convocatoria_Pers getConvocatoria_Pers(HttpServletRequest request) {
         Convocatoria_Pers obj = new Convocatoria_Pers();
         if (request.getParameter("action").equals("updateConvocatoriaPers")) {
