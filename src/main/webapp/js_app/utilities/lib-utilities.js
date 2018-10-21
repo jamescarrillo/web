@@ -143,3 +143,13 @@ function getDateJS(string_date) {
     return new Date(parseInt(valoresDate[2]), (parseInt(valoresDate[1]) - 1), parseInt(valoresDate[0]), 0, 0, 0);
 }
 
+function cargarAniosCombo($combo, valueInicial) {
+    var date = new Date();
+    var opcion;
+    $combo.append("<option value='-1'>TODOS</option>");
+    for (var i = date.getFullYear(); i >= 2000; i--) {
+        opcion = "<option value='" + i + "'>" + i + "</option>";
+        $combo.append(opcion);
+    }
+    $combo.val(valueInicial);
+}
