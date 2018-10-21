@@ -56,25 +56,7 @@
                                             </div>
                                             <div class="form-group col-lg-2 col-md-6 col-12 mb-3">
                                                 <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarDocumento'>
-                                                    <option value="2018">2018</option>
-                                                    <option value="2017">2017</option>
-                                                    <option value="2016">2016</option>
-                                                    <option value="2015">2015</option>
-                                                    <option value="2014">2014</option>
-                                                    <option value="2013">2013</option>
-                                                    <option value="2012">2012</option>
-                                                    <option value="2011">2011</option>
-                                                    <option value="2010">2010</option>
-                                                    <option value="2009">2019</option>
-                                                    <option value="2008">2008</option>
-                                                    <option value="2007">2007</option>
-                                                    <option value="2006">2006</option>
-                                                    <option value="2005">2005</option>
-                                                    <option value="2004">2004</option>
-                                                    <option value="2003">2003</option>
-                                                    <option value="2002">2002</option>
-                                                    <option value="2001">2001</option>
-                                                    <option value="-1">TODOS</option>
+
                                                 </select>
                                             </div>
                                             <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
@@ -84,7 +66,7 @@
                                                     <option value="-1">TODAS</option>
                                                 </select>
                                                 <button type="submit" id="btnBuscarDocumento" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Funcionario" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                <button type="button" id="btnAbrirNuevoDocumento" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Funcionario" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                <button type="button" id="btnAbrirNuevoDocumento" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Agregar Documento" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -216,6 +198,7 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/documentos.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/documentos_arcdig.js"></script>
 
     </body>
 

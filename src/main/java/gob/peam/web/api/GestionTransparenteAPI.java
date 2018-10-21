@@ -87,7 +87,7 @@ public class GestionTransparenteAPI extends HttpServlet {
         try {
             switch (request.getRequestURI().substring(request.getContextPath().length())) {
                 case "/gestiontransparente/actasconciliacion":
-                    
+
                     break;
                 case "/gestiontransparente/actassesion":
                     break;
