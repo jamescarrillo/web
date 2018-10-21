@@ -96,6 +96,8 @@ function getMessageServerTransaction(action, entidad, delimitador_sexo) {
                 break;
             case "delete":
                 break;
+            case "activate":
+                break;
         }
     }
     switch (operation) {
@@ -106,6 +108,9 @@ function getMessageServerTransaction(action, entidad, delimitador_sexo) {
             messageOut += " modificad" + delimitador_sexo + " exitosamente!";
             break;
         case "delete":
+            messageOut += " eliminad" + delimitador_sexo + " exitosamente!";
+            break;
+        case "activate":
             messageOut += " eliminad" + delimitador_sexo + " exitosamente!";
             break;
     }

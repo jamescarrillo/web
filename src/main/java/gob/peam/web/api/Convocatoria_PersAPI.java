@@ -160,7 +160,7 @@ public class Convocatoria_PersAPI extends HttpServlet {
         } else {
             this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("comboTipoListaConvocatoriaPers") + " ");
         }
-        this.parameters.put("SQL_ORDERS", "CONVOCATORIA, ANHO DESC");
+        this.parameters.put("SQL_ORDERS", "ANHO DESC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageConvocatoriaPers") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageConvocatoriaPers")) - 1)

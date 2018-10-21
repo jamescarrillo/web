@@ -49,8 +49,11 @@ $(document).ready(function () {
 
 function procesarAjaxConvocatoriaPers() {
     var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
-    if ($('#nameForm').val() !== "FrmConvocatoriaPers") {
-        datosSerializadosCompletos += "&" + $('#FrmConvocatoriaPers').serialize();
+    if ($('#nameForm').val().toLowerCase() !== "Frmconvocatoriapers") {
+        //AGREGAMOS LOS PARAMETROS DEL FORMULARIO DE BUSQUEDA
+        datosSerializadosCompletos += "&txtConvocatoriaPers=" + $('#txtConvocatoriaPers').val();
+        datosSerializadosCompletos += "&comboAnio=" + $('#comboAnio').val();
+        datosSerializadosCompletos += "&comboTipoListaConvocatoriaPers=" + $('#comboTipoListaConvocatoriaPers').val();
     }
     datosSerializadosCompletos += "&numberPageConvocatoriaPers=" + $('#numberPageConvocatoriaPers').val();
     datosSerializadosCompletos += "&sizePageConvocatoriaPers=" + $('#sizePageConvocatoriaPers').val();
