@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnio'), "-1");
+    cargarAniosCombo($('#comboAnio'), 2000, "-1", 'TODOS');
 
     $("#FrmConvocatoriaPers").submit(function () {
         $("#nameForm").val("FrmConvocatoriaPers");
@@ -67,12 +67,8 @@ function procesarAjaxConvocatoriaPers() {
             if ($('#actionConvocatoriaPers').val().toLowerCase() === "paginarconvocatoriapers") {
                 listarConvocatoriaPers(jsonResponse.BEAN_PAGINATION);
             } else {
-                if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "registered" ||
-                        jsonResponse.MESSAGE_SERVER.toLowerCase() === "modified" ||
-                        jsonResponse.MESSAGE_SERVER.toLowerCase() === "deleted" ||
-                        jsonResponse.MESSAGE_SERVER.toLowerCase() === "activated") {
-                    listarConvocatoriaPers(jsonResponse.BEAN_PAGINATION);
-                    viewAlert('success', getMessageServerTransaction($('#actionConvocatoriaPers').val(), jsonResponse.MESSAGE_SERVER));
+                if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    viewAlert('success', getMessageServerTransaction($('#actionConvocatoriaPers').val(), 'Convocatoria de Personal', 'o'));
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }

@@ -19,10 +19,10 @@ function viewAlert(type, message) {
     $('.swal2-icon').css("margin-bottom", "20px");
 }
 
-function viewAlertDelete(objeto, name) {
+function viewAlertDelete(entidad) {
     swal({
         title: 'PEAM',
-        text: "¿Desea eliminar esta " + objeto + " ?",
+        text: "¿Desea eliminar este registro?",
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -34,10 +34,10 @@ function viewAlertDelete(objeto, name) {
         buttonsStyling: false
     }).then((result) => {
         if (result.value) {
-            $('#action' + name).val("delete" + name);
-            $("#nameForm").val("Frm" + name + "Modal");
-            $('#modalCargando' + name).modal("show");
-        }else{
+            $('#action' + entidad).val("delete" + entidad);
+            $("#nameForm").val("Frm" + entidad + "Modal");
+            $('#modalCargando' + entidad).modal("show");
+        } else {
             swal(
                     {
                         title: "PEAM!",
@@ -84,7 +84,7 @@ function agregarValidacionesFiltrosCheck(idtodos, classchecks) {
             });
 }
 
-function getMessageServerTransaction(action, entidad) {
+function getMessageServerTransaction(action, entidad, delimitador_sexo) {
     var messageOut = entidad;
     var operation = "";
     for (var i = 0; i < action.length - 1; i++) {
@@ -100,13 +100,13 @@ function getMessageServerTransaction(action, entidad) {
     }
     switch (operation) {
         case "add":
-            messageOut += " registrado exitosamente!";
+            messageOut += " registrad" + delimitador_sexo + " exitosamente!";
             break;
         case "update":
-            messageOut += " modificado exitosamente!";
+            messageOut += " modificad" + delimitador_sexo + " exitosamente!";
             break;
         case "delete":
-            messageOut += " eliminado exitosamente!";
+            messageOut += " eliminad" + delimitador_sexo + " exitosamente!";
             break;
     }
     return messageOut;
@@ -179,11 +179,11 @@ function getDateJS(string_date) {
     return new Date(parseInt(valoresDate[2]), (parseInt(valoresDate[1]) - 1), parseInt(valoresDate[0]), 0, 0, 0);
 }
 
-function cargarAniosCombo($combo, valueInicial) {
+function cargarAniosCombo($combo, anioInicio, valueInicial, texto_Inicial) {
     var date = new Date();
     var opcion;
-    $combo.append("<option value='-1'>TODOS</option>");
-    for (var i = date.getFullYear(); i >= 2000; i--) {
+    $combo.append("<option value='-1'>" + texto_Inicial + "</option>");
+    for (var i = date.getFullYear(); i >= anioInicio; i--) {
         opcion = "<option value='" + i + "'>" + i + "</option>";
         $combo.append(opcion);
     }

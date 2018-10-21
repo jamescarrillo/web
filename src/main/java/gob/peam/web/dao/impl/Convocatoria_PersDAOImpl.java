@@ -93,15 +93,15 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("INSERT INTO WEB.CONVOCATORIA_PERS (COPER_ID, CONVOCATORIA, DESCRIPCION, "+
-                    "FECHA, ESTADO, ANHO) VALUES((select case when max(coper_id) is null then 1 else cast((max(coper_id)+1) as integer) end id  from web.convocatoria_pers),"+
-                    "?,?, current_date,?, (select extract(year from current_date)))");
+            pst = conn.prepareStatement("INSERT INTO WEB.CONVOCATORIA_PERS (COPER_ID, CONVOCATORIA, DESCRIPCION, "
+                    + "FECHA, ESTADO, ANHO) VALUES((select case when max(coper_id) is null then 1 else cast((max(coper_id)+1) as integer) end id  from web.convocatoria_pers),"
+                    + "?,?, current_date,?, (select extract(year from current_date)))");
             pst.setString(1, obj.getConvocatoria());
             pst.setString(2, obj.getDescripcion());
             pst.setBoolean(3, obj.getEstado());
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMESSAGE_SERVER("registered");
+            beancrud.setMESSAGE_SERVER("ok");
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
@@ -124,7 +124,7 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
             pst.setInt(3, obj.getCoper_id());
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMESSAGE_SERVER("modified");
+            beancrud.setMESSAGE_SERVER("ok");
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
@@ -144,7 +144,7 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
             pst.setInt(1, (int) id);
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMESSAGE_SERVER("deleted");
+            beancrud.setMESSAGE_SERVER("ok");
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
@@ -169,7 +169,7 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
             pst.setInt(1, (int) id);
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMESSAGE_SERVER("activated");
+            beancrud.setMESSAGE_SERVER("ok");
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
