@@ -49,7 +49,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header bg-light">
-                                    <strong class="text-info">CONVOCATORIA PERSONAL</strong>
+                                    <strong class="text-info">PENALIDADES</strong>
                                 </div>
                                 <div class="card-body pt-1">
                                     <input type="hidden" id="nameForm" value="FrmPenalidad">
@@ -58,7 +58,7 @@
                                     <form id="FrmPenalidad">
                                         <div class="row mt-3">
                                             <div class="form-group col-lg-6 col-12 mb-3">
-                                                <input type="text" name="txtPenalidad" id="txtPenalidad" class="form-control form-control-sm" placeholder="CONVOCATORIA">
+                                                <input type="text" name="txtPenalidad" id="txtPenalidad" class="form-control form-control-sm" placeholder="CONTRATISTA">
                                             </div>
                                             <div class="form-group col-lg-2 col-md-6 col-12 mb-3">
                                                 <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPenalidad'>
@@ -66,13 +66,8 @@
                                                 </select>
                                             </div>
                                             <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
-                                                <select id="comboTipoListaPenalidad" name="comboTipoListaPenalidad" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPenalidad'>
-                                                    <option value="-1">TODAS</option>
-                                                    <option value="true">VIGENTES</option>
-                                                    <option value="false">FINALIZADOS</option>
-                                                </select>
-                                                <button type="submit" id="btnBuscarPenalidad" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Convocatoria Personal" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                <button type="button" id="btnAbrirNuevoPenalidad" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Convocatoria Personal" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                <button type="submit" id="btnBuscarPenalidad" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Penalidad" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                                <button type="button" id="btnAbrirNuevoPenalidad" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Penalidad" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -83,12 +78,13 @@
                                                     class="table color-bordered-table muted-bordered-table table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th style="width: 10%">FECHA</th>
-                                                            <th style="width: 25%">CONVOCATORIA</th>
-                                                            <th>DESCRIPCION</th>
-                                                            <!--th>DOC</th-->
-                                                            <!--th>ESTADO</th-->
-                                                            <th colspan="5">ACCIONES</th>
+                                                            <th style="width: 10%"><font size=1>CONTRATO S/.</font></th>
+                                                            <th style="width: 10%"><font size=1>CONTRATISTAS</font></th>
+                                                            <th style="width: 10%"><font size=1>R.U.C.</font></th>
+                                                            <th><font size=1>OBJETO</font></th>
+                                                            <th style="width: 10%"><font size=1>TIPO</font></th>
+                                                            <th style="width: 10%"><font size=1>PENALIDAD S/.</font></th>
+                                                            <th colspan="2"><font size=1>ACCIONES</font></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="tbodyPenalidad">
@@ -153,7 +149,7 @@
                                             <label for="txtSintesisER">SINTESIS</label>
                                             <textarea class="form-control form-control-sm" id="txtSintesisER" name="txtSintesisER" rowa="6" placeholder="SINTESIS DE LA CONVOCATORIA"></textarea>
                                         </div>
-                                        <input id="txtCoperIdER" name="txtCoperIdER" type="hidden" value="">
+                                        <input id="txtIdER" name="txtIdER" type="hidden" value="">
                                     </div>
                                 </div>
                                 <div class="modal-footer">

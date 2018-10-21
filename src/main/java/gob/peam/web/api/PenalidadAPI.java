@@ -11,7 +11,6 @@ import gob.peam.web.dao.PenalidadDAO;
 import gob.peam.web.dao.impl.PenalidadDAOImpl;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -31,7 +30,7 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-@WebServlet(name = "PenalidadAPI", urlPatterns = {"/penalidades"})
+@WebServlet(name = "PenalidadAPI", urlPatterns = {"/penalidad"})
 public class PenalidadAPI extends HttpServlet {
     
     @Resource(name = "jdbc/dbweb")
@@ -70,16 +69,16 @@ public class PenalidadAPI extends HttpServlet {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
             this.logger.info("ACTION -> " + this.action);
             switch (this.action) {
-                case "paginarConvocatoriaPers":
+                case "paginarPenalidad":
                     procesarPenalidad(new BEAN_CRUD(this.penalidadDAO.getPagination(getParametersPenalidad(request))), response);
                     break;
-                case "addConvocatoriaPers":
+                case "addPenalidad":
                     //procesarConvocatoria_Pers(this.convocatoria_persDAO.add(getConvocatoria_Pers(request), getParametersConvocatoria_Pers(request)), response);
                     break;
-                case "updateConvocatoriaPers":
+                case "updatePenalidad":
                     //procesarConvocatoria_Pers(this.convocatoria_persDAO.update(getConvocatoria_Pers(request), getParametersConvocatoria_Pers(request)), response);
                     break;
-                case "deleteConvocatoriaPers":
+                case "deletePenalidad":
                     //procesarConvocatoria_Pers(this.convocatoria_persDAO.delete(Long.parseLong(request.getParameter("txtCoperIdER")), getParametersConvocatoria_Pers(request)), response);
                     break;
                 default:
