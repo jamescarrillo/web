@@ -1,7 +1,7 @@
 $(document).ready(function () {
-    
-    cargarAniosCombo($('#comboAnio'),"-1");
-    
+
+    cargarAniosCombo($('#comboAnio'), "-1");
+
     $("#FrmConvocatoriaPers").submit(function () {
         $("#nameForm").val("FrmConvocatoriaPers");
         $("#numberPageConvocatoriaPers").val(1);
@@ -44,13 +44,13 @@ $(document).ready(function () {
     addEventoCombosPaginar();
     valicacionesCamposConvocatoriaPers();
     $('#modalCargandoConvocatoriaPers').modal("show");
-    
+
 });
 
 function procesarAjaxConvocatoriaPers() {
     var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
     if ($('#nameForm').val() !== "FrmConvocatoriaPers") {
-        datosSerializadosCompletos +="&"+$('#FrmConvocatoriaPers').serialize();
+        datosSerializadosCompletos += "&" + $('#FrmConvocatoriaPers').serialize();
     }
     datosSerializadosCompletos += "&numberPageConvocatoriaPers=" + $('#numberPageConvocatoriaPers').val();
     datosSerializadosCompletos += "&sizePageConvocatoriaPers=" + $('#sizePageConvocatoriaPers').val();
@@ -67,12 +67,16 @@ function procesarAjaxConvocatoriaPers() {
             if ($('#actionConvocatoriaPers').val().toLowerCase() === "paginarconvocatoriapers") {
                 listarConvocatoriaPers(jsonResponse.BEAN_PAGINATION);
             } else {
-                if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
-                    viewAlert('success', getMessageServerTransaction($('#actionConvocatoriaPers').val(), 'ConvocatoriaPers'));
+                if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "registered" ||
+                        jsonResponse.MESSAGE_SERVER.toLowerCase() === "modified" ||
+                        jsonResponse.MESSAGE_SERVER.toLowerCase() === "deleted") {
+                    listarConvocatoriaPers(jsonResponse.BEAN_PAGINATION);
+                    viewAlert('success', getMessageServerTransaction($('#actionConvocatoriaPers').val(), jsonResponse.MESSAGE_SERVER));
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
+            $("#ventanaManConvocatoriaPers").modal("hide");
         },
         error: function () {
             $('#modalCargandoConvocatoriaPers').modal("hide");
@@ -144,7 +148,9 @@ function agregarEventosConvocatoriaPers() {
     });
     $('.eliminar-ConvocatoriaPers').each(function () {
         $(this).click(function () {
-            viewAlert('warning', 'Estamos trabajando!');
+            $('#txtCoperIdER').val($(this.parentElement.parentElement).attr('coper_id'));
+            viewAlertDelete("Convocatoria Personal", "ConvocatoriaPers");
+            document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
 

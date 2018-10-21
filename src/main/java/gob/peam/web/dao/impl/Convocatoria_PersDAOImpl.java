@@ -118,13 +118,10 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
             pst = conn.prepareStatement("UPDATE WEB.CONVOCATORIA_PERS SET CONVOCATORIA = ?,DESCRIPCION = ? "
-                    + ",FECHA = ?,ESTADO = ?, ANHO = ? WHERE COPER_ID = ?");
+                    + " WHERE COPER_ID = ?");
             pst.setString(1, obj.getConvocatoria());
             pst.setString(2, obj.getDescripcion());
-            pst.setDate(3, obj.getFecha());
-            pst.setBoolean(4, obj.getEstado());
-            pst.setString(5, obj.getAnho());
-            pst.setInt(6, obj.getCoper_id());
+            pst.setInt(3, obj.getCoper_id());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("modified");

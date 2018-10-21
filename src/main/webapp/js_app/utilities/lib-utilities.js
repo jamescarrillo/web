@@ -19,6 +19,42 @@ function viewAlert(type, message) {
     $('.swal2-icon').css("margin-bottom", "20px");
 }
 
+function viewAlertDelete(objeto, name) {
+    swal({
+        title: 'PEAM',
+        text: "¿Desea eliminar esta " + objeto + " ?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, continuar!',
+        cancelButtonText: 'No, cancelar!',
+        confirmButtonClass: 'btn btn-primary',
+        cancelButtonClass: 'btn btn-danger',
+        buttonsStyling: false
+    }).then((result) => {
+        if (result.value) {
+            $('#action' + name).val("delete" + name);
+            $("#nameForm").val("Frm" + name + "Modal");
+            $('#modalCargando' + name).modal("show");
+        }else{
+            swal(
+                    {
+                        title: "PEAM!",
+                        text: "Operación Cancelada",
+                        type: "success",
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: "Aceptar",
+                        confirmButtonClass: 'btn btn-primary',
+                        buttonsStyling: false
+                    }
+            );
+        }
+    });
+    $('.swal2-confirm').css("margin-right", "20px");
+}
+
 function cargarFiltros(idimput_filter, classcheck, nameattrcheck) {
     var cadenaFiltros = "";
     $('.' + classcheck + ':checked').each(function (index, value) {

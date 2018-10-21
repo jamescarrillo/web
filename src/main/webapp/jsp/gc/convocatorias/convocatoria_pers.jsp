@@ -91,7 +91,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <input id="txtCoperIdER" name="txtCoperIdER" type="hidden" value="">
+                                    
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="card "
@@ -147,6 +147,7 @@
                                             <label for="txtSintesisER">SINTESIS</label>
                                             <textarea class="form-control form-control-sm" id="txtSintesisER" name="txtSintesisER" rowa="4" placeholder="SINTESIS DE LA CONVOCATORIA"></textarea>
                                         </div>
+                                        <input id="txtCoperIdER" name="txtCoperIdER" type="hidden" value="">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
