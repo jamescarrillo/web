@@ -109,7 +109,7 @@ public class PenalidadDAOImpl implements PenalidadDAO {
             pst.setString(9, obj.getMonto_penalidad());
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMESSAGE_SERVER("registered");
+            beancrud.setMESSAGE_SERVER("ok");
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
@@ -139,7 +139,7 @@ public class PenalidadDAOImpl implements PenalidadDAO {
             pst.setInt(10, obj.getId());
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMESSAGE_SERVER("modified");
+            beancrud.setMESSAGE_SERVER("ok");
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
@@ -159,7 +159,7 @@ public class PenalidadDAOImpl implements PenalidadDAO {
             pst.setInt(1, (int) id);
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMESSAGE_SERVER("deleted");
+            beancrud.setMESSAGE_SERVER("ok");
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
