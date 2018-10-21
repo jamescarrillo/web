@@ -60,7 +60,7 @@ function procesarAjaxPenalidad() {
     datosSerializadosCompletos += "&action=" + $('#actionPenalidad').val();
     console.log(datosSerializadosCompletos);
     $.ajax({
-        url: getContext() + '/penalidad',
+        url: getContext() + '/convocatorias/penalidades',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
