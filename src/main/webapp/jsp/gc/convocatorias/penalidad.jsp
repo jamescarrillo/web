@@ -1,3 +1,9 @@
+<%-- 
+    Document   : penalidad
+    Created on : 21/10/2018, 04:14:18 PM
+    Author     : Juan Barrantes Perez
+--%>
+
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
@@ -46,33 +52,33 @@
                                     <strong class="text-info">CONVOCATORIA PERSONAL</strong>
                                 </div>
                                 <div class="card-body pt-1">
-                                    <input type="hidden" id="nameForm" value="FrmConvocatoriaPers">
-                                    <input type="hidden" id="actionConvocatoriaPers" name="action" value="paginarConvocatoriaPers">
-                                    <input type="hidden" id="numberPageConvocatoriaPers" name="numberPageConvocatoriaPers" value="1">
-                                    <form id="FrmConvocatoriaPers">
+                                    <input type="hidden" id="nameForm" value="FrmPenalidad">
+                                    <input type="hidden" id="actionPenalidad" name="action" value="paginarPenalidad">
+                                    <input type="hidden" id="numberPagePenalidad" name="numberPagePenalidad" value="1">
+                                    <form id="FrmPenalidad">
                                         <div class="row mt-3">
                                             <div class="form-group col-lg-6 col-12 mb-3">
-                                                <input type="text" name="txtConvocatoriaPers" id="txtConvocatoriaPers" class="form-control form-control-sm" placeholder="CONVOCATORIA">
+                                                <input type="text" name="txtPenalidad" id="txtPenalidad" class="form-control form-control-sm" placeholder="CONVOCATORIA">
                                             </div>
                                             <div class="form-group col-lg-2 col-md-6 col-12 mb-3">
-                                                <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarConvocatoriaPers'>
+                                                <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPenalidad'>
                                                     
                                                 </select>
                                             </div>
                                             <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
-                                                <select id="comboTipoListaConvocatoriaPers" name="comboTipoListaConvocatoriaPers" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarConvocatoriaPers'>
+                                                <select id="comboTipoListaPenalidad" name="comboTipoListaPenalidad" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPenalidad'>
                                                     <option value="-1">TODAS</option>
                                                     <option value="true">VIGENTES</option>
                                                     <option value="false">FINALIZADOS</option>
                                                 </select>
-                                                <button type="submit" id="btnBuscarConvocatoriaPers" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Convocatoria Personal" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                <button type="button" id="btnAbrirNuevoConvocatoriaPers" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Convocatoria Personal" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                <button type="submit" id="btnBuscarPenalidad" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Convocatoria Personal" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                                <button type="button" id="btnAbrirNuevoPenalidad" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Convocatoria Personal" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
                                     </form>
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="table-responsive" id="tablaConvocatoriaPers">
+                                            <div class="table-responsive" id="tablaPenalidad">
                                                 <table
                                                     class="table color-bordered-table muted-bordered-table table-hover">
                                                     <thead>
@@ -85,7 +91,7 @@
                                                             <th colspan="5">ACCIONES</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="tbodyConvocatoriaPers">
+                                                    <tbody id="tbodyPenalidad">
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -100,7 +106,7 @@
                                                      style="padding-top: 10px; padding-bottom: 10px">
                                                     <div class="row">
                                                         <div class="col-md-2 col-sm-3 col-4">
-                                                            <select id="sizePageConvocatoriaPers" name="sizePageConvocatoriaPers" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarConvocatoriaPers'>
+                                                            <select id="sizePagePenalidad" name="sizePagePenalidad" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarPenalidad'>
                                                                 <option value="10">10</option>
                                                                 <option value="15">15</option>
                                                                 <option value="20">20</option>
@@ -126,12 +132,12 @@
                     </div>
                     <%@ include file="../../../temas_gc.jsp"%>
                 </div>
-                <div class="modal fade" id="ventanaManConvocatoriaPers" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ventanaManPenalidad" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <form id="FrmConvocatoriaPersModal">
+                            <form id="FrmPenalidadModal">
                                 <div class="modal-header">
-                                    <h6 class="modal-title" id="txtTituloModalManConvocatoriaPers"></h6>
+                                    <h6 class="modal-title" id="txtTituloModalManPenalidad"></h6>
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -160,7 +166,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="modalCargandoConvocatoriaPers" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+                <div class="modal fade" id="modalCargandoPenalidad" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -205,7 +211,7 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/convocatoria_pers.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/penalidad.js"></script>
 
     </body>
 

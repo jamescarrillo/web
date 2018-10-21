@@ -69,7 +69,8 @@ function procesarAjaxConvocatoriaPers() {
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "registered" ||
                         jsonResponse.MESSAGE_SERVER.toLowerCase() === "modified" ||
-                        jsonResponse.MESSAGE_SERVER.toLowerCase() === "deleted") {
+                        jsonResponse.MESSAGE_SERVER.toLowerCase() === "deleted" ||
+                        jsonResponse.MESSAGE_SERVER.toLowerCase() === "activated") {
                     listarConvocatoriaPers(jsonResponse.BEAN_PAGINATION);
                     viewAlert('success', getMessageServerTransaction($('#actionConvocatoriaPers').val(), jsonResponse.MESSAGE_SERVER));
                 } else {
@@ -114,7 +115,7 @@ function listarConvocatoriaPers(BEAN_PAGINATION) {
             fila += "<td class='align-middle " + text_color + "'>" + value.descripcion + "</td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm editar-ConvocatoriaPers'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle" + text_color + "'><button class='btn btn-secondary btn-sm eliminar-ConvocatoriaPers'><i class='fas fa-trash-alt'></i></button></td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm descargar-cv' data-toggle='tooltip' title='Descargar CV'><i class='fa fa-download'></i></button></td>";
+            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm finalizar-activar' data-toggle='tooltip' title='Finalizar'><i class='far fa-hand-point-down'></i></button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm actividades' data-toggle='tooltip' title='Actividades'><i class='fa fa-download'></i> ACTIVIDADES</button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm plazas' data-toggle='tooltip' title='Plazas'><i class='fa fa-download'></i> PLAZAS</button></td>";
             fila += "</tr>";
@@ -154,9 +155,42 @@ function agregarEventosConvocatoriaPers() {
         });
     });
 
-    $('.descargar-cv').each(function () {
+    $('.finalizar-activar').each(function () {
         $(this).click(function () {
-            viewAlert('warning', 'No se encontró la hoja de vida!');
+            $('#txtCoperIdER').val($(this.parentElement.parentElement).attr('coper_id'));
+            swal({
+                title: 'PEAM',
+                text: "¿Esta seguro de FINALIZAR/ACTIVAR esta Convocatoria Personal?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, continuar!',
+                cancelButtonText: 'No, cancelar!',
+                confirmButtonClass: 'btn btn-primary',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.value) {
+                    $('#actionConvocatoriaPers').val("activateConvocatoriaPers");
+                    $("#nameForm").val("FrmConvocatoriaPersModal");
+                    $('#modalCargandoConvocatoriaPers').modal("show");
+                } else {
+                    swal(
+                            {
+                                title: "PEAM!",
+                                text: "Operación Cancelada",
+                                type: "success",
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                confirmButtonText: "Aceptar",
+                                confirmButtonClass: 'btn btn-primary',
+                                buttonsStyling: false
+                            }
+                    );
+                }
+            });
+            $('.swal2-confirm').css("margin-right", "20px");
         });
     });
 }
