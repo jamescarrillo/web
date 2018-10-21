@@ -7,11 +7,8 @@ package gob.peam.web.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import gob.peam.web.dao.Convocatoria_PersDAO;
-import gob.peam.web.dao.DocumentoDAO;
-import gob.peam.web.dao.impl.Convocatoria_PersDAOImpl;
-import gob.peam.web.dao.impl.DocumentoDAOImpl;
-import gob.peam.web.model.Convocatoria_Pers;
+import gob.peam.web.dao.PenalidadDAO;
+import gob.peam.web.dao.impl.PenalidadDAOImpl;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,9 +31,9 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-@WebServlet(name = "Convocatoria_PersAPI", urlPatterns = {"/convocatoriapersonal"})
-public class Convocatoria_PersAPI extends HttpServlet {
-
+@WebServlet(name = "PenalidadAPI", urlPatterns = {"/penalidades"})
+public class PenalidadAPI extends HttpServlet {
+    
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
     private HttpSession session;
@@ -45,8 +42,8 @@ public class Convocatoria_PersAPI extends HttpServlet {
     private HashMap<String, Object> parameters;
     private final Log logger = LogFactory.getLog(DocumentoAPI.class);
     private String action;
-
-    private Convocatoria_PersDAO convocatoria_persDAO;
+    
+    private PenalidadDAO penalidadDAO;
 
     @Override
     public void init() throws ServletException {
@@ -55,7 +52,7 @@ public class Convocatoria_PersAPI extends HttpServlet {
         this.parameters = new HashMap<>();
         this.action = "";
 
-        this.convocatoria_persDAO = new Convocatoria_PersDAOImpl(this.pool);
+        this.penalidadDAO = new PenalidadDAOImpl(this.pool);
     }
 
     /**
@@ -74,22 +71,19 @@ public class Convocatoria_PersAPI extends HttpServlet {
             this.logger.info("ACTION -> " + this.action);
             switch (this.action) {
                 case "paginarConvocatoriaPers":
-                    procesarConvocatoria_Pers(new BEAN_CRUD(this.convocatoria_persDAO.getPagination(getParametersConvocatoria_Pers(request))), response);
+                    procesarPenalidad(new BEAN_CRUD(this.penalidadDAO.getPagination(getParametersPenalidad(request))), response);
                     break;
                 case "addConvocatoriaPers":
-                    procesarConvocatoria_Pers(this.convocatoria_persDAO.add(getConvocatoria_Pers(request), getParametersConvocatoria_Pers(request)), response);
+                    //procesarConvocatoria_Pers(this.convocatoria_persDAO.add(getConvocatoria_Pers(request), getParametersConvocatoria_Pers(request)), response);
                     break;
                 case "updateConvocatoriaPers":
-                    procesarConvocatoria_Pers(this.convocatoria_persDAO.update(getConvocatoria_Pers(request), getParametersConvocatoria_Pers(request)), response);
+                    //procesarConvocatoria_Pers(this.convocatoria_persDAO.update(getConvocatoria_Pers(request), getParametersConvocatoria_Pers(request)), response);
                     break;
                 case "deleteConvocatoriaPers":
-                    procesarConvocatoria_Pers(this.convocatoria_persDAO.delete(Long.parseLong(request.getParameter("txtCoperIdER")), getParametersConvocatoria_Pers(request)), response);
-                    break;
-                case "activateConvocatoriaPers":
-                    procesarConvocatoria_Pers(this.convocatoria_persDAO.activate(Long.parseLong(request.getParameter("txtCoperIdER")), getParametersConvocatoria_Pers(request)), response);
+                    //procesarConvocatoria_Pers(this.convocatoria_persDAO.delete(Long.parseLong(request.getParameter("txtCoperIdER")), getParametersConvocatoria_Pers(request)), response);
                     break;
                 default:
-                    request.getRequestDispatcher("/jsp/gc/convocatorias/convocatoria_pers.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/gc/convocatorias/penalidad.jsp").forward(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -135,8 +129,8 @@ public class Convocatoria_PersAPI extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private void procesarConvocatoria_Pers(BEAN_CRUD bean_crud, HttpServletResponse response) {
+    
+    private void procesarPenalidad(BEAN_CRUD bean_crud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(bean_crud);
             response.setContentType("application/json");
@@ -146,37 +140,22 @@ public class Convocatoria_PersAPI extends HttpServlet {
             Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    private HashMap<String, Object> getParametersConvocatoria_Pers(HttpServletRequest request) {
+    
+    private HashMap<String, Object> getParametersPenalidad(HttpServletRequest request) {
         this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtConvocatoriaPers").toLowerCase());
+        this.parameters.put("FILTER", request.getParameter("txtPenalidad").toLowerCase());
         if (request.getParameter("comboAnio").equals("-1")) {
             this.parameters.put("SQL_ANIO", "");
         } else {
             this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnio") + "' ");
         }
-        if (request.getParameter("comboTipoListaConvocatoriaPers").equals("-1")) {
-            this.parameters.put("SQL_ESTADO", "");
-        } else {
-            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("comboTipoListaConvocatoriaPers") + " ");
-        }
-        this.parameters.put("SQL_ORDERS", "CONVOCATORIA, ANHO DESC");
+        
+        this.parameters.put("SQL_ORDERS", "CONTRATISTA, ANHO DESC");
         this.parameters.put("LIMIT",
-                " LIMIT " + request.getParameter("sizePageConvocatoriaPers") + " OFFSET "
-                + (Integer.parseInt(request.getParameter("numberPageConvocatoriaPers")) - 1)
-                * Integer.parseInt(request.getParameter("sizePageConvocatoriaPers")));
+                " LIMIT " + request.getParameter("sizePagePenalidad") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPagePenalidad")) - 1)
+                * Integer.parseInt(request.getParameter("sizePagePenalidad")));
         return this.parameters;
-    }
-
-    private Convocatoria_Pers getConvocatoria_Pers(HttpServletRequest request) {
-        Convocatoria_Pers obj = new Convocatoria_Pers();
-        if (request.getParameter("action").equals("updateConvocatoriaPers")) {
-            obj.setCoper_id(Integer.parseInt(request.getParameter("txtCoperIdER")));
-        }
-        obj.setConvocatoria(request.getParameter("txtConvocatoriaER"));
-        obj.setDescripcion(request.getParameter("txtSintesisER"));
-        obj.setEstado(false);
-        return obj;
     }
 
 }
