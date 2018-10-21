@@ -156,7 +156,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        
+
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -169,6 +169,7 @@
                         </div>
                     </div>
                 </div>
+                <%@ include file="documentos_arcdig.jsp"%>
                 <div class="modal fade" id="modalCargandoDocumentos" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">

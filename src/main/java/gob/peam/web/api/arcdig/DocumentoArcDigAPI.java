@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gob.peam.web.api;
+package gob.peam.web.api.arcdig;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import gob.peam.web.dao.DocumentoDAO;
-import gob.peam.web.dao.impl.DocumentoDAOImpl;
+import gob.peam.web.dao.impl.others.DocumentoArcDigDAOImpl;
+import gob.peam.web.dao.impl.others.EtiquetaDAOImpl;
+import gob.peam.web.dao.others.DocumentoArcDigDAO;
+import gob.peam.web.dao.others.EtiquetaDAO;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,31 +25,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  *
- * @author JamesCarrillo
+ * @author Juan Jose
  */
-@WebServlet(name = "DocumentoAPI", urlPatterns = {
-    "/documentos",
-    "/convocatorias/adicionalobras",
-    "/convocatorias/comitesencargados",
-    "/convocatorias/liquidacionobras",
-    ""})
-public class DocumentoAPI extends HttpServlet {
+@WebServlet(name = "DocumentoArcDigAPI", urlPatterns = {"/documentosarcdig"})
+public class DocumentoArcDigAPI extends HttpServlet {
 
-    @Resource(name = "jdbc/dbweb")
+    private static final Logger LOG = Logger.getLogger(DocumentoArcDigAPI.class.getName());
+    @Resource(name = "jdbc/dbarcdig")
     private DataSource pool;
     private HttpSession session;
     private Gson json;
     private String jsonResponse;
     private HashMap<String, Object> parameters;
-    private final Log logger = LogFactory.getLog(DocumentoAPI.class);
     private String action;
 
-    private DocumentoDAO documentoDAO;
+    private EtiquetaDAO etiquetaDAO;
+    private DocumentoArcDigDAO documentoArcDigDAO;
 
     @Override
     public void init() throws ServletException {
@@ -56,7 +52,8 @@ public class DocumentoAPI extends HttpServlet {
         this.parameters = new HashMap<>();
         this.action = "";
 
-        this.documentoDAO = new DocumentoDAOImpl(this.pool);
+        this.etiquetaDAO = new EtiquetaDAOImpl(this.pool);
+        this.documentoArcDigDAO = new DocumentoArcDigDAOImpl(this.pool);
     }
 
     /**
@@ -72,21 +69,19 @@ public class DocumentoAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-            this.logger.info("ACTION -> " + this.action);
             switch (this.action) {
-                case "getAnios":
+                case "paginarEtiquetas":
+                    procesarEtiquetas(new BEAN_CRUD(this.etiquetaDAO.getPagination(getParametersEtiquetas())), response);
                     break;
-                case "paginarDocumentos":
-                    procesarDocumento(new BEAN_CRUD(this.documentoDAO.getPagination(getParametersDocumentos(request))), response);
-                    break;
-                case "addDocumento":
+                case "paginarDocumentosArcDig":
+                    procesarDocumentosArcDig(new BEAN_CRUD(this.documentoArcDigDAO.getPagination(getParametersDocumentosArcDig(request))), response);
                     break;
                 default:
-                    request.getRequestDispatcher("/jsp/gc/global/documento.jsp").forward(request, response);
+                    response.sendRedirect("403.jsp");
                     break;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DocumentoAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoArcDigAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -104,7 +99,7 @@ public class DocumentoAPI extends HttpServlet {
             throws ServletException, IOException {
         session = request.getSession();
         if (session.getAttribute("user") == null) {
-            response.sendRedirect("../login");
+            response.sendRedirect("login");
         } else {
             processRequest(request, response);
         }
@@ -123,56 +118,57 @@ public class DocumentoAPI extends HttpServlet {
             throws ServletException, IOException {
         session = request.getSession();
         if (session.getAttribute("user") == null) {
-            response.sendRedirect("../login");
+            response.sendRedirect("login");
         } else {
             processRequest(request, response);
         }
     }
 
-    /*FUNCIONARIOS*/
-    private void procesarDocumento(BEAN_CRUD beanCrud, HttpServletResponse response) {
+    private void procesarEtiquetas(BEAN_CRUD beanCrud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(beanCrud);
             response.setContentType("application/json");
             response.getWriter().write(this.jsonResponse);
-            this.logger.info(this.jsonResponse);
+            LOG.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoArcDigAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    private HashMap<String, Object> getParametersDocumentos(HttpServletRequest request) {
+    private HashMap getParametersEtiquetas() {
         this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtTitulo").toLowerCase());
-        if (request.getParameter("comboAnio").equals("-1")) {
-            this.parameters.put("SQL_ANIO", "");
-        } else {
-            this.parameters.put("SQL_ANIO", "AND SUBSTRING(DOCU_FECHA_DOCX,7,4) = '" + request.getParameter("comboAnio") + "' ");
-        }
-        if (request.getParameter("comboTipoListaDocumentos").equals("-1")) {
-            this.parameters.put("SQL_ESTADO", "");
-        } else {
-            this.parameters.put("SQL_ESTADO", "AND DOCU_ESTADO = " + request.getParameter("comboTipoListaDocumentos") + " ");
-        }
-        this.parameters.put("SQL_CATE_ID", "AND CATE_ID = " + getCategoriaId(request));
-        this.parameters.put("SQL_ORDERS", "DOCU_TITULO");
-        this.parameters.put("LIMIT",
-                " LIMIT " + request.getParameter("sizePageDocumentos") + " OFFSET "
-                + (Integer.parseInt(request.getParameter("numberPageDocumentos")) - 1)
-                * Integer.parseInt(request.getParameter("sizePageDocumentos")));
+        this.parameters.put("FILTER", "");
+        this.parameters.put("SQL_ORDERS", "ETIQ_NOMBRE");
+        this.parameters.put("LIMIT", "");
         return this.parameters;
     }
 
-    private String getCategoriaId(HttpServletRequest request) {
-        String categoria_ia = "0"; //LOS ELIMINADOS
-        switch (request.getRequestURI().substring(request.getContextPath().length())) {
-            case "/convocatorias/adicionalobras":
-                categoria_ia = "200";
-                break;
-            case "":
-                break;
+    private void procesarDocumentosArcDig(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(DocumentoArcDigAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return categoria_ia;
+    }
+
+    private HashMap getParametersDocumentosArcDig(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", request.getParameter("txtTituloResumenDocumentosArcDig").toLowerCase());
+        if (request.getParameter("comboAnioDocumentosArcDig").equals("-1")) {
+            this.parameters.put("SQL_ANIO", " ");
+        } else {
+            this.parameters.put("SQL_ANIO", "AND SUBSTRING(DOCU_FECHA_DOCX,7,4) = '" + request.getParameter("comboAnioDocumentosArcDig") + "' ");
+        }
+        this.parameters.put("SQL_ESTADO", "AND DOCU_ESTADO = TRUE ");
+        this.parameters.put("SQL_ORDERS", "DOCU_TITULO");
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePageDocumentosArcDig") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageDocumentosArcDig")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageDocumentosArcDig")));
+        return this.parameters;
     }
 
     /**

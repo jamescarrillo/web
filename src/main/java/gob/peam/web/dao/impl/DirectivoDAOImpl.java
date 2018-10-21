@@ -37,6 +37,7 @@ public class DirectivoDAOImpl implements DirectivoDAO {
     @Override
     public BEAN_PAGINATION getPagination(HashMap<String, Object> parameters, Connection conn) throws SQLException {
         BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
+        List<Directivo> list = new ArrayList<>();
         PreparedStatement pst;
         ResultSet rs;
         try {
@@ -52,7 +53,6 @@ public class DirectivoDAOImpl implements DirectivoDAO {
                     + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
-            List<Directivo> list = new ArrayList<>();
             while (rs.next()) {
                 Directivo obj = new Directivo();
                 obj.setId(rs.getInt("ID"));

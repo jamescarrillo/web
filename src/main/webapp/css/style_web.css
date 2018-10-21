@@ -50,6 +50,8 @@
 
 body{
     font-family: 'Raleway', sans-serif !important;
+    /*font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    */
     font-size: 14px;
     line-height: 29px;
     font-weight: 500;
@@ -328,7 +330,7 @@ thead {
 }
 
 .overflow-hidden {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 /* ================= Global Classes ==================== */
@@ -536,7 +538,7 @@ thead {
     .mt-sm-50 {
         margin-top: 50px;
     }
-    
+
     /*margin-bottom*/
     .mb-sm-30 {
         margin-bottom: 30px;
@@ -696,7 +698,7 @@ thead {
 }
 
 .brand-hover:hover {
-	background-color: #03a9f4 !important; /*theme primary hover color*/
+    background-color: #03a9f4 !important; /*theme primary hover color*/
 }
 
 
@@ -707,7 +709,7 @@ thead {
 .green-color {
     color: #71c44c !important;
 }
- 
+
 .pink {
     background-color: #ed145b !important;
 }
@@ -757,7 +759,7 @@ thead {
 
 .overlay,
 .overlay .container {
-  position: relative;
+    position: relative;
 }
 .overlay:before {
     content: "";
@@ -844,13 +846,13 @@ thead {
 
 
 .full-height {
-  height: 100vh;
-  width: 100%;
+    height: 100vh;
+    width: 100%;
 }
 
 .half-height {
-  height: 78vh !important;
-  width: 100%;
+    height: 78vh !important;
+    width: 100%;
 }
 
 
@@ -940,38 +942,38 @@ thead {
 
 /*Hero Clouds*/
 .hero-clouds {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 250.625em;
-  height: 100vh;
-  background: url('assets/img/banner/clouds.png') 0px 100% repeat-x;
-  -webkit-animation: cloudLoop 80s linear infinite;
-          animation: cloudLoop 80s linear infinite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 250.625em;
+    height: 100vh;
+    background: url('assets/img/banner/clouds.png') 0px 100% repeat-x;
+    -webkit-animation: cloudLoop 80s linear infinite;
+    animation: cloudLoop 80s linear infinite;
 }
 
 
 /*keyframes for cloud*/
 @-webkit-keyframes cloudLoop {
-  0% {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-  }
-  100% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-            transform: translate3d(-50%, 0, 0);
-  }
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(-50%, 0, 0);
+        transform: translate3d(-50%, 0, 0);
+    }
 }
 
 @keyframes cloudLoop {
-  0% {
-    -webkit-transform: translate3d(0, 0, 0);
-            transform: translate3d(0, 0, 0);
-  }
-  100% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-            transform: translate3d(-50%, 0, 0);
-  }
+    0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        -webkit-transform: translate3d(-50%, 0, 0);
+        transform: translate3d(-50%, 0, 0);
+    }
 }
 
 
@@ -1074,9 +1076,9 @@ thead {
 }
 
 @media screen and (max-width: 991px) {
-   .mocup-wrapper-sm img{
+    .mocup-wrapper-sm img{
         width: 100%;
-   } 
+    } 
 }
 
 
@@ -1370,15 +1372,15 @@ button.mfp-arrow {
 .ie11 .progress-bar span,
 .ie10 .progress-bar span,
 .ie9 .progress-bar span {
-  top: -25px;
-  right: 0;
+    top: -25px;
+    right: 0;
 }
 
 .progress .progress-bar.six-sec-ease-in-out {
-  -webkit-transition: width 2s ease-in-out;
-  -moz-transition: width 2s ease-in-out;
-  -o-transition: width 2s ease-in-out;
-  transition:  width 2s ease-in-out;
+    -webkit-transition: width 2s ease-in-out;
+    -moz-transition: width 2s ease-in-out;
+    -o-transition: width 2s ease-in-out;
+    transition:  width 2s ease-in-out;
 }
 
 
@@ -1614,9 +1616,9 @@ nav ul a {
 
 
 @media only screen and (min-width: 1200px){
-  .container {
-    width: 1170px;
-  }
+    .container {
+        width: 1170px;
+    }
 }
 
 @media only screen and (max-width: 749px) {
@@ -1626,7 +1628,7 @@ nav ul a {
 }
 @media only screen and (max-width: 601px) {
     .container {
-         width: 90%; 
+        width: 90%; 
     }
 }
 
@@ -1817,28 +1819,28 @@ KEY FRAME
 @-webkit-keyframes BottomToTop {
     49% {
         -webkit-transform : translateY(-100%);
-        }
+    }
     50% {
         opacity           : 0;
         -webkit-transform : translateY(100%);
-        }
+    }
     51% {
         opacity : 1;
-        }
     }
+}
 
 @-moz-keyframes BottomToTop {
     49% {
         -moz-transform : translateY(-100%);
-        }
+    }
     50% {
         opacity        : 0;
         -moz-transform : translateY(100%);
-        }
+    }
     51% {
         opacity : 1;
-        }
     }
+}
 
 @keyframes BottomToTop {
     49% {
@@ -1858,28 +1860,28 @@ KEY FRAME
 @-webkit-keyframes TopToBottom {
     49% {
         -webkit-transform : translateY(-100%);
-        }
+    }
     50% {
         opacity           : 0;
         -webkit-transform : translateY(100%);
-        }
+    }
     51% {
         opacity : 1;
-        }
     }
+}
 
 @-moz-keyframes TopToBottom {
     49% {
         -moz-transform : translateY(-100%);
-        }
+    }
     50% {
         opacity        : 0;
         -moz-transform : translateY(100%);
-        }
+    }
     51% {
         opacity : 1;
-        }
     }
+}
 
 @keyframes TopToBottom {
     49% {
@@ -1898,76 +1900,76 @@ KEY FRAME
 
 /*device-mockup*/
 .device-mockup {
-  position: relative;
-  width: 100%;
-  padding-bottom: 61.775701%;
+    position: relative;
+    width: 100%;
+    padding-bottom: 61.775701%;
 }
 .device-mockup > .device {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  -webkit-background-size: contain;
-  -moz-background-size: contain;
-  background-size: contain;
-  background-image: url("assets/img/device-mockups/macbook.png");
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    background-size: contain;
+    background-image: url("assets/img/device-mockups/macbook.png");
 }
 
 .device-mockup > .device > .screen {
-  background-color: #000;
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -o-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  position: absolute;
-  top: 11.0438729%;
-  bottom: 14.6747352%;
-  left: 13.364486%;
-  right: 13.364486%;
-  overflow: hidden;
+    background-color: #000;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    position: absolute;
+    top: 11.0438729%;
+    bottom: 14.6747352%;
+    left: 13.364486%;
+    right: 13.364486%;
+    overflow: hidden;
 }
 
 
 .device-mockup[data-device="ipad"],
 .device-mockup[data-device="ipad"][data-orientation="portrait"] {
-  padding-bottom: 128.406276%;
+    padding-bottom: 128.406276%;
 }
 .device-mockup[data-device="ipad"][data-orientation="landscape"] {
-  padding-bottom: 79.9086758%;
+    padding-bottom: 79.9086758%;
 }
 .device-mockup[data-device="ipad"] > .device,
 .device-mockup[data-device="ipad"][data-color="black"] > .device,
 .device-mockup[data-device="ipad"][data-orientation="portrait"][data-color="black"] > .device {
-  background-image: url("assets/img/device-mockups/ipad_port_black.png");
+    background-image: url("assets/img/device-mockups/ipad_port_black.png");
 }
 .device-mockup[data-device="ipad"][data-color="white"] > .device,
 .device-mockup[data-device="ipad"][data-orientation="portrait"][data-color="white"] > .device {
-  background-image: url("assets/img/device-mockups/ipad_port_white.png");
+    background-image: url("assets/img/device-mockups/ipad_port_white.png");
 }
 .device-mockup[data-device="ipad"][data-orientation='landscape'] > .device,
 .device-mockup[data-device="ipad"][data-orientation="landscape"][data-color="black"] > .device {
-  background-image: url("assets/img/device-mockups/ipad_land_black.png");
+    background-image: url("assets/img/device-mockups/ipad_land_black.png");
 }
 .device-mockup[data-device="ipad"][data-orientation="landscape"][data-color="white"] > .device {
-  background-image: url("assets/img/device-mockups/ipad_land_white.png");
+    background-image: url("assets/img/device-mockups/ipad_land_white.png");
 }
 .device-mockup[data-device="ipad"] > .device > .screen,
 .device-mockup[data-device="ipad"][data-orientation="portrait"] > .device > .screen {
-  top: 12.025723%;
-  bottom: 12.154341%;
-  left: 13.45995%;
-  right: 13.45995%;
+    top: 12.025723%;
+    bottom: 12.154341%;
+    left: 13.45995%;
+    right: 13.45995%;
 }
 .device-mockup[data-device="ipad"][data-orientation="landscape"] > .device > .screen {
-  top: 13.87755102%;
-  bottom: 13.87755102%;
-  left: 11.5459883%;
-  right: 11.5459883%;
+    top: 13.87755102%;
+    bottom: 13.87755102%;
+    left: 11.5459883%;
+    right: 11.5459883%;
 }
 
 /*screenshot-carousel*/
