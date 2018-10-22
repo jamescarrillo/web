@@ -62,7 +62,7 @@
                                             </div>
                                             <div class="form-group col-lg-2 col-md-6 col-12 mb-3">
                                                 <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPenalidad'>
-                                                    
+
                                                 </select>
                                             </div>
                                             <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
@@ -93,7 +93,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="card "
@@ -110,7 +110,7 @@
                                                         </div>
                                                         <div class="col-md-10 col-sm-9 col-8">
                                                             <nav aria-label="Page navigation example">
-                                                                <ul id="paginationDocumentos"
+                                                                <ul id="paginationPenalidad"
                                                                     class="pagination pagination-sm justify-content-end">
 
                                                                 </ul>
@@ -129,7 +129,7 @@
                     <%@ include file="../../../temas_gc.jsp"%>
                 </div>
                 <div class="modal fade" id="ventanaManPenalidad" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <form id="FrmPenalidadModal">
                                 <div class="modal-header">
@@ -142,12 +142,40 @@
                                 <div class="modal-body">
                                     <div class="row">
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtConvocatoriaER">CONVOCATORIA</label>
-                                            <input class="form-control form-control-sm" id="txtConvocatoriaER" name="txtConvocatoriaER" type="text" placeholder="CONVOCATORIA"> 
+                                            <label for="txtContratistaER">CONTRATISTA</label>
+                                            <input class="form-control form-control-sm" id="txtContratistaER" name="txtContratistaER" type="text" placeholder="Contratista">
+                                        </div>
+                                        <div class="form-group col-4 mb-3">
+                                            <label for="txtRucER">RUC</label>
+                                            <input class="form-control form-control-sm" id="txtRucER" name="txtRucER" type="text" placeholder="R.U.C.">
+                                        </div>
+                                        <div class="form-group col-4 mb-3">
+                                            <label for="txtMontoContratoER">MONTO CONTRATO</label>
+                                            <input class="form-control form-control-sm" id="txtMontoContratoER" name="txtMontoContratoER" type="text" placeholder="Monto del contrato (S/.)">
+                                        </div>
+                                        <div class="form-group col-4 mb-3">
+                                            <label for="txtAnhoER">AÑO</label>
+                                            <input class="form-control form-control-sm" id="txtAnhoER" name="txtAnhoER" type="text" placeholder="Año"> 
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtSintesisER">SINTESIS</label>
-                                            <textarea class="form-control form-control-sm" id="txtSintesisER" name="txtSintesisER" rowa="6" placeholder="SINTESIS DE LA CONVOCATORIA"></textarea>
+                                            <label for="txtObjetoER">OBJETO DEL PROCESO</label>
+                                            <textarea class="form-control form-control-sm" id="txtObjetoER" name="txtObjetoER" rows="4" placeholder="Objeto del proceso (Bienes, Servicios u Obras)"></textarea>
+                                        </div>
+                                        <div class="form-group col-6 mb-3">
+                                            <label for="txtNumeroProcesoER">NUMERO DE PROCESO</label>
+                                            <input class="form-control form-control-sm" id="txtNumeroProcesoER" name="txtNumeroProcesoER" type="text" placeholder="Nro. Proceso de selección convocado"> 
+                                        </div>
+                                        <div class="form-group col-6 mb-3">
+                                            <label for="txtNumeroContratoER">NUMERO DE CONTRATO</label>
+                                            <input class="form-control form-control-sm" id="txtNumeroContratoER" name="txtNumeroContratoER" type="text" placeholder="Nro. de Contrato"> 
+                                        </div>
+                                        <div class="form-group col-8 mb-3">
+                                            <label for="txtTipoER">TIPO DE PENALIDAD</label>
+                                            <input class="form-control form-control-sm" id="txtTipoER" name="txtTipoER" type="text" placeholder="Tipo Penalidad (Mora u otra)"> 
+                                        </div>
+                                        <div class="form-group col-4 mb-3">
+                                            <label for="txtMontoPenalidadER">MONTO PENALIDAD</label>
+                                            <input class="form-control form-control-sm" id="txtMontoPenalidadER" name="txtMontoPenalidadER" type="text" placeholder="Monto de la penalidad (S/.)"> 
                                         </div>
                                         <input id="txtIdER" name="txtIdER" type="hidden" value="">
                                     </div>
