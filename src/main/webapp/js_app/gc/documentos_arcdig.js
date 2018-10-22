@@ -11,14 +11,12 @@ $(document).ready(function () {
         document.getElementsByTagName("body")[0].style.paddingRight = "0";
     });
 
+    procesarAjaxEtiquetas();
 
 });
 
 function procesarAjaxEtiquetas() {
-    var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
-    datosSerializadosCompletos += "&numberPageDocumentos=" + $('#numberPageDocumentos').val();
-    datosSerializadosCompletos += "&sizePageDocumentos=" + $('#sizePageDocumentos').val();
-    datosSerializadosCompletos += "&action=" + $('#actionDocumentos').val();
+    var datosSerializadosCompletos = "action=paginarEtiquetas";
     $.ajax({
         url: getContext() + '/documentos/arcdig',
         type: 'POST',
@@ -26,12 +24,11 @@ function procesarAjaxEtiquetas() {
         dataType: 'json',
         success: function (jsonResponse) {
             console.log(jsonResponse);
-            $('#modalCargandoDocumentos').modal("hide");
-            listarDocumentos(jsonResponse.BEAN_PAGINATION);
+            $('#modalCargandoDocumentosArcDig').modal("hide");
+            //listarDocumentos(jsonResponse.BEAN_PAGINATION);
         },
         error: function () {
-            $('#modalCargandoDocumentos').modal("hide");
-            $("#ventanaManDocumento").modal("hide");
+            $('#modalCargandoDocumentosArcDig').modal("hide");
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
             viewAlert('error', 'Error interno en el servidor!');
         }
