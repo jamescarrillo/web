@@ -53,25 +53,25 @@ function procesarAjaxConvocatoriaPers() {
         //AGREGAMOS LOS PARAMETROS DEL FORMULARIO DE BUSQUEDA
         datosSerializadosCompletos += "&txtConvocatoriaPers=" + $('#txtConvocatoriaPers').val();
         datosSerializadosCompletos += "&comboAnio=" + $('#comboAnio').val();
+        datosSerializadosCompletos += "&txtEstadoER=" + $('#txtEstadoER').val();
         datosSerializadosCompletos += "&comboTipoListaConvocatoriaPers=" + $('#comboTipoListaConvocatoriaPers').val();
     }
     datosSerializadosCompletos += "&numberPageConvocatoriaPers=" + $('#numberPageConvocatoriaPers').val();
     datosSerializadosCompletos += "&sizePageConvocatoriaPers=" + $('#sizePageConvocatoriaPers').val();
     datosSerializadosCompletos += "&action=" + $('#actionConvocatoriaPers').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/convocatorias/personal',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoConvocatoriaPers').modal("hide");
             if ($('#actionConvocatoriaPers').val().toLowerCase() === "paginarconvocatoriapers") {
                 listarConvocatoriaPers(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
                     viewAlert('success', getMessageServerTransaction($('#actionConvocatoriaPers').val(), 'Convocatoria de Personal', 'o'));
+                    listarConvocatoriaPers(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
@@ -95,10 +95,14 @@ function listarConvocatoriaPers(BEAN_PAGINATION) {
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var fila;
         var text_color;
+        var icon;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
-            text_color = "";
             if (!value.estado) {
+                text_color = "";
+                icon="far fa-hand-point-down";
+            }else{
                 text_color = " text-danger";
+                icon="far fa-hand-point-up";
             }
             //text-center align-middle
             fila = "<tr ";
@@ -114,7 +118,7 @@ function listarConvocatoriaPers(BEAN_PAGINATION) {
             fila += "<td class='align-middle " + text_color + "'>" + value.descripcion + "</td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm editar-ConvocatoriaPers'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle" + text_color + "'><button class='btn btn-secondary btn-sm eliminar-ConvocatoriaPers'><i class='fas fa-trash-alt'></i></button></td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm finalizar-activar' data-toggle='tooltip' title='Finalizar'><i class='far fa-hand-point-down'></i></button></td>";
+            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm finalizar-activar' data-toggle='tooltip' title='Finalizar/Activar'><i class='"+icon+"'></i></button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm actividades' data-toggle='tooltip' title='Actividades'><i class='fa fa-download'></i> ACTIVIDADES</button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm plazas' data-toggle='tooltip' title='Plazas'><i class='fa fa-download'></i> PLAZAS</button></td>";
             fila += "</tr>";
@@ -157,6 +161,7 @@ function agregarEventosConvocatoriaPers() {
     $('.finalizar-activar').each(function () {
         $(this).click(function () {
             $('#txtCoperIdER').val($(this.parentElement.parentElement).attr('coper_id'));
+            $('#txtEstadoER').val($(this.parentElement.parentElement).attr('estado'));
             swal({
                 title: 'PEAM',
                 text: "¿Esta seguro de FINALIZAR/ACTIVAR esta Convocatoria Personal?",

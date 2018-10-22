@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import gob.peam.web.dao.PenalidadDAO;
 import gob.peam.web.dao.impl.PenalidadDAOImpl;
+import gob.peam.web.model.Penalidad;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -73,13 +74,13 @@ public class PenalidadAPI extends HttpServlet {
                     procesarPenalidad(new BEAN_CRUD(this.penalidadDAO.getPagination(getParametersPenalidad(request))), response);
                     break;
                 case "addPenalidad":
-                    //procesarConvocatoria_Pers(this.convocatoria_persDAO.add(getConvocatoria_Pers(request), getParametersConvocatoria_Pers(request)), response);
+                    procesarPenalidad(this.penalidadDAO.add(getPenalidad(request), getParametersPenalidad(request)), response);
                     break;
                 case "updatePenalidad":
-                    //procesarConvocatoria_Pers(this.convocatoria_persDAO.update(getConvocatoria_Pers(request), getParametersConvocatoria_Pers(request)), response);
+                    procesarPenalidad(this.penalidadDAO.update(getPenalidad(request), getParametersPenalidad(request)), response);
                     break;
                 case "deletePenalidad":
-                    //procesarConvocatoria_Pers(this.convocatoria_persDAO.delete(Long.parseLong(request.getParameter("txtCoperIdER")), getParametersConvocatoria_Pers(request)), response);
+                    procesarPenalidad(this.penalidadDAO.delete(Long.parseLong(request.getParameter("txtIdER")), getParametersPenalidad(request)), response);
                     break;
                 default:
                     request.getRequestDispatcher("/jsp/gc/convocatorias/penalidad.jsp").forward(request, response);
@@ -102,7 +103,12 @@ public class PenalidadAPI extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        session = request.getSession();
+        if (session.getAttribute("user") == null) {
+            response.sendRedirect("../login");
+        } else {
+            processRequest(request, response);
+        }
     }
 
     /**
@@ -116,7 +122,12 @@ public class PenalidadAPI extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        session = request.getSession();
+        if (session.getAttribute("user") == null) {
+            response.sendRedirect("../login");
+        } else {
+            processRequest(request, response);
+        }
     }
 
     /**
@@ -157,4 +168,20 @@ public class PenalidadAPI extends HttpServlet {
         return this.parameters;
     }
 
+    private Penalidad getPenalidad(HttpServletRequest request) {
+        Penalidad obj = new Penalidad ();
+        if (request.getParameter("action").equals("updatePenalidad")) {
+            obj.setId(Integer.parseInt(request.getParameter("txtIdER")));
+        }
+        obj.setContratista(request.getParameter("txtContratistaER"));
+        obj.setAnho(request.getParameter("txtAnhoER"));
+        obj.setMonto_contrato(request.getParameter("txtMontoContratoER"));
+        obj.setMonto_penalidad(request.getParameter("txtMontoPenalidadER"));
+        obj.setRuc(request.getParameter("txtRucER"));
+        obj.setNro_proceso(request.getParameter("txtNumeroProcesoER"));
+        obj.setNro_contrato(request.getParameter("txtNumeroContratoER"));
+        obj.setTipo(request.getParameter("txtTipoER"));
+        obj.setObjeto(request.getParameter("txtObjetoER"));
+        return obj;
+    }
 }

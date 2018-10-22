@@ -69,6 +69,7 @@
                                                 <button type="button" id="btnAbrirNuevoConvocatoriaPers" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Convocatoria Personal" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
+                                        <input id="txtEstadoER" name="txtEstadoER" type="hidden" value="0">
                                     </form>
                                     <div class="row">
                                         <div class="col-12">
@@ -80,8 +81,6 @@
                                                             <th style="width: 10%">FECHA</th>
                                                             <th style="width: 25%">CONVOCATORIA</th>
                                                             <th>DESCRIPCION</th>
-                                                            <!--th>DOC</th-->
-                                                            <!--th>ESTADO</th-->
                                                             <th colspan="5">ACCIONES</th>
                                                         </tr>
                                                     </thead>
@@ -108,7 +107,7 @@
                                                         </div>
                                                         <div class="col-md-10 col-sm-9 col-8">
                                                             <nav aria-label="Page navigation example">
-                                                                <ul id="paginationDocumentos"
+                                                                <ul id="paginationConvocatoriaPers"
                                                                     class="pagination pagination-sm justify-content-end">
 
                                                                 </ul>
@@ -145,7 +144,7 @@
                                         </div>
                                         <div class="form-group col-12 mb-3">
                                             <label for="txtSintesisER">SINTESIS</label>
-                                            <textarea class="form-control form-control-sm" id="txtSintesisER" name="txtSintesisER" rowa="6" placeholder="SINTESIS DE LA CONVOCATORIA"></textarea>
+                                            <textarea class="form-control form-control-sm" id="txtSintesisER" name="txtSintesisER" rows="6" placeholder="SINTESIS DE LA CONVOCATORIA"></textarea>
                                         </div>
                                         <input id="txtCoperIdER" name="txtCoperIdER" type="hidden" value="">
                                     </div>

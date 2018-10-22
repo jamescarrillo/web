@@ -72,6 +72,7 @@ function procesarAjaxPenalidad() {
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
                     viewAlert('success', getMessageServerTransaction($('#actionPenalidad').val(), 'Penalidad', 'a'));
+                    listarPenalidad(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
@@ -108,12 +109,12 @@ function listarPenalidad(BEAN_PAGINATION) {
             fila += "monto_contrato='" + value.monto_contrato + "' ";
             fila += "monto_penalidad='" + value.monto_penalidad + "' ";
             fila += ">";
-            fila += "<td class='text-center align-middle'><font size=1>" + value.monto_contrato + "</font></td>";
-            fila += "<td class='align-middle '><font size=1>" + value.contratista + "</font></td>";
-            fila += "<td class='align-middle '><font size=1>" + value.ruc + "</font></td>";
-            fila += "<td class='align-middle '><font size=1>" + value.objeto + "</font></td>";
-            fila += "<td class='align-middle '><font size=1>" + value.tipo + "</font></td>";
-            fila += "<td class='align-middle '><font size=1>" + value.monto_penalidad + "</font></td>";
+            fila += "<td class='text-center align-middle' class='text-small-table'>" + value.monto_contrato + "</td>";
+            fila += "<td class='align-middle' class='text-small-table'>" + value.contratista + "</td>";
+            fila += "<td class='align-middle' class='text-small-table'>" + value.ruc + "</td>";
+            fila += "<td class='align-middle' class='text-small-table'>" + value.objeto + "</td>";
+            fila += "<td class='align-middle' class='text-small-table'>" + value.tipo + "</td>";
+            fila += "<td class='align-middle' class='text-small-table'>" + value.monto_penalidad + "</td>";
             fila += "<td class='align-middle '><button class='btn btn-secondary btn-sm editar-Penalidad'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle'><button class='btn btn-secondary btn-sm eliminar-Penalidad'><i class='fas fa-trash-alt'></i></button></td>";
             fila += "</tr>";
@@ -137,8 +138,15 @@ function agregarEventosPenalidad() {
     $('.editar-Penalidad').each(function () {
         $(this).click(function () {
             $('#txtIdER').val($(this.parentElement.parentElement).attr('id'));
-            $('#txtConvocatoriaER').val($(this.parentElement.parentElement).attr('convocatoria'));
-            $('#txtSintesisER').val($(this.parentElement.parentElement).attr('descripcion'));
+            $('#txtAnhoER').val($(this.parentElement.parentElement).attr('anho'));
+            $('#txtContratistaER').val($(this.parentElement.parentElement).attr('contratista'));
+            $('#txtRucER').val($(this.parentElement.parentElement).attr('ruc'));
+            $('#txtObjetoER').val($(this.parentElement.parentElement).attr('objeto'));
+            $('#txtNumeroProcesoER').val($(this.parentElement.parentElement).attr('nro_proceso'));
+            $('#txtNumeroContratoER').val($(this.parentElement.parentElement).attr('nro_contrato'));
+            $('#txtTipoER').val($(this.parentElement.parentElement).attr('tipo'));
+            $('#txtMontoContratoER').val($(this.parentElement.parentElement).attr('monto_contrato'));
+            $('#txtMontoPenalidadER').val($(this.parentElement.parentElement).attr('monto_penalidad'));
             $('#actionPenalidad').val('updatePenalidad');
             $('#txtTituloModalManPenalidad').html("EDITAR PENALIDAD");
             $('#ventanaManPenalidad').modal("show");
@@ -155,23 +163,86 @@ function agregarEventosPenalidad() {
 }
 
 function valicacionesCamposPenalidad() {
-    $('#txtConvocatoriaER').on('change', function () {
+    $('#txtContratistaER').on('change', function () {
         $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
     });
-    $('#txtSintesisER').on('change', function () {
+    $('#txtRucER').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#txtMontoContratoER').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#txtAnhoER').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#txtObjetoER').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#txtNumeroProcesoER').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#txtNumeroContratoER').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#txtTipoER').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#txtMontoPenalidadER').on('change', function () {
         $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
     });
 }
 
 function validarFormularioPenalidad() {
-    if ($('#txtConvocatoriaER').val() === "") {
-        $($('#txtConvocatoriaER').parent()).addClass('has-danger');
+    if ($('#txtContratistaER').val() === "") {
+        $($('#txtContratistaER').parent()).addClass('has-danger');
         return false;
     } else {
         $(this.parentElement).removeClass('has-danger');
     }
-    if ($('#txtSintesisER').val() === "") {
-        $($('#txtSintesisER').parent()).addClass('has-danger');
+    if ($('#txtRucER').val() === "") {
+        $($('#txtRucER').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#txtMontoContratoER').val() === "") {
+        $($('#txtMontoContratoER').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#txtAnhoER').val() === "") {
+        $($('#txtAnhoER').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#txtObjetoER').val() === "") {
+        $($('#txtObjetoER').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#txtNumeroProcesoER').val() === "") {
+        $($('#txtNumeroProcesoER').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#txtNumeroContratoER').val() === "") {
+        $($('#txtNumeroContratoER').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#txtTipoER').val() === "") {
+        $($('#txtTipoER').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#txtMontoPenalidadER').val() === "") {
+        $($('#txtMontoPenalidadER').parent()).addClass('has-danger');
         return false;
     } else {
         $(this.parentElement).removeClass('has-danger');

@@ -8,7 +8,6 @@ package gob.peam.web.dao.impl;
 import gob.peam.web.dao.Convocatoria_PersDAO;
 import gob.peam.web.dao.SQLCloseable;
 import gob.peam.web.model.Convocatoria_Pers;
-import gob.peam.web.model.Directivo;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
 import java.sql.Connection;
@@ -165,8 +164,13 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.CONVOCATORIA_PERS SET ESTADO = true WHERE COPER_ID = ?");
-            pst.setInt(1, (int) id);
+            pst = conn.prepareStatement("UPDATE WEB.CONVOCATORIA_PERS SET ESTADO = ? WHERE COPER_ID = ?");
+            if (parameters.get("ESTADO").equals("true")) {
+                pst.setBoolean(1, true);
+            }else{
+                pst.setBoolean(1, false);
+            }
+            pst.setInt(2, (int) id);
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
