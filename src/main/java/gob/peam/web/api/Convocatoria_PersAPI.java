@@ -8,13 +8,10 @@ package gob.peam.web.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import gob.peam.web.dao.Convocatoria_PersDAO;
-import gob.peam.web.dao.DocumentoDAO;
 import gob.peam.web.dao.impl.Convocatoria_PersDAOImpl;
-import gob.peam.web.dao.impl.DocumentoDAOImpl;
 import gob.peam.web.model.Convocatoria_Pers;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -34,7 +31,7 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-@WebServlet(name = "Convocatoria_PersAPI", urlPatterns = {"/convocatoriapersonal"})
+@WebServlet(name = "Convocatoria_PersAPI", urlPatterns = {"/convocatorias/personal"})
 public class Convocatoria_PersAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
@@ -159,6 +156,11 @@ public class Convocatoria_PersAPI extends HttpServlet {
             this.parameters.put("SQL_ESTADO", "");
         } else {
             this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("comboTipoListaConvocatoriaPers") + " ");
+        }
+        if (request.getParameter("txtEstadoER").equals("true")) {
+            this.parameters.put("ESTADO", "false");
+        }else{
+            this.parameters.put("ESTADO", "true");
         }
         this.parameters.put("SQL_ORDERS", "ANHO DESC");
         this.parameters.put("LIMIT",

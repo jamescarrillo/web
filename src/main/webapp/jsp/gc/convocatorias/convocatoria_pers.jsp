@@ -69,6 +69,7 @@
                                                 <button type="button" id="btnAbrirNuevoConvocatoriaPers" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Convocatoria Personal" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
+                                        <input id="txtEstadoER" name="txtEstadoER" type="hidden" value="0">
                                     </form>
                                     <div class="row">
                                         <div class="col-12">
@@ -80,8 +81,6 @@
                                                             <th style="width: 10%">FECHA</th>
                                                             <th style="width: 25%">CONVOCATORIA</th>
                                                             <th>DESCRIPCION</th>
-                                                            <!--th>DOC</th-->
-                                                            <!--th>ESTADO</th-->
                                                             <th colspan="5">ACCIONES</th>
                                                         </tr>
                                                     </thead>

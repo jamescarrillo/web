@@ -87,31 +87,21 @@ function agregarValidacionesFiltrosCheck(idtodos, classchecks) {
 function getMessageServerTransaction(action, entidad, delimitador_sexo) {
     var messageOut = entidad;
     var operation = "";
-    for (var i = 0; i < action.length - 1; i++) {
+    for (var i = 0; i < 3; i++) {
         operation += action.substring(i, i + 1);
-        switch (operation) {
-            case "add":
-                break;
-            case "update":
-                break;
-            case "delete":
-                break;
-            case "activate":
-                break;
-        }
     }
     switch (operation) {
         case "add":
             messageOut += " registrad" + delimitador_sexo + " exitosamente!";
             break;
-        case "update":
+        case "upd":
             messageOut += " modificad" + delimitador_sexo + " exitosamente!";
             break;
-        case "delete":
+        case "del":
             messageOut += " eliminad" + delimitador_sexo + " exitosamente!";
             break;
-        case "activate":
-            messageOut += " eliminad" + delimitador_sexo + " exitosamente!";
+        case "act":
+            messageOut += " finalizad" + delimitador_sexo + "/activad"+ delimitador_sexo +" exitosamente!";
             break;
     }
     return messageOut;

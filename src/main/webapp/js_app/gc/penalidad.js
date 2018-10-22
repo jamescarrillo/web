@@ -109,12 +109,12 @@ function listarPenalidad(BEAN_PAGINATION) {
             fila += "monto_contrato='" + value.monto_contrato + "' ";
             fila += "monto_penalidad='" + value.monto_penalidad + "' ";
             fila += ">";
-            fila += "<td class='text-center align-middle'><font size=1>" + value.monto_contrato + "</font></td>";
-            fila += "<td class='align-middle '><font size=1>" + value.contratista + "</font></td>";
-            fila += "<td class='align-middle '><font size=1>" + value.ruc + "</font></td>";
-            fila += "<td class='align-middle '><font size=1>" + value.objeto + "</font></td>";
-            fila += "<td class='align-middle '><font size=1>" + value.tipo + "</font></td>";
-            fila += "<td class='align-middle '><font size=1>" + value.monto_penalidad + "</font></td>";
+            fila += "<td class='text-center align-middle' class='text-small-table'>" + value.monto_contrato + "</td>";
+            fila += "<td class='align-middle' class='text-small-table'>" + value.contratista + "</td>";
+            fila += "<td class='align-middle' class='text-small-table'>" + value.ruc + "</td>";
+            fila += "<td class='align-middle' class='text-small-table'>" + value.objeto + "</td>";
+            fila += "<td class='align-middle' class='text-small-table'>" + value.tipo + "</td>";
+            fila += "<td class='align-middle' class='text-small-table'>" + value.monto_penalidad + "</td>";
             fila += "<td class='align-middle '><button class='btn btn-secondary btn-sm editar-Penalidad'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle'><button class='btn btn-secondary btn-sm eliminar-Penalidad'><i class='fas fa-trash-alt'></i></button></td>";
             fila += "</tr>";
