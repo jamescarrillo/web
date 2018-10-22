@@ -5,9 +5,10 @@
  */
 package gob.peam.web.dao.impl;
 
-import gob.peam.web.dao.Convocatoria_PersDAO;
+import gob.peam.web.dao.DirectorioTelefonicoDAO;
 import gob.peam.web.dao.SQLCloseable;
 import gob.peam.web.model.Convocatoria_Pers;
+import gob.peam.web.model.DirectorioTelefonico;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
 import java.sql.Connection;
@@ -17,20 +18,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import javax.sql.DataSource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import javax.sql.DataSource;
 
 /**
  *
- * @author JamesCarrillo
+ * @author JhanxD
  */
-public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
+public class DirectorioTelefonicoDAOImpl implements DirectorioTelefonicoDAO {
 
     private final Log logger = LogFactory.getLog(DirectivoDAOImpl.class);
     private final DataSource pool;
 
-    public Convocatoria_PersDAOImpl(DataSource pool) {
+    public DirectorioTelefonicoDAOImpl(DataSource pool) {
         this.pool = pool;
     }
 
@@ -40,28 +41,29 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
         PreparedStatement pst;
         ResultSet rs;
         try {
-            pst = conn.prepareStatement("SELECT COUNT(COPER_ID) AS CANT FROM WEB.CONVOCATORIA_PERS WHERE "
-                    + "(LOWER(CONVOCATORIA) LIKE CONCAT('%',?,'%'))");
+            pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.f00003 WHERE "
+                    + "((LOWER(ANEXO) LIKE CONCAT('%',?,'%')) OR (LOWER(SECCION) LIKE CONCAT('%',?,'%')))");
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            pst.setString(2, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
             }
-            pst = conn.prepareStatement("SELECT * FROM WEB.CONVOCATORIA_PERS WHERE "
-                    + "(LOWER(CONVOCATORIA) LIKE CONCAT('%',?,'%'))"
-                    + String.valueOf(parameters.get("SQL_ESTADO"))
-                    + String.valueOf(parameters.get("SQL_ANIO")) + "ORDER BY "
+            pst = conn.prepareStatement("SELECT * FROM WEB.f00003 WHERE "
+                    + "((LOWER(ANEXO) LIKE CONCAT('%',?,'%')) OR (LOWER(SECCION) LIKE CONCAT('%',?,'%')))"
+                    + String.valueOf(parameters.get("SQL_ESTADO")) + "ORDER BY "
                     + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            pst.setString(2, String.valueOf(parameters.get("FILTER")));
+            logger.info(pst);
             rs = pst.executeQuery();
-            List<Convocatoria_Pers> list = new ArrayList<>();
+            List<DirectorioTelefonico> list = new ArrayList<>();
             while (rs.next()) {
-                Convocatoria_Pers obj = new Convocatoria_Pers();
-                obj.setCoper_id(rs.getInt("COPER_ID"));
-                obj.setFecha(rs.getDate("FECHA"));
-                obj.setConvocatoria(rs.getString("CONVOCATORIA"));
-                obj.setDescripcion(rs.getString("DESCRIPCION"));
-                obj.setAnho(rs.getString("ANHO"));
+                DirectorioTelefonico obj = new DirectorioTelefonico();
+                obj.setId(rs.getInt("ID"));
+                obj.setOficina(rs.getString("OFICINA"));
+                obj.setSeccion(rs.getString("SECCION"));
+                obj.setAnexo(rs.getString("ANEXO"));
                 obj.setEstado(rs.getBoolean("ESTADO"));
                 list.add(obj);
             }
@@ -86,18 +88,18 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
     }
 
     @Override
-    public BEAN_CRUD add(Convocatoria_Pers obj, HashMap<String, Object> parameters) throws SQLException {
+    public BEAN_CRUD add(DirectorioTelefonico obj, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("INSERT INTO WEB.CONVOCATORIA_PERS (COPER_ID, CONVOCATORIA, DESCRIPCION, "
-                    + "FECHA, ESTADO, ANHO) VALUES((select case when max(coper_id) is null then 1 else cast((max(coper_id)+1) as integer) end id  from web.convocatoria_pers),"
-                    + "?,?, current_date,?, (select extract(year from current_date)))");
-            pst.setString(1, obj.getConvocatoria());
-            pst.setString(2, obj.getDescripcion());
-            pst.setBoolean(3, obj.getEstado());
+            pst = conn.prepareStatement("INSERT INTO WEB.f00003 (ID, OFICINA, SECCION, "
+                    + "ANEXO) VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.f00003),"
+                    + "?,?,?)");
+            pst.setString(1, obj.getOficina());
+            pst.setString(2, obj.getSeccion());
+            pst.setString(3, obj.getAnexo());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -110,17 +112,18 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
     }
 
     @Override
-    public BEAN_CRUD update(Convocatoria_Pers obj, HashMap<String, Object> parameters) throws SQLException {
+    public BEAN_CRUD update(DirectorioTelefonico obj, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.CONVOCATORIA_PERS SET CONVOCATORIA = ?,DESCRIPCION = ? "
-                    + " WHERE COPER_ID = ?");
-            pst.setString(1, obj.getConvocatoria());
-            pst.setString(2, obj.getDescripcion());
-            pst.setInt(3, obj.getCoper_id());
+            pst = conn.prepareStatement("UPDATE WEB.f00003 SET OFICINA = ?, SECCION = ?, ANEXO=? "
+                    + " WHERE ID = ?");
+            pst.setString(1, obj.getOficina());
+            pst.setString(2, obj.getSeccion());
+            pst.setString(3, obj.getAnexo());
+            pst.setInt(4, obj.getId());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -139,7 +142,7 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("DELETE FROM WEB.CONVOCATORIA_PERS WHERE COPER_ID = ?");
+            pst = conn.prepareStatement("DELETE FROM WEB.f00003 WHERE ID = ?");
             pst.setInt(1, (int) id);
             pst.executeUpdate();
             conn.commit();
@@ -153,33 +156,8 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
     }
 
     @Override
-    public Convocatoria_Pers get(long id) throws SQLException {
+    public DirectorioTelefonico get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException {
-        BEAN_CRUD beancrud = new BEAN_CRUD();
-        PreparedStatement pst;
-        try (Connection conn = pool.getConnection();
-                SQLCloseable finish = conn::rollback;) {
-            conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.CONVOCATORIA_PERS SET ESTADO = ? WHERE COPER_ID = ?");
-            if (parameters.get("ESTADO").equals("true")) {
-                pst.setBoolean(1, true);
-            }else{
-                pst.setBoolean(1, false);
-            }
-            pst.setInt(2, (int) id);
-            pst.executeUpdate();
-            conn.commit();
-            beancrud.setMESSAGE_SERVER("ok");
-            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
-            pst.close();
-        } catch (SQLException ex) {
-            throw ex;
-        }
-        return beancrud;
     }
 
 }

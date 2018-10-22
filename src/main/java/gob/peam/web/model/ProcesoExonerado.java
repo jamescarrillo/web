@@ -20,7 +20,7 @@ public class ProcesoExonerado {
     private String objeto;
     private String descripcion;
     private String monto;
-    private String contartista;
+    private String contratista;
     private String ruc;
     private String url;
 
@@ -88,12 +88,12 @@ public class ProcesoExonerado {
         this.monto = monto;
     }
 
-    public String getContartista() {
-        return contartista;
+    public String getContratista() {
+        return contratista;
     }
 
-    public void setContartista(String contartista) {
-        this.contartista = contartista;
+    public void setContratista(String contratista) {
+        this.contratista = contratista;
     }
 
     public String getRuc() {

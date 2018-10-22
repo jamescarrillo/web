@@ -41,14 +41,14 @@ public class PenalidadDAOImpl implements PenalidadDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.PENALIDAD WHERE "
-                    + "CONTRATISTA LIKE CONCAT('%',?,'%')");
+                    + "(LOWER(CONTRATISTA) LIKE CONCAT('%',?,'%'))");
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
             }
             pst = conn.prepareStatement("SELECT * FROM WEB.PENALIDAD WHERE "
-                    + "CONTRATISTA LIKE CONCAT('%',?,'%') "
+                    + "(LOWER(CONTRATISTA) LIKE CONCAT('%',?,'%'))"
                     + String.valueOf(parameters.get("SQL_ANIO")) + "ORDER BY "
                     + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
