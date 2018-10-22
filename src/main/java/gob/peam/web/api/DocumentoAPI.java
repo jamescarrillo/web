@@ -34,8 +34,16 @@ import org.apache.commons.logging.LogFactory;
     "/documentos/operaciones",
     "/convocatorias/adicionalesobras",
     "/convocatorias/comitesencargados",
-    "/convocatorias/liquidacionobras",
-    ""})
+    "/gestiontransparente/actasconciliacion",
+    "/gestiontransparente/actassesion",
+    "/gestiontransparente/declaracionjurada",
+    "/gestiontransparente/evaluacionactualizacion",
+    "/gestiontransparente/itp",
+    "/gestiontransparente/indicadoresdesempenio",
+    "/gestiontransparente/laudos",
+    "/gestiontransparente/modificatoriaspac",
+    "/gestiontransparente/proyectosinversion",
+    "/gestiontransparente/recomendacionesauditorias",})
 public class DocumentoAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")

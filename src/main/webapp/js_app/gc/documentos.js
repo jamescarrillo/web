@@ -106,12 +106,12 @@ function listarDocumentos(BEAN_PAGINATION) {
             fila += "cate_id='" + value.cate_id + "' ";
             fila += "docu_metadata='" + value.docu_metadata + "' ";
             fila += ">";
-            fila += "<td class='text-center align-middle" + text_color + "'>" + value.docu_fecha_docx + "</td>";
-            fila += "<td class='align-middle " + text_color + "'>" + value.docu_titulo + "</td>";
-            fila += "<td class='align-middle " + text_color + "'>" + value.docu_resumen + "</td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm descargar-doc' data-toggle='tooltip' title='Descargar Documento'><i class='fa fa-download'></i></button></td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm editar-documento'><i class='fas fa-edit'></i></button></td>";
-            fila += "<td class='align-middle" + text_color + "'><button class='btn btn-secondary btn-sm eliminar-documento'><i class='fas fa-trash-alt'></i></button></td>";
+            fila += "<td class='text-center align-middle text-medium-table " + text_color + "'>" + value.docu_fecha_docx + "</td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.docu_titulo + "</td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.docu_resumen + "</td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-success btn-sm descargar-doc' data-toggle='tooltip' title='Descargar Documento'><i class='fa fa-download'></i></button></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm editar-documento'><i class='fas fa-edit'></i></button></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm eliminar-documento'><i class='fas fa-trash-alt'></i></button></td>";
             fila += "</tr>";
             $('#tbodyDocumentos').append(fila);
         });
