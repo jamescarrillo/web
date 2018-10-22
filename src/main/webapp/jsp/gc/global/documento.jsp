@@ -77,12 +77,10 @@
                                                     class="table color-bordered-table muted-bordered-table table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th style="width: 10%">FECHA</th>
-                                                            <th style="width: 25%">TÍTULO</th>
-                                                            <th>RESUMEN</th>
-                                                            <!--th>DOC</th-->
-                                                            <!--th>ESTADO</th-->
-                                                            <th colspan="3">ACCIONES</th>
+                                                            <th style="width: 10%" class="text-medium-table">FECHA</th>
+                                                            <th style="width: 25%" class="text-medium-table">TÍTULO</th>
+                                                            <th class="text-medium-table">RESUMEN</th>
+                                                            <th colspan="3" class="text-medium-table">ACCIONES</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="tbodyDocumentos">

@@ -112,7 +112,7 @@ function listarPenalidad(BEAN_PAGINATION) {
             fila += "<td class='text-center align-middle' class='text-small-table'>" + value.monto_contrato + "</td>";
             fila += "<td class='align-middle' class='text-small-table'>" + value.contratista + "</td>";
             fila += "<td class='align-middle' class='text-small-table'>" + value.ruc + "</td>";
-            fila += "<td class='align-middle' class='text-small-table'>" + value.objeto + "</td>";
+            //fila += "<td class='align-middle' class='text-small-table'>" + value.objeto + "</td>";
             fila += "<td class='align-middle' class='text-small-table'>" + value.tipo + "</td>";
             fila += "<td class='align-middle' class='text-small-table'>" + value.monto_penalidad + "</td>";
             fila += "<td class='align-middle '><button class='btn btn-secondary btn-sm editar-Penalidad'><i class='fas fa-edit'></i></button></td>";

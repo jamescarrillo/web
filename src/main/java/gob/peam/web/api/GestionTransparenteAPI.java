@@ -38,13 +38,12 @@ import org.apache.commons.logging.LogFactory;
  * @author James Carrillo
  */
 @MultipartConfig
-@WebServlet(name = "GestionTransparenteController", urlPatterns = {"/gestiontransparente/actasconciliacion",
-    "/gestiontransparente/actassesion", "/gestiontransparente/adquisiciones",
-    "/gestiontransparente/declaracionjurada", "/gestiontransparente/evaluacionactualizacion",
-    "/gestiontransparente/gestiondocumentos", "/gestiontransparente/indicadoresdesempenio",
-    "/gestiontransparente/itp", "/gestiontransparente/laudos", "/gestiontransparente/modificatoriaspac",
-    "/gestiontransparente/personal", "/gestiontransparente/directivos", "/gestiontransparente/proyectosinversion",
-    "/gestiontransparente/recomendacionesauditorias", "/gestiontransparente/viaticos"})
+@WebServlet(name = "GestionTransparenteController", urlPatterns = {
+    "/gestiontransparente/adquisiciones",
+    "/gestiontransparente/gestiondocumentos",
+    "/gestiontransparente/personal",
+    "/gestiontransparente/directivos",
+    "/gestiontransparente/viaticos"})
 public class GestionTransparenteAPI extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
@@ -86,26 +85,9 @@ public class GestionTransparenteAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             switch (request.getRequestURI().substring(request.getContextPath().length())) {
-                case "/gestiontransparente/actasconciliacion":
-
-                    break;
-                case "/gestiontransparente/actassesion":
-                    break;
                 case "/gestiontransparente/adquisiciones":
                     break;
-                case "/gestiontransparente/declaracionjurada":
-                    break;
-                case "/gestiontransparente/evaluacionactualizacion":
-                    break;
                 case "/gestiontransparente/gestiondocumentos":
-                    break;
-                case "/gestiontransparente/indicadoresdesempenio":
-                    break;
-                case "/gestiontransparente/itp":
-                    break;
-                case "/gestiontransparente/laudos":
-                    break;
-                case "/gestiontransparente/modificatoriaspac":
                     break;
                 case "/gestiontransparente/personal":
                     break;
@@ -140,10 +122,6 @@ public class GestionTransparenteAPI extends HttpServlet {
                             request.getRequestDispatcher("/jsp/gc/gestion_transparente/directivos.jsp").forward(request, response);
                             break;
                     }
-                    break;
-                case "/gestiontransparente/proyectosinversion":
-                    break;
-                case "/gestiontransparente/recomendacionesauditorias":
                     break;
                 case "/gestiontransparente/viaticos":
                     break;

@@ -39,7 +39,7 @@ public class EtiquetaDAOImpl implements EtiquetaDAO {
         PreparedStatement pst;
         ResultSet rs;
         try {
-            pst = conn.prepareStatement("SELECT COUNT(ID) AS COUNT FROM ETIQUETA WHERE "
+            pst = conn.prepareStatement("SELECT COUNT(ETIQ_ID) AS COUNT FROM ETIQUETA WHERE "
                     + "ETIQ_NOMBRE LIKE CONCAT('%',?,'%')");
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();

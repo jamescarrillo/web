@@ -13,6 +13,7 @@ import gob.peam.web.dao.others.DocumentoArcDigDAO;
 import gob.peam.web.dao.others.EtiquetaDAO;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -30,7 +31,7 @@ import javax.sql.DataSource;
  *
  * @author Juan Jose
  */
-@WebServlet(name = "DocumentoArcDigAPI", urlPatterns = {"/documentosarcdig"})
+@WebServlet(name = "DocumentoArcDigAPI", urlPatterns = {"/documentos/arcdig"})
 public class DocumentoArcDigAPI extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(DocumentoArcDigAPI.class.getName());
@@ -69,6 +70,7 @@ public class DocumentoArcDigAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
+            LOG.log(Level.INFO, "ACCION -> {0}", this.action);
             switch (this.action) {
                 case "paginarEtiquetas":
                     procesarEtiquetas(new BEAN_CRUD(this.etiquetaDAO.getPagination(getParametersEtiquetas())), response);
@@ -157,6 +159,12 @@ public class DocumentoArcDigAPI extends HttpServlet {
     private HashMap getParametersDocumentosArcDig(HttpServletRequest request) {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtTituloResumenDocumentosArcDig").toLowerCase());
+        if (this.parameters.get("FILTER").equals("")) {
+            //GET EL FILTRO DEL COMBO
+            if (!request.getParameter("comboEtiquetasDocumentosArcDig").equals("-1")) {
+                this.parameters.put("FILTER", request.getParameter("comboEtiquetasDocumentosArcDig").toLowerCase());
+            }
+        }
         if (request.getParameter("comboAnioDocumentosArcDig").equals("-1")) {
             this.parameters.put("SQL_ANIO", " ");
         } else {

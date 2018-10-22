@@ -7,7 +7,7 @@ package gob.peam.web.model;
 
 /**
  *
- * @author JhanxD
+ * @author JamesCarrillo
  */
 public class Penalidad {
     private Integer id;

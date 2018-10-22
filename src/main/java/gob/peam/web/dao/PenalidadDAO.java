@@ -9,7 +9,7 @@ import gob.peam.web.model.Penalidad;
 
 /**
  *
- * @author JhanxD
+ * @author JamesCarrillo
  */
 public interface PenalidadDAO extends CRUD<Penalidad> {
     

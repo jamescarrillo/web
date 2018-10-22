@@ -23,7 +23,7 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  *
- * @author JhanxD
+ * @author JamesCarrillo
  */
 public class PenalidadDAOImpl implements PenalidadDAO {
 

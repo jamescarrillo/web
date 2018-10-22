@@ -41,10 +41,11 @@ public class DocumentoArcDigDAOImpl implements DocumentoArcDigDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(DOCU_ID) AS COUNT FROM DOCUMENTO WHERE "
-                    + "DOCU_TITULO LIKE CONCAT('%',?,'%') OR DOCU_RESUMEN LIKE CONCAT('%',?,'%') "
+                    + "(LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') OR LOWER(DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
                     + parameters.get("SQL_ANIO") + " "
                     + parameters.get("SQL_ESTADO") + " ");
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            pst.setString(2, String.valueOf(parameters.get("FILTER")));
             LOG.log(Level.INFO, "PST[1] -> {0}", pst);
             rs = pst.executeQuery();
             while (rs.next()) {
@@ -52,17 +53,18 @@ public class DocumentoArcDigDAOImpl implements DocumentoArcDigDAO {
                 if (rs.getInt("COUNT") > 0) {
                     pst = conn.prepareStatement("SELECT DOCU_ID, USUA_ID, DOCU_TITULO, DOCU_RESUMEN, DOCU_FECHA_DOCX, "
                             + "DOCU_ORIGEN_ARCHIVO, TIDO_ID,  CATE_ID, DOCU_METADATA FROM DOCUMENTO WHERE "
-                            + "DOCU_TITULO LIKE CONCAT('%',?,'%') OR DOCU_RESUMEN LIKE CONCAT('%',?,'%') "
+                            + "(LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') OR LOWER(DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
                             + parameters.get("SQL_ANIO") + " "
                             + parameters.get("SQL_ESTADO") + " "
                             + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
                     pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    pst.setString(2, String.valueOf(parameters.get("FILTER")));
                     LOG.log(Level.INFO, "PST[2] -> {0}", pst);
                     rs = pst.executeQuery();
                     while (rs.next()) {
                         DocumentoArcDig obj = new DocumentoArcDig();
                         obj.setDocu_id(rs.getInt("DOCU_ID"));
-                        obj.setUsua_id(rs.getInt("USUA_PUBLIC_ID"));
+                        obj.setUsua_id(rs.getInt("USUA_ID"));
                         obj.setDocu_titulo(rs.getString("DOCU_TITULO"));
                         obj.setDocu_resumen(rs.getString("DOCU_RESUMEN"));
                         obj.setDocu_origen_archivo(rs.getString("DOCU_ORIGEN_ARCHIVO"));
