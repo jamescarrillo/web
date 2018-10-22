@@ -6,7 +6,7 @@
 package gob.peam.web.dao.impl;
 
 import gob.peam.web.dao.DocumentoDAO;
-import gob.peam.web.model.Directivo;
+import gob.peam.web.dao.SQLCloseable;
 import gob.peam.web.model.Documento;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
@@ -42,7 +42,7 @@ public class DocumentoDAOImpl implements DocumentoDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(DOCU_ID) AS COUNT FROM WEB.DOCUMENTO WHERE "
-                    + "DOCU_TITULO LIKE CONCAT('%',?,'%') "
+                    + "LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') "
                     + parameters.get("SQL_ANIO") + " "
                     + parameters.get("SQL_ESTADO") + " "
                     + parameters.get("SQL_CATE_ID"));
@@ -53,7 +53,7 @@ public class DocumentoDAOImpl implements DocumentoDAO {
                 beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
                 if (rs.getInt("COUNT") > 0) {
                     pst = conn.prepareStatement("SELECT * FROM WEB.DOCUMENTO WHERE "
-                            + "DOCU_TITULO LIKE CONCAT('%',?,'%') "
+                            + "LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') "
                             + parameters.get("SQL_ANIO") + " "
                             + parameters.get("SQL_ESTADO") + " "
                             + parameters.get("SQL_CATE_ID") + " "
@@ -102,18 +102,76 @@ public class DocumentoDAOImpl implements DocumentoDAO {
     @Override
     public BEAN_CRUD add(Documento obj, HashMap<String, Object> parameters) throws SQLException {
         /*CUANDO SE INSERTA UN DOCUMENTO OBTENIDO DEL ARCDIG, DOCU_ESTADO = FALSE Y DOCU_ACTIVO = TRUE*/
-        throw new UnsupportedOperationException("Not supported yet.");
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("INSERT INTO WEB.DOCUMENTO VALUES(?,?,?,?,?,?,?,?,?,?,?,?)");
+            pst.setInt(1, obj.getDocu_id());
+            pst.setInt(2, obj.getUsa_public_id());
+            pst.setString(3, obj.getDocu_descripcion());
+            pst.setString(4, obj.getDocu_titulo());
+            pst.setString(5, obj.getDocu_resumen());
+            pst.setString(6, obj.getDocu_origen_archivo());
+            pst.setInt(7, obj.getTido_id());
+            pst.setBoolean(8, obj.getDocu_estado());
+            pst.setBoolean(9, obj.getDocu_activo());
+            pst.setString(10, obj.getDocu_fecha_docx());
+            pst.setInt(11, obj.getCate_id());
+            pst.setString(12, obj.getDocu_metadata());
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override
     public BEAN_CRUD update(Documento obj, HashMap<String, Object> parameters) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("UPDATE WEB.DOCUMENTO SET DOCU_TITULO = ?, DOCU_RESUMEN = ? WHERE DOCU_ID = ?");
+            pst.setString(1, obj.getDocu_titulo());
+            pst.setString(2, obj.getDocu_resumen());
+            pst.setInt(3, obj.getDocu_id());
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override
     public BEAN_CRUD delete(long id, HashMap<String, Object> parameters) throws SQLException {
         //LOS DOCUMENTOS NO SE ELIMINAN SOLO CAMBIAN LA CAT_ID = 0
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("UPDATE WEB.DOCUMENTO SET CATE_ID = 0 WHERE DOCU_ID = ?");
+            pst.setInt(1, (int) id);
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override

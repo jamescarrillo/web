@@ -41,40 +41,40 @@ public class DirectivoDAOImpl implements DirectivoDAO {
         PreparedStatement pst;
         ResultSet rs;
         try {
-            pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.F00012 WHERE "
+            pst = conn.prepareStatement("SELECT COUNT(ID) AS COUNT FROM WEB.F00012 WHERE "
                     + "NOMBRES_APELLIDOS LIKE CONCAT('%',?,'%')");
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
             while (rs.next()) {
-                beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
-            }
-            pst = conn.prepareStatement("SELECT * FROM WEB.F00012 WHERE "
-                    + "NOMBRES_APELLIDOS LIKE CONCAT('%',?,'%') ORDER BY "
-                    + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
-            pst.setString(1, String.valueOf(parameters.get("FILTER")));
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                Directivo obj = new Directivo();
-                obj.setId(rs.getInt("ID"));
-                obj.setTratamiento(rs.getString("TRATAMIENTO"));
-                obj.setNombres_apellidos(rs.getString("NOMBRES_APELLIDOS"));
-                obj.setCargo(rs.getString("CARGO"));
-                obj.setNivel_remunerativo(rs.getString("NIVEL_REMUNERATIVO"));
-                obj.setNumero_dni(rs.getString("NUMERO_DNI"));
-                obj.setResolucion(rs.getString("RESOLUCION"));
-                obj.setFecha_designacion(rs.getDate("FECHA_DESIGNACION"));
-                obj.setTelefono(rs.getString("TELEFONO"));
-                obj.setFax(rs.getString("FAX"));
-                obj.setE_mail(rs.getString("E_MAIL"));
-                obj.setFoto(rs.getString("FOTO"));
-                obj.setProfesion(rs.getString("PROFESION"));
-                obj.setResumen(rs.getString("RESUMEN"));
-                obj.setInstitucion(rs.getString("INSTITUCION"));
-                obj.setRegimen_laboral(rs.getString("REGIMEN_LABORAL"));
-                obj.setRetribucion_mensual(rs.getDouble("RETRIBUCION_MENSUAL"));
-                obj.setHoja_vida(rs.getString("HOJA_VIDA"));
-                obj.setEstado(rs.getBoolean("ESTADO"));
-                list.add(obj);
+                beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
+                pst = conn.prepareStatement("SELECT * FROM WEB.F00012 WHERE "
+                        + "NOMBRES_APELLIDOS LIKE CONCAT('%',?,'%') ORDER BY "
+                        + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
+                pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                rs = pst.executeQuery();
+                while (rs.next()) {
+                    Directivo obj = new Directivo();
+                    obj.setId(rs.getInt("ID"));
+                    obj.setTratamiento(rs.getString("TRATAMIENTO"));
+                    obj.setNombres_apellidos(rs.getString("NOMBRES_APELLIDOS"));
+                    obj.setCargo(rs.getString("CARGO"));
+                    obj.setNivel_remunerativo(rs.getString("NIVEL_REMUNERATIVO"));
+                    obj.setNumero_dni(rs.getString("NUMERO_DNI"));
+                    obj.setResolucion(rs.getString("RESOLUCION"));
+                    obj.setFecha_designacion(rs.getDate("FECHA_DESIGNACION"));
+                    obj.setTelefono(rs.getString("TELEFONO"));
+                    obj.setFax(rs.getString("FAX"));
+                    obj.setE_mail(rs.getString("E_MAIL"));
+                    obj.setFoto(rs.getString("FOTO"));
+                    obj.setProfesion(rs.getString("PROFESION"));
+                    obj.setResumen(rs.getString("RESUMEN"));
+                    obj.setInstitucion(rs.getString("INSTITUCION"));
+                    obj.setRegimen_laboral(rs.getString("REGIMEN_LABORAL"));
+                    obj.setRetribucion_mensual(rs.getDouble("RETRIBUCION_MENSUAL"));
+                    obj.setHoja_vida(rs.getString("HOJA_VIDA"));
+                    obj.setEstado(rs.getBoolean("ESTADO"));
+                    list.add(obj);
+                }
             }
             beanpagination.setLIST(list);
             rs.close();

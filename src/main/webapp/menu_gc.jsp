@@ -36,14 +36,14 @@
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/personal" title="Convocatorias Personal">Convocatorias Personal</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/liquidacionobras" title="Liquidación Final de Obras">Liquidación Final Obras</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/penalidades" title="Penalidades">Penalidades</a></li>
-                        <li><a href="#" title="Procesos Exonerados">Procesos Exonerados</a></li>
-                        <li><a href="#" title="Subpervisión de Contratos">Supervisión Contratos</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/procesosexonerados" title="Procesos Exonerados">Procesos Exonerados</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/supervisioncontratos" title="Subpervisión de Contratos">Supervisión Contratos</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false" title="Gestión Transparente"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Gest. Transparente</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/actasconciliacion" title="Actas de Conciliación">Ac. Conciliación</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/actassesion" title="Actas de Sesión de Consejo Directivo">Ac. Sesión de C.D</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/actassession" title="Actas de Sesión de Consejo Directivo">Ac. Sesión de C.D</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/adquisiciones" title="Adquisiciones y Contrataciones">Ad. y Contrataciones</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/declaracionjurada" title="Declaraciones Juradas">Declaraciones Juradas</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/evaluacionactualizacion" title="Evaluación de Actualización">Evaluación Actualización</a></li>
