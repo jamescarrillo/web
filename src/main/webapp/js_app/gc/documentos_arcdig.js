@@ -11,7 +11,7 @@ $(document).ready(function () {
         document.getElementsByTagName("body")[0].style.paddingRight = "0";
     });
 
-    procesarAjaxEtiquetas();
+    //procesarAjaxEtiquetas();
 
 });
 
