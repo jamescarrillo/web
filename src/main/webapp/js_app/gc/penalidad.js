@@ -49,7 +49,7 @@ $(document).ready(function () {
 
 function procesarAjaxPenalidad() {
     var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
-    if ($('#nameForm').val() !== "FrmPenalidad") {
+    if ($('#nameForm').val().toLowerCase() !== "frmpenalidad") {
         //AGREGAMOS LOS PARAMETROS DEL FORMULARIO DE BUSQUEDA
         datosSerializadosCompletos += "&txtPenalidad=" + $('#txtPenalidad').val();
         datosSerializadosCompletos += "&comboAnio=" + $('#comboAnio').val();

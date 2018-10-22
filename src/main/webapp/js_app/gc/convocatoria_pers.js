@@ -49,7 +49,7 @@ $(document).ready(function () {
 
 function procesarAjaxConvocatoriaPers() {
     var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
-    if ($('#nameForm').val().toLowerCase() !== "Frmconvocatoriapers") {
+    if ($('#nameForm').val().toLowerCase() !== "frmconvocatoriapers") {
         //AGREGAMOS LOS PARAMETROS DEL FORMULARIO DE BUSQUEDA
         datosSerializadosCompletos += "&txtConvocatoriaPers=" + $('#txtConvocatoriaPers').val();
         datosSerializadosCompletos += "&comboAnio=" + $('#comboAnio').val();
