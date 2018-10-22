@@ -106,7 +106,12 @@ public class Convocatoria_PersAPI extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        session = request.getSession();
+        if (session.getAttribute("user") == null) {
+            response.sendRedirect("../login");
+        } else {
+            processRequest(request, response);
+        }
     }
 
     /**
@@ -120,7 +125,12 @@ public class Convocatoria_PersAPI extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        session = request.getSession();
+        if (session.getAttribute("user") == null) {
+            response.sendRedirect("../login");
+        } else {
+            processRequest(request, response);
+        }
     }
 
     /**
