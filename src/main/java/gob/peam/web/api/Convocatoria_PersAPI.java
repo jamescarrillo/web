@@ -29,7 +29,7 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  *
- * @author JhanxD
+ * @author JamesCarrillo
  */
 @WebServlet(name = "Convocatoria_PersAPI", urlPatterns = {"/convocatorias/personal"})
 public class Convocatoria_PersAPI extends HttpServlet {

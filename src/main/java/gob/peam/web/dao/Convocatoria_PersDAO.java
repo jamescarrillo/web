@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 /**
  *
- * @author JhanxD
+ * @author JamesCarrillo
  */
 public interface Convocatoria_PersDAO extends CRUD<Convocatoria_Pers>{
     

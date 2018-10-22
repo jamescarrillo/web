@@ -23,7 +23,7 @@ import javax.sql.DataSource;
 
 /**
  *
- * @author JhanxD
+ * @author JamesCarrillo
  */
 public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
 

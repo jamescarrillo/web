@@ -9,7 +9,7 @@ import java.sql.Date;
 
 /**
  *
- * @author JhanxD
+ * @author JamesCarrillo
  */
 public class Convocatoria_Pers {
     

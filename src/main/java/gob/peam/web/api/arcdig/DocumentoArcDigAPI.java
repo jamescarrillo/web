@@ -28,7 +28,7 @@ import javax.sql.DataSource;
 
 /**
  *
- * @author Juan Jose
+ * @author James Carrillo
  */
 @WebServlet(name = "DocumentoArcDigAPI", urlPatterns = {"/documentos/arcdig"})
 public class DocumentoArcDigAPI extends HttpServlet {
@@ -69,6 +69,7 @@ public class DocumentoArcDigAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
+            LOG.log(Level.INFO, "ACCION {0}", this.action);
             switch (this.action) {
                 case "paginarEtiquetas":
                     procesarEtiquetas(new BEAN_CRUD(this.etiquetaDAO.getPagination(getParametersEtiquetas())), response);

@@ -1,7 +1,7 @@
 <%-- 
     Document   : penalidad
     Created on : 21/10/2018, 04:14:18 PM
-    Author     : Juan Barrantes Perez
+    Author     : James Carrillo
 --%>
 
 <!DOCTYPE html>
@@ -57,15 +57,13 @@
                                     <input type="hidden" id="numberPagePenalidad" name="numberPagePenalidad" value="1">
                                     <form id="FrmPenalidad">
                                         <div class="row mt-3">
-                                            <div class="form-group col-lg-6 col-12 mb-3">
+                                            <div class="form-group col-lg-7 col-md-8 col-12 mb-3">
                                                 <input type="text" name="txtPenalidad" id="txtPenalidad" class="form-control form-control-sm" placeholder="CONTRATISTA">
                                             </div>
-                                            <div class="form-group col-lg-2 col-md-6 col-12 mb-3">
+                                            <div class="input-group col-lg-5 col-md-4 col-12 mb-3">
                                                 <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPenalidad'>
 
                                                 </select>
-                                            </div>
-                                            <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
                                                 <button type="submit" id="btnBuscarPenalidad" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Penalidad" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
                                                 <button type="button" id="btnAbrirNuevoPenalidad" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Penalidad" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
@@ -79,10 +77,9 @@
                                                     <thead>
                                                         <tr>
                                                             <th style="width: 10%" class="text-small-table">CONTRATO S/.</th>
-                                                            <th style="width: 10%" class="text-small-table">CONTRATISTAS</th>
+                                                            <th style="width: 40%" class="text-small-table">CONTRATISTAS</th>
                                                             <th style="width: 10%" class="text-small-table">R.U.C.</th>
-                                                            <th class="text-small-table">OBJETO</th>
-                                                            <th style="width: 10%" class="text-small-table">TIPO</th>
+                                                            <th style="width: 20%" class="text-small-table">TIPO</th>
                                                             <th style="width: 10%" class="text-small-table">PENALIDAD S/.</th>
                                                             <th colspan="2" class="text-small-table">ACCIONES</th>
                                                         </tr>
