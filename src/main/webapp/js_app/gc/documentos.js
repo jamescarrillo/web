@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    
+    cargarAniosCombo($('#comboAnio'), 2000, "-1", 'TODOS');
 
     $("#FrmDocumentos").submit(function () {
         $("#nameForm").val("FrmDocumentos");
@@ -28,16 +30,16 @@ $(document).ready(function () {
         //$("#validarNombre").fadeOut();
     });
 
-    $('#btnAbrirNuevoDocumento').click(function () {
-        $('#FrmFuncionariosModal input').val("");
-        $('#FrmFuncionariosModal select').val("-1");
-        $('#FrmFuncionariosModal input').parent().removeClass("has-danger");
-        $('#FrmFuncionariosModal select').parent().removeClass("has-danger");
-        $('#actionDocumentos').val("addDocumento");
-        $('#txtTituloModalManDocumento').html("REGISTRAR DOCUMENTO");
-        $('#ventanaManDocumento').modal("show");
-        document.getElementsByTagName("body")[0].style.paddingRight = "0";
-    });
+//    $('#btnAbrirNuevoDocumento').click(function () {
+//        $('#FrmFuncionariosModal input').val("");
+//        $('#FrmFuncionariosModal select').val("-1");
+//        $('#FrmFuncionariosModal input').parent().removeClass("has-danger");
+//        $('#FrmFuncionariosModal select').parent().removeClass("has-danger");
+//        $('#actionDocumentos').val("addDocumento");
+//        $('#txtTituloModalManDocumento').html("REGISTRAR DOCUMENTO");
+//        $('#ventanaManDocumento').modal("show");
+//        document.getElementsByTagName("body")[0].style.paddingRight = "0";
+//    });
 
     addEventoCombosPaginar();
     //valicacionesCamposDocumentos();

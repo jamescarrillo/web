@@ -29,7 +29,7 @@ function viewAlertDelete(entidad) {
         cancelButtonColor: '#d33',
         confirmButtonText: 'Sí, continuar!',
         cancelButtonText: 'No, cancelar!',
-        confirmButtonClass: 'btn btn-primary',
+        confirmButtonClass: 'btn btn-info',
         cancelButtonClass: 'btn btn-danger',
         buttonsStyling: false
     }).then((result) => {

@@ -31,7 +31,7 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-@WebServlet(name = "PenalidadAPI", urlPatterns = {"/penalidad"})
+@WebServlet(name = "PenalidadAPI", urlPatterns = {"/convocatorias/penalidades"})
 public class PenalidadAPI extends HttpServlet {
     
     @Resource(name = "jdbc/dbweb")

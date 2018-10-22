@@ -30,12 +30,12 @@
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-folder-multiple-outline"></i><span class="hide-menu">Convocatorias</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/adicionalobras" title="Adicionales de Obras">Ad. de Obras</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/adicionalesobras" title="Adicionales de Obras">Ad. de Obras</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/comitesencargados" title="Comites Encargados">Comites Encargados</a></li>
-                        <li><a href="#" title="Convocatorias Bienes/Servicios/Conseciones">Convocatorias B/S/C</a></li>
-                        <li><a href="#" title="Convocatorias Personal">Convocatorias Personal</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/bsc" title="Convocatorias Bienes/Servicios/Conseciones">Convocatorias B/S/C</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/personal" title="Convocatorias Personal">Convocatorias Personal</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/liquidacionobras" title="Liquidación Final de Obras">Liquidación Final Obras</a></li>
-                        <li><a href="#" title="Penalidades">Penalidades</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/penalidades" title="Penalidades">Penalidades</a></li>
                         <li><a href="#" title="Procesos Exonerados">Procesos Exonerados</a></li>
                         <li><a href="#" title="Subpervisión de Contratos">Supervisión Contratos</a></li>
                     </ul>

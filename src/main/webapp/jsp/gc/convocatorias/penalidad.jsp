@@ -78,13 +78,13 @@
                                                     class="table color-bordered-table muted-bordered-table table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th style="width: 10%"><font size=1>CONTRATO S/.</font></th>
-                                                            <th style="width: 10%"><font size=1>CONTRATISTAS</font></th>
-                                                            <th style="width: 10%"><font size=1>R.U.C.</font></th>
-                                                            <th><font size=1>OBJETO</font></th>
-                                                            <th style="width: 10%"><font size=1>TIPO</font></th>
-                                                            <th style="width: 10%"><font size=1>PENALIDAD S/.</font></th>
-                                                            <th colspan="2"><font size=1>ACCIONES</font></th>
+                                                            <th style="width: 10%" class="text-small-table">CONTRATO S/.</th>
+                                                            <th style="width: 10%" class="text-small-table">CONTRATISTAS</th>
+                                                            <th style="width: 10%" class="text-small-table">R.U.C.</th>
+                                                            <th class="text-small-table">OBJETO</th>
+                                                            <th style="width: 10%" class="text-small-table">TIPO</th>
+                                                            <th style="width: 10%" class="text-small-table">PENALIDAD S/.</th>
+                                                            <th colspan="2" class="text-small-table">ACCIONES</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="tbodyPenalidad">

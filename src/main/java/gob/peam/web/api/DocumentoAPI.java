@@ -32,7 +32,7 @@ import org.apache.commons.logging.LogFactory;
  */
 @WebServlet(name = "DocumentoAPI", urlPatterns = {
     "/documentos",
-    "/convocatorias/adicionalobras",
+    "/convocatorias/adicionalesobras",
     "/convocatorias/comitesencargados",
     "/convocatorias/liquidacionobras",
     ""})

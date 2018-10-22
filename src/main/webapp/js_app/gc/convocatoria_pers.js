@@ -60,7 +60,7 @@ function procesarAjaxConvocatoriaPers() {
     datosSerializadosCompletos += "&action=" + $('#actionConvocatoriaPers').val();
     console.log(datosSerializadosCompletos);
     $.ajax({
-        url: getContext() + '/convocatoriapersonal',
+        url: getContext() + '/convocatorias/personal',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
