@@ -46,7 +46,7 @@ function viewAlertDelete(entidad) {
                         showCancelButton: false,
                         confirmButtonColor: '#3085d6',
                         confirmButtonText: "Aceptar",
-                        confirmButtonClass: 'btn btn-primary',
+                        confirmButtonClass: 'btn btn-info',
                         buttonsStyling: false
                     }
             );

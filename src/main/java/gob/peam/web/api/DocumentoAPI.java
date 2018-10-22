@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import gob.peam.web.dao.DocumentoDAO;
 import gob.peam.web.dao.impl.DocumentoDAOImpl;
+import gob.peam.web.model.Documento;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -23,8 +24,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  *
@@ -34,8 +33,10 @@ import org.apache.commons.logging.LogFactory;
     "/documentos/operaciones",
     "/convocatorias/adicionalesobras",
     "/convocatorias/comitesencargados",
+    "/convocatorias/liquidacionobras",
+    "/convocatorias/supervisioncontratos",
     "/gestiontransparente/actasconciliacion",
-    "/gestiontransparente/actassesion",
+    "/gestiontransparente/actassession",
     "/gestiontransparente/declaracionjurada",
     "/gestiontransparente/evaluacionactualizacion",
     "/gestiontransparente/itp",
@@ -52,7 +53,7 @@ public class DocumentoAPI extends HttpServlet {
     private Gson json;
     private String jsonResponse;
     private HashMap<String, Object> parameters;
-    private final Log logger = LogFactory.getLog(DocumentoAPI.class);
+    private static final Logger LOG = Logger.getLogger(DocumentoAPI.class.getName());
     private String action;
 
     private DocumentoDAO documentoDAO;
@@ -80,12 +81,19 @@ public class DocumentoAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-            this.logger.info("ACTION -> " + this.action);
+            LOG.info(action);
             switch (this.action) {
                 case "paginarDocumentos":
                     procesarDocumento(new BEAN_CRUD(this.documentoDAO.getPagination(getParametersDocumentos(request))), response);
                     break;
                 case "addDocumento":
+                    procesarDocumento(this.documentoDAO.add(getDocumento(request), getParametersDocumentos(request)), response);
+                    break;
+                case "updateDocumento":
+                    procesarDocumento(this.documentoDAO.update(getDocumento(request), getParametersDocumentos(request)), response);
+                    break;
+                case "deleteDocumento":
+                    procesarDocumento(this.documentoDAO.delete(Integer.parseInt(request.getParameter("txtIdDocumentoER")), getParametersDocumentos(request)), response);
                     break;
                 default:
                     request.getRequestDispatcher("/jsp/gc/global/documento.jsp").forward(request, response);
@@ -108,8 +116,8 @@ public class DocumentoAPI extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        session = request.getSession();
-        if (session.getAttribute("user") == null) {
+        this.session = request.getSession();
+        if (this.session.getAttribute("user") == null) {
             response.sendRedirect("../login");
         } else {
             processRequest(request, response);
@@ -127,21 +135,21 @@ public class DocumentoAPI extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        session = request.getSession();
-        if (session.getAttribute("user") == null) {
+        this.session = request.getSession();
+        if (this.session.getAttribute("user") == null) {
             response.sendRedirect("../login");
         } else {
             processRequest(request, response);
         }
     }
 
-    /*FUNCIONARIOS*/
+    /*DOCUMENTOS*/
     private void procesarDocumento(BEAN_CRUD beanCrud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(beanCrud);
             response.setContentType("application/json");
             response.getWriter().write(this.jsonResponse);
-            this.logger.info(this.jsonResponse);
+            LOG.info(this.jsonResponse);
         } catch (IOException ex) {
             Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -161,7 +169,7 @@ public class DocumentoAPI extends HttpServlet {
             this.parameters.put("SQL_ESTADO", "AND DOCU_ESTADO = " + request.getParameter("comboTipoListaDocumentos") + " ");
         }
         this.parameters.put("SQL_CATE_ID", "AND CATE_ID = " + getCategoriaId(request));
-        this.parameters.put("SQL_ORDERS", "DOCU_TITULO");
+        this.parameters.put("SQL_ORDERS", "DOCU_FECHA_DOCX DESC, DOCU_ID DESC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageDocumentos") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageDocumentos")) - 1)
@@ -169,16 +177,67 @@ public class DocumentoAPI extends HttpServlet {
         return this.parameters;
     }
 
+    private Documento getDocumento(HttpServletRequest request) {
+        Documento documento = new Documento();
+        if (request.getParameter("action").equals("updateDocumento")) {
+            documento.setDocu_id(Integer.parseInt(request.getParameter("txtIdDocumentoER")));
+            documento.setDocu_titulo(request.getParameter("txtTituloDocumentoER"));
+            documento.setDocu_resumen(request.getParameter("txtResumenDocumentoER"));
+        } else {
+            documento.setDocu_id(Integer.parseInt(request.getParameter("txtIdDocumentoER")));
+            documento.setUsa_public_id(Integer.parseInt(request.getParameter("txtUsuaPublicIdDocumentoER")));
+            documento.setDocu_descripcion(request.getParameter("txtDescripcionDocumentoER"));
+            documento.setDocu_titulo(request.getParameter("txtTituloDocumentoER"));
+            documento.setDocu_resumen(request.getParameter("txtResumenDocumentoER"));
+            documento.setDocu_origen_archivo(request.getParameter("txtOrigenDocumentoER"));
+            documento.setTido_id(Integer.parseInt(request.getParameter("txtTidoDocumentoER")));
+            documento.setDocu_estado(Boolean.FALSE);
+            documento.setDocu_activo(Boolean.TRUE);
+            documento.setDocu_fecha_docx(request.getParameter("txtFechaDoxDocumentoER"));
+            documento.setCate_id(Integer.parseInt(getCategoriaId(request)));
+            documento.setDocu_metadata(request.getParameter("txtMetaDataDocumentoER"));
+        }
+        return documento;
+    }
+
     private String getCategoriaId(HttpServletRequest request) {
-        String categoria_ia = "0"; //LOS ELIMINADOS
-        switch (request.getRequestURI().substring(request.getContextPath().length())) {
-            case "/convocatorias/adicionalobras":
-                categoria_ia = "200";
+        String categoria_id = "0"; //LOS ELIMINADOS
+        switch (request.getParameter("urlDocumentos")) {
+            case "/convocatorias/adicionalesobras":
+                categoria_id = "200";
                 break;
-            case "":
+            case "/convocatorias/comitesencargados":
+                categoria_id = "400";
+                break;
+            case "/convocatorias/liquidacionobras":
+                categoria_id = "100";
+                break;
+            case "/convocatorias/supervisioncontratos":
+                categoria_id = "300";
+                break;
+            case "/gestiontransparente/actassession":
+                categoria_id = "600";
+                break;
+            case "/gestiontransparente/evaluacionactualizacion":
+                categoria_id = "800";
+                break;
+            case "/gestiontransparente/indicadoresdesempenio":
+                categoria_id = "900";
+                break;
+            case "/gestiontransparente/itp":
+                categoria_id = "1300";
+                break;
+            case "/gestiontransparente/laudos":
+                categoria_id = "500";
+                break;
+            case "/gestiontransparente/modificatoriaspac":
+                categoria_id = "1100";
+                break;
+            case "/gestiontransparente/recomendacionesauditorias":
+                categoria_id = "700";
                 break;
         }
-        return categoria_ia;
+        return categoria_id;
     }
 
     /**

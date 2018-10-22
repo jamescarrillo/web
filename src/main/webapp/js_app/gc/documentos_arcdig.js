@@ -18,8 +18,9 @@ $(document).ready(function () {
         $('#actionDocumentosArcDig').val("paginarDocumentosArcDig");
         $('#numberPageDocumentosArcDig').val("1");
         $('#txtTituloModalDocumentosArcDig').html("GESTIÓN DE DOCUMENTOS [ARCDIG]");
-        procesarAjaxDocumentosArcDig();
+        //procesarAjaxDocumentosArcDig();
         $('#ventanaDocumentosArcDig').modal("show");
+        $('#modalCargandoDocumentosArcDig').modal("show");
         document.getElementsByTagName("body")[0].style.paddingRight = "0";
     });
 
@@ -27,8 +28,12 @@ $(document).ready(function () {
         procesarAjaxDocumentosArcDig();
     });
 
+    $("#modalCargandoDocumentos2").on('shown.bs.modal', function () {
+        procesarAjaxDocumentosADD();
+    });
+
     procesarAjaxEtiquetas();
-    
+
     addEventoCombosPaginar();
 
 });
@@ -42,7 +47,7 @@ function procesarAjaxEtiquetas() {
         dataType: 'json',
         success: function (jsonResponse) {
             $('#modalCargandoDocumentosArcDig').modal("hide");
-            $('#comboEtiquetasDocumentosArcDig').append("<option value='-1'>ETIQUETA...</option>");
+            $('#comboEtiquetasDocumentosArcDig').append("<option value='-1'>ETIQUETA</option>");
             $.each(jsonResponse.BEAN_PAGINATION.LIST, function (index, value) {
                 $('#comboEtiquetasDocumentosArcDig').append("<option value='" + value.etiq_nombre + "'>" + value.etiq_nombre + "</option>");
             });
@@ -112,10 +117,70 @@ function listarDocumentosArcDig(BEAN_PAGINATION) {
                 $('#nameFormArcDig'), 'FrmDocumentosArcDig', $('#modalCargandoDocumentosArcDig'));
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
-
         $('#txtTituloResumenDocumentosArcDig').focus();
+        agregarEventosSeleccionarDocumentos();
     } else {
         $pagination.twbsPagination('destroy');
         viewAlert('warning', 'No se enconntraron resultados');
     }
+}
+
+function agregarEventosSeleccionarDocumentos() {
+    var tr;
+    $('.seleccionar-documento').each(function (index, value) {
+        $(this).click(function () {
+            tr = $(this.parentElement.parentElement);
+            swal({
+                title: 'PEAM',
+                text: "¿Desea agregar este Documento?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, continuar!',
+                cancelButtonText: 'No, cancelar!',
+                confirmButtonClass: 'btn btn-info',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.value) {
+                    $('#txtIdDocumentoER').val($(tr).attr('docu_id'));
+                    $('#txtUsuaPublicIdDocumentoER').val($(tr).attr('usua_id'));
+                    $('#txtTituloDocumentoER').val($(tr).attr('docu_titulo'));
+                    $('#txtResumenDocumentoER').val($(tr).attr('docu_resumen'));
+                    $('#txtOrigenDocumentoER').val($(tr).attr('docu_origen_archivo'));
+                    $('#txtTidoDocumentoER').val($(tr).attr('tido_id'));
+                    $('#txtFechaDoxDocumentoER').val($(tr).attr('docu_fecha_docx'));
+                    $('#txtMetaDataDocumentoER').val($(tr).attr('docu_metadata'));
+                    //$('#modalCargandoDocumentos2').modal("show");
+                }
+            });
+            $('.swal2-confirm').css("margin-right", "20px");
+        });
+    });
+}
+
+function procesarAjaxDocumentosADD() {
+    var pathname = window.location.pathname;
+    pathname = pathname.substring(getContext().length, pathname.length);
+    var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
+    datosSerializadosCompletos += "&action=" + $('#actionDocumentos').val();
+    datosSerializadosCompletos += "&urlDocumentos=" + pathname;
+    $.ajax({
+        url: getContext() + '/documentos/operaciones',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            console.log(jsonResponse);
+            $('#modalCargandoDocumentos2').modal("hide");
+            listarDocumentos(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            $('#modalCargandoDocumentos2').modal("hide");
+            /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
+            viewAlert('error', 'Error interno en el servidor!');
+        }
+    });
+    return false;
 }

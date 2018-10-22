@@ -49,6 +49,7 @@
                                     <input type="hidden" id="nameForm" value="FrmDocumentos">
                                     <input type="hidden" id="actionDocumentos" name="action" value="paginarDocumentos">
                                     <input type="hidden" id="numberPageDocumentos" name="numberPageDocumentos" value="1">
+                                    <input type="hidden" id="urlDocumentos" name="urlDocumentos" value="<%out.print(request.getParameter("url"));%>">
                                     <form id="FrmDocumentos">
                                         <div class="row mt-3">
                                             <div class="form-group col-lg-6 col-12 mb-3">
@@ -124,7 +125,7 @@
                     <%@ include file="../../../temas_gc.jsp"%>
                 </div>
                 <div class="modal fade" id="ventanaManDocumento" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <form id="FrmDocumentoModal">
                                 <div class="modal-header">
@@ -136,8 +137,22 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtTituloDocumentoER">TÍTULO</label>
+                                            <input type="text" class="form-control form-control-sm" id="txtTituloDocumentoER" name="txtTituloDocumentoER" placeholder="TÍTULO">
+                                        </div>
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtResumenDocumentoER">RESUMEN</label>
+                                            <textarea type="text" class="form-control form-control-sm" id="txtResumenDocumentoER" name="txtResumenDocumentoER" placeholder="RESUMEN" rows="6"></textarea>
+                                        </div>
                                     </div>
+                                    <input type="hidden" id="txtIdDocumentoER">
+                                    <input type="hidden" id="txtUsuaPublicIdDocumentoER">
+                                    <input type="hidden" id="txtDescripcionDocumentoER">
+                                    <input type="hidden" id="txtOrigenDocumentoER">
+                                    <input type="hidden" id="txtTidoDocumentoER">
+                                    <input type="hidden" id="txtFechaDoxDocumentoER">
+                                    <input type="hidden" id="txtMetaDataDocumentoER">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
@@ -151,6 +166,19 @@
                 </div>
                 <%@ include file="documentos_arcdig.jsp"%>
                 <div class="modal fade" id="modalCargandoDocumentos" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="progress" style="margin-bottom: 0px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                        Cargando...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalCargandoDocumentos2" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-body">

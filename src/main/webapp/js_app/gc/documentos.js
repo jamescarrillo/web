@@ -48,17 +48,19 @@ $(document).ready(function () {
 });
 
 function procesarAjaxDocumentos() {
+    var pathname = window.location.pathname;
+    pathname = pathname.substring(getContext().length, pathname.length);
     var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
     datosSerializadosCompletos += "&numberPageDocumentos=" + $('#numberPageDocumentos').val();
     datosSerializadosCompletos += "&sizePageDocumentos=" + $('#sizePageDocumentos').val();
     datosSerializadosCompletos += "&action=" + $('#actionDocumentos').val();
+    datosSerializadosCompletos += "&urlDocumentos=" + pathname;
     $.ajax({
         url: getContext() + '/documentos/operaciones',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoDocumentos').modal("hide");
             if ($('#actionDocumentos').val().toLowerCase() === "paginardocumentos") {
                 listarDocumentos(jsonResponse.BEAN_PAGINATION);
@@ -109,9 +111,9 @@ function listarDocumentos(BEAN_PAGINATION) {
             fila += "<td class='text-center align-middle text-medium-table " + text_color + "'>" + value.docu_fecha_docx + "</td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.docu_titulo + "</td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.docu_resumen + "</td>";
-            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-success btn-sm descargar-doc' data-toggle='tooltip' title='Descargar Documento'><i class='fa fa-download'></i></button></td>";
-            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm editar-documento'><i class='fas fa-edit'></i></button></td>";
-            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm eliminar-documento'><i class='fas fa-trash-alt'></i></button></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><a href='http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=" + value.docu_id + "' target='_blank' class='btn btn-success btn-sm descargar-doc' data-toggle='tooltip' title='Descargar Documento'><i class='fa fa-download'></i></a></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm editar-documento' title='Editar Documento'><i class='fas fa-edit'></i></button></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm eliminar-documento' title='Eliminar Documento'><i class='fas fa-trash-alt'></i></button></td>";
             fila += "</tr>";
             $('#tbodyDocumentos').append(fila);
         });
@@ -121,7 +123,7 @@ function listarDocumentos(BEAN_PAGINATION) {
                 $('#nameForm'), 'FrmDocumentos', $('#modalCargandoDocumentos'));
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
-        //agregarEventosDocumentos();
+        agregarEventosDocumentos();
         $('#txtTitulo').focus();
     } else {
         $pagination.twbsPagination('destroy');
@@ -130,47 +132,14 @@ function listarDocumentos(BEAN_PAGINATION) {
 }
 
 function agregarEventosDocumentos() {
-    $('.editar-funcionario').each(function () {
+    $('.editar-documento').each(function () {
         $(this).click(function () {
-            $('#txtIdFuncionarioER').val($(this.parentElement.parentElement).attr('id'));
-            if ($(this.parentElement.parentElement).attr('tratamiendo') !== "undefined") {
-                $('#txtTratamientoER').val($(this.parentElement.parentElement).attr('tratamiendo'));
-            } else {
-                $('#txtTratamientoER').val("");
-            }
-            if ($(this.parentElement.parentElement).attr('resumen') !== "undefined") {
-                $('#txtResumenER').val($(this.parentElement.parentElement).attr('resumen'));
-            } else {
-                $('#txtResumenER').val("");
-            }
-            if ($(this.parentElement.parentElement).attr('fecha_inicio') !== "undefined") {
-                $('#txtFechaInicioER').val($(this.parentElement.parentElement).attr('fecha_inicio'));
-            } else {
-                $('#txtFechaInicioER').val("");
-            }
-            $('#txtNombreCompletoER').val($(this.parentElement.parentElement).attr('nombres_apellidos'));
-            $('#txtDniER').val($(this.parentElement.parentElement).attr('numero_dni'));
-            $('#txtDesignadoPorER').val($(this.parentElement.parentElement).attr('resolucion'));
-            if ($(this.parentElement.parentElement).attr('fecha_designacion') !== "" && $(this.parentElement.parentElement).attr('fecha_designacion') !== "undefined") {
-                $('#datePickerFechaDesignacion').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha_designacion')));
-            }
-            $('#comboOficinaER').val($(this.parentElement.parentElement).attr('organigrama'));
-            $('#txtCargoER').val($(this.parentElement.parentElement).attr('cargo'));
-            $('#txtNivelER').val($(this.parentElement.parentElement).attr('nivel_remunerativo'));
-            $('#txtRegimenLaboralER').val($(this.parentElement.parentElement).attr('regimen_laboral'));
-            $('#txtRetribucionMensualER').val($(this.parentElement.parentElement).attr('retribucion_mensual'));
-            $('#txtProfesionER').val($(this.parentElement.parentElement).attr('profesion'));
-            $('#txtTelefonoER').val($(this.parentElement.parentElement).attr('telefono'));
-            $('#txtFaxER').val($(this.parentElement.parentElement).attr('fax'));
-            $('#txtEmailER').val($(this.parentElement.parentElement).attr('e_mail'));
-            $('#comboDestacadoER').val($(this.parentElement.parentElement).attr('destacado'));
-            $('#txtCv').val($(this.parentElement.parentElement).attr('hoja_vida'));
-            $('#comboEstadoER').val($(this.parentElement.parentElement).attr('estado'));
-            //MOSTRAMOS LA FOTO DE PERFIL
-            $('#idItemDL').trigger('click');
-            $('#actionFuncionarios').val('updateFuncionario');
-            $('#txtTituloModalManFuncionarios').html("EDITAR FUNCIONARIO");
-            $('#ventanaManFuncionarios').modal("show");
+            $('#txtIdDocumentoER').val($(this.parentElement.parentElement).attr('docu_id'));
+            $('#txtTituloDocumentoER').val($(this.parentElement.parentElement).attr('docu_titulo'));
+            $('#txtResumenDocumentoER').val($(this.parentElement.parentElement).attr('docu_resumen'));
+            $('#actionDocumentos').val('updateDocumento');
+            $('#txtTituloModalManDocumento').html("EDITAR DOCUMENTO");
+            $('#ventanaManDocumento').modal("show");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
@@ -180,11 +149,6 @@ function agregarEventosDocumentos() {
         });
     });
 
-    $('.descargar-cv').each(function () {
-        $(this).click(function () {
-            viewAlert('warning', 'No se encontró la hoja de vida!');
-        });
-    });
     //viewAlert('error', 'Error interno en el servidor!');
     /*
      var botones = document.getElementsByClassName("eliminar");
