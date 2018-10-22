@@ -30,7 +30,7 @@ import javax.sql.DataSource;
  *
  * @author Juan Jose
  */
-@WebServlet(name = "DocumentoArcDigAPI", urlPatterns = {"/documentosarcdig"})
+@WebServlet(name = "DocumentoArcDigAPI", urlPatterns = {"/documentos/arcdig"})
 public class DocumentoArcDigAPI extends HttpServlet {
 
     private static final Logger LOG = Logger.getLogger(DocumentoArcDigAPI.class.getName());

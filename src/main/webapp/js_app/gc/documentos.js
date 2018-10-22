@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     cargarAniosCombo($('#comboAnio'), 2000, "-1", 'TODOS');
 
     $("#FrmDocumentos").submit(function () {
@@ -53,7 +53,7 @@ function procesarAjaxDocumentos() {
     datosSerializadosCompletos += "&sizePageDocumentos=" + $('#sizePageDocumentos').val();
     datosSerializadosCompletos += "&action=" + $('#actionDocumentos').val();
     $.ajax({
-        url: getContext() + '/documentos',
+        url: getContext() + '/documentos/operaciones',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',

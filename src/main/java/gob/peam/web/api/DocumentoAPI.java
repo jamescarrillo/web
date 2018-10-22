@@ -31,7 +31,7 @@ import org.apache.commons.logging.LogFactory;
  * @author JamesCarrillo
  */
 @WebServlet(name = "DocumentoAPI", urlPatterns = {
-    "/documentos",
+    "/documentos/operaciones",
     "/convocatorias/adicionalesobras",
     "/convocatorias/comitesencargados",
     "/convocatorias/liquidacionobras",
@@ -74,8 +74,6 @@ public class DocumentoAPI extends HttpServlet {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
             this.logger.info("ACTION -> " + this.action);
             switch (this.action) {
-                case "getAnios":
-                    break;
                 case "paginarDocumentos":
                     procesarDocumento(new BEAN_CRUD(this.documentoDAO.getPagination(getParametersDocumentos(request))), response);
                     break;
