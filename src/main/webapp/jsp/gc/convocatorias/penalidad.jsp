@@ -76,11 +76,11 @@
                                                     class="table color-bordered-table muted-bordered-table table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th style="width: 10%" class="text-small-table">CONTRATO S/.</th>
+                                                            <th style="width: 15%" class="text-small-table">CONTRATO S/.</th>
                                                             <th style="width: 40%" class="text-small-table">CONTRATISTAS</th>
                                                             <th style="width: 10%" class="text-small-table">R.U.C.</th>
-                                                            <th style="width: 20%" class="text-small-table">TIPO</th>
-                                                            <th style="width: 10%" class="text-small-table">PENALIDAD S/.</th>
+                                                            <th style="width: 15%" class="text-small-table">TIPO</th>
+                                                            <th style="width: 15%" class="text-small-table">PENALIDAD S/.</th>
                                                             <th colspan="2" class="text-small-table">ACCIONES</th>
                                                         </tr>
                                                     </thead>
@@ -142,15 +142,15 @@
                                             <label for="txtContratistaER">CONTRATISTA</label>
                                             <input class="form-control form-control-sm" id="txtContratistaER" name="txtContratistaER" type="text" placeholder="Contratista">
                                         </div>
-                                        <div class="form-group col-4 mb-3">
+                                        <div class="form-group col-lg-4 col-12 mb-3">
                                             <label for="txtRucER">RUC</label>
                                             <input class="form-control form-control-sm" id="txtRucER" name="txtRucER" type="text" placeholder="R.U.C.">
                                         </div>
-                                        <div class="form-group col-4 mb-3">
+                                        <div class="form-group col-lg-4 col-md-6 col-12 mb-3">
                                             <label for="txtMontoContratoER">MONTO CONTRATO</label>
                                             <input class="form-control form-control-sm" id="txtMontoContratoER" name="txtMontoContratoER" type="text" placeholder="Monto del contrato (S/.)">
                                         </div>
-                                        <div class="form-group col-4 mb-3">
+                                        <div class="form-group col-lg-4 col-md-6 col-12 mb-3">
                                             <label for="txtAnhoER">AÑO</label>
                                             <input class="form-control form-control-sm" id="txtAnhoER" name="txtAnhoER" type="text" placeholder="Año"> 
                                         </div>
@@ -158,19 +158,19 @@
                                             <label for="txtObjetoER">OBJETO DEL PROCESO</label>
                                             <textarea class="form-control form-control-sm" id="txtObjetoER" name="txtObjetoER" rows="4" placeholder="Objeto del proceso (Bienes, Servicios u Obras)"></textarea>
                                         </div>
-                                        <div class="form-group col-6 mb-3">
+                                        <div class="form-group col-lg-7 mb-3">
                                             <label for="txtNumeroProcesoER">NUMERO DE PROCESO</label>
                                             <input class="form-control form-control-sm" id="txtNumeroProcesoER" name="txtNumeroProcesoER" type="text" placeholder="Nro. Proceso de selección convocado"> 
                                         </div>
-                                        <div class="form-group col-6 mb-3">
+                                        <div class="form-group col-lg-5 mb-3">
                                             <label for="txtNumeroContratoER">NUMERO DE CONTRATO</label>
                                             <input class="form-control form-control-sm" id="txtNumeroContratoER" name="txtNumeroContratoER" type="text" placeholder="Nro. de Contrato"> 
                                         </div>
-                                        <div class="form-group col-8 mb-3">
+                                        <div class="form-group col-lg-7 mb-3">
                                             <label for="txtTipoER">TIPO DE PENALIDAD</label>
                                             <input class="form-control form-control-sm" id="txtTipoER" name="txtTipoER" type="text" placeholder="Tipo Penalidad (Mora u otra)"> 
                                         </div>
-                                        <div class="form-group col-4 mb-3">
+                                        <div class="form-group col-lg-5 mb-3">
                                             <label for="txtMontoPenalidadER">MONTO PENALIDAD</label>
                                             <input class="form-control form-control-sm" id="txtMontoPenalidadER" name="txtMontoPenalidadER" type="text" placeholder="Monto de la penalidad (S/.)"> 
                                         </div>

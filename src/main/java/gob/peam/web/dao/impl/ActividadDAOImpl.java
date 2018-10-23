@@ -7,7 +7,6 @@ package gob.peam.web.dao.impl;
 
 import gob.peam.web.dao.ActividadDAO;
 import gob.peam.web.model.Actividad;
-import gob.peam.web.model.Funcionario;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
 import java.sql.Connection;
@@ -87,7 +86,35 @@ public class ActividadDAOImpl implements ActividadDAO {
 
     @Override
     public BEAN_CRUD add(Actividad obj, HashMap<String, Object> parameters) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        ResultSet rs;
+        try (Connection conn = this.pool.getConnection()) {
+            pst = conn.prepareStatement("SELECT COUNT(ACTI_ID) AS COUNT FROM WEB.ACTIVIDAD WHERE DESCRIPCION = ? AND ACTI_TIPO = ?");
+            pst.setString(1, obj.getDescripcion());
+            pst.setInt(2, obj.getActi_tipo());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                if (rs.getInt("COUNT") == 0) {
+                    pst = conn.prepareStatement("INSERT INTO WEB.ACTIVIDAD "
+                            + "VALUES((select case when max(ACTI_ID) is null then 1 else cast((max(ACTI_ID)+1) as integer) end idACTI_ID FROM WEB.ACTIVIDAD),?,TRUE,?)");
+                    pst.setString(1, obj.getDescripcion());
+                    pst.setInt(2, obj.getActi_tipo());
+                    LOG.info(pst.toString());
+                    pst.executeUpdate();
+                    conn.commit();
+                    beancrud.setMESSAGE_SERVER("ok");
+                    beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+                } else {
+                    beancrud.setMESSAGE_SERVER("No se registró, ya existe una actividad con el nombre ingresado");
+                }
+            }
+            rs.close();
+            pst.close();
+        } catch (SQLException e) {
+            throw e;
+        }
+        return beancrud;
     }
 
     @Override

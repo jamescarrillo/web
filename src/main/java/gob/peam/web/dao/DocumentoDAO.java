@@ -6,11 +6,15 @@
 package gob.peam.web.dao;
 
 import gob.peam.web.model.Documento;
+import gob.peam.web.utilities.BEAN_CRUD;
+import java.sql.SQLException;
+import java.util.HashMap;
 
 /**
  *
  * @author JamesCarrillo
  */
 public interface DocumentoDAO extends CRUD<Documento> {
-    
+
+    BEAN_CRUD cambiarEstado(Integer id, Boolean estado, HashMap<String, Object> parameters) throws SQLException;
 }

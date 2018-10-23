@@ -17,9 +17,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.sql.DataSource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  *
@@ -27,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class DocumentoDAOImpl implements DocumentoDAO {
 
-    private final Log logger = LogFactory.getLog(DocumentoDAOImpl.class);
+    private static final Logger LOG = Logger.getLogger(DocumentoDAOImpl.class.getName());
     private final DataSource pool;
 
     public DocumentoDAOImpl(DataSource pool) {
@@ -47,7 +46,7 @@ public class DocumentoDAOImpl implements DocumentoDAO {
                     + parameters.get("SQL_ESTADO") + " "
                     + parameters.get("SQL_CATE_ID"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
-            this.logger.info("PST[1] -> " + pst);
+            LOG.info(pst.toString());
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
@@ -59,7 +58,7 @@ public class DocumentoDAOImpl implements DocumentoDAO {
                             + parameters.get("SQL_CATE_ID") + " "
                             + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
                     pst.setString(1, String.valueOf(parameters.get("FILTER")));
-                    this.logger.info("PST[2] -> " + pst);
+                    LOG.info(pst.toString());
                     rs = pst.executeQuery();
                     while (rs.next()) {
                         Documento obj = new Documento();
@@ -120,6 +119,7 @@ public class DocumentoDAOImpl implements DocumentoDAO {
             pst.setString(10, obj.getDocu_fecha_docx());
             pst.setInt(11, obj.getCate_id());
             pst.setString(12, obj.getDocu_metadata());
+            LOG.info(pst.toString());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -142,6 +142,7 @@ public class DocumentoDAOImpl implements DocumentoDAO {
             pst.setString(1, obj.getDocu_titulo());
             pst.setString(2, obj.getDocu_resumen());
             pst.setInt(3, obj.getDocu_id());
+            LOG.info(pst.toString());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -155,14 +156,15 @@ public class DocumentoDAOImpl implements DocumentoDAO {
 
     @Override
     public BEAN_CRUD delete(long id, HashMap<String, Object> parameters) throws SQLException {
-        //LOS DOCUMENTOS NO SE ELIMINAN SOLO CAMBIAN LA CAT_ID = 0
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.DOCUMENTO SET CATE_ID = 0 WHERE DOCU_ID = ?");
+            pst = conn.prepareStatement("DELETE FROM WEB.DOCUMENTO WHERE DOCU_ID = ? AND CATE_ID = ?");
             pst.setInt(1, (int) id);
+            pst.setInt(2, Integer.parseInt(parameters.get("CATE_ID").toString()));
+            LOG.info(pst.toString());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -177,6 +179,28 @@ public class DocumentoDAOImpl implements DocumentoDAO {
     @Override
     public Documento get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public BEAN_CRUD cambiarEstado(Integer id, Boolean estado, HashMap<String, Object> parameters) throws SQLException {
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("UPDATE WEB.DOCUMENTO SET DOCU_ESTADO = ? WHERE DOCU_ID = ?");
+            pst.setBoolean(1, estado);
+            pst.setInt(2, id);
+            LOG.info(pst.toString());
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
 }

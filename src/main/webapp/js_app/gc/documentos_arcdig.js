@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+   
     cargarAniosCombo($('#comboAnioDocumentosArcDig'), 2010, "-1", 'AÑO');
 
     $("#FrmDocumentosArcDig").submit(function () {
@@ -11,6 +11,7 @@ $(document).ready(function () {
     });
 
     $('#btnAbrirNuevoDocumento').click(function () {
+        $('#tbodyDocumentosArcDig').empty();
         $('#txtTituloResumenDocumentosArcDig').val("");
         $('#comboAnioDocumentosArcDig').val("-1");
         $('#sizePageDocumentosArcDig').val("5");
@@ -18,7 +19,6 @@ $(document).ready(function () {
         $('#actionDocumentosArcDig').val("paginarDocumentosArcDig");
         $('#numberPageDocumentosArcDig').val("1");
         $('#txtTituloModalDocumentosArcDig').html("GESTIÓN DE DOCUMENTOS [ARCDIG]");
-        //procesarAjaxDocumentosArcDig();
         $('#ventanaDocumentosArcDig').modal("show");
         $('#modalCargandoDocumentosArcDig').modal("show");
         document.getElementsByTagName("body")[0].style.paddingRight = "0";
@@ -72,7 +72,6 @@ function procesarAjaxDocumentosArcDig() {
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoDocumentosArcDig').modal("hide");
             listarDocumentosArcDig(jsonResponse.BEAN_PAGINATION);
         },
@@ -135,8 +134,6 @@ function agregarEventosSeleccionarDocumentos() {
                 text: "¿Desea agregar este Documento?",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
                 confirmButtonText: 'Sí, continuar!',
                 cancelButtonText: 'No, cancelar!',
                 confirmButtonClass: 'btn btn-info',
@@ -151,11 +148,15 @@ function agregarEventosSeleccionarDocumentos() {
                     $('#txtOrigenDocumentoER').val($(tr).attr('docu_origen_archivo'));
                     $('#txtTidoDocumentoER').val($(tr).attr('tido_id'));
                     $('#txtFechaDoxDocumentoER').val($(tr).attr('docu_fecha_docx'));
-                    $('#txtMetaDataDocumentoER').val($(tr).attr('docu_metadata'));
-                    //$('#modalCargandoDocumentos2').modal("show");
+                    if ($(tr).attr('docu_metadata').toLowerCase() !== "undefined") {
+                        $('#txtMetaDataDocumentoER').val($(tr).attr('docu_metadata'));
+                    }
+                    $('#actionDocumentos').val("addDocumento");
+                    $("#nameForm").val("FrmDocumentoModal");
+                    $('#modalCargandoDocumentos2').modal("show");
                 }
             });
-            $('.swal2-confirm').css("margin-right", "20px");
+            $('.swal2-confirm').css("margin-right", "15px");
         });
     });
 }
@@ -164,6 +165,13 @@ function procesarAjaxDocumentosADD() {
     var pathname = window.location.pathname;
     pathname = pathname.substring(getContext().length, pathname.length);
     var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
+    if ($('#nameForm').val().toLowerCase() !== "frmdocumentos") {
+        datosSerializadosCompletos += "&txtTituloDocumento=" + $('#txtTituloDocumentoER').val();
+        datosSerializadosCompletos += "&comboAnioDocumento=" + $('#comboAnioDocumento').val();
+        datosSerializadosCompletos += "&comboTipoListaDocumentos=FALSE";
+        datosSerializadosCompletos += "&numberPageDocumentos=" + $('#numberPageDocumentos').val();
+        datosSerializadosCompletos += "&sizePageDocumentos=" + $('#sizePageDocumentos').val();
+    }
     datosSerializadosCompletos += "&action=" + $('#actionDocumentos').val();
     datosSerializadosCompletos += "&urlDocumentos=" + pathname;
     $.ajax({
@@ -174,7 +182,13 @@ function procesarAjaxDocumentosADD() {
         success: function (jsonResponse) {
             console.log(jsonResponse);
             $('#modalCargandoDocumentos2').modal("hide");
-            listarDocumentos(jsonResponse.BEAN_PAGINATION);
+            if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                $('#ventanaDocumentosArcDig').modal("hide");
+                viewAlert('success', getMessageServerTransaction($('#actionDocumentos').val(), 'Documento', 'o'));
+                listarDocumentos(jsonResponse.BEAN_PAGINATION);
+            } else {
+                viewAlert('warning', jsonResponse.MESSAGE_SERVER);
+            }
         },
         error: function () {
             $('#modalCargandoDocumentos2').modal("hide");

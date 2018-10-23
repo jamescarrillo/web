@@ -52,7 +52,7 @@ function viewAlertDelete(entidad) {
             );
         }
     });
-    $('.swal2-confirm').css("margin-right", "20px");
+    $('.swal2-confirm').css("margin-right", "15px");
 }
 
 function cargarFiltros(idimput_filter, classcheck, nameattrcheck) {
@@ -101,7 +101,7 @@ function getMessageServerTransaction(action, entidad, delimitador_sexo) {
             messageOut += " eliminad" + delimitador_sexo + " exitosamente!";
             break;
         case "act":
-            messageOut += " finalizad" + delimitador_sexo + "/activad" + delimitador_sexo + " exitosamente!";
+            messageOut += " actualizad" + delimitador_sexo + " exitosamente!";
             break;
     }
     return messageOut;

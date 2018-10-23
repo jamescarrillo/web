@@ -53,20 +53,20 @@
                                     <form id="FrmDocumentos">
                                         <div class="row mt-3">
                                             <div class="form-group col-lg-6 col-12 mb-3">
-                                                <input type="text" name="txtTitulo" id="txtTitulo" class="form-control form-control-sm" placeholder="TÍTULO">
+                                                <input type="text" name="txtTituloDocumento" id="txtTituloDocumento" class="form-control form-control-sm" placeholder="TÍTULO">
                                             </div>
                                             <div class="form-group col-lg-2 col-md-6 col-12 mb-3">
-                                                <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarDocumento'>
+                                                <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarDocumento'>
 
                                                 </select>
                                             </div>
                                             <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
-                                                <select id="comboTipoListaDocumentos" name="comboTipoListaDocumentos" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarFuncionario'>
+                                                <select id="comboTipoListaDocumentos" name="comboTipoListaDocumentos" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarDocumento'>
+                                                    <option value="-1">TODOS</option>
                                                     <option value="true">ACTIVOS</option>
                                                     <option value="false">INACTIVOS</option>
-                                                    <option value="-1">TODAS</option>
                                                 </select>
-                                                <button type="submit" id="btnBuscarDocumento" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Funcionario" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                                <button type="submit" id="btnBuscarDocumento" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Documento" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
                                                 <button type="button" id="btnAbrirNuevoDocumento" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Agregar Documento" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
@@ -81,7 +81,7 @@
                                                             <th style="width: 10%" class="text-medium-table">FECHA</th>
                                                             <th style="width: 25%" class="text-medium-table">TÍTULO</th>
                                                             <th class="text-medium-table">RESUMEN</th>
-                                                            <th colspan="3" class="text-medium-table">ACCIONES</th>
+                                                            <th colspan="4" class="text-medium-table">ACCIONES</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="tbodyDocumentos">
@@ -146,17 +146,18 @@
                                             <textarea type="text" class="form-control form-control-sm" id="txtResumenDocumentoER" name="txtResumenDocumentoER" placeholder="RESUMEN" rows="6"></textarea>
                                         </div>
                                     </div>
-                                    <input type="hidden" id="txtIdDocumentoER">
-                                    <input type="hidden" id="txtUsuaPublicIdDocumentoER">
-                                    <input type="hidden" id="txtDescripcionDocumentoER">
-                                    <input type="hidden" id="txtOrigenDocumentoER">
-                                    <input type="hidden" id="txtTidoDocumentoER">
-                                    <input type="hidden" id="txtFechaDoxDocumentoER">
-                                    <input type="hidden" id="txtMetaDataDocumentoER">
+                                    <input type="hidden" id="txtIdDocumentoER" name="txtIdDocumentoER">
+                                    <input type="hidden" id="txtUsuaPublicIdDocumentoER" name="txtUsuaPublicIdDocumentoER">
+                                    <input type="hidden" id="txtDescripcionDocumentoER" name="txtDescripcionDocumentoER">
+                                    <input type="hidden" id="txtOrigenDocumentoER" name="txtOrigenDocumentoER">
+                                    <input type="hidden" id="txtTidoDocumentoER" name="txtTidoDocumentoER">
+                                    <input type="hidden" id="txtFechaDoxDocumentoER" name="txtFechaDoxDocumentoER">
+                                    <input type="hidden" id="txtMetaDataDocumentoER" name="txtMetaDataDocumentoER">
+                                    <input type="hidden" id="txtEstadoDocumentoER" name="txtEstadoDocumentoER">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                                    <button type="submit" id="btnGuardar" class="btn btn-outline-info btn-sm">
+                                    <button type="submit" class="btn btn-outline-info btn-sm">
                                         <i class="fa fa-floppy-o"></i> GUARDAR
                                     </button>
                                 </div>

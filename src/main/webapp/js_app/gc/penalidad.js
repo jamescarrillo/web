@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnio'), 2000, "-1", 'TODOS');
-    
+    cargarAniosCombo($('#comboAnio'), 2005, "-1", 'AÑO');
+
     $("#FrmPenalidad").submit(function () {
         $("#nameForm").val("FrmPenalidad");
         $("#numberPagePenalidad").val(1);
@@ -112,7 +112,6 @@ function listarPenalidad(BEAN_PAGINATION) {
             fila += "<td class='text-center align-middle text-small-table'>" + value.monto_contrato + "</td>";
             fila += "<td class='align-middle text-small-table'>" + value.contratista + "</td>";
             fila += "<td class='align-middle text-small-table'>" + value.ruc + "</td>";
-            //fila += "<td class='align-middle' class='text-small-table'>" + value.objeto + "</td>";
             fila += "<td class='align-middle text-small-table'>" + value.tipo + "</td>";
             fila += "<td class='align-middle text-small-table'>" + value.monto_penalidad + "</td>";
             fila += "<td class='align-middle'><button class='btn btn-secondary btn-sm editar-Penalidad'><i class='fas fa-edit'></i></button></td>";
