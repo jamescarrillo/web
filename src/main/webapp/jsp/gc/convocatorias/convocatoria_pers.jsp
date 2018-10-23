@@ -56,7 +56,7 @@
                                             </div>
                                             <div class="form-group col-lg-2 col-md-6 col-12 mb-3">
                                                 <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarConvocatoriaPers'>
-                                                    
+
                                                 </select>
                                             </div>
                                             <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
@@ -78,10 +78,10 @@
                                                     class="table color-bordered-table muted-bordered-table table-hover">
                                                     <thead>
                                                         <tr>
-                                                            <th style="width: 10%">FECHA</th>
-                                                            <th style="width: 25%">CONVOCATORIA</th>
-                                                            <th>DESCRIPCION</th>
-                                                            <th colspan="5">ACCIONES</th>
+                                                            <th style="width: 10%" class="text-medium-table">FECHA</th>
+                                                            <th style="width: 25%" class="text-medium-table">CONVOCATORIA</th>
+                                                            <th class="text-medium-table">DESCRIPCION</th>
+                                                            <th colspan="5" class="text-medium-table">ACCIONES</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="tbodyConvocatoriaPers">
@@ -90,7 +90,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="card "

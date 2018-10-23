@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnio'), 2000, "-1", 'TODOS');
+    cargarAniosCombo($('#comboAnioDocumento'), 2000, "-1", 'TODOS');
 
     $("#FrmDocumentos").submit(function () {
         $("#nameForm").val("FrmDocumentos");
@@ -11,11 +11,12 @@ $(document).ready(function () {
     });
 
     $("#FrmDocumentoModal").submit(function () {
-        if (validarFormularioFuncionarios()) {
+        console.log("submit");
+        if (validarFormularioDocumentos()) {
+            console.log("sadsadsads");
             $("#numberPageDocumentos").val(1);
-            $("#nameForm").val("#FrmDocumentoModal");
-            //$('#modalCargandoDocumentos').modal("show");
-            viewAlert('warning', 'Estamos trabajando!');
+            $("#nameForm").val("FrmDocumentoModal");
+            $('#modalCargandoDocumentos').modal("show");
         }
         return false;
     });
@@ -27,22 +28,12 @@ $(document).ready(function () {
 
     $("#ventanaManDocumento").on('hidden.bs.modal', function () {
         $("#actionDocumentos").val("paginarDocumentos");
-        //$("#validarNombre").fadeOut();
+        $('#txtTituloDocumentoER').parent().removeClass("has-danger");
+        $('#txtResumenDocumentoER').parent().removeClass("has-danger");
     });
 
-//    $('#btnAbrirNuevoDocumento').click(function () {
-//        $('#FrmFuncionariosModal input').val("");
-//        $('#FrmFuncionariosModal select').val("-1");
-//        $('#FrmFuncionariosModal input').parent().removeClass("has-danger");
-//        $('#FrmFuncionariosModal select').parent().removeClass("has-danger");
-//        $('#actionDocumentos').val("addDocumento");
-//        $('#txtTituloModalManDocumento').html("REGISTRAR DOCUMENTO");
-//        $('#ventanaManDocumento').modal("show");
-//        document.getElementsByTagName("body")[0].style.paddingRight = "0";
-//    });
-
     addEventoCombosPaginar();
-    //valicacionesCamposDocumentos();
+    valicacionesCamposDocumentos();
     $('#modalCargandoDocumentos').modal("show");
 
 });
@@ -51,6 +42,11 @@ function procesarAjaxDocumentos() {
     var pathname = window.location.pathname;
     pathname = pathname.substring(getContext().length, pathname.length);
     var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
+    if ($('#nameForm').val().toLowerCase() !== "frmdocumentos") {
+        datosSerializadosCompletos += "&txtTituloDocumento=" + $('#txtTituloDocumento').val();
+        datosSerializadosCompletos += "&comboAnioDocumento=" + $('#comboAnioDocumento').val();
+        datosSerializadosCompletos += "&comboTipoListaDocumentos=" + $('#comboTipoListaDocumentos').val();
+    }
     datosSerializadosCompletos += "&numberPageDocumentos=" + $('#numberPageDocumentos').val();
     datosSerializadosCompletos += "&sizePageDocumentos=" + $('#sizePageDocumentos').val();
     datosSerializadosCompletos += "&action=" + $('#actionDocumentos').val();
@@ -62,11 +58,13 @@ function procesarAjaxDocumentos() {
         dataType: 'json',
         success: function (jsonResponse) {
             $('#modalCargandoDocumentos').modal("hide");
+            $('#ventanaManDocumento').modal("hide");
             if ($('#actionDocumentos').val().toLowerCase() === "paginardocumentos") {
                 listarDocumentos(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
-                    viewAlert('success', getMessageServerTransaction($('#actionDocumentos').val(), 'Documento'));
+                    listarDocumentos(jsonResponse.BEAN_PAGINATION);
+                    viewAlert('success', getMessageServerTransaction($('#actionDocumentos').val(), 'Documento', 'o'));
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
@@ -89,10 +87,17 @@ function listarDocumentos(BEAN_PAGINATION) {
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var fila;
         var text_color;
+        var icono;
+        var tooltip;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
             text_color = "";
             if (!value.docu_estado) {
                 text_color = " text-danger";
+                icono = "<i class='far fa-hand-point-up'></i>";
+                tooltip = "Activar";
+            } else {
+                icono = "<i class='far fa-hand-point-down'></i>";
+                tooltip = "Desactivar";
             }
             fila = "<tr ";
             fila += "docu_id='" + value.docu_id + "' ";
@@ -112,6 +117,7 @@ function listarDocumentos(BEAN_PAGINATION) {
             fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.docu_titulo + "</td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.docu_resumen + "</td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'><a href='http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=" + value.docu_id + "' target='_blank' class='btn btn-success btn-sm descargar-doc' data-toggle='tooltip' title='Descargar Documento'><i class='fa fa-download'></i></a></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm habilitar-documento' title='" + tooltip + " Documento'>" + icono + "</button></td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm editar-documento' title='Editar Documento'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm eliminar-documento' title='Eliminar Documento'><i class='fas fa-trash-alt'></i></button></td>";
             fila += "</tr>";
@@ -124,7 +130,7 @@ function listarDocumentos(BEAN_PAGINATION) {
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
         agregarEventosDocumentos();
-        $('#txtTitulo').focus();
+        $('#txtTituloDocumento').focus();
     } else {
         $pagination.twbsPagination('destroy');
         viewAlert('warning', 'No se enconntraron resultados');
@@ -143,101 +149,52 @@ function agregarEventosDocumentos() {
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
-    $('.eliminar-funcionario').each(function () {
+    $('.eliminar-documento').each(function () {
         $(this).click(function () {
-            viewAlert('warning', 'Estamos trabajando!');
+            $('#txtIdDocumentoER').val($(this.parentElement.parentElement).attr('docu_id'));
+            swal({
+                title: 'PEAM',
+                text: "¿Desea eliminar este Documento?",
+                type: 'warning',
+                showCancelButton: true,
+                //confirmButtonColor: '#3085d6',
+                //cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, continuar!',
+                cancelButtonText: 'No, cancelar!',
+                confirmButtonClass: 'btn btn-info',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.value) {
+                    $('#actionDocumentos').val("deleteDocumento");
+                    $("#nameForm").val("FrmDocumentoModal");
+                    $('#modalCargandoDocumentos').modal("show");
+                }
+            });
+            $('.swal2-confirm').css("margin-right", "20px");
+            document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
-
-    //viewAlert('error', 'Error interno en el servidor!');
-    /*
-     var botones = document.getElementsByClassName("eliminar");
-     for (var i = 0; i < botones.length; i++) {
-     botones[i].addEventListener("click", function () {
-     $('#txtIdCicloAcademicoER').val($(this.parentElement.parentElement).attr("idciclo_academico"));
-     $("#ventanaMan").modal("hide");
-     document.getElementsByTagName("body")[0].style.paddingRight = "0";
-     swal(
-     {
-     title: "SisBu!",
-     text: "No se permite eliminar un Ciclo Académico",
-     type: "warning",
-     showCancelButton: false,
-     confirmButtonColor: '#3085d6',
-     confirmButtonText: "Aceptar",
-     confirmButtonClass: 'btn btn-primary',
-     buttonsStyling: false
-     }
-     );
-     });
-     }
-     */
 }
 
 function valicacionesCamposDocumentos() {
-    $('#txtNombreCompletoER').on('change', function () {
+    $('#txtTituloDocumentoER').on('change', function () {
         $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
     });
-    $('#txtDniER').on('change', function () {
+    $('#txtResumenDocumentoER').on('change', function () {
         $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
-    });
-    $('#comboOficinaER').on('change', function () {
-        $(this).val() === "-1" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
-    });
-    $('#txtCargoER').on('change', function () {
-        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
-    });
-    $('#txtProfesionER').on('change', function () {
-        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
-    });
-    $('#comboDestacadoER').on('change', function () {
-        $(this).val() === "-1" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
-    });
-    $('#comboEstadoER').on('change', function () {
-        $(this).val() === "-1" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
     });
 }
 
-function validarFormularioFuncionarios() {
-    return false;
-    if ($('#txtNombreCompletoER').val() === "") {
-        $($('#txtNombreCompletoER').parent()).addClass('has-danger');
+function validarFormularioDocumentos() {
+    if ($('#txtTituloDocumentoER').val() === "") {
+        $($('#txtTituloDocumentoER').parent()).addClass('has-danger');
         return false;
     } else {
         $(this.parentElement).removeClass('has-danger');
     }
-    if ($('#txtDniER').val() === "") {
-        $($('#txtDniER').parent()).addClass('has-danger');
-        return false;
-    } else {
-        $(this.parentElement).removeClass('has-danger');
-    }
-    if ($('#comboOficinaER').val() === "-1") {
-        $($('#comboOficinaER').parent()).addClass('has-danger');
-        return false;
-    } else {
-        $(this.parentElement).removeClass('has-danger');
-    }
-    if ($('#txtCargoER').val() === "") {
-        $($('#txtCargoER').parent()).addClass('has-danger');
-        return false;
-    } else {
-        $(this.parentElement).removeClass('has-danger');
-    }
-    if ($('#txtProfesionER').val() === "") {
-        $($('#txtProfesionER').parent()).addClass('has-danger');
-        return false;
-    } else {
-        $(this.parentElement).removeClass('has-danger');
-    }
-    if ($('#comboDestacadoER').val() === "-1") {
-        $($('#comboDestacadoER').parent()).addClass('has-danger');
-        return false;
-    } else {
-        $(this.parentElement).removeClass('has-danger');
-    }
-    if ($('#comboEstadoER').val() === "-1") {
-        $($('#comboEstadoER').parent()).addClass('has-danger');
+    if ($('#txtResumenDocumentoER').val() === "") {
+        $($('#txtResumenDocumentoER').parent()).addClass('has-danger');
         return false;
     } else {
         $(this.parentElement).removeClass('has-danger');

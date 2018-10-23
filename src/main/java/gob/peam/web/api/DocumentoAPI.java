@@ -157,11 +157,11 @@ public class DocumentoAPI extends HttpServlet {
 
     private HashMap<String, Object> getParametersDocumentos(HttpServletRequest request) {
         this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtTitulo").toLowerCase());
-        if (request.getParameter("comboAnio").equals("-1")) {
+        this.parameters.put("FILTER", request.getParameter("txtTituloDocumento").toLowerCase());
+        if (request.getParameter("comboAnioDocumento").equals("-1")) {
             this.parameters.put("SQL_ANIO", "");
         } else {
-            this.parameters.put("SQL_ANIO", "AND SUBSTRING(DOCU_FECHA_DOCX,7,4) = '" + request.getParameter("comboAnio") + "' ");
+            this.parameters.put("SQL_ANIO", "AND SUBSTRING(DOCU_FECHA_DOCX,7,4) = '" + request.getParameter("comboAnioDocumento") + "' ");
         }
         if (request.getParameter("comboTipoListaDocumentos").equals("-1")) {
             this.parameters.put("SQL_ESTADO", "");
@@ -169,6 +169,8 @@ public class DocumentoAPI extends HttpServlet {
             this.parameters.put("SQL_ESTADO", "AND DOCU_ESTADO = " + request.getParameter("comboTipoListaDocumentos") + " ");
         }
         this.parameters.put("SQL_CATE_ID", "AND CATE_ID = " + getCategoriaId(request));
+        //SOLO PAR ELIMINAR
+        this.parameters.put("CATE_ID", getCategoriaId(request));
         this.parameters.put("SQL_ORDERS", "DOCU_FECHA_DOCX DESC, DOCU_ID DESC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageDocumentos") + " OFFSET "

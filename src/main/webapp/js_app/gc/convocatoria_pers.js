@@ -96,13 +96,16 @@ function listarConvocatoriaPers(BEAN_PAGINATION) {
         var fila;
         var text_color;
         var icon;
+        var tooltip;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
             if (!value.estado) {
+                text_color = "text-danger";
+                icon = "far fa-hand-point-up";
+                tooltip = "Activar";
+            } else {
                 text_color = "";
-                icon="far fa-hand-point-down";
-            }else{
-                text_color = " text-danger";
-                icon="far fa-hand-point-up";
+                icon = "far fa-hand-point-down";
+                tooltip = "Finalizar";
             }
             //text-center align-middle
             fila = "<tr ";
@@ -113,14 +116,14 @@ function listarConvocatoriaPers(BEAN_PAGINATION) {
             fila += "fecha='" + value.fecha + "' ";
             fila += "anio='" + value.anho + "' ";
             fila += ">";
-            fila += "<td class='text-center align-middle" + text_color + "'>" + value.fecha + "</td>";
-            fila += "<td class='align-middle " + text_color + "'>" + value.convocatoria + "</td>";
-            fila += "<td class='align-middle " + text_color + "'>" + value.descripcion + "</td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm editar-ConvocatoriaPers'><i class='fas fa-edit'></i></button></td>";
-            fila += "<td class='align-middle" + text_color + "'><button class='btn btn-secondary btn-sm eliminar-ConvocatoriaPers'><i class='fas fa-trash-alt'></i></button></td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm finalizar-activar' data-toggle='tooltip' title='Finalizar/Activar'><i class='"+icon+"'></i></button></td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm actividades' data-toggle='tooltip' title='Actividades'><i class='fa fa-download'></i> ACTIVIDADES</button></td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm plazas' data-toggle='tooltip' title='Plazas'><i class='fa fa-download'></i> PLAZAS</button></td>";
+            fila += "<td class='text-center align-middle text-medium-table " + text_color + "'>" + value.fecha + "</td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.convocatoria + "</td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.descripcion + "</td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm finalizar-activar' data-toggle='tooltip' title='" + tooltip + "'><i class='" + icon + "'></i></button></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm editar-ConvocatoriaPers'><i class='fas fa-edit'></i></button></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm eliminar-ConvocatoriaPers'><i class='fas fa-trash-alt'></i></button></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-success btn-sm actividades' data-toggle='tooltip' title='Actividades'><i class='fa fa-download'></i> ACTIVIDADES</button></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-success btn-sm plazas' data-toggle='tooltip' title='Plazas'><i class='fa fa-download'></i> PLAZAS</button></td>";
             fila += "</tr>";
             $('#tbodyConvocatoriaPers').append(fila);
         });

@@ -79,8 +79,8 @@
                                                             <th style="width: 10%" class="text-small-table">CONTRATO S/.</th>
                                                             <th style="width: 40%" class="text-small-table">CONTRATISTAS</th>
                                                             <th style="width: 10%" class="text-small-table">R.U.C.</th>
-                                                            <th style="width: 20%" class="text-small-table">TIPO</th>
-                                                            <th style="width: 10%" class="text-small-table">PENALIDAD S/.</th>
+                                                            <th style="width: 15%" class="text-small-table">TIPO</th>
+                                                            <th style="width: 15%" class="text-small-table">PENALIDAD S/.</th>
                                                             <th colspan="2" class="text-small-table">ACCIONES</th>
                                                         </tr>
                                                     </thead>
