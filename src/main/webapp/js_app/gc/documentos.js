@@ -171,10 +171,12 @@ function agregarEventosDocumentos() {
                     $('#modalCargandoDocumentos').modal("show");
                 }
             });
-            $('.swal2-confirm').css("margin-right", "20px");
+            $('.swal2-confirm').css("margin-right", "15px");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
+    
+    
 }
 
 function valicacionesCamposDocumentos() {

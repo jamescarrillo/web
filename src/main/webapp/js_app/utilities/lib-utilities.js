@@ -52,7 +52,7 @@ function viewAlertDelete(entidad) {
             );
         }
     });
-    $('.swal2-confirm').css("margin-right", "20px");
+    $('.swal2-confirm').css("margin-right", "15px");
 }
 
 function cargarFiltros(idimput_filter, classcheck, nameattrcheck) {
