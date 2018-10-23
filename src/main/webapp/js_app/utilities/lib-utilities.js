@@ -101,7 +101,7 @@ function getMessageServerTransaction(action, entidad, delimitador_sexo) {
             messageOut += " eliminad" + delimitador_sexo + " exitosamente!";
             break;
         case "act":
-            messageOut += " finalizad" + delimitador_sexo + "/activad" + delimitador_sexo + " exitosamente!";
+            messageOut += " actualizad" + delimitador_sexo + " exitosamente!";
             break;
     }
     return messageOut;

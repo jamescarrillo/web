@@ -66,7 +66,7 @@
                                                     <option value="true">ACTIVOS</option>
                                                     <option value="false">INACTIVOS</option>
                                                 </select>
-                                                <button type="submit" id="btnBuscarDocumento" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Funcionario" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                                <button type="submit" id="btnBuscarDocumento" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Documento" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
                                                 <button type="button" id="btnAbrirNuevoDocumento" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Agregar Documento" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
@@ -153,6 +153,7 @@
                                     <input type="hidden" id="txtTidoDocumentoER" name="txtTidoDocumentoER">
                                     <input type="hidden" id="txtFechaDoxDocumentoER" name="txtFechaDoxDocumentoER">
                                     <input type="hidden" id="txtMetaDataDocumentoER" name="txtMetaDataDocumentoER">
+                                    <input type="hidden" id="txtEstadoDocumentoER" name="txtEstadoDocumentoER">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>

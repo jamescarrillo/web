@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnioDocumento'), 2000, "-1", 'TODOS');
+    cargarAniosCombo($('#comboAnioDocumento'), 2005, "-1", 'AÑO');
 
     $("#FrmDocumentos").submit(function () {
         $("#nameForm").val("FrmDocumentos");
@@ -11,9 +11,7 @@ $(document).ready(function () {
     });
 
     $("#FrmDocumentoModal").submit(function () {
-        console.log("submit");
         if (validarFormularioDocumentos()) {
-            console.log("sadsadsads");
             $("#numberPageDocumentos").val(1);
             $("#nameForm").val("FrmDocumentoModal");
             $('#modalCargandoDocumentos').modal("show");
@@ -117,7 +115,7 @@ function listarDocumentos(BEAN_PAGINATION) {
             fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.docu_titulo + "</td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.docu_resumen + "</td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'><a href='http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=" + value.docu_id + "' target='_blank' class='btn btn-success btn-sm descargar-doc' data-toggle='tooltip' title='Descargar Documento'><i class='fa fa-download'></i></a></td>";
-            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm habilitar-documento' title='" + tooltip + " Documento'>" + icono + "</button></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm activar-desactivar-documento' title='" + tooltip + " Documento' opcion='" + tooltip.toLowerCase() + "'>" + icono + "</button></td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm editar-documento' title='Editar Documento'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm eliminar-documento' title='Eliminar Documento'><i class='fas fa-trash-alt'></i></button></td>";
             fila += "</tr>";
@@ -154,11 +152,9 @@ function agregarEventosDocumentos() {
             $('#txtIdDocumentoER').val($(this.parentElement.parentElement).attr('docu_id'));
             swal({
                 title: 'PEAM',
-                text: "¿Desea eliminar este Documento?",
+                text: "¿Está seguro de eliminar este Documento?",
                 type: 'warning',
                 showCancelButton: true,
-                //confirmButtonColor: '#3085d6',
-                //cancelButtonColor: '#d33',
                 confirmButtonText: 'Sí, continuar!',
                 cancelButtonText: 'No, cancelar!',
                 confirmButtonClass: 'btn btn-info',
@@ -175,8 +171,39 @@ function agregarEventosDocumentos() {
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
-    
-    
+
+    $('.activar-desactivar-documento').each(function () {
+        $(this).click(function () {
+            $('#txtIdDocumentoER').val($(this.parentElement.parentElement).attr('docu_id'));
+            if ($(this).attr('opcion').toLowerCase() === "activar") {
+                $('#txtEstadoDocumentoER').val("true");
+            } else {
+                $('#txtEstadoDocumentoER').val("false");
+            }
+            swal({
+                title: 'PEAM',
+                text: "¿Está seguro de " + $(this).attr('opcion') + " este Documento?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, continuar!',
+                cancelButtonText: 'No, cancelar!',
+                confirmButtonClass: 'btn btn-info',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.value) {
+                    $('#actionDocumentos').val("activateDocumento");
+                    $("#nameForm").val("FrmDocumentoModal");
+                    $('#modalCargandoDocumentos').modal("show");
+                }
+            });
+            $('.swal2-confirm').css("margin-right", "15px");
+            document.getElementsByTagName("body")[0].style.paddingRight = "0";
+        });
+    });
+
+
+
 }
 
 function valicacionesCamposDocumentos() {

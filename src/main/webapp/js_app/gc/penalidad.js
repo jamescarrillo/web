@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnio'), 2000, "-1", 'TODOS');
+    cargarAniosCombo($('#comboAnio'), 2005, "-1", 'AÑO');
 
     $("#FrmPenalidad").submit(function () {
         $("#nameForm").val("FrmPenalidad");

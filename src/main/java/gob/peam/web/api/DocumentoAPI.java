@@ -46,7 +46,7 @@ import javax.sql.DataSource;
     "/gestiontransparente/proyectosinversion",
     "/gestiontransparente/recomendacionesauditorias",})
 public class DocumentoAPI extends HttpServlet {
-
+    
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
     private HttpSession session;
@@ -55,16 +55,16 @@ public class DocumentoAPI extends HttpServlet {
     private HashMap<String, Object> parameters;
     private static final Logger LOG = Logger.getLogger(DocumentoAPI.class.getName());
     private String action;
-
+    
     private DocumentoDAO documentoDAO;
-
+    
     @Override
     public void init() throws ServletException {
         super.init(); // To change body of generated methods, choose Tools | Templates.
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
         this.parameters = new HashMap<>();
         this.action = "";
-
+        
         this.documentoDAO = new DocumentoDAOImpl(this.pool);
     }
 
@@ -94,6 +94,9 @@ public class DocumentoAPI extends HttpServlet {
                     break;
                 case "deleteDocumento":
                     procesarDocumento(this.documentoDAO.delete(Integer.parseInt(request.getParameter("txtIdDocumentoER")), getParametersDocumentos(request)), response);
+                    break;
+                case "activateDocumento":
+                    procesarDocumento(this.documentoDAO.cambiarEstado(Integer.parseInt(request.getParameter("txtIdDocumentoER")), Boolean.parseBoolean(request.getParameter("txtEstadoDocumentoER")), getParametersDocumentos(request)), response);
                     break;
                 default:
                     request.getRequestDispatcher("/jsp/gc/global/documento.jsp").forward(request, response);
@@ -154,7 +157,7 @@ public class DocumentoAPI extends HttpServlet {
             Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private HashMap<String, Object> getParametersDocumentos(HttpServletRequest request) {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtTituloDocumento").toLowerCase());
@@ -178,7 +181,7 @@ public class DocumentoAPI extends HttpServlet {
                 * Integer.parseInt(request.getParameter("sizePageDocumentos")));
         return this.parameters;
     }
-
+    
     private Documento getDocumento(HttpServletRequest request) {
         Documento documento = new Documento();
         if (request.getParameter("action").equals("updateDocumento")) {
@@ -201,7 +204,7 @@ public class DocumentoAPI extends HttpServlet {
         }
         return documento;
     }
-
+    
     private String getCategoriaId(HttpServletRequest request) {
         String categoria_id = "0"; //LOS ELIMINADOS
         switch (request.getParameter("urlDocumentos")) {

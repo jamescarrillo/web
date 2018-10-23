@@ -156,7 +156,6 @@ public class DocumentoDAOImpl implements DocumentoDAO {
 
     @Override
     public BEAN_CRUD delete(long id, HashMap<String, Object> parameters) throws SQLException {
-        
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
@@ -180,6 +179,28 @@ public class DocumentoDAOImpl implements DocumentoDAO {
     @Override
     public Documento get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public BEAN_CRUD cambiarEstado(Integer id, Boolean estado, HashMap<String, Object> parameters) throws SQLException {
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("UPDATE WEB.DOCUMENTO SET DOCU_ESTADO = ? WHERE DOCU_ID = ?");
+            pst.setBoolean(1, estado);
+            pst.setInt(2, id);
+            LOG.info(pst.toString());
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
 }

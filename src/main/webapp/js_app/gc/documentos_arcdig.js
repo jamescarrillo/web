@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+   
     cargarAniosCombo($('#comboAnioDocumentosArcDig'), 2010, "-1", 'AÑO');
 
     $("#FrmDocumentosArcDig").submit(function () {
@@ -11,6 +11,7 @@ $(document).ready(function () {
     });
 
     $('#btnAbrirNuevoDocumento').click(function () {
+        $('#tbodyDocumentosArcDig').empty();
         $('#txtTituloResumenDocumentosArcDig').val("");
         $('#comboAnioDocumentosArcDig').val("-1");
         $('#sizePageDocumentosArcDig').val("5");
@@ -18,7 +19,6 @@ $(document).ready(function () {
         $('#actionDocumentosArcDig').val("paginarDocumentosArcDig");
         $('#numberPageDocumentosArcDig').val("1");
         $('#txtTituloModalDocumentosArcDig').html("GESTIÓN DE DOCUMENTOS [ARCDIG]");
-        //procesarAjaxDocumentosArcDig();
         $('#ventanaDocumentosArcDig').modal("show");
         $('#modalCargandoDocumentosArcDig').modal("show");
         document.getElementsByTagName("body")[0].style.paddingRight = "0";
@@ -72,7 +72,6 @@ function procesarAjaxDocumentosArcDig() {
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoDocumentosArcDig').modal("hide");
             listarDocumentosArcDig(jsonResponse.BEAN_PAGINATION);
         },
@@ -135,8 +134,6 @@ function agregarEventosSeleccionarDocumentos() {
                 text: "¿Desea agregar este Documento?",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
                 confirmButtonText: 'Sí, continuar!',
                 cancelButtonText: 'No, cancelar!',
                 confirmButtonClass: 'btn btn-info',
@@ -159,7 +156,7 @@ function agregarEventosSeleccionarDocumentos() {
                     $('#modalCargandoDocumentos2').modal("show");
                 }
             });
-            $('.swal2-confirm').css("margin-right", "20px");
+            $('.swal2-confirm').css("margin-right", "15px");
         });
     });
 }

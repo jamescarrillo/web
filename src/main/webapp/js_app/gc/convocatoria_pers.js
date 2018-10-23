@@ -119,7 +119,7 @@ function listarConvocatoriaPers(BEAN_PAGINATION) {
             fila += "<td class='text-center align-middle text-medium-table " + text_color + "'>" + value.fecha + "</td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.convocatoria + "</td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.descripcion + "</td>";
-            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm finalizar-activar' data-toggle='tooltip' title='" + tooltip + "'><i class='" + icon + "'></i></button></td>";
+            fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm finalizar-activar' data-toggle='tooltip' title='" + tooltip + "' opcion='" + tooltip.toLowerCase() + "'><i class='" + icon + "'></i></button></td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm editar-ConvocatoriaPers'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-secondary btn-sm eliminar-ConvocatoriaPers'><i class='fas fa-trash-alt'></i></button></td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'><button class='btn btn-success btn-sm actividades' data-toggle='tooltip' title='Actividades'><i class='fa fa-download'></i> ACTIVIDADES</button></td>";
@@ -167,14 +167,12 @@ function agregarEventosConvocatoriaPers() {
             $('#txtEstadoER').val($(this.parentElement.parentElement).attr('estado'));
             swal({
                 title: 'PEAM',
-                text: "¿Esta seguro de FINALIZAR/ACTIVAR esta Convocatoria Personal?",
+                text: "¿Está seguro de " + $(this).attr('opcion') + " esta Convocatoria Personal?",
                 type: 'warning',
                 showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
                 confirmButtonText: 'Sí, continuar!',
                 cancelButtonText: 'No, cancelar!',
-                confirmButtonClass: 'btn btn-primary',
+                confirmButtonClass: 'btn btn-info',
                 cancelButtonClass: 'btn btn-danger',
                 buttonsStyling: false
             }).then((result) => {
@@ -182,22 +180,9 @@ function agregarEventosConvocatoriaPers() {
                     $('#actionConvocatoriaPers').val("activateConvocatoriaPers");
                     $("#nameForm").val("FrmConvocatoriaPersModal");
                     $('#modalCargandoConvocatoriaPers').modal("show");
-                } else {
-                    swal(
-                            {
-                                title: "PEAM!",
-                                text: "Operación Cancelada",
-                                type: "success",
-                                showCancelButton: false,
-                                confirmButtonColor: '#3085d6',
-                                confirmButtonText: "Aceptar",
-                                confirmButtonClass: 'btn btn-primary',
-                                buttonsStyling: false
-                            }
-                    );
                 }
             });
-            $('.swal2-confirm').css("margin-right", "20px");
+            $('.swal2-confirm').css("margin-right", "15px");
         });
     });
 }
