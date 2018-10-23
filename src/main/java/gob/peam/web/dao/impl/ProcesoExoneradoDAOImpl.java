@@ -6,6 +6,7 @@
 package gob.peam.web.dao.impl;
 
 import gob.peam.web.dao.ProcesoExoneradoDAO;
+import gob.peam.web.dao.SQLCloseable;
 import gob.peam.web.model.Convocatoria_Pers;
 import gob.peam.web.model.ProcesoExonerado;
 import gob.peam.web.utilities.BEAN_CRUD;
@@ -41,28 +42,34 @@ public class ProcesoExoneradoDAOImpl implements ProcesoExoneradoDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.EXONERADO WHERE "
-                    + "CONVOCATORIA LIKE CONCAT('%',?,'%')");
+                    + "(LOWER(CONTRATISTA) LIKE CONCAT('%',?,'%') OR LOWER(DESCRIPCION) LIKE CONCAT('%',?,'%'))");
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            pst.setString(2, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
             }
-            pst = conn.prepareStatement("SELECT * FROM WEB.CONVOCATORIA_PERS WHERE "
-                    + "CONVOCATORIA LIKE CONCAT('%',?,'%') "
-                    + String.valueOf(parameters.get("SQL_ESTADO"))
-                    + String.valueOf(parameters.get("SQL_ANIO")) + "ORDER BY "
+            pst = conn.prepareStatement("SELECT * FROM WEB.EXONERADO WHERE "
+                    + "(LOWER(CONTRATISTA) LIKE CONCAT('%',?,'%') OR LOWER(DESCRIPCION) LIKE CONCAT('%',?,'%'))"
+                    + String.valueOf(parameters.get("SQL_ANIO")) + " ORDER BY "
                     + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            pst.setString(2, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
-            List<Convocatoria_Pers> list = new ArrayList<>();
+            List<ProcesoExonerado> list = new ArrayList<>();
             while (rs.next()) {
-                Convocatoria_Pers obj = new Convocatoria_Pers();
-                obj.setCoper_id(rs.getInt("COPER_ID"));
-                obj.setFecha(rs.getDate("FECHA"));
-                obj.setConvocatoria(rs.getString("CONVOCATORIA"));
-                obj.setDescripcion(rs.getString("DESCRIPCION"));
+                ProcesoExonerado obj = new ProcesoExonerado();
+                obj.setId(rs.getInt("ID"));
+                obj.setNro_exonerado(rs.getString("NRO_EXONERADO"));
                 obj.setAnho(rs.getString("ANHO"));
-                obj.setEstado(rs.getBoolean("ESTADO"));
+                obj.setFecha(rs.getDate("FECHA"));
+                obj.setCausa(rs.getString("CAUSA"));
+                obj.setObjeto(rs.getString("OBJETO"));
+                obj.setDescripcion(rs.getString("DESCRIPCION"));
+                obj.setMonto(rs.getString("MONTO"));
+                obj.setContratista(rs.getString("CONTRATISTA"));
+                obj.setRuc(rs.getString("RUC"));
+                obj.setUrl(rs.getString("URL"));
                 list.add(obj);
             }
             beanpagination.setLIST(list);
@@ -76,22 +83,95 @@ public class ProcesoExoneradoDAOImpl implements ProcesoExoneradoDAO {
 
     @Override
     public BEAN_PAGINATION getPagination(HashMap<String, Object> parameters) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BEAN_PAGINATION beansPagination = null;
+        try (Connection conn = pool.getConnection()) {
+            beansPagination = getPagination(parameters, conn);
+        } catch (SQLException e) {
+            throw e;
+        }
+        return beansPagination;
     }
 
     @Override
     public BEAN_CRUD add(ProcesoExonerado obj, HashMap<String, Object> parameters) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("INSERT INTO WEB.EXONERADO (ID, NRO_EXONERADO, ANHO, "
+                    + "FECHA, CAUSA, OBJETO, DESCRIPCION, MONTO, CONTRATISTA, RUC, URL) VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.exonerado),"
+                    + "?,?,?,?,?,?,?,?,?,?)");
+            pst.setString(1, obj.getNro_exonerado());
+            pst.setString(2, obj.getAnho());
+            pst.setDate(3, obj.getFecha());
+            pst.setString(4, obj.getCausa());
+            pst.setString(5, obj.getObjeto());
+            pst.setString(6, obj.getDescripcion());
+            pst.setString(7, obj.getMonto());
+            pst.setString(8, obj.getContratista());
+            pst.setString(9, obj.getRuc());
+            pst.setString(10, obj.getUrl());
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override
     public BEAN_CRUD update(ProcesoExonerado obj, HashMap<String, Object> parameters) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("UPDATE WEB.EXONERADO SET NRO_EXONERADO = ?, ANHO = ?, FECHA=?, CAUSA=?,"
+                    + " OBJETO=?, DESCRIPCION=?, MONTO=?, CONTRATISTA=?, RUC=?, URL=? WHERE ID = ?");
+            pst.setString(1, obj.getNro_exonerado());
+            pst.setString(2, obj.getAnho());
+            pst.setDate(3, obj.getFecha());
+            pst.setString(4, obj.getCausa());
+            pst.setString(5, obj.getObjeto());
+            pst.setString(6, obj.getDescripcion());
+            pst.setString(7, obj.getMonto());
+            pst.setString(8, obj.getContratista());
+            pst.setString(9, obj.getRuc());
+            pst.setString(10, obj.getUrl());
+            pst.setInt(11, obj.getId());
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override
     public BEAN_CRUD delete(long id, HashMap<String, Object> parameters) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("DELETE FROM WEB.EXONERADO WHERE ID = ?");
+            pst.setInt(1, (int) id);
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override
