@@ -74,19 +74,19 @@
                 <ul>
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-1.jpg"
+                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="materialize Material" data-description=""><img
-                            src="assets/img/banner/banner-1.jpg" alt=""
+                            src="assets/img/banner/banner-2.jpg" alt=""
                             data-bgposition="center center" data-bgfit="cover"
                             data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
                             data-no-retina>
                         <div
                             class="tp-caption rev-heading text-extrabold dark-text tp-resizeme "
                             data-x="center" data-y="center" data-voffset="-50"
-                            data-fontsize="['30','30','30','15']"
-                            data-lineheight="['30','30','30','20']" data-width="none"
+                            data-fontsize="['30','25','20','15']"
+                            data-lineheight="['30','25','20','20']" data-width="none"
                             data-height="none" data-whitespace="nowrap"
                             data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
@@ -97,7 +97,7 @@
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
                             <div class="text-center">
-                                GORESAM CONSTRUIRÁ CENTROS DE CAPACITACIÓN RURAL <br> EN EL BPAM
+                                Goresam Construirá Centros de Capacitación Rural en el BPAM texto grande
                             </div>
                         </div> <!-- LAYER NR. 2 -->
                         <div
@@ -111,7 +111,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            Comprometido con la preservación del medio ambiente
+                            Comprometido con la preservación del medio ambiente Comprometido con la preservación del medio ambiente 
                         </div> <!-- LAYER NR. 3 -->
                         <div class="tp-caption tp-resizeme rev-btn"
                              data-x="['center','center','center','center']"
@@ -133,11 +133,11 @@
                     <!-- slide 2 start -->
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-1.jpg"
+                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-1.jpg"
+                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
                                                  alt="" data-bgposition="center center" data-bgfit="cover"
                                                  data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
                                                  data-no-retina> <!-- LAYER NR. 1 -->
@@ -191,11 +191,11 @@
                     <!-- slide 3 start -->
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-1.jpg"
+                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-1.jpg"
+                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
                                                  alt="" data-bgposition="center center" data-bgfit="cover"
                                                  data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
                                                  data-no-retina> <!-- LAYER NR. 1 -->
@@ -249,11 +249,11 @@
                     <!-- slide 4 start -->
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-1.jpg"
+                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-1.jpg"
+                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
                                                  alt="" data-bgposition="center center" data-bgfit="cover"
                                                  data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
                                                  data-no-retina> <!-- LAYER NR. 1 -->
@@ -307,11 +307,11 @@
                     <!-- slide 5 start -->
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-1.jpg"
+                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-1.jpg"
+                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
                                                  alt="" data-bgposition="center center" data-bgfit="cover"
                                                  data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
                                                  data-no-retina> <!-- LAYER NR. 1 -->
