@@ -86,8 +86,8 @@
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-bookmark-outline" title="Otros"></i><span class="hide-menu">Otros</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#" title="Directorio Telefónico">Dir. Telefónico</a></li>
-                        <li><a href="#" title="Glosario de Terminos">G. Terminos</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/directoriostelefonicos" title="Directorio Telefónico">Dir. Telefónico</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/glosarios" title="Glosario de Terminos">G. Terminos</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-tab" title="Participación Ciudadana"></i><span class="hide-menu">Part. Ciudadana</span></a>

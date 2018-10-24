@@ -17,9 +17,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.sql.DataSource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  *
@@ -27,7 +26,7 @@ import org.apache.commons.logging.LogFactory;
  */
 public class DirectivoDAOImpl implements DirectivoDAO {
 
-    private final Log logger = LogFactory.getLog(DirectivoDAOImpl.class);
+    private static final Logger LOG = Logger.getLogger(DirectivoDAOImpl.class.getName());
     private final DataSource pool;
 
     public DirectivoDAOImpl(DataSource pool) {
@@ -109,7 +108,7 @@ public class DirectivoDAOImpl implements DirectivoDAO {
                     + "VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.f00012),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
             /*
             pst.setString(1, funcionario.getTratamiento());
-            pst.setString(2, funcionario.getNombres_apellidos());
+            pst.setStr1ing(2, funcionario.getNombres_apellidos());
             pst.setString(3, funcionario.getCargo());
             pst.setString(4, funcionario.getNivel_remunerativo());
             pst.setString(5, funcionario.getNumero_dni());
