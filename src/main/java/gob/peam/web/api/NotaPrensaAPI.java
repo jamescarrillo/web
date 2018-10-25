@@ -34,7 +34,7 @@ import javax.sql.DataSource;
  */
 @WebServlet(name = "NotaPrensaAPI", urlPatterns = {"/publicaciones/notasprensa"})
 public class NotaPrensaAPI extends HttpServlet {
-    
+
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
     private HttpSession session;
@@ -43,18 +43,18 @@ public class NotaPrensaAPI extends HttpServlet {
     private HashMap<String, Object> parameters;
     private static final Logger LOG = Logger.getLogger(NotaPrensaAPI.class.getName());
     private String action;
-    
+
     private NotaPrensaDAO notaPrensaDAO;
-    
+
     @Override
     public void init() throws ServletException {
         super.init(); // To change body of generated methods, choose Tools | Templates.
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
         this.parameters = new HashMap<>();
         this.action = "";
-        
+
         notaPrensaDAO = new NotaPrensaDAOImpl(this.pool);
-        
+
     }
 
     /**
@@ -84,7 +84,9 @@ public class NotaPrensaAPI extends HttpServlet {
                 case "deleteNotaPrensa":
                     procesarNotaPrensa(this.notaPrensaDAO.delete(Long.parseLong(request.getParameter("txtIdNotaPrensaER")), getParametersNotasPrensa(request)), response);
                     break;
-                case "cambiarEstadoNotaPrensa":
+                case "activateNotaPrensa":
+                    LOG.info(request.getParameter("txtEstadoNotaPrensaER"));
+                    procesarNotaPrensa(this.notaPrensaDAO.cambiarEstado(Integer.parseInt(request.getParameter("txtIdNotaPrensaER")), Boolean.parseBoolean(request.getParameter("txtEstadoNotaPrensaER")), getParametersNotasPrensa(request)), response);
                     break;
                 default:
                     request.getRequestDispatcher("/jsp/gc/publicaciones/notaPrensa.jsp").forward(request, response);
@@ -145,7 +147,7 @@ public class NotaPrensaAPI extends HttpServlet {
             Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private HashMap getParametersNotasPrensa(HttpServletRequest request) {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtTituloNotaPrensa").toLowerCase());
@@ -161,11 +163,12 @@ public class NotaPrensaAPI extends HttpServlet {
                 * Integer.parseInt(request.getParameter("sizePageNotaPrensa")));
         return this.parameters;
     }
-    
+
     private NotaPrensa getNotaPrensa(HttpServletRequest request) {
         NotaPrensa obj = new NotaPrensa();
         if (request.getParameter("action").equals("updateNotaPrensa")) {
             obj.setId(Integer.parseInt(request.getParameter("txtIdNotaPrensaER")));
+            obj.setFecha_creacion(Utilities.getDateSQLFORMAT(request.getParameter("txtFechaCreacionER"), "dd/MM/yyyy"));
         }
         obj.setAnho(request.getParameter("txtAnhoNotaPrensaER"));
         obj.setEstado(Boolean.parseBoolean(request.getParameter("txtEstadoNotaPrensaER")));

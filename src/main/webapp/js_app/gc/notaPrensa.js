@@ -113,8 +113,8 @@ function listarNotaPrensa(BEAN_PAGINATION) {
                 opcion_estado = "Ocultar";
             } else {
                 textColor = "text-danger";
-                icono = "<i class='far fa-hand-point-up'></i>";
                 opcion_estado = "Publicar";
+                icono = "<i class='far fa-hand-point-up'></i>";
             }
             cadenaContenido = value.contenido;
             cadenaContenido = replaceAll(cadenaContenido, '<p>', '');
@@ -156,7 +156,7 @@ function listarNotaPrensa(BEAN_PAGINATION) {
 
             card += "<div class='ml-auto'>";
 
-            card += "<a style='cursor:pointer' class='link mr-2 btn-cambiar-estado-np' data-toggle='tooltip' title='"+opcion_estado+"' data-original-title='' opcion_estado='"+opcion_estado.toLowerCase()+"'>"+icono+"</a>";
+            card += "<a style='cursor:pointer' class='link mr-2 btn-cambiar-estado-np' data-toggle='tooltip' title='" + opcion_estado + "' data-original-title='' opcion_estado='" + opcion_estado.toLowerCase() + "'>" + icono + "</a>";
             card += "<a style='cursor:pointer' class='link mr-2 btn-editar-np' data-toggle='tooltip' title='Editar' data-original-title='Editar'><i class='fas fa-edit'></i></a>";
             card += "<a style='cursor:pointer' class='link btn-eliminar-np' data-toggle='tooltip' title='Eliminar' data-original-title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
 
@@ -220,10 +220,41 @@ function agregarEventosNotaPrensa() {
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
+
     $('.btn-eliminar-np').each(function () {
         $(this).click(function () {
             $('#txtIdNotaPrensaER').val($(this.parentElement.parentElement).attr('id'));
             viewAlertDelete("NotaPrensa");
+            document.getElementsByTagName("body")[0].style.paddingRight = "0";
+        });
+    });
+
+    $('.btn-cambiar-estado-np').each(function () {
+        $(this).click(function () {
+            $('#txtIdNotaPrensaER').val($(this.parentElement.parentElement).attr('id'));
+            if ($(this).attr('opcion_estado').toLowerCase() === "publicar") {
+                $('#txtEstadoNotaPrensaER').val("true");
+            } else {
+                $('#txtEstadoNotaPrensaER').val("false");
+            }
+            swal({
+                title: 'PEAM',
+                text: "¿Está seguro de " + $(this).attr('opcion_estado') + " esta Nota de Prensa?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, continuar!',
+                cancelButtonText: 'No, cancelar!',
+                confirmButtonClass: 'btn btn-info',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.value) {
+                    $('#actionNotaPrensa').val("activateNotaPrensa");
+                    $("#nameForm").val("FrmNotaPrensaModal");
+                    $('#modalCargandoNotaPrensa').modal("show");
+                }
+            });
+            $('.swal2-confirm').css("margin-right", "15px");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
