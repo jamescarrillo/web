@@ -97,7 +97,7 @@
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
                             <div class="text-center">
-                                Goresam Construirá Centros de Capacitación Rural en el BPAM texto grande
+                                Goresam Construirá Centros de Capacitación Rural en el <br> BPAM texto grande no se que mas poner
                             </div>
                         </div> <!-- LAYER NR. 2 -->
                         <div

@@ -184,3 +184,35 @@ function cargarAniosCombo($combo, anioInicio, valueInicial, texto_Inicial) {
     }
     $combo.val(valueInicial);
 }
+
+function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(find, 'g'), replace);
+}
+
+function getTituloWeb(titulo) {
+    var cadenaTituloFormateado = "";
+    var palabras = titulo.split(' ');
+    var filas = 1;
+    for (var i = 0; i < palabras.length; i++) {
+        if (cadenaTituloFormateado.length > (45 * filas)) {
+            cadenaTituloFormateado += "</br>" + palabras[i] + " ";
+            filas++;
+        } else {
+            cadenaTituloFormateado += palabras[i] + " ";
+        }
+    }
+    return cadenaTituloFormateado;
+}
+
+function getResumenContenidoWeb(titulo, tamaño) {
+    var cadenaResumen = "";
+    var palabras = titulo.split(' ');
+    for (var i = 0; i < palabras.length; i++) {
+        if (cadenaResumen.length + palabras[i].length > tamaño) {
+            break;
+        } else {
+            cadenaResumen += palabras[i] + " ";
+        }
+    }
+    return cadenaResumen;
+}

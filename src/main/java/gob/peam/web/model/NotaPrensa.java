@@ -14,14 +14,14 @@ import java.sql.Date;
 public class NotaPrensa {
     
     private Integer id;
-    private Integer anho;
+    private String anho;
     private String titulo;
     private String contenido;
     private String fuente;
     private java.sql.Date fecha;
     private String foto;
     private Boolean estado;
-    private Persona persona;
+    private Persona subido_por;
     private java.sql.Date fecha_creacion;
     private java.sql.Date fecha_actualizacion;
 
@@ -33,11 +33,11 @@ public class NotaPrensa {
         this.id = id;
     }
 
-    public Integer getAnho() {
+    public String getAnho() {
         return anho;
     }
 
-    public void setAnho(Integer anho) {
+    public void setAnho(String anho) {
         this.anho = anho;
     }
 
@@ -89,12 +89,12 @@ public class NotaPrensa {
         this.estado = estado;
     }
 
-    public Persona getPersona() {
-        return persona;
+    public Persona getSubido_por() {
+        return subido_por;
     }
 
-    public void setPersona(Persona persona) {
-        this.persona = persona;
+    public void setSubido_por(Persona subido_por) {
+        this.subido_por = subido_por;
     }
 
     public Date getFecha_creacion() {

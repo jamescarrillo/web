@@ -62,15 +62,15 @@
 
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false" title="Publicaciones"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Publicaciones</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="ui-cards.html" title="Anuncios">Anuncios</a></li>
-                        <li><a href="ui-user-card.html" title="Destacados">Destacados</a></li>
-                        <li><a href="ui-buttons.html" title="Estudios">Estudios</a></li>
-                        <li><a href="ui-modals.html" title="Eventos">Eventos</a></li>
-                        <li><a href="ui-tab.html" title="Memorias Anuales">M. Anuales</a></li>
-                        <li><a href="ui-tooltip-popover.html" title="Notas de Prensa">Notas de Prensa</a></li>
-                        <li><a href="ui-tooltip-stylish.html" title="Noticias Multimedia">Noticias Multimedia</a></li>
-                        <li><a href="ui-sweetalert.html" title="Obras y Proyectos">Obras y Proyectos</a></li>
-                        <li><a href="ui-notification.html" title="Otras Publicaciones">Otras Publicaciones</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/anuncios" title="Anuncios">Anuncios</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/destacados" title="Destacados">Destacados</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/estudios" title="Estudios">Estudios</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/eventos" title="Eventos">Eventos</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/manuales">M. Anuales</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/notasprensa" title="Notas de Prensa">Notas de Prensa</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/noticiasmultimedia" title="Noticias Multimedia">Noticias Multimedia</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/obrasyproyectos" title="Obras y Proyectos">Obras y Proyectos</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/otraspublicaciones" title="Otras Publicaciones">Otras Publicaciones</a></li>
                     </ul>
                 </li>
                 <li class="nav-devider"></li>

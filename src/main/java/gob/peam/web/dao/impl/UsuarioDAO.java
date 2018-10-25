@@ -28,7 +28,7 @@ public class UsuarioDAO {
     public Usuario getUserValidation(String login) throws SQLException {
         Usuario usuario = null;
         try (Connection connPool = pool.getConnection()) {
-            try (PreparedStatement pst = connPool.prepareStatement("SELECT USUA_ID, USUA_CLAVE, USUA_ESTADO, PERS_DNI, PERS_NOMBRE, "
+            try (PreparedStatement pst = connPool.prepareStatement("SELECT USUA_ID, USUA_CLAVE, USUA_ESTADO, U.PERS_ID, PERS_DNI, PERS_NOMBRE, "
                     + "PERS_APELLIDO_PATERNO, PERS_APELLIDO_MATERNO, PERS_CARGO FROM ADMINISTRACION.USUARIO U "
                     + "INNER JOIN ADMINISTRACION.PERSONA P ON U.PERS_ID = P.PERS_ID WHERE USUA_LOGIN = ?");) {
                 pst.setString(1, login);
@@ -40,6 +40,7 @@ public class UsuarioDAO {
                         usuario.setUsua_estado(rs.getBoolean("USUA_ESTADO"));
                         usuario.setUsua_clave(rs.getString("USUA_CLAVE"));
                         Persona persona = new Persona();
+                        persona.setPers_id(rs.getInt("PERS_ID"));
                         persona.setPers_dni(rs.getString("PERS_DNI"));
                         persona.setPers_nombre(rs.getString("PERS_NOMBRE"));
                         persona.setPers_apellido_paterno(rs.getString("PERS_APELLIDO_PATERNO"));
