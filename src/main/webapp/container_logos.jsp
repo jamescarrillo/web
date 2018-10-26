@@ -2,7 +2,7 @@
     <div class="row" style="margin-top: 5px; margin-bottom: 5px" id="row_logos_lg">
         <div class="col-md-2" style="width: 160px">
             <a>
-                <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo-goresam.png" alt="" style="height: 80px"/>
+                <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo-goresam.png" alt="" style="height: 70px;margin-top: 5px"/>
             </a>
         </div>            
         <div class="col-md-1" style="width: 160px">

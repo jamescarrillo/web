@@ -56,6 +56,8 @@
               href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/layers.css">
         <link rel="stylesheet" type="text/css"
               href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/navigation.css">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css"rel="stylesheet">
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -69,7 +71,20 @@
             <%@ include file="container_logos.jsp"%>
         </div>
         <%@ include file="header.jsp"%>
-        <section class="rev_slider_wrapper">
+        <form id="FrmNotaPrensa" role="search" class="search-form">
+            <input type="hidden" id="nameFormNotaPrensa" value="FrmNotaPrensa">
+            <input type="hidden" id="actionNotaPrensa" name="action" value="paginarNotaPrensa">
+            <input type="hidden" id="comboAnio" name="comboAnio" value="-1">
+            <input type="hidden" id="numberPageNotaPrensa" name="numberPageNotaPrensa" value="1">
+            <input type="hidden" id="sizePageNotaPrensa" name="sizePageNotaPrensa" value="10">
+            <input type="hidden" class="form-control" value="" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" placeholder="Buscar...">
+        </form>
+        <div class="row" id="loader_contenido">
+            <div class="col-xs-2 col-xs-offset-5 mt-50">
+                <div class="loader-peam"></div>
+            </div>
+        </div>
+        <section class="rev_slider_wrapper noticias-peam" style="display: block">
             <div class="rev_slider materialize-slider">
                 <ul>
                     <li data-transition="fade" data-slotamount="default"
@@ -96,10 +111,9 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center">
-                                Goresam Construirá Centros de Capacitación Rural en el <br> BPAM texto grande no se que mas poner
+                            <div class="text-center" id="tituloNotaPrensa1">
                             </div>
-                        </div> <!-- LAYER NR. 2 -->
+                        </div>
                         <div
                             class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
@@ -111,66 +125,9 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            Comprometido con la preservación del medio ambiente Comprometido con la preservación del medio ambiente 
-                        </div> <!-- LAYER NR. 3 -->
-                        <div class="tp-caption tp-resizeme rev-btn"
-                             data-x="['center','center','center','center']"
-                             data-hoffset="['0','0','0','0']"
-                             data-y="['middle','middle','middle','middle']"
-                             data-voffset="['130','130','130','130']" data-width="none"
-                             data-height="none" data-whitespace="nowrap"
-                             data-transform_idle="o:1;" data-style_hover="cursor:default;"
-                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
-                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                             data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                             data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                             data-start="1200" data-splitin="none" data-splitout="none"
-                             data-responsive_offset="on"
-                             style="z-index: 7; white-space: nowrap;">
-                            <a href="#" class="btn btn-lg  waves-effect waves-light">Leer más</a>
-                        </div></li>
-                    <!-- slide 1 end -->
-                    <!-- slide 2 start -->
-                    <li data-transition="fade" data-slotamount="default"
-                        data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
-                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
-                        data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
-                        data-fsslotamount="7" data-saveperformance="off"
-                        data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
-                                                 alt="" data-bgposition="center center" data-bgfit="cover"
-                                                 data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
-                                                 data-no-retina> <!-- LAYER NR. 1 -->
-                        <div
-                            class="tp-caption rev-heading text-extrabold dark-text tp-resizeme"
-                            data-x="center" data-y="center" data-voffset="-50"
-                            data-fontsize="['30','30','30','15']"
-                            data-lineheight="['30','30','30','20']" data-width="none"
-                            data-height="none" data-whitespace="nowrap"
-                            data-transform_idle="o:1;"
-                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
-                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                            data-start="800" data-splitin="none" data-splitout="none"
-                            data-responsive_offset="on"
-                            style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center text-uppercase">
-                                Premier confía que en la quincena funcionará <br> el hospital de Moyobamba
+                            <div class="text-center" id="resumenNotaPrensa1">
                             </div>
-                        </div> <!-- LAYER NR. 2 -->
-                        <div
-                            class="tp-caption tp-resizeme rev-subheading dark-text text-center"
-                            data-x="center" data-y="center" data-voffset="30"
-                            data-whitespace="nowrap" data-transform_idle="o:1;"
-                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
-                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
-                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-                            data-start="1000" data-splitin="none" data-splitout="none"
-                            data-responsive_offset="on"
-                            style="z-index: 6; white-space: nowrap;">
-                        </div> <!-- LAYER NR. 3 -->
+                        </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
                              data-x="['center','center','center','center']"
                              data-hoffset="['0','0','0','0']"
@@ -185,25 +142,28 @@
                              data-start="1200" data-splitin="none" data-splitout="none"
                              data-responsive_offset="on"
                              style="z-index: 7; white-space: nowrap;">
-                            <a href="#" class="btn btn-lg  waves-effect waves-light">Leer más</a>
+                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
+                                <input type="hidden" name="idNota" id="idNota1" value="">
+                                <input type="hidden" name="action" id="action1" value="readNotaPrensa">
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más</button>
+                            </form>
                         </div>
                     </li>
-                    <!-- slide 3 start -->
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
                         data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
-                        data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
-                                                 alt="" data-bgposition="center center" data-bgfit="cover"
-                                                 data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
-                                                 data-no-retina> <!-- LAYER NR. 1 -->
+                        data-title="materialize Material" data-description=""><img
+                            src="assets/img/banner/banner-2.jpg" alt=""
+                            data-bgposition="center center" data-bgfit="cover"
+                            data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
+                            data-no-retina>
                         <div
-                            class="tp-caption rev-heading text-extrabold dark-text tp-resizeme"
+                            class="tp-caption rev-heading text-extrabold dark-text tp-resizeme "
                             data-x="center" data-y="center" data-voffset="-50"
-                            data-fontsize="['30','30','30','15']"
-                            data-lineheight="['30','30','30','20']" data-width="none"
+                            data-fontsize="['30','25','20','15']"
+                            data-lineheight="['30','25','20','20']" data-width="none"
                             data-height="none" data-whitespace="nowrap"
                             data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
@@ -213,12 +173,11 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center text-uppercase">
-                                Se hará respetar la autoridad en el bosque de <br> protección Alto Mayo
+                            <div class="text-center" id="tituloNotaPrensa2">
                             </div>
-                        </div> <!-- LAYER NR. 2 -->
+                        </div>
                         <div
-                            class="tp-caption tp-resizeme rev-subheading dark-text text-center"
+                            class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
@@ -228,7 +187,9 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                        </div> <!-- LAYER NR. 3 -->
+                            <div class="text-center" id="resumenNotaPrensa2">
+                            </div>
+                        </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
                              data-x="['center','center','center','center']"
                              data-hoffset="['0','0','0','0']"
@@ -243,25 +204,28 @@
                              data-start="1200" data-splitin="none" data-splitout="none"
                              data-responsive_offset="on"
                              style="z-index: 7; white-space: nowrap;">
-                            <a href="#" class="btn btn-lg  waves-effect waves-light">Leer más</a>
+                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
+                                <input type="hidden" name="idNota" id="idNota2" value="">
+                                <input type="hidden" name="action" id="action2" value="readNotaPrensa">
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más</button>
+                            </form>
                         </div>
                     </li>
-                    <!-- slide 4 start -->
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
                         data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
-                        data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
-                                                 alt="" data-bgposition="center center" data-bgfit="cover"
-                                                 data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
-                                                 data-no-retina> <!-- LAYER NR. 1 -->
+                        data-title="materialize Material" data-description=""><img
+                            src="assets/img/banner/banner-2.jpg" alt=""
+                            data-bgposition="center center" data-bgfit="cover"
+                            data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
+                            data-no-retina>
                         <div
-                            class="tp-caption rev-heading text-extrabold dark-text tp-resizeme"
+                            class="tp-caption rev-heading text-extrabold dark-text tp-resizeme "
                             data-x="center" data-y="center" data-voffset="-50"
-                            data-fontsize="['30','30','30','15']"
-                            data-lineheight="['30','30','30','20']" data-width="none"
+                            data-fontsize="['30','25','20','15']"
+                            data-lineheight="['30','25','20','20']" data-width="none"
                             data-height="none" data-whitespace="nowrap"
                             data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
@@ -271,12 +235,11 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center text-uppercase">
-                                Convocan a proceso de licitación para ejecutar <br> saldo de obra de la I.E. "El Cóndor"
+                            <div class="text-center" id="tituloNotaPrensa3">
                             </div>
-                        </div> <!-- LAYER NR. 2 -->
+                        </div>
                         <div
-                            class="tp-caption tp-resizeme rev-subheading dark-text text-center"
+                            class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
@@ -286,7 +249,9 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                        </div> <!-- LAYER NR. 3 -->
+                            <div class="text-center" id="resumenNotaPrensa3">
+                            </div>
+                        </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
                              data-x="['center','center','center','center']"
                              data-hoffset="['0','0','0','0']"
@@ -301,25 +266,28 @@
                              data-start="1200" data-splitin="none" data-splitout="none"
                              data-responsive_offset="on"
                              style="z-index: 7; white-space: nowrap;">
-                            <a href="#" class="btn btn-lg  waves-effect waves-light">Leer más</a>
+                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
+                                <input type="hidden" name="idNota" id="idNota3" value="">
+                                <input type="hidden" name="action" id="action3" value="readNotaPrensa">
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más</button>
+                            </form>
                         </div>
                     </li>
-                    <!-- slide 5 start -->
                     <li data-transition="fade" data-slotamount="default"
                         data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
                         data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
-                        data-title="Unique Design" data-description="">
-                        <!-- MAIN IMAGE --> <img src="assets/img/banner/banner-2.jpg"
-                                                 alt="" data-bgposition="center center" data-bgfit="cover"
-                                                 data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
-                                                 data-no-retina> <!-- LAYER NR. 1 -->
+                        data-title="materialize Material" data-description=""><img
+                            src="assets/img/banner/banner-2.jpg" alt=""
+                            data-bgposition="center center" data-bgfit="cover"
+                            data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
+                            data-no-retina>
                         <div
-                            class="tp-caption rev-heading text-extrabold dark-text tp-resizeme"
+                            class="tp-caption rev-heading text-extrabold dark-text tp-resizeme "
                             data-x="center" data-y="center" data-voffset="-50"
-                            data-fontsize="['30','30','30','15']"
-                            data-lineheight="['30','30','30','20']" data-width="none"
+                            data-fontsize="['30','25','20','15']"
+                            data-lineheight="['30','25','20','20']" data-width="none"
                             data-height="none" data-whitespace="nowrap"
                             data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
@@ -329,12 +297,11 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center text-uppercase">
-                                GORESAM entrega techo metálico a institución <br> educativa amiga de la naturaleza
+                            <div class="text-center" id="tituloNotaPrensa4">
                             </div>
-                        </div> <!-- LAYER NR. 2 -->
+                        </div>
                         <div
-                            class="tp-caption tp-resizeme rev-subheading dark-text text-center"
+                            class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
@@ -344,7 +311,9 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                        </div> <!-- LAYER NR. 3 -->
+                            <div class="text-center" id="resumenNotaPrensa4">
+                            </div>
+                        </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
                              data-x="['center','center','center','center']"
                              data-hoffset="['0','0','0','0']"
@@ -359,7 +328,73 @@
                              data-start="1200" data-splitin="none" data-splitout="none"
                              data-responsive_offset="on"
                              style="z-index: 7; white-space: nowrap;">
-                            <a href="#" class="btn btn-lg  waves-effect waves-light">Leer más</a>
+                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
+                                <input type="hidden" name="idNota" id="idNota4" value="">
+                                <input type="hidden" name="action" id="action4" value="readNotaPrensa">
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más</button>
+                            </form>
+                        </div>
+                    </li>
+                    <li data-transition="fade" data-slotamount="default"
+                        data-easein="Power4.easeInOut" data-easeout="Power4.easeInOut"
+                        data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
+                        data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
+                        data-fsslotamount="7" data-saveperformance="off"
+                        data-title="materialize Material" data-description=""><img
+                            src="assets/img/banner/banner-2.jpg" alt=""
+                            data-bgposition="center center" data-bgfit="cover"
+                            data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
+                            data-no-retina>
+                        <div
+                            class="tp-caption rev-heading text-extrabold dark-text tp-resizeme "
+                            data-x="center" data-y="center" data-voffset="-50"
+                            data-fontsize="['30','25','20','15']"
+                            data-lineheight="['30','25','20','20']" data-width="none"
+                            data-height="none" data-whitespace="nowrap"
+                            data-transform_idle="o:1;"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                            data-start="800" data-splitin="none" data-splitout="none"
+                            data-responsive_offset="on"
+                            style="z-index: 5; white-space: nowrap;">
+                            <div class="text-center" id="tituloNotaPrensa5">
+                            </div>
+                        </div>
+                        <div
+                            class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
+                            data-x="center" data-y="center" data-voffset="30"
+                            data-whitespace="nowrap" data-transform_idle="o:1;"
+                            data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
+                            data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                            data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                            data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                            data-start="1000" data-splitin="none" data-splitout="none"
+                            data-responsive_offset="on"
+                            style="z-index: 6; white-space: nowrap;">
+                            <div class="text-center" id="resumenNotaPrensa5">
+                            </div>
+                        </div> 
+                        <div class="tp-caption tp-resizeme rev-btn"
+                             data-x="['center','center','center','center']"
+                             data-hoffset="['0','0','0','0']"
+                             data-y="['middle','middle','middle','middle']"
+                             data-voffset="['130','130','130','130']" data-width="none"
+                             data-height="none" data-whitespace="nowrap"
+                             data-transform_idle="o:1;" data-style_hover="cursor:default;"
+                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
+                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+                             data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
+                             data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+                             data-start="1200" data-splitin="none" data-splitout="none"
+                             data-responsive_offset="on"
+                             style="z-index: 7; white-space: nowrap;">
+                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
+                                <input type="hidden" name="idNota" id="idNota5" value="">
+                                <input type="hidden" name="action" id="action5" value="readNotaPrensa">
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más</button>
+                            </form>
                         </div>
                     </li>
                 </ul>
@@ -368,7 +403,7 @@
         <section class="section-padding" style="padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="h1-title section-title">
+                    <h2 class="h1-title section-title text-peam">
                         <strong>Nuestras Líneas de Acción</strong>
                     </h2>
                 </div>
@@ -378,7 +413,7 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="text-center">
                                     <a href="#"> <i class="fa fa-home fa-5x" aria-hidden="true"></i>
-                                        <h5>
+                                        <h5 class="text-peam">
                                             DIRECCIÓN DE <br>INFRAESTRUCTURA
                                         </h5>
                                     </a>
@@ -390,7 +425,7 @@
                                 <div class="text-center">
                                     <a href="#"> <i class="fa fa-pagelines fa-5x"
                                                     aria-hidden="true"></i>
-                                        <h5>
+                                        <h5 class="text-peam">
                                             DIRECCIÓN DE <br>MANEJO AMBIENTAL
                                         </h5>
                                     </a>
@@ -401,7 +436,7 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="text-center">
                                     <a href="#"> <i class="fa fa-truck fa-5x" aria-hidden="true"></i>
-                                        <h5>DIRECCIÓN DE DESARROLLO AGROPECUARIO</h5>
+                                        <h5 class="text-peam">DIRECCIÓN DE DESARROLLO AGROPECUARIO</h5>
                                     </a>
 
                                 </div>
@@ -412,7 +447,7 @@
                                 <div class="text-center">
                                     <a href="#"> <i class="fa fa-graduation-cap fa-5x"
                                                     aria-hidden="true"></i>
-                                        <h5>ESTUDIOS</h5>
+                                        <h5 class="text-peam">ESTUDIOS</h5>
                                     </a>
                                 </div>
                                 <!-- /.border-box -->
@@ -426,11 +461,11 @@
             </div>
             <!-- /.row -->
         </section>
-        <section class="section-padding"
-                 style="padding-top: 0px; padding-bottom: 50px;">
+        <section class="section-padding noticias-peam"
+                 style="padding-top: 0px; padding-bottom: 50px; display: block">
             <div class="container">
                 <div class="text-center mb-40">
-                    <h1 class="h1-title section-title">
+                    <h1 class="h1-title section-title text-peam">
                         <strong>Noticias</strong>
                     </h1>
                 </div>
@@ -514,7 +549,7 @@
                  style="padding-top: 0px; padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="h1-title section-title">
+                    <h1 class="h1-title section-title text-peam">
                         <strong>Gestión Transparente</strong>
                     </h1>
                 </div>
@@ -530,7 +565,7 @@
                                    style="color: #71c44c"></i>
                             </div>
                             <div class="desc mt-10">
-                                <a href="#"><h3>DOCUMENTOS NORMATIVOS Y DE GESTIÓN</h3></a>
+                                <a href="#"><h3 class="text-peam">DOCUMENTOS NORMATIVOS Y DE GESTIÓN</h3></a>
                             </div>
                         </div>
                     </div>
@@ -542,7 +577,7 @@
                                 <i class="fa fa-money" aria-hidden="true" style="color: #71c44c"></i>
                             </div>
                             <div class="desc mt-10">
-                                <a href="#"><h3>PRESUPUESTOS Y FINANZAS</h3></a>
+                                <a href="#"><h3 class="text-peam">PRESUPUESTOS Y FINANZAS</h3></a>
                             </div>
                         </div>
                     </div>
@@ -553,7 +588,7 @@
                                 <i class="material-icons brand-icon">supervisor_account</i>
                             </div>
                             <div class="desc">
-                                <a href="#"><h3>PROYECTOS DE INVERSIÓN</h3></a>
+                                <a href="#"><h3 class="text-peam">PROYECTOS DE INVERSIÓN</h3></a>
                             </div>
                         </div>
                     </div>
@@ -565,7 +600,7 @@
                                 <i class="fa fa-users" aria-hidden="true" style="color: #71c44c"></i>
                             </div>
                             <div class="desc mt-10">
-                                <a href="#"><h3>RECURSOS HUMANOS</h3></a>
+                                <a href="#"><h3 class="text-peam">RECURSOS HUMANOS</h3></a>
                             </div>
                         </div>
                     </div>
@@ -576,8 +611,7 @@
                                 <i class="material-icons brand-icon">insert_drive_file</i>
                             </div>
                             <div class="desc">
-                                <a href="#"><h4 style="margin-bottom: 0px">ADQUISICIONES
-                                        Y CONTRATACIONES</h4></a>
+                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam">ADQUISICIONES Y CONTRATACIONES</h3></a>
                             </div>
                         </div>
                     </div>
@@ -590,8 +624,7 @@
                                 <i class="fa fa-book" aria-hidden="true" style="color: #71c44c"></i>
                             </div>
                             <div class="desc mt-10">
-                                <a href="#"><h4 style="margin-bottom: 0px">AGENDA
-                                        INSTITUCIONAL</h4></a>
+                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam">AGENDA INSTITUCIONAL</h3></a>
                             </div>
                         </div>
                     </div>
@@ -602,8 +635,7 @@
                                 <i class="material-icons brand-icon">info</i>
                             </div>
                             <div class="desc">
-                                <a href="#"><h4 style="margin-bottom: 0px">INFORMACIÓN
-                                        ADICIONAL</h4></a>
+                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam">INFORMACIÓN ADICIONAL</h3></a>
                             </div>
                         </div>
                     </div>
@@ -614,7 +646,7 @@
                  style="padding-top: 0px; padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="h1-title section-title">
+                    <h1 class="h1-title section-title text-peam">
                         <strong>Favoritos</strong>
                     </h1>
                 </div>
@@ -629,7 +661,7 @@
                                 <i class="material-icons brand-icon">description</i>
                             </div>
                             <div class="desc mt-15">
-                                <a href="#"><h3>TUPA</h3></a>
+                                <a href="#"><h3 class="text-peam">TUPA</h3></a>
                             </div>
                         </div>
                         <!-- /.featured-item -->
@@ -641,7 +673,7 @@
                                 <i class="material-icons brand-icon">gavel</i>
                             </div>
                             <div class="desc mt-15">
-                                <a href="#"><h3>CÓDIGO DE ÉTICA</h3></a>
+                                <a href="#" class="text-peam"><h3>CÓDIGO DE ÉTICA</h3></a>
                             </div>
                         </div>
                         <!-- /.featured-item -->
@@ -655,7 +687,7 @@
                                    style="color: #71c44c"></i>
                             </div>
                             <div class="desc mt-30">
-                                <a href="#"><h3>SISGEDO</h3></a>
+                                <a href="#"><h3 class="text-peam">SISGEDO</h3></a>
                             </div>
                         </div>
                         <!-- /.featured-item -->
@@ -667,7 +699,7 @@
                                 <i class="material-icons brand-icon">local_library</i>
                             </div>
                             <div class="desc">
-                                <a href="#"><h4 style="margin-bottom: 0px">LIBRO DE
+                                <a href="#"><h4 style="margin-bottom: 0px" class="text-peam">LIBRO DE
                                         RECLAMACIONES</h4></a>
                             </div>
                         </div>
@@ -682,7 +714,7 @@
                                    style="color: #71c44c"></i>
                             </div>
                             <div class="desc mt-20">
-                                <a href="#"><h4 style="margin-bottom: 0px">SOLICITUD DE
+                                <a href="#"><h4 style="margin-bottom: 0px" class="text-peam">SOLICITUD DE
                                         ACCESO A INFORMACIÓN</h4></a>
                             </div>
                         </div>
@@ -696,7 +728,7 @@
                                    style="color: #71c44c"></i>
                             </div>
                             <div class="desc mt-30">
-                                <a href="#"><h3>RESOLUCIONES</h3></a>
+                                <a href="#"><h3 class="text-peam">RESOLUCIONES</h3></a>
                             </div>
                         </div>
                     </div>
@@ -707,7 +739,7 @@
                                 <i class="material-icons brand-icon">share</i>
                             </div>
                             <div class="desc mt-15">
-                                <a href="#"><h3>CONTROL INTERNO</h3></a>
+                                <a href="#"><h3 class="text-peam">CONTROL INTERNO</h3></a>
                             </div>
                         </div>
                     </div>
@@ -718,7 +750,7 @@
                  style="padding-top: 0px; padding-bottom: 20px;">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="h1-title section-title">
+                    <h1 class="h1-title section-title text-peam">
                         <strong>Convocatorias</strong>
                     </h1>
                 </div>
@@ -732,7 +764,7 @@
                             </div>
                             <div class="desc">
                                 <h2 class="mt-20">
-                                    <a> Selección de Personal </a>
+                                    <a class="text-peam"> Selección de Personal </a>
                                 </h2>
                             </div>
                         </div>
@@ -745,7 +777,7 @@
                             </div>
                             <div class="desc">
                                 <h2 class="mt-20">
-                                    <a> Bienes, Servicios, Obras y Conseciones </a>
+                                    <a class="text-peam"> Bienes, Servicios, Obras y Conseciones </a>
                                 </h2>
                             </div>
                         </div>
@@ -757,7 +789,7 @@
                  style="padding-top: 0px; padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="h1-title section-title">
+                    <h1 class="h1-title section-title text-peam">
                         <strong>Galería</strong>
                     </h1>
                 </div>
@@ -797,7 +829,7 @@
                  style="padding-top: 0px; padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="h1-title section-title">
+                    <h1 class="h1-title section-title text-peam">
                         <strong>Multimedia</strong>
                     </h1>
                 </div>
@@ -908,7 +940,25 @@
                 </div>
             </div>
         </section>
-
+        <div class="modal fade" id="modalCargandoPublicacionesNP" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <!--div class="progress" style="margin-bottom: 0px;">
+                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                Cargando...
+                            </div>
+                        </div-->
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                                 aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+                                Cargando...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <%@ include file="footer.jsp"%>
         <!-- jQuery -->
         <script
@@ -1016,7 +1066,11 @@
                 });
             });
         </script>
-        <script type="text/javascript"
-        src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
+
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/publicaciones.js"></script>
     </body>
 </html>

@@ -59,7 +59,6 @@ function procesarAjaxNotaPrensa() {
         //AGREGAMOS LOS PARAMETROS DEL FORMULARIO DE BUSQUEDA
         datosSerializadosCompletos += "&txtTituloNotaPrensa=" + $('#txtTituloNotaPrensa').val();
         datosSerializadosCompletos += "&comboAnio=" + $('#comboAnio').val();
-        //datosSerializadosCompletos += "&comboTipoListaNotaPrensa=" + $('#comboTipoListaNotaPrensa').val();
     }
     datosSerializadosCompletos += "&numberPageNotaPrensa=" + $('#numberPageNotaPrensa').val();
     datosSerializadosCompletos += "&sizePageNotaPrensa=" + $('#sizePageNotaPrensa').val();
@@ -190,11 +189,8 @@ function agregarEventosNotaPrensa() {
 
     $('.btn-vista-previa-np').each(function () {
         $(this).click(function () {
-            console.log($(this.parentElement.parentElement).attr('titulo'));
-            console.log(getTituloWeb($(this.parentElement.parentElement).attr('titulo')));
             $('#tituloNotaPrensaVP').html($(this.parentElement.parentElement).attr('titulo'));
             $('#resumenNotaPrensaVP').html(getResumenContenidoWeb($(this.parentElement.parentElement).attr('contenido'), 80) + "...");
-            //$('#tituloNotaPrensaVP').html(getTituloWeb($(this.parentElement.parentElement).attr('titulo')));
             $('#ventanaVistaPreviaNotaPrensa').modal("show");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
