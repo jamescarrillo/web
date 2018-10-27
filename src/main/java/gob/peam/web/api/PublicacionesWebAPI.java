@@ -21,7 +21,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 /**
@@ -35,7 +34,6 @@ public class PublicacionesWebAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
-    private HttpSession session;
     private Gson json;
     private String jsonResponse;
     private HashMap<String, Object> parameters;
@@ -74,8 +72,8 @@ public class PublicacionesWebAPI extends HttpServlet {
                     procesarNotaPrensa(new BEAN_CRUD(this.notaPrensaDAO.getPagination(getParametersNotasPrensa(request))), response);
                     break;
                 case "readNotaPrensa":
-                    LOG.info(request.getParameter("idNotaPrensa1"));
-                    LOG.info(request.getParameter("action"));
+                    LOG.info(request.getParameter("idNota"));
+                    //request.setAttribute("idNota", LOG);
                     request.getRequestDispatcher("/jsp/web/publicaciones/notaPrensaWeb.jsp").forward(request, response);
                     break;
                 default:

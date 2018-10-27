@@ -5,8 +5,9 @@
             <div class="col-lg-4 col-md-3">
                 <!-- Social Icon -->
                 <ul class="list-inline social-top tt-animate btt">
-                    <li><a href="#"><i class="fa fa-facebook" style="color: #a20505"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter" style="color: #a20505"></i></a></li>
+                    <li><a href="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs" target="_blank"><i class="fa fa-facebook" style="color: #a20505"></i></a></li>
+                    <li><a href="https://twitter.com/p_altomayo" target="_blank"><i class="fa fa-twitter" style="color: #a20505"></i></a></li>
+                    <li><a href="https://www.youtube.com/user/PEAM1140?feature=watch" target="_blank"><i class="fa fa-youtube" style="color: #a20505"></i></a></li>
                 </ul>
             </div>
             <div class="col-lg-8 col-me-9 text-right">
