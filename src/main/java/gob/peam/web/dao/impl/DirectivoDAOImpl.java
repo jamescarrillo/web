@@ -41,17 +41,18 @@ public class DirectivoDAOImpl implements DirectivoDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(ID) AS COUNT FROM WEB.F00012 WHERE "
-                    + "NOMBRES_APELLIDOS LIKE CONCAT('%',?,'%')");
+                    + "LOWER(NOMBRES_APELLIDOS) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
-                pst = conn.prepareStatement("SELECT * FROM WEB.F00012 WHERE "
-                        + "NOMBRES_APELLIDOS LIKE CONCAT('%',?,'%') ORDER BY "
-                        + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
-                pst.setString(1, String.valueOf(parameters.get("FILTER")));
-                rs = pst.executeQuery();
-                while (rs.next()) {
+                if (rs.getInt("COUNT") > 0) {
+                    pst = conn.prepareStatement("SELECT * FROM WEB.F00012 WHERE "
+                            + "LOWER(NOMBRES_APELLIDOS) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
+                            + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
+                    pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
                     Directivo obj = new Directivo();
                     obj.setId(rs.getInt("ID"));
                     obj.setTratamiento(rs.getString("TRATAMIENTO"));
@@ -73,6 +74,7 @@ public class DirectivoDAOImpl implements DirectivoDAO {
                     obj.setHoja_vida(rs.getString("HOJA_VIDA"));
                     obj.setEstado(rs.getBoolean("ESTADO"));
                     list.add(obj);
+                }
                 }
             }
             beanpagination.setLIST(list);
@@ -102,33 +104,31 @@ public class DirectivoDAOImpl implements DirectivoDAO {
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("INSERT INTO WEB.F00012(ID,TRATAMIENDO,NOMBRES_APELLIDOS,CARGO,NIVEL_REMUNERATIVO,"
-                    + "NUMERO_DNI,RESOLUCION,FECHA_DESIGNACION,TELEFONO,FAX,E_MAIL,FOTO,PROFESION,RESUMEN,"
-                    + "INSTITUCION,REGIMEN_LABORAL,RETRIBUCION_MENSUAL,HOJA_VIDA,ESTADO) "
-                    + "VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.f00012),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-            /*
-            pst.setString(1, funcionario.getTratamiento());
-            pst.setStr1ing(2, funcionario.getNombres_apellidos());
-            pst.setString(3, funcionario.getCargo());
-            pst.setString(4, funcionario.getNivel_remunerativo());
-            pst.setString(5, funcionario.getNumero_dni());
-            pst.setString(6, funcionario.getResolucion());
-            pst.setDate(7, funcionario.getFecha_designacion());
-            pst.setString(8, funcionario.getTelefono());
-            pst.setString(9, funcionario.getFax());
-            pst.setString(10, funcionario.getE_mail());
-            pst.setString(11, funcionario.getFoto());
-            pst.setString(12, funcionario.getProfesion());
-            pst.setString(13, funcionario.getResumen());
-            pst.setString(14, funcionario.getInstitucion());
-            pst.setString(15, funcionario.getRegimen_laboral());
-            pst.setDouble(16, funcionario.getRetribucion_mensual());
-            pst.setString(17, funcionario.getHoja_vida());
-            pst.setBoolean(18, funcionario.isEstado());
+            pst = conn.prepareStatement("INSERT INTO WEB.F00012(ID,NOMBRES_APELLIDOS,NUMERO_DNI,CARGO,INSTITUCION,NIVEL_REMUNERATIVO,"
+                    + "REGIMEN_LABORAL,RETRIBUCION_MENSUAL,RESOLUCION,FECHA_DESIGNACION,PROFESION,TELEFONO,FAX,E_MAIL,FOTO,HOJA_VIDA, ESTADO) "
+                    + "VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.f00012),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+            pst.setString(1, obj.getNombres_apellidos());
+            pst.setString(2, obj.getNumero_dni());
+            pst.setString(3, obj.getCargo());
+            pst.setString(4, obj.getInstitucion());
+            pst.setString(5, obj.getNivel_remunerativo());
+            pst.setString(6, obj.getRegimen_laboral());
+            pst.setDouble(7, obj.getRetribucion_mensual());
+            pst.setString(8, obj.getResolucion());
+            pst.setDate(9, obj.getFecha_designacion());
+            pst.setString(10, obj.getProfesion());
+            pst.setString(11, obj.getTelefono());
+            pst.setString(12, obj.getFax());
+            pst.setString(13, obj.getE_mail());
+            pst.setString(14, obj.getFoto());
+            pst.setString(15, obj.getHoja_vida());
+            pst.setBoolean(16, obj.getEstado());
+            
             pst.executeUpdate();
-             */
+             
             conn.commit();
-            beancrud.setMESSAGE_SERVER("registered");
+            beancrud.setMESSAGE_SERVER("ok");
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
@@ -144,31 +144,29 @@ public class DirectivoDAOImpl implements DirectivoDAO {
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.F00012 SET TRATAMIENDO = ?,NOMBRES_APELLIDOS = ?,CARGO = ?,NIVEL_REMUNERATIVO = ?,"
-                    + "NUMERO_DNI = ?,RESOLUCION = ?,FECHA_DESIGNACION = ?,TELEFONO = ?,FAX = ?,E_MAIL = ?,FOTO = ?,PROFESION=?,RESUMEN=?,"
-                    + "INSTITUCION = ?,REGIMEN_LABORAL =?,RETRIBUCION_MENSUAL = ?,HOJA_VIDA = ?,ESTADO =? WHERE ID = ?");
-            pst.setString(1, obj.getTratamiento());
-            pst.setString(2, obj.getNombres_apellidos());
+            pst = conn.prepareStatement("UPDATE WEB.F00012 SET NOMBRES_APELLIDOS = ?,NUMERO_DNI = ?,CARGO = ?,INSTITUCION = ?,NIVEL_REMUNERATIVO = ?,"
+                    + "REGIMEN_LABORAL = ?,RETRIBUCION_MENSUAL = ?,RESOLUCION = ?,FECHA_DESIGNACION = ?,PROFESION=?,TELEFONO = ?,FAX = ?,E_MAIL = ?,FOTO = ?,"
+                    + "HOJA_VIDA = ?, ESTADO = ? WHERE ID = ?");
+            pst.setString(1, obj.getNombres_apellidos());
+            pst.setString(2, obj.getNumero_dni());
             pst.setString(3, obj.getCargo());
-            pst.setString(4, obj.getNivel_remunerativo());
-            pst.setString(5, obj.getNumero_dni());
-            pst.setString(6, obj.getResolucion());
-            pst.setDate(7, obj.getFecha_designacion());
-            pst.setString(8, obj.getTelefono());
-            pst.setString(9, obj.getFax());
-            pst.setString(10, obj.getE_mail());
-            pst.setString(11, obj.getFoto());
-            pst.setString(12, obj.getProfesion());
-            pst.setString(13, obj.getResumen());
-            pst.setString(14, obj.getInstitucion());
-            pst.setString(15, obj.getRegimen_laboral());
-            pst.setDouble(16, obj.getRetribucion_mensual());
-            pst.setString(17, obj.getHoja_vida());
-            pst.setBoolean(18, obj.getEstado());
-            pst.setInt(19, obj.getId());
+            pst.setString(4, obj.getInstitucion());
+            pst.setString(5, obj.getNivel_remunerativo());
+            pst.setString(6, obj.getRegimen_laboral());
+            pst.setDouble(7, obj.getRetribucion_mensual());
+            pst.setString(8, obj.getResolucion());
+            pst.setDate(9, obj.getFecha_designacion());
+            pst.setString(10, obj.getProfesion());
+            pst.setString(11, obj.getTelefono());
+            pst.setString(12, obj.getFax());
+            pst.setString(13, obj.getE_mail());
+            pst.setString(14, obj.getFoto());
+            pst.setString(15, obj.getHoja_vida());
+            pst.setBoolean(16, obj.getEstado());
+            pst.setInt(17, obj.getId());
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMESSAGE_SERVER("modified");
+            beancrud.setMESSAGE_SERVER("ok");
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
@@ -188,7 +186,7 @@ public class DirectivoDAOImpl implements DirectivoDAO {
             pst.setInt(1, (int) id);
             pst.executeUpdate();
             conn.commit();
-            beancrud.setMESSAGE_SERVER("deleted");
+            beancrud.setMESSAGE_SERVER("ok");
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
@@ -200,6 +198,31 @@ public class DirectivoDAOImpl implements DirectivoDAO {
     @Override
     public Directivo get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException {
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("UPDATE WEB.f00012 SET ESTADO = ? WHERE ID = ?");
+            if (parameters.get("ESTADO").equals("true")) {
+                pst.setBoolean(1, true);
+            }else{
+                pst.setBoolean(1, false);
+            }
+            pst.setInt(2, (int) id);
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
 }

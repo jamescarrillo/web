@@ -15,8 +15,12 @@ import gob.peam.web.model.Directivo;
 import gob.peam.web.model.Funcionario;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.Utilities;
+import java.io.File;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -29,6 +33,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 import javax.sql.DataSource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -93,6 +98,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                     break;
                 case "/gestiontransparente/directivos":
                     action = request.getParameter("action") == null ? "" : request.getParameter("action");
+                    logger.info("---->" + action);
                     switch (action) {
                         case "paginarFuncionario":
                             procesarFuncionario(new BEAN_CRUD(this.funcionarioDAO.getPagination(getParametersFuncionarios(request))), response);
@@ -106,17 +112,23 @@ public class GestionTransparenteAPI extends HttpServlet {
                         case "deleteFuncionario":
                             procesarFuncionario(this.funcionarioDAO.delete(Long.parseLong(request.getParameter("txtIdFuncionarioER")), getParametersFuncionarios(request)), response);
                             break;
+                        case "activateFuncionario":
+                            procesarFuncionario(this.funcionarioDAO.activate(Long.parseLong(request.getParameter("txtIdFuncionarioER")), getParametersFuncionarios(request)), response);
+                            break;
                         case "paginarDirectivo":
-                            procesarDirectivo(new BEAN_CRUD(this.directivoDAO.getPagination(getParametersDirectivos(request))), request, response);
+                            procesarDirectivo(new BEAN_CRUD(this.directivoDAO.getPagination(getParametersDirectivos(request))), response);
                             break;
                         case "addDirectivo":
-                            procesarDirectivo(this.directivoDAO.add(getDirectivo(request), getParametersDirectivos(request)), request, response);
+                            procesarDirectivo(this.directivoDAO.add(getDirectivo(request), getParametersDirectivos(request)), response);
                             break;
                         case "updateDirectivo":
-                            procesarDirectivo(this.directivoDAO.update(getDirectivo(request), getParametersDirectivos(request)), request, response);
+                            procesarDirectivo(this.directivoDAO.update(getDirectivo(request), getParametersDirectivos(request)), response);
                             break;
                         case "deleteDirectivo":
-                            procesarDirectivo(this.directivoDAO.delete(Long.parseLong(request.getParameter("txtIdFuncionarioER")), getParametersDirectivos(request)), request, response);
+                            procesarDirectivo(this.directivoDAO.delete(Long.parseLong(request.getParameter("txtIdDirectivoERDIR")), getParametersDirectivos(request)), response);
+                            break;
+                        case "activateDirectivo":
+                            procesarDirectivo(this.directivoDAO.activate(Long.parseLong(request.getParameter("txtIdDirectivoERDIR")), getParametersDirectivos(request)), response);
                             break;
                         default:
                             request.getRequestDispatcher("/jsp/gc/gestion_transparente/directivos.jsp").forward(request, response);
@@ -127,7 +139,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                     break;
                 default:
             }
-        } catch (SQLException ex) {
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -188,76 +200,286 @@ public class GestionTransparenteAPI extends HttpServlet {
     private HashMap<String, Object> getParametersFuncionarios(HttpServletRequest request) {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtNombreFuncionario").toLowerCase());
-        if (request.getParameter("comboTipoListaFuncionarios").equals("-1")) {
+        if (request.getParameter("comboTipoListaFuncionario").equals("-1")) {
             this.parameters.put("SQL_ESTADO", "");
         } else {
-            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("comboTipoListaFuncionarios") + " ");
+            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("comboTipoListaFuncionario") + " ");
         }
         this.parameters.put("SQL_ORDERS", "NOMBRES_APELLIDOS");
+        if (request.getParameter("txtEstadoER").equals("true")) {
+            this.parameters.put("ESTADO", "false");
+        } else {
+            this.parameters.put("ESTADO", "true");
+        }
         this.parameters.put("LIMIT",
-                " LIMIT " + request.getParameter("sizePageFuncionarios") + " OFFSET "
-                + (Integer.parseInt(request.getParameter("numberPageFuncionarios")) - 1)
-                * Integer.parseInt(request.getParameter("sizePageFuncionarios")));
+                " LIMIT " + request.getParameter("sizePageFuncionario") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageFuncionario")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageFuncionario")));
         return this.parameters;
+    }
+
+    private Object uploadFile(Part filePart, Funcionario fun, Directivo dir) {
+        String path = getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/img/");
+        File file = new File(path + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+        //VALIDAMOS EL NUEVO ARCHIVO
+        if (file.exists()) {
+            String prefijo = "C_";
+            file = new File(path + prefijo + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+            if (fun == null) {
+                dir.setFoto(prefijo + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+            } else {
+                fun.setFoto(prefijo + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+            }
+        }
+        try (InputStream input = filePart.getInputStream()) {
+            Files.copy(input, file.toPath());
+        } catch (IOException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (fun == null) {
+            return dir;
+        } else {
+            return fun;
+        }
+    }
+
+    private Object uploadCV(Part filePart, Funcionario fun, Directivo dir) {
+        String path = getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/cv/");
+        File file = new File(path + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+        //VALIDAMOS EL NUEVO ARCHIVO
+        if (file.exists()) {
+            String prefijo = "C_";
+            file = new File(path + prefijo + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+            if (fun == null) {
+                dir.setHoja_vida(prefijo + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+            } else {
+                fun.setHoja_vida(prefijo + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+            }
+        }
+        try (InputStream input = filePart.getInputStream()) {
+            Files.copy(input, file.toPath());
+        } catch (IOException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (fun == null) {
+            return dir;
+        } else {
+            return fun;
+        }
     }
 
     private Funcionario getFuncionario(HttpServletRequest request) {
         Funcionario funcionario = new Funcionario();
-        if (request.getParameter("action").equals("updateFuncioanario")) {
-            funcionario.setId(Integer.parseInt(request.getParameter("")));
+        try {
+            ///PARTE FOTO
+            Part filePart = request.getPart("fileFoto");
+            boolean copiar = true;
+            File fileTemp = null;
+            switch (request.getParameter("txtValidacionFoto")) {
+                case "SI":
+                    //HAY UN ARCHIVO QUE HA VENIDO
+                    if (!request.getParameter("txtNombreFoto").equals("")) {
+                        fileTemp = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/img/" + request.getParameter("txtNombreFoto")));
+                    }
+                    funcionario.setFoto("C_" + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+                    break;
+                case "DEFECTO":
+                    fileTemp = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/img/" + request.getParameter("txtNombreFoto")));
+                    funcionario.setFoto("");
+                    copiar = false;
+                    break;
+                default:
+                    copiar = false; //YA NO SE COPIA PORQUE ES EL MISMO, NO HAY ARCHIVO
+                    funcionario.setFoto(request.getParameter("txtNombreFoto"));
+                    break;
+            }
+            if (fileTemp != null && fileTemp.exists()) {
+                fileTemp.delete();
+            }
+            if (copiar) {
+                funcionario = (Funcionario) uploadFile(filePart, funcionario, null);
+            }
+            ///PARTE HOJA DE VIDA
+            Part fileCV = request.getPart("fileCV");
+            boolean copiarCV = true;
+            File fileTempCV = null;
+            switch (request.getParameter("txtValidacionCv")) {
+                case "SI":
+                    //HAY UN ARCHIVO QUE HA VENIDO
+                    if (!request.getParameter("txtCv").equals("")) {
+                        logger.info("----->"+request.getParameter("txtCv"));
+                        fileTempCV = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/cv/" + request.getParameter("txtCv")));
+                    }
+                    funcionario.setHoja_vida("C_" + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+                    break;
+                case "DEFECTO":
+                    fileTempCV = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/cv/" + request.getParameter("txtCv")));
+                    funcionario.setHoja_vida("");
+                    copiar = false;
+                    break;
+                default:
+                    copiarCV = false; //YA NO SE COPIA PORQUE ES EL MISMO, NO HAY ARCHIVO
+                    funcionario.setHoja_vida(request.getParameter("txtCv"));
+                    break;
+            }
+            if (fileTempCV != null && fileTempCV.exists()) {
+                fileTempCV.delete();
+            }
+            if (copiarCV) {
+                funcionario = (Funcionario) uploadCV(fileCV, funcionario, null);
+            }
+            ////
+
+            if (request.getParameter("action").equals("updateFuncionario")) {
+                funcionario.setId(Integer.parseInt(request.getParameter("txtIdFuncionarioER")));
+            }
+            funcionario.setOrganigrama(request.getParameter("comboOficinaER"));
+            funcionario.setNombres_apellidos(request.getParameter("txtNombreCompletoER"));
+            funcionario.setCargo(request.getParameter("txtCargoER"));
+            funcionario.setNivel_remunerativo(request.getParameter("txtNivelER"));
+            funcionario.setNumero_dni(request.getParameter("txtDniER"));
+            funcionario.setResolucion(request.getParameter("txtDesignadoPorER"));
+            if (!request.getParameter("datePickerFechaDesignacion").equals("")) {
+                funcionario.setFecha_designacion(Utilities.getDateSQLFORMAT(request.getParameter("datePickerFechaDesignacion"), "dd/MM/yyyy"));
+            }
+            funcionario.setTelefono(request.getParameter("txtTelefonoER"));
+            funcionario.setFax(request.getParameter("txtFaxER"));
+            funcionario.setE_mail(request.getParameter("txtEmailER"));
+            //funcionario.setFoto(request.getParameter(""));
+            funcionario.setProfesion(request.getParameter("txtProfesionER"));
+            funcionario.setResumen(request.getParameter("txtResumenER"));
+            funcionario.setRegimen_laboral(request.getParameter("txtRegimenLaboralER"));
+            funcionario.setRetribucion_mensual(Double.parseDouble(request.getParameter("txtRetribucionMensualER")));
+            //funcionario.setHoja_vida(request.getParameter("txtNombreFileResultadoActual"));
+            funcionario.setEstado(Boolean.parseBoolean(request.getParameter("comboEstadoER")));
+            funcionario.setDestacado(Boolean.parseBoolean(request.getParameter("comboDestacadoER")));
+
+        } catch (IOException | ServletException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        funcionario.setOrganigrama(request.getParameter("comboOficinaER"));
-        funcionario.setTratamiento(request.getParameter("txtTratamientoER"));
-        funcionario.setNombres_apellidos(request.getParameter("txtNombreCompletoER"));
-        funcionario.setCargo(request.getParameter("txtCargoER"));
-        funcionario.setNivel_remunerativo(request.getParameter("txtNivelER"));
-        funcionario.setNumero_dni(request.getParameter("txtDniER"));
-        funcionario.setResolucion(request.getParameter("txtDesignadoPorER"));
-        if (!request.getParameter("datePickerFechaDesignacion").equals("")) {
-            funcionario.setFecha_designacion(Utilities.getDateSQLFORMAT(request.getParameter("datePickerFechaDesignacion"), "dd/MM/yyyy"));
-        }
-        funcionario.setTelefono(request.getParameter("txtTelefonoER"));
-        funcionario.setFax(request.getParameter("txtFaxER"));
-        funcionario.setE_mail(request.getParameter("txtEmailER"));
-        funcionario.setFoto(request.getParameter(""));
-        funcionario.setProfesion(request.getParameter(""));
-        funcionario.setResumen(request.getParameter("txtResumenER"));
-        funcionario.setRetribucion_mensual(Double.parseDouble(request.getParameter("")));
-        funcionario.setHoja_vida(request.getParameter(""));
-        funcionario.setEstado(Boolean.parseBoolean(request.getParameter("comboEstadoER")));
-        funcionario.setDestacado(Boolean.parseBoolean(request.getParameter("comboDestacadoER")));
-        funcionario.setFecha_inicio(Utilities.getDateSQLFORMAT(request.getParameter(""), "dd/MM/yyyy"));
         return funcionario;
     }
 
     /*DIRECTIVOS*/
-    private void procesarDirectivo(BEAN_CRUD beanCrud, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        this.jsonROOT.clear();
-        this.jsonResponse = this.json.toJson(this.jsonROOT);
-        response.setContentType("application/json");
+    private void procesarDirectivo(BEAN_CRUD beanCrud, HttpServletResponse response) throws IOException {
         try {
+            this.jsonROOT.clear();
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
             response.getWriter().write(this.jsonResponse);
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            throw e;
+            this.logger.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
     private HashMap<String, Object> getParametersDirectivos(HttpServletRequest request) {
         this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtNombreFuncionario"));
+        this.parameters.put("FILTER", request.getParameter("txtNombreDirectivo").toLowerCase());
+        if (request.getParameter("comboTipoListaDirectivo").equals("-1")) {
+            this.parameters.put("SQL_ESTADO", "");
+        } else {
+            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("comboTipoListaDirectivo") + " ");
+        }
         this.parameters.put("SQL_ORDERS", "NOMBRES_APELLIDOS");
+        if (request.getParameter("txtEstadoERDIR").equals("true")) {
+            this.parameters.put("ESTADO", "false");
+        } else {
+            this.parameters.put("ESTADO", "true");
+        }
         this.parameters.put("LIMIT",
-                " LIMIT " + request.getParameter("comboTamPaginaFuncionarios") + " OFFSET "
-                + (Integer.parseInt(request.getParameter("NumPaginaFuncionarios")) - 1)
-                * Integer.parseInt(request.getParameter("comboTamPaginaFuncionarios")));
+                " LIMIT " + request.getParameter("sizePageDirectivo") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageDirectivo")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageDirectivo")));
         return this.parameters;
     }
 
     private Directivo getDirectivo(HttpServletRequest request) {
         Directivo directivo = new Directivo();
-        directivo.setNombres_apellidos(request.getParameter(""));
+        try {
+            ///PARTE FOTO
+            Part filePart = request.getPart("fileFotoDIR");
+            boolean copiar = true;
+            File fileTemp = null;
+            switch (request.getParameter("txtValidacionFotoDIR")) {
+                case "SI":
+                    //HAY UN ARCHIVO QUE HA VENIDO
+                    if (!request.getParameter("txtNombreFotoDIR").equals("")) {
+                        fileTemp = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/img/" + request.getParameter("txtNombreFotoDIR")));
+                    }
+                    directivo.setFoto("C_" + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+                    break;
+                case "DEFECTO":
+                    fileTemp = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/img/" + request.getParameter("txtNombreFotoDIR")));
+                    directivo.setFoto("");
+                    copiar = false;
+                    break;
+                default:
+                    copiar = false; //YA NO SE COPIA PORQUE ES EL MISMO, NO HAY ARCHIVO
+                    directivo.setFoto(request.getParameter("txtNombreFotoDIR"));
+                    break;
+            }
+            if (fileTemp != null && fileTemp.exists()) {
+                fileTemp.delete();
+            }
+            if (copiar) {
+                directivo = (Directivo) uploadFile(filePart, null, directivo);
+            }
+            ///PARTE HOJA DE VIDA
+            Part fileCV = request.getPart("fileCVDIR");
+            boolean copiarCV = true;
+            File fileTempCV = null;
+            switch (request.getParameter("txtValidacionCvDIR")) {
+                case "SI":
+                    //HAY UN ARCHIVO QUE HA VENIDO
+                    if (!request.getParameter("txtCvDIR").equals("")) {
+                        fileTempCV = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/cv/" + request.getParameter("txtCvDIR")));
+                    }
+                    directivo.setHoja_vida("C_" + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+                    break;
+                case "DEFECTO":
+                    fileTempCV = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/cv/" + request.getParameter("txtCvDIR")));
+                    directivo.setHoja_vida("");
+                    copiar = false;
+                    break;
+                default:
+                    copiarCV = false; //YA NO SE COPIA PORQUE ES EL MISMO, NO HAY ARCHIVO
+                    directivo.setHoja_vida(request.getParameter("txtCvDIR"));
+                    break;
+            }
+            if (fileTempCV != null && fileTempCV.exists()) {
+                fileTempCV.delete();
+            }
+            if (copiarCV) {
+                directivo = (Directivo) uploadCV(fileCV, null, directivo);
+            }
+            ////
+            if (request.getParameter("action").equals("updateDirectivo")) {
+                directivo.setId(Integer.parseInt(request.getParameter("txtIdDirectivoERDIR")));
+            }
+            directivo.setInstitucion(request.getParameter("comboInstitucionERDIR"));
+            directivo.setNombres_apellidos(request.getParameter("txtNombreCompletoERDIR"));
+            directivo.setCargo(request.getParameter("txtCargoERDIR"));
+            directivo.setNivel_remunerativo(request.getParameter("txtNivelERDIR"));
+            directivo.setNumero_dni(request.getParameter("txtDniERDIR"));
+            directivo.setResolucion(request.getParameter("txtDesignadoPorERDIR"));
+            if (!request.getParameter("datePickerFechaDesignacionDIR").equals("")) {
+                directivo.setFecha_designacion(Utilities.getDateSQLFORMAT(request.getParameter("datePickerFechaDesignacionDIR"), "dd/MM/yyyy"));
+            }
+            directivo.setTelefono(request.getParameter("txtTelefonoERDIR"));
+            directivo.setFax(request.getParameter("txtFaxERDIR"));
+            directivo.setE_mail(request.getParameter("txtEmailERDIR"));
+            //directivo.setFoto(request.getParameter(""));
+            directivo.setProfesion(request.getParameter("txtProfesionERDIR"));
+            directivo.setResumen(request.getParameter("txtResumenERDIR"));
+            directivo.setRegimen_laboral(request.getParameter("txtRegimenLaboralERDIR"));
+            directivo.setRetribucion_mensual(Double.parseDouble(request.getParameter("txtRetribucionMensualERDIR")));
+            //directivo.setHoja_vida(request.getParameter("txtNombreFileResultadoActual"));
+            directivo.setEstado(Boolean.parseBoolean(request.getParameter("comboEstadoERDIR")));
 
+        } catch (IOException | ServletException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return directivo;
     }
 

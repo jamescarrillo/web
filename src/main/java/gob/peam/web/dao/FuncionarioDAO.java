@@ -6,11 +6,15 @@
 package gob.peam.web.dao;
 
 import gob.peam.web.model.Funcionario;
+import gob.peam.web.utilities.BEAN_CRUD;
+import java.sql.SQLException;
+import java.util.HashMap;
 
 /**
  *
  * @author JamesCarrillo
  */
 public interface FuncionarioDAO extends CRUD<Funcionario>{
+    BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException;
     
 }
