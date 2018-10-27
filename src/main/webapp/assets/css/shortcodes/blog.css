@@ -419,7 +419,7 @@ Categories Widget
     color: #999;
 }
 .widget_categories ul li a:hover{
-    color: #03a9f4;
+    color: #a20505;
 }
 
 
@@ -522,7 +522,7 @@ Blog Pagination
 .post-pagination>li>span:hover,
 .post-pagination>li>span.current {
     color: #fff;
-    background-color: #03a9f4;
+    background-color: #71c44c;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 

@@ -19,6 +19,23 @@ function viewAlert(type, message) {
     $('.swal2-icon').css("margin-bottom", "20px");
 }
 
+function viewAlertWeb(type, message) {
+    swal({
+        title: "PEAM",
+        text: message,
+        /*7
+         html : "<img src='/sisbu/img/logo_ceplomo.png' alt='Logo' style='width:150px;'><br><h5>"
+         + message + "</h5>",*/
+        type: type,
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: "Aceptar",
+        confirmButtonClass: 'btn btn-success',
+        buttonsStyling: false
+    });
+    $('.swal2-icon').css("margin-bottom", "20px");
+}
+
 function viewAlertDelete(entidad) {
     swal({
         title: 'PEAM',
@@ -189,12 +206,12 @@ function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
 }
 
-function getTituloWeb(titulo) {
+function getTituloWeb(titulo, tamFila) {
     var cadenaTituloFormateado = "";
     var palabras = titulo.split(' ');
     var filas = 1;
     for (var i = 0; i < palabras.length; i++) {
-        if (cadenaTituloFormateado.length > (45 * filas)) {
+        if (cadenaTituloFormateado.length > (tamFila * filas)) {
             cadenaTituloFormateado += "</br>" + palabras[i] + " ";
             filas++;
         } else {
@@ -204,9 +221,9 @@ function getTituloWeb(titulo) {
     return cadenaTituloFormateado;
 }
 
-function getResumenContenidoWeb(titulo, tamaño) {
+function getResumenContenidoWeb(contenido, tamaño) {
     var cadenaResumen = "";
-    var palabras = titulo.split(' ');
+    var palabras = contenido.split(' ');
     for (var i = 0; i < palabras.length; i++) {
         if (cadenaResumen.length + palabras[i].length > tamaño) {
             break;
