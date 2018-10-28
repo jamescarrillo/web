@@ -5,13 +5,9 @@
                 <i class="material-icons">&#xE316;</i>
             </a>
             <ul class="social-link tt-animate ltr mt-20">
-                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                <li><a href="#"><i class="fa fa-tumblr"></i></a></li>
-                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                <li><a href="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://twitter.com/p_altomayo" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="https://www.youtube.com/user/PEAM1140?feature=watch" target="_blank"><i class="fa fa-youtube"></i></a></li>
             </ul>
             <hr class="mt-15">
             <div class="row">
@@ -39,7 +35,7 @@
                                 <!-- Preloader -->
                                 <div id="preloader">
                                     <div class="preloader-position"> 
-                                        <img src="<%out.print(getServletContext().getContextPath());%>/assets/img/logo-colored.png" alt="logo" >
+                                        <img src="<%out.print(getServletContext().getContextPath());%>/assets/img/logo-colored.png" alt="logo" style="height: 40px;">
                                         <div class="progress">
                                             <div class="indeterminate"></div>
                                         </div>

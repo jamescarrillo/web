@@ -3,65 +3,37 @@
 <html lang="es">
     <head>
         <%@ include file="att_head.jsp"%>
-        <link
-            href='https://fonts.googleapis.com/css?family=Raleway:400,300,500,700,900'
-            rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,500,700,900' rel='stylesheet' type='text/css'>
         <!-- Material Icons CSS -->
-        <link
-            href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css"
-            rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css" rel="stylesheet">
         <!-- FontAwesome CSS -->
-
-        <link
-            href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css"
-            rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
         <!-- owl.carousel -->
-        <link
-            href="<%out.print(getServletContext().getContextPath());%>/assets/owl.carousel/assets/owl.carousel.css"
-            rel="stylesheet">
-        <link
-            href="<%out.print(getServletContext().getContextPath());%>/assets/owl.carousel/assets/owl.theme.default.min.css"
-            rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/owl.carousel/assets/owl.theme.default.min.css" rel="stylesheet">
         <!-- flexslider -->
-        <link
-            href="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/flexslider.css"
-            rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/flexslider.css" rel="stylesheet">
         <!-- materialize -->
-        <link
-            href="<%out.print(getServletContext().getContextPath());%>/assets/materialize/css/materialize.min.css"
-            rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/materialize/css/materialize.min.css" rel="stylesheet">
         <!-- Bootstrap -->
-        <link
-            href="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/css/bootstrap.min.css"
-            rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- shortcodes -->
-        <link
-            href="<%out.print(getServletContext().getContextPath());%>/assets/css/shortcodes/shortcodes.css"
-            rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/shortcodes/shortcodes.css" rel="stylesheet">
         <!-- Style CSS -->
-        <link
-            href="<%out.print(getServletContext().getContextPath());%>/css/style_web.css"
-            rel="stylesheet">
-        <link
-            href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css"
-            rel="stylesheet">
-        <link
-            href="<%out.print(getServletContext().getContextPath());%>/assets/css/skins/corporate.css"
-            rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/css/style_web.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/skins/corporate.css" rel="stylesheet">
         <!-- RS5.0 Main Stylesheet -->
-        <link rel="stylesheet" type="text/css"
-              href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/settings.css">
+        <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/settings.css">
         <!-- RS5.0 Layers and Navigation Styles -->
-        <link rel="stylesheet" type="text/css"
-              href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/layers.css">
-        <link rel="stylesheet" type="text/css"
-              href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/navigation.css">
+        <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/layers.css">
+        <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/navigation.css">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css"rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-                  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <!--[if lt IE 9]> 
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
                   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
                 <![endif]-->
     </head>
@@ -80,11 +52,11 @@
             <input type="hidden" class="form-control" value="" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" placeholder="Buscar...">
         </form>
         <div class="row" id="loader_contenido">
-            <div class="col-xs-2 col-xs-offset-5 mt-50">
+            <div class="col-md-2 col-md-offset-5 col-xs-4 col-xs-offset-4 mt-50">
                 <div class="loader-peam"></div>
             </div>
         </div>
-        <section class="rev_slider_wrapper noticias-peam" style="display: block">
+        <section class="rev_slider_wrapper noticias-peam">
             <div class="rev_slider materialize-slider">
                 <ul>
                     <li data-transition="fade" data-slotamount="default"
@@ -101,7 +73,7 @@
                             class="tp-caption rev-heading text-extrabold dark-text tp-resizeme "
                             data-x="center" data-y="center" data-voffset="-50"
                             data-fontsize="['30','25','20','15']"
-                            data-lineheight="['30','25','20','20']" data-width="none"
+                            data-lineheight="['30','25','20','15']" data-width="none"
                             data-height="none" data-whitespace="nowrap"
                             data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
@@ -112,11 +84,14 @@
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
                             <div class="text-center" id="tituloNotaPrensa1">
+
                             </div>
                         </div>
                         <div
                             class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
+                            data-fontsize="['20','20','15','10']"
+                            data-lineheight="['20','20','15','10']" data-width="none"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
@@ -125,7 +100,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-center" id="resumenNotaPrensa1">
+                            <div id="resumenNotaPrensa1">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -145,7 +120,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
                                 <input type="hidden" name="idNota" id="idNota1" value="">
                                 <input type="hidden" name="action" id="action1" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más</button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
                             </form>
                         </div>
                     </li>
@@ -179,6 +154,8 @@
                         <div
                             class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
+                            data-fontsize="['20','20','15','10']"
+                            data-lineheight="['20','20','15','10']" data-width="none"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
@@ -207,7 +184,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
                                 <input type="hidden" name="idNota" id="idNota2" value="">
                                 <input type="hidden" name="action" id="action2" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más</button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
                             </form>
                         </div>
                     </li>
@@ -241,6 +218,8 @@
                         <div
                             class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
+                            data-fontsize="['20','20','15','10']"
+                            data-lineheight="['20','20','15','10']" data-width="none"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
@@ -269,7 +248,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
                                 <input type="hidden" name="idNota" id="idNota3" value="">
                                 <input type="hidden" name="action" id="action3" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más</button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
                             </form>
                         </div>
                     </li>
@@ -303,6 +282,8 @@
                         <div
                             class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
+                            data-fontsize="['20','20','15','10']"
+                            data-lineheight="['20','20','15','10']" data-width="none"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
@@ -331,7 +312,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
                                 <input type="hidden" name="idNota" id="idNota4" value="">
                                 <input type="hidden" name="action" id="action4" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más</button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
                             </form>
                         </div>
                     </li>
@@ -366,6 +347,8 @@
                             class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
+                            data-fontsize="['20','20','15','10']"
+                            data-lineheight="['20','20','15','10']" data-width="none"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
                             data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
@@ -393,7 +376,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
                                 <input type="hidden" name="idNota" id="idNota5" value="">
                                 <input type="hidden" name="action" id="action5" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más</button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
                             </form>
                         </div>
                     </li>
@@ -403,7 +386,7 @@
         <section class="section-padding" style="padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="h1-title section-title text-peam">
+                    <h2 class="h1-title section-title text-peam-verde">
                         <strong>Nuestras Líneas de Acción</strong>
                     </h2>
                 </div>
@@ -413,7 +396,7 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="text-center">
                                     <a href="#"> <i class="fa fa-home fa-5x" aria-hidden="true"></i>
-                                        <h5 class="text-peam">
+                                        <h5 class="text-peam-verde">
                                             DIRECCIÓN DE <br>INFRAESTRUCTURA
                                         </h5>
                                     </a>
@@ -425,7 +408,7 @@
                                 <div class="text-center">
                                     <a href="#"> <i class="fa fa-pagelines fa-5x"
                                                     aria-hidden="true"></i>
-                                        <h5 class="text-peam">
+                                        <h5 class="text-peam-verde">
                                             DIRECCIÓN DE <br>MANEJO AMBIENTAL
                                         </h5>
                                     </a>
@@ -436,7 +419,7 @@
                             <div class="col-md-3 col-sm-6">
                                 <div class="text-center">
                                     <a href="#"> <i class="fa fa-truck fa-5x" aria-hidden="true"></i>
-                                        <h5 class="text-peam">DIRECCIÓN DE DESARROLLO AGROPECUARIO</h5>
+                                        <h5 class="text-peam-verde">DIRECCIÓN DE DESARROLLO AGROPECUARIO</h5>
                                     </a>
 
                                 </div>
@@ -447,7 +430,7 @@
                                 <div class="text-center">
                                     <a href="#"> <i class="fa fa-graduation-cap fa-5x"
                                                     aria-hidden="true"></i>
-                                        <h5 class="text-peam">ESTUDIOS</h5>
+                                        <h5 class="text-peam-verde">ESTUDIOS</h5>
                                     </a>
                                 </div>
                                 <!-- /.border-box -->
@@ -458,76 +441,114 @@
                     </div>
                 </div>
                 <!-- /.col-md-12 -->
-            </div>
-            <!-- /.row -->
+            </div>         
         </section>
-        <section class="section-padding noticias-peam"
-                 style="padding-top: 0px; padding-bottom: 50px; display: block">
+
+        <!--section class="section-padding latest-news-card">
             <div class="container">
                 <div class="text-center mb-40">
-                    <h1 class="h1-title section-title text-peam">
+                    <h1 class="h1-title section-title text-peam-verde">
                         <strong>Noticias</strong>
                     </h1>
                 </div>
                 <div class="row">
                     <div class="col-md-9 col-xs-12">
-                        <div id="project-slider" class="carousel slide boot-slider"
-                             data-ride="carousel">
-                            <!-- Indicators -->
-                            <ol class="carousel-indicators">
-                                <li data-target="#project-slider" data-slide-to="0"
-                                    class="active"></li>
-                                <li data-target="#project-slider" data-slide-to="1" class=""></li>
-                                <li data-target="#project-slider" data-slide-to="2" class=""></li>
-                                <li data-target="#project-slider" data-slide-to="3" class=""></li>
-                                <li data-target="#project-slider" data-slide-to="4" class=""></li>
-                            </ol>
-                            <!-- Wrapper for slides -->
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item next left">
-                                    <img class="img-responsive" src="https://farm1.staticflickr.com/853/28971176087_70e01e9ffb.jpg" alt="" height="780" width="1400">
+                        <div class="blog-carousel" id="contenedorCarrusel">
+                            <article class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" id="imgCNotaPrensa0" src="" alt="image">
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive"src="https://farm1.staticflickr.com/860/42016907190_98f021e2bb.jpg" alt="" height="780" width="1400">
+                                <div class="card-content" style="height: 335px">
+                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa0"></h2>
+                                    <p id="resumenCNotaPrensa0" class="text-peam"></p>
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive" src="https://farm2.staticflickr.com/1772/42016892900_2a6afaf954.jpg" alt="" height="780" width="1400">
+                            </article>
+                            <article class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" id="imgCNotaPrensa1" src="" alt="image">
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive" src="https://farm1.staticflickr.com/940/41998726590_8d0f6fd130.jpg" alt="" height="780" width="1400">
+                                <div class="card-content" style="height: 335px">
+                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa1"></h2>
+                                    <p id="resumenCNotaPrensa1" class="text-peam"></p>
                                 </div>
-                                <div class="item active left">
-                                    <img class="img-responsive" src="https://farm1.staticflickr.com/858/29878413858_153fa5913e.jpg" alt="" height="780" width="1400">
+                            </article>
+                            <article class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" id="imgCNotaPrensa2" src="" alt="image">
                                 </div>
-                            </div>
-                            <!-- Controls -->
-                            <a class="left carousel-control" href="#project-slider" role="button" data-slide="prev"> 
-                                <span class="fa fa-angle-left" aria-hidden="true"></span> 
-                                <span class="sr-only">Previa</span>
-                            </a> 
-                            <a class="right carousel-control" href="#project-slider" role="button" data-slide="next"> 
-                                <span class="fa fa-angle-right" aria-hidden="true"></span> 
-                                <span class="sr-only">Anterior</span>
-                            </a>
+                                <div class="card-content" style="height: 335px">
+                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa2"></h2>
+                                    <p id="resumenCNotaPrensa2" class="text-peam"></p>
+                                </div>
+                            </article>
+                            <article class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" id="imgCNotaPrensa3" src="" alt="image">
+                                </div>
+                                <div class="card-content" style="height: 335px">
+                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa3"></h2>
+                                    <p id="resumenCNotaPrensa3" class="text-peam"></p>
+                                </div>
+                            </article>
+                            <article class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" id="imgCNotaPrensa4" src="" alt="image">
+                                </div>
+                                <div class="card-content" style="height: 335px">
+                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa4"></h2>
+                                    <p id="resumenCNotaPrensa4" class="text-peam"></p>
+                                </div>
+                            </article>
+                            <article class="card">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" id="imgCNotaPrensa5" src="" alt="image">
+                                </div>
+                                <div class="card-content" style="height: 335px">
+                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa5"></h2>
+                                    <p id="resumenCNotaPrensa5" class="text-peam"></p>
+                                </div>
+                            </article>
+                            <article class="card" style="display: none">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" id="imgCNotaPrensa6" src="" alt="image">
+                                </div>
+                                <div class="card-content" style="height: 335px">
+                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa6"></h2>
+                                    <p id="resumenCNotaPrensa6" class="text-peam"></p>
+                                </div>
+                            </article>
+                            <article class="card" style="display: none">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" id="imgCNotaPrensa7" src="" alt="image">
+                                </div>
+                                <div class="card-content" style="height: 335px">
+                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa7"></h2>
+                                    <p id="resumenCNotaPrensa7" class="text-peam"></p>
+                                </div>
+                            </article>
+                            <article class="card" style="display: none">
+                                <div class="card-image waves-effect waves-block waves-light">
+                                    <img class="activator" id="imgCNotaPrensa8" src="" alt="image">
+                                </div>
+                                <div class="card-content" style="height: 335px">
+                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa8"></h2>
+                                    <p id="resumenCNotaPrensa8" class="text-peam"></p>
+                                </div>
+                            </article>
                         </div>
                     </div>
                     <div class="col-md-3 col-xs-12">
                         <div class="team-wrapper text-center" >
                             <div class="team-img">
-                                <a href="#"><img src="peam_resources_app/fotos_users/gerente2.jpg"
-                                                 class="img-responsive" alt="Imagen"></a>
+                                <a href="#"><img src="peam_resources_app/fotos_users/gerente2.jpg" class="img-responsive" alt="Imagen"></a>
                             </div>
-                            <!-- /.team-img -->
-
                             <div class="team-title">
                                 <br>
                                 <h3>
-                                    <a href="#"><font style="vertical-align: inherit;"><font
-                                            style="vertical-align: inherit;">Carmén Beatriz</font></font></a>
+                                    <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carmén Beatriz</font></font></a>
                                 </h3>
                                 <br>
-                                <span class="mb-10"><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">Gerenta General</font></font>
+                                <span class="mb-10"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gerente General</font></font>
                                 </span>
                                 <br>
                                 <h5>
@@ -543,13 +564,135 @@
                     </div>
                 </div>
             </div>
-            <!-- /.container -->
+        </section-->
+        <section class="section-padding noticias-peam"
+                 style="padding-top: 0px; padding-bottom: 50px;">
+            <div class="container">
+                <div class="text-center mb-40">
+                    <h1 class="h1-title section-title text-peam-verde">
+                        <strong>Noticias</strong>
+                    </h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 col-xs-12" style="height: 500px">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                            <ol class="carousel-indicators">
+                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                <li data-target="#myCarousel" data-slide-to="1"></li>
+                                <li data-target="#myCarousel" data-slide-to="2"></li>
+                                <li data-target="#myCarousel" data-slide-to="3"></li>
+                                <li data-target="#myCarousel" data-slide-to="4"></li>
+                                <li data-target="#myCarousel" data-slide-to="5"></li>
+                                <li data-target="#myCarousel" data-slide-to="6"></li>
+                                <li data-target="#myCarousel" data-slide-to="7"></li>
+                                <li data-target="#myCarousel" data-slide-to="8"></li>
+                                <li data-target="#myCarousel" data-slide-to="9"></li>
+                            </ol>
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <img id="imgCNotaPrensa0" src="" alt="Noticia" style="height: 495px">
+                                    <div class="carousel-caption">
+                                        <h3 id="tituloCNotaPrensa0" class="text-peam-negrita-fondo"></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img id="imgCNotaPrensa1" src="" alt="Noticia" style="height: 495px">
+                                    <div class="carousel-caption">
+                                        <h3 id="tituloCNotaPrensa1" class="text-peam-negrita-fondo"></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img id="imgCNotaPrensa2" src="" alt="Noticia" style="height: 495px">
+                                    <div class="carousel-caption">
+                                        <h3 id="tituloCNotaPrensa2" class="text-peam-negrita-fondo"></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img id="imgCNotaPrensa3" src="" alt="Noticia" style="height: 495px">
+                                    <div class="carousel-caption">
+                                        <h3 id="tituloCNotaPrensa3" class="text-peam-negrita-fondo"></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img id="imgCNotaPrensa4" src="" alt="Noticia" style="height: 495px">
+                                    <div class="carousel-caption">
+                                        <h3 id="tituloCNotaPrensa4" class="text-peam-negrita-fondo"></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img id="imgCNotaPrensa5" src="" alt="Noticia" style="height: 495px">
+                                    <div class="carousel-caption">
+                                        <h3 id="tituloCNotaPrensa5" class="text-peam-negrita-fondo"></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img id="imgCNotaPrensa6" src="" alt="Noticia" style="height: 495px">
+                                    <div class="carousel-caption">
+                                        <h3 id="tituloCNotaPrensa6" class="text-peam-negrita-fondo"></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img id="imgCNotaPrensa7" src="" alt="Noticia" style="height: 495px">
+                                    <div class="carousel-caption">
+                                        <h3 id="tituloCNotaPrensa7" class="text-peam-negrita-fondo"> </h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img id="imgCNotaPrensa8" src="" alt="Noticia" style="height: 495px">
+                                    <div class="carousel-caption">
+                                        <h3 id="tituloCNotaPrensa8" class="text-peam-negrita-fondo"></h3>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <img id="imgCNotaPrensa9" src="" alt="Noticia" style="height: 495px">
+                                    <div class="carousel-caption">
+                                        <h3 id="tituloCNotaPrensa9" class="text-peam-negrita-fondo"></h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                                <span class="glyphicon glyphicon-chevron-left"></span>
+                                <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                                <span class="glyphicon glyphicon-chevron-right"></span>
+                                <span class="sr-only">Next</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+                        <div class="team-wrapper text-center" >
+                            <div class="team-img">
+                                <a href="#"><img src="peam_resources_app/fotos_users/gerente2.jpg" class="img-responsive" alt="Imagen"></a>
+                            </div>
+                            <div class="team-title">
+                                <br>
+                                <h3>
+                                    <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carmén Beatriz</font></font></a>
+                                </h3>
+                                <br>
+                                <span class="mb-10"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gerente General</font></font>
+                                </span>
+                                <br>
+                                <h5>
+                                    <i class="fa fa-phone"></i> (042) - 562522
+                                </h5>
+                                <br>
+                                <h5 class="mb-30">
+                                    <i class="fa fa-envelope-o"></i> gerencia@peam.gob.pe
+                                </h5>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
         <section class="section-padding"
                  style="padding-top: 0px; padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="h1-title section-title text-peam">
+                    <h1 class="h1-title section-title text-peam-verde">
                         <strong>Gestión Transparente</strong>
                     </h1>
                 </div>
@@ -562,10 +705,10 @@
                              style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
                             <div class="icon mb-5">
                                 <i class="fa fa-files-o" aria-hidden="true"
-                                   style="color: #71c44c"></i>
+                                   style="color: #6a9a32"></i>
                             </div>
                             <div class="desc mt-10">
-                                <a href="#"><h3 class="text-peam">DOCUMENTOS NORMATIVOS Y DE GESTIÓN</h3></a>
+                                <a href="#"><h3 class="text-peam-verde">DOCUMENTOS NORMATIVOS Y DE GESTIÓN</h3></a>
                             </div>
                         </div>
                     </div>
@@ -574,10 +717,10 @@
                              style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
                             <div class="icon mb-5">
                                 <!--i class="material-icons brand-icon">trending_up</i-->
-                                <i class="fa fa-money" aria-hidden="true" style="color: #71c44c"></i>
+                                <i class="fa fa-money" aria-hidden="true" style="color: #6a9a32"></i>
                             </div>
                             <div class="desc mt-10">
-                                <a href="#"><h3 class="text-peam">PRESUPUESTOS Y FINANZAS</h3></a>
+                                <a href="#"><h3 class="text-peam-verde">PRESUPUESTOS Y FINANZAS</h3></a>
                             </div>
                         </div>
                     </div>
@@ -588,7 +731,7 @@
                                 <i class="material-icons brand-icon">supervisor_account</i>
                             </div>
                             <div class="desc">
-                                <a href="#"><h3 class="text-peam">PROYECTOS DE INVERSIÓN</h3></a>
+                                <a href="#"><h3 class="text-peam-verde">PROYECTOS DE INVERSIÓN</h3></a>
                             </div>
                         </div>
                     </div>
@@ -597,10 +740,10 @@
                              style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
                             <div class="icon mb-5">
                                 <!--i class="material-icons brand-icon">supervisor_account</i-->
-                                <i class="fa fa-users" aria-hidden="true" style="color: #71c44c"></i>
+                                <i class="fa fa-users" aria-hidden="true" style="color: #6a9a32"></i>
                             </div>
                             <div class="desc mt-10">
-                                <a href="#"><h3 class="text-peam">RECURSOS HUMANOS</h3></a>
+                                <a href="#"><h3 class="text-peam-verde">RECURSOS HUMANOS</h3></a>
                             </div>
                         </div>
                     </div>
@@ -611,7 +754,7 @@
                                 <i class="material-icons brand-icon">insert_drive_file</i>
                             </div>
                             <div class="desc">
-                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam">ADQUISICIONES Y CONTRATACIONES</h3></a>
+                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">ADQUISICIONES Y CONTRATACIONES</h3></a>
                             </div>
                         </div>
                     </div>
@@ -621,10 +764,10 @@
                              style="padding-top: 20px; padding-bottom: 20px; height: 145px; border: none">
                             <div class="icon mb-5">
                                 <!--i class="material-icons brand-icon">cached</i-->
-                                <i class="fa fa-book" aria-hidden="true" style="color: #71c44c"></i>
+                                <i class="fa fa-book" aria-hidden="true" style="color: #6a9a32"></i>
                             </div>
                             <div class="desc mt-10">
-                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam">AGENDA INSTITUCIONAL</h3></a>
+                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">AGENDA INSTITUCIONAL</h3></a>
                             </div>
                         </div>
                     </div>
@@ -635,7 +778,7 @@
                                 <i class="material-icons brand-icon">info</i>
                             </div>
                             <div class="desc">
-                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam">INFORMACIÓN ADICIONAL</h3></a>
+                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">INFORMACIÓN ADICIONAL</h3></a>
                             </div>
                         </div>
                     </div>
@@ -646,7 +789,7 @@
                  style="padding-top: 0px; padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="h1-title section-title text-peam">
+                    <h1 class="h1-title section-title text-peam-verde">
                         <strong>Favoritos</strong>
                     </h1>
                 </div>
@@ -661,7 +804,7 @@
                                 <i class="material-icons brand-icon">description</i>
                             </div>
                             <div class="desc mt-15">
-                                <a href="#"><h3 class="text-peam">TUPA</h3></a>
+                                <a href="#"><h3 class="text-peam-verde">TUPA</h3></a>
                             </div>
                         </div>
                         <!-- /.featured-item -->
@@ -673,7 +816,7 @@
                                 <i class="material-icons brand-icon">gavel</i>
                             </div>
                             <div class="desc mt-15">
-                                <a href="#" class="text-peam"><h3>CÓDIGO DE ÉTICA</h3></a>
+                                <a href="#" class="text-peam-verde"><h3>CÓDIGO DE ÉTICA</h3></a>
                             </div>
                         </div>
                         <!-- /.featured-item -->
@@ -684,10 +827,10 @@
                             <div class="icon">
                                 <!--i class="material-icons brand-icon">folder_open</i-->
                                 <i class="fa fa-folder-open" aria-hidden="true"
-                                   style="color: #71c44c"></i>
+                                   style="color: #6a9a32"></i>
                             </div>
                             <div class="desc mt-30">
-                                <a href="#"><h3 class="text-peam">SISGEDO</h3></a>
+                                <a href="#"><h3 class="text-peam-verde">SISGEDO</h3></a>
                             </div>
                         </div>
                         <!-- /.featured-item -->
@@ -699,7 +842,7 @@
                                 <i class="material-icons brand-icon">local_library</i>
                             </div>
                             <div class="desc">
-                                <a href="#"><h4 style="margin-bottom: 0px" class="text-peam">LIBRO DE
+                                <a href="#"><h4 style="margin-bottom: 0px" class="text-peam-verde">LIBRO DE
                                         RECLAMACIONES</h4></a>
                             </div>
                         </div>
@@ -711,10 +854,10 @@
                             <div class="icon">
                                 <!--i class="material-icons brand-icon">open_in_new</i-->
                                 <i class="fa fa-share-square-o" aria-hidden="true"
-                                   style="color: #71c44c"></i>
+                                   style="color: #6a9a32"></i>
                             </div>
                             <div class="desc mt-20">
-                                <a href="#"><h4 style="margin-bottom: 0px" class="text-peam">SOLICITUD DE
+                                <a href="#"><h4 style="margin-bottom: 0px" class="text-peam-verde">SOLICITUD DE
                                         ACCESO A INFORMACIÓN</h4></a>
                             </div>
                         </div>
@@ -725,10 +868,10 @@
                             <div class="icon">
                                 <!--i class="material-icons brand-icon">insert_drive_file</i-->
                                 <i class="fa fa-file-text" aria-hidden="true"
-                                   style="color: #71c44c"></i>
+                                   style="color: #6a9a32"></i>
                             </div>
                             <div class="desc mt-30">
-                                <a href="#"><h3 class="text-peam">RESOLUCIONES</h3></a>
+                                <a href="#"><h3 class="text-peam-verde">RESOLUCIONES</h3></a>
                             </div>
                         </div>
                     </div>
@@ -739,7 +882,7 @@
                                 <i class="material-icons brand-icon">share</i>
                             </div>
                             <div class="desc mt-15">
-                                <a href="#"><h3 class="text-peam">CONTROL INTERNO</h3></a>
+                                <a href="#"><h3 class="text-peam-verde">CONTROL INTERNO</h3></a>
                             </div>
                         </div>
                     </div>
@@ -750,7 +893,7 @@
                  style="padding-top: 0px; padding-bottom: 20px;">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="h1-title section-title text-peam">
+                    <h1 class="h1-title section-title text-peam-verde">
                         <strong>Convocatorias</strong>
                     </h1>
                 </div>
@@ -764,7 +907,7 @@
                             </div>
                             <div class="desc">
                                 <h2 class="mt-20">
-                                    <a class="text-peam"> Selección de Personal </a>
+                                    <a class="text-peam-verde"> Selección de Personal </a>
                                 </h2>
                             </div>
                         </div>
@@ -777,7 +920,7 @@
                             </div>
                             <div class="desc">
                                 <h2 class="mt-20">
-                                    <a class="text-peam"> Bienes, Servicios, Obras y Conseciones </a>
+                                    <a class="text-peam-verde"> Bienes, Servicios, Obras y Conseciones </a>
                                 </h2>
                             </div>
                         </div>
@@ -789,12 +932,12 @@
                  style="padding-top: 0px; padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="h1-title section-title text-peam">
-                        <strong>Galería</strong>
+                    <h1 class="h1-title section-title text-peam-verde">
+                        <strong>Galería y Multimedia</strong>
                     </h1>
                 </div>
                 <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
+                    <div class="col-md-8">
                         <div class="gallery-thumb">
                             <ul class="slides">
                                 <li data-thumb="https://farm2.staticflickr.com/1921/45123285671_3402b78443.jpg">
@@ -817,19 +960,38 @@
                                 </li>
                             </ul>
                         </div>
-                        <!-- /.gallery-thumb -->
                     </div>
-                </div>
-                <!-- /.row -->
-
+                    <div class="col-md-4 col-xs-12">
+                        <div class="featured-item flat-border-box" style="padding: 25px">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item"
+                                        src="https://www.youtube-nocookie.com/embed/EuESIXO4-Ms?rel=0"
+                                        allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-12">
+                        <div class="featured-item flat-border-box" style="padding: 25px">
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item"
+                                        src="https://www.youtube-nocookie.com/embed/p3pFBNsHJPg?rel=0"
+                                        allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-10 text-center">
+                        <a class="waves-effect waves-light btn">Ver todos</a>
+                    </div>
+                </div>               
             </div>
             <!-- /.container -->
         </section>
-        <section class="section-padding"
+        
+        <!--section class="section-padding"
                  style="padding-top: 0px; padding-bottom: 50px;">
             <div class="container">
                 <div class="text-center">
-                    <h1 class="h1-title section-title text-peam">
+                    <h1 class="h1-title section-title text-peam-verde">
                         <strong>Multimedia</strong>
                     </h1>
                 </div>
@@ -858,7 +1020,8 @@
                 </div>
 
             </div>
-        </section>
+        </section-->
+        
         <section class="section-padding"
                  style="padding-top: 0px; padding-bottom: 50px;">
             <div class="container">			
@@ -866,211 +1029,88 @@
                     <div class="featured-carousel brand-dot">
                         <div class="featured-item" style="padding: 0px;">
                             <a href="http://www.bn.com.pe/" target="_blank">
-                                <img
-                                    src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/bn2013.png">
+                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/bn2013.png">
                             </a>						
                         </div>					
                         <div class="featured-item" style="padding: 0px;">
                             <a href="http://www.mef.gob.pe/index.php?option=com_content&view=article&id=1592&Itemid=101376&lang=es" target="_blank">
-                                <img
-                                    src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/foniprel2013.png">
+                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/foniprel2013.png">
                             </a>						
                         </div>
                         <div class="featured-item" style="padding: 0px;">
                             <a href="http://www.regionsanmartin.gob.pe/" target="_blank">
-                                <img
-                                    src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/grsm2013.png">
+                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/grsm2013.png">
                             </a>						
                         </div>
                         <div class="featured-item" style="padding: 0px;">
                             <a href="https://apps.contraloria.gob.pe/infobras/" target="_blank">
-                                <img
-                                    src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/infoobras2013.png">
+                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/infoobras2013.png">
                             </a>						
                         </div>
-                        <!--div class="featured-item" style="padding: 0px;">
-                                <a href="" target="_blank">
-                                <img
-                                        src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/osce2013.png">
-                                </a>						
-                        </div>
-                        <div class="featured-item" style="padding: 0px;">
-                                <a href="" target="_blank">
-                                <img
-                                        src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/pep2013.png">
-                                </a>						
-                        </div>
-                        <div class="featured-item" style="padding: 0px;">
-                                <a href="" target="_blank">
-                                <img
-                                        src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/rnsd2013.png">
-                                </a>						
-                        </div-->
                         <div class="featured-item" style="padding: 0px;">
                             <a href="http://www.sanciones.gob.pe/transparencia/" target="_blank">
-                                <img
-                                    src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/rnsddc2013.png">
+                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/rnsddc2013.png">
                             </a>						
                         </div>
                         <div class="featured-item" style="padding: 0px;">
                             <a href="http://www2.seace.gob.pe/" target="_blank">
-                                <img
-                                    src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/seace2013.png">
+                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/seace2013.png">
                             </a>						
                         </div>
                         <div class="featured-item" style="padding: 0px;">
                             <a href="http://www.regionsanmartin.gob.pe/" target="_blank">
-                                <img
-                                    src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/snip2013.png">
+                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/snip2013.png">
                             </a>						
                         </div>
                         <div class="featured-item" style="padding: 0px;">
                             <a href="http://www.sunat.gob.pe/" target="_blank">
-                                <img
-                                    src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/sunat2013.png">
+                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/sunat2013.png">
                             </a>						
                         </div>
                         <div class="featured-item" style="padding: 0px;">
                             <a href="http://www.mef.gob.pe/index.php?option=com_content&view=section&id=37&Itemid=100143&lang=es" target="_blank">
-                                <img
-                                    src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/tmef2013.png">
+                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/tmef2013.png">
                             </a>						
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <div class="modal fade" id="modalCargandoPublicacionesNP" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
-            <div class="modal-dialog modal-sm">
-                <div class="modal-content">
-                    <div class="modal-body">
-                        <!--div class="progress" style="margin-bottom: 0px;">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-                                Cargando...
-                            </div>
-                        </div-->
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
-                                 aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:100%">
-                                Cargando...
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+
         <%@ include file="footer.jsp"%>
         <!-- jQuery -->
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery-2.1.3.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/js/bootstrap.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/materialize/js/materialize.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/js/menuzord.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/js/bootstrap-tabcollapse.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.easing.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.sticky.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/js/smoothscroll.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/js/imagesloaded.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.stellar.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.inview.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/owl.carousel/owl.carousel.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
-
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery-2.1.3.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/materialize/js/materialize.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/menuzord.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/bootstrap-tabcollapse.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.easing.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.sticky.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/smoothscroll.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/imagesloaded.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.stellar.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.inview.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/owl.carousel/owl.carousel.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
         <!-- RS5.0 Core JS Files -->
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
         <!-- SLIDER REVOLUTION 5.0 EXTENSIONS  (Load Extensions only on Local File Systems! The following part can be removed on Server for On Demand Loading) -->
-        <script type="text/javascript"
-        src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
-        <script type="text/javascript"
-        src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
-        <script type="text/javascript"
-        src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
-        <script type="text/javascript"
-        src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
-        <script type="text/javascript"
-        src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
-        <script type="text/javascript"
-        src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
-        <script type="text/javascript"
-        src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
-        <script type="text/javascript"
-        src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-        <script type="text/javascript">
-            jQuery(document).ready(function () {
-
-                jQuery(".materialize-slider").revolution({
-                    sliderType: "standard",
-                    sliderLayout: "fullwidth",
-                    delay: 9000,
-                    navigation: {
-                        keyboardNavigation: "on",
-                        keyboard_direction: "horizontal",
-                        mouseScrollNavigation: "off",
-                        onHoverStop: "off",
-                        touch: {
-                            touchenabled: "on",
-                            swipe_threshold: 75,
-                            swipe_min_touches: 1,
-                            swipe_direction: "horizontal",
-                            drag_block_vertical: false
-                        },
-                        arrows: {
-                            style: "gyges",
-                            enable: true,
-                            hide_onmobile: false,
-                            hide_onleave: true,
-                            tmp: '',
-                            left: {
-                                h_align: "left",
-                                v_align: "center",
-                                h_offset: 10,
-                                v_offset: 0
-                            },
-                            right: {
-                                h_align: "right",
-                                v_align: "center",
-                                h_offset: 10,
-                                v_offset: 0
-                            }
-                        }
-                    },
-                    responsiveLevels: [1240, 1024, 778, 480],
-                    gridwidth: [1240, 1024, 778, 480],
-                    gridheight: [500, 500, 500, 500],
-                    disableProgressBar: "on",
-                    parallax: {
-                        type: "mouse",
-                        origo: "slidercenter",
-                        speed: 2000,
-                        levels: [2, 3, 4, 5, 6, 7, 12, 16, 10, 50]
-                    }
-                });
-            });
-        </script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
-
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.video.min.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.slideanims.min.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.actions.min.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.layeranimation.min.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.kenburn.min.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/publicaciones.js"></script>
+
     </body>
 </html>

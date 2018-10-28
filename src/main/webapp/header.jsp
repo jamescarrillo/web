@@ -27,7 +27,7 @@
                 <!--mega menu start-->
                 <ul class="menuzord-menu pull-right" id="menu-list">
                     <li><a href="<%out.print(getServletContext().getContextPath());%>/index">Inicio</a></li>
-                    <li><a href="javascript:void(0)">Peam</a>
+                    <li><a href="javascript:void(0)">La institución</a>
                         <div class="megamenu">
                             <div class="megamenu-row">
                                 <div class="col12">
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                     </li>
-                    <li><a href="javascript:void(0)">Gestión</a>
+                    <li><a href="javascript:void(0)">Gestión Transparente</a>
                         <div class="megamenu">
                             <div class="megamenu-row">
                                 <div class="col12">

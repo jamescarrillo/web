@@ -222,11 +222,11 @@ function getTituloWeb(titulo, tamFila) {
     return cadenaTituloFormateado;
 }
 
-function getResumenContenidoWeb(contenido, tamaño) {
+function getResumenContenidoWeb(contenido, tam) {
     var cadenaResumen = "";
     var palabras = contenido.split(' ');
     for (var i = 0; i < palabras.length; i++) {
-        if (cadenaResumen.length + palabras[i].length > tamaño) {
+        if (cadenaResumen.length + palabras[i].length > tam) {
             break;
         } else {
             cadenaResumen += palabras[i] + " ";

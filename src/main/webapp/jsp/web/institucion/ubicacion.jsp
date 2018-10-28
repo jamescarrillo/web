@@ -41,7 +41,7 @@
         <section class="padding-bottom-100">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 60px;">
-                    <h2><strong>UBICACIÓN</strong></h2>
+                    <h2 class="text-peam-verde h1-title"><strong>UBICACIÓN</strong></h2>
                     <p>PROYECTO ESPECIAL ALTO MAYO</p>
                 </div>
                 <div class="row">
@@ -59,7 +59,7 @@
                                             <div class="col-md-4 col-xs-12 text-center">
                                                 <iframe class="col-12" style="float: left; padding: 20px;" height="450px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.pe/maps?ie=UTF8&amp;cid=3653831969751690139&amp;q=Proyecto+Especial+Alto+Mayo&amp;gl=PE&amp;hl=es&amp;t=m&amp;ll=-6.043346,-76.971502&amp;spn=0.012803,0.012875&amp;z=15&amp;output=embed"></iframe> 
                                             </div>
-                                            <div class="col-md-8 col-xs-12">
+                                            <div class="col-md-8 col-xs-12 text-peam" style="font-size: 16px;text-align: justify">
                                                 <p>El Valle del Alto Mayo está situado en la parte nor - oeste de la Región San Martín, en el Perú, comprende dentro de su ámbito a las provincias de Moyobamba y Rioja.</p>
                                                 <p>El ámbito geográfico de acción principal del Proyecto Especial Alto Mayo se ubica en la zona del Alto Mayo, comprendidas en las provincias de Moyobamba y Rioja, además de las zonas
                                                     priorizadas en los distritos de Pinto Recodo y Alonso de Alvarado de la Provincia de Lamas, comprendida dentro de la Región San Martín.</p>

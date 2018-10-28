@@ -40,7 +40,7 @@
         <section class="padding-bottom-100">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 60px;">
-                    <h2><strong>CÓDIGO DE ÉTICA</strong></h2>
+                    <h2 class="text-peam-verde h1-title"><strong>CÓDIGO DE ÉTICA</strong></h2>
                     <p>PROYECTO ESPECIAL ALTO MAYO</p>
                 </div>
 
@@ -54,7 +54,7 @@
                             <!-- Tab panes -->
                             <div class="panel-body">
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade in active" id="tab-etica">
+                                    <div role="tabpanel" class="tab-pane fade in active text-peam" id="tab-etica" style="font-size: 16px;text-align: justify">
                                         <p>
                                             El presente Código de Ética tiene por objetivo direccionar dentro de la función pública el actuar de
                                             los empleados del Proyecto Especial Alto Mayo, en cualquiera de sus niveles, el cumplimiento y

@@ -182,7 +182,7 @@
     bottom: 0;
     display: block;
     margin-top: 3px;
-    width: 70px;
+    width: 170px;
 }
 
 .text-small-table{
@@ -198,17 +198,48 @@
     font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif!important;
 }
 
+.text-peam-anaranjado{
+    color: #ef8a08;
+    font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif!important;
+}
+
+.text-peam-verde{
+    color: #3e7d52;
+    font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif!important;
+}
+
 .text-peam-negrita{
     font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-weight: bold;
 }
 
+.text-peam-negrita-sombreado{
+    font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    text-shadow: 1px 2px #e4e4e4;
+}
+
+.text-peam-negrita-fondo{
+    font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    font-weight: bold;
+    background: #f5f5f582;
+}
+
 .loader-peam {
     border: 16px solid #f3f3f3; /* Light grey */
-    border-top: 16px solid #3498db; /* Blue */
+    border-top: 16px solid #71c44c; /* verde */
     border-radius: 50%;
     width: 120px;
     height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+.loader-peam_small {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #71c44c; /* verde */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
     animation: spin 2s linear infinite;
 }
 

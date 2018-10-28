@@ -17,13 +17,13 @@
 .btn,
 .btn:hover,
 button:focus {
-    background-color: #71c44c;
+    background-color: #6a9a32;
 }
 
 
 /*link style*/
 a {
-    color: #71c44c;
+    color: #6a9a32;
 }
 
 
@@ -67,7 +67,7 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 .contact-info .mail a:hover,
 .portfolio-with-title .portfolio-title h2 a:hover, 
 .portfolio-with-title .portfolio-title p a:hover {
-    color: #71c44c !important; /*theme primary color*/
+    color: #6a9a32 !important; /*theme primary color*/
 }
 
 .brand-bg,

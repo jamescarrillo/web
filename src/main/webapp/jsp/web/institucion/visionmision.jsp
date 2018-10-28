@@ -41,10 +41,9 @@
         <section class="padding-bottom-100">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 60px;">
-                    <h2><strong>VISION Y MISION</strong></h2>
+                    <h2 class="text-peam-verde h1-title"><strong>VISION Y MISION</strong></h2>
                     <p>PROYECTO ESPECIAL ALTO MAYO</p>
                 </div>
-
                 <div class="row">
                     <div class="col-md-12">
                         <div class="border-tab transparent-nav">
@@ -56,10 +55,10 @@
                             <!-- Tab panes -->
                             <div class="panel-body">
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade in active" id="tab-vision">
+                                    <div role="tabpanel" class="tab-pane fade in active text-peam" id="tab-vision" style="font-size: 16px;text-align: justify">
                                         <p class="ml-10 mr-10">Liderar, la gestión pública especializada en planes, programas y proyectos de inversión hacia la excelencia, con ética y alto sentido humanitario, al servicio de la familia y comunidad del Alto Mayo.</p>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="tab-mision">
+                                    <div role="tabpanel" class="tab-pane fade text-peam" id="tab-mision" style="font-size: 16px;text-align: justify">
                                         <p class="ml-10 mr-10">Somos un equipo humano responsable especializado en la ejecución de planes, programas y proyectos de inversión pública,
                                             transferencia de capacidades, gestión organizacional y asistencia técnica para lograr procesos productivos de calidad
                                             y en buen uso tecnológico, para lograr el desarrollo socio económico productivo y ambiental del Alto Mayo.

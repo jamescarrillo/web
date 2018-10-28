@@ -573,7 +573,7 @@ Single Blog Post
     color: #999;
 }
 .entry-meta li a:hover {
-    color: #03a9f4;
+    color: #8bc34a;
 }
 .entry-meta li i {
     margin-right: 5px;
@@ -922,7 +922,7 @@ Latest News Card Style
 }
 .blog-carousel.owl-theme .owl-dots .owl-dot.active span, 
 .blog-carousel.owl-theme .owl-dots .owl-dot:hover span {
-    background: #03a9f4;
+    background: #8bc34a;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 }
 
@@ -1199,7 +1199,7 @@ Grid Blog Style
     content: "";
     width: 24px;
     height: 2px;
-    background-color: #e040fb;
+    background-color: #8bc34a;
     position: absolute;
     bottom: -16px;
     left: 0;
@@ -1214,11 +1214,12 @@ Grid Blog Style
     color: #202020; 
 }
 .grid-news .entry-title a:hover{
-    color: #03a9f4; 
+    color: #8bc34a; 
 }
 .grid-news .entry-meta li {
     font-size: 12px;
 }
+
 .grid-news .entry-footer {
     margin-left: -20px;
     margin-right: -20px;
@@ -1235,7 +1236,7 @@ Grid Blog Style
 }
 .grid-news .entry-footer ul li a:hover,
 .grid-news .entry-footer a.readmore:hover {
-    color: #03a9f4;
+    color: #8bc34a;
 }
 .grid-news .entry-footer ul li a i{
     margin-right: 5px;

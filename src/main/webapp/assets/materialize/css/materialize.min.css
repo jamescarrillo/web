@@ -934,7 +934,9 @@
   color: #9ccc65 !important; }
 
 .light-green {
-  background-color: #8bc34a !important; }
+  /*background-color: #8bc34a !important; }
+  */
+  background-color: #6a9a32  !important; }
 
 .light-green-text {
   color: #8bc34a !important; }
@@ -946,7 +948,7 @@
   color: #7cb342 !important; }
 
 .light-green.darken-2 {
-  background-color: #689f38 !important; }
+  background-color: #527137 !important; }
 
 .light-green-text.text-darken-2 {
   color: #689f38 !important; }

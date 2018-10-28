@@ -41,7 +41,7 @@
         <section class="padding-bottom-100">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 60px;">
-                    <h2><strong>OBJETIVOS Y FUNCIONES</strong></h2>
+                    <h2 class="text-peam-verde h1-title"><strong>OBJETIVOS Y FUNCIONES</strong></h2>
                     <p>PROYECTO ESPECIAL ALTO MAYO</p>
                 </div>
 
@@ -57,7 +57,7 @@
                             <div class="panel-body">
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active" id="tab-objetivos">
-                                        <div class="container">
+                                        <div class="container text-peam" style="font-size: 16px;text-align: justify">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <i class="material-icons">check_circle_outline</i>
@@ -87,7 +87,7 @@
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="tab-funciones">
-                                        <div class="container">
+                                        <div class="container text-peam" style="font-size: 16px;text-align: justify">
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <i class="material-icons">check_circle_outline</i>
