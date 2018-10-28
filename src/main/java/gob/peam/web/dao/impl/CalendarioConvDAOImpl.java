@@ -5,9 +5,10 @@
  */
 package gob.peam.web.dao.impl;
 
-import gob.peam.web.dao.ActividadDAO;
+import gob.peam.web.dao.CalendarioConvDAO;
 import gob.peam.web.dao.SQLCloseable;
 import gob.peam.web.model.Actividad;
+import gob.peam.web.model.CalendarioConv;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
 import java.sql.Connection;
@@ -17,19 +18,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.sql.DataSource;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  *
- * @author Juan Jose
+ * @author JhanxD
  */
-public class ActividadDAOImpl implements ActividadDAO {
-
-    private static final Logger LOG = Logger.getLogger(ActividadDAOImpl.class.getName());
+public class CalendarioConvDAOImpl implements CalendarioConvDAO{
+    
+    private final Log logger = LogFactory.getLog(DirectivoDAOImpl.class);
     private final DataSource pool;
 
-    public ActividadDAOImpl(DataSource pool) {
+    public CalendarioConvDAOImpl(DataSource pool) {
         this.pool = pool;
     }
 
@@ -39,22 +41,32 @@ public class ActividadDAOImpl implements ActividadDAO {
         PreparedStatement pst;
         ResultSet rs;
         try {
-            pst = conn.prepareStatement("SELECT COUNT(ACTI_ID) AS CANT FROM WEB.ACTIVIDAD WHERE " + parameters.get("ATIPO")
-                    + parameters.get("TIPO"));
+            pst = conn.prepareStatement("SELECT COUNT(WEB.CALENDARIO_CONV.ID) AS CANT FROM WEB.CALENDARIO_CONV "
+                    + "INNER JOIN WEB.ACTIVIDAD ON WEB.CALENDARIO_CONV.ACTI_ID = WEB.ACTIVIDAD.ACTI_ID WHERE"
+                    + "(LOWER(WEB.ACTIVIDAD.DESCRIPCION) LIKE CONCAT('%',?,'%'))" + parameters.get("CONVOCATORIA_PERS") + " "
+                    + parameters.get("TIPO") + " ");
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
             }
-            pst = conn.prepareStatement("SELECT * FROM WEB.ACTIVIDAD WHERE " + parameters.get("ATIPO")
-                    + parameters.get("TIPO"));
+            pst = conn.prepareStatement("SELECT * FROM WEB.CALENDARIO_CONV "
+                    + "INNER JOIN WEB.ACTIVIDAD ON WEB.CALENDARIO_CONV.ACTI_ID = WEB.ACTIVIDAD.ACTI_ID WHERE "
+                    + "(LOWER(WEB.ACTIVIDAD.DESCRIPCION) LIKE CONCAT('%',?,'%')) " + parameters.get("CONVOCATORIA_PERS")
+                    + parameters.get("TIPO") + " ORDER BY WEB.ACTIVIDAD.DESCRIPCION "
+                    + parameters.get("LIMIT"));
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
-            List<Actividad> list = new ArrayList<>();
+            List<CalendarioConv> list = new ArrayList<>();
             while (rs.next()) {
-                Actividad obj = new Actividad();
-                obj.setActi_id(rs.getInt("ACTI_ID"));
-                obj.setActi_tipo(rs.getInt("ACTI_TIPO"));
-                obj.setDescripcion(rs.getString("DESCRIPCION"));
+                CalendarioConv obj = new CalendarioConv();
+                obj.setId(rs.getInt("ID"));
+                obj.setFecha_inicio(rs.getDate("FECHA_INICIO"));
+                obj.setFecha_fin(rs.getDate("FECHA_FIN"));
                 obj.setEstado(rs.getBoolean("ESTADO"));
+                obj.setConvo_id(rs.getInt("CONVO_ID"));
+                obj.setActi_id(new Actividad((rs.getInt("ACTI_ID")), (rs.getString("DESCRIPCION"))));
+                obj.setTipo(rs.getInt("TIPO"));
                 list.add(obj);
             }
             beanpagination.setLIST(list);
@@ -78,18 +90,21 @@ public class ActividadDAOImpl implements ActividadDAO {
     }
 
     @Override
-    public BEAN_CRUD add(Actividad obj, HashMap<String, Object> parameters) throws SQLException {
+    public BEAN_CRUD add(CalendarioConv obj, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("INSERT INTO WEB.ACTIVIDAD (ACTI_ID, DESCRIPCION, "
-                    + "ESTADO, ACTI_TIPO) VALUES((select case when max(acti_id) is null then 1 else cast((max(acti_id)+1) as integer) end id  from web.actividad),"
-                    + "?,?,?)");
-            pst.setString(1, obj.getDescripcion());
-            pst.setBoolean(2, obj.getEstado());
-            pst.setInt(3, obj.getActi_tipo());
+            pst = conn.prepareStatement("INSERT INTO WEB.CALENDARIO_CONV (ID, fecha_inicio, fecha_fin, "
+                    + "ESTADO, CONVO_ID, ACTI_ID, TIPO) VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.calendario_conv),"
+                    + "?,?,?,?,?,?)");
+            pst.setDate(1, obj.getFecha_inicio());
+            pst.setDate(2, obj.getFecha_fin());
+            pst.setBoolean(3, obj.getEstado());
+            pst.setInt(4, obj.getConvo_id());
+            pst.setInt(5, obj.getActi_id().getActi_id());
+            pst.setInt(6, obj.getTipo());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -102,16 +117,19 @@ public class ActividadDAOImpl implements ActividadDAO {
     }
 
     @Override
-    public BEAN_CRUD update(Actividad obj, HashMap<String, Object> parameters) throws SQLException {
+    public BEAN_CRUD update(CalendarioConv obj, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.ACTIVIDAD SET DESCRIPCION = ?"
-                    + " WHERE ACTI_ID = ?");
-            pst.setString(1, obj.getDescripcion());
-            pst.setInt(2, obj.getActi_id());
+            pst = conn.prepareStatement("UPDATE WEB.CALENDARIO_CONV SET FECHA_INICIO = ?,FECHA_FIN = ?, "
+                    + "ACTI_ID = ? WHERE ID = ?");
+            pst.setDate(1, obj.getFecha_inicio());
+            pst.setDate(2, obj.getFecha_fin());
+            pst.setInt(3, obj.getActi_id().getActi_id());
+            pst.setInt(4, obj.getId());
+            logger.info(pst);
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -131,18 +149,18 @@ public class ActividadDAOImpl implements ActividadDAO {
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("SELECT COUNT(ACTI_ID) AS CANT FROM WEB.CALENDARIO_CONV WHERE ACTI_ID = ?");
+            pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.DOCUMENT_CONV WHERE ID = ?");
             pst.setInt(1, (int) id);
             rs = pst.executeQuery();
             while (rs.next()) {
                 if (rs.getInt("CANT") <= 0) {
-                    pst = conn.prepareStatement("DELETE FROM WEB.ACTIVIDAD WHERE ACTI_ID = ?");
+                    pst = conn.prepareStatement("DELETE FROM WEB.CALENDARIO_CONV WHERE ID = ?");
                     pst.setInt(1, (int) id);
                     pst.executeUpdate();
                     conn.commit();
                     beancrud.setMESSAGE_SERVER("ok");
                 } else {
-                    beancrud.setMESSAGE_SERVER("No se puede eliminar, existen calendarios que usan esta actividad");
+                    beancrud.setMESSAGE_SERVER("No se puede eliminar, existen documentos que dependen de este item");
                 }
             }
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
@@ -155,8 +173,8 @@ public class ActividadDAOImpl implements ActividadDAO {
     }
 
     @Override
-    public Actividad get(long id) throws SQLException {
+    public CalendarioConv get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

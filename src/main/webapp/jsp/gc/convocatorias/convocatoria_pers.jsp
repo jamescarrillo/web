@@ -125,6 +125,7 @@
                     </div>
                     <%@ include file="../../../temas_gc.jsp"%>
                 </div>
+                <!-- CONVOCATORIAS DE PERSONAL --> 
                 <div class="modal fade" id="ventanaManConvocatoriaPers" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -172,6 +173,404 @@
                         </div>
                     </div>
                 </div>
+                <!-- CALENDARIO DE CONVOCATORIAS -->
+                <div class="modal fade" id="ventanaCalendarioConv" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title">CALENDARIO DE CONVOCATORIAS</h6>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body pt-1">
+                                <input type="hidden" id="nameFormAC" value="FrmActividad">
+                                <input type="hidden" id="actionActividad" name="action" value="paginarActividad">
+                                <input type="hidden" id="nameFormCC" value="FrmCalendarioConv">
+                                <input type="hidden" id="actionCalendarioConv" name="action" value="paginarCalendarioConv">
+                                <input type="hidden" id="numberPageCalendarioConv" name="numberPageCalendarioConv" value="1">
+                                <input type="hidden" id="txtConvoPersIdER" name="txtConvoPersIdER">
+                                <form id="FrmCalendarioConv">
+                                    <div class="row mt-3">
+                                        <div class="input-group col-lg-12 col-md-8 col-12 mb-3 ">
+                                            <input type="text" name="txtCalendarioConv" id="txtCalendarioConv" class="form-control form-control-sm mr-3" placeholder="ACTIVIDAD">
+                                            <button type="submit" id="btnBuscarCalendarioConv" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Actividad" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                            <button type="button" id="btnAbrirNuevoCalendarioConv" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Seleccionar Actividad" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="table-responsive" id="tablaCalendarioConv">
+                                            <table
+                                                class="table color-bordered-table muted-bordered-table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 40%" >ACTIVIDAD</th>
+                                                        <th style="width: 10%" >FECHA_INICIO</th>
+                                                        <th style="width: 10%" >FECHA_FIN</th>
+                                                        <th colspan="3" style="width: 20%" >ACCIONES</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbodyCalendarioConv">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card "
+                                             style="height: 50px; margin-bottom: 0px">
+                                            <div class="card-body"
+                                                 style="padding-top: 10px; padding-bottom: 10px">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-3 col-4">
+                                                        <select id="sizePageCalendarioConv" name="sizePageCalendarioConv" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarCalendarioConv'>
+                                                            <option value="10">10</option>
+                                                            <option value="15">15</option>
+                                                            <option value="20">20</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-9 col-8">
+                                                        <nav aria-label="Page navigation example">
+                                                            <ul id="paginationCalendarioConv"
+                                                                class="pagination pagination-sm justify-content-end">
+
+                                                            </ul>
+
+                                                        </nav>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="ventanaManCalendarioConv" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form id="FrmCalendarioConvModal">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="txtTituloModalManCalendarioConv"></h6>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtFechaInicioERCC">FECHA INICIAL</label>
+                                            <input class="form-control form-control-sm" id="txtFechaInicioERCC" name="txtFechaInicioERCC" type="text" placeholder="Fecha Inicial"> 
+                                        </div>
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtFechaFinERCC">FECHA FIN</label>
+                                            <input class="form-control form-control-sm" id="txtFechaFinERCC" name="txtFechaFinERCC" type="text" placeholder="Fecha Final">
+                                        </div>
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="comboActividadCC">ACTIVIDAD</label>
+                                            <select id="comboActividadCC" name="comboActividadCC" class="form-control form-control-sm">
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-4 col-12 mb-3">
+                                            <button type="button" id="btnAbrirNuevoActividad" class="btn btn-outline-info btn-sm btn-block" data-toggle="tooltip" title="Registrar Actividad" style="height: 33px"><i class="fa fa-plus-square" aria-hidden="true"> Nueva Actividad</i></button>
+                                        </div>
+                                        <div class="col-sm-4 col-12 mb-3">
+                                            <button type="button" id="btnEditarActividad" class="btn btn-outline-info btn-sm btn-block" data-toggle="tooltip" title="Editar Actividad" style="height: 33px"><i class="fas fa-edit" aria-hidden="true"> Editar Actividad</i></button>
+                                        </div>
+                                        <div class="col-sm-4 col-12 mb-3">
+                                            <button type="button" id="btnEliminarActividad" class="btn btn-outline-danger btn-sm btn-block" data-toggle="tooltip" title="Eliminar Actividad" style="height: 33px"><i class="fas fa-trash-alt" aria-hidden="true"> Eliminar Actividad</i></button>
+                                        </div>
+                                        <input id="txtIdERCC" name="txtIdERCC" type="hidden" value="">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
+                                    <button type="submit" id="btnGuardar" class="btn btn-outline-info btn-sm">
+                                        <i class="fa fa-floppy-o"></i> GUARDAR
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalCargandoCalendarioConv" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="progress" style="margin-bottom: 0px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                        Cargando...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- ACTIVIDADES -->
+                <div class="modal fade" id="ventanaManActividad" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form id="FrmActividadModal">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="txtTituloModalManActividad"></h6>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtActividadERAC">ACTIVIDAD</label>
+                                            <input class="form-control form-control-sm" id="txtActividadERAC" name="txtActividadERAC" type="text" placeholder="Nombre de Actividad"> 
+                                        </div>
+                                        <input id="txtActiIdERAC" name="txtActiIdERAC" type="hidden" value="">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
+                                    <button type="submit" id="btnGuardar" class="btn btn-outline-info btn-sm">
+                                        <i class="fa fa-floppy-o"></i> GUARDAR
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalCargandoActividad" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="progress" style="margin-bottom: 0px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                        Cargando...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- PUESTO DE CONVOCATORIAS -->
+                <div class="modal fade" id="ventanaPuestoConv" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title">PLAZAS</h6>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body pt-1">
+                                <input type="hidden" id="nameFormPC" value="FrmPuestoConv">
+                                <input type="hidden" id="actionPuestoConv" name="action" value="paginarPuestoConv">
+                                <input type="hidden" id="txtCoperIdERPC" name="txtCoperIdERPC">
+                                <input type="hidden" id="numberPagePuestoConv" name="numberPagePuestoConv" value="1">
+                                <form id="FrmPuestoConv">
+                                    <div class="row mt-3">
+                                        <div class="input-group col-lg-12 col-md-8 col-12 mb-3 ">
+                                            <input type="text" name="txtPuestoConv" id="txtPuestoConv" class="form-control form-control-sm mr-3" placeholder="CARGO">
+                                            <button type="submit" id="btnBuscarPuestoConv" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Cargo" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                            <button type="button" id="btnAbrirNuevoPuestoConv" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Nuevo Cargo" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="table-responsive" id="tablaPuestoConv">
+                                            <table
+                                                class="table color-bordered-table muted-bordered-table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 40%" >CARGO</th>
+                                                        <th style="width: 15%" >INGRESO_MENSUAL</th>
+                                                        <th style="width: 20%" >MODALIDAD</th>
+                                                        <th style="width: 10%" >VACANTES</th>
+                                                        <th colspan="2" style="width: 10%" >ACCIONES</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbodyPuestoConv">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalCargandoPuestoConv" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="progress" style="margin-bottom: 0px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                        Cargando...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="ventanaManPuestoConv" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form id="FrmPuestoConvModal">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="txtTituloModalManPuestoConv"></h6>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtCargoERPC">CARGO</label>
+                                            <input class="form-control form-control-sm" id="txtCargoERPC" name="txtCargoERPC" type="text" placeholder="Cargo"> 
+                                        </div>
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtIngreMensualERPC">INGRESO MENSUAL</label>
+                                            <input class="form-control form-control-sm" id="txtIngreMensualERPC" name="txtIngreMensualERPC" type="text" placeholder="Ingreso Mensual">
+                                        </div>
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtModalidadERPC">MODALIDAD</label>
+                                            <input class="form-control form-control-sm" id="txtModalidadERPC" name="txtModalidadERPC" type="text" placeholder="Modalidad">
+                                        </div>
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtNroPlazaERPC">NUMERO DE PLAZAS</label>
+                                            <input class="form-control form-control-sm" id="txtNroPlazaERPC" name="txtNroPlazaERPC" type="text" placeholder="Numero de plazas">
+                                        </div>
+                                        <input class="form-control form-control-sm" id="txtPues_IdER" name="txtPues_IdER" type="hidden">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
+                                    <button type="submit" id="btnGuardar" class="btn btn-outline-info btn-sm">
+                                        <i class="fa fa-floppy-o"></i> GUARDAR
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- ARCHIVOS -->
+                <div class="modal fade" id="ventanaDocumentCal" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title">ARCHIVOS</h6>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body pt-1">
+                                <input type="hidden" id="nameFormDC" value="FrmDocumentCal">
+                                <input type="hidden" id="actionDocumentCal" name="action" value="paginarDocumentCal">
+                                <input type="hidden" id="txtCalendarioId" name="txtCalendarioId">
+                                <input type="hidden" id="numberPageDocumentCal" name="numberPageDocumentCal" value="1">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="table-responsive" id="tablaDocumentCal">
+                                            <table
+                                                class="table color-bordered-table muted-bordered-table table-hover">
+                                                <thead>
+                                                    <tr>
+                                                        <th style="width: 40%" >NOMBRE</th>
+                                                        <th style="width: 15%" >ARCHIVO</th>
+                                                        <th style="width: 10%" >ACCIONES</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="tbodyDocumentCal">
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="btnAbrirNuevoDocumentCal" class="btn btn-info btn-sm mr-3" data-toggle="tooltip" title="Subir Archivo" style="height: 33px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalCargandoDocumentCal" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="progress" style="margin-bottom: 0px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                        Cargando...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="ventanaManDocumentCal" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <form id="FrmDocumentCalModal">
+                                <div class="modal-header">
+                                    <h6 class="modal-title" id="txtTituloModalManDocumentCal"></h6>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtNombreERDC">NOMBRE</label>
+                                            <input class="form-control form-control-sm" id="txtNombreERDC" name="txtNombreERDC" type="text" placeholder="NOMBRE"> 
+                                        </div>
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="">ARCHIVO</label>
+                                            <div style="display: inline">
+                                                <input id="fileArchivo" name="fileArchivo" type="file" style="display: none">
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control form-control-sm" name="txtNombreArchivoERDC" id="txtNombreArchivoERDC" disabled="" maxlength="100">
+                                                    <button type="button" id="btnSeleccionarArchivo" class="btn btn-info btn-sm">
+                                                        <i class="fa fa-folder-open"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="text-center">
+                                                <small>Seleccione Archivo < 1000 KB</small> <input type="hidden" id="txtCv" name="txtCv" value=""> 
+                                                <input type="hidden" class="form-control form-control-sm" id="txtNombreFileResultadoActual" name="txtNombreFileResultadoActual" value="">
+                                                <input type="hidden" id="txtValidacionArchivo" name="txtValidacionArchivo" value="">
+                                                <div id="validarResultado" class="err-validation-file">Seleccione Adjunto!</div>
+                                            </div>
+                                        </div>
+                                        <input id="txtDoco_IdER" name="txtDoco_IdER" type="hidden">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
+                                    <button type="submit" id="btnGuardar" class="btn btn-outline-info btn-sm">
+                                        <i class="fa fa-floppy-o"></i> GUARDAR
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
                 <footer class="footer"> © 2018 Peam </footer>
             </div>
         </div>

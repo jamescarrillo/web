@@ -136,50 +136,70 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
     public BEAN_CRUD delete(long id, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
+        ResultSet rs;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("DELETE FROM WEB.CONVOCATORIA_PERS WHERE COPER_ID = ?");
+            pst = conn.prepareStatement("SELECT COUNT(COPER_ID) AS CANT FROM WEB.PUESTO_CONV WHERE COPER_ID = ?");
             pst.setInt(1, (int) id);
-            pst.executeUpdate();
-            conn.commit();
-            beancrud.setMESSAGE_SERVER("ok");
-            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
-            pst.close();
-        } catch (SQLException ex) {
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                if (rs.getInt("CANT") <= 0) {
+                    pst = conn.prepareStatement("SELECT COUNT(CONVO_ID) AS CANT FROM WEB.CALENDARIO_CONV WHERE CONVO_ID = ? AND TIPO = 2");
+                    pst.setInt(1, (int) id);
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
+                        if (rs.getInt("CANT") <= 0) {
+                            pst = conn.prepareStatement("DELETE FROM WEB.CONVOCATORIA_PERS WHERE COPER_ID = ?");
+                            pst.setInt(1, (int) id);
+                            pst.executeUpdate();
+                            conn.commit();
+                            beancrud.setMESSAGE_SERVER("ok");
+                        } else {
+                            beancrud.setMESSAGE_SERVER("No se puede eliminar, existen un calendario de actividades que dependen de esta convocatoria");
+                        }}
+                    }else {
+                    beancrud.setMESSAGE_SERVER("No se puede eliminar, existen puestos que dependen de esta convocatoria");
+                }}
+                beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+                rs.close();
+                pst.close();
+            }catch (SQLException ex) {
             throw ex;
         }
-        return beancrud;
-    }
+            return beancrud;
+        }
 
-    @Override
-    public Convocatoria_Pers get(long id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        @Override
+        public Convocatoria_Pers get
+        (long id) throws SQLException {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
 
-    @Override
-    public BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException {
-        BEAN_CRUD beancrud = new BEAN_CRUD();
-        PreparedStatement pst;
-        try (Connection conn = pool.getConnection();
-                SQLCloseable finish = conn::rollback;) {
-            conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.CONVOCATORIA_PERS SET ESTADO = ? WHERE COPER_ID = ?");
-            if (parameters.get("ESTADO").equals("true")) {
-                pst.setBoolean(1, true);
-            }else{
-                pst.setBoolean(1, false);
+        @Override
+        public BEAN_CRUD activate
+        (long id, HashMap<String, Object > parameters) throws SQLException {
+            BEAN_CRUD beancrud = new BEAN_CRUD();
+            PreparedStatement pst;
+            try (Connection conn = pool.getConnection();
+                    SQLCloseable finish = conn::rollback;) {
+                conn.setAutoCommit(false);
+                pst = conn.prepareStatement("UPDATE WEB.CONVOCATORIA_PERS SET ESTADO = ? WHERE COPER_ID = ?");
+                if (parameters.get("ESTADO").equals("true")) {
+                    pst.setBoolean(1, true);
+                } else {
+                    pst.setBoolean(1, false);
+                }
+                pst.setInt(2, (int) id);
+                pst.executeUpdate();
+                conn.commit();
+                beancrud.setMESSAGE_SERVER("ok");
+                beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+                pst.close();
+            } catch (SQLException ex) {
+                throw ex;
             }
-            pst.setInt(2, (int) id);
-            pst.executeUpdate();
-            conn.commit();
-            beancrud.setMESSAGE_SERVER("ok");
-            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
-            pst.close();
-        } catch (SQLException ex) {
-            throw ex;
+            return beancrud;
         }
-        return beancrud;
-    }
 
-}
+    }

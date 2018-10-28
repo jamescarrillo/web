@@ -19,8 +19,13 @@ public class Convocatoria_Pers {
     private String descripcion;
     private Boolean estado;
     private String anho;
+
+    public Convocatoria_Pers(int coper_id) {
+        this.coper_id= coper_id;
+    }
     
-    
+    public Convocatoria_Pers() {
+    }
 
     public Integer getCoper_id() {
         return coper_id;
