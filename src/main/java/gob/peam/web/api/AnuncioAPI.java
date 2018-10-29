@@ -30,7 +30,7 @@ import javax.sql.DataSource;
  *
  * @author Juan Jose
  */
-@WebServlet(name = "AnuncioAPI", urlPatterns = {"/publicaciones/anunciosadmin"})
+@WebServlet(name = "AnuncioAPI", urlPatterns = {"/publicaciones/anuncios"})
 public class AnuncioAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
@@ -104,7 +104,7 @@ public class AnuncioAPI extends HttpServlet {
             throws ServletException, IOException {
         this.session = request.getSession();
         if (this.session.getAttribute("user") == null) {
-            response.sendRedirect("login");
+            response.sendRedirect("../login");
         } else {
             processRequest(request, response);
         }
@@ -123,7 +123,7 @@ public class AnuncioAPI extends HttpServlet {
             throws ServletException, IOException {
         this.session = request.getSession();
         if (this.session.getAttribute("user") == null) {
-            response.sendRedirect("login");
+            response.sendRedirect("../login");
         } else {
             processRequest(request, response);
         }
@@ -153,9 +153,22 @@ public class AnuncioAPI extends HttpServlet {
 
     private HashMap getParametersAnuncio(HttpServletRequest request) {
         this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtDescripcionAnuncio"));
-        this.parameters.put("SQL_ORDERS", "DESCRIPCION");
-        this.parameters.put("LIMIT", "");
+        this.parameters.put("FILTER", request.getParameter("txtTituloAnuncio"));
+        if (request.getParameter("estadoAnuncio").equals("-1")) {
+            this.parameters.put("SQL_ESTADO", "");
+        } else {
+            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("estadoAnuncio"));
+        }
+        if (request.getParameter("tipo").equals("-1")) {
+            this.parameters.put("SQL_TIPO", "");
+        } else {
+            this.parameters.put("SQL_TIPO", "AND TIPO = " + request.getParameter("tipo"));
+        }
+        this.parameters.put("SQL_ORDERS", "TITULO ASC");
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePageAnuncio") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageAnuncio")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageAnuncio")));
         return this.parameters;
     }
 

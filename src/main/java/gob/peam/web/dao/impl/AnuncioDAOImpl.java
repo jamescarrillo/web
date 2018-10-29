@@ -40,30 +40,38 @@ public class AnuncioDAOImpl implements AnuncioDAO {
         PreparedStatement pst;
         ResultSet rs;
         try {
-            pst = conn.prepareStatement("SELECT COUNT(ANU_ID) AS CANT FROM WEB.ANUNCIO WHERE "
+            pst = conn.prepareStatement("SELECT COUNT(ANU_ID) AS COUNT FROM WEB.ANUNCIO WHERE "
                     + "(LOWER(TITULO) LIKE CONCAT('%',?,'%') OR LOWER(CONTENIDO) LIKE CONCAT('%',?,'%')) "
                     + parameters.get("SQL_ESTADO") + " "
                     + parameters.get("SQL_TIPO"));
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            pst.setString(2, String.valueOf(parameters.get("FILTER")));
+            LOG.info(pst.toString());
             rs = pst.executeQuery();
             while (rs.next()) {
-                beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
-            }
-            pst = conn.prepareStatement("SELECT COUNT(ANU_ID) AS CANT FROM WEB.ANUNCIO WHERE "
-                    + "(LOWER(TITULO) LIKE CONCAT('%',?,'%') OR LOWER(CONTENIDO) LIKE CONCAT('%',?,'%')) "
-                    + parameters.get("SQL_ESTADO") + " "
-                    + parameters.get("SQL_TIPO") + " "
-                    + "ORDER BY " + parameters.get("SQL_ORDERS") + " " + parameters.get("LIMIT"));
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                Anuncio obj = new Anuncio();
-                obj.setAnu_id(rs.getInt("ANU_ID"));
-                obj.setAnu_fecha_ini(rs.getString("ANU_FECHA_INI"));
-                obj.setAnu_fecha_fin(rs.getString("ANU_FECHA_FIN"));
-                obj.setTipo(rs.getInt("TIPO"));
-                obj.setTitulo(rs.getString("TITULO"));
-                obj.setContenido(rs.getString("CONTENIDO"));
-                obj.setEstado(rs.getBoolean("ESTADO"));
-                list.add(obj);
+                beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
+                if (rs.getInt("COUNT") > 0) {
+                    pst = conn.prepareStatement("SELECT * FROM WEB.ANUNCIO WHERE "
+                            + "(LOWER(TITULO) LIKE CONCAT('%',?,'%') OR LOWER(CONTENIDO) LIKE CONCAT('%',?,'%')) "
+                            + parameters.get("SQL_ESTADO") + " "
+                            + parameters.get("SQL_TIPO") + " "
+                            + "ORDER BY " + parameters.get("SQL_ORDERS") + " " + parameters.get("LIMIT"));
+                    pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    pst.setString(2, String.valueOf(parameters.get("FILTER")));
+                    LOG.info(pst.toString());
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
+                        Anuncio obj = new Anuncio();
+                        obj.setAnu_id(rs.getInt("ANU_ID"));
+                        obj.setAnu_fecha_ini(rs.getString("ANU_FECHA_INI"));
+                        obj.setAnu_fecha_fin(rs.getString("ANU_FECHA_FIN"));
+                        obj.setTipo(rs.getInt("TIPO"));
+                        obj.setTitulo(rs.getString("TITULO"));
+                        obj.setContenido(rs.getString("CONTENIDO"));
+                        obj.setEstado(rs.getBoolean("ESTADO"));
+                        list.add(obj);
+                    }
+                }
             }
             beanpagination.setLIST(list);
             rs.close();

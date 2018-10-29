@@ -18,6 +18,7 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css" rel="stylesheet">
         <!-- You can change the theme colors from here -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/colors/blue.css" id="theme" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
 
         <!--link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet"-->
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -58,18 +59,22 @@
                                     <form id="FrmAnuncio">
                                         <div class="row mt-3">
                                             <div class="form-group col-lg-5 col-md-8 col-12 mb-3">
-                                                <input type="text" name="txtTituloAnuncio" id="txtTituloAnuncio" class="form-control form-control-sm" placeholder="TÍTULO">
+                                                <input type="text" name="txtTituloAnuncio" id="txtTituloAnuncio" class="form-control form-control-sm" placeholder="TÍTULO O CONTENIDO">
                                             </div>
                                             <div class="form-group col-lg-3 col-md-8 col-12 mb-3">
+                                                <select id="tipo" name="tipo" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarAnuncio'>
+                                                    <option value="-1">TIPO</option>
+                                                    <option value="1">COMUNICADO</option>
+                                                    <option value="2">CONVOCATORIA</option>
+                                                    <option value="2">SALUDO</option>
+                                                    <option value="3">OTROS</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-group col-lg-4 col-md-4 col-12 mb-3">
                                                 <select id="estadoAnuncio" name="estadoAnuncio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarAnuncio'>
                                                     <option value="-1">TODOS</option>
                                                     <option value="true">PUBLICADOS</option>
                                                     <option value="false">OCULTOS</option>
-                                                </select>
-                                            </div>
-                                            <div class="input-group col-lg-4 col-md-4 col-12 mb-3">
-                                                <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarAnuncio'>
-
                                                 </select>
                                                 <button type="submit" id="btnBuscarAnuncio" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Anuncio" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
                                                 <button type="button" id="btnAbrirNuevoAnuncio" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Anuncio" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
@@ -204,6 +209,7 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/anuncio.js"></script>
     </body>
 </html>

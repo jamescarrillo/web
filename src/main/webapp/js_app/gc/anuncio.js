@@ -62,13 +62,15 @@ function procesarAjaxAnuncio() {
     if ($('#nameForm').val().toLowerCase() !== "frmanuncio") {
         //AGREGAMOS LOS PARAMETROS DEL FORMULARIO DE BUSQUEDA
         datosSerializadosCompletos += "&txtTituloAnuncio=" + $('#txtTituloAnuncio').val();
+        datosSerializadosCompletos += "&tipo=" + $('#tipo').val();
+        datosSerializadosCompletos += "&estadoAnuncio=" + $('#estadoAnuncio').val();
     }
     datosSerializadosCompletos += "&numberPageAnuncio=" + $('#numberPageAnuncio').val();
     datosSerializadosCompletos += "&sizePageAnuncio=" + $('#sizePageAnuncio').val();
     datosSerializadosCompletos += "&action=" + $('#actionAnuncio').val();
     console.log(datosSerializadosCompletos);
     $.ajax({
-        url: getContext() + '/publicaciones/anunciosadmin',
+        url: getContext() + '/publicaciones/anuncios',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
@@ -100,11 +102,12 @@ function procesarAjaxAnuncio() {
 function listarAnuncio(BEAN_PAGINATION) {
     /*PAGINATION*/
     var $pagination = $('#paginationAnuncio');
-    $('#containerRegistrosNotasPrensa').empty();
+    $('#containerRegistrosAnuncios').empty();
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var atributosAnuncio;
         var card;
         var cadenaContenido;
+        var cadenaTitulo;
         var textColor;
         var icono;
         var opcion_estado;
@@ -121,20 +124,22 @@ function listarAnuncio(BEAN_PAGINATION) {
             cadenaContenido = value.contenido;
             cadenaContenido = replaceAll(cadenaContenido, '<p>', '');
             cadenaContenido = replaceAll(cadenaContenido, '</p>', '\n');
+            cadenaContenido = replaceAll(cadenaContenido, '<b>', '\n');
+            cadenaContenido = replaceAll(cadenaContenido, '</b>', '\n');
+            
+            cadenaTitulo = value.titulo;
+            cadenaTitulo = replaceAll(cadenaTitulo, '<p>', '');
+            cadenaTitulo = replaceAll(cadenaTitulo, '</p>', '\n');
+            cadenaTitulo = replaceAll(cadenaTitulo, '<b>', '\n');
+            cadenaTitulo = replaceAll(cadenaTitulo, '</b>', '\n');
 
-            atributosAnuncio = "id='" + value.id + "' ";
-            atributosAnuncio += "anho='" + value.anho + "' ";
-            atributosAnuncio += "titulo='" + value.titulo + "' ";
+            atributosAnuncio = "anu_id='" + value.id + "' ";
+            atributosAnuncio += "tipo='" + value.tipo + "' ";
+            atributosAnuncio += "titulo='" + cadenaTitulo + "' ";
             atributosAnuncio += "contenido='" + cadenaContenido + "' ";
-            atributosAnuncio += "fuente='" + value.fuente + "' ";
-            atributosAnuncio += "fecha='" + value.fecha + "' ";
-            atributosAnuncio += "foto='" + value.foto + "' ";
+            atributosAnuncio += "anu_fecha_ini='" + value.anu_fecha_ini + "' ";
+            atributosAnuncio += "anu_fecha_fin='" + value.anu_fecha_fin + "' ";
             atributosAnuncio += "estado='" + value.estado + "' ";
-            atributosAnuncio += "subido_por='" + value.subido_por.pers_id + "' ";
-            atributosAnuncio += "fecha_creacion='" + value.fecha_creacion + "' ";
-            atributosAnuncio += "fecha_actualizacion='" + value.fecha_actualizacion + "' ";
-
-            //cadenaContenido = cadenaContenido.substring(0, 120) + "...";
             cadenaContenido = getResumenContenidoWeb(cadenaContenido, 120) + "...";
             card = "<div class='col-lg-4 col-md-6'>";
 
@@ -142,11 +147,11 @@ function listarAnuncio(BEAN_PAGINATION) {
 
             card += "<div class='card-body'>";
 
-            card += "<div class='blog-image'><img src='" + value.foto + "' alt='img' class='img-responsive'></div>";
+            //card += "<div class='blog-image'><img src='" + value.foto + "' alt='img' class='img-responsive'></div>";
 
-            card += "<h3 class='" + textColor + "'>" + value.titulo + "</h3>";
+            card += "<h3 class='" + textColor + "'>" + cadenaTitulo + "</h3>";
 
-            card += "<label class='label label-rounded label-success'>" + value.fuente + "</label>";
+            card += "<label class='label label-rounded label-success'>" + getCadenaAnuncio(value.tipo) + "</label>";
 
             card += "<p class='m-t-15 m-b-20 " + textColor + "'>" + cadenaContenido + "</p>";
 
@@ -154,13 +159,13 @@ function listarAnuncio(BEAN_PAGINATION) {
 
             card += "<div class='d-flex' " + atributosAnuncio + ">";
 
-            card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            card += "<div class='read'><a class='link font-medium btn-vista-previa-anuncio' style='cursor:pointer'>Vista Previa</a></div>";
 
             card += "<div class='ml-auto'>";
 
-            card += "<a style='cursor:pointer' class='link mr-2 btn-cambiar-estado-np' data-toggle='tooltip' title='" + opcion_estado + "' data-original-title='' opcion_estado='" + opcion_estado.toLowerCase() + "'>" + icono + "</a>";
-            card += "<a style='cursor:pointer' class='link mr-2 btn-editar-np' data-toggle='tooltip' title='Editar' data-original-title='Editar'><i class='fas fa-edit'></i></a>";
-            card += "<a style='cursor:pointer' class='link btn-eliminar-np' data-toggle='tooltip' title='Eliminar' data-original-title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
+            card += "<a style='cursor:pointer' class='link mr-2 btn-cambiar-estado-anuncio' data-toggle='tooltip' title='" + opcion_estado + "' data-original-title='' opcion_estado='" + opcion_estado.toLowerCase() + "'>" + icono + "</a>";
+            card += "<a style='cursor:pointer' class='link mr-2 btn-editar-anuncio' data-toggle='tooltip' title='Editar' data-original-title='Editar'><i class='fas fa-edit'></i></a>";
+            card += "<a style='cursor:pointer' class='link btn-eliminar-anuncio' data-toggle='tooltip' title='Eliminar' data-original-title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
 
             card += "</div>";
 
@@ -172,7 +177,7 @@ function listarAnuncio(BEAN_PAGINATION) {
 
             card += "</div>";
 
-            $('#containerRegistrosNotasPrensa').append(card);
+            $('#containerRegistrosAnuncios').append(card);
         });
         var defaultOptions = getDefaultOptionsPagination();
         var options = getOptionsPagination(BEAN_PAGINATION.COUNT_FILTER, $('#sizePageAnuncio'),
@@ -181,7 +186,7 @@ function listarAnuncio(BEAN_PAGINATION) {
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
         agregarEventosAnuncio();
-        $('#txtNombreAnuncio').focus();
+        $('#txtTituloAnuncio').focus();
     } else {
         $pagination.twbsPagination('destroy');
         viewAlert('warning', 'No se enconntraron resultados');
@@ -190,16 +195,22 @@ function listarAnuncio(BEAN_PAGINATION) {
 
 function agregarEventosAnuncio() {
 
-    $('.btn-vista-previa-np').each(function () {
+    $('.btn-vista-previa-anuncio').each(function () {
         $(this).click(function () {
-            $('#tituloAnuncioVP').html($(this.parentElement.parentElement).attr('titulo'));
-            $('#resumenAnuncioVP').html(getResumenContenidoWeb($(this.parentElement.parentElement).attr('contenido'), 80) + "...");
-            $('#ventanaVistaPreviaAnuncio').modal("show");
-            document.getElementsByTagName("body")[0].style.paddingRight = "0";
+            var titulo = $(this.parentElement.parentElement).attr('titulo');
+            var contenido = $(this.parentElement.parentElement).attr('contenido');
+            $.toast({
+                heading: titulo,
+                text: contenido,
+                position: 'top-right',
+                hideAfter: false
+            });
+            $('.jq-toast-single').css('border', '3px solid #a20505');
+            $('.jq-toast-heading').addClass('text-peam-negrita');
         });
     });
 
-    $('.btn-editar-np').each(function () {
+    $('.btn-editar-anuncio').each(function () {
         $(this).click(function () {
             $('#txtIdAnuncioER').val($(this.parentElement.parentElement).attr('id'));
             $('#txtAnhoAnuncioER').val($(this.parentElement.parentElement).attr('anho'));
@@ -220,7 +231,7 @@ function agregarEventosAnuncio() {
         });
     });
 
-    $('.btn-eliminar-np').each(function () {
+    $('.btn-eliminar-anuncio').each(function () {
         $(this).click(function () {
             $('#txtIdAnuncioER').val($(this.parentElement.parentElement).attr('id'));
             viewAlertDelete("Anuncio");
@@ -228,7 +239,7 @@ function agregarEventosAnuncio() {
         });
     });
 
-    $('.btn-cambiar-estado-np').each(function () {
+    $('.btn-cambiar-estado-anuncio').each(function () {
         $(this).click(function () {
             $('#txtIdAnuncioER').val($(this.parentElement.parentElement).attr('id'));
             if ($(this).attr('opcion_estado').toLowerCase() === "publicar") {
@@ -311,3 +322,25 @@ function validarFormularioAnuncio() {
     return true;
 }
 
+function getCadenaAnuncio(tipo) {
+    var anuncio = "";
+    switch (tipo) {
+        case 1:
+            anuncio = "COMUNICADO";
+            break;
+        case 2:
+            anuncio = "CONVOCATORIA";
+            break;
+        case 3:
+            anuncio = "SALUDO";
+            break;
+        case 4:
+            anuncio = "OTROS";
+            break;
+        default :
+            anuncio = "";
+            break;
+
+    }
+    return anuncio;
+}
