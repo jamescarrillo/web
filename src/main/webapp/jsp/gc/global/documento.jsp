@@ -49,7 +49,6 @@
                                     <input type="hidden" id="nameForm" value="FrmDocumentos">
                                     <input type="hidden" id="actionDocumentos" name="action" value="paginarDocumentos">
                                     <input type="hidden" id="numberPageDocumentos" name="numberPageDocumentos" value="1">
-                                    <input type="hidden" id="urlDocumentos" name="urlDocumentos" value="<%out.print(request.getParameter("url"));%>">
                                     <form id="FrmDocumentos">
                                         <div class="row mt-3">
                                             <div class="form-group col-lg-6 col-12 mb-3">

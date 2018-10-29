@@ -47,6 +47,7 @@
             <input type="hidden" id="nameFormNotaPrensa" value="FrmNotaPrensa">
             <input type="hidden" id="actionNotaPrensa" name="action" value="paginarNotaPrensa">
             <input type="hidden" id="comboAnio" name="comboAnio" value="-1">
+            <input type="hidden" id="estadoNotaPrensa" name="estadoNotaPrensa" value="true">
             <input type="hidden" id="numberPageNotaPrensa" name="numberPageNotaPrensa" value="1">
             <input type="hidden" id="sizePageNotaPrensa" name="sizePageNotaPrensa" value="10">
             <input type="hidden" class="form-control" value="" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" placeholder="Buscar...">
@@ -428,8 +429,7 @@
                             <!-- /.col-md-3 -->
                             <div class="col-md-3 col-sm-6">
                                 <div class="text-center">
-                                    <a href="#"> <i class="fa fa-graduation-cap fa-5x"
-                                                    aria-hidden="true"></i>
+                                    <a href="#"> <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
                                         <h5 class="text-peam-verde">ESTUDIOS</h5>
                                     </a>
                                 </div>
@@ -540,7 +540,7 @@
                     <div class="col-md-3 col-xs-12">
                         <div class="team-wrapper text-center" >
                             <div class="team-img">
-                                <a href="#"><img src="peam_resources_app/fotos_users/gerente2.jpg" class="img-responsive" alt="Imagen"></a>
+                                <a href="#"><img src="peam_resources_app/fotos_users/gerente2.jpg" class="img-responsive img-responsive-peam" alt="Imagen"></a>
                             </div>
                             <div class="team-title">
                                 <br>
@@ -574,7 +574,7 @@
                     </h1>
                 </div>
                 <div class="row">
-                    <div class="col-md-9 col-xs-12" style="height: 500px">
+                    <div class="col-lg-9 col-md-8 col-xs-12" id="idColumnaCarrusel" style="height: 500px">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                             <ol class="carousel-indicators">
                                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -590,61 +590,61 @@
                             </ol>
                             <div class="carousel-inner">
                                 <div class="item active">
-                                    <img id="imgCNotaPrensa0" src="" alt="Noticia" style="height: 495px">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa0" src="" alt="Noticia" style="height: 495px">
                                     <div class="carousel-caption">
                                         <h3 id="tituloCNotaPrensa0" class="text-peam-negrita-fondo"></h3>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img id="imgCNotaPrensa1" src="" alt="Noticia" style="height: 495px">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa1" src="" alt="Noticia" style="height: 495px">
                                     <div class="carousel-caption">
                                         <h3 id="tituloCNotaPrensa1" class="text-peam-negrita-fondo"></h3>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img id="imgCNotaPrensa2" src="" alt="Noticia" style="height: 495px">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa2" src="" alt="Noticia" style="height: 495px">
                                     <div class="carousel-caption">
                                         <h3 id="tituloCNotaPrensa2" class="text-peam-negrita-fondo"></h3>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img id="imgCNotaPrensa3" src="" alt="Noticia" style="height: 495px">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa3" src="" alt="Noticia" style="height: 495px">
                                     <div class="carousel-caption">
                                         <h3 id="tituloCNotaPrensa3" class="text-peam-negrita-fondo"></h3>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img id="imgCNotaPrensa4" src="" alt="Noticia" style="height: 495px">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa4" src="" alt="Noticia" style="height: 495px">
                                     <div class="carousel-caption">
                                         <h3 id="tituloCNotaPrensa4" class="text-peam-negrita-fondo"></h3>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img id="imgCNotaPrensa5" src="" alt="Noticia" style="height: 495px">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa5" src="" alt="Noticia" style="height: 495px">
                                     <div class="carousel-caption">
                                         <h3 id="tituloCNotaPrensa5" class="text-peam-negrita-fondo"></h3>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img id="imgCNotaPrensa6" src="" alt="Noticia" style="height: 495px">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa6" src="" alt="Noticia" style="height: 495px">
                                     <div class="carousel-caption">
                                         <h3 id="tituloCNotaPrensa6" class="text-peam-negrita-fondo"></h3>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img id="imgCNotaPrensa7" src="" alt="Noticia" style="height: 495px">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa7" src="" alt="Noticia" style="height: 495px">
                                     <div class="carousel-caption">
                                         <h3 id="tituloCNotaPrensa7" class="text-peam-negrita-fondo"> </h3>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img id="imgCNotaPrensa8" src="" alt="Noticia" style="height: 495px">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa8" src="" alt="Noticia" style="height: 495px">
                                     <div class="carousel-caption">
                                         <h3 id="tituloCNotaPrensa8" class="text-peam-negrita-fondo"></h3>
                                     </div>
                                 </div>
                                 <div class="item">
-                                    <img id="imgCNotaPrensa9" src="" alt="Noticia" style="height: 495px">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa9" src="" alt="Noticia" style="height: 495px">
                                     <div class="carousel-caption">
                                         <h3 id="tituloCNotaPrensa9" class="text-peam-negrita-fondo"></h3>
                                     </div>
@@ -660,8 +660,8 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-md-3 col-xs-12">
-                        <div class="team-wrapper text-center" >
+                    <div class="col-lg-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                        <div class="team-wrapper text-center">
                             <div class="team-img">
                                 <a href="#"><img src="peam_resources_app/fotos_users/gerente2.jpg" class="img-responsive" alt="Imagen"></a>
                             </div>

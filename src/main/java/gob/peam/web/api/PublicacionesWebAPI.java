@@ -65,19 +65,18 @@ public class PublicacionesWebAPI extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
+            this.action = request.getParameter("action") == null ? "readNotaPrensa" : request.getParameter("action");
             LOG.info(action);
             switch (this.action) {
                 case "paginarNotaPrensa":
                     procesarNotaPrensa(new BEAN_CRUD(this.notaPrensaDAO.getPagination(getParametersNotasPrensa(request))), response);
                     break;
                 case "readNotaPrensa":
-                    LOG.info(request.getParameter("idNota"));
-                    //request.setAttribute("idNota", LOG);
                     request.getRequestDispatcher("/jsp/web/publicaciones/notaPrensaWeb.jsp").forward(request, response);
                     break;
                 default:
-                    request.getRequestDispatcher("/403.jsp").forward(request, response);
+                    //request.getRequestDispatcher("/403.jsp").forward(request, response);
+                    response.sendRedirect("../index");
                     break;
             }
         } catch (SQLException ex) {
@@ -122,7 +121,7 @@ public class PublicacionesWebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             LOG.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -133,6 +132,11 @@ public class PublicacionesWebAPI extends HttpServlet {
             this.parameters.put("SQL_ANIO", "");
         } else {
             this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnio") + "' ");
+        }
+        if (request.getParameter("estadoNotaPrensa").equals("-1")) {
+            this.parameters.put("SQL_ESTADO", "");
+        } else {
+            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("estadoNotaPrensa"));
         }
         this.parameters.put("SQL_ORDERS", "FECHA DESC");
         this.parameters.put("LIMIT",

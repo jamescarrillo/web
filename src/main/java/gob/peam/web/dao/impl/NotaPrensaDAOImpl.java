@@ -43,6 +43,7 @@ public class NotaPrensaDAOImpl implements NotaPrensaDAO {
         try {
             pst = conn.prepareStatement("SELECT COUNT(ID) AS COUNT FROM WEB.F00021 WHERE "
                     + "LOWER(TITULO) LIKE CONCAT('%',?,'%') "
+                    + parameters.get("SQL_ESTADO") + " "
                     + parameters.get("SQL_ANIO"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             LOG.info(pst.toString());
@@ -52,6 +53,7 @@ public class NotaPrensaDAOImpl implements NotaPrensaDAO {
                 if (rs.getInt("COUNT") > 0) {
                     pst = conn.prepareStatement("SELECT * FROM WEB.F00021 WHERE "
                             + "LOWER(TITULO) LIKE CONCAT('%',?,'%') "
+                            + parameters.get("SQL_ESTADO") + " "
                             + parameters.get("SQL_ANIO")
                             + "ORDER BY "
                             + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));

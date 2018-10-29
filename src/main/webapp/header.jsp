@@ -51,13 +51,13 @@
                                 <div class="col12">
                                     <h2>Gestión Transparente</h2>
                                     <ul class="list-unstyled clearfix">
-                                        <li><a href="#">Documentos Normativos y de Gestión</a></li>
-                                        <li><a href="#">Presupuestos y Finanzas</a></li>
-                                        <li><a href="#">Proyectos de inversión</a></li>
-                                        <li><a href="#">Recursos Humanos</a></li>
-                                        <li><a href="#">Adquisiciones y Contrataciones</a></li>
-                                        <li><a href="#">Agenda Institucional</a></li>
-                                        <li><a href="#">Información Adicional</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">Documentos Normativos y de Gestión</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/presupuesto-y-finanzas">Presupuestos y Finanzas</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/proyecto-de-inversion">Proyectos de inversión</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/recursos-humanos">Recursos Humanos</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/adquisiciones-y-contrataciones">Adquisiciones y Contrataciones</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/agenda-institucional">Agenda Institucional</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/informacion-adicional">Información Adicional</a></li>
                                     </ul>
                                 </div>    
                             </div>
@@ -82,11 +82,11 @@
                                 <div class="col12">
                                     <h2>Publicaciones</h2>
                                     <ul class="list-unstyled clearfix">
-                                        <li><a href="#">Noticia / Nota de Prensa</a></li>
-                                        <li><a href="#">Noticias Multimedia</a></li>
-                                        <li><a href="#">Memorias Anuales</a></li>
-                                        <li><a href="#">Comunicados</a></li>
-                                        <li><a href="#">Otras Publicaciones</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/noticias">Noticias / Nota de Prensa</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/multimedia">Noticias Multimedia</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/memoriasanuales">Memorias Anuales</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/comunicados">Comunicados</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/extras">Otras Publicaciones</a></li>
                                     </ul>
                                 </div>    
                             </div>

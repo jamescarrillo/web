@@ -316,7 +316,7 @@ header.sticky .menuzord-menu>li>a,
 .menuzord-menu>li>a {
     display: inline-block;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: normal;
     outline: 0;
     -webkit-tap-highlight-color: transparent
@@ -369,7 +369,7 @@ header.sticky .menuzord-menu>li>a,
     clear: both;
     width: 100%;
     border: 0;
-    font-size: 14px;
+    font-size: 15px;
     position: relative;
 }
 
@@ -377,7 +377,7 @@ header.sticky .menuzord-menu>li>a,
 .menuzord-menu>li>.megamenu .megamenu-row li a {
     width: 100%;
     padding: 10px 20px;
-    font-size: 13px;
+    font-size: 14px;
     color: #202020;
     text-decoration: none;
     display: inline-block;

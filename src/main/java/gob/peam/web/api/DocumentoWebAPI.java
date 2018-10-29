@@ -49,7 +49,7 @@ import org.apache.commons.logging.LogFactory;
     "/gestiontransparente/personal",
     "/gestiontransparente/directivos",
     "/gestiontransparente/viaticos"})
-public class GestionTransparenteAPI extends HttpServlet {
+public class DocumentoWebAPI extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     @Resource(name = "jdbc/dbweb")
@@ -59,7 +59,7 @@ public class GestionTransparenteAPI extends HttpServlet {
     private String jsonResponse;
     private HashMap<String, Object> parameters;
     private HashMap<String, Object> jsonROOT;
-    private final Log logger = LogFactory.getLog(GestionTransparenteAPI.class);
+    private final Log logger = LogFactory.getLog(DocumentoWebAPI.class);
 
     private String action;
     private DirectivoDAO directivoDAO;
@@ -140,7 +140,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                 default:
             }
         } catch (IOException | SQLException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -193,7 +193,7 @@ public class GestionTransparenteAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             this.logger.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -234,7 +234,7 @@ public class GestionTransparenteAPI extends HttpServlet {
         try (InputStream input = filePart.getInputStream()) {
             Files.copy(input, file.toPath());
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (fun == null) {
             return dir;
@@ -259,7 +259,7 @@ public class GestionTransparenteAPI extends HttpServlet {
         try (InputStream input = filePart.getInputStream()) {
             Files.copy(input, file.toPath());
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (fun == null) {
             return dir;
@@ -355,7 +355,7 @@ public class GestionTransparenteAPI extends HttpServlet {
             funcionario.setDestacado(Boolean.parseBoolean(request.getParameter("comboDestacadoER")));
 
         } catch (IOException | ServletException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
         return funcionario;
     }
@@ -369,7 +369,7 @@ public class GestionTransparenteAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             this.logger.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -478,7 +478,7 @@ public class GestionTransparenteAPI extends HttpServlet {
             directivo.setEstado(Boolean.parseBoolean(request.getParameter("comboEstadoERDIR")));
 
         } catch (IOException | ServletException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
         return directivo;
     }
