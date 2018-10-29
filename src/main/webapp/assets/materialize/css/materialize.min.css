@@ -5573,7 +5573,7 @@ ul.tabs li.tab {
   border-radius: 2px;
   background-clip: padding-box;
   line-height: 36px;
-  text-transform: uppercase;
+  /*text-transform: uppercase;*/
   border: none;
   outline: 0;
   -webkit-tap-highlight-color: transparent; }

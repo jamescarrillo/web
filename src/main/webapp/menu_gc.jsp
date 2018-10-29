@@ -63,7 +63,7 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false" title="Publicaciones"><i class="mdi mdi-chart-bubble"></i><span class="hide-menu">Publicaciones</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/anuncios" title="Anuncios">Anuncios</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/destacados" title="Destacados">Destacados</a></li>
+                        <!--li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/destacados" title="Destacados">Destacados</a></li-->
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/estudios" title="Estudios">Estudios</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/eventos" title="Eventos">Eventos</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/manuales">M. Anuales</a></li>

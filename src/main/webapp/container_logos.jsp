@@ -16,7 +16,8 @@
             </a>
         </div>
         <div class="col-md-2" style="padding-top: 10px;width: 160px">
-            <a href="http://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13940&id_tema=1&ver=D#.WRTbD1U1_IU">
+            <a href="http://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13940&id_tema=1&ver=D#.WRTbD1U1_IU" target="_blank">
+            <a href="http://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13940&id_tema=1&ver=D#.WRTbD1U1_IU" target="_blank">
                 <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/portal_transparencia.png" alt=""/>
             </a>
         </div>
@@ -38,7 +39,7 @@
             </a>
         </div>
         <div class="col-md-3" style="padding-top: 10px;width: 160px">
-            <a href="http://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13940&id_tema=1&ver=D#.WRTbD1U1_IU">
+            <a href="http://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13940&id_tema=1&ver=D#.WRTbD1U1_IU"target="_blank">
                 <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/portal_transparencia.png" alt=""/>
             </a>
         </div>
@@ -55,7 +56,7 @@
             </a>
         </div>
         <div class="col-sm-3 col-xs-2" style="padding-top: 10px;width: 160px">
-            <a href="http://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13940&id_tema=1&ver=D#.WRTbD1U1_IU">
+            <a href="http://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13940&id_tema=1&ver=D#.WRTbD1U1_IU" target="_blank">
                 <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/portal_transparencia.png" alt=""/>
             </a>
         </div>

@@ -57,10 +57,17 @@
                                     <input type="hidden" id="numberPageNotaPrensa" name="numberPageNotaPrensa" value="1">
                                     <form id="FrmNotaPrensa">
                                         <div class="row mt-3">
-                                            <div class="form-group col-lg-7 col-md-8 col-12 mb-3">
+                                            <div class="form-group col-lg-5 col-md-8 col-12 mb-3">
                                                 <input type="text" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" class="form-control form-control-sm" placeholder="TÍTULO">
                                             </div>
-                                            <div class="input-group col-lg-5 col-md-4 col-12 mb-3">
+                                            <div class="form-group col-lg-3 col-md-8 col-12 mb-3">
+                                                <select id="estadoNotaPrensa" name="estadoNotaPrensa" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarNotaPrensa'>
+                                                    <option value="-1">TODOS</option>
+                                                    <option value="true">ACTIVOS</option>
+                                                    <option value="false">INACTIVOS</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-group col-lg-4 col-md-4 col-12 mb-3">
                                                 <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarNotaPrensa'>
 
                                                 </select>

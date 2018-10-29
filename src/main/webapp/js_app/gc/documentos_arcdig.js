@@ -1,6 +1,6 @@
 $(document).ready(function () {
    
-    cargarAniosCombo($('#comboAnioDocumentosArcDig'), 2010, "-1", 'AÑO');
+    cargarAniosCombo($('#comboAnioDocumentosArcDig'), 2005, "-1", 'AÑO');
 
     $("#FrmDocumentosArcDig").submit(function () {
         $("#nameFormArcDig").val("FrmDocumentosArcDig");
@@ -49,7 +49,7 @@ function procesarAjaxEtiquetas() {
             $('#modalCargandoDocumentosArcDig').modal("hide");
             $('#comboEtiquetasDocumentosArcDig').append("<option value='-1'>ETIQUETA</option>");
             $.each(jsonResponse.BEAN_PAGINATION.LIST, function (index, value) {
-                $('#comboEtiquetasDocumentosArcDig').append("<option value='" + value.etiq_nombre + "'>" + value.etiq_nombre + "</option>");
+                $('#comboEtiquetasDocumentosArcDig').append("<option value='" + value.etiq_id + "'>" + value.etiq_nombre + "</option>");
             });
         },
         error: function () {
@@ -78,7 +78,7 @@ function procesarAjaxDocumentosArcDig() {
         error: function () {
             $('#modalCargandoDocumentosArcDig').modal("hide");
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
-            viewAlert('error', 'Error interno en el servidor!');
+            viewAlert('error', 'Error interno en el servidor/Puede que este documento ya exista y esta causando un error de clave primaria!');
         }
     });
     return false;
