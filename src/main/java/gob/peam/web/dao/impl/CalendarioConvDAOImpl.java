@@ -26,8 +26,8 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-public class CalendarioConvDAOImpl implements CalendarioConvDAO{
-    
+public class CalendarioConvDAOImpl implements CalendarioConvDAO {
+
     private final Log logger = LogFactory.getLog(DirectivoDAOImpl.class);
     private final DataSource pool;
 
@@ -149,23 +149,34 @@ public class CalendarioConvDAOImpl implements CalendarioConvDAO{
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.DOCUMENT_CONV WHERE ID = ?");
-            pst.setInt(1, (int) id);
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                if (rs.getInt("CANT") <= 0) {
-                    pst = conn.prepareStatement("DELETE FROM WEB.CALENDARIO_CONV WHERE ID = ?");
-                    pst.setInt(1, (int) id);
-                    pst.executeUpdate();
-                    conn.commit();
-                    beancrud.setMESSAGE_SERVER("ok");
-                } else {
-                    beancrud.setMESSAGE_SERVER("No se puede eliminar, existen documentos que dependen de este item");
+            if (Integer.parseInt(String.valueOf(parameters.get("ORIGEN")))==1) {
+                pst = conn.prepareStatement("DELETE FROM WEB.CALENDARIO_CONV WHERE ID = ?");
+                pst.setInt(1, (int) id);
+                pst.executeUpdate();
+                conn.commit();
+                beancrud.setMESSAGE_SERVER("ok");
+                beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+                pst.close();
+            } else {
+                pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.DOCUMENT_CONV WHERE ID = ?");
+                pst.setInt(1, (int) id);
+                rs = pst.executeQuery();
+                while (rs.next()) {
+                    if (rs.getInt("CANT") <= 0) {
+                        pst = conn.prepareStatement("DELETE FROM WEB.CALENDARIO_CONV WHERE ID = ?");
+                        pst.setInt(1, (int) id);
+                        pst.executeUpdate();
+                        conn.commit();
+                        beancrud.setMESSAGE_SERVER("ok");
+                    } else {
+                        beancrud.setMESSAGE_SERVER("No se puede eliminar, existen documentos que dependen de este item");
+                    }
                 }
+                beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+                rs.close();
+                pst.close();
             }
-            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
-            rs.close();
-            pst.close();
+
         } catch (SQLException ex) {
             throw ex;
         }
@@ -176,5 +187,5 @@ public class CalendarioConvDAOImpl implements CalendarioConvDAO{
     public CalendarioConv get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

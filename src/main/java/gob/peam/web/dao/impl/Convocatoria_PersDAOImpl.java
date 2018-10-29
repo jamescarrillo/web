@@ -171,14 +171,12 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
         }
 
         @Override
-        public Convocatoria_Pers get
-        (long id) throws SQLException {
+        public Convocatoria_Pers get (long id) throws SQLException {
             throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
         @Override
-        public BEAN_CRUD activate
-        (long id, HashMap<String, Object > parameters) throws SQLException {
+        public BEAN_CRUD activate (long id, HashMap<String, Object > parameters) throws SQLException {
             BEAN_CRUD beancrud = new BEAN_CRUD();
             PreparedStatement pst;
             try (Connection conn = pool.getConnection();

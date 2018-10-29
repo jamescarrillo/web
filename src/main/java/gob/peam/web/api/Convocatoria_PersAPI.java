@@ -258,10 +258,12 @@ public class Convocatoria_PersAPI extends HttpServlet {
         Convocatoria_Pers obj = new Convocatoria_Pers();
         if (request.getParameter("action").equals("updateConvocatoriaPers")) {
             obj.setCoper_id(Integer.parseInt(request.getParameter("txtCoperIdER")));
+            obj.setEstado(Boolean.parseBoolean(String.valueOf(request.getParameter("txtEstadoER"))));
+        }else{
+            obj.setEstado(false);
         }
         obj.setConvocatoria(request.getParameter("txtConvocatoriaER"));
         obj.setDescripcion(request.getParameter("txtSintesisER"));
-        obj.setEstado(false);
         return obj;
     }
 
@@ -281,6 +283,7 @@ public class Convocatoria_PersAPI extends HttpServlet {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtCalendarioConv").toLowerCase());
         this.parameters.put("CONVOCATORIA_PERS", " AND WEB.CALENDARIO_CONV.CONVO_ID = " + String.valueOf(request.getParameter("txtConvoPersIdER")));
+        this.parameters.put("ORIGEN", (int) 2);
         this.parameters.put("TIPO", " AND TIPO = 2 ");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageCalendarioConv") + " OFFSET "

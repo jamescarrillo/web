@@ -14,7 +14,7 @@ import java.sql.Date;
 public class ConvocatoriaBien {
 
     private Integer convo_id;
-    private Character anho;
+    private String anho;
     private java.sql.Date fecha;
     private Integer tipo;
     private String referencia;
@@ -47,11 +47,11 @@ public class ConvocatoriaBien {
         this.convo_id = convo_id;
     }
 
-    public Character getAnho() {
+    public String getAnho() {
         return anho;
     }
 
-    public void setAnho(Character anho) {
+    public void setAnho(String anho) {
         this.anho = anho;
     }
 
