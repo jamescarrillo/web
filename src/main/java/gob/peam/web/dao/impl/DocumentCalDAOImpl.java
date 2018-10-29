@@ -5,9 +5,11 @@
  */
 package gob.peam.web.dao.impl;
 
-import gob.peam.web.dao.ActividadDAO;
+import gob.peam.web.dao.DocumentCalDAO;
 import gob.peam.web.dao.SQLCloseable;
-import gob.peam.web.model.Actividad;
+import gob.peam.web.model.CalendarioConv;
+import gob.peam.web.model.DocumentCal;
+import gob.peam.web.model.Penalidad;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
 import java.sql.Connection;
@@ -17,19 +19,20 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.sql.DataSource;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 
 /**
  *
- * @author Juan Jose
+ * @author JhanxD
  */
-public class ActividadDAOImpl implements ActividadDAO {
+public class DocumentCalDAOImpl implements DocumentCalDAO {
 
-    private static final Logger LOG = Logger.getLogger(ActividadDAOImpl.class.getName());
+    private final Log logger = LogFactory.getLog(DirectivoDAOImpl.class);
     private final DataSource pool;
 
-    public ActividadDAOImpl(DataSource pool) {
+    public DocumentCalDAOImpl(DataSource pool) {
         this.pool = pool;
     }
 
@@ -39,22 +42,23 @@ public class ActividadDAOImpl implements ActividadDAO {
         PreparedStatement pst;
         ResultSet rs;
         try {
-            pst = conn.prepareStatement("SELECT COUNT(ACTI_ID) AS CANT FROM WEB.ACTIVIDAD WHERE " + parameters.get("ATIPO")
-                    + parameters.get("TIPO"));
+            pst = conn.prepareStatement("SELECT COUNT(DOCO_ID) AS CANT FROM WEB.DOCUMENT_CONV WHERE "
+                    + String.valueOf(parameters.get("IDCALENDARIO")));
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
             }
-            pst = conn.prepareStatement("SELECT * FROM WEB.ACTIVIDAD WHERE " + parameters.get("ATIPO")
-                    + parameters.get("TIPO"));
+            pst = conn.prepareStatement("SELECT * FROM WEB.DOCUMENT_CONV WHERE "
+                    + String.valueOf(parameters.get("IDCALENDARIO")));
             rs = pst.executeQuery();
-            List<Actividad> list = new ArrayList<>();
+            List<DocumentCal> list = new ArrayList<>();
             while (rs.next()) {
-                Actividad obj = new Actividad();
-                obj.setActi_id(rs.getInt("ACTI_ID"));
-                obj.setActi_tipo(rs.getInt("ACTI_TIPO"));
-                obj.setDescripcion(rs.getString("DESCRIPCION"));
+                DocumentCal obj = new DocumentCal();
+                obj.setDoco_id(rs.getInt("DOCO_ID"));
+                obj.setNombre(rs.getString("NOMBRE"));
+                obj.setUrl_file(rs.getString("URL_FILE"));
                 obj.setEstado(rs.getBoolean("ESTADO"));
+                obj.setId(new CalendarioConv (rs.getInt("ID")));
                 list.add(obj);
             }
             beanpagination.setLIST(list);
@@ -78,18 +82,19 @@ public class ActividadDAOImpl implements ActividadDAO {
     }
 
     @Override
-    public BEAN_CRUD add(Actividad obj, HashMap<String, Object> parameters) throws SQLException {
+    public BEAN_CRUD add(DocumentCal obj, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("INSERT INTO WEB.ACTIVIDAD (ACTI_ID, DESCRIPCION, "
-                    + "ESTADO, ACTI_TIPO) VALUES((select case when max(acti_id) is null then 1 else cast((max(acti_id)+1) as integer) end id  from web.actividad),"
-                    + "?,?,?)");
-            pst.setString(1, obj.getDescripcion());
-            pst.setBoolean(2, obj.getEstado());
-            pst.setInt(3, obj.getActi_tipo());
+            pst = conn.prepareStatement("INSERT INTO WEB.DOCUMENT_CONV (DOCO_ID, NOMBRE, URL_FILE, "
+                    + "ESTADO, ID) VALUES((select case when max(doco_id) is null then 1 else cast((max(doco_id)+1) as integer) end id  from web.document_conv),"
+                    + "?,?,?,?)");
+            pst.setString(1, obj.getNombre());
+            pst.setString(2, obj.getUrl_file());
+            pst.setBoolean(3, obj.getEstado());
+            pst.setInt(4, obj.getId().getId());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -102,16 +107,19 @@ public class ActividadDAOImpl implements ActividadDAO {
     }
 
     @Override
-    public BEAN_CRUD update(Actividad obj, HashMap<String, Object> parameters) throws SQLException {
+    public BEAN_CRUD update(DocumentCal obj, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.ACTIVIDAD SET DESCRIPCION = ?"
-                    + " WHERE ACTI_ID = ?");
-            pst.setString(1, obj.getDescripcion());
-            pst.setInt(2, obj.getActi_id());
+            pst = conn.prepareStatement("UPDATE WEB.DOCUMENT_CONV SET NOMBRE = ?,URL_FILE = ?, ESTADO=?, ID=? "
+                    + " WHERE DOCO_ID = ?");
+            pst.setString(1, obj.getNombre());
+            pst.setString(2, obj.getUrl_file());
+            pst.setBoolean(3, obj.getEstado());
+            pst.setInt(4, obj.getId().getId());
+            pst.setInt(5, obj.getDoco_id());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -127,26 +135,15 @@ public class ActividadDAOImpl implements ActividadDAO {
     public BEAN_CRUD delete(long id, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
-        ResultSet rs;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("SELECT COUNT(ACTI_ID) AS CANT FROM WEB.CALENDARIO_CONV WHERE ACTI_ID = ?");
+            pst = conn.prepareStatement("DELETE FROM WEB.DOCUMENT_CONV WHERE DOCO_ID = ?");
             pst.setInt(1, (int) id);
-            rs = pst.executeQuery();
-            while (rs.next()) {
-                if (rs.getInt("CANT") <= 0) {
-                    pst = conn.prepareStatement("DELETE FROM WEB.ACTIVIDAD WHERE ACTI_ID = ?");
-                    pst.setInt(1, (int) id);
-                    pst.executeUpdate();
-                    conn.commit();
-                    beancrud.setMESSAGE_SERVER("ok");
-                } else {
-                    beancrud.setMESSAGE_SERVER("No se puede eliminar, existen calendarios que usan esta actividad");
-                }
-            }
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
             beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
-            rs.close();
             pst.close();
         } catch (SQLException ex) {
             throw ex;
@@ -155,7 +152,7 @@ public class ActividadDAOImpl implements ActividadDAO {
     }
 
     @Override
-    public Actividad get(long id) throws SQLException {
+    public DocumentCal get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

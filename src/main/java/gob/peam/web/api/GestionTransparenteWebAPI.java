@@ -28,6 +28,7 @@ import javax.sql.DataSource;
  * @author Juan Jose
  */
 @WebServlet(name = "GestionTransparenteWebAPI", urlPatterns = {
+    "/documentos/operacionesweb",
     "/gestiontransparente/documentos-normativos-y-de-gestion",
     "/gestiontransparente/presupuesto-y-finanzas",
     "/gestiontransparente/proyecto-de-inversion",
@@ -76,8 +77,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                     procesarDocumento(new BEAN_CRUD(this.documentoDAO.getPagination(getParametersDocumentos(request))), response);
                     break;
                 default:
-                    request.setAttribute("namePage", getTituloPage(request));
-                    request.getRequestDispatcher("/jsp/web/gestiontransparente/documentoWeb.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/web/gestiontransparente/" + getJSP(request)).forward(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -122,7 +122,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             LOG.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparenteWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -139,16 +139,13 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         } else {
             this.parameters.put("SQL_ESTADO", "AND DOCU_ESTADO = " + request.getParameter("comboTipoListaDocumentos") + " ");
         }
-        this.parameters.put("SQL_CATE_ID", "AND CATE_ID = " + getCategoriaId(request));
+        this.parameters.put("SQL_CATE_ID", "AND CATE_ID = " + request.getParameter("cate_id"));
         if (getTidoId(request).equals("")) {
             this.parameters.put("SQL_TIDO_ID", "");
         } else {
             this.parameters.put("SQL_TIDO_ID", "AND TIDO_ID = " + getTidoId(request));
         }
-        //SOLO PAR ELIMINAR
-        this.parameters.put("CATE_ID", getCategoriaId(request));
-        //
-        this.parameters.put("SQL_ORDERS", "CAST(DOCU_FECHA_DOCX AS DATE) DESC");
+        this.parameters.put("SQL_ORDERS", "TO_DATE(DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageDocumentos") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageDocumentos")) - 1)
@@ -158,7 +155,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
 
     private String getCategoriaId(HttpServletRequest request) {
         String categoria_id = "-1";
-        switch (request.getParameter("urlDocumentos")) {
+        switch (request.getRequestURI().substring(request.getContextPath().length())) {
             case "/gestiontransparente/documentos-normativos-gestion/resolucionesgerenciales":
                 categoria_id = "0";
                 break;
@@ -210,27 +207,25 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         return categoria_id;
     }
 
-    private String getTituloPage(HttpServletRequest request) {
-        String titulo = "";
-        LOG.info(request.getRequestURI().substring(request.getContextPath().length()));
+    private String getJSP(HttpServletRequest request) {
+        String page = "";
         switch (request.getRequestURI().substring(request.getContextPath().length())) {
-            case "/gestiontransparente/documentos-normativos-gestion":
-                titulo = "Documentos Normativos y de Gestión";
+            case "/gestiontransparente/documentos-normativos-y-de-gestion":
+                page = "documentoNormativoGestion.jsp";
                 break;
             case "/gestiontransparente/adquisiciones-y-contrataciones":
-                titulo = "Adquisiciones y Contrataciones";
+                page = "documentoAdquisicionContratacion.jsp";
                 break;
             case "/gestiontransparente/informacion-adicional":
-                titulo = "Información Adicional";
+                page = "documentoInformacionAdicional.jsp";
                 break;
         }
-        LOG.info(titulo);
-        return titulo;
+        return page;
     }
 
     private String getTidoId(HttpServletRequest request) {
         String tido_id = "";
-        switch (request.getParameter("urlDocumentos")) {
+        switch (request.getRequestURI().substring(request.getContextPath().length())) {
             case "/gestiontransparente/documentos-normativos-gestion/normativasydirectivas":
                 tido_id = "12";
                 break;

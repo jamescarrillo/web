@@ -16,6 +16,18 @@ public class Actividad {
     private Boolean estado;
     private Integer acti_tipo;
 
+    public Actividad(int acti_id, String descripcion) {
+        this.acti_id=acti_id;
+        this.descripcion=descripcion;
+    }
+
+    public Actividad() {
+    }
+    
+    public Actividad(int acti_id) {
+        this.acti_id=acti_id;
+    }
+
     public Integer getActi_id() {
         return acti_id;
     }

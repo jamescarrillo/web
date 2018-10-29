@@ -70,6 +70,7 @@ function viewAlertDelete(entidad) {
         }
     });
     $('.swal2-confirm').css("margin-right", "15px");
+    $('.swal2-container').css('z-index', '2000');
 }
 
 function cargarFiltros(idimput_filter, classcheck, nameattrcheck) {

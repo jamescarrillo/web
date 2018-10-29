@@ -136,7 +136,7 @@
                                             </div>
                                         </div>
                                         <div class="row" id="loader_contenido">
-                                            <div class="col-md-1 col-md-offset-4 col-xs-2 col-xs-offset-5 mt-30">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
                                                 <div class="loader-peam_small"></div>
                                             </div>
                                         </div>

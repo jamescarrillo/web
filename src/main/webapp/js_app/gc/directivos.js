@@ -51,7 +51,7 @@ $(document).ready(function () {
     $("#fileCVDIR").change(function () {
         $('#txtValidacionCvDIR').val('SI');
         readViewNameFile(this, 'txtNombreCvDIR');
-        $('#txtCvDIR').val($('#txtNombreCvDIR').val());
+        $('#txtNombreFileResultadoActualDIR').val($('#txtNombreCvDIR').val());
     });
 
     $('#btnSeleccionarFotoDIR').click(function () {
@@ -125,7 +125,7 @@ $(document).ready(function () {
     $("#fileCV").change(function () {
         $('#txtValidacionCv').val('SI');
         readViewNameFile(this, 'txtNombreCv');
-        $('#txtCv').val($('#txtNombreCv').val());
+        $('#txtNombreFileResultadoActual').val($('#txtNombreCv').val());
     });
 
     $('#btnSeleccionarFoto').click(function () {

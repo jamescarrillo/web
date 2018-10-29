@@ -13,7 +13,6 @@ import gob.peam.web.model.ProcesoExonerado;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.Utilities;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
