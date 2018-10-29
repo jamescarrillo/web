@@ -19,9 +19,9 @@ public class Evento {
     private java.sql.Date fecha;
     private String foto;
     private Boolean estado;
-    private Integer creado_por;
+    private Persona creado_por;
     private java.sql.Timestamp fecha_creado;
-    private Integer editado_por;
+    private Persona editado_por;
     private java.sql.Timestamp fecha_editado;
     private LineaAccion area;
     private String link;
@@ -74,11 +74,11 @@ public class Evento {
         this.estado = estado;
     }
 
-    public Integer getCreado_por() {
+    public Persona getCreado_por() {
         return creado_por;
     }
 
-    public void setCreado_por(Integer creado_por) {
+    public void setCreado_por(Persona creado_por) {
         this.creado_por = creado_por;
     }
 
@@ -90,11 +90,11 @@ public class Evento {
         this.fecha_creado = fecha_creado;
     }
 
-    public Integer getEditado_por() {
+    public Persona getEditado_por() {
         return editado_por;
     }
 
-    public void setEditado_por(Integer editado_por) {
+    public void setEditado_por(Persona editado_por) {
         this.editado_por = editado_por;
     }
 

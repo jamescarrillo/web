@@ -10,6 +10,7 @@ import gob.peam.web.dao.SQLCloseable;
 import gob.peam.web.model.Evento;
 import gob.peam.web.model.LineaAccion;
 import gob.peam.web.model.Penalidad;
+import gob.peam.web.model.Persona;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
 import java.sql.Connection;
@@ -64,9 +65,10 @@ public class EventoDAOImpl implements EventoDAO{
                 obj.setFecha(rs.getDate("FECHA"));
                 obj.setFoto(rs.getString("FOTO"));
                 obj.setEstado(rs.getBoolean("ESTADO"));
+                Persona per = new Persona();
+                per.setPers_id(rs.getInt("CREADO_POR"));
+                obj.setCreado_por(per);
                 obj.setFecha_creado(rs.getTimestamp("FECHA_CREADO"));
-                obj.setCreado_por(rs.getInt("CREADO_POR"));
-                obj.setEditado_por(rs.getInt("EDITADO_POR"));
                 obj.setFecha_editado(rs.getTimestamp("FECHA_EDITADO"));
                 obj.setArea(new LineaAccion(rs.getInt("AREA")));
                 obj.setLink(rs.getString("LINK"));
@@ -107,7 +109,7 @@ public class EventoDAOImpl implements EventoDAO{
             pst.setDate(3, obj.getFecha());
             pst.setString(4, obj.getFoto());
             pst.setBoolean(5, obj.getEstado());
-            pst.setInt(6, obj.getCreado_por());
+            pst.setInt(6, obj.getCreado_por().getPers_id());
             pst.setInt(7, obj.getArea().getId());
             pst.setString(8, obj.getLink());
             pst.executeUpdate();
@@ -135,7 +137,7 @@ public class EventoDAOImpl implements EventoDAO{
             pst.setDate(3, obj.getFecha());
             pst.setString(4, obj.getFoto());
             pst.setBoolean(5, obj.getEstado());
-            pst.setInt(6, obj.getEditado_por());
+            pst.setInt(6, obj.getEditado_por().getPers_id());
             pst.setInt(7, obj.getArea().getId());
             pst.setString(8, obj.getLink());
             pst.setInt(9, obj.getId());

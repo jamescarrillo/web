@@ -11,6 +11,8 @@ import gob.peam.web.dao.EventoDAO;
 import gob.peam.web.dao.impl.EventoDAOImpl;
 import gob.peam.web.model.Evento;
 import gob.peam.web.model.LineaAccion;
+import gob.peam.web.model.Persona;
+import gob.peam.web.model.Usuario;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.Utilities;
 import java.io.IOException;
@@ -85,7 +87,7 @@ public class EventoAPI extends HttpServlet {
                     procesarEvento(this.eventoDAO.delete(Long.parseLong(request.getParameter("txtIdER")), getParametersEvento(request)), response);
                     break;
                 default:
-                    request.getRequestDispatcher("/jsp/gc/convocatorias/evento.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/gc/publicaciones/evento.jsp").forward(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -174,11 +176,13 @@ public class EventoAPI extends HttpServlet {
         Evento obj = new Evento ();
         if (request.getParameter("action").equals("updateEvento")) {
             obj.setId(Integer.parseInt(request.getParameter("txtIdER")));
-            obj.setEditado_por(Integer.parseInt("4"));
+            Persona per = ((Usuario) this.session.getAttribute("user")).getPersona();
+            obj.setEditado_por(per);
         }
-        obj.setCreado_por(Integer.parseInt("4"));
+        Persona per = ((Usuario) this.session.getAttribute("user")).getPersona();
+        obj.setCreado_por(per);
         obj.setFecha(Utilities.getDateSQLFORMAT(String.valueOf(request.getParameter("txtFechaER")),"dd/MM/yyyy"));
-        obj.setAnho(request.getParameter("txtAnhoER"));
+        obj.setAnho(String.valueOf(request.getParameter("txtFechaER")).substring(6,10));
         obj.setTitulo(request.getParameter("txtTituloER"));
         obj.setArea(new LineaAccion(Integer.parseInt(String.valueOf(request.getParameter("txtAreaER")))));
         obj.setFoto(request.getParameter("txtFotoER"));
