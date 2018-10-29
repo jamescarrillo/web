@@ -66,7 +66,7 @@ function procesarAjaxProcesoExonerado() {
     datosSerializadosCompletos += "&action=" + $('#actionProcesoExonerado').val();
     console.log(datosSerializadosCompletos);
     $.ajax({
-        url: getContext() + '/procesosexonerados',
+        url: getContext() + '/convocatorias/procesosexonerados',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
