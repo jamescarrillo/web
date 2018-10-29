@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
     <head>
         <%@ include file = "../../../att_head.jsp" %> 
@@ -18,6 +19,7 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/materialize/css/materialize.min.css" rel="stylesheet">
         <!-- Bootstrap -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
         <!-- shortcodes -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/shortcodes/shortcodes.css" rel="stylesheet">
         <!-- Style CSS -->
@@ -40,7 +42,7 @@
         <section class="padding-bottom-100">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 60px;">
-                    <h2 class="text-peam-verde h1-title"><strong>CÓDIGO DE ÉTICA</strong></h2>
+                    <h2 class="text-peam-verde h1-title"><strong>CÃ“DIGO DE Ã‰TICA</strong></h2>
                     <p>PROYECTO ESPECIAL ALTO MAYO</p>
                 </div>
 
@@ -49,17 +51,17 @@
                         <div class="border-tab transparent-nav">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-justified" role="tablist">
-                                <li role="presentation" class="active"><a href="#tab-etica" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Ética</a></li>
+                                <li role="presentation" class="active"><a href="#tab-etica" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Ã‰tica</a></li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="panel-body">
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active text-peam" id="tab-etica" style="font-size: 16px;text-align: justify">
                                         <p>
-                                            El presente Código de Ética tiene por objetivo direccionar dentro de la función pública el actuar de
+                                            El presente CÃ³digo de Ã‰tica tiene por objetivo direccionar dentro de la funciÃ³n pÃºblica el actuar de
                                             los empleados del Proyecto Especial Alto Mayo, en cualquiera de sus niveles, el cumplimiento y
-                                            observancia estricta de las bases éticas establecidas en la Ley y Reglamento del Código de Ética, que
-                                            servirá para generar la confianza y credibilidad de la ciudadanía. <a class="text-primary" href="http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=60633" target="_blank">Ver Documento</a> 
+                                            observancia estricta de las bases Ã©ticas establecidas en la Ley y Reglamento del CÃ³digo de Ã‰tica, que
+                                            servirÃ¡ para generar la confianza y credibilidad de la ciudadanÃ­a. <a class="text-primary" href="http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=60633" target="_blank">Ver Documento</a> 
                                         </p>
                                     </div>
                                 </div>
@@ -103,7 +105,10 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
-
+        
     </body>
 </html>

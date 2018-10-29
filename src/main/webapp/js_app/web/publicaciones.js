@@ -188,7 +188,7 @@ function getFormViewNotice(idNoticia) {
     form += "<form class='form-ver-noticia' method='POST' action='publicaciones/noticias'>";
     form += "<input type='hidden' name='idNota' value='" + idNoticia + "'>";
     form += "<input type='hidden' name='action' value='readNotaPrensa'>";
-    form += "<button type='submit' class='btn-link' style='color: #a20505; font-weight: bold;'>Ver Noticia <i class='fa fa-long-arrow-right'></i></button>";
+    //form += "<button type='submit' class='btn-link' style='color: #a20505; font-weight: bold;'>Ver Noticia <i class='fa fa-long-arrow-right'></i></button>";
     form += "</form>";
     return form;
 }
@@ -224,7 +224,7 @@ function getCardViewNoticia(foto, titulo, contenido, idnota, fecha_publicacion, 
     article += "<form class='form-ver-noticia' method='POST' action='noticias'>";
     article += "<input type='hidden' name='idNota' value='" + idnota + "'>";
     article += "<input type='hidden' name='action' value='readNotaPrensa'>";
-    article += "<a class='readmore pull-right ir-ver-noticia'>Leer M&aacute;s <i class='fa fa-long-arrow-right'></i></a>";
+    article += "<a class='readmore pull-right ir-ver-noticia'>Leer m&aacute;s <i class='fa fa-long-arrow-right'></i></a>";
     article += "</form>";
     article += "</footer>";
     article += "</div>";

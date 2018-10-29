@@ -161,9 +161,12 @@ public class DocumentoArcDigAPI extends HttpServlet {
         this.parameters.put("FILTER", request.getParameter("txtTituloResumenDocumentosArcDig").toLowerCase());
         if (this.parameters.get("FILTER").equals("")) {
             //GET EL FILTRO DEL COMBO
-            if (!request.getParameter("comboEtiquetasDocumentosArcDig").equals("-1")) {
-                this.parameters.put("FILTER", request.getParameter("comboEtiquetasDocumentosArcDig").toLowerCase());
-            }
+
+        }
+        if (request.getParameter("comboEtiquetasDocumentosArcDig").equals("-1")) {
+            this.parameters.put("SQL_ETIQUETA", "");
+        } else {
+            this.parameters.put("SQL_ETIQUETA", "AND DE.ETIQ_ID = " + request.getParameter("comboEtiquetasDocumentosArcDig").toLowerCase());
         }
         if (request.getParameter("comboAnioDocumentosArcDig").equals("-1")) {
             this.parameters.put("SQL_ANIO", " ");
@@ -171,7 +174,7 @@ public class DocumentoArcDigAPI extends HttpServlet {
             this.parameters.put("SQL_ANIO", "AND SUBSTRING(DOCU_FECHA_DOCX,7,4) = '" + request.getParameter("comboAnioDocumentosArcDig") + "' ");
         }
         this.parameters.put("SQL_ESTADO", "AND DOCU_ESTADO = TRUE ");
-        this.parameters.put("SQL_ORDERS", "DOCU_TITULO");
+        this.parameters.put("SQL_ORDERS", "TO_DATE(D.DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageDocumentosArcDig") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageDocumentosArcDig")) - 1)

@@ -18,13 +18,14 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/materialize/css/materialize.min.css" rel="stylesheet">
         <!-- Bootstrap -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
         <!-- shortcodes -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/shortcodes/shortcodes.css" rel="stylesheet">
         <!-- Style CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/style_web.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/skins/corporate.css" rel="stylesheet">
-        
+
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -113,7 +114,7 @@
                                                     <i class="material-icons">check_circle_outline</i>
                                                     Realizar el seguimiento y evaluación de los efectos e impactos de la ejecución del PEAM, sobre el incremento de la producción y productividad agropecuaria en el area de influencia y aréas adyacentes, sobre el nivel de vida de la población y sobre la economía en conjunto, estableciendo compraciones con las metas obtenidas en períodos anteriores.
                                                 </div>
-                                                
+
                                                 <div class="col-md-6">
                                                     <i class="material-icons">check_circle_outline</i>
                                                     Coordina con el GRSM, los aspectos técnicos, jurídicos, normativos, laborales, económicos y financieros relacionados con la ejecución del PEAM.
@@ -178,6 +179,9 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
 
     </body>

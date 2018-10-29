@@ -156,6 +156,11 @@ public class NotaPrensaAPI extends HttpServlet {
         } else {
             this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnio") + "' ");
         }
+        if (request.getParameter("estadoNotaPrensa").equals("-1")) {
+            this.parameters.put("SQL_ESTADO", "");
+        } else {
+            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("estadoNotaPrensa"));
+        }
         this.parameters.put("SQL_ORDERS", "FECHA DESC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageNotaPrensa") + " OFFSET "

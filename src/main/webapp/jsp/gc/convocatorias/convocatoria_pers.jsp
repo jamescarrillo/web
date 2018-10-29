@@ -256,7 +256,7 @@
                 </div>
                 <div class="modal fade" id="ventanaManCalendarioConv" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                        <div class="modal-content border-primary" style="border-width: 3px">
                             <form id="FrmCalendarioConvModal">
                                 <div class="modal-header">
                                     <h6 class="modal-title" id="txtTituloModalManCalendarioConv"></h6>
@@ -317,8 +317,8 @@
                 </div>
                 <!-- ACTIVIDADES -->
                 <div class="modal fade" id="ventanaManActividad" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content border-warning" style="border-width: 3px">
                             <form id="FrmActividadModal">
                                 <div class="modal-header">
                                     <h6 class="modal-title" id="txtTituloModalManActividad"></h6>
@@ -426,7 +426,7 @@
                 </div>
                 <div class="modal fade" id="ventanaManPuestoConv" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                        <div class="modal-content border-primary" style="border-width: 3px">
                             <form id="FrmPuestoConvModal">
                                 <div class="modal-header">
                                     <h6 class="modal-title" id="txtTituloModalManPuestoConv"></h6>
@@ -469,7 +469,7 @@
                 <!-- ARCHIVOS -->
                 <div class="modal fade" id="ventanaDocumentCal" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
+                        <div class="modal-content border-primary" style="border-width: 3px">
                             <div class="modal-header">
                                 <h6 class="modal-title">ARCHIVOS</h6>
                                 <button type="button" class="close" data-dismiss="modal"
@@ -483,7 +483,7 @@
                                 <input type="hidden" id="txtCalendarioId" name="txtCalendarioId">
                                 <input type="hidden" id="numberPageDocumentCal" name="numberPageDocumentCal" value="1">
                                 <div class="row">
-                                    <div class="col-12">
+                                    <div class="col-12 mt-3">
                                         <div class="table-responsive" id="tablaDocumentCal">
                                             <table
                                                 class="table color-bordered-table muted-bordered-table table-hover">

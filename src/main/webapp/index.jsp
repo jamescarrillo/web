@@ -15,6 +15,7 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/flexslider.css" rel="stylesheet">
         <!-- materialize -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/materialize/css/materialize.min.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
         <!-- Bootstrap -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- shortcodes -->
@@ -28,7 +29,7 @@
         <!-- RS5.0 Layers and Navigation Styles -->
         <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/layers.css">
         <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/navigation.css">
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css"rel="stylesheet">
+        <!--link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css"rel="stylesheet"-->
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -796,8 +797,7 @@
             </div>
             <div class="container-fluid">
                 <div class="row no-gutter">
-                    <div
-                        class="col-lg-2 col-lg-offset-1 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-0 mt-15">
+                    <div class="col-lg-2 col-lg-offset-1 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-0 mt-15">
                         <div class="featured-item border-box hover brand-hover"
                              style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
                             <div class="icon mb-10">
@@ -897,32 +897,27 @@
                         <strong>Convocatorias</strong>
                     </h1>
                 </div>
-                <div class="row">
-                    <div class="col-md-6 mb-50">
-                        <div
-                            class="featured-item feature-icon icon-hover icon-hover-green icon-outline">
-                            <div class="icon" style="border: none">
-                                <a> <i class="material-icons colored brand-icon">supervisor_account</i>
-                                </a>
-                            </div>
-                            <div class="desc">
-                                <h2 class="mt-20">
-                                    <a class="text-peam-verde"> Selección de Personal </a>
-                                </h2>
-                            </div>
+            </div>
+            <div class="container-fluid">
+                <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+                    <div class="featured-item border-box hover brand-hover"
+                         style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
+                        <div class="icon mb-10">
+                            <i class="material-icons brand-icon">supervisor_account</i>
+                        </div>
+                        <div class="desc mt-15">
+                            <a href="#"><h3 class="text-peam-verde">Selección de Personal</h3></a>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-50">
-                        <div
-                            class="featured-item feature-icon icon-hover icon-hover-green icon-outline">
-                            <div class="icon" style="border: none">
-                                <i class="material-icons colored brand-icon">widgets</i>
-                            </div>
-                            <div class="desc">
-                                <h2 class="mt-20">
-                                    <a class="text-peam-verde"> Bienes, Servicios, Obras y Conseciones </a>
-                                </h2>
-                            </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                    <div class="featured-item border-box hover brand-hover"
+                         style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
+                        <div class="icon mb-10">
+                            <i class="material-icons brand-icon">widgets</i>
+                        </div>
+                        <div class="desc mt-15">
+                            <a href="#"><h3 class="text-peam-verde">Bienes, Servicios, Obras y Concesiones</h3></a>
                         </div>
                     </div>
                 </div>
@@ -986,7 +981,7 @@
             </div>
             <!-- /.container -->
         </section>
-        
+
         <!--section class="section-padding"
                  style="padding-top: 0px; padding-bottom: 50px;">
             <div class="container">
@@ -1021,7 +1016,7 @@
 
             </div>
         </section-->
-        
+
         <section class="section-padding"
                  style="padding-top: 0px; padding-bottom: 50px;">
             <div class="container">			
@@ -1106,11 +1101,11 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
+        <!--script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script-->
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/publicaciones.js"></script>
-
     </body>
 </html>

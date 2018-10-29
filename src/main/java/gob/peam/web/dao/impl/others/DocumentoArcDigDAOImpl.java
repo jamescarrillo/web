@@ -40,9 +40,12 @@ public class DocumentoArcDigDAOImpl implements DocumentoArcDigDAO {
         PreparedStatement pst;
         ResultSet rs;
         try {
-            pst = conn.prepareStatement("SELECT COUNT(DOCU_ID) AS COUNT FROM DOCUMENTO WHERE "
-                    + "(LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') OR LOWER(DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
+            pst = conn.prepareStatement("SELECT COUNT(D.DOCU_ID) AS COUNT FROM DOCUMENTO D "
+                    + "INNER JOIN DOCUMENTO_ETIQUETA DE ON DE.DOCU_ID = D.DOCU_ID WHERE "
+                    + "(LOWER(D.DOCU_TITULO) LIKE CONCAT('%',?,'%') OR LOWER(D.DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
+                    + "AND D.DOCU_FECHA_DOCX != ''"
                     + parameters.get("SQL_ANIO") + " "
+                    + parameters.get("SQL_ETIQUETA") + " "
                     + parameters.get("SQL_ESTADO") + " ");
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             pst.setString(2, String.valueOf(parameters.get("FILTER")));
@@ -51,10 +54,13 @@ public class DocumentoArcDigDAOImpl implements DocumentoArcDigDAO {
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
                 if (rs.getInt("COUNT") > 0) {
-                    pst = conn.prepareStatement("SELECT DOCU_ID, USUA_ID, DOCU_TITULO, DOCU_RESUMEN, DOCU_FECHA_DOCX, "
-                            + "DOCU_ORIGEN_ARCHIVO, TIDO_ID,  CATE_ID, DOCU_METADATA FROM DOCUMENTO WHERE "
-                            + "(LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') OR LOWER(DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
+                    pst = conn.prepareStatement("SELECT D.DOCU_ID, D.USUA_ID, D.DOCU_TITULO, D.DOCU_RESUMEN, D.DOCU_FECHA_DOCX, "
+                            + "D.DOCU_ORIGEN_ARCHIVO, D.TIDO_ID,  D.CATE_ID, D.DOCU_METADATA FROM DOCUMENTO D "
+                            + "INNER JOIN DOCUMENTO_ETIQUETA DE ON DE.DOCU_ID = D.DOCU_ID WHERE "
+                            + "(LOWER(D.DOCU_TITULO) LIKE CONCAT('%',?,'%') OR LOWER(D.DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
+                            + "AND D.DOCU_FECHA_DOCX != ''"
                             + parameters.get("SQL_ANIO") + " "
+                            + parameters.get("SQL_ETIQUETA") + " "
                             + parameters.get("SQL_ESTADO") + " "
                             + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
                     pst.setString(1, String.valueOf(parameters.get("FILTER")));
