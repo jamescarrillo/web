@@ -49,30 +49,30 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header bg-light">
-                                    <strong class="text-info">NOTAS DE PRENSA</strong>
+                                    <strong class="text-info">ANUNCIOS</strong>
                                 </div>
                                 <div class="card-body pt-1">
-                                    <input type="hidden" id="nameForm" value="FrmNotaPrensa">
-                                    <input type="hidden" id="actionNotaPrensa" name="action" value="paginarNotaPrensa">
-                                    <input type="hidden" id="numberPageNotaPrensa" name="numberPageNotaPrensa" value="1">
-                                    <form id="FrmNotaPrensa">
+                                    <input type="hidden" id="nameForm" value="FrmAnuncio">
+                                    <input type="hidden" id="actionAnuncio" name="action" value="paginarAnuncio">
+                                    <input type="hidden" id="numberPageAnuncio" name="numberPageAnuncio" value="1">
+                                    <form id="FrmAnuncio">
                                         <div class="row mt-3">
                                             <div class="form-group col-lg-5 col-md-8 col-12 mb-3">
-                                                <input type="text" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" class="form-control form-control-sm" placeholder="TÍTULO">
+                                                <input type="text" name="txtTituloAnuncio" id="txtTituloAnuncio" class="form-control form-control-sm" placeholder="TÍTULO">
                                             </div>
                                             <div class="form-group col-lg-3 col-md-8 col-12 mb-3">
-                                                <select id="estadoNotaPrensa" name="estadoNotaPrensa" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarNotaPrensa'>
+                                                <select id="estadoAnuncio" name="estadoAnuncio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarAnuncio'>
                                                     <option value="-1">TODOS</option>
-                                                    <option value="true">ACTIVOS</option>
-                                                    <option value="false">INACTIVOS</option>
+                                                    <option value="true">PUBLICADOS</option>
+                                                    <option value="false">OCULTOS</option>
                                                 </select>
                                             </div>
                                             <div class="input-group col-lg-4 col-md-4 col-12 mb-3">
-                                                <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarNotaPrensa'>
+                                                <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarAnuncio'>
 
                                                 </select>
-                                                <button type="submit" id="btnBuscarNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar NotaPrensa" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                <button type="button" id="btnAbrirNuevoNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar NotaPrensa" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                <button type="submit" id="btnBuscarAnuncio" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Anuncio" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                                <button type="button" id="btnAbrirNuevoAnuncio" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Anuncio" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -80,27 +80,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" id="containerRegistrosNotasPrensa">
-                        <!--div class="col-lg-4 col-md-6">
-                            <div class="card blog-widget">
-                                <div class="card-body">
-                                    <div class="blog-image"><img src="../assets/images/big/img1.jpg" alt="img" class="img-responsive"></div>
-                                    <h3>Business development new rules for 2017</h3>
-                                    <label class="label label-rounded label-success">Technology</label>
-                                    <p class="m-t-20 m-b-20">
-                                        Lorem ipsum dolor sit amet, this is a consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                    </p>
-                                    <div class="d-flex">
-                                        <div class="read"><a href="javascript:void(0)" class="link font-medium">Vista Previa</a></div>
-                                        <div class="ml-auto">
-                                            <a href="javascript:void(0)" class="link mr-2" data-toggle="tooltip" title="" data-original-title="Ocultar"><i class="far fa-hand-point-up"></i></a>
-                                            <a href="javascript:void(0)" class="link mr-2" data-toggle="tooltip" title="" data-original-title="Editar"><i class="fas fa-edit"></i></a>
-                                            <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Eliminar"><i class="fas fa-trash-alt"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div-->
+                    <div class="row" id="containerRegistrosAnuncios">
+
                     </div>
                     <div class="row">
                         <div class="col-12">
@@ -110,7 +91,7 @@
                                      style="padding-top: 10px; padding-bottom: 10px">
                                     <div class="row">
                                         <div class="col-md-2 col-sm-3 col-4">
-                                            <select id="sizePageNotaPrensa" name="sizePageNotaPrensa" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarNotaPrensa'>
+                                            <select id="sizePageAnuncio" name="sizePageAnuncio" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarAnuncio'>
                                                 <option value="12">12</option>
                                                 <option value="15">15</option>
                                                 <option value="18">18</option>
@@ -119,7 +100,7 @@
                                         </div>
                                         <div class="col-md-10 col-sm-9 col-8">
                                             <nav aria-label="Page navigation example">
-                                                <ul id="paginationNotaPrensa"
+                                                <ul id="paginationAnuncio"
                                                     class="pagination pagination-sm justify-content-end">
 
                                                 </ul>
@@ -133,12 +114,12 @@
                     </div>
                     <%@ include file="../../../temas_gc.jsp"%>
                 </div>
-                <div class="modal fade" id="ventanaManNotaPrensa" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ventanaManAnuncio" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-scroll" role="document">
                         <div class="modal-content">
-                            <form id="FrmNotaPrensaModal">
+                            <form id="FrmAnuncioModal">
                                 <div class="modal-header">
-                                    <h6 class="modal-title" id="txtTituloModalManNotaPrensa"></h6>
+                                    <h6 class="modal-title" id="txtTituloModalManAnuncio"></h6>
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -147,30 +128,27 @@
                                 <div class="modal-body modal-body-scroll">
                                     <div class="row">
                                         <div class="form-group col-12 mb-3">
-                                            <label for="datePickerFechaER">FECHA PUBLICACIÓN</label>
-                                            <input type="text" class="form-control form-control-sm" id="datePickerFechaER" name="datePickerFechaER" placeholder="DD/MM/AAAA"> 
+                                            <label for="datePickerFechaInicioER">FECHA INICIO</label>
+                                            <input type="text" class="form-control form-control-sm" id="datePickerFechaInicioER" name="datePickerFechaInicioER" placeholder="DD/MM/AAAA"> 
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtTituloNotaPrensaER">TÍTULO</label>
-                                            <input class="form-control form-control-sm" id="txtTituloNotaPrensaER" name="txtTituloNotaPrensaER" type="text" placeholder="TÍTULO" maxlength="200">
+                                            <label for="datePickerFechaFinER">FECHA FIN</label>
+                                            <input type="text" class="form-control form-control-sm" id="datePickerFechaFinER" name="datePickerFechaFinER" placeholder="DD/MM/AAAA"> 
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtContenidoNotaPrensaER">CONTENIDO</label>
-                                            <textarea class="form-control form-control-sm" id="txtContenidoNotaPrensaER" name="txtContenidoNotaPrensaER" type="text" placeholder="CONTENIDO" rows="20"></textarea>
+                                            <label for="txtTituloAnuncioER">TÍTULO</label>
+                                            <input class="form-control form-control-sm" id="txtTituloAnuncioER" name="txtTituloAnuncioER" type="text" placeholder="TÍTULO" maxlength="200">
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtFuenteNotaPrensaER">FUENTE</label>
-                                            <input class="form-control form-control-sm" id="txtFuenteNotaPrensaER" name="txtFuenteNotaPrensaER" type="text" placeholder="FUENTE">
+                                            <label for="txtContenidoAnuncioER">CONTENIDO</label>
+                                            <textarea class="form-control form-control-sm" id="txtContenidoAnuncioER" name="txtContenidoAnuncioER" type="text" placeholder="CONTENIDO" rows="20"></textarea>
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtFotoNotaPrensaER">FOTO(Flickr)</label>
-                                            <input class="form-control form-control-sm" id="txtFotoNotaPrensaER" name="txtFotoNotaPrensaER" type="text" placeholder="FOTO">
+                                            <select id="tipoER" name="tipoER" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarAnuncio'>
+                                            </select>
                                         </div>
-                                        <input id="txtIdNotaPrensaER" name="txtIdNotaPrensaER" type="hidden" value="">
-                                        <input id="txtAnhoNotaPrensaER" name="txtAnhoNotaPrensaER" type="hidden" value="">
-                                        <input id="txtEstadoNotaPrensaER" name="txtEstadoNotaPrensaER" type="hidden" value="">
-                                        <input id="txtFechaCreacionER" name="txtFechaCreacionER" type="hidden" value="">
-                                        <input id="txtFechaActualizacionER" name="txtFechaActualizacionER" type="hidden" value="">
+                                        <input id="txtIdAnuncioER" name="txtIdAnuncioER" type="hidden" value="">
+                                        <input id="txtEstadoAnuncioER" name="txtEstadoAnuncioER" type="hidden" value="">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -183,51 +161,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="ventanaVistaPreviaNotaPrensa" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h6 class="modal-title">VISTA PREVIA</h6>
-                                <button type="button" class="close" data-dismiss="modal"
-                                        aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-
-                                    <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
-                                        <ol class="carousel-indicators">
-                                            <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
-                                        </ol>
-                                        <div class="carousel-inner" role="listbox">
-                                            <div class="carousel-item active">
-                                                <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/assets/img/banner/banner-2.jpg" alt="First slide">
-                                                <div class="carousel-caption d-none d-md-block">
-                                                    <h3 class="text-peam-negrita" style="margin-bottom: 30px" id="tituloNotaPrensaVP">First title goes here</h3>
-                                                    <p class="text-peam" style="margin-bottom: 100px" id="resumenNotaPrensaVP">this is the subcontent you can use this</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
-                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Previous</span>
-                                        </a>
-                                        <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
-                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                            <span class="sr-only">Next</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CERRAR</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <div class="modal fade" id="modalCargandoNotaPrensa" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+            <div class="modal fade" id="modalCargandoAnuncio" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-body">
@@ -242,8 +177,7 @@
             </div>
             <footer class="footer"> © 2018 Peam </footer>
         </div>
-        <script
-        src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/jquery/jquery.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/jquery/jquery.min.js"></script>
         <!-- Bootstrap tether Core JavaScript -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/popper/popper.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -267,12 +201,9 @@
         <!-- This page plugins -->
         <!-- ============================================================== -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
-
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/notaPrensa.js"></script>
-
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/anuncio.js"></script>
     </body>
-
 </html>

@@ -5,20 +5,54 @@
  */
 package gob.peam.web.api;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import gob.peam.web.dao.AnuncioDAO;
+import gob.peam.web.dao.impl.AnuncioDAOImpl;
+import gob.peam.web.model.Anuncio;
+import gob.peam.web.utilities.BEAN_CRUD;
+import gob.peam.web.utilities.Utilities;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.Resource;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.sql.DataSource;
 
 /**
  *
  * @author Juan Jose
  */
-@WebServlet(name = "AnuncioAPI", urlPatterns = {"/publicaciones/anuncioss"})
+@WebServlet(name = "AnuncioAPI", urlPatterns = {"/publicaciones/anunciosadmin"})
 public class AnuncioAPI extends HttpServlet {
+
+    @Resource(name = "jdbc/dbweb")
+    private DataSource pool;
+    private HttpSession session;
+    private Gson json;
+    private String jsonResponse;
+    private HashMap<String, Object> parameters;
+    private static final Logger LOG = Logger.getLogger(DocumentoAPI.class.getName());
+    private String action;
+
+    private AnuncioDAO anuncioDao;
+
+    @Override
+    public void init() throws ServletException {
+        super.init(); // To change body of generated methods, choose Tools | Templates.
+        this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
+        this.parameters = new HashMap<>();
+        this.action = "";
+
+        this.anuncioDao = new AnuncioDAOImpl(this.pool);
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,18 +65,28 @@ public class AnuncioAPI extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet AnuncioAPI</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet AnuncioAPI at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        try {
+            this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
+            LOG.info(action);
+            switch (this.action) {
+                case "paginarAnuncio":
+                    procesarAnuncio(new BEAN_CRUD(this.anuncioDao.getPagination(getParametersAnuncio(request))), response);
+                    break;
+                case "addAnuncio":
+                    procesarAnuncio(this.anuncioDao.add(getAnuncio(request), getParametersAnuncio(request)), response);
+                    break;
+                case "updateAnuncio":
+                    procesarAnuncio(this.anuncioDao.update(getAnuncio(request), getParametersAnuncio(request)), response);
+                    break;
+                case "deleteAnuncio":
+                    procesarAnuncio(this.anuncioDao.delete(Long.parseLong(request.getParameter("")), getParametersAnuncio(request)), response);
+                    break;
+                default:
+                    request.getRequestDispatcher("/jsp/gc/publicaciones/anuncio.jsp").forward(request, response);
+                    break;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AnuncioAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -58,7 +102,12 @@ public class AnuncioAPI extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        this.session = request.getSession();
+        if (this.session.getAttribute("user") == null) {
+            response.sendRedirect("login");
+        } else {
+            processRequest(request, response);
+        }
     }
 
     /**
@@ -72,7 +121,42 @@ public class AnuncioAPI extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        this.session = request.getSession();
+        if (this.session.getAttribute("user") == null) {
+            response.sendRedirect("login");
+        } else {
+            processRequest(request, response);
+        }
+    }
+
+    private Anuncio getAnuncio(HttpServletRequest request) {
+        Anuncio anuncio = new Anuncio();
+        anuncio.setAnu_fecha_ini(Utilities.getDateSQLFORMAT(request.getParameter(""), "dd/MM/yyyy").toString());
+        anuncio.setAnu_fecha_fin(Utilities.getDateSQLFORMAT(request.getParameter(""), "dd/MM/yyyy").toString());
+        anuncio.setTipo(Integer.parseInt(request.getParameter("")));
+        anuncio.setTitulo(request.getParameter(""));
+        anuncio.setContenido(request.getParameter(""));
+        anuncio.setEstado(Boolean.parseBoolean(request.getParameter("")));
+        return anuncio;
+    }
+
+    private void procesarAnuncio(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap getParametersAnuncio(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", request.getParameter("txtDescripcionAnuncio"));
+        this.parameters.put("SQL_ORDERS", "DESCRIPCION");
+        this.parameters.put("LIMIT", "");
+        return this.parameters;
     }
 
     /**
