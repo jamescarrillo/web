@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
     <head>
         <%@ include file = "../../../att_head.jsp" %> 
@@ -40,11 +41,11 @@
         <%@ include file = "../../../header.jsp" %> 
         <section class="section-padding grid-news">
             <div class="container">
-                <div class="row" style="margin-bottom: 60px;">
+                <div class="row" style="margin-bottom: 60px; display: none" id="contenedorNoticiaPrincial">
                     <div class='col-lg-8 col-xs-12'>
                         <article class='post-wrapper'>
                             <div class='thumb-wrapper waves-effect waves-block waves-light'>
-                                <a><img id="idImgNoticiaPrincipal" src='https://farm1.staticflickr.com/853/28971176087_70e01e9ffb.jpg' class='img-responsive' alt=''></a>
+                                <a><img id="idImgNoticiaPrincipal" src='' class='img-responsive' alt='imgNoticia'></a>
                             </div>
                             <div class='blog-content'>
                                 <header class='entry-header-wrapper'>
@@ -84,8 +85,8 @@
                 </div>
                 <hr>
                 <div class="text-center mb-30" style="margin-top: 40px;">
-                    <h1 class="text-peam-verde h1-title"><strong>M�s Noticias</strong></h1>
-                    <input type="hidden" id="idNota" value="<%out.print(request.getParameter("idNota"));%>">
+                    <h1 class="text-peam-verde h1-title" id="idTituloMasNoticias"><strong>Más Noticias</strong></h1>
+                    <input type="hidden" id="idNota" value="<%out.print((request.getParameter("idNota") == null ? "-1" : request.getParameter("idNota")));%>">
                 </div>
                 <div class="row">
                     <div class="col-md-9" id="contenedorArticulos">
@@ -96,20 +97,51 @@
                     <div class="col-md-3">
                         <div class="tt-sidebar-wrapper" role="complementary">
                             <div class="widget widget_search mb-20">
-                                <form id="FrmNotaPrensa" role="search" class="search-form">
-                                    <input type="hidden" id="nameFormNotaPrensa" value="FrmNotaPrensa">
-                                    <input type="hidden" id="actionNotaPrensa" name="action" value="paginarNotaPrensa">
-                                    <input type="hidden" id="comboAnio" name="comboAnio" value="-1">
-                                    <input type="hidden" id="numberPageNotaPrensa" name="numberPageNotaPrensa" value="1">
-                                    <input type="hidden" id="sizePageNotaPrensa" name="sizePageNotaPrensa" value="13">
-                                    <input type="text" class="form-control" value="" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" placeholder="Buscar...">
-                                    <div class="row" id="loader_contenido">
-                                        <div class="col-md-1 col-md-offset-4 col-xs-2 col-xs-offset-5 mt-30">
-                                            <div class="loader-peam_small"></div>
+                                <div class="border-tab transparent-nav">
+                                    <ul class="nav nav-tabs nav-justified" role="tablist">
+                                        <li role="presentation" class="active"><a href="#tab-busquedas" class="waves-effect waves-dark"  role="tab" data-toggle="tab">BUSQUEDAS</a></li>
+                                        <li role="presentation"><a href="#tab-filtros" class="waves-effect waves-dark" role="tab" data-toggle="tab">FILTROS</a></li>
+                                    </ul>
+                                    <div class="panel-body" style="padding-top: 15px; padding-bottom: 0px">
+                                        <div class="tab-content">
+                                            <div role="tabpanel" class="tab-pane fade in active" id="tab-busquedas">
+                                                <form id="FrmNotaPrensa" role="search" class="search-form">
+                                                    <input type="hidden" id="nameFormNotaPrensa" value="FrmNotaPrensa">
+                                                    <input type="hidden" id="actionNotaPrensa" name="action" value="paginarNotaPrensa">
+                                                    <input type="hidden" id="comboAnio" name="comboAnio" value="-1">
+                                                    <input type="hidden" id="estadoNotaPrensa" name="estadoNotaPrensa" value="true">
+                                                    <input type="hidden" id="numberPageNotaPrensa" name="numberPageNotaPrensa" value="1">
+                                                    <input type="hidden" id="sizePageNotaPrensa" name="sizePageNotaPrensa" value="13">
+                                                    <input type="text" class="form-control" value="" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" placeholder="Ingrese palabra...">
+                                                    <button type="submit"><i class="fa fa-search"></i></button>
+
+                                                </form>
+                                            </div>
+                                            <div role="tabpanel" class="tab-pane fade" id="tab-filtros">
+                                                <div class="form-group col-xs-12">
+                                                    <label for="sizePageNotaPrensa_" style="font-size: 14px;">N° Noticias a mostrar</label>
+                                                    <select id="sizePageNotaPrensa_" idformulario="FrmNotaPrensa" idinput="sizePageNotaPrensa" class="form-control combo-paginar-formulario" style="border: 1px solid #8bc34a">
+                                                        <option value="13">12</option>
+                                                        <option value="16">15</option>
+                                                        <option value="19">18</option>
+                                                        <option value="22">21</option>
+                                                        <option value="25">24</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-xs-12">
+                                                    <label for="comboAnioNoticia_" style="font-size: 14px;">Año</label>
+                                                    <select id="comboAnioNoticia_" idformulario="FrmNotaPrensa" idinput="comboAnio" class="form-control combo-paginar-formulario" style="border: 1px solid #8bc34a">
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" id="loader_contenido">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <button type="submit"><i class="fa fa-search"></i></button>
-                                </form>
+                                </div>
                             </div>
                             <div class="widget widget_search mb-20">
                                 <div class="fb-page" 

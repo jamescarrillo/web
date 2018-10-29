@@ -148,7 +148,7 @@ public class ProcesoExoneradoAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             this.logger.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

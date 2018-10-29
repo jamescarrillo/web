@@ -178,6 +178,13 @@ function addEventoCombosPaginar() {
     });
 }
 
+function addEventoCombosPaginarFormulario() {
+    $('.combo-paginar-formulario').on('change', function () {
+        $("#" + $(this).attr('idinput')).val($(this).val());
+        $("#" + $(this).attr('idformulario')).submit();
+    });
+}
+
 function getFullDateJS(string_full_date) {
     var valoresGenerales = string_full_date.split(" ");
     //DATE DD/MM/YYYY

@@ -1,12 +1,15 @@
 
 $(document).ready(function () {
 
+    cargarAniosCombo($('#comboAnioNoticia_'), 2010, "-1", 'AÑO');
+
     $("#FrmNotaPrensa").submit(function () {
         $('#loader_contenido').css('display', 'block');
         procesarAjaxNotaPrensaWeb();
         return false;
     });
 
+    addEventoCombosPaginarFormulario();
     procesarAjaxNotaPrensaWeb();
 
 });
@@ -23,6 +26,9 @@ function procesarAjaxNotaPrensaWeb() {
         success: function (jsonResponse) {
             $('#loader_contenido').css('display', 'none');
             switch (pathname) {
+                case "/":
+                    listarNotaPrensaWebIndex(jsonResponse.BEAN_PAGINATION);
+                    break;
                 case "/index":
                     listarNotaPrensaWebIndex(jsonResponse.BEAN_PAGINATION);
                     break;
@@ -56,17 +62,17 @@ function listarNotaPrensaWebIndex(BEAN_PAGINATION) {
                 $('#resumenNotaPrensa' + (index + 1)).html(getTituloWeb(getResumenContenidoWeb(cadenaContenido, 150), 90));
             }
             //$('#contenedorCarrusel').append(getCardCarrusel(value.foto, value.titulo, getResumenContenidoWeb(cadenaContenido, 150) + getFormViewNotice(value.id)));
-
             //$('#imgCNotaPrensa' + index).attr('src', value.foto);
             //$('#tituloCNotaPrensa' + index).html(value.titulo);
             //$('#resumenCNotaPrensa' + index).html(getResumenContenidoWeb(cadenaContenido, 150) + getFormViewNotice(value.id));
-
             $('#imgCNotaPrensa' + index).attr('src', value.foto);
             $('#tituloCNotaPrensa' + index).html(value.titulo + getFormViewNotice(value.id));
 
         });
         $("#contenedorCarrusel").owlCarousel();
         addEventsNoticias();
+    } else {
+        viewAlertWeb('warning', 'No se encontraron resultados');
     }
 }
 
@@ -78,13 +84,19 @@ function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
         var cadenaContenido_2;
         var row = "<div class='row'>";
         var contador = 0;
+        if ($('#idNota').val() === "-1") {
+            $('#idTituloMasNoticias').html("<strong>Noticias</strong>");
+            $('#contenedorNoticiaPrincial').css('display', 'none');
+        } else {
+            $('#idTituloMasNoticias').html("<strong>Más Noticias</strong>");
+            $('#contenedorNoticiaPrincial').css('display', 'block');
+        }
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
             //\r\n\r\n
             cadenaContenido = value.contenido;
             cadenaContenido = replaceAll(cadenaContenido, '<p>', '');
             cadenaContenido = replaceAll(cadenaContenido, '</p>', '<br><br>');
             cadenaContenido = replaceAll(cadenaContenido, '\r\n\r\n', '<br><br>');
-
             cadenaContenido_2 = value.contenido;
             cadenaContenido_2 = replaceAll(cadenaContenido_2, '<p>', '');
             cadenaContenido_2 = replaceAll(cadenaContenido_2, '</p>', '<br>');
@@ -107,6 +119,15 @@ function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
                 }
             }
         });
+
+        $('.ir-ver-noticia').each(function (index, value) {
+            $(this).click(function () {
+                console.log($(this.parentElement));
+                $(this.parentElement).submit();
+            });
+        });
+    } else {
+        viewAlertWeb('warning', 'No se encontraron resultados');
     }
 }
 
@@ -200,7 +221,7 @@ function getCardViewNoticia(foto, titulo, contenido, idnota, fecha_publicacion, 
     article += "</header>";
     article += "<div class='entry-content text-peam'><p>" + contenido + "</p></div>";
     article += "<footer class='entry-footer'>";
-    article += "<form class='form-ver-noticia' method='POST' action='publicaciones/noticias'>";
+    article += "<form class='form-ver-noticia' method='POST' action='noticias'>";
     article += "<input type='hidden' name='idNota' value='" + idnota + "'>";
     article += "<input type='hidden' name='action' value='readNotaPrensa'>";
     article += "<a class='readmore pull-right ir-ver-noticia'>Leer M&aacute;s <i class='fa fa-long-arrow-right'></i></a>";
