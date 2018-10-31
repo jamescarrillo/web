@@ -1,5 +1,28 @@
 $(document).ready(function () {
 
+    $('#summernote').summernote({
+        toolbar: [
+            ['fontname', ['fontname']],
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['picture', ['picture']],
+            ['link', ['link']],
+            ['video', ['video']],
+            ['table', ['table']],
+            ['hr', ['hr']]
+        ],
+        dialogsInBody: false,
+        lang: 'es-ES',
+        placeholder: 'Hello bootstrap 4',
+        tabsize: 2,
+        height: 300
+    });
+
+
     $('#datePickerFechaER').datepicker({
         format: 'dd/mm/yyyy',
         todayHighlight: true,

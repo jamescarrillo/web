@@ -69,10 +69,10 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12 m-t-10 text-center">
                                 <div class="social">
-                                    <button class="btn" data-toggle="tooltip" title="Compatible con Google Ghrome"> <i aria-hidden="true" class="fab fa-google"></i> </button>
-                                    <button class="btn" data-toggle="tooltip" title="Compatible con Mozila Firefox"> <i aria-hidden="true" class="fab fa-firefox"></i> </button>
-                                    <button class="btn" data-toggle="tooltip" title="Compatible con Opera"> <i aria-hidden="true" class="fab fa-opera"></i> </button>
-                                    <button class="btn" data-toggle="tooltip" title="Compatible con Internet Explore"> <i aria-hidden="true" class="fab fa-internet-explorer"></i> </button>
+                                    <button type="button" class="btn" data-toggle="tooltip" title="Compatible con Google Ghrome"> <i aria-hidden="true" class="fab fa-google"></i> </button>
+                                    <button type="button" class="btn" data-toggle="tooltip" title="Compatible con Mozila Firefox"> <i aria-hidden="true" class="fab fa-firefox"></i> </button>
+                                    <button type="button" class="btn" data-toggle="tooltip" title="Compatible con Opera"> <i aria-hidden="true" class="fab fa-opera"></i> </button>
+                                    <button type="button" class="btn" data-toggle="tooltip" title="Compatible con Internet Explore"> <i aria-hidden="true" class="fab fa-internet-explorer"></i> </button>
                                 </div>
                             </div>
                         </div>
