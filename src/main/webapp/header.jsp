@@ -95,17 +95,26 @@
                     <li><a href="javascript:void(0)">Servicios</a>
                         <div class="megamenu">
                             <div class="megamenu-row">
-                                <div class="col12">
+                                <div class="col6">
                                     <h2>Apps</h2>
-                                    <ul class="list-unstyled">
+                                    <ul class="list-unstyled clearfix">
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/login" target="_blank">Gestor de Contenidos</a></li>
                                         <li><a href="https://correo.peam.gob.pe/" target="_blank">Correo</a></li>
                                         <li><a target="_blank">Intranet</a></li>
-                                        <li><a target="_blank">Servicios</a></li>
-                                        <li><a target="_blank">Glosario</a></li>
-                                        <li><a target="_blank">Mapa de Sitio</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/glosario" target="_blank">Glosario</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/mapa-sitio" target="_blank">Mapa de Sitio</a></li>
                                     </ul>
-                                </div>    
+                                </div>  
+                                <div class="col6">
+                                    <h2>Consultas</h2>
+                                    <ul class="list-unstyled clearfix">
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/servicios" target="_blank">Servicios</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/acceso-información" target="_blank">Acceso a la Información</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/libro-de-reclamaciones" target="_blank">Libro de Reclamaciones</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/consultas-y-sugerencias" target="_blank">Consultas y Sugerencias</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/portal-de-transparencia" target="_blank">Portal de Transparencia</a></li>
+                                    </ul>
+                                </div> 
                             </div>
                         </div>
                     </li>
