@@ -144,6 +144,11 @@ $(document).ready(function () {
     $("#ventanaManConvocatoriaBien").on('hidden.bs.modal', function () {
         $("#actionConvocatoriaBien").val("paginarConvocatoriaBien");
     });
+    
+    $("#ventanaArchivos").on('hidden.bs.modal', function () {
+    acum = "";
+    cadena = "";
+    });
 
     $('#btnAbrirNuevoConvocatoriaBien').click(function () {
         $('#FrmConvocatoriaBienModal input').val("");
@@ -621,15 +626,15 @@ function validarFormularioArchivos(){
 
 function procesarAjaxArchivos(cadena, acum) {
     var form = $('#FrmArchivosModal')[0];
-    var data = new FormData(form);
-    data.append('txtCadena', cadena);
-    data.append('txtCantidad', acum);
-    data.append('txtConvoIdER', $('#txtConvoIdER').val());
-    data.append('action', "uploadConvocatoriaBien");
+    var data1 = new FormData(form);
+    data1.append('txtCadena', cadena);
+    data1.append('txtCantidad', acum);
+    data1.append('txtConvoIdER', $('#txtConvoIdER').val());
+    data1.append('action', "uploadConvocatoriaBien");
     $.ajax({
         url: getContext() + '/convocatorias/bsc',
         type: 'POST',
-        data: data,
+        data: data1,
         dataType: 'json',
         enctype: 'multipart/form-data',
         processData: false,
@@ -645,6 +650,8 @@ function procesarAjaxArchivos(cadena, acum) {
                 }
             
             $("#ventanaArchivos").modal("hide");
+            data1 = new FormData();
+            data1=null;
         },
         error: function () {
             $('#modalCargandoArchivos').modal("hide");

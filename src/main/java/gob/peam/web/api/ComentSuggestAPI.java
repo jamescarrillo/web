@@ -7,14 +7,10 @@ package gob.peam.web.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import gob.peam.web.dao.EventoDAO;
-import gob.peam.web.dao.impl.EventoDAOImpl;
-import gob.peam.web.model.Evento;
-import gob.peam.web.model.LineaAccion;
-import gob.peam.web.model.Persona;
-import gob.peam.web.model.Usuario;
+import gob.peam.web.dao.ComentSuggestDAO;
+import gob.peam.web.dao.impl.ComentSuggestDAOImpl;
+import gob.peam.web.model.ComentSuggest;
 import gob.peam.web.utilities.BEAN_CRUD;
-import gob.peam.web.utilities.Utilities;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -35,9 +31,9 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-@WebServlet(name = "EventoAPI", urlPatterns = {"/publicaciones/eventos"})
-public class EventoAPI extends HttpServlet {
-    
+@WebServlet(name = "ComentSuggestAPI", urlPatterns = {"/participacionciudadana/comentariossugerencias"})
+public class ComentSuggestAPI extends HttpServlet {
+
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
     private HttpSession session;
@@ -46,8 +42,8 @@ public class EventoAPI extends HttpServlet {
     private HashMap<String, Object> parameters;
     private final Log logger = LogFactory.getLog(DocumentoAPI.class);
     private String action;
-    
-    private EventoDAO eventoDAO;
+
+    private ComentSuggestDAO comentsuggestDAO;
 
     @Override
     public void init() throws ServletException {
@@ -56,7 +52,7 @@ public class EventoAPI extends HttpServlet {
         this.parameters = new HashMap<>();
         this.action = "";
 
-        this.eventoDAO = new EventoDAOImpl(this.pool);
+        this.comentsuggestDAO = new ComentSuggestDAOImpl(this.pool);
     }
 
     /**
@@ -74,20 +70,20 @@ public class EventoAPI extends HttpServlet {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
             this.logger.info("ACTION -> " + this.action);
             switch (this.action) {
-                case "paginarEvento":
-                    procesarEvento(new BEAN_CRUD(this.eventoDAO.getPagination(getParametersEvento(request))), response);
+                case "paginarComentSuggest":
+                    procesarComentSuggest(new BEAN_CRUD(this.comentsuggestDAO.getPagination(getParametersComentSuggest(request))), response);
                     break;
-                case "addEvento":
-                    procesarEvento(this.eventoDAO.add(getEvento(request), getParametersEvento(request)), response);
+                case "addComentSuggest":
+                    procesarComentSuggest(this.comentsuggestDAO.add(getComentSuggest(request), getParametersComentSuggest(request)), response);
                     break;
-                case "updateEvento":
-                    procesarEvento(this.eventoDAO.update(getEvento(request), getParametersEvento(request)), response);
+                case "updateComentSuggest":
+                    procesarComentSuggest(this.comentsuggestDAO.update(getComentSuggest(request), getParametersComentSuggest(request)), response);
                     break;
-                case "deleteEvento":
-                    procesarEvento(this.eventoDAO.delete(Long.parseLong(request.getParameter("txtIdER")), getParametersEvento(request)), response);
+                case "deleteComentSuggest":
+                    procesarComentSuggest(this.comentsuggestDAO.eliminar(String.valueOf(request.getParameter("txtNumeroER")), getParametersComentSuggest(request)), response);
                     break;
                 default:
-                    request.getRequestDispatcher("/jsp/gc/publicaciones/evento.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/gc/participacionciudadana/comentariosugerencias.jsp").forward(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -143,52 +139,41 @@ public class EventoAPI extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-    
-    private void procesarEvento(BEAN_CRUD bean_crud, HttpServletResponse response) {
+
+    private void procesarComentSuggest(BEAN_CRUD bean_crud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(bean_crud);
             response.setContentType("application/json");
             response.getWriter().write(this.jsonResponse);
             this.logger.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private HashMap<String, Object> getParametersEvento(HttpServletRequest request) {
+
+    private HashMap<String, Object> getParametersComentSuggest(HttpServletRequest request) {
         this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtEvento").toLowerCase());
+        this.parameters.put("FILTER", request.getParameter("txtComentSuggest").toLowerCase());
         if (request.getParameter("comboAnio").equals("-1")) {
             this.parameters.put("SQL_ANIO", "");
         } else {
             this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnio") + "' ");
         }
-        
-        this.parameters.put("SQL_ORDERS", "ANHO DESC");
+        this.parameters.put("SQL_ORDERS", "NUMERO DESC");
         this.parameters.put("LIMIT",
-                " LIMIT " + request.getParameter("sizePageEvento") + " OFFSET "
-                + (Integer.parseInt(request.getParameter("numberPageEvento")) - 1)
-                * Integer.parseInt(request.getParameter("sizePageEvento")));
+                " LIMIT " + request.getParameter("sizePageComentSuggest") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageComentSuggest")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageComentSuggest")));
         return this.parameters;
     }
 
-    private Evento getEvento(HttpServletRequest request) {
-        Evento obj = new Evento ();
-        if (request.getParameter("action").equals("updateEvento")) {
-            obj.setId(Integer.parseInt(request.getParameter("txtIdER")));
-            Persona per = ((Usuario) this.session.getAttribute("user")).getPersona();
-            obj.setEditado_por(per);
+    private ComentSuggest getComentSuggest(HttpServletRequest request) {
+        ComentSuggest obj = new ComentSuggest();
+        if (request.getParameter("action").equals("updateComentSuggest")) {
+            obj.setNumero(String.valueOf(request.getParameter("txtNumeroER")));
         }
-        Persona per = ((Usuario) this.session.getAttribute("user")).getPersona();
-        obj.setCreado_por(per);
-        obj.setFecha(Utilities.getDateSQLFORMAT(String.valueOf(request.getParameter("txtFechaER")),"dd/MM/yyyy"));
-        obj.setAnho(String.valueOf(request.getParameter("txtFechaER")).substring(6,10));
-        obj.setTitulo(request.getParameter("txtTituloER"));
-        obj.setArea(new LineaAccion(Integer.parseInt(String.valueOf(request.getParameter("txtAreaER")))));
-        obj.setFoto(request.getParameter("txtFotoER"));
-        obj.setLink(request.getParameter("txtLinkER"));
-        obj.setEstado(false);
+        obj.setTema(request.getParameter("txtTemaER"));
+        obj.setDescripcion(request.getParameter("txtContenidoER"));
         return obj;
     }
-
 }

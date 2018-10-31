@@ -5,18 +5,17 @@
  */
 package gob.peam.web.dao;
 
-import gob.peam.web.model.Anuncio;
+import gob.peam.web.model.ComentSuggest;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.sql.SQLException;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  *
- * @author Juan Jose
+ * @author JhanxD
  */
-public interface AnuncioDAO extends CRUD<Anuncio> {
-
-    List<Anuncio> getAnunciosDia(Integer cantidad) throws SQLException;
-    BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException;
+public interface ComentSuggestDAO extends CRUD<ComentSuggest>{
+    
+    BEAN_CRUD eliminar(String numero, HashMap<String, Object> parameters) throws SQLException;
+    
 }

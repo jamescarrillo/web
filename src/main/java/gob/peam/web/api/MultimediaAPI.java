@@ -169,14 +169,18 @@ public class MultimediaAPI extends HttpServlet {
             this.parameters.put("SQL_ANIO", "AND (select extract(year from current_date)) = '" + request.getParameter("comboAnio") + "' ");
         }
         if (request.getParameter("txtEstadoER").equals("true")) {
-            this.parameters.put("ESTADO", "false");
+            this.parameters.put("ESTADOP", "false");
         } else {
-            this.parameters.put("ESTADO", "true");
+            this.parameters.put("ESTADOP", "true");
+        }
+        if (request.getParameter("action").equals("favoriteMultimedia")) {
+            Multimedia mul=getMultimedia(request);
+            this.parameters.put("MULTIMEDIA", mul);
         }
         if (request.getParameter("txtDefectoER").equals("true")) {
-            this.parameters.put("ESTADO", "false");
+            this.parameters.put("ESTADOF", "false");
         } else {
-            this.parameters.put("ESTADO", "true");
+            this.parameters.put("ESTADOF", "true");
         }
         this.parameters.put("SQL_ORDERS", "FECHA DESC");
         this.parameters.put("LIMIT",
@@ -196,7 +200,7 @@ public class MultimediaAPI extends HttpServlet {
         obj.setFecha(Utilities.getDateSQLFORMAT(String.valueOf(request.getParameter("txtFechaER")), "dd/MM/yyyy"));
         obj.setTitulo(request.getParameter("txtTituloER"));
         obj.setFuente(request.getParameter("txtFuenteER"));
-        obj.setEstado(true);
+        obj.setEstado(false);
         obj.setDefecto(false);
         return obj;
     }

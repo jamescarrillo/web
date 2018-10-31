@@ -133,27 +133,33 @@
                                 <div class="modal-body modal-body-scroll">
                                     <div class="row">
                                         <div class="form-group col-12 mb-3">
-                                            <label for="datePickerFechaInicioER">FECHA INICIO</label>
+                                            <label for="datePickerFechaInicioER">FECHA INICIO DE LA PUBLICACION</label>
                                             <input type="text" class="form-control form-control-sm" id="datePickerFechaInicioER" name="datePickerFechaInicioER" placeholder="DD/MM/AAAA"> 
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="datePickerFechaFinER">FECHA FIN</label>
+                                            <label for="datePickerFechaFinER">FECHA FIN DE LA PUBLICACION</label>
                                             <input type="text" class="form-control form-control-sm" id="datePickerFechaFinER" name="datePickerFechaFinER" placeholder="DD/MM/AAAA"> 
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtTituloAnuncioER">TÍTULO</label>
+                                            <label for="txtTituloAnuncioER">TÍTULO DEL ANUNCIO</label>
                                             <input class="form-control form-control-sm" id="txtTituloAnuncioER" name="txtTituloAnuncioER" type="text" placeholder="TÍTULO" maxlength="200">
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtContenidoAnuncioER">CONTENIDO</label>
-                                            <textarea class="form-control form-control-sm" id="txtContenidoAnuncioER" name="txtContenidoAnuncioER" type="text" placeholder="CONTENIDO" rows="20"></textarea>
-                                        </div>
-                                        <div class="form-group col-12 mb-3">
-                                            <select id="tipoER" name="tipoER" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarAnuncio'>
+                                            <label for="tipoER">TIPO</label>
+                                            <select id="tipoER" name="tipoER" class="form-control form-control-sm">
+                                                <option value="-1">Seleccione...</option>
+                                                <option value="1">COMUNICADO</option>
+                                                <option value="2">CONVOCATORIA</option>
+                                                <option value="3">SALUDO</option>
+                                                <option value="4">OTROS</option>
                                             </select>
                                         </div>
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtContenidoAnuncioER">CONTENIDO DEL ANUNCIO</label>
+                                            <textarea class="form-control form-control-sm" id="txtContenidoAnuncioER" name="txtContenidoAnuncioER" type="text" placeholder="CONTENIDO" rows="20"></textarea>
+                                        </div>
                                         <input id="txtIdAnuncioER" name="txtIdAnuncioER" type="hidden" value="">
-                                        <input id="txtEstadoAnuncioER" name="txtEstadoAnuncioER" type="hidden" value="">
+                                        <input id="txtEstadoAnuncioER" name="txtEstadoAnuncioER" type="hidden" value="0">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
