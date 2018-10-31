@@ -26,8 +26,8 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-public class MultimediaDAOImpl implements MultimediaDAO{
-    
+public class MultimediaDAOImpl implements MultimediaDAO {
+
     private final Log logger = LogFactory.getLog(DirectivoDAOImpl.class);
     private final DataSource pool;
 
@@ -35,55 +35,64 @@ public class MultimediaDAOImpl implements MultimediaDAO{
         this.pool = pool;
     }
 
-
     @Override
     public BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
-            PreparedStatement pst;
-            try (Connection conn = pool.getConnection();
-                    SQLCloseable finish = conn::rollback;) {
-                conn.setAutoCommit(false);
-                pst = conn.prepareStatement("UPDATE WEB.MULTIMEDIA SET ESTADO = ? WHERE ID = ?");
-                if (parameters.get("ESTADO").equals("true")) {
-                    pst.setBoolean(1, true);
-                } else {
-                    pst.setBoolean(1, false);
-                }
-                pst.setInt(2, (int) id);
-                pst.executeUpdate();
-                conn.commit();
-                beancrud.setMESSAGE_SERVER("ok");
-                beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
-                pst.close();
-            } catch (SQLException ex) {
-                throw ex;
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("UPDATE WEB.MULTIMEDIA SET ESTADO = ? WHERE ID = ?");
+            if (parameters.get("ESTADOP").equals("true")) {
+                pst.setBoolean(1, true);
+            } else {
+                pst.setBoolean(1, false);
             }
-            return beancrud;
+            pst.setInt(2, (int) id);
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override
     public BEAN_CRUD favorito(long id, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
-            PreparedStatement pst;
-            try (Connection conn = pool.getConnection();
-                    SQLCloseable finish = conn::rollback;) {
-                conn.setAutoCommit(false);
-                pst = conn.prepareStatement("UPDATE WEB.MULTIMEDIA SET default = ? WHERE ID = ?");
-                if (parameters.get("ESTADO").equals("true")) {
-                    pst.setBoolean(1, true);
-                } else {
-                    pst.setBoolean(1, false);
-                }
-                pst.setInt(2, (int) id);
-                pst.executeUpdate();
-                conn.commit();
-                beancrud.setMESSAGE_SERVER("ok");
-                beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
-                pst.close();
-            } catch (SQLException ex) {
-                throw ex;
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("DELETE FROM WEB.MULTIMEDIA WHERE ID = ?");
+            pst.setInt(1, (int) id);
+            pst.executeUpdate();
+            conn.commit();
+            pst = conn.prepareStatement("INSERT INTO WEB.MULTIMEDIA VALUES(?,?,?,?,?,?,?)");
+            Multimedia obj = (Multimedia) parameters.get("MULTIMEDIA");
+            pst.setInt(1, (int) id);
+            pst.setString(2, obj.getTitulo());
+            pst.setString(3, obj.getFuente());
+            pst.setDate(4, obj.getFecha());
+            pst.setInt(5, obj.getUsuario().getPers_id());
+            pst.setBoolean(6, obj.getEstado());
+            if (parameters.get("ESTADOF").equals("true")) {
+                pst.setBoolean(7, true);
+            } else {
+                pst.setBoolean(7, false);
             }
-            return beancrud;
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override
@@ -146,8 +155,7 @@ public class MultimediaDAOImpl implements MultimediaDAO{
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("INSERT INTO WEB.MULTIMEDIA (ID, TITULO, FUENTE, FECHA, USUARIO, "
-                    + "ESTADO, default) VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.multimedia),"
+            pst = conn.prepareStatement("INSERT INTO WEB.MULTIMEDIA VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.multimedia),"
                     + "?,?,?,?,?,?)");
             pst.setString(1, obj.getTitulo());
             pst.setString(2, obj.getFuente());
@@ -173,13 +181,14 @@ public class MultimediaDAOImpl implements MultimediaDAO{
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.MULTIMEDIA SET TITULO = ?, FUENTE=?, FECHA=?, "
-                    + " ESTADO=?, USUARIO=? WHERE ID = ?");
+            pst = conn.prepareStatement("UPDATE WEB.MULTIMEDIA SET TITULO = ?, FUENTE = ?, FECHA=?, "
+                    + " ESTADO=?, USUARIO = ? WHERE ID = ?");
             pst.setString(1, obj.getTitulo());
             pst.setString(2, obj.getFuente());
             pst.setDate(3, obj.getFecha());
-            pst.setInt(4, obj.getUsuario().getPers_id());
-            pst.setInt(5, obj.getId());
+            pst.setBoolean(4, obj.getEstado());
+            pst.setInt(5, obj.getUsuario().getPers_id());
+            pst.setInt(6, obj.getId());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -215,5 +224,5 @@ public class MultimediaDAOImpl implements MultimediaDAO{
     public Multimedia get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
 }

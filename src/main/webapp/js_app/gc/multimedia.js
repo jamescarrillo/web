@@ -152,9 +152,9 @@ function listarMultimedia(BEAN_PAGINATION) {
 
             card += "<h3 class='" + textColor + "'>" + value.titulo + "</h3>";
 
-            card += "<label class='label label-rounded label-success'>" + value.fuente + "</label>";
+            card += "<label class='label label-success'><object style='width:100%;height:100%;width: 230px; height: 120.25px; float: none; clear: both; margin: 2px auto;' data='"+value.fuente+"'></object></label>";
 
-            card += "<p class='m-t-15 m-b-20 " + textColor + "'>" + cadenaContenido + "</p>";
+            card += "<p class='m-t-15 m-b-20 " + textColor + "'>" + value.fecha + "</p>";
 
             //card += cadenaContenido;
 
@@ -230,10 +230,10 @@ function agregarEventosMultimedia() {
     $('.btn-cambiar-estado-np').each(function () {
         $(this).click(function () {
             $('#txtIdER').val($(this.parentElement.parentElement).attr('id'));
-            if ($(this).attr('opcion_estado').toLowerCase() === "publicar") {
-                $('#txtEstadoMultimediaER').val("true");
+            if ($(this).attr('opcion_estado').toLowerCase() === "ocultar") {
+                $('#txtEstadoER').val("true");
             } else {
-                $('#txtEstadoMultimediaER').val("false");
+                $('#txtEstadoER').val("false");
             }
             swal({
                 title: 'PEAM',
@@ -256,14 +256,17 @@ function agregarEventosMultimedia() {
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
-    
+
     $('.btn-volver-favorito-np').each(function () {
         $(this).click(function () {
             $('#txtIdER').val($(this.parentElement.parentElement).attr('id'));
-            if ($(this).attr('opcion_estado1').toLowerCase() === "destacar") {
-                $('#txtEstadoMultimediaER').val("true");
+            $('#txtFechaER').val($(this.parentElement.parentElement).attr('fecha'));
+            $('#txtTituloER').val($(this.parentElement.parentElement).attr('titulo'));
+            $('#txtFuenteER').val($(this.parentElement.parentElement).attr('fuente'));
+            if ($(this).attr('opcion_estado1').toLowerCase() !== "destacar") {
+                $('#txtDefectoER').val("true");
             } else {
-                $('#txtEstadoMultimediaER').val("false");
+                $('#txtDefectoER').val("false");
             }
             swal({
                 title: 'PEAM',
@@ -298,8 +301,8 @@ function valicacionesCamposMultimedia() {
     $('#txtFuenteER').on('change', function () {
         $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
     });
-    }
-    
+}
+
 function validarFormularioMultimedia() {
     if ($('#txtFechaER').val() === "") {
         $($('#txtFechaER').parent()).addClass('has-danger');
@@ -319,6 +322,6 @@ function validarFormularioMultimedia() {
     } else {
         $(this.parentElement).removeClass('has-danger');
     }
-   
+
     return true;
 }

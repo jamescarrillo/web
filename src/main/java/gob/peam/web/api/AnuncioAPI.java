@@ -79,7 +79,10 @@ public class AnuncioAPI extends HttpServlet {
                     procesarAnuncio(this.anuncioDao.update(getAnuncio(request), getParametersAnuncio(request)), response);
                     break;
                 case "deleteAnuncio":
-                    procesarAnuncio(this.anuncioDao.delete(Long.parseLong(request.getParameter("")), getParametersAnuncio(request)), response);
+                    procesarAnuncio(this.anuncioDao.delete(Long.parseLong(request.getParameter("txtIdAnuncioER")), getParametersAnuncio(request)), response);
+                    break;
+                case "activateAnuncio":
+                    procesarAnuncio(this.anuncioDao.activate(Long.parseLong(request.getParameter("txtIdAnuncioER")), getParametersAnuncio(request)), response);
                     break;
                 default:
                     request.getRequestDispatcher("/jsp/gc/publicaciones/anuncio.jsp").forward(request, response);
@@ -131,12 +134,15 @@ public class AnuncioAPI extends HttpServlet {
 
     private Anuncio getAnuncio(HttpServletRequest request) {
         Anuncio anuncio = new Anuncio();
-        anuncio.setAnu_fecha_ini(Utilities.getDateSQLFORMAT(request.getParameter(""), "dd/MM/yyyy").toString());
-        anuncio.setAnu_fecha_fin(Utilities.getDateSQLFORMAT(request.getParameter(""), "dd/MM/yyyy").toString());
-        anuncio.setTipo(Integer.parseInt(request.getParameter("")));
-        anuncio.setTitulo(request.getParameter(""));
-        anuncio.setContenido(request.getParameter(""));
-        anuncio.setEstado(Boolean.parseBoolean(request.getParameter("")));
+        if (request.getParameter("action").equals("updateAnuncio")) {
+            anuncio.setAnu_id(Integer.parseInt(request.getParameter("txtIdAnuncioER")));
+        }
+        anuncio.setAnu_fecha_ini(Utilities.getDateSQLFORMAT(request.getParameter("datePickerFechaInicioER"), "dd/MM/yyyy").toString());
+        anuncio.setAnu_fecha_fin(Utilities.getDateSQLFORMAT(request.getParameter("datePickerFechaFinER"), "dd/MM/yyyy").toString());
+        anuncio.setTipo(Integer.parseInt(request.getParameter("tipoER")));
+        anuncio.setTitulo(request.getParameter("txtTituloAnuncioER"));
+        anuncio.setContenido(request.getParameter("txtContenidoAnuncioER"));
+        anuncio.setEstado(false);
         return anuncio;
     }
 
@@ -159,12 +165,17 @@ public class AnuncioAPI extends HttpServlet {
         } else {
             this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("estadoAnuncio"));
         }
+        if (request.getParameter("txtEstadoAnuncioER").equals("true")) {
+            this.parameters.put("ESTADOP", "false");
+        } else {
+            this.parameters.put("ESTADOP", "true");
+        }
         if (request.getParameter("tipo").equals("-1")) {
             this.parameters.put("SQL_TIPO", "");
         } else {
             this.parameters.put("SQL_TIPO", "AND TIPO = " + request.getParameter("tipo"));
         }
-        this.parameters.put("SQL_ORDERS", "TITULO ASC");
+        this.parameters.put("SQL_ORDERS", "ANU_FECHA_INI DESC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageAnuncio") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageAnuncio")) - 1)

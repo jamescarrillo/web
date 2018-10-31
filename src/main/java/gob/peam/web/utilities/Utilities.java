@@ -41,4 +41,18 @@ public class Utilities {
         }
         return fechaSql;
     }
+    
+    public static String ConvertDateToView (String fecha) {
+        SimpleDateFormat originalbd = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        java.util.Date fechaUtil;
+        String fechafin = "";
+        try {
+            fechaUtil = originalbd.parse(fecha);
+            fechafin = formato.format(fechaUtil);
+        } catch (ParseException ex) {
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return fechafin;
+    }
 }

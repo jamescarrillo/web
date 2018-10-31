@@ -6,14 +6,16 @@
 package gob.peam.web.dao.impl;
 
 import gob.peam.web.dao.AnuncioDAO;
-import gob.peam.web.model.Actividad;
+import gob.peam.web.dao.SQLCloseable;
 import gob.peam.web.model.Anuncio;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
+import gob.peam.web.utilities.Utilities;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -63,8 +65,8 @@ public class AnuncioDAOImpl implements AnuncioDAO {
                     while (rs.next()) {
                         Anuncio obj = new Anuncio();
                         obj.setAnu_id(rs.getInt("ANU_ID"));
-                        obj.setAnu_fecha_ini(rs.getString("ANU_FECHA_INI"));
-                        obj.setAnu_fecha_fin(rs.getString("ANU_FECHA_FIN"));
+                        obj.setAnu_fecha_ini(Utilities.ConvertDateToView(rs.getString("ANU_FECHA_INI")));
+                        obj.setAnu_fecha_fin(Utilities.ConvertDateToView(rs.getString("ANU_FECHA_FIN")));
                         obj.setTipo(rs.getInt("TIPO"));
                         obj.setTitulo(rs.getString("TITULO"));
                         obj.setContenido(rs.getString("CONTENIDO"));
@@ -95,17 +97,75 @@ public class AnuncioDAOImpl implements AnuncioDAO {
 
     @Override
     public BEAN_CRUD add(Anuncio obj, HashMap<String, Object> parameters) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("INSERT INTO WEB.ANUNCIO VALUES((select case when max(anu_id) is null then 1 else cast((max(anu_id)+1) as integer) end id  from web.anuncio),"
+                    + "?,?,?,?,?,?)");
+            pst.setString(1, obj.getAnu_fecha_ini());
+            pst.setString(2, obj.getAnu_fecha_fin());
+            pst.setInt(3, obj.getTipo());
+            pst.setString(4, obj.getTitulo());
+            pst.setString(5, obj.getContenido());
+            pst.setBoolean(6, obj.getEstado());
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override
     public BEAN_CRUD update(Anuncio obj, HashMap<String, Object> parameters) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("UPDATE WEB.ANUNCIO SET ANU_FECHA_INI = ?, ANU_FECHA_FIN = ?, TIPO=?, "
+                    + " TITULO=?, CONTENIDO = ?, ESTADO = ? WHERE ANU_ID = ?");
+            pst.setString(1, obj.getAnu_fecha_ini());
+            pst.setString(2, obj.getAnu_fecha_fin());
+            pst.setInt(3, obj.getTipo());
+            pst.setString(4, obj.getTitulo());
+            pst.setString(5, obj.getContenido());
+            pst.setBoolean(6, obj.getEstado());
+            pst.setInt(7, obj.getAnu_id());
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override
     public BEAN_CRUD delete(long id, HashMap<String, Object> parameters) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("DELETE FROM WEB.ANUNCIO WHERE ANU_ID = ?");
+            pst.setInt(1, (int) id);
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override
@@ -134,6 +194,31 @@ public class AnuncioDAOImpl implements AnuncioDAO {
             throw e;
         }
         return list;
+    }
+
+    @Override
+    public BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException {
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("UPDATE WEB.ANUNCIO SET ESTADO = ? WHERE ANU_ID = ?");
+            if (parameters.get("ESTADOP").equals("true")) {
+                pst.setBoolean(1, true);
+            } else {
+                pst.setBoolean(1, false);
+            }
+            pst.setInt(2, (int) id);
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
 }

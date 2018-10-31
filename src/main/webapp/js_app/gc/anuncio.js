@@ -46,7 +46,7 @@ $(document).ready(function () {
         $('#FrmAnuncioModal select').parent().removeClass("has-danger");
         $('#txtEstadoAnuncioER').val("false");
         $('#actionAnuncio').val("addAnuncio");
-        $('#txtTituloModalManAnuncio').html("REGISTRAR NOTA PRENSA");
+        $('#txtTituloModalManAnuncio').html("REGISTRAR ANUNCIO");
         $('#ventanaManAnuncio').modal("show");
         document.getElementsByTagName("body")[0].style.paddingRight = "0";
     });
@@ -65,6 +65,7 @@ function procesarAjaxAnuncio() {
         datosSerializadosCompletos += "&tipo=" + $('#tipo').val();
         datosSerializadosCompletos += "&estadoAnuncio=" + $('#estadoAnuncio').val();
     }
+    datosSerializadosCompletos += "&txtEstadoAnuncioER=" + $('#txtEstadoAnuncioER').val();
     datosSerializadosCompletos += "&numberPageAnuncio=" + $('#numberPageAnuncio').val();
     datosSerializadosCompletos += "&sizePageAnuncio=" + $('#sizePageAnuncio').val();
     datosSerializadosCompletos += "&action=" + $('#actionAnuncio').val();
@@ -133,7 +134,7 @@ function listarAnuncio(BEAN_PAGINATION) {
             cadenaTitulo = replaceAll(cadenaTitulo, '<b>', '\n');
             cadenaTitulo = replaceAll(cadenaTitulo, '</b>', '\n');
 
-            atributosAnuncio = "anu_id='" + value.id + "' ";
+            atributosAnuncio = "anu_id='" + value.anu_id + "' ";
             atributosAnuncio += "tipo='" + value.tipo + "' ";
             atributosAnuncio += "titulo='" + cadenaTitulo + "' ";
             atributosAnuncio += "contenido='" + cadenaContenido + "' ";
@@ -212,20 +213,13 @@ function agregarEventosAnuncio() {
 
     $('.btn-editar-anuncio').each(function () {
         $(this).click(function () {
-            $('#txtIdAnuncioER').val($(this.parentElement.parentElement).attr('id'));
-            $('#txtAnhoAnuncioER').val($(this.parentElement.parentElement).attr('anho'));
-            if ($(this.parentElement.parentElement).attr('fecha') !== "" && $(this.parentElement.parentElement).attr('fecha') !== "undefined") {
-                $('#datePickerFechaER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha')));
-            }
+            $('#txtIdAnuncioER').val($(this.parentElement.parentElement).attr('anu_id'));
             $('#txtTituloAnuncioER').val($(this.parentElement.parentElement).attr('titulo'));
             $('#txtContenidoAnuncioER').val($(this.parentElement.parentElement).attr('contenido'));
-            $('#txtFuenteAnuncioER').val($(this.parentElement.parentElement).attr('fuente'));
-            $('#txtEstadoAnuncioER').val($(this.parentElement.parentElement).attr('estado'));
-            $('#txtFechaCreacionER').val($(this.parentElement.parentElement).attr('fecha_creacion'));
-            $('#txtFechaActualizacionER').val($(this.parentElement.parentElement).attr('fecha_actualizacion'));
-            $('#txtFotoAnuncioER').val($(this.parentElement.parentElement).attr('foto'));
+            $('#datePickerFechaInicioER').val($(this.parentElement.parentElement).attr('anu_fecha_ini'));
+            $('#datePickerFechaFinER').val($(this.parentElement.parentElement).attr('anu_fecha_fin'));
             $('#actionAnuncio').val('updateAnuncio');
-            $('#txtTituloModalManAnuncio').html("EDITAR NOTA DE PRENSA");
+            $('#txtTituloModalManAnuncio').html("EDITAR ANUNCIO");
             $('#ventanaManAnuncio').modal("show");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
@@ -233,7 +227,7 @@ function agregarEventosAnuncio() {
 
     $('.btn-eliminar-anuncio').each(function () {
         $(this).click(function () {
-            $('#txtIdAnuncioER').val($(this.parentElement.parentElement).attr('id'));
+            $('#txtIdAnuncioER').val($(this.parentElement.parentElement).attr('anu_id'));
             viewAlertDelete("Anuncio");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
@@ -241,15 +235,15 @@ function agregarEventosAnuncio() {
 
     $('.btn-cambiar-estado-anuncio').each(function () {
         $(this).click(function () {
-            $('#txtIdAnuncioER').val($(this.parentElement.parentElement).attr('id'));
-            if ($(this).attr('opcion_estado').toLowerCase() === "publicar") {
+            $('#txtIdAnuncioER').val($(this.parentElement.parentElement).attr('anu_id'));
+            if ($(this).attr('opcion_estado').toLowerCase() !== "publicar") {
                 $('#txtEstadoAnuncioER').val("true");
             } else {
                 $('#txtEstadoAnuncioER').val("false");
             }
             swal({
                 title: 'PEAM',
-                text: "¿Está seguro de " + $(this).attr('opcion_estado') + " esta Nota de Prensa?",
+                text: "¿Está seguro de " + $(this).attr('opcion_estado') + " este Anuncio?",
                 type: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Sí, continuar!',
@@ -271,26 +265,32 @@ function agregarEventosAnuncio() {
 }
 
 function valicacionesCamposAnuncio() {
-    $('#datePickerFechaER').on('change', function () {
+    $('#datePickerFechaInicioER').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#datePickerFechaFinER').on('change', function () {
         $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
     });
     $('#txtTituloAnuncioER').on('change', function () {
         $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
     });
+    $('#tipoER').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
     $('#txtContenidoAnuncioER').on('change', function () {
-        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
-    });
-    $('#txtFuenteAnuncioER').on('change', function () {
-        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
-    });
-    $('#txtFotoAnuncioER').on('change', function () {
         $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
     });
 }
 
 function validarFormularioAnuncio() {
-    if ($('#datePickerFechaER').val() === "") {
-        $($('#datePickerFechaER').parent()).addClass('has-danger');
+    if ($('#datePickerFechaInicioER').val() === "") {
+        $($('#datePickerFechaInicioER').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#datePickerFechaFinER').val() === "") {
+        $($('#datePickerFechaFinER').parent()).addClass('has-danger');
         return false;
     } else {
         $(this.parentElement).removeClass('has-danger');
@@ -301,20 +301,14 @@ function validarFormularioAnuncio() {
     } else {
         $(this.parentElement).removeClass('has-danger');
     }
+    if ($('#tipoER').val() === "-1") {
+        $($('#tipoER').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
     if ($('#txtContenidoAnuncioER').val() === "") {
         $($('#txtContenidoAnuncioER').parent()).addClass('has-danger');
-        return false;
-    } else {
-        $(this.parentElement).removeClass('has-danger');
-    }
-    if ($('#txtFuenteAnuncioER').val() === "") {
-        $($('#txtFuenteAnuncioER').parent()).addClass('has-danger');
-        return false;
-    } else {
-        $(this.parentElement).removeClass('has-danger');
-    }
-    if ($('#txtFotoAnuncioER').val() === "") {
-        $($('#txtFotoAnuncioER').parent()).addClass('has-danger');
         return false;
     } else {
         $(this.parentElement).removeClass('has-danger');
