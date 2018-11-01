@@ -529,12 +529,12 @@ function agregarEventosCalendarioConv() {
             procesarAjaxActividad();
             $('#actionCalendarioConv').val('updateCalendarioConv');
             $('#txtTituloModalManCalendarioConv').html("EDITAR ACTIVIDAD");
-            console.log($(this.parentElement.parentElement).attr('descripcion'));
+            console.log($(this.parentElement.parentElement).attr('acti_id'));
             $('#FrmCalendarioConvModal input').parent().removeClass("has-danger");
             $('#FrmCalendarioConvModal select').parent().removeClass("has-danger");
-            $('#comboActividadCC').val($(this.parentElement.parentElement).attr('descripcion'));
             console.log($('#comboActividadCC').val());
             $('#ventanaManCalendarioConv').modal("show");
+            $('#comboActividadCC').val($(this.parentElement.parentElement).attr('acti_id'));
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });

@@ -109,7 +109,7 @@
                                     <h2>Consultas</h2>
                                     <ul class="list-unstyled clearfix">
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/servicios" target="_blank">Servicios</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/acceso-información" target="_blank">Acceso a la Información</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/acceso-informacion" target="_blank">Acceso a la Información</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/libro-de-reclamaciones" target="_blank">Libro de Reclamaciones</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/consultas-y-sugerencias" target="_blank">Consultas y Sugerencias</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/portal-de-transparencia" target="_blank">Portal de Transparencia</a></li>
