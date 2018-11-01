@@ -1,27 +1,25 @@
 $(document).ready(function () {
 
-    $('#summernote').summernote({
+    $('#editorWebContenido').summernote({
         toolbar: [
+            ['style', ['style']],
             ['fontname', ['fontname']],
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['font', ['strikethrough', 'superscript', 'subscript']],
+            ['font', ['bold', 'italic', 'underline', 'clear', 'strikethrough']],
             ['fontsize', ['fontsize']],
             ['color', ['color']],
             ['para', ['ul', 'ol', 'paragraph']],
             ['height', ['height']],
-            ['picture', ['picture']],
-            ['link', ['link']],
-            ['video', ['video']],
             ['table', ['table']],
-            ['hr', ['hr']]
+            ['link', ['link']],
+            ['picture', ['picture']],
+            ['video', ['video']],
+            ['hr', ['hr']],
+            ['codeview', ['codeview']]
         ],
-        dialogsInBody: false,
         lang: 'es-ES',
-        placeholder: 'Hello bootstrap 4',
-        tabsize: 2,
+        placeholder: 'Ingrese texto...',
         height: 300
     });
-
 
     $('#datePickerFechaER').datepicker({
         format: 'dd/mm/yyyy',
@@ -32,6 +30,7 @@ $(document).ready(function () {
     cargarAniosCombo($('#comboAnio'), 2005, "-1", 'AÑO');
 
     $("#FrmNotaPrensa").submit(function () {
+        alert('entro submit normal');
         $("#nameForm").val("FrmNotaPrensa");
         $("#numberPageNotaPrensa").val(1);
         $('#actionNotaPrensa').val("paginarNotaPrensa");
@@ -40,7 +39,9 @@ $(document).ready(function () {
     });
 
     $("#FrmNotaPrensaModal").submit(function () {
+        alert('entro submit modallllllllllllllllllll' + $('#actionNotaPrensa').val() + " -- " + $('#nameForm').val());
         if (validarFormularioNotaPrensa()) {
+            $('#txtContenidoNotaPrensaER').val($('#editorWebContenido').summernote('code'));
             $("#numberPageNotaPrensa").val(1);
             $("#nameForm").val("FrmNotaPrensaModal");
             $('#modalCargandoNotaPrensa').modal("show");
@@ -53,6 +54,15 @@ $(document).ready(function () {
         procesarAjaxNotaPrensa();
     });
 
+    $('.note-link-btn').click(function () {
+        alert("hizo click en el boton el valor es-> " + $('#actionNotaPrensa').val());
+    });
+
+    
+    $(".link-dialog").on('hidden.bs.modal', function () {
+        alert("cerrando modal, el valor es-> " + $('#actionNotaPrensa').val());
+    });
+
     $("#ventanaManNotaPrensa").on('hidden.bs.modal', function () {
         $("#actionNotaPrensa").val("paginarNotaPrensa");
     });
@@ -63,6 +73,7 @@ $(document).ready(function () {
         $('#FrmNotaPrensaModal select').val("-1");
         $('#FrmNotaPrensaModal input').parent().removeClass("has-danger");
         $('#FrmNotaPrensaModal select').parent().removeClass("has-danger");
+        $('#editorWebContenido').summernote('code', "");
         $('#txtEstadoNotaPrensaER').val("false");
         $('#actionNotaPrensa').val("addNotaPrensa");
         $('#txtTituloModalManNotaPrensa').html("REGISTRAR NOTA PRENSA");
@@ -87,10 +98,31 @@ function procesarAjaxNotaPrensa() {
     datosSerializadosCompletos += "&numberPageNotaPrensa=" + $('#numberPageNotaPrensa').val();
     datosSerializadosCompletos += "&sizePageNotaPrensa=" + $('#sizePageNotaPrensa').val();
     datosSerializadosCompletos += "&action=" + $('#actionNotaPrensa').val();
+    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/publicaciones/notasprensa',
         type: 'POST',
         data: datosSerializadosCompletos,
+//        data: {
+//            txtTituloNotaPrensa: $('#txtTituloNotaPrensa').val(),
+//            comboAnio: $('#comboAnio').val(),
+//            estadoNotaPrensa: $('#estadoNotaPrensa').val(),
+//            numberPageNotaPrensa: $('#numberPageNotaPrensa').val(),
+//            sizePageNotaPrensa: $('#sizePageNotaPrensa').val(),
+//            action: $('#actionNotaPrensa').val(),
+//
+//            datePickerFechaER: $("#datePickerFechaER").val(),
+//            txtTituloNotaPrensaER: $("#txtTituloNotaPrensaER").val(),
+//            txtFuenteNotaPrensaER: $("#txtFuenteNotaPrensaER").val(),
+//            txtFotoNotaPrensaER: $("#txtFotoNotaPrensaER").val(),
+//            txtContenidoNotaPrensaER: $("#txtContenidoNotaPrensaER").val(),
+//
+//            txtIdNotaPrensaER: $("#txtIdNotaPrensaER").val(),
+//            txtAnhoNotaPrensaER: $("#txtAnhoNotaPrensaER").val(),
+//            txtEstadoNotaPrensaER: $("#txtEstadoNotaPrensaER").val(),
+//            txtFechaCreacionER: $("#txtFechaCreacionER").val(),
+//            txtFechaActualizacionER: $("#txtFechaActualizacionER").val()
+//        },
         dataType: 'json',
         success: function (jsonResponse) {
             console.log(jsonResponse);
@@ -139,9 +171,6 @@ function listarNotaPrensa(BEAN_PAGINATION) {
                 icono = "<i class='far fa-hand-point-up'></i>";
             }
             cadenaContenido = value.contenido;
-            cadenaContenido = replaceAll(cadenaContenido, '<p>', '');
-            cadenaContenido = replaceAll(cadenaContenido, '</p>', '\n');
-
             atributosNotaPrensa = "id='" + value.id + "' ";
             atributosNotaPrensa += "anho='" + value.anho + "' ";
             atributosNotaPrensa += "titulo='" + value.titulo + "' ";
@@ -153,8 +182,7 @@ function listarNotaPrensa(BEAN_PAGINATION) {
             atributosNotaPrensa += "subido_por='" + value.subido_por.pers_id + "' ";
             atributosNotaPrensa += "fecha_creacion='" + value.fecha_creacion + "' ";
             atributosNotaPrensa += "fecha_actualizacion='" + value.fecha_actualizacion + "' ";
-
-            //cadenaContenido = cadenaContenido.substring(0, 120) + "...";
+            cadenaContenido = removeTagHTML(cadenaContenido);
             cadenaContenido = getResumenContenidoWeb(cadenaContenido, 120) + "...";
             card = "<div class='col-lg-4 col-md-6'>";
 
@@ -211,9 +239,12 @@ function listarNotaPrensa(BEAN_PAGINATION) {
 function agregarEventosNotaPrensa() {
 
     $('.btn-vista-previa-np').each(function () {
+        var contenido;
         $(this).click(function () {
             $('#tituloNotaPrensaVP').html($(this.parentElement.parentElement).attr('titulo'));
-            $('#resumenNotaPrensaVP').html(getResumenContenidoWeb($(this.parentElement.parentElement).attr('contenido'), 80) + "...");
+            contenido = $(this.parentElement.parentElement).attr('contenido');
+            contenido = removeTagHTML(contenido);
+            $('#resumenNotaPrensaVP').html(getResumenContenidoWeb(contenido, 80) + "...");
             $('#ventanaVistaPreviaNotaPrensa').modal("show");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
@@ -227,7 +258,7 @@ function agregarEventosNotaPrensa() {
                 $('#datePickerFechaER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha')));
             }
             $('#txtTituloNotaPrensaER').val($(this.parentElement.parentElement).attr('titulo'));
-            $('#txtContenidoNotaPrensaER').val($(this.parentElement.parentElement).attr('contenido'));
+            $('#editorWebContenido').summernote('code', $(this.parentElement.parentElement).attr('contenido'));
             $('#txtFuenteNotaPrensaER').val($(this.parentElement.parentElement).attr('fuente'));
             $('#txtEstadoNotaPrensaER').val($(this.parentElement.parentElement).attr('estado'));
             $('#txtFechaCreacionER').val($(this.parentElement.parentElement).attr('fecha_creacion'));
@@ -298,6 +329,7 @@ function valicacionesCamposNotaPrensa() {
 }
 
 function validarFormularioNotaPrensa() {
+    alert('entro validar formulario');
     if ($('#datePickerFechaER').val() === "") {
         $($('#datePickerFechaER').parent()).addClass('has-danger');
         return false;
@@ -310,11 +342,9 @@ function validarFormularioNotaPrensa() {
     } else {
         $(this.parentElement).removeClass('has-danger');
     }
-    if ($('#txtContenidoNotaPrensaER').val() === "") {
-        $($('#txtContenidoNotaPrensaER').parent()).addClass('has-danger');
+    if ($('#editorWebContenido').summernote('isEmpty')) {
+        viewAlert('warning', 'Por favor ingrese contenido');
         return false;
-    } else {
-        $(this.parentElement).removeClass('has-danger');
     }
     if ($('#txtFuenteNotaPrensaER').val() === "") {
         $($('#txtFuenteNotaPrensaER').parent()).addClass('has-danger');

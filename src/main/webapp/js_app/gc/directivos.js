@@ -165,6 +165,7 @@ function procesarAjaxFuncionario() {
     datosSerializadosCompletos.append('numberPageFuncionario', $('#numberPageFuncionario').val());
     datosSerializadosCompletos.append('sizePageFuncionario', $('#sizePageFuncionario').val());
     datosSerializadosCompletos.append('action', $('#actionFuncionario').val());
+    datosSerializadosCompletos.append('editorWebContenido', $('#txtContenidoNotaPrensaER').val());
     console.log($('#actionFuncionario').val());
     $.ajax({
         url: getContext() + '/gestiontransparente/directivos',

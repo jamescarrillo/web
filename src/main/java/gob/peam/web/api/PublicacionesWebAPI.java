@@ -72,7 +72,7 @@ public class PublicacionesWebAPI extends HttpServlet {
                     procesarNotaPrensa(new BEAN_CRUD(this.notaPrensaDAO.getPagination(getParametersNotasPrensa(request))), response);
                     break;
                 case "readNotaPrensa":
-                    request.getRequestDispatcher("/jsp/web/publicaciones/notaPrensaWeb.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/web/publicaciones/notaPrensaWeb2.jsp").forward(request, response);
                     break;
                 default:
                     //request.getRequestDispatcher("/403.jsp").forward(request, response);

@@ -58,7 +58,7 @@
                             <!-- Tab panes -->
                             <div class="panel-body">
                                 <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade in active text-peam" id="tab-base_legal" style="font-size: 16px;text-align: justify">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="tab-base_legal" style="font-size: 16px;text-align: justify">
                                         <p>El Proyecto Especial Alto Mayo (PEAM) fue creado mediante Decreto Supremo Nº. 031-81-PCM como una institución pública descentralizada. En 1990 adquirió la categoría de Programa Presupuestario, con personería jurídica y autonomía económica, financiera, técnica y administrativa, D.L. Nº. 556 Art. 419. <a class="text-primary" href="http://www.peam.gob.pe/GestionTransparente?action=verNormaDirectiva&id=31249" target="_blank">Ver Documento</a></p>
                                         <p>El PEAM es transferido al Gobierno Regional de San Martín, el 09 de setiembre del 2003 mediante D.S. Nº. 024-2003-VIVIENDA, en concordancia con la Ley Nº. 27902 en el que establece el inicio del proceso de transferencia a los Gobiernos Regionales y en el marco del proceso establecido por el Consejo Nacional de Descentralización. <a class="text-primary" href="http://www.peam.gob.pe/GestionTransparente?action=verNormaDirectiva&id=31248" target="_blank">Ver Documento</a> </p>
                                     </div>
@@ -68,7 +68,7 @@
                                         <p>Desde su concepción, el Proyecto Especial Alto Mayo estima su ejecución en dos etapas, la primera etapa con 120,000 Ha. ubicadas en la Margen Derecha del Río Mayo con un presupuesto aproximado de US$ 83?700,000 a precios de 1,983 con Financiamiento Externo, mediante Convenio de Préstamo con el Banco Mundial (BIRF) con US$ 21?882,291 y Convenio de Préstamo con el Fondo Internacional de Desarrollo Agrícola (FIDA) por US$ 22?857,058 DEG, y la segunda etapa con 37,000 Ha. ubicadas en la Margen Izquierda del Río Mayo con una inversión aproximada de 18?000,000 DM mediante el financiamiento de Cooperación Económica de la KfW de Alemania y la contraparte con Recursos Nacionales.</p>
                                         <p>El Proyecto Desarrollo Integral Alto Mayo (DIAM) establece el Componente de Protección Ambiental mediante Canje de Deuda por Naturaleza por DM 10 millones, a través de un aporte financiero del Estado Peruano de DM 4 millones, administrados por PROFONANPE. </p>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade text-peam" id="tab-actualidad" style="font-size: 16px;text-align: justify">
+                                    <div role="tabpanel" class="tab-pane fade" id="tab-actualidad" style="font-size: 16px;text-align: justify">
                                         <div class="text-center mb-30">
                                             <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/fachada_peam.png" />
                                         </div>

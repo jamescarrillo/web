@@ -241,3 +241,15 @@ function getResumenContenidoWeb(contenido, tam) {
     }
     return cadenaResumen;
 }
+
+function removeTagHTML(cadena) {
+    cadena = cadena.replace(/<\/?[^>]+(>|$)/g, "");
+    return cadena;
+    /*
+     if ((str===null) || (str===''))
+     return false;
+     else
+     str = str.toString();
+     return str.replace(/<[^>]*>/g, ''); 
+     */
+}

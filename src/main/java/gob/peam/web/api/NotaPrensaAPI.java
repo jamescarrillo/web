@@ -15,6 +15,8 @@ import gob.peam.web.model.Usuario;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.Utilities;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -70,7 +72,7 @@ public class NotaPrensaAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-            LOG.info(action);
+            LOG.log(Level.INFO, "-->{0}", action);
             switch (this.action) {
                 case "paginarNotaPrensa":
                     procesarNotaPrensa(new BEAN_CRUD(this.notaPrensaDAO.getPagination(getParametersNotasPrensa(request))), response);
@@ -179,7 +181,13 @@ public class NotaPrensaAPI extends HttpServlet {
         obj.setEstado(Boolean.parseBoolean(request.getParameter("txtEstadoNotaPrensaER")));
         obj.setFecha(Utilities.getDateSQLFORMAT(request.getParameter("datePickerFechaER"), "dd/MM/yyyy"));
         obj.setTitulo(request.getParameter("txtTituloNotaPrensaER"));
-        obj.setContenido(request.getParameter("txtContenidoNotaPrensaER"));
+        try {
+            LOG.info(request.getParameter("txtContenidoNotaPrensaER"));
+            LOG.info(URLDecoder.decode(request.getParameter("txtContenidoNotaPrensaER"), "UTF-8"));
+            obj.setContenido(URLDecoder.decode(request.getParameter("txtContenidoNotaPrensaER"), "UTF-8"));
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(NotaPrensaAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
         obj.setFuente(request.getParameter("txtFuenteNotaPrensaER"));
         obj.setFoto(request.getParameter("txtFotoNotaPrensaER"));
         Persona per = ((Usuario) this.session.getAttribute("user")).getPersona();

@@ -13,7 +13,6 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/sum/summernote-bs4.css" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/style.css" rel="stylesheet">
@@ -21,7 +20,6 @@
         <!-- You can change the theme colors from here -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/colors/blue.css" id="theme" rel="stylesheet">
 
-        <!--link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet"-->
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -74,7 +72,7 @@
 
                                                 </select>
                                                 <button type="submit" id="btnBuscarNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar NotaPrensa" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                <button type="button" id="btnAbrirNuevoNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar NotaPrensa" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                <button type="button" id="btnAbrirNuevoNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Nota dePrensa" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -160,9 +158,15 @@
                                             <label for="txtContenidoNotaPrensaER">CONTENIDO</label>
                                             <textarea class="form-control form-control-sm" id="txtContenidoNotaPrensaER" name="txtContenidoNotaPrensaER" type="text" placeholder="CONTENIDO" rows="20"></textarea>
                                         </div-->
+
                                         <div class="col-12 mb-3">
-                                            <label for="txtContenidoNotaPrensaER">CONTENIDO</label>
-                                            <div id="summernote"></div>
+                                            <label for="editorWebContenido">CONTENIDO</label>
+                                            <!--div class="button-group">
+                                                <button class="btn btn-outline-info btn-sm" id="" data-toggle="tooltip" title="Insertar Link"><i class="fas fa-link"></i></button>
+                                                <button class="btn btn-outline-info btn-sm" id="" data-toggle="tooltip" title="Insertar Imagen"><i class="fas fa-image"></i></button>
+                                                <button class="btn btn-outline-info btn-sm" id="" data-toggle="tooltip" title="Insertar Video"><i class="fas fa-video"></i></button>
+                                            </div-->
+                                            <div id="editorWebContenido"></div>
                                         </div>
                                         <div class="form-group col-12 mb-3">
                                             <label for="txtFuenteNotaPrensaER">FUENTE</label>
@@ -177,6 +181,7 @@
                                         <input id="txtEstadoNotaPrensaER" name="txtEstadoNotaPrensaER" type="hidden" value="">
                                         <input id="txtFechaCreacionER" name="txtFechaCreacionER" type="hidden" value="">
                                         <input id="txtFechaActualizacionER" name="txtFechaActualizacionER" type="hidden" value="">
+                                        <input id="txtContenidoNotaPrensaER" name="txtContenidoNotaPrensaER" type="hidden" value="">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -210,8 +215,8 @@
                                             <div class="carousel-item active">
                                                 <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/assets/img/banner/banner-2.jpg" alt="First slide">
                                                 <div class="carousel-caption d-none d-md-block">
-                                                    <h3 class="text-peam-negrita" style="margin-bottom: 30px" id="tituloNotaPrensaVP">First title goes here</h3>
-                                                    <p class="text-peam" style="margin-bottom: 100px" id="resumenNotaPrensaVP">this is the subcontent you can use this</p>
+                                                    <h3 class="text-peam-negrita" style="margin-bottom: 30px" id="tituloNotaPrensaVP">Título de la Noticia</h3>
+                                                    <p class="text-peam" style="margin-bottom: 100px" id="resumenNotaPrensaVP">Resumen de la Noticia</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -273,7 +278,7 @@
         <!-- This page plugins -->
         <!-- ============================================================== -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/sum/summernote-bs4.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/sum/summernote-bs4.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/sum/lang/summernote-es-ES.js"></script>
 
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
