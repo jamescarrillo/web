@@ -218,6 +218,7 @@ function agregarEventosAnuncio() {
             $('#txtContenidoAnuncioER').val($(this.parentElement.parentElement).attr('contenido'));
             $('#datePickerFechaInicioER').val($(this.parentElement.parentElement).attr('anu_fecha_ini'));
             $('#datePickerFechaFinER').val($(this.parentElement.parentElement).attr('anu_fecha_fin'));
+            $('#tipoER').val($(this.parentElement.parentElement).attr('tipo'));
             $('#actionAnuncio').val('updateAnuncio');
             $('#txtTituloModalManAnuncio').html("EDITAR ANUNCIO");
             $('#ventanaManAnuncio').modal("show");
