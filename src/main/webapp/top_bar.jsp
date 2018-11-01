@@ -16,7 +16,7 @@
                         <a class="a-top"><i class="material-icons mr-10">&#xE0B9;</i>info@peam.com</a>
                     </li>
                     <li>
-                        <a href="index" class="a-top" target="_blank">Inicio </a><strong style="color: #ffffff">|</strong>
+                        <a href="<%out.print(getServletContext().getContextPath());%>/index" class="a-top">Inicio </a><strong style="color: #ffffff">|</strong>
                     </li>
                     <li >
                         <a class="a-top">Mapa de Sitio </a><strong style="color: #ffffff">|</strong>
@@ -28,10 +28,10 @@
                         <a href="https://correo.peam.gob.pe/" class="a-top" target="_blank">Correo </a><strong style="color: #ffffff">|</strong>
                     </li>
                     <li>
-                        <a class="a-top">Servicios </a><strong style="color: #ffffff">|</strong>
+                        <a href="<%out.print(getServletContext().getContextPath());%>/servicios" class="a-top">Servicios </a><strong style="color: #ffffff">|</strong>
                     </li>
                     <li>
-                        <a class="a-top">Glosario</a>
+                        <a href="<%out.print(getServletContext().getContextPath());%>/glosario" class="a-top">Glosario</a>
                     </li>
                 </ul>
             </div>

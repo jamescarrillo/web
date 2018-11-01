@@ -116,7 +116,6 @@
                             </article>
                         </div>
                     </div>
-
                     <div class="col-xs-12 text-center">
                         <div class="widget widget_search mb-20">
                             <div class="fb-page" 

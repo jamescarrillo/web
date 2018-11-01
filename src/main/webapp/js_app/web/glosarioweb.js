@@ -17,7 +17,7 @@ $(document).ready(function () {
 function procesarAjaxGlosarioWeb() {
     var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
     $.ajax({
-        url: getContext() + '/glosarioweb',
+        url: getContext() + '/glosario',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',

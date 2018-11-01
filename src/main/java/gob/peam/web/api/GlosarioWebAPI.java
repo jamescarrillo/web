@@ -29,7 +29,7 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-@WebServlet(name = "GlosarioWebAPI", urlPatterns = {"/glosarioweb"})
+@WebServlet(name = "GlosarioWebAPI", urlPatterns = {"/glosario"})
 public class GlosarioWebAPI extends HttpServlet {
     
     @Resource(name = "jdbc/dbweb")
