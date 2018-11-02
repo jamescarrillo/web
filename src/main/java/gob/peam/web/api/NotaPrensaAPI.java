@@ -91,7 +91,7 @@ public class NotaPrensaAPI extends HttpServlet {
                     procesarNotaPrensa(this.notaPrensaDAO.cambiarEstado(Integer.parseInt(request.getParameter("txtIdNotaPrensaER")), Boolean.parseBoolean(request.getParameter("txtEstadoNotaPrensaER")), getParametersNotasPrensa(request)), response);
                     break;
                 default:
-                    request.getRequestDispatcher("/jsp/gc/publicaciones/notaPrensa2.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/gc/publicaciones/notaPrensa.jsp").forward(request, response);
                     break;
             }
         } catch (SQLException ex) {

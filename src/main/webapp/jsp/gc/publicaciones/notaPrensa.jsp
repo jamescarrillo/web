@@ -13,6 +13,7 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap/css/bootstrap.min.css"rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css"rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css"rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/sum/summernote-bs4.css" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/style.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css" rel="stylesheet">
@@ -54,6 +55,7 @@
                                 <div class="card-body pt-1">
                                     <input type="hidden" id="nameForm" value="FrmNotaPrensa">
                                     <input type="hidden" id="actionNotaPrensa" name="action" value="paginarNotaPrensa">
+                                    <input type="hidden" id="actionManNotaPrensa" name="action" value="">
                                     <input type="hidden" id="numberPageNotaPrensa" name="numberPageNotaPrensa" value="1">
                                     <form id="FrmNotaPrensa">
                                         <div class="row mt-3">
@@ -134,7 +136,7 @@
                     <%@ include file="../../../temas_gc.jsp"%>
                 </div>
                 <div class="modal fade" id="ventanaManNotaPrensa" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-scroll" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <form id="FrmNotaPrensaModal">
                                 <div class="modal-header">
@@ -144,7 +146,7 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body modal-body-scroll">
+                                <div class="modal-body">
                                     <div class="row">
                                         <div class="form-group col-12 mb-3">
                                             <label for="datePickerFechaER">FECHA PUBLICACIÓN</label>
@@ -154,9 +156,9 @@
                                             <label for="txtTituloNotaPrensaER">TÍTULO</label>
                                             <input class="form-control form-control-sm" id="txtTituloNotaPrensaER" name="txtTituloNotaPrensaER" type="text" placeholder="TÍTULO" maxlength="200">
                                         </div>
-                                        <div class="form-group col-12 mb-3">
-                                            <label for="txtContenidoNotaPrensaER">CONTENIDO</label>
-                                            <textarea class="form-control form-control-sm" id="txtContenidoNotaPrensaER" name="txtContenidoNotaPrensaER" type="text" placeholder="CONTENIDO" rows="20"></textarea>
+                                        <div class="col-12 mb-3">
+                                            <label for="editorWebContenido">CONTENIDO</label>
+                                            <div id="editorWebContenido"></div>
                                         </div>
                                         <div class="form-group col-12 mb-3">
                                             <label for="txtFuenteNotaPrensaER">FUENTE</label>
@@ -166,6 +168,7 @@
                                             <label for="txtFotoNotaPrensaER">FOTO(Flickr)</label>
                                             <input class="form-control form-control-sm" id="txtFotoNotaPrensaER" name="txtFotoNotaPrensaER" type="text" placeholder="FOTO">
                                         </div>
+                                        <input id="txtContenidoNotaPrensaER" name="txtContenidoNotaPrensaER" type="hidden" value="">
                                         <input id="txtIdNotaPrensaER" name="txtIdNotaPrensaER" type="hidden" value="">
                                         <input id="txtAnhoNotaPrensaER" name="txtAnhoNotaPrensaER" type="hidden" value="">
                                         <input id="txtEstadoNotaPrensaER" name="txtEstadoNotaPrensaER" type="hidden" value="">
@@ -267,6 +270,8 @@
         <!-- This page plugins -->
         <!-- ============================================================== -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/sum/summernote-bs4.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/sum/lang/summernote-es-ES.js"></script>
 
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>

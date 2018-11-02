@@ -588,9 +588,7 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/directivos.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/categoria.js"></script>
 
     </body>
 

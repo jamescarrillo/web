@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
     cargarAniosCombo($('#comboAnioNoticia_'), 2010, "-1", 'AÑO');
@@ -19,7 +18,7 @@ function procesarAjaxNotaPrensaWeb() {
     pathname = pathname.substring(getContext().length, pathname.length);
     var datosSerializadosCompletos = $('#' + $('#nameFormNotaPrensa').val()).serialize();
     $.ajax({
-        url: getContext() + '/publicaciones/noticias',
+        url: getContext() + '/publicaciones/noticias/notas-de-prensa',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
@@ -32,12 +31,10 @@ function procesarAjaxNotaPrensaWeb() {
                 case "/index":
                     listarNotaPrensaWebIndex(jsonResponse.BEAN_PAGINATION);
                     break;
-                case "/publicaciones/noticias":
+                case "/publicaciones/noticias/notas-de-prensa":
                     listarNotaPrensaWebVerNoticias(jsonResponse.BEAN_PAGINATION);
                     break;
             }
-            console.log(jsonResponse);
-            //listarNotaPrensaWeb(jsonResponse.BEAN_PAGINATION);
         },
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
@@ -53,18 +50,12 @@ function listarNotaPrensaWebIndex(BEAN_PAGINATION) {
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var cadenaContenido;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
-            cadenaContenido = value.contenido;
-            cadenaContenido = replaceAll(cadenaContenido, '<p>', '');
-            cadenaContenido = replaceAll(cadenaContenido, '</p>', '\n');
+            cadenaContenido = removeTagHTML(value.contenido);
             if (index < 5) {
                 $('#idNota' + (index + 1)).val(value.id);
                 $('#tituloNotaPrensa' + (index + 1)).html(getTituloWeb(value.titulo, 45));
                 $('#resumenNotaPrensa' + (index + 1)).html(getTituloWeb(getResumenContenidoWeb(cadenaContenido, 150), 90));
             }
-            //$('#contenedorCarrusel').append(getCardCarrusel(value.foto, value.titulo, getResumenContenidoWeb(cadenaContenido, 150) + getFormViewNotice(value.id)));
-            //$('#imgCNotaPrensa' + index).attr('src', value.foto);
-            //$('#tituloCNotaPrensa' + index).html(value.titulo);
-            //$('#resumenCNotaPrensa' + index).html(getResumenContenidoWeb(cadenaContenido, 150) + getFormViewNotice(value.id));
             $('#imgCNotaPrensa' + index).attr('src', value.foto);
             $('#tituloCNotaPrensa' + index).html(value.titulo + getFormViewNotice(value.id));
 
@@ -81,7 +72,6 @@ function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
     $('#contenedorArticulos').empty();
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var cadenaContenido;
-        var cadenaContenido_2;
         var row = "<div class='row'>";
         var contador = 0;
         if ($('#idNota').val() === "-1") {
@@ -92,37 +82,28 @@ function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
             $('#contenedorNoticiaPrincial').css('display', 'block');
         }
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
-            //\r\n\r\n
-            cadenaContenido = value.contenido;
-            cadenaContenido = replaceAll(cadenaContenido, '<p>', '');
-            cadenaContenido = replaceAll(cadenaContenido, '</p>', '<br><br>');
-            cadenaContenido = replaceAll(cadenaContenido, '\r\n\r\n', '<br><br>');
-            cadenaContenido_2 = value.contenido;
-            cadenaContenido_2 = replaceAll(cadenaContenido_2, '<p>', '');
-            cadenaContenido_2 = replaceAll(cadenaContenido_2, '</p>', '<br>');
-            cadenaContenido_2 = replaceAll(cadenaContenido_2, '\r\n\r\n', '<br>');
+            cadenaContenido = removeTagHTML(value.contenido);
             if (value.id.toString() === $('#idNota').val()) {
                 $('#idImgNoticiaPrincipal').attr('src', value.foto);
                 $('#idTituloNoticiaPrincipal').html(value.titulo);
                 $('#idFuenteNoticiaPrincipal').html(value.fuente);
-                $('#idContenidoNoticiaPrincipal').html(cadenaContenido + "<br><br>");
+                $('#idContenidoNoticiaPrincipal').html(value.contenido + "<br>");
                 $('#idFechaPublicacionNoticiaPrincipal').html(value.fecha);
             } else {
                 contador++;
                 if (contador % 3 === 0) {
-                    row += getCardViewNoticia(value.foto, value.titulo, getResumenContenidoWeb(cadenaContenido_2, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
+                    row += getCardViewNoticia(value.foto, value.titulo, getResumenContenidoWeb(cadenaContenido, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
                     row += "</div>";
                     $('#contenedorArticulos').append(row);
                     row = "<div class='row'>";
                 } else {
-                    row += getCardViewNoticia(value.foto, value.titulo, getResumenContenidoWeb(cadenaContenido_2, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
+                    row += getCardViewNoticia(value.foto, value.titulo, getResumenContenidoWeb(cadenaContenido, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
                 }
             }
         });
 
         $('.ir-ver-noticia').each(function (index, value) {
             $(this).click(function () {
-                console.log($(this.parentElement));
                 $(this.parentElement).submit();
             });
         });
@@ -185,7 +166,7 @@ function addEventsNoticias() {
 
 function getFormViewNotice(idNoticia) {
     var form = "";
-    form += "<form class='form-ver-noticia' method='POST' action='publicaciones/noticias'>";
+    form += "<form class='form-ver-noticia' method='POST' action='notas-de-prensa'>";
     form += "<input type='hidden' name='idNota' value='" + idNoticia + "'>";
     form += "<input type='hidden' name='action' value='readNotaPrensa'>";
     //form += "<button type='submit' class='btn-link' style='color: #a20505; font-weight: bold;'>Ver Noticia <i class='fa fa-long-arrow-right'></i></button>";
@@ -221,7 +202,7 @@ function getCardViewNoticia(foto, titulo, contenido, idnota, fecha_publicacion, 
     article += "</header>";
     article += "<div class='entry-content text-peam'><p>" + contenido + "</p></div>";
     article += "<footer class='entry-footer'>";
-    article += "<form class='form-ver-noticia' method='POST' action='noticias'>";
+    article += "<form class='form-ver-noticia' method='POST' action='notas-de-prensa'>";
     article += "<input type='hidden' name='idNota' value='" + idnota + "'>";
     article += "<input type='hidden' name='action' value='readNotaPrensa'>";
     article += "<a class='readmore pull-right ir-ver-noticia'>Leer m&aacute;s <i class='fa fa-long-arrow-right'></i></a>";
@@ -232,4 +213,3 @@ function getCardViewNoticia(foto, titulo, contenido, idnota, fecha_publicacion, 
     article += "</div>";
     return article;
 }
-

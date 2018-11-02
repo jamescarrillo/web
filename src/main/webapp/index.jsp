@@ -119,7 +119,7 @@
                              data-start="1200" data-splitin="none" data-splitout="none"
                              data-responsive_offset="on"
                              style="z-index: 7; white-space: nowrap;">
-                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
+                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota1" value="">
                                 <input type="hidden" name="action" id="action1" value="readNotaPrensa">
                                 <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
@@ -183,7 +183,7 @@
                              data-start="1200" data-splitin="none" data-splitout="none"
                              data-responsive_offset="on"
                              style="z-index: 7; white-space: nowrap;">
-                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
+                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota2" value="">
                                 <input type="hidden" name="action" id="action2" value="readNotaPrensa">
                                 <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
@@ -247,7 +247,7 @@
                              data-start="1200" data-splitin="none" data-splitout="none"
                              data-responsive_offset="on"
                              style="z-index: 7; white-space: nowrap;">
-                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
+                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota3" value="">
                                 <input type="hidden" name="action" id="action3" value="readNotaPrensa">
                                 <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
@@ -311,7 +311,7 @@
                              data-start="1200" data-splitin="none" data-splitout="none"
                              data-responsive_offset="on"
                              style="z-index: 7; white-space: nowrap;">
-                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
+                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota4" value="">
                                 <input type="hidden" name="action" id="action4" value="readNotaPrensa">
                                 <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
@@ -375,7 +375,7 @@
                              data-start="1200" data-splitin="none" data-splitout="none"
                              data-responsive_offset="on"
                              style="z-index: 7; white-space: nowrap;">
-                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias">
+                            <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota5" value="">
                                 <input type="hidden" name="action" id="action5" value="readNotaPrensa">
                                 <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>

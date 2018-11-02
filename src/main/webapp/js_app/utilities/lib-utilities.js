@@ -159,6 +159,7 @@ function getOptionsPagination(count_filter, $sizePage, $numberPage, $action, val
                     $numberPage.val(page);
                     $form.val(valueForm);
                     $modalLoanding.modal("show");
+                    console.log("paso por el click del paginar :(");
                 }
             };
     return options;

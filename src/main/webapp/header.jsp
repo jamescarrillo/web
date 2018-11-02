@@ -82,11 +82,11 @@
                                 <div class="col12">
                                     <h2>Publicaciones</h2>
                                     <ul class="list-unstyled clearfix">
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/noticias">Noticias / Nota de Prensa</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/multimedia">Noticias Multimedia</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/memoriasanuales">Memorias Anuales</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/noticias/notas-de-prensa">Noticias / Nota de Prensa</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/noticias/multimedia">Noticias Multimedia</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/memorias-anuales">Memorias Anuales</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/comunicados">Comunicados</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/extras">Otras Publicaciones</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/otras-publicaciones">Otras Publicaciones</a></li>
                                     </ul>
                                 </div>    
                             </div>

@@ -28,7 +28,11 @@ import javax.sql.DataSource;
  * @author JhanxD
  */
 @WebServlet(name = "PublicacionesWebAPI", urlPatterns = {
-    "/publicaciones/noticias"
+    "/publicaciones/noticias/notas-de-prensa",
+    "/publicaciones/noticias/multimedia",
+    "/publicaciones/memorias-anuales",
+    "/publicaciones/comunicados",
+    "/publicaciones/otras-publicaciones"
 })
 public class PublicacionesWebAPI extends HttpServlet {
 
@@ -65,18 +69,29 @@ public class PublicacionesWebAPI extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            this.action = request.getParameter("action") == null ? "readNotaPrensa" : request.getParameter("action");
-            LOG.info(action);
-            switch (this.action) {
-                case "paginarNotaPrensa":
-                    procesarNotaPrensa(new BEAN_CRUD(this.notaPrensaDAO.getPagination(getParametersNotasPrensa(request))), response);
+            switch (request.getRequestURI().substring(request.getContextPath().length())) {
+                case "/publicaciones/noticias/notas-de-prensa":
+                    this.action = request.getParameter("action") == null ? "readNotaPrensa" : request.getParameter("action");
+                    LOG.info(action);
+                    switch (this.action) {
+                        case "paginarNotaPrensa":
+                            procesarNotaPrensa(new BEAN_CRUD(this.notaPrensaDAO.getPagination(getParametersNotasPrensa(request))), response);
+                            break;
+                        case "readNotaPrensa":
+                            request.getRequestDispatcher("/jsp/web/publicaciones/notaPrensaWeb.jsp").forward(request, response);
+                            break;
+                    }
                     break;
-                case "readNotaPrensa":
-                    request.getRequestDispatcher("/jsp/web/publicaciones/notaPrensaWeb2.jsp").forward(request, response);
+                case "/publicaciones/noticias/multimedia":
+                    break;
+                case "/publicaciones/memorias-anuales":
+                    break;
+                case "/publicaciones/comunicados":
+                    break;
+                case "/publicaciones/otras-publicaciones":
                     break;
                 default:
-                    //request.getRequestDispatcher("/403.jsp").forward(request, response);
-                    response.sendRedirect("../index");
+                    response.sendRedirect("/index");
                     break;
             }
         } catch (SQLException ex) {
