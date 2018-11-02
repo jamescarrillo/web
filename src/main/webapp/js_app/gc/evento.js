@@ -42,7 +42,7 @@ $(document).ready(function () {
         $('#FrmEventoModal select').parent().removeClass("has-danger");
         $('#txtEstadoEventoER').val("false");
         $('#actionEvento').val("addEvento");
-        $('#txtTituloModalManEvento').html("REGISTRAR NOTA PRENSA");
+        $('#txtTituloModalManEvento').html("REGISTRAR EVENTO");
         $('#ventanaManEvento').modal("show");
         document.getElementsByTagName("body")[0].style.paddingRight = "0";
     });
@@ -60,6 +60,7 @@ function procesarAjaxEvento() {
         datosSerializadosCompletos += "&txtEvento=" + $('#txtEvento').val();
         datosSerializadosCompletos += "&comboAnio=" + $('#comboAnio').val();
     }
+    datosSerializadosCompletos += "&txtEstadoEventoER=" + $('#txtEstadoEventoER').val();
     datosSerializadosCompletos += "&numberPageEvento=" + $('#numberPageEvento').val();
     datosSerializadosCompletos += "&sizePageEvento=" + $('#sizePageEvento').val();
     datosSerializadosCompletos += "&action=" + $('#actionEvento').val();
@@ -145,8 +146,8 @@ function listarEvento(BEAN_PAGINATION) {
             card += "<h3 class='" + textColor + "'>" + value.titulo + "</h3>";
 
             card += "<p class='m-t-15 m-b-20 " + textColor + "'>" + value.fecha + "</p>";
-            
-            card += "<p class='m-t-15 m-b-20 " + textColor + "'><link href='"+value.link+"'></link></p>";
+
+            card += "<p class='m-t-15 m-b-20 " + textColor + "'><a href='" + value.link + "' aria-hidden='true'>Ver</a></p>";
 
             //card += cadenaContenido;
 
@@ -156,6 +157,7 @@ function listarEvento(BEAN_PAGINATION) {
 
             card += "<div class='ml-auto'>";
 
+            card += "<a style='cursor:pointer' class='link mr-2 btn-cambiar-estado-evento' data-toggle='tooltip' title='" + opcion_estado + "' data-original-title='' opcion_estado='" + opcion_estado.toLowerCase() + "'>" + icono + "</a>";
             card += "<a style='cursor:pointer' class='link mr-2 btn-editar-np' data-toggle='tooltip' title='Editar' data-original-title='Editar'><i class='fas fa-edit'></i></a>";
             card += "<a style='cursor:pointer' class='link btn-eliminar-np' data-toggle='tooltip' title='Eliminar' data-original-title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
 
@@ -215,6 +217,36 @@ function agregarEventosEvento() {
         $(this).click(function () {
             $('#txtIdER').val($(this.parentElement.parentElement).attr('id'));
             viewAlertDelete("Evento");
+            document.getElementsByTagName("body")[0].style.paddingRight = "0";
+        });
+    });
+    
+    $('.btn-cambiar-estado-evento').each(function () {
+        $(this).click(function () {
+            $('#txtIdER').val($(this.parentElement.parentElement).attr('id'));
+            if ($(this).attr('opcion_estado').toLowerCase() !== "publicar") {
+                $('#txtEstadoEventoER').val("true");
+            } else {
+                $('#txtEstadoEventoER').val("false");
+            }
+            swal({
+                title: 'PEAM',
+                text: "¿Está seguro de " + $(this).attr('opcion_estado') + " este Evento?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, continuar!',
+                cancelButtonText: 'No, cancelar!',
+                confirmButtonClass: 'btn btn-info',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.value) {
+                    $('#actionEvento').val("activateEvento");
+                    $("#nameForm").val("FrmEventoModal");
+                    $('#modalCargandoEvento').modal("show");
+                }
+            });
+            $('.swal2-confirm').css("margin-right", "15px");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });

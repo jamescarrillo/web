@@ -43,23 +43,23 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header bg-light">
-                                    <strong class="text-info">EVENTOS</strong>
+                                    <strong class="text-info">ESTUDIOS</strong>
                                 </div>
                                 <div class="card-body pt-1">
-                                    <input type="hidden" id="nameForm" value="FrmEvento">
-                                    <input type="hidden" id="actionEvento" name="action" value="paginarEvento">
-                                    <input type="hidden" id="numberPageEvento" name="numberPageEvento" value="1">
-                                    <form id="FrmEvento">
+                                    <input type="hidden" id="nameForm" value="FrmEstudio">
+                                    <input type="hidden" id="actionEstudio" name="action" value="paginarEstudio">
+                                    <input type="hidden" id="numberPageEstudio" name="numberPageEstudio" value="1">
+                                    <form id="FrmEstudio">
                                         <div class="row mt-3">
                                             <div class="form-group col-lg-7 col-md-8 col-12 mb-3">
-                                                <input type="text" name="txtEvento" id="txtEvento" class="form-control form-control-sm" placeholder="TÍTULO">
+                                                <input type="text" name="txtEstudio" id="txtEstudio" class="form-control form-control-sm" placeholder="TÍTULO">
                                             </div>
                                             <div class="input-group col-lg-5 col-md-4 col-12 mb-3">
-                                                <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarEvento'>
+                                                <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarEstudio'>
 
                                                 </select>
-                                                <button type="submit" id="btnBuscarEvento" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Evento" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                <button type="button" id="btnAbrirNuevoEvento" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Evento" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                <button type="submit" id="btnBuscarEstudio" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Estudio" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                                <button type="button" id="btnAbrirNuevoEstudio" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Estudio" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -67,7 +67,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" id="containerRegistrosEvento">
+                    <div class="row" id="containerRegistrosEstudio">
 
                     </div>
                     <div class="row">
@@ -78,7 +78,7 @@
                                      style="padding-top: 10px; padding-bottom: 10px">
                                     <div class="row">
                                         <div class="col-md-2 col-sm-3 col-4">
-                                            <select id="sizePageEvento" name="sizePageEvento" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarEvento'>
+                                            <select id="sizePageEstudio" name="sizePageEstudio" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarEstudio'>
                                                 <option value="12">12</option>
                                                 <option value="15">15</option>
                                                 <option value="18">18</option>
@@ -87,7 +87,7 @@
                                         </div>
                                         <div class="col-md-10 col-sm-9 col-8">
                                             <nav aria-label="Page navigation example">
-                                                <ul id="paginationEvento"
+                                                <ul id="paginationEstudio"
                                                     class="pagination pagination-sm justify-content-end">
 
                                                 </ul>
@@ -101,12 +101,12 @@
                     </div>
                     <%@ include file="../../../temas_gc.jsp"%>
                 </div>
-                <div class="modal fade" id="ventanaManEvento" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ventanaManEstudio" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-scroll" role="document">
                         <div class="modal-content">
-                            <form id="FrmEventoModal">
+                            <form id="FrmEstudioModal">
                                 <div class="modal-header">
-                                    <h6 class="modal-title" id="txtTituloModalManEvento"></h6>
+                                    <h6 class="modal-title" id="txtTituloModalManEstudio"></h6>
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -123,26 +123,46 @@
                                             <input class="form-control form-control-sm" id="txtTituloER" name="txtTituloER" type="text" placeholder="TÍTULO" maxlength="200">
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtAreaER">DIRECCION/AREA</label>
-                                            <select id="txtAreaER" name="txtAreaER" class="form-control form-control-sm">
-                                                <option value="-1">Seleccione...</option>
-                                                <option value="1">Dirección de Infraestructura</option>
-                                                <option value="2">Dirección de Manejo Ambiental</option>
-                                                <option value="3">Dirección de Desarrollo Agropecuario</option>
-                                                <option value="4">Area de Estudios</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-12 mb-3">
                                             <label for="txtFotoER">FOTO(Flickr)</label>
                                             <input class="form-control form-control-sm" id="txtFotoER" name="txtFotoER" type="text" placeholder="FOTO">
                                         </div>
-                                        <div class="form-group col-12 mb-3">
-                                            <label for="txtLinkER">LINK</label>
-                                            <input class="form-control form-control-sm" id="txtLinkER" name="txtLinkER" type="text" placeholder="LINK">
+                                        <div class="form-group col-6 mb-3">
+                                            <label for="comboSeguimientoER">ESTADO DEL ESTUDIO</label>
+                                            <select id="comboSeguimientoER" name="comboSeguimientoER" class="form-control form-control-sm">
+                                                <option value="-1">Seleccione...</option>
+                                                <option value="En Formulación">En Formulación</option>
+                                                <option value="En Evaluación">En Evaluación</option>
+                                                <option value="PIP Viable">PIP Viable</option>
+                                                <option value="Registro en Fase de Inversión">Registro en Fase de Inversión</option>
+                                                <option value="Cerrado">Cerrado</option>
+                                            </select>
                                         </div>
-                  
+                                        <div class="form-group col-6 mb-3">
+                                            <label for="txtSnipER">SNIP DEL ESTUDIO</label>
+                                            <input class="form-control form-control-sm" id="txtSnipER" name="txtSnipER" type="text" placeholder="SNIP">
+                                        </div>
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtObjetivoER">OBJETIVO DEL ESTUDIO</label>
+                                            <textarea class="form-control form-control-sm" id="txtObjetivoER" name="txtObjetivoER" rows="10" placeholder="OBJETIVO"></textarea>
+                                        </div>
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtCantBeneficiariosER">CANTIDAD DE BENEFICIARIOS</label>
+                                            <input class="form-control form-control-sm" id="txtCantBeneficiariosER" name="txtCantBeneficiariosER" type="text" placeholder="CANTIDAD DE BENEFICIARIOS">
+                                        </div>
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtCaracBeneficiariosER">CARACTERISTICAS DE BENEFICIARIOS</label>
+                                            <textarea class="form-control form-control-sm" id="txtCaracBeneficiariosER" name="txtCaracBeneficiariosER" rows="10" placeholder="CARACTERISTICAS"></textarea>
+                                        </div>
+                                        <div class="form-group col-6 mb-3">
+                                            <label for="txtLugarER">LUGAR DEL ESTUDIO</label>
+                                            <input class="form-control form-control-sm" id="txtLugarER" name="txtLugarER" type="text" placeholder="LUGAR">
+                                        </div>
+                                        <div class="form-group col-6 mb-3">
+                                            <label for="txtMapaER">MAPA DEL ESTUDIO (GOOGLE MAPS)</label>
+                                            <input class="form-control form-control-sm" id="txtMapaER" name="txtMapaER" type="text" placeholder="MAPA">
+                                        </div>
                                         <input id="txtIdER" name="txtIdER" type="hidden" value="">
-                                        <input id="txtEstadoEventoER" name="txtEstadoEventoER" type="hidden" value="0">
+                                        <input id="txtEstadoEstudioER" name="txtEstadoEstudioER" type="hidden" value="0">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -155,7 +175,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="ventanaVistaPreviaEvento" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ventanaVistaPreviaEstudio" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -176,8 +196,8 @@
                                             <div class="carousel-item active">
                                                 <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/assets/img/banner/banner-2.jpg" alt="First slide">
                                                 <div class="carousel-caption d-none d-md-block">
-                                                    <h3 class="text-peam-negrita" style="margin-bottom: 30px" id="tituloEventoVP">First title goes here</h3>
-                                                    <p class="text-peam" style="margin-bottom: 100px" id="resumenEventoVP">this is the subcontent you can use this</p>
+                                                    <h3 class="text-peam-negrita" style="margin-bottom: 30px" id="tituloEstudioVP">First title goes here</h3>
+                                                    <p class="text-peam" style="margin-bottom: 100px" id="resumenEstudioVP">this is the subcontent you can use this</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -199,7 +219,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="modalCargandoEvento" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+            <div class="modal fade" id="modalCargandoEstudio" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-body">
@@ -244,9 +264,8 @@
     <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
     <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
     <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
-    <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/evento.js"></script>
+    <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/estudio.js"></script>
 
 </body>
 
 </html>
-
