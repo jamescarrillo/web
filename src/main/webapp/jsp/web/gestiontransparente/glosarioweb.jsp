@@ -59,7 +59,7 @@
                                                 <div class="col-md-10 col-sm-9 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtTituloGlosario" id="txtTituloGlosario">
-                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Glosario</font></font></label>
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Término</font></font></label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 col-xs-12">

@@ -187,5 +187,4 @@ public class CalendarioConvDAOImpl implements CalendarioConvDAO {
     public CalendarioConv get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
 }

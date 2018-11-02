@@ -44,6 +44,12 @@ public class DownloadFileAPI extends HttpServlet {
             case "cvs":
                 download(response, request.getParameter("file"), getServletContext().getRealPath("/peam_resources_app/cvs/"));
                 break;
+            case "downloadDocumentConvocatorias":
+                download(response, request.getParameter("file"), getServletContext().getRealPath("/peam_resources_app/conf_app/ArchvivosConvocatorias/"));
+                break;
+            case "downloadCV":
+                download(response, request.getParameter("file"), getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/cv/"));
+                break;
             default:
                 response.sendRedirect("403.jsp");
                 break;

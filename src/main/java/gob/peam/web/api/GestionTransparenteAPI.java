@@ -16,7 +16,6 @@ import gob.peam.web.model.Funcionario;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.Utilities;
 import java.io.File;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -224,7 +223,7 @@ public class GestionTransparenteAPI extends HttpServlet {
         //VALIDAMOS EL NUEVO ARCHIVO
         if (file.exists()) {
             String prefijo = "C_";
-            file = new File(path +Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+            file = new File(path + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
             if (fun == null) {
                 dir.setFoto(prefijo + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
             } else {
@@ -249,7 +248,7 @@ public class GestionTransparenteAPI extends HttpServlet {
         //VALIDAMOS EL NUEVO ARCHIVO
         if (file.exists()) {
             String prefijo = "C_";
-            file = new File(path +Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+            file = new File(path + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
             if (fun == null) {
                 dir.setHoja_vida(prefijo + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
             } else {
@@ -290,7 +289,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                     break;
                 default:
                     copiar = false; //YA NO SE COPIA PORQUE ES EL MISMO, NO HAY ARCHIVO
-                    funcionario.setFoto("C_"+String.valueOf(request.getParameter("txtNombreFoto")));
+                    funcionario.setFoto("C_" + String.valueOf(request.getParameter("txtNombreFoto")));
                     break;
             }
             if (fileTemp != null && fileTemp.exists()) {
@@ -309,7 +308,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                     if (!request.getParameter("txtNombreFileResultadoActual").equals("")) {
                         fileTempCV = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/cv/C_" + String.valueOf(request.getParameter("txtNombreFileResultadoActual"))));
                     }
-                    funcionario.setHoja_vida("C_" + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+                    funcionario.setHoja_vida("C_" + Paths.get(fileCV.getSubmittedFileName()).getFileName().toString());
                     break;
                 case "DEFECTO":
                     fileTempCV = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/cv/C_" + String.valueOf(request.getParameter("txtNombreFileResultadoActual"))));
@@ -318,7 +317,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                     break;
                 default:
                     copiarCV = false; //YA NO SE COPIA PORQUE ES EL MISMO, NO HAY ARCHIVO
-                    funcionario.setHoja_vida("C_"+String.valueOf(request.getParameter("txtNombreFileResultadoActual")));
+                    funcionario.setHoja_vida("C_" + String.valueOf(request.getParameter("txtNombreFileResultadoActual")));
                     break;
             }
             if (fileTempCV != null && fileTempCV.exists()) {
@@ -415,7 +414,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                     break;
                 default:
                     copiar = false; //YA NO SE COPIA PORQUE ES EL MISMO, NO HAY ARCHIVO
-                    directivo.setFoto("C_"+String.valueOf(request.getParameter("txtNombreFotoDIR")));
+                    directivo.setFoto("C_" + String.valueOf(request.getParameter("txtNombreFotoDIR")));
                     break;
             }
             if (fileTemp != null && fileTemp.exists()) {
@@ -434,7 +433,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                     if (!request.getParameter("txtNombreFileResultadoActualDIR").equals("")) {
                         fileTempCV = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/cv/C_" + String.valueOf(request.getParameter("txtNombreFileResultadoActualDIR"))));
                     }
-                    directivo.setHoja_vida("C_" + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+                    directivo.setHoja_vida("C_" + Paths.get(fileCV.getSubmittedFileName()).getFileName().toString());
                     break;
                 case "DEFECTO":
                     fileTempCV = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/DirectivoFuncionario/cv/C_" + String.valueOf(request.getParameter("txtNombreFileResultadoActualDIR"))));
@@ -443,7 +442,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                     break;
                 default:
                     copiarCV = false; //YA NO SE COPIA PORQUE ES EL MISMO, NO HAY ARCHIVO
-                    directivo.setHoja_vida("C_"+String.valueOf(request.getParameter("txtNombreFileResultadoActualDIR")));
+                    directivo.setHoja_vida("C_" + String.valueOf(request.getParameter("txtNombreFileResultadoActualDIR")));
                     break;
             }
             if (fileTempCV != null && fileTempCV.exists()) {
@@ -481,7 +480,6 @@ public class GestionTransparenteAPI extends HttpServlet {
         }
         return directivo;
     }
-
     /**
      * Returns a short description of the servlet.
      *
