@@ -68,7 +68,7 @@
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/eventos" title="Eventos">Eventos</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/manuales">M. Anuales</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/notasprensa" title="Notas de Prensa">Notas de Prensa</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/noticiasmultimedia" title="Noticias Multimedia">Noticias Multimedia</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/multimedia" title="Noticias Multimedia">Noticias Multimedia</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/obrasyproyectos" title="Obras y Proyectos">Obras y Proyectos</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/otraspublicaciones" title="Otras Publicaciones">Otras Publicaciones</a></li>
                     </ul>
@@ -92,14 +92,15 @@
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-tab" title="Participación Ciudadana"></i><span class="hide-menu">Part. Ciudadana</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#" title="Comentarios y Sugerencias">Comentarios/Sugerencia</a></li>
-                        <li><a href="#" title="Libro de Reclamaciones">Lib. Reclamaciones</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/participacionciudadana/comentariossugerencias" title="Comentarios y Sugerencias">Comentarios/Sugerencia</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/participacionciudadana/libroreclamaciones" title="Libro de Reclamaciones">Lib. Reclamaciones</a></li>
                         <li><a href="#" title="Solicitud 27806">Solicitud 27806</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings" title="Personalización"></i><span class="hide-menu">Personalización</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#" title="Configuración Correo">Conf. Correo</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/personalizacion/correo" title="Configuración Correo">Conf. Correo</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/personalizacion/web" title="Configuración Web">Conf. Web</a></li>
                     </ul>
                 </li>
             </ul>

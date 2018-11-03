@@ -18,9 +18,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.sql.DataSource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  *
@@ -28,7 +27,8 @@ import org.apache.commons.logging.LogFactory;
  */
 public class MultimediaDAOImpl implements MultimediaDAO {
 
-    private final Log logger = LogFactory.getLog(DirectivoDAOImpl.class);
+    private static final Logger LOG = Logger.getLogger(MultimediaDAOImpl.class.getName());
+
     private final DataSource pool;
 
     public MultimediaDAOImpl(DataSource pool) {
@@ -102,17 +102,21 @@ public class MultimediaDAOImpl implements MultimediaDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.multimedia WHERE "
-                    + "(LOWER(TITULO) LIKE CONCAT('%',?,'%'))");
+                    + "(LOWER(TITULO) LIKE CONCAT('%',?,'%')) "
+                    + String.valueOf(parameters.get("SQL_ESTADO")) + " ");
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            LOG.info(pst.toString());
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
             }
             pst = conn.prepareStatement("SELECT * FROM WEB.multimedia WHERE "
-                    + "(LOWER(TITULO) LIKE CONCAT('%',?,'%'))"
+                    + "(LOWER(TITULO) LIKE CONCAT('%',?,'%')) "
+                    + String.valueOf(parameters.get("SQL_ESTADO")) + " "
                     + String.valueOf(parameters.get("SQL_ANIO")) + "ORDER BY "
                     + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            LOG.info(pst.toString());
             rs = pst.executeQuery();
             List<Multimedia> list = new ArrayList<>();
             while (rs.next()) {

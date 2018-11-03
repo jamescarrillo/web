@@ -52,14 +52,14 @@
                                     <form id="FrmLibroReclamo">
                                         <div class="row mt-3">
                                             <div class="form-group col-lg-5 col-md-8 col-12 mb-3">
-                                                <input type="text" name="txtLibroReclamo" id="txtLibroReclamo" class="form-control form-control-sm" placeholder="USUARIO">
+                                                <input type="text" name="txtLibroReclamo" id="txtLibroReclamo" class="form-control form-control-sm" placeholder="">
                                             </div>
                                             <div class="input-group col-lg-3 col-md-4 col-12 mb-3">
                                                 <select id="comboTipoListaReclamo" name="comboTipoListaReclamo" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarLibroReclamo'>
                                                     <option value="-1">TODOS</option>
                                                     <option value="false">SIN RESPONDER</option>
                                                     <option value="true">RESPONDIDOS</option>
-                                                    
+
                                                 </select>
                                             </div>
                                             <div class="input-group col-lg-4 col-md-4 col-12 mb-3">
@@ -74,8 +74,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" id="containerComentarios">
-                        
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="comment-widgets" id="containerComentarios">
+
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-12">
@@ -150,11 +154,11 @@
                                             <input class="form-control form-control-sm" id="txtCorreoER" name="txtCorreoER" type="text" placeholder="CORREO">
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtDescripcionER">CONTENIDO DEL RECLAMO</label>
+                                            <label for="txtDescripcionER">CONTENIDO</label>
                                             <textarea class="form-control form-control-sm" id="txtDescripcionER" name="txtDescripcionER" rows="10" placeholder="RECLAMO"></textarea>
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtRespuestaER">RESPUESTA DEL RECLAMO</label>
+                                            <label for="txtRespuestaER">RESPUESTA</label>
                                             <textarea class="form-control form-control-sm" id="txtRespuestaER" name="txtRespuestaER" rows="10" placeholder="RESPUESTA"></textarea>
                                         </div>
                                         <input id="txtNumeroER" name="txtNumeroER" type="hidden" value="">
@@ -172,54 +176,54 @@
                         </div>
                     </div>
                 </div>
-                
-            <div class="modal fade" id="modalCargandoLibroReclamo" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
-                <div class="modal-dialog modal-sm">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <div class="progress" style="margin-bottom: 0px;">
-                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
-                                    Cargando...
+
+                <div class="modal fade" id="modalCargandoLibroReclamo" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="progress" style="margin-bottom: 0px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                        Cargando...
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <footer class="footer"> © 2018 Peam </footer>
             </div>
-            <footer class="footer"> © 2018 Peam </footer>
         </div>
-    </div>
-    <script
-    src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/popper/popper.min.js"></script>
-    <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="<%out.print(getServletContext().getContextPath());%>/js/waves.js"></script>
-    <!--Menu sidebar -->
-    <script src="<%out.print(getServletContext().getContextPath());%>/js/sidebarmenu.js"></script>
-    <!--stickey kit -->
-    <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
-    <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-    <!--Custom JavaScript -->
-    <script src="<%out.print(getServletContext().getContextPath());%>/js/custom.min.js"></script>
+        <script
+        src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/jquery/jquery.min.js"></script>
+        <!-- Bootstrap tether Core JavaScript -->
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/popper/popper.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
+        <!-- slimscrollbar scrollbar JavaScript -->
+        <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.slimscroll.js"></script>
+        <!--Wave Effects -->
+        <script src="<%out.print(getServletContext().getContextPath());%>/js/waves.js"></script>
+        <!--Menu sidebar -->
+        <script src="<%out.print(getServletContext().getContextPath());%>/js/sidebarmenu.js"></script>
+        <!--stickey kit -->
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
+        <!--Custom JavaScript -->
+        <script src="<%out.print(getServletContext().getContextPath());%>/js/custom.min.js"></script>
 
-    <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/moment/moment.js"></script>
-    <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/moment/moment.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
 
-    <!-- ============================================================== -->
-    <!-- This page plugins -->
-    <!-- ============================================================== -->
-    <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+        <!-- ============================================================== -->
+        <!-- This page plugins -->
+        <!-- ============================================================== -->
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
 
-    <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
-    <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
-    <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
-    <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/libroreclamacion.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/libroreclamacion.js"></script>
 
-</body>
+    </body>
 
 </html>

@@ -14,6 +14,9 @@ $(document).ready(function () {
      */
 
     procesarAjaxAnunciosWeb();
+    procesarAjaxGaleriaWeb();
+    //procesarAjaxMultimediaWeb();
+
 });
 
 function procesarAjaxAnunciosWeb() {
@@ -43,6 +46,123 @@ function procesarAjaxAnunciosWeb() {
     return false;
 }
 
+function procesarAjaxGaleriaWeb() {
+    var apiKey = '43635b83205357579f0b3da4d79feb48';
+    var idUsuario = '83313636@N07';
+    var idAlbum = '72157691821802514';
+    $.ajax({
+        url: "https://api.flickr.com/services/rest/",
+        type: 'GET',
+        data: {
+            method: "flickr.photosets.getPhotos",
+            api_key: apiKey,
+            photoset_id: idAlbum,
+            user_id: idUsuario,
+            format: "rest",
+            per_page: 9,
+            page: 1,
+            extras: "url_c,url_m"
+        },
+        success: function (response) {
+            var portafolio;
+            var dataGrupo;
+            $.each($(response).find('photo'), function (i, item) {
+                dataGrupo = '["all"]';
+                portafolio = "<div class='portfolio-item' data-groups='" + dataGrupo + "'>";
+
+                portafolio += "<div class='portfolio-wrapper'>";
+                portafolio += "<div class='thumb'>";
+                portafolio += "<div class='bg-overlay'></div>";
+                portafolio += "<img src='" + $(item).attr('url_c') + "' alt=''>";
+                portafolio += "<div class='portfolio-intro'>";
+
+                portafolio += "<div class='action-btn'>";
+                portafolio += "<a href='" + $(item).attr('url_c') + "' class='tt-lightbox' title=''><i class='fa fa-search'></i></a>";
+                portafolio += "</div>";
+                portafolio += "<h2><a>Ver</a></h2>";
+                portafolio += "<p><a>Peam</a></p>";
+
+                portafolio += "</div>";
+
+                portafolio += "</div>";
+
+                portafolio += "</div>";
+
+                $('#containerGaleriaFotosPeam').append(portafolio);
+            });
+            if ($('.tt-lightbox').length > 0) {
+                $('.tt-lightbox').magnificPopup({
+                    type: 'image',
+                    mainClass: 'mfp-fade',
+                    removalDelay: 160,
+                    fixedContentPos: false
+                            // other options
+                });
+            }
+
+        },
+        error: function (e) {
+            console.log("error al traer datos de la galería");
+        }
+    });
+    return false;
+}
+
+function procesarAjaxMultimediaWeb() {
+    var datosSerializadosCompletos = "action=paginarMultimedia";
+    datosSerializadosCompletos += "&txtMultimedia=";
+    datosSerializadosCompletos += "&comboAnio=-1";//+ (new Date().getFullYear());
+    datosSerializadosCompletos += "&estadoMultimedia=true";
+    datosSerializadosCompletos += "&sizePageMultimedia=4";
+    datosSerializadosCompletos += "&numberPageMultimedia=1";
+    $.ajax({
+        url: getContext() + '/publicaciones/noticias/multimedia',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            var portafolio;
+            var dataGrupo;
+            $.each(jsonResponse.BEAN_PAGINATION.LIST, function (index, value) {
+                dataGrupo = '["all"]';
+                portafolio = "<div class='portfolio-item' data-groups='" + dataGrupo + "'>";
+
+                portafolio += "<div class='portfolio-wrapper'>";
+                portafolio += "<div class='thumb'>";
+                portafolio += "<div class='bg-overlay'></div>";
+                portafolio += "<img src='/web/peam_resources/logos_complementos/bn2013 - copia.png' alt=''>";
+                portafolio += "<div class='portfolio-intro'>";
+
+                portafolio += "<div class='action-btn'>";
+                portafolio += "<a href='" + value.fuente + "' class='popup-video' title=''><i class='fa fa-play'></i></a>";
+                portafolio += "</div>";
+                portafolio += "<h2><a>Ver</a></h2>";
+                portafolio += "<p><a>Peam</a></p>";
+
+                portafolio += "</div>";
+
+                portafolio += "</div>";
+
+                portafolio += "</div>";
+                $('#containerGaleriaFotosPeam').append(portafolio);
+            });
+            if ($('.popup-video').length > 0) {
+                $('.popup-video').magnificPopup({
+                    disableOn: 700,
+                    type: 'iframe',
+                    mainClass: 'mfp-fade',
+                    removalDelay: 160,
+                    preloader: false,
+                    fixedContentPos: false
+                });
+            }
+        },
+        error: function () {
+
+        }
+    });
+    return false;
+}
 
 $(window).resize(function () {
     //aqui el codigo que se ejecutara cuando se redimencione la ventana
@@ -100,5 +220,4 @@ $(window).resize(function () {
      $('#menu-list').css('margin-right', '0px');
      }
      */
-}
-);
+});

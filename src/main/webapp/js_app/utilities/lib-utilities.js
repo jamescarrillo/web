@@ -121,6 +121,9 @@ function getMessageServerTransaction(action, entidad, delimitador_sexo) {
         case "act":
             messageOut += " actualizad" + delimitador_sexo + " exitosamente!";
             break;
+        case "fav":
+            messageOut += " actualizad" + delimitador_sexo + " exitosamente!";
+            break;
     }
     return messageOut;
 }

@@ -52,7 +52,7 @@
                                     <form id="FrmComentSuggest">
                                         <div class="row mt-3">
                                             <div class="form-group col-lg-7 col-md-8 col-12 mb-3">
-                                                <input type="text" name="txtComentSuggest" id="txtComentSuggest" class="form-control form-control-sm" placeholder="TÍTULO">
+                                                <input type="text" name="txtComentSuggest" id="txtComentSuggest" class="form-control form-control-sm" placeholder="">
                                             </div>
                                             <div class="input-group col-lg-5 col-md-4 col-12 mb-3">
                                                 <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarComentSuggest'>
@@ -66,8 +66,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row" id="containerComentarios">
-                        
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="comment-widgets" id="containerComentarios">
+
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-12">

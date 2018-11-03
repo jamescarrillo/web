@@ -7,7 +7,9 @@ package gob.peam.web.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import gob.peam.web.dao.MultimediaDAO;
 import gob.peam.web.dao.NotaPrensaDAO;
+import gob.peam.web.dao.impl.MultimediaDAOImpl;
 import gob.peam.web.dao.impl.NotaPrensaDAOImpl;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
@@ -45,6 +47,7 @@ public class PublicacionesWebAPI extends HttpServlet {
     private String action;
 
     private NotaPrensaDAO notaPrensaDAO;
+    private MultimediaDAO multimediaDAO;
 
     @Override
     public void init() throws ServletException {
@@ -53,8 +56,8 @@ public class PublicacionesWebAPI extends HttpServlet {
         this.parameters = new HashMap<>();
         this.action = "";
 
-        notaPrensaDAO = new NotaPrensaDAOImpl(this.pool);
-
+        this.notaPrensaDAO = new NotaPrensaDAOImpl(this.pool);
+        this.multimediaDAO = new MultimediaDAOImpl(this.pool);
     }
 
     /**
@@ -83,6 +86,13 @@ public class PublicacionesWebAPI extends HttpServlet {
                     }
                     break;
                 case "/publicaciones/noticias/multimedia":
+                    this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
+                    LOG.info(this.action);
+                    switch (this.action) {
+                        case "paginarMultimedia":
+                            procesarMultimedia(new BEAN_CRUD(this.multimediaDAO.getPagination(getParametersMultimedia(request))), response);
+                            break;
+                    }
                     break;
                 case "/publicaciones/memorias-anuales":
                     break;
@@ -158,6 +168,39 @@ public class PublicacionesWebAPI extends HttpServlet {
                 " LIMIT " + request.getParameter("sizePageNotaPrensa") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageNotaPrensa")) - 1)
                 * Integer.parseInt(request.getParameter("sizePageNotaPrensa")));
+        return this.parameters;
+    }
+
+    private void procesarMultimedia(BEAN_CRUD bean_crud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(bean_crud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap<String, Object> getParametersMultimedia(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", request.getParameter("txtMultimedia").toLowerCase());
+        if (request.getParameter("comboAnio").equals("-1")) {
+            this.parameters.put("SQL_ANIO", "");
+        } else {
+            this.parameters.put("SQL_ANIO", "AND (select extract(year from current_date)) = '" + request.getParameter("comboAnio") + "' ");
+        }
+        if (request.getParameter("estadoMultimedia").equals("-1")) {
+            this.parameters.put("SQL_ESTADO", "");
+        } else {
+            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("estadoMultimedia") + " AND \"default\" = true");
+            
+        }
+        this.parameters.put("SQL_ORDERS", "FECHA DESC");
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePageMultimedia") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageMultimedia")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageMultimedia")));
         return this.parameters;
     }
 

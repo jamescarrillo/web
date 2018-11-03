@@ -20,6 +20,7 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <!-- shortcodes -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/shortcodes/shortcodes.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/magnific-popup.css" rel="stylesheet">
         <!-- Style CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/style_web.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css" rel="stylesheet">
@@ -385,9 +386,9 @@
                 </ul>
             </div>
         </section>
-        <section class="section-padding" style="padding-bottom: 50px;">
+        <section class="section-padding" style=" padding-top: 40px; padding-bottom: 40px;">
             <div class="container">
-                <div class="text-center">
+                <div class="text-center mb-20">
                     <h2 class="h1-title section-title text-peam-verde">
                         <strong>Nuestras Líneas de Acción</strong>
                     </h2>
@@ -441,135 +442,11 @@
                         <!-- /.row -->
                     </div>
                 </div>
-                <!-- /.col-md-12 -->
             </div>         
         </section>
-
-        <!--section class="section-padding latest-news-card">
+        <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
-                <div class="text-center mb-40">
-                    <h1 class="h1-title section-title text-peam-verde">
-                        <strong>Noticias</strong>
-                    </h1>
-                </div>
-                <div class="row">
-                    <div class="col-md-9 col-xs-12">
-                        <div class="blog-carousel" id="contenedorCarrusel">
-                            <article class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" id="imgCNotaPrensa0" src="" alt="image">
-                                </div>
-                                <div class="card-content" style="height: 335px">
-                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa0"></h2>
-                                    <p id="resumenCNotaPrensa0" class="text-peam"></p>
-                                </div>
-                            </article>
-                            <article class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" id="imgCNotaPrensa1" src="" alt="image">
-                                </div>
-                                <div class="card-content" style="height: 335px">
-                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa1"></h2>
-                                    <p id="resumenCNotaPrensa1" class="text-peam"></p>
-                                </div>
-                            </article>
-                            <article class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" id="imgCNotaPrensa2" src="" alt="image">
-                                </div>
-                                <div class="card-content" style="height: 335px">
-                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa2"></h2>
-                                    <p id="resumenCNotaPrensa2" class="text-peam"></p>
-                                </div>
-                            </article>
-                            <article class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" id="imgCNotaPrensa3" src="" alt="image">
-                                </div>
-                                <div class="card-content" style="height: 335px">
-                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa3"></h2>
-                                    <p id="resumenCNotaPrensa3" class="text-peam"></p>
-                                </div>
-                            </article>
-                            <article class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" id="imgCNotaPrensa4" src="" alt="image">
-                                </div>
-                                <div class="card-content" style="height: 335px">
-                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa4"></h2>
-                                    <p id="resumenCNotaPrensa4" class="text-peam"></p>
-                                </div>
-                            </article>
-                            <article class="card">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" id="imgCNotaPrensa5" src="" alt="image">
-                                </div>
-                                <div class="card-content" style="height: 335px">
-                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa5"></h2>
-                                    <p id="resumenCNotaPrensa5" class="text-peam"></p>
-                                </div>
-                            </article>
-                            <article class="card" style="display: none">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" id="imgCNotaPrensa6" src="" alt="image">
-                                </div>
-                                <div class="card-content" style="height: 335px">
-                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa6"></h2>
-                                    <p id="resumenCNotaPrensa6" class="text-peam"></p>
-                                </div>
-                            </article>
-                            <article class="card" style="display: none">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" id="imgCNotaPrensa7" src="" alt="image">
-                                </div>
-                                <div class="card-content" style="height: 335px">
-                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa7"></h2>
-                                    <p id="resumenCNotaPrensa7" class="text-peam"></p>
-                                </div>
-                            </article>
-                            <article class="card" style="display: none">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <img class="activator" id="imgCNotaPrensa8" src="" alt="image">
-                                </div>
-                                <div class="card-content" style="height: 335px">
-                                    <h2 class="text-peam-verde activator" id="tituloCNotaPrensa8"></h2>
-                                    <p id="resumenCNotaPrensa8" class="text-peam"></p>
-                                </div>
-                            </article>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-xs-12">
-                        <div class="team-wrapper text-center" >
-                            <div class="team-img">
-                                <a href="#"><img src="peam_resources_app/fotos_users/gerente2.jpg" class="img-responsive img-responsive-peam" alt="Imagen"></a>
-                            </div>
-                            <div class="team-title">
-                                <br>
-                                <h3>
-                                    <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carmén Beatriz</font></font></a>
-                                </h3>
-                                <br>
-                                <span class="mb-10"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gerente General</font></font>
-                                </span>
-                                <br>
-                                <h5>
-                                    <i class="fa fa-phone"></i> (042) - 562522
-                                </h5>
-                                <br>
-                                <h5 class="mb-30">
-                                    <i class="fa fa-envelope-o"></i> gerencia@peam.gob.pe
-                                </h5>
-                                <br>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section-->
-        <section class="section-padding noticias-peam"
-                 style="padding-top: 0px; padding-bottom: 50px;">
-            <div class="container">
-                <div class="text-center mb-40">
+                <div class="text-center mb-20">
                     <h1 class="h1-title section-title text-peam-verde">
                         <strong>Noticias</strong>
                     </h1>
@@ -689,336 +566,265 @@
                 </div>
             </div>
         </section>
-        <section class="section-padding"
-                 style="padding-top: 0px; padding-bottom: 50px;">
+        <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
-                <div class="text-center">
+                <div class="text-center mb-20">
                     <h1 class="h1-title section-title text-peam-verde">
                         <strong>Gestión Transparente</strong>
                     </h1>
                 </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row no-gutter">
-                    <div
-                        class="col-lg-2 col-lg-offset-1 col-sm-4 col-md-offset-0 col-sm-offset-0 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
-                            <div class="icon mb-5">
-                                <i class="fa fa-files-o" aria-hidden="true"
-                                   style="color: #6a9a32"></i>
-                            </div>
-                            <div class="desc mt-10">
-                                <a href="#"><h3 class="text-peam-verde">DOCUMENTOS NORMATIVOS Y DE GESTIÓN</h3></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
-                            <div class="icon mb-5">
-                                <!--i class="material-icons brand-icon">trending_up</i-->
-                                <i class="fa fa-money" aria-hidden="true" style="color: #6a9a32"></i>
-                            </div>
-                            <div class="desc mt-10">
-                                <a href="#"><h3 class="text-peam-verde">PRESUPUESTOS Y FINANZAS</h3></a>
+                <div class="container-fluid">
+                    <div class="row no-gutter">
+                        <div
+                            class="col-lg-2 col-lg-offset-1 col-sm-4 col-md-offset-0 col-sm-offset-0 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
+                                <div class="icon mb-5">
+                                    <i class="fa fa-files-o" aria-hidden="true"
+                                       style="color: #6a9a32"></i>
+                                </div>
+                                <div class="desc mt-10">
+                                    <a href="#"><h3 class="text-peam-verde">DOCUMENTOS NORMATIVOS Y DE GESTIÓN</h3></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
-                            <div class="icon mb-5">
-                                <i class="material-icons brand-icon">supervisor_account</i>
-                            </div>
-                            <div class="desc">
-                                <a href="#"><h3 class="text-peam-verde">PROYECTOS DE INVERSIÓN</h3></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
-                            <div class="icon mb-5">
-                                <!--i class="material-icons brand-icon">supervisor_account</i-->
-                                <i class="fa fa-users" aria-hidden="true" style="color: #6a9a32"></i>
-                            </div>
-                            <div class="desc mt-10">
-                                <a href="#"><h3 class="text-peam-verde">RECURSOS HUMANOS</h3></a>
+                        <div class="col-lg-2 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
+                                <div class="icon mb-5">
+                                    <!--i class="material-icons brand-icon">trending_up</i-->
+                                    <i class="fa fa-money" aria-hidden="true" style="color: #6a9a32"></i>
+                                </div>
+                                <div class="desc mt-10">
+                                    <a href="#"><h3 class="text-peam-verde">PRESUPUESTOS Y FINANZAS</h3></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; height: 145px; border: none">
-                            <div class="icon mb-5">
-                                <i class="material-icons brand-icon">insert_drive_file</i>
-                            </div>
-                            <div class="desc">
-                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">ADQUISICIONES Y CONTRATACIONES</h3></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div
-                        class="col-lg-2 col-lg-offset-4 col-md-3 col-md-offset-0 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; height: 145px; border: none">
-                            <div class="icon mb-5">
-                                <!--i class="material-icons brand-icon">cached</i-->
-                                <i class="fa fa-book" aria-hidden="true" style="color: #6a9a32"></i>
-                            </div>
-                            <div class="desc mt-10">
-                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">AGENDA INSTITUCIONAL</h3></a>
+                        <div class="col-lg-2 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
+                                <div class="icon mb-5">
+                                    <i class="material-icons brand-icon">supervisor_account</i>
+                                </div>
+                                <div class="desc">
+                                    <a href="#"><h3 class="text-peam-verde">PROYECTOS DE INVERSIÓN</h3></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; height: 145px; border: none">
-                            <div class="icon mb-5">
-                                <i class="material-icons brand-icon">info</i>
+                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
+                                <div class="icon mb-5">
+                                    <!--i class="material-icons brand-icon">supervisor_account</i-->
+                                    <i class="fa fa-users" aria-hidden="true" style="color: #6a9a32"></i>
+                                </div>
+                                <div class="desc mt-10">
+                                    <a href="#"><h3 class="text-peam-verde">RECURSOS HUMANOS</h3></a>
+                                </div>
                             </div>
-                            <div class="desc">
-                                <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">INFORMACIÓN ADICIONAL</h3></a>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 20px; height: 145px; border: none">
+                                <div class="icon mb-5">
+                                    <i class="material-icons brand-icon">insert_drive_file</i>
+                                </div>
+                                <div class="desc">
+                                    <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">ADQUISICIONES Y CONTRATACIONES</h3></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div
+                            class="col-lg-2 col-lg-offset-4 col-md-3 col-md-offset-0 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 20px; height: 145px; border: none">
+                                <div class="icon mb-5">
+                                    <!--i class="material-icons brand-icon">cached</i-->
+                                    <i class="fa fa-book" aria-hidden="true" style="color: #6a9a32"></i>
+                                </div>
+                                <div class="desc mt-10">
+                                    <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">AGENDA INSTITUCIONAL</h3></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 20px; height: 145px; border: none">
+                                <div class="icon mb-5">
+                                    <i class="material-icons brand-icon">info</i>
+                                </div>
+                                <div class="desc">
+                                    <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">INFORMACIÓN ADICIONAL</h3></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="section-padding"
-                 style="padding-top: 0px; padding-bottom: 50px;">
+        <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
-                <div class="text-center">
+                <div class="text-center mb-20">
                     <h1 class="h1-title section-title text-peam-verde">
                         <strong>Favoritos</strong>
                     </h1>
                 </div>
-            </div>
-            <div class="container-fluid">
-                <div class="row no-gutter">
-                    <div class="col-lg-2 col-lg-offset-1 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-0 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
-                            <div class="icon mb-10">
-                                <i class="material-icons brand-icon">description</i>
+                <div class="container-fluid">
+                    <div class="row no-gutter">
+                        <div class="col-lg-2 col-lg-offset-1 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-0 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
+                                <div class="icon mb-10">
+                                    <i class="material-icons brand-icon">description</i>
+                                </div>
+                                <div class="desc mt-15">
+                                    <a href="#"><h3 class="text-peam-verde">TUPA</h3></a>
+                                </div>
                             </div>
-                            <div class="desc mt-15">
-                                <a href="#"><h3 class="text-peam-verde">TUPA</h3></a>
+                            <!-- /.featured-item -->
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
+                                <div class="icon mb-10">
+                                    <i class="material-icons brand-icon">gavel</i>
+                                </div>
+                                <div class="desc mt-15">
+                                    <a href="#" class="text-peam-verde"><h3>CÓDIGO DE ÉTICA</h3></a>
+                                </div>
                             </div>
                         </div>
-                        <!-- /.featured-item -->
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                            <div class="icon mb-10">
-                                <i class="material-icons brand-icon">gavel</i>
-                            </div>
-                            <div class="desc mt-15">
-                                <a href="#" class="text-peam-verde"><h3>CÓDIGO DE ÉTICA</h3></a>
-                            </div>
-                        </div>
-                        <!-- /.featured-item -->
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                            <div class="icon">
-                                <!--i class="material-icons brand-icon">folder_open</i-->
-                                <i class="fa fa-folder-open" aria-hidden="true"
-                                   style="color: #6a9a32"></i>
-                            </div>
-                            <div class="desc mt-30">
-                                <a href="#"><h3 class="text-peam-verde">SISGEDO</h3></a>
+                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
+                                <div class="icon">
+                                    <i class="fa fa-folder-open" aria-hidden="true"
+                                       style="color: #6a9a32"></i>
+                                </div>
+                                <div class="desc mt-30">
+                                    <a href="#"><h3 class="text-peam-verde">SISGEDO</h3></a>
+                                </div>
                             </div>
                         </div>
-                        <!-- /.featured-item -->
-                    </div>
-                    <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                            <div class="icon mb-10">
-                                <i class="material-icons brand-icon">local_library</i>
-                            </div>
-                            <div class="desc">
-                                <a href="#"><h4 style="margin-bottom: 0px" class="text-peam-verde">LIBRO DE
-                                        RECLAMACIONES</h4></a>
-                            </div>
-                        </div>
-                        <!-- /.featured-item -->
-                    </div>
-                    <div class="col-lg-2 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                            <div class="icon">
-                                <!--i class="material-icons brand-icon">open_in_new</i-->
-                                <i class="fa fa-share-square-o" aria-hidden="true"
-                                   style="color: #6a9a32"></i>
-                            </div>
-                            <div class="desc mt-20">
-                                <a href="#"><h4 style="margin-bottom: 0px" class="text-peam-verde">SOLICITUD DE
-                                        ACCESO A INFORMACIÓN</h4></a>
+                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
+                                <div class="icon mb-10">
+                                    <i class="material-icons brand-icon">local_library</i>
+                                </div>
+                                <div class="desc">
+                                    <a href="#"><h4 style="margin-bottom: 0px" class="text-peam-verde">LIBRO DE
+                                            RECLAMACIONES</h4></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2 col-lg-offset-4 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                            <div class="icon">
-                                <!--i class="material-icons brand-icon">insert_drive_file</i-->
-                                <i class="fa fa-file-text" aria-hidden="true"
-                                   style="color: #6a9a32"></i>
-                            </div>
-                            <div class="desc mt-30">
-                                <a href="#"><h3 class="text-peam-verde">RESOLUCIONES</h3></a>
+                        <div class="col-lg-2 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
+                                <div class="icon">
+                                    <i class="fa fa-share-square-o" aria-hidden="true"
+                                       style="color: #6a9a32"></i>
+                                </div>
+                                <div class="desc mt-20">
+                                    <a href="#"><h4 style="margin-bottom: 0px" class="text-peam-verde">SOLICITUD DE
+                                            ACCESO A INFORMACIÓN</h4></a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-2 col-sm-4 mt-15">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                            <div class="icon mb-10">
-                                <i class="material-icons brand-icon">share</i>
+                        <div class="col-lg-2 col-lg-offset-4 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
+                                <div class="icon">
+                                    <!--i class="material-icons brand-icon">insert_drive_file</i-->
+                                    <i class="fa fa-file-text" aria-hidden="true"
+                                       style="color: #6a9a32"></i>
+                                </div>
+                                <div class="desc mt-30">
+                                    <a href="#"><h3 class="text-peam-verde">RESOLUCIONES</h3></a>
+                                </div>
                             </div>
-                            <div class="desc mt-15">
-                                <a href="#"><h3 class="text-peam-verde">CONTROL INTERNO</h3></a>
+                        </div>
+                        <div class="col-lg-2 col-sm-4 mt-15">
+                            <div class="featured-item border-box hover brand-hover"
+                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
+                                <div class="icon mb-10">
+                                    <i class="material-icons brand-icon">share</i>
+                                </div>
+                                <div class="desc mt-15">
+                                    <a href="#"><h3 class="text-peam-verde">CONTROL INTERNO</h3></a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="section-padding"
-                 style="padding-top: 0px; padding-bottom: 20px;">
+        <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
-                <div class="text-center">
+                <div class="text-center mb-20">
                     <h1 class="h1-title section-title text-peam-verde">
                         <strong>Convocatorias</strong>
                     </h1>
                 </div>
-            </div>
-            <div class="container-fluid">
-                <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0">
-                    <div class="featured-item border-box hover brand-hover"
-                         style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
-                        <div class="icon mb-10">
-                            <i class="material-icons brand-icon">supervisor_account</i>
-                        </div>
-                        <div class="desc mt-15">
-                            <a href="#"><h3 class="text-peam-verde">Selección de Personal</h3></a>
+                <div class="container-fluid">
+                    <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+                        <div class="featured-item border-box hover brand-hover"
+                             style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
+                            <div class="icon mb-10">
+                                <i class="material-icons brand-icon">supervisor_account</i>
+                            </div>
+                            <div class="desc mt-15">
+                                <a href="#"><h3 class="text-peam-verde">Selección de Personal</h3></a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-                    <div class="featured-item border-box hover brand-hover"
-                         style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
-                        <div class="icon mb-10">
-                            <i class="material-icons brand-icon">widgets</i>
-                        </div>
-                        <div class="desc mt-15">
-                            <a href="#"><h3 class="text-peam-verde">Bienes, Servicios, Obras y Concesiones</h3></a>
+                    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
+                        <div class="featured-item border-box hover brand-hover"
+                             style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
+                            <div class="icon mb-10">
+                                <i class="material-icons brand-icon">widgets</i>
+                            </div>
+                            <div class="desc mt-15">
+                                <a href="#"><h3 class="text-peam-verde">Bienes, Servicios, Obras y Concesiones</h3></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <section class="section-padding"
-                 style="padding-top: 0px; padding-bottom: 50px;">
+        <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
-                <div class="text-center">
+                <div class="text-center mb-20">
                     <h1 class="h1-title section-title text-peam-verde">
                         <strong>Galería y Multimedia</strong>
                     </h1>
                 </div>
+
                 <div class="row">
-                    <div class="col-md-8">
-                        <div class="gallery-thumb">
-                            <ul class="slides">
-                                <li data-thumb="https://farm2.staticflickr.com/1921/45123285671_3402b78443.jpg">
-                                    <img src="https://farm2.staticflickr.com/1921/45123285671_3402b78443.jpg" alt="image">
-                                </li>
-                                <li data-thumb="https://farm2.staticflickr.com/1923/44062642095_550a8565d6.jpg">
-                                    <img src="https://farm2.staticflickr.com/1923/44062642095_550a8565d6.jpg" alt="image">
-                                </li>
-                                <li data-thumb="https://farm2.staticflickr.com/1863/44109236214_f5efd00421.jpg">
-                                    <img src="https://farm2.staticflickr.com/1863/44109236214_f5efd00421.jpg" alt="image">
-                                </li>
-                                <li data-thumb="https://farm2.staticflickr.com/1884/44767812231_b36c5e5840.jpg">
-                                    <img src="https://farm2.staticflickr.com/1884/44767812231_b36c5e5840.jpg" alt="image">
-                                </li>
-                                <li data-thumb="https://farm2.staticflickr.com/1874/29725633487_ba0469127c.jpg">
-                                    <img src="https://farm2.staticflickr.com/1874/29725633487_ba0469127c.jpg" alt="image">
-                                </li>
-                                <li data-thumb="https://farm2.staticflickr.com/1905/44255491394_146cdde0e1.jpg">
-                                    <img src="https://farm2.staticflickr.com/1905/44255491394_146cdde0e1.jpg" alt="image">
-                                </li>
+                    <div class="col-md-8 col-xs-12">
+                        <div class="portfolio-container text-center">
+                            <ul class="portfolio-filter brand-filter" style="display: none">
+                                <li class="active waves-effect waves-light" data-group="all">All</li>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div class="featured-item flat-border-box" style="padding: 25px">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                        src="https://www.youtube-nocookie.com/embed/EuESIXO4-Ms?rel=0"
-                                        allowfullscreen></iframe>
+                            <div class="portfolio col-3 mt-15 gutter" id="containerGaleriaFotosPeam">
+
                             </div>
                         </div>
                     </div>
                     <div class="col-md-4 col-xs-12">
-                        <div class="featured-item flat-border-box" style="padding: 25px">
+                        <div class="featured-item" style="padding: 25px">
                             <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                        src="https://www.youtube-nocookie.com/embed/p3pFBNsHJPg?rel=0"
-                                        allowfullscreen></iframe>
+                                <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/EuESIXO4-Ms?rel=0" allowfullscreen></iframe>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-12 mt-10 text-center">
                         <a class="waves-effect waves-light btn">Ver todos</a>
                     </div>
-                </div>               
+                </div>
             </div>
-            <!-- /.container -->
         </section>
-
-        <!--section class="section-padding"
-                 style="padding-top: 0px; padding-bottom: 50px;">
-            <div class="container">
-                <div class="text-center">
-                    <h1 class="h1-title section-title text-peam-verde">
-                        <strong>Multimedia</strong>
-                    </h1>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-xs-12">
-                        <div class="featured-item flat-border-box" style="padding: 25px">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                        src="https://www.youtube-nocookie.com/embed/EuESIXO4-Ms?rel=0"
-                                        allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xs-12">
-                        <div class="featured-item flat-border-box" style="padding: 25px">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item"
-                                        src="https://www.youtube-nocookie.com/embed/p3pFBNsHJPg?rel=0"
-                                        allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mt-10 text-center">
-                        <a class="waves-effect waves-light btn">Ver todos</a>
-                    </div>
-                </div>
-
-            </div>
-        </section-->
-
-        <section class="section-padding"
-                 style="padding-top: 0px; padding-bottom: 50px;">
+        <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">			
                 <div class="row">
                     <div class="featured-carousel brand-dot">
@@ -1088,6 +894,8 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/owl.carousel/owl.carousel.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/jquery.magnific-popup.js"></script>
+
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
         <!-- RS5.0 Core JS Files -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.tools.min.js"></script>

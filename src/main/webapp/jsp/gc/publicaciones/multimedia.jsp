@@ -51,12 +51,18 @@
                                     <input type="hidden" id="numberPageMultimedia" name="numberPageMultimedia" value="1">
                                     <form id="FrmMultimedia">
                                         <div class="row mt-3">
-                                            <div class="form-group col-lg-7 col-md-8 col-12 mb-3">
+                                            <div class="form-group col-lg-5 col-12 mb-3">
                                                 <input type="text" name="txtMultimedia" id="txtMultimedia" class="form-control form-control-sm" placeholder="TÍTULO">
                                             </div>
-                                            <div class="input-group col-lg-5 col-md-4 col-12 mb-3">
+                                            <div class="form-group col-lg-3 col-md-6 col-12 mb-3">
+                                                <select id="estadoMultimedia" name="estadoMultimedia" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarMultimedia'>
+                                                    <option value="-1">TODOS</option>
+                                                    <option value="true">PUBLICADOS</option>
+                                                    <option value="false">OCULTOS</option>
+                                                </select>
+                                            </div>
+                                            <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
                                                 <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarMultimedia'>
-
                                                 </select>
                                                 <button type="submit" id="btnBuscarMultimedia" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Noticia Multimedia" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
                                                 <button type="button" id="btnAbrirNuevoMultimedia" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Noticia Multimedia" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
@@ -98,10 +104,11 @@
                                     <div class="row">
                                         <div class="col-md-2 col-sm-3 col-4">
                                             <select id="sizePageMultimedia" name="sizePageMultimedia" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarMultimedia'>
+                                                <option value="6">6</option>
+                                                <option value="8">8</option>
+                                                <option value="10">10</option>
                                                 <option value="12">12</option>
-                                                <option value="15">15</option>
-                                                <option value="18">18</option>
-                                                <option value="21">21</option>
+                                                <option value="14">14</option>
                                             </select>
                                         </div>
                                         <div class="col-md-10 col-sm-9 col-8">

@@ -24,6 +24,7 @@ Version: 1.5
             indicatorFirstLevel: "<i class='fa fa-angle-down'></i>",
             indicatorSecondLevel: "<i class='fa fa-angle-right'></i>"
         });
+        //fas fa-angle-right
 
 
         /* === nav sticky header === */

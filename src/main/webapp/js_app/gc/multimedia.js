@@ -58,6 +58,7 @@ function procesarAjaxMultimedia() {
     if ($('#nameForm').val().toLowerCase() !== "frmmultimedia") {
         //AGREGAMOS LOS PARAMETROS DEL FORMULARIO DE BUSQUEDA
         datosSerializadosCompletos += "&txtMultimedia=" + $('#txtMultimedia').val();
+        datosSerializadosCompletos += "&estadoMultimedia=" + $('#estadoMultimedia').val();
         datosSerializadosCompletos += "&comboAnio=" + $('#comboAnio').val();
     }
     datosSerializadosCompletos += "&txtEstadoER=" + $('#txtEstadoER').val();
@@ -67,12 +68,11 @@ function procesarAjaxMultimedia() {
     datosSerializadosCompletos += "&action=" + $('#actionMultimedia').val();
     console.log(datosSerializadosCompletos);
     $.ajax({
-        url: getContext() + '/publicaciones/noticiasmultimedia',
+        url: getContext() + '/publicaciones/multimedia',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoMultimedia').modal("hide");
             if ($('#actionMultimedia').val().toLowerCase() === "paginarmultimedia") {
                 listarMultimedia(jsonResponse.BEAN_PAGINATION);
@@ -142,7 +142,7 @@ function listarMultimedia(BEAN_PAGINATION) {
 
             //cadenaContenido = cadenaContenido.substring(0, 120) + "...";
             cadenaContenido = getResumenContenidoWeb(cadenaContenido, 120) + "...";
-            card = "<div class='col-lg-4 col-md-6'>";
+            card = "<div class='col-lg-6 col-12'>";
 
             card += "<div class='card blog-widget'>";
 
@@ -151,16 +151,14 @@ function listarMultimedia(BEAN_PAGINATION) {
             card += "<div class='blog-image'></div>";
 
             card += "<h3 class='" + textColor + "'>" + value.titulo + "</h3>";
-
-            card += "<label class='label label-success'><object style='width:100%;height:100%;width: 230px; height: 120.25px; float: none; clear: both; margin: 2px auto;' data='"+value.fuente+"'></object></label>";
-
-            card += "<p class='m-t-15 m-b-20 " + textColor + "'>" + value.fecha + "</p>";
+            card += "<div class='embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item' src='"+value.fuente+"'></iframe></div>";
+            card += "<label class='label label-rounded label-success'>" + value.fecha + "</label>";
 
             //card += cadenaContenido;
 
             card += "<div class='d-flex' " + atributosMultimedia + ">";
 
-            card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            //card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
 
             card += "<div class='ml-auto'>";
 

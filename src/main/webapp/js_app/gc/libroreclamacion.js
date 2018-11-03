@@ -52,14 +52,12 @@ function procesarAjaxLibroReclamo() {
     datosSerializadosCompletos += "&numberPageLibroReclamo=" + $('#numberPageLibroReclamo').val();
     datosSerializadosCompletos += "&sizePageLibroReclamo=" + $('#sizePageLibroReclamo').val();
     datosSerializadosCompletos += "&action=" + $('#actionLibroReclamo').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/participacionciudadana/libroreclamaciones',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoLibroReclamo').modal("hide");
             if ($('#actionLibroReclamo').val().toLowerCase() === "paginarlibroreclamo") {
                 listarLibroReclamo(jsonResponse.BEAN_PAGINATION);
@@ -90,16 +88,18 @@ function listarLibroReclamo(BEAN_PAGINATION) {
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var atributosLibroReclamo;
         var card;
-        var cadenaContenido;
         var textColor;
+        var labelColor;
         var icono;
         var opcion_estado;
         var resp;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
-            if (value.detalle_acciones==="") {
-                resp="Aún sin responder";
-            }else{
-                resp="Ya se respondio";
+            if (value.detalle_acciones === "") {
+                resp = "Aún sin responder";
+                labelColor = "label-light-info";
+            } else {
+                resp = "Ya se respondió";
+                labelColor = "label-light-success";
             }
             if (value.estado) {
                 textColor = "";
@@ -110,9 +110,6 @@ function listarLibroReclamo(BEAN_PAGINATION) {
                 opcion_estado = "Publicar";
                 icono = "<i class='far fa-hand-point-up'></i>";
             }
-            cadenaContenido = value.descripcion_atencion;
-            cadenaContenido = replaceAll(cadenaContenido, '<p>', '');
-            cadenaContenido = replaceAll(cadenaContenido, '</p>', '\n');
 
             atributosLibroReclamo = "id='" + value.numero + "' ";
             atributosLibroReclamo += "anho='" + value.anho + "' ";
@@ -127,38 +124,25 @@ function listarLibroReclamo(BEAN_PAGINATION) {
             atributosLibroReclamo += "detalle_acciones='" + value.detalle_acciones + "' ";
             atributosLibroReclamo += "estado='" + value.estado + "' ";
 
-            //cadenaContenido = cadenaContenido.substring(0, 120) + "...";
-            cadenaContenido = getResumenContenidoWeb(cadenaContenido, 120) + "...";
-            card = "<div class='col-lg-4 col-md-6'>";
+            card = "<div class='d-flex flex-row comment-row'>";
 
-            card += "<div class='card blog-widget'>";
+//            card += "<div class='p-2'>";
+//            card += "<span class='round'><img src='../assets/images/users/1.jpg' alt='user' width='50'></span>";
+//            card += "</div>";
 
-            card += "<div class='card-body'>";
-
-            card += "<h3 class='text-success'>" + value.usuario + "</h3>";
-            
-            card += "<label class='label label-success'>" + value.documento_identidad + "</label>";
-
-            card += "<label class='label label-success'>" + value.numero_documento + "</label>";
-
-            card += "<p class='m-t-15 m-b-20'>" + cadenaContenido + "</p>";
-
-            card += "<label class='label bg-secondary'>" + value.fecha + "</label>";
-
-            //card += cadenaContenido;
-
-            card += "<div class='d-flex' " + atributosLibroReclamo + ">";
-            card += "<div class='read "+textColor+"'>"+resp+"</div>";
-
-            card += "<div class='ml-auto'>";
+            card += "<div class='comment-text w-100'>";
+            card += "<h5>" + value.usuario + "</h5>";
+            card += "<p class='m-b-5'>" + value.descripcion_atencion + "</p>";
+            card += "<div class='comment-footer' " + atributosLibroReclamo + ">";
+            card += "<span class='text-muted pull-right mr-2'>" + value.fecha + "</span>";
+            card += "<span class='label "+labelColor+"'>" + resp + "</span>";
+            card += "<span class='action-icons'>";
             card += "<a style='cursor:pointer' class='link mr-2 btn-imprimir-np' data-toggle='tooltip' title='imprimir' data-original-title='Editar'><i class='fas fa-print'></i></a>";
             card += "<a style='cursor:pointer' class='link mr-2 btn-cambiar-estado-np' data-toggle='tooltip' title='" + opcion_estado + "' data-original-title='' opcion_estado='" + opcion_estado.toLowerCase() + "'>" + icono + "</a>";
             card += "<a style='cursor:pointer' class='link mr-2 btn-editar-np' data-toggle='tooltip' title='Responder' data-original-title='Editar'><i class='fas fa-reply'></i></a>";
             card += "<a style='cursor:pointer' class='link btn-eliminar-np' data-toggle='tooltip' title='Eliminar' data-original-title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
 
-            card += "</div>";
-
-            card += "</div>";
+            card += "</span>";
 
             card += "</div>";
 
@@ -212,7 +196,7 @@ function agregarEventosLibroReclamo() {
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
-    
+
     $('.btn-cambiar-estado-np').each(function () {
         $(this).click(function () {
             $('#txtNumeroER').val($(this.parentElement.parentElement).attr('id'));

@@ -50,14 +50,12 @@ function procesarAjaxComentSuggest() {
     datosSerializadosCompletos += "&numberPageComentSuggest=" + $('#numberPageComentSuggest').val();
     datosSerializadosCompletos += "&sizePageComentSuggest=" + $('#sizePageComentSuggest').val();
     datosSerializadosCompletos += "&action=" + $('#actionComentSuggest').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/participacionciudadana/comentariossugerencias',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoComentSuggest').modal("hide");
             if ($('#actionComentSuggest').val().toLowerCase() === "paginarcomentsuggest") {
                 listarComentSuggest(jsonResponse.BEAN_PAGINATION);
@@ -88,11 +86,7 @@ function listarComentSuggest(BEAN_PAGINATION) {
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var atributosComentSuggest;
         var card;
-        var cadenaContenido;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
-            cadenaContenido = value.descripcion;
-            cadenaContenido = replaceAll(cadenaContenido, '<p>', '');
-            cadenaContenido = replaceAll(cadenaContenido, '</p>', '\n');
 
             atributosComentSuggest = "id='" + value.numero + "' ";
             atributosComentSuggest += "anho='" + value.anho + "' ";
@@ -101,33 +95,23 @@ function listarComentSuggest(BEAN_PAGINATION) {
             atributosComentSuggest += "correo='" + value.correo + "' ";
             atributosComentSuggest += "tema='" + value.tema + "' ";
             atributosComentSuggest += "descripcion='" + value.descripcion + "' ";
+            card = "<div class='d-flex flex-row comment-row'>";
 
-            //cadenaContenido = cadenaContenido.substring(0, 120) + "...";
-            cadenaContenido = getResumenContenidoWeb(cadenaContenido, 120) + "...";
-            card = "<div class='col-lg-4 col-md-6'>";
+//            card += "<div class='p-2'>";
+//            card += "<span class='round'><img src='../assets/images/users/1.jpg' alt='user' width='50'></span>";
+//            card += "</div>";
 
-            card += "<div class='card blog-widget'>";
-
-            card += "<div class='card-body'>";
-
-            card += "<h3 class='text-success'>" + value.tema + "</h3>";
-
-            card += "<label class='label label-success'>" + value.usuario + "</label>";
-
-            card += "<p class='m-t-15 m-b-20'>" + cadenaContenido + "</p>";
-
-            card += "<label class='label bg-secondary'>" + value.fecha + "</label>";
-
-            //card += cadenaContenido;
-
-            card += "<div class='d-flex' " + atributosComentSuggest + ">";
-
-            card += "<div class='ml-auto'>";
-
-            card += "<a style='cursor:pointer' class='link mr-2 btn-editar-np' data-toggle='tooltip' title='Editar' data-original-title='Editar'><i class='fas fa-edit'></i></a>";
+            card += "<div class='comment-text w-100'>";
+            card += "<h5>" + value.usuario + "</h5>";
+            card += "<p class='m-b-5'>" + value.descripcion + "</p>";
+            card += "<div class='comment-footer' " + atributosComentSuggest + ">";
+            card += "<span class='text-muted pull-right mr-2'>" + value.fecha + "</span>";
+            card += "<span class='label label-light-info'>" + value.correo + "</span>";
+            card += "<span class='action-icons'>";
+            card += "<a style='cursor:pointer' class='link mr-2 btn-editar-np' data-toggle='tooltip' title='imprimir' data-original-title='Editar'><i class='fas fa-edit'></i></a>";
             card += "<a style='cursor:pointer' class='link btn-eliminar-np' data-toggle='tooltip' title='Eliminar' data-original-title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
 
-            card += "</div>";
+            card += "</span>";
 
             card += "</div>";
 
@@ -135,7 +119,6 @@ function listarComentSuggest(BEAN_PAGINATION) {
 
             card += "</div>";
 
-            card += "</div>";
 
             $('#containerComentarios').append(card);
         });

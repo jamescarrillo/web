@@ -34,7 +34,7 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author Juan Jose
  */
-@WebServlet(name = "MultimediaAPI", urlPatterns = {"/publicaciones/noticiasmultimedia"})
+@WebServlet(name = "MultimediaAPI", urlPatterns = {"/publicaciones/multimedia"})
 public class MultimediaAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
@@ -167,6 +167,11 @@ public class MultimediaAPI extends HttpServlet {
             this.parameters.put("SQL_ANIO", "");
         } else {
             this.parameters.put("SQL_ANIO", "AND (select extract(year from current_date)) = '" + request.getParameter("comboAnio") + "' ");
+        }
+        if (request.getParameter("estadoMultimedia").equals("-1")) {
+            this.parameters.put("SQL_ESTADO", "");
+        } else {
+            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("estadoMultimedia"));
         }
         if (request.getParameter("txtEstadoER").equals("true")) {
             this.parameters.put("ESTADOP", "false");
