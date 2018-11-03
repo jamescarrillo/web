@@ -11,9 +11,36 @@ $(document).ready(function () {
         $('#ventanaManRedSocial').modal("show");
     });
 
-    $('#btnGuardarConfWeb').click(function () {
-        $('#redes_sociales').val(getCadenaRedesSociales());
+    $('#FrmPersonalizacionWEB').submit(function () {
+        swal({
+            title: 'PEAM',
+            text: "¿Esta seguro de guardar cambios?",
+            type: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, continuar!',
+            cancelButtonText: 'No, cancelar!',
+            confirmButtonClass: 'btn btn-info',
+            cancelButtonClass: 'btn btn-danger',
+            buttonsStyling: false
+        }).then((result) => {
+            if (result.value) {
+                console.log("acepto");
+                if (validarFormularioConWeb()) {
+                    console.log("valido correctamente");
+                    $('#redes_sociales').val(getCadenaRedesSociales());
+                    $('#modalCargandoPersonalizacion').modal("show");
+                }
+            }
+        });
+        $('.swal2-confirm').css("margin-right", "15px");
+        $('.swal2-container').css('z-index', '2000');
+        return false;
     });
+
+    $("#modalCargandoPersonalizacion").on('shown.bs.modal', function () {
+        procesarAjaxPersonalizacionWeb();
+    });
+
 
     $('#btnGuardarRedSocial').click(function () {
         if ($('#nombreRedSocial').val().toLowerCase() !== "-1") {
@@ -51,19 +78,47 @@ $(document).ready(function () {
     });
 
     $('.input-file-logo').change(function () {
-        console.log("changeeeeeeeeeeeeeeeeee");
         $('#' + $(this).attr('inputvalidacion')).val("SI");
         readImageSelected(this, $(this).attr('idvisor'));
     });
 
-    $("#fileFotoDIR").change(function () {
-        $('#txtValidacionFotoDIR').val('SI');
-        readImageSelected(this, 'visorFotoDIR');
-    });
-
     addEventosRedesSociales();
+    addValidacionCamposConfWeb();
 
 });
+
+function procesarAjaxPersonalizacionWeb() {
+    var form = $('#FrmPersonalizacionWEB')[0];
+    var datosSerializadosCompletos = new FormData(form);
+    datosSerializadosCompletos.append('numero_fotos_galeria', $('#numero_fotos_galeria').val());
+    datosSerializadosCompletos.append('numero_videos_multimedia', $('#numero_videos_multimedia').val());
+    datosSerializadosCompletos.append('numero_anuncios_mostrar', $('#numero_anuncios_mostrar').val());
+    datosSerializadosCompletos.append('icono_pagina', $('#icono_pagina').val());
+    datosSerializadosCompletos.append('redes_sociales', $('#redes_sociales').val());
+    datosSerializadosCompletos.append('action', $('#action').val());
+    $.ajax({
+        url: getContext() + '/personalizacion/web',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        enctype: 'multipart/form-data',
+        processData: false,
+        contentType: false,
+        cache: false,
+        timeout: 600000,
+        success: function (jsonResponse) {
+            $('#modalCargandoPersonalizacion').modal("hide");
+            if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                viewAlert('success', 'Datos Actualizados exitosamente!!!');
+            }
+        },
+        error: function () {
+            $('#modalCargandoPersonalizacion').modal("hide");
+            viewAlert('error', 'Error interno en el servidor!');
+        }
+    });
+    return false;
+}
 
 function addRedSocial() {
     var indice = -1;
@@ -146,4 +201,56 @@ function getCadenaRedesSociales() {
         }
     });
     return cadena;
+}
+
+function addValidacionCamposConfWeb() {
+    $('#numero_fotos_galeria').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#numero_videos_multimedia').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#numero_anuncios_mostrar').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#url_goresam').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+    $('#url_portal_transparencia').on('change', function () {
+        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
+    });
+}
+
+function validarFormularioConWeb() {
+    if ($('#numero_fotos_galeria').val() === "") {
+        $($('#numero_fotos_galeria').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#numero_videos_multimedia').val() === "") {
+        $($('#numero_videos_multimedia').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#numero_anuncios_mostrar').val() === "") {
+        $($('#numero_anuncios_mostrar').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#url_goresam').val() === "") {
+        $($('#url_goresam').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#url_portal_transparencia').val() === "") {
+        $($('#url_portal_transparencia').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    return true;
 }

@@ -71,11 +71,13 @@ public class Utilities {
             conf.setNumero_videos_multimedia(prop.getProperty("numero_videos_multimedia"));
             conf.setNumero_anuncios_mostrar(prop.getProperty("numero_anuncios_mostrar"));
             conf.setIcono_pagina(prop.getProperty("icono_pagina"));
+            conf.setNombre_logo_peam(prop.getProperty("nombre_logo_peam"));
             conf.setUrl_logo_goresam(prop.getProperty("url_logo_goresam"));
-            conf.setUrl_logo_peam(prop.getProperty("url_logo_peam"));
+            conf.setNombre_logo_goresam(prop.getProperty("nombre_logo_goresam"));
             conf.setUrl_logo_portal(prop.getProperty("url_logo_portal"));
-            conf.setUrl_logo_escudo(prop.getProperty("url_logo_escudo"));
-            conf.setUrl_logo_presentacion_actualidad(prop.getProperty("url_logo_presentacion_actualidad"));
+            conf.setNombre_logo_portal(prop.getProperty("nombre_logo_portal"));
+            conf.setNombre_logo_escudo(prop.getProperty("nombre_logo_escudo"));
+            conf.setNombre_logo_presentacion_actualidad(prop.getProperty("nombre_logo_presentacion_actualidad"));
             conf.setRedes_sociales(prop.getProperty("redes_sociales"));
         } catch (IOException ex) {
             Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
@@ -92,10 +94,14 @@ public class Utilities {
                 prop.setProperty("numero_fotos_galeria", conf.getNumero_fotos_galeria());
                 prop.setProperty("numero_videos_multimedia", conf.getNumero_videos_multimedia());
                 prop.setProperty("numero_anuncios_mostrar", conf.getNumero_anuncios_mostrar());
+                prop.setProperty("icono_pagina", conf.getIcono_pagina());
+                prop.setProperty("nombre_logo_peam", conf.getNombre_logo_peam());
                 prop.setProperty("url_logo_goresam", conf.getUrl_logo_goresam());
-                prop.setProperty("url_logo_peam", conf.getUrl_logo_peam());
+                prop.setProperty("nombre_logo_goresam", conf.getNombre_logo_goresam());
                 prop.setProperty("url_logo_portal", conf.getUrl_logo_portal());
-                prop.setProperty("url_logo_presentacion_actualidad", conf.getUrl_logo_presentacion_actualidad());
+                prop.setProperty("nombre_logo_portal", conf.getNombre_logo_portal());
+                prop.setProperty("nombre_logo_escudo", conf.getNombre_logo_escudo());
+                prop.setProperty("nombre_logo_presentacion_actualidad", conf.getNombre_logo_presentacion_actualidad());
                 prop.setProperty("redes_sociales", conf.getRedes_sociales());
                 prop.store(new FileWriter(path + "/" + nameFile), "ARCHIVO GENERADO POR EL SISTEMA");
                 res = "OK";
@@ -104,5 +110,10 @@ public class Utilities {
             Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
         }
         return res;
+    }
+
+    public static String getCadenaAleatoria(String cadena, int tamMax) {
+        int pos = (int) (Math.random() * tamMax + 1);
+        return cadena.substring(0, pos);
     }
 }

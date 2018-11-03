@@ -15,13 +15,15 @@ public class Conf_Web {
     private String numero_videos_multimedia;
     private String numero_anuncios_mostrar;
     private String icono_pagina;
-    
+
     // url_image::enlace::target
+    private String nombre_logo_peam;
     private String url_logo_goresam;
-    private String url_logo_peam;
+    private String nombre_logo_goresam;
     private String url_logo_portal;
-    private String url_logo_escudo;
-    private String url_logo_presentacion_actualidad;
+    private String nombre_logo_portal;
+    private String nombre_logo_escudo;
+    private String nombre_logo_presentacion_actualidad;
 
     // nombre::link::icono::target=1=>_blank
     private String redes_sociales;
@@ -58,12 +60,12 @@ public class Conf_Web {
         this.icono_pagina = icono_pagina;
     }
 
-    public String getUrl_logo_peam() {
-        return url_logo_peam;
+    public String getNombre_logo_peam() {
+        return nombre_logo_peam;
     }
 
-    public void setUrl_logo_peam(String url_logo_peam) {
-        this.url_logo_peam = url_logo_peam;
+    public void setNombre_logo_peam(String nombre_logo_peam) {
+        this.nombre_logo_peam = nombre_logo_peam;
     }
 
     public String getUrl_logo_goresam() {
@@ -74,6 +76,14 @@ public class Conf_Web {
         this.url_logo_goresam = url_logo_goresam;
     }
 
+    public String getNombre_logo_goresam() {
+        return nombre_logo_goresam;
+    }
+
+    public void setNombre_logo_goresam(String nombre_logo_goresam) {
+        this.nombre_logo_goresam = nombre_logo_goresam;
+    }
+
     public String getUrl_logo_portal() {
         return url_logo_portal;
     }
@@ -82,20 +92,28 @@ public class Conf_Web {
         this.url_logo_portal = url_logo_portal;
     }
 
-    public String getUrl_logo_escudo() {
-        return url_logo_escudo;
+    public String getNombre_logo_portal() {
+        return nombre_logo_portal;
     }
 
-    public void setUrl_logo_escudo(String url_logo_escudo) {
-        this.url_logo_escudo = url_logo_escudo;
+    public void setNombre_logo_portal(String nombre_logo_portal) {
+        this.nombre_logo_portal = nombre_logo_portal;
     }
 
-    public String getUrl_logo_presentacion_actualidad() {
-        return url_logo_presentacion_actualidad;
+    public String getNombre_logo_escudo() {
+        return nombre_logo_escudo;
     }
 
-    public void setUrl_logo_presentacion_actualidad(String url_logo_presentacion_actualidad) {
-        this.url_logo_presentacion_actualidad = url_logo_presentacion_actualidad;
+    public void setNombre_logo_escudo(String nombre_logo_escudo) {
+        this.nombre_logo_escudo = nombre_logo_escudo;
+    }
+
+    public String getNombre_logo_presentacion_actualidad() {
+        return nombre_logo_presentacion_actualidad;
+    }
+
+    public void setNombre_logo_presentacion_actualidad(String nombre_logo_presentacion_actualidad) {
+        this.nombre_logo_presentacion_actualidad = nombre_logo_presentacion_actualidad;
     }
 
     public String getRedes_sociales() {
@@ -108,7 +126,7 @@ public class Conf_Web {
 
     @Override
     public String toString() {
-        return "Conf_Web{" + "numero_fotos_galeria=" + numero_fotos_galeria + ", numero_videos_multimedia=" + numero_videos_multimedia + ", numero_anuncios_mostrar=" + numero_anuncios_mostrar + ", icono_pagina=" + icono_pagina + ", url_logo_goresam=" + url_logo_goresam + ", url_logo_peam=" + url_logo_peam + ", url_logo_portal=" + url_logo_portal + ", url_logo_escudo=" + url_logo_escudo + ", url_logo_presentacion_actualidad=" + url_logo_presentacion_actualidad + ", redes_sociales=" + redes_sociales + '}';
+        return "Conf_Web{" + "numero_fotos_galeria=" + numero_fotos_galeria + ", numero_videos_multimedia=" + numero_videos_multimedia + ", numero_anuncios_mostrar=" + numero_anuncios_mostrar + ", icono_pagina=" + icono_pagina + ", nombre_logo_peam=" + nombre_logo_peam + ", url_logo_goresam=" + url_logo_goresam + ", nombre_logo_goresam=" + nombre_logo_goresam + ", url_logo_portal=" + url_logo_portal + ", nombre_logo_portal=" + nombre_logo_portal + ", nombre_logo_escudo=" + nombre_logo_escudo + ", nombre_logo_presentacion_actualidad=" + nombre_logo_presentacion_actualidad + ", redes_sociales=" + redes_sociales + '}';
     }
 
 }
