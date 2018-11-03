@@ -5,7 +5,7 @@
  */
 package gob.peam.web.dao;
 
-import gob.peam.web.model.Evento;
+import gob.peam.web.model.Estudio;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -14,7 +14,8 @@ import java.util.HashMap;
  *
  * @author JhanxD
  */
-public interface EventoDAO extends CRUD<Evento> {
-        
+public interface EstudioDAO extends  CRUD<Estudio>{
+    
     BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException;
+    
 }

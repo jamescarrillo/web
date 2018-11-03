@@ -5,8 +5,9 @@
  */
 package gob.peam.web.dao.impl;
 
-import gob.peam.web.dao.EventoDAO;
+import gob.peam.web.dao.EstudioDAO;
 import gob.peam.web.dao.SQLCloseable;
+import gob.peam.web.model.Estudio;
 import gob.peam.web.model.Evento;
 import gob.peam.web.model.LineaAccion;
 import gob.peam.web.model.Persona;
@@ -27,12 +28,12 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-public class EventoDAOImpl implements EventoDAO{
+public class EstudioDAOImpl implements EstudioDAO{
     
     private final Log logger = LogFactory.getLog(DirectivoDAOImpl.class);
     private final DataSource pool;
 
-    public EventoDAOImpl(DataSource pool) {
+    public EstudioDAOImpl(DataSource pool) {
         this.pool = pool;
     }
 
@@ -42,35 +43,41 @@ public class EventoDAOImpl implements EventoDAO{
         PreparedStatement pst;
         ResultSet rs;
         try {
-            pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.EVENTO WHERE "
+            pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.ESTUDIO WHERE "
                     + "(LOWER(TITULO) LIKE CONCAT('%',?,'%'))");
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
             }
-            pst = conn.prepareStatement("SELECT * FROM WEB.EVENTO WHERE "
+            pst = conn.prepareStatement("SELECT * FROM WEB.ESTUDIO WHERE "
                     + "(LOWER(TITULO) LIKE CONCAT('%',?,'%'))"
                     + String.valueOf(parameters.get("SQL_ANIO")) + "ORDER BY "
                     + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
-            List<Evento> list = new ArrayList<>();
+            List<Estudio> list = new ArrayList<>();
             while (rs.next()) {
-                Evento obj = new Evento();
+                Estudio obj = new Estudio();
                 obj.setId(rs.getInt("ID"));
                 obj.setAnho(rs.getString("ANHO"));
                 obj.setTitulo(rs.getString("TITULO"));
+                obj.setSnip(rs.getString("SNIP"));
                 obj.setFecha(rs.getDate("FECHA"));
                 obj.setFoto(rs.getString("FOTO"));
+                obj.setObjetivo(rs.getString("OBJETIVO"));
+                obj.setCantidad_beneficiarios(rs.getInt("CANTIDAD_BENEFICIARIOS"));
+                obj.setCaracteristicas_beneficiarios(rs.getString("CARACTERISTICAS_BENEFICIARIOS"));
+                obj.setLugar(rs.getString("LUGAR"));
+                obj.setMapa(rs.getString("MAPA"));
                 obj.setEstado(rs.getBoolean("ESTADO"));
+                obj.setSeguimiento(rs.getString("SEGUIMIENTO"));
                 Persona per = new Persona();
                 per.setPers_id(rs.getInt("CREADO_POR"));
                 obj.setCreado_por(per);
                 obj.setFecha_creado(rs.getTimestamp("FECHA_CREADO"));
                 obj.setFecha_editado(rs.getTimestamp("FECHA_EDITADO"));
-                obj.setArea(new LineaAccion(rs.getInt("AREA")));
-                obj.setLink(rs.getString("LINK"));
+
                 list.add(obj);
             }
             beanpagination.setLIST(list);
@@ -94,23 +101,28 @@ public class EventoDAOImpl implements EventoDAO{
     }
 
     @Override
-    public BEAN_CRUD add(Evento obj, HashMap<String, Object> parameters) throws SQLException {
+    public BEAN_CRUD add(Estudio obj, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("INSERT INTO WEB.EVENTO (ID, ANHO, TITULO, FECHA, FOTO, "
-                    + "ESTADO, CREADO_POR, FECHA_CREADO, AREA, LINK) VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.evento),"
-                    + "?,?,?,?,?,?,CURRENT_TIMESTAMP,?,?)");
+            pst = conn.prepareStatement("INSERT INTO WEB.ESTUDIO (ID, ANHO, TITULO, FECHA, FOTO, SEGUIMIENTO, SNIP, "
+                    + "ESTADO, CREADO_POR, FECHA_CREADO, OBJETIVO, CANTIDAD_BENEFICIARIOS, CARACTERISTICAS_BENEFICIARIOS, LUGAR, MAPA) VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.estudio),"
+                    + "?,?,?,?,?,?,?,?,CURRENT_TIMESTAMP,?,?,?,?,?)");
             pst.setString(1, obj.getAnho());
             pst.setString(2, obj.getTitulo());
             pst.setDate(3, obj.getFecha());
             pst.setString(4, obj.getFoto());
-            pst.setBoolean(5, obj.getEstado());
-            pst.setInt(6, obj.getCreado_por().getPers_id());
-            pst.setInt(7, obj.getArea().getId());
-            pst.setString(8, obj.getLink());
+            pst.setString(5, obj.getSeguimiento());
+            pst.setString(6, obj.getSnip());
+            pst.setBoolean(7, obj.getEstado());
+            pst.setInt(8, obj.getCreado_por().getPers_id());
+            pst.setString(9, obj.getObjetivo());
+            pst.setInt(10, obj.getCantidad_beneficiarios());
+            pst.setString(11, obj.getCaracteristicas_beneficiarios());
+            pst.setString(12, obj.getLugar());
+            pst.setString(13, obj.getMapa());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -123,23 +135,29 @@ public class EventoDAOImpl implements EventoDAO{
     }
 
     @Override
-    public BEAN_CRUD update(Evento obj, HashMap<String, Object> parameters) throws SQLException {
+    public BEAN_CRUD update(Estudio obj, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.EVENTO SET ANHO = ?,TITULO = ?, FECHA=?, FOTO=?, "
-                    + " ESTADO=?, EDITADO_POR=?, FECHA_EDITADO = CURRENT_TIMESTAMP , AREA=?, LINK=? WHERE ID = ?");
+            pst = conn.prepareStatement("UPDATE WEB.ESTUDIO SET ANHO = ?,TITULO = ?, FECHA=?, FOTO=?, "
+                    + " ESTADO=?, EDITADO_POR=?, FECHA_EDITADO = CURRENT_TIMESTAMP , SEGUIMIENTO=?, SNIP=?, OBJETIVO = ?,"
+                    + "CANTIDAD_BENEFICIARIOS=?, CARACTERISTICAS_BENEFICIARIOS=?, LUGAR=?, MAPA=? WHERE ID = ?");
             pst.setString(1, obj.getAnho());
             pst.setString(2, obj.getTitulo());
             pst.setDate(3, obj.getFecha());
             pst.setString(4, obj.getFoto());
             pst.setBoolean(5, obj.getEstado());
             pst.setInt(6, obj.getEditado_por().getPers_id());
-            pst.setInt(7, obj.getArea().getId());
-            pst.setString(8, obj.getLink());
-            pst.setInt(9, obj.getId());
+            pst.setString(7, obj.getSeguimiento());
+            pst.setString(8, obj.getSnip());
+            pst.setString(9, obj.getObjetivo());
+            pst.setInt(10, obj.getCantidad_beneficiarios());
+            pst.setString(11, obj.getCaracteristicas_beneficiarios());
+            pst.setString(12, obj.getLugar());
+            pst.setString(13, obj.getMapa());
+            pst.setInt(14, obj.getId());
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
@@ -158,7 +176,7 @@ public class EventoDAOImpl implements EventoDAO{
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("DELETE FROM WEB.EVENTO WHERE ID = ?");
+            pst = conn.prepareStatement("DELETE FROM WEB.ESTUDIO WHERE ID = ?");
             pst.setInt(1, (int) id);
             pst.executeUpdate();
             conn.commit();
@@ -172,13 +190,18 @@ public class EventoDAOImpl implements EventoDAO{
     }
 
     @Override
+    public Estudio get(long id) throws SQLException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
     public BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
         PreparedStatement pst;
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.EVENTO SET ESTADO = ? WHERE ID = ?");
+            pst = conn.prepareStatement("UPDATE WEB.ESTUDIO SET ESTADO = ? WHERE ID = ?");
             if (parameters.get("ESTADOP").equals("true")) {
                 pst.setBoolean(1, true);
             } else {
@@ -195,10 +218,4 @@ public class EventoDAOImpl implements EventoDAO{
         }
         return beancrud;
     }
-
-    @Override
-    public Evento get(long id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

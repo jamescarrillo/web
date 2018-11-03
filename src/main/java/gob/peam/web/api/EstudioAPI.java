@@ -7,15 +7,17 @@ package gob.peam.web.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import gob.peam.web.dao.EventoDAO;
-import gob.peam.web.dao.impl.EventoDAOImpl;
-import gob.peam.web.model.Evento;
-import gob.peam.web.model.LineaAccion;
+import gob.peam.web.dao.EstudioDAO;
+import gob.peam.web.dao.EstudioDAO;
+import gob.peam.web.dao.impl.EstudioDAOImpl;
+import gob.peam.web.dao.impl.EstudioDAOImpl;
+import gob.peam.web.model.Estudio;
 import gob.peam.web.model.Persona;
 import gob.peam.web.model.Usuario;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.Utilities;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -35,8 +37,8 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-@WebServlet(name = "EventoAPI", urlPatterns = {"/publicaciones/eventos"})
-public class EventoAPI extends HttpServlet {
+@WebServlet(name = "EstudioAPI", urlPatterns = {"/publicaciones/estudios"})
+public class EstudioAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
@@ -47,7 +49,7 @@ public class EventoAPI extends HttpServlet {
     private final Log logger = LogFactory.getLog(DocumentoAPI.class);
     private String action;
 
-    private EventoDAO eventoDAO;
+    private EstudioDAO estudioDAO;
 
     @Override
     public void init() throws ServletException {
@@ -56,7 +58,7 @@ public class EventoAPI extends HttpServlet {
         this.parameters = new HashMap<>();
         this.action = "";
 
-        this.eventoDAO = new EventoDAOImpl(this.pool);
+        this.estudioDAO = new EstudioDAOImpl(this.pool);
     }
 
     /**
@@ -74,23 +76,23 @@ public class EventoAPI extends HttpServlet {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
             this.logger.info("ACTION -> " + this.action);
             switch (this.action) {
-                case "paginarEvento":
-                    procesarEvento(new BEAN_CRUD(this.eventoDAO.getPagination(getParametersEvento(request))), response);
+                case "paginarEstudio":
+                    procesarEstudio(new BEAN_CRUD(this.estudioDAO.getPagination(getParametersEstudio(request))), response);
                     break;
-                case "addEvento":
-                    procesarEvento(this.eventoDAO.add(getEvento(request), getParametersEvento(request)), response);
+                case "addEstudio":
+                    procesarEstudio(this.estudioDAO.add(getEstudio(request), getParametersEstudio(request)), response);
                     break;
-                case "updateEvento":
-                    procesarEvento(this.eventoDAO.update(getEvento(request), getParametersEvento(request)), response);
+                case "updateEstudio":
+                    procesarEstudio(this.estudioDAO.update(getEstudio(request), getParametersEstudio(request)), response);
                     break;
-                case "deleteEvento":
-                    procesarEvento(this.eventoDAO.delete(Long.parseLong(request.getParameter("txtIdER")), getParametersEvento(request)), response);
+                case "deleteEstudio":
+                    procesarEstudio(this.estudioDAO.delete(Long.parseLong(request.getParameter("txtIdER")), getParametersEstudio(request)), response);
                     break;
-                case "activateEvento":
-                    procesarEvento(this.eventoDAO.activate(Long.parseLong(request.getParameter("txtIdER")), getParametersEvento(request)), response);
+                case "activateEstudio":
+                    procesarEstudio(this.estudioDAO.activate(Long.parseLong(request.getParameter("txtIdER")), getParametersEstudio(request)), response);
                     break;
                 default:
-                    request.getRequestDispatcher("/jsp/gc/publicaciones/evento.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/gc/publicaciones/estudio.jsp").forward(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -147,7 +149,7 @@ public class EventoAPI extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void procesarEvento(BEAN_CRUD bean_crud, HttpServletResponse response) {
+    private void procesarEstudio(BEAN_CRUD bean_crud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(bean_crud);
             response.setContentType("application/json");
@@ -158,30 +160,30 @@ public class EventoAPI extends HttpServlet {
         }
     }
 
-    private HashMap<String, Object> getParametersEvento(HttpServletRequest request) {
+    private HashMap<String, Object> getParametersEstudio(HttpServletRequest request) {
         this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtEvento").toLowerCase());
+        this.parameters.put("FILTER", request.getParameter("txtEstudio").toLowerCase());
         if (request.getParameter("comboAnio").equals("-1")) {
             this.parameters.put("SQL_ANIO", "");
         } else {
             this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnio") + "' ");
         }
-        if (request.getParameter("txtEstadoEventoER").equals("true")) {
+        if (request.getParameter("txtEstadoEstudioER").equals("true")) {
             this.parameters.put("ESTADOP", "false");
         } else {
             this.parameters.put("ESTADOP", "true");
         }
         this.parameters.put("SQL_ORDERS", "ANHO DESC");
         this.parameters.put("LIMIT",
-                " LIMIT " + request.getParameter("sizePageEvento") + " OFFSET "
-                + (Integer.parseInt(request.getParameter("numberPageEvento")) - 1)
-                * Integer.parseInt(request.getParameter("sizePageEvento")));
+                " LIMIT " + request.getParameter("sizePageEstudio") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageEstudio")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageEstudio")));
         return this.parameters;
     }
 
-    private Evento getEvento(HttpServletRequest request) {
-        Evento obj = new Evento();
-        if (request.getParameter("action").equals("updateEvento")) {
+    private Estudio getEstudio(HttpServletRequest request) {
+        Estudio obj = new Estudio();
+        if (request.getParameter("action").equals("updateEstudio")) {
             obj.setId(Integer.parseInt(request.getParameter("txtIdER")));
             Persona per = ((Usuario) this.session.getAttribute("user")).getPersona();
             obj.setEditado_por(per);
@@ -191,9 +193,14 @@ public class EventoAPI extends HttpServlet {
         obj.setFecha(Utilities.getDateSQLFORMAT(String.valueOf(request.getParameter("txtFechaER")), "dd/MM/yyyy"));
         obj.setAnho(String.valueOf(request.getParameter("txtFechaER")).substring(6, 10));
         obj.setTitulo(request.getParameter("txtTituloER"));
-        obj.setArea(new LineaAccion(Integer.parseInt(String.valueOf(request.getParameter("txtAreaER")))));
         obj.setFoto(request.getParameter("txtFotoER"));
-        obj.setLink(request.getParameter("txtLinkER"));
+        obj.setSeguimiento(request.getParameter("comboSeguimientoER"));
+        obj.setSnip(request.getParameter("txtSnipER"));
+        obj.setObjetivo(request.getParameter("txtObjetivoER"));
+        obj.setCantidad_beneficiarios(Integer.parseInt(request.getParameter("txtCantBeneficiariosER")));
+        obj.setCaracteristicas_beneficiarios(request.getParameter("txtCaracBeneficiariosER"));
+        obj.setLugar(request.getParameter("txtLugarER"));
+        obj.setMapa(request.getParameter("txtMapaER"));
         obj.setEstado(false);
         return obj;
     }

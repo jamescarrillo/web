@@ -43,7 +43,7 @@ function listarGlosario(BEAN_PAGINATION) {
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
 
             fila = "<tr>";
-            fila += "<td class='text-center align-middle'><strong>" + value.titulo + "</strong></td>";
+            fila += "<td class='align-middle'><strong>" + value.titulo + "</strong></td>";
             fila += "<td class='align-middle'>" + value.descripcion + "</td>";
             fila += "</tr>";
             $('#tbodyGlosario').append(fila);

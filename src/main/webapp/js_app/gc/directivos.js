@@ -52,6 +52,7 @@ $(document).ready(function () {
         $('#txtValidacionCvDIR').val('SI');
         readViewNameFile(this, 'txtNombreCvDIR');
         $('#txtNombreFileResultadoActualDIR').val($('#txtNombreCvDIR').val());
+        alert($('#txtNombreFileResultadoActualDIR').val());
     });
 
     $('#btnSeleccionarFotoDIR').click(function () {
@@ -126,6 +127,7 @@ $(document).ready(function () {
         $('#txtValidacionCv').val('SI');
         readViewNameFile(this, 'txtNombreCv');
         $('#txtNombreFileResultadoActual').val($('#txtNombreCv').val());
+        alert($('#txtNombreFileResultadoActual').val());
     });
 
     $('#btnSeleccionarFoto').click(function () {
@@ -248,7 +250,7 @@ function listarFuncionario(BEAN_PAGINATION) {
             fila += "<td class='align-middle " + text_color + "'>" + value.nombres_apellidos + "</td>";
             fila += "<td class='align-middle " + text_color + "'>" + value.cargo + "</td>";
             fila += "<td class='align-middle " + text_color + "'>" + value.telefono + "</td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success   btn-sm descargar-cv' data-toggle='tooltip' title='Descargar CV'><i class='fa fa-download'></i></button></td>";
+            fila += "<td class='align-middle " + text_color + "'><a href='"+getContext() + "/downloadfile?type_file=downloadCV&full_file=n&file=" + value.hoja_vida + "' class='btn btn-secondary btn-sm' title='Descargar'><i class='fa fa-download' aria-hidden='true'></i></a></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm finalizar-activar' data-toggle='tooltip' title='" + tooltip + "' opcion='" + tooltip.toLowerCase() + "'><i class='" + icon + "'></i></button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm editar-funcionario'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm eliminar-funcionario'><i class='fas fa-trash-alt'></i></button></td>";
@@ -323,12 +325,6 @@ function agregarEventosFuncionario() {
             $('#txtTituloModalManFuncionario').html("EDITAR FUNCIONARIO");
             $('#ventanaManFuncionario').modal("show");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
-        });
-    });
-
-    $('.descargar-cv').each(function () {
-        $(this).click(function () {
-            viewAlert('warning', 'No se encontró la hoja de vida!');
         });
     });
     
@@ -528,7 +524,7 @@ function listarDirectivo(BEAN_PAGINATION) {
             fila += "<td class='align-middle " + text_color + "'>" + value.nombres_apellidos + "</td>";
             fila += "<td class='align-middle " + text_color + "'>" + value.cargo + "</td>";
             fila += "<td class='align-middle " + text_color + "'>" + value.telefono + "</td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success   btn-sm descargar-cvD' data-toggle='tooltip' title='Descargar CVDIR'><i class='fa fa-download'></i></button></td>";
+            fila += "<td class='align-middle " + text_color + "'><a href='"+getContext() + "/downloadfile?type_file=downloadCV&full_file=n&file=" + value.hoja_vida + "' class='btn btn-secondary btn-sm' title='Descargar'><i class='fa fa-download' aria-hidden='true'></i></a></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm finalizarD-activarD' data-toggle='tooltip' title='" + tooltip + "' opcion='" + tooltip.toLowerCase() + "'><i class='" + icon + "'></i></button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm editar-directivo'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm eliminar-directivo'><i class='fas fa-trash-alt'></i></button></td>";
@@ -601,12 +597,6 @@ function agregarEventosDirectivo() {
             $('#txtTituloModalManDirectivo').html("EDITAR DIRECTIVO");
             $('#ventanaManDirectivo').modal("show");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
-        });
-    });
-
-    $('.descargar-cvD').each(function () {
-        $(this).click(function () {
-            viewAlert('warning', 'No se encontró la hoja de vida!');
         });
     });
     
