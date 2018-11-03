@@ -108,7 +108,7 @@ function listarComentSuggest(BEAN_PAGINATION) {
             card += "<span class='text-muted pull-right mr-2'>" + value.fecha + "</span>";
             card += "<span class='label label-light-info'>" + value.correo + "</span>";
             card += "<span class='action-icons'>";
-            card += "<a style='cursor:pointer' class='link mr-2 btn-editar-np' data-toggle='tooltip' title='imprimir' data-original-title='Editar'><i class='fas fa-edit'></i></a>";
+            card += "<a style='cursor:pointer' class='link mr-2 btn-editar-np' data-toggle='tooltip' title='Editar' data-original-title='Editar'><i class='fas fa-edit'></i></a>";
             card += "<a style='cursor:pointer' class='link btn-eliminar-np' data-toggle='tooltip' title='Eliminar' data-original-title='Eliminar'><i class='fas fa-trash-alt'></i></a>";
 
             card += "</span>";
