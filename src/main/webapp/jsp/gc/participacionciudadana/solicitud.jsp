@@ -43,30 +43,30 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header bg-light">
-                                    <strong class="text-info">LIBRO DE RECLAMACIONES</strong>
+                                    <strong class="text-info">ADMINISTRACION DE ACUERDO A LA LEY 27806</strong>
                                 </div>
                                 <div class="card-body pt-1">
-                                    <input type="hidden" id="nameForm" value="FrmLibroReclamo">
-                                    <input type="hidden" id="actionLibroReclamo" name="action" value="paginarLibroReclamo">
-                                    <input type="hidden" id="numberPageLibroReclamo" name="numberPageLibroReclamo" value="1">
-                                    <form id="FrmLibroReclamo">
+                                    <input type="hidden" id="nameForm" value="FrmSolicitud">
+                                    <input type="hidden" id="actionSolicitud" name="action" value="paginarSolicitud">
+                                    <input type="hidden" id="numberPageSolicitud" name="numberPageSolicitud" value="1">
+                                    <form id="FrmSolicitud">
                                         <div class="row mt-3">
                                             <div class="form-group col-lg-5 col-md-8 col-12 mb-3">
-                                                <input type="text" name="txtLibroReclamo" id="txtLibroReclamo" class="form-control form-control-sm" placeholder="">
+                                                <input type="text" name="txtSolicitud" id="txtSolicitud" class="form-control form-control-sm" placeholder="">
                                             </div>
                                             <div class="input-group col-lg-3 col-md-4 col-12 mb-3">
-                                                <select id="comboTipoListaReclamo" name="comboTipoListaReclamo" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarLibroReclamo'>
+                                                <select id="comboTipoListaSolicitud" name="comboTipoListaSolicitud" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarSolicitud'>
                                                     <option value="-1">TODOS</option>
-                                                    <option value="false">SIN RESPONDER</option>
-                                                    <option value="true">RESPONDIDOS</option>
+                                                    <option value="false">SIN ATENDER</option>
+                                                    <option value="true">ATENDIDOS</option>
 
                                                 </select>
                                             </div>
                                             <div class="input-group col-lg-4 col-md-4 col-12 mb-3">
-                                                <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarLibroReclamo'>
+                                                <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarSolicitud'>
 
                                                 </select>
-                                                <button type="submit" id="btnBuscarLibroReclamo" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                                <button type="submit" id="btnBuscarSolicitud" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
                                             </div>
                                         </div>
                                     </form>
@@ -89,7 +89,7 @@
                                      style="padding-top: 10px; padding-bottom: 10px">
                                     <div class="row">
                                         <div class="col-md-2 col-sm-3 col-4">
-                                            <select id="sizePageLibroReclamo" name="sizePageLibroReclamo" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarLibroReclamo'>
+                                            <select id="sizePageSolicitud" name="sizePageSolicitud" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarSolicitud'>
                                                 <option value="12">12</option>
                                                 <option value="15">15</option>
                                                 <option value="18">18</option>
@@ -98,7 +98,7 @@
                                         </div>
                                         <div class="col-md-10 col-sm-9 col-8">
                                             <nav aria-label="Page navigation example">
-                                                <ul id="paginationLibroReclamo"
+                                                <ul id="paginationSolicitud"
                                                     class="pagination pagination-sm justify-content-end">
 
                                                 </ul>
@@ -112,12 +112,12 @@
                     </div>
                     <%@ include file="../../../temas_gc.jsp"%>
                 </div>
-                <div class="modal fade" id="ventanaManLibroReclamo" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ventanaManSolicitud" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg modal-dialog-scroll" role="document">
                         <div class="modal-content">
-                            <form id="FrmLibroReclamoModal">
+                            <form id="FrmSolicitudModal">
                                 <div class="modal-header">
-                                    <h6 class="modal-title" id="txtTituloModalManLibroReclamo"></h6>
+                                    <h6 class="modal-title" id="txtTituloModalManSolicitud"></h6>
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -125,7 +125,11 @@
                                 </div>
                                 <div class="modal-body modal-body-scroll">
                                     <div class="row">
-                                        <div class="form-group col-12 mb-3">
+                                        <div class="form-group col-6 mb-3">
+                                            <label for="txtSoli_IdER">NUMERO DE REGISTRO</label>
+                                            <input type="text" class="form-control form-control-sm" id="txtSoli_IdER" name="txtSoli_IdER" placeholder=""> 
+                                        </div>
+                                        <div class="form-group col-6 mb-3">
                                             <label for="txtFechaER">FECHA PUBLICACIÓN</label>
                                             <input type="text" class="form-control form-control-sm" id="txtFechaER" name="txtFechaER" placeholder="DD/MM/AAAA"> 
                                         </div>
@@ -133,43 +137,40 @@
                                             <label for="txtUsuarioER">NOMBRE DEL INTERESADO</label>
                                             <input class="form-control form-control-sm" id="txtUsuarioER" name="txtUsuarioER" type="text" placeholder="USUARIO INTERESADO" maxlength="200">
                                         </div>
-                                        <div class="form-group col-4 mb-3">
-                                            <label for="txtTipoDocumentoER">TTIPO DE DOCUMENTO</label>
-                                            <input class="form-control form-control-sm" id="txtTipoDocumentoER" name="txtTipoDocumentoER" type="text" placeholder="TIPO DE DOCUMENTO">
-                                        </div>
-                                        <div class="form-group col-4 mb-3">
-                                            <label for="txtDniER">NUMERO DE DOCUMENTO</label>
+                                        <div class="form-group col-6 mb-3">
+                                            <label for="txtDniER">DNI</label>
                                             <input class="form-control form-control-sm" id="txtDniER" name="txtDniER" type="text" placeholder="DNI">
                                         </div>
-                                        <div class="form-group col-4 mb-3">
-                                            <label for="txtTelefonoER">TELEFONO</label>
-                                            <input class="form-control form-control-sm" id="txtTelefonoER" name="txtTelefonoER" type="text" placeholder="TELEFONO">
+                                        <div class="form-group col-6 mb-3">
+                                            <label for="txtEmailER">E_MAIL</label>
+                                            <input class="form-control form-control-sm" id="txtEmailER" name="txtEmailER" type="text" placeholder="EMAIL">
                                         </div>
                                         <div class="form-group col-12 mb-3">
                                             <label for="txtDomicilioER">DOMICILIO</label>
                                             <input class="form-control form-control-sm" id="txtDomicilioER" name="txtDomicilioER" type="text" placeholder="DOMICILIO">
                                         </div>
-                                        <div class="form-group col-12 mb-3">
-                                            <label for="txtCorreoER">CORREO</label>
-                                            <input class="form-control form-control-sm" id="txtCorreoER" name="txtCorreoER" type="text" placeholder="CORREO">
+                                        <div class="form-group col-4 mb-3">
+                                            <label for="txtTelefonoER">TELEFONO</label>
+                                            <input class="form-control form-control-sm" id="txtTelefonoER" name="txtTelefonoER" type="text" placeholder="TELEFONO">
+                                        </div>
+                                        <div class="form-group col-4 mb-3">
+                                            <label for="txtDependenciaER">DE DONDE SE REQUIERE</label>
+                                            <input class="form-control form-control-sm" id="txtDependenciaER" name="txtDependenciaER" type="text" placeholder="DEPENDENCIA">
+                                        </div>
+                                        <div class="form-group col-4 mb-3">
+                                            <label for="txtFormaER">FORMA DE ENTREGA</label>
+                                            <input class="form-control form-control-sm" id="txtFormaER" name="txtFormaER" type="text" placeholder="FORMA">
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtDescripcionER">CONTENIDO</label>
-                                            <textarea class="form-control form-control-sm" id="txtDescripcionER" name="txtDescripcionER" rows="10" placeholder="RECLAMO"></textarea>
+                                            <label for="txtInfo_SoliER">INFORMACION SOLICITADA</label>
+                                            <textarea class="form-control form-control-sm" id="txtInfo_SoliER" name="txtInfo_SoliER" rows="10" placeholder="INFROMACION SOLICITADA"></textarea>
                                         </div>
-                                        <div class="form-group col-12 mb-3">
-                                            <label for="txtRespuestaER">RESPUESTA</label>
-                                            <textarea class="form-control form-control-sm" id="txtRespuestaER" name="txtRespuestaER" rows="10" placeholder="RESPUESTA"></textarea>
-                                        </div>
-                                        <input id="txtNumeroER" name="txtNumeroER" type="hidden" value="">
-                                        <input id="txtAnhoER" name="txtAnhoER" type="hidden" value="">
-                                        <input id="txtEstadoER" name="txtEstadoER" type="hidden" value="0">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
                                     <button type="submit" class="btn btn-outline-info btn-sm">
-                                        <i class="fa fa-floppy-o"></i> GUARDAR
+                                        <i class="fa fa-floppy-o"></i> ATENDER
                                     </button>
                                 </div>
                             </form>
@@ -177,7 +178,7 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="modalCargandoLibroReclamo" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+                <div class="modal fade" id="modalCargandoSolicitud" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -222,7 +223,7 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/libroreclamacion.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/solicitud.js"></script>
 
     </body>
 
