@@ -25,8 +25,6 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/skins/corporate.css" rel="stylesheet">
 
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css"rel="stylesheet">
-
-
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -40,61 +38,17 @@
             <%@ include file = "../../../container_logos.jsp" %> 
         </div>
         <%@ include file = "../../../header.jsp" %> 
-        <section class="section-padding grid-news">
+        <section class="section-padding grid-news" style="padding-top: 50px">
             <div class="container">
-                <div class="row" style="margin-bottom: 60px; display: none" id="contenedorNoticiaPrincial">
-                    <div class='col-lg-8 col-xs-12'>
-                        <article class='post-wrapper'>
-                            <div class='thumb-wrapper waves-effect waves-block waves-light'>
-                                <a><img id="idImgNoticiaPrincipal" src='' class='img-responsive' alt='imgNoticia'></a>
-                            </div>
-                            <div class='blog-content'>
-                                <header class='entry-header-wrapper'>
-                                    <div class='entry-header'>
-                                        <h2 class='entry-title text-peam-negrita'><a id="idTituloNoticiaPrincipal" style="font-size: 23px;">Ideas That Moved Us in 2015</a></h2>
-                                        <div class='entry-meta'>
-                                            <ul class='list-inline'>
-                                                <li>
-                                                    <a id="idFuenteNoticiaPrincipal">PROYECTO ESPECIAL ALTO MAYO</a>
-                                                </li>
-                                                <li>
-                                                    <i class='fa fa-clock-o'></i> <a id="idFechaPublicacionNoticiaPrincipal">Jan 15, 2016</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </header>
-                                <div class='entry-content text-peam' id="idContenidoNoticiaPrincipal" style="font-size: 17px;text-align: justify">
-
-                                </div>
-                                <footer class="entry-footer">
-                                    <ul class="list-inline pull-left">
-                                        <li><a href="#" title="Descargar en PDF"><i class="fa fa-file-pdf-o"></i></a></li>
-                                        <li><a href="#" title="Descargar en WORD"><i class="fa fa-file-text"></i></a></li>
-                                        <li><a href="#" title="Descargar en PPT"><i class="fa fa-file-powerpoint-o"></i></a></li>
-                                    </ul>
-                                </footer>
-                            </div>
-                        </article>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="tt-sidebar-wrapper" role="complementary">
-                            <div class="widget widget_search mb-20">
-                                <div class="fb-page" data-href="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs">Proyecto Especial Alto Mayo</a></blockquote></div>
-                            </div>
+                <div class="text-center mb-30">
+                    <h1 class="text-peam-verde h1-title"><strong>Noticias Multimedia</strong></h1>
+                </div>
+                <div class="row" style="margin-bottom: 60px;">
+                    <div class="col-md-8 col-xs-12">
+                        <div class="row" id="containerMultimedia">
                         </div>
                     </div>
-                </div>
-                <hr>
-                <div class="text-center mb-30" style="margin-top: 40px;">
-                    <h1 class="text-peam-verde h1-title" id="idTituloMasNoticias"><strong>Más Noticias</strong></h1>
-                    <input type="hidden" id="idNota" value="<%out.print((request.getParameter("idNota") == null ? "-1" : request.getParameter("idNota")));%>">
-                </div>
-                <div class="row">
-                    <div class="col-md-9" id="contenedorArticulos">
-
-                    </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4 col-xs-12">
                         <div class="tt-sidebar-wrapper" role="complementary">
                             <div class="widget widget_search mb-20">
                                 <div class="border-tab transparent-nav">
@@ -105,32 +59,31 @@
                                     <div class="panel-body" style="padding-top: 15px; padding-bottom: 0px">
                                         <div class="tab-content">
                                             <div role="tabpanel" class="tab-pane fade in active" id="tab-busquedas">
-                                                <form id="FrmNotaPrensa" role="search" class="search-form">
-                                                    <input type="hidden" id="nameFormNotaPrensa" value="FrmNotaPrensa">
-                                                    <input type="hidden" id="actionNotaPrensa" name="action" value="paginarNotaPrensa">
+                                                <form id="FrmMultimedia" role="search" class="search-form">
+                                                    <input type="hidden" id="nameFormMultimedia" value="FrmMultimedia">
+                                                    <input type="hidden" id="actionMultimedia" name="action" value="paginarMultimedia">
                                                     <input type="hidden" id="comboAnio" name="comboAnio" value="-1">
-                                                    <input type="hidden" id="estadoNotaPrensa" name="estadoNotaPrensa" value="true">
-                                                    <input type="hidden" id="numberPageNotaPrensa" name="numberPageNotaPrensa" value="1">
-                                                    <input type="hidden" id="sizePageNotaPrensa" name="sizePageNotaPrensa" value="13">
-                                                    <input type="text" class="form-control" value="" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" placeholder="Buscar. . .">
+                                                    <input type="hidden" id="estadoMultimedia" name="estadoMultimedia" value="true">
+                                                    <input type="hidden" id="numberPageMultimedia" name="numberPageMultimedia" value="1">
+                                                    <input type="hidden" id="sizePageMultimedia" name="sizePageMultimedia" value="6">
+                                                    <input type="text" class="form-control" value="" name="txtMultimedia" id="txtTituloMultimedia" placeholder="Buscar. . .">
                                                     <button type="submit"><i class="fa fa-search"></i></button>
-
                                                 </form>
                                             </div>
                                             <div role="tabpanel" class="tab-pane fade" id="tab-filtros">
                                                 <div class="form-group col-xs-12">
-                                                    <label for="sizePageNotaPrensa_" style="font-size: 14px;">N° Noticias a mostrar</label>
-                                                    <select id="sizePageNotaPrensa_" idformulario="FrmNotaPrensa" idinput="sizePageNotaPrensa" class="form-control combo-paginar-formulario" style="border: 1px solid #8bc34a">
-                                                        <option value="13">12</option>
-                                                        <option value="16">15</option>
-                                                        <option value="19">18</option>
-                                                        <option value="22">21</option>
-                                                        <option value="25">24</option>
+                                                    <label for="sizePageMultimedia_" style="font-size: 14px;">N° videos a mostrar</label>
+                                                    <select id="sizePageMultimedia_" idformulario="FrmMultimedia" idinput="sizePageMultimedia" class="form-control combo-paginar-formulario" style="border: 1px solid #8bc34a">
+                                                        <option value="6">6</option>
+                                                        <option value="8">8</option>
+                                                        <option value="10">10</option>
+                                                        <option value="12">12</option>
+                                                        <option value="14">14</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-xs-12">
-                                                    <label for="comboAnioNoticia_" style="font-size: 14px;">Año</label>
-                                                    <select id="comboAnioNoticia_" idformulario="FrmNotaPrensa" idinput="comboAnio" class="form-control combo-paginar-formulario" style="border: 1px solid #8bc34a">
+                                                    <label for="comboAnioMultimedia_" style="font-size: 14px;">Año</label>
+                                                    <select id="comboAnioMultimedia_" idformulario="FrmMultimedia" idinput="comboAnio" class="form-control combo-paginar-formulario" style="border: 1px solid #8bc34a">
                                                     </select>
                                                 </div>
                                             </div>
@@ -150,12 +103,10 @@
                                      data-hide-cover="false"
                                      data-show-facepile="false"></div>
                             </div>
-
                             <%@ include file = "../../../menu_web_vertical.jsp" %> 
                         </div>
                     </div>
                 </div>
-                <hr>
             </div>
         </section>
         <%@ include file = "../../../footer.jsp" %>  
@@ -194,7 +145,7 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
-        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/publicaciones-notasprensa.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/publicaciones-multimedia.js"></script>
 
     </body>
 </html>

@@ -92,6 +92,9 @@ public class PublicacionesWebAPI extends HttpServlet {
                         case "paginarMultimedia":
                             procesarMultimedia(new BEAN_CRUD(this.multimediaDAO.getPagination(getParametersMultimedia(request))), response);
                             break;
+                        default:
+                            request.getRequestDispatcher("/jsp/web/publicaciones/multimediaWeb.jsp").forward(request, response);
+                            break;
                     }
                     break;
                 case "/publicaciones/memorias-anuales":
@@ -193,8 +196,8 @@ public class PublicacionesWebAPI extends HttpServlet {
         if (request.getParameter("estadoMultimedia").equals("-1")) {
             this.parameters.put("SQL_ESTADO", "");
         } else {
-            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("estadoMultimedia") + " AND \"default\" = true");
-            
+            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("estadoMultimedia") + " ");
+
         }
         this.parameters.put("SQL_ORDERS", "FECHA DESC");
         this.parameters.put("LIMIT",

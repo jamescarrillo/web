@@ -4,18 +4,16 @@ $(document).ready(function () {
 
     $("#FrmNotaPrensa").submit(function () {
         $('#loader_contenido').css('display', 'block');
-        procesarAjaxPublicacionesWeb();
+        procesarAjaxPublicacionesNotasPrensaWeb();
         return false;
     });
 
     addEventoCombosPaginarFormulario();
-    procesarAjaxPublicacionesWeb();
+    procesarAjaxPublicacionesNotasPrensaWeb();
 
 });
 
-function procesarAjaxNotaPrensaWeb() {
-    var pathname = window.location.pathname;
-    pathname = pathname.substring(getContext().length, pathname.length);
+function procesarAjaxPublicacionesNotasPrensaWeb() {
     var datosSerializadosCompletos = $('#' + $('#nameFormNotaPrensa').val()).serialize();
     $.ajax({
         url: getContext() + '/publicaciones/noticias/notas-de-prensa',
@@ -24,13 +22,7 @@ function procesarAjaxNotaPrensaWeb() {
         dataType: 'json',
         success: function (jsonResponse) {
             $('#loader_contenido').css('display', 'none');
-            switch (pathname) {
-                case "/publicaciones/noticias/notas-de-prensa":
-                    listarNotaPrensaWebVerNoticias(jsonResponse.BEAN_PAGINATION);
-                    break;
-                case "/publicaciones/noticias/multimedia":
-                    break;
-            }
+            listarNotaPrensaWebVerNoticias(jsonResponse.BEAN_PAGINATION);
         },
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/

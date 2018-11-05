@@ -49,13 +49,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="border-tab transparent-nav">
-                            <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-justified" role="tablist">
                                 <li role="presentation" class="active"><a href="#tab-base_legal" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Base Legal</a></li>
                                 <li role="presentation"><a href="#tab-resenia_historica" class="waves-effect waves-dark" role="tab" data-toggle="tab">Reseña Histórica</a></li>
                                 <li role="presentation"><a href="#tab-actualidad" class="waves-effect waves-dark" role="tab" data-toggle="tab">Actualidad</a></li>
                             </ul>
-                            <!-- Tab panes -->
                             <div class="panel-body">
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active" id="tab-base_legal" style="font-size: 16px;text-align: justify">
@@ -70,7 +68,7 @@
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="tab-actualidad" style="font-size: 16px;text-align: justify">
                                         <div class="text-center mb-30">
-                                            <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/fachada_peam.png" />
+                                            <img src="<%out.print(getServletContext().getContextPath() +"/peam_resources/logos_principales/" + conf_web.getNombre_logo_presentacion_actualidad());%>" />
                                         </div>
                                         <p>En este contexto el Proyecto Especial Alto Mayo ha venido ejecutando sus acciones con el uso combinado de recursos del Tesoro Público, Donaciones y Crédito Externo, en base a políticas y
                                             lineamientos del Instituto Nacional de Desarrollo (INADE) hasta el 09 de setiembre del 2,003, fecha en que mediante D.S. Nº. 024-2003-VIVIENDA se dispone la transferencia definitiva al
