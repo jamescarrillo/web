@@ -4,12 +4,12 @@ $(document).ready(function () {
 
     $("#FrmNotaPrensa").submit(function () {
         $('#loader_contenido').css('display', 'block');
-        procesarAjaxNotaPrensaWeb();
+        procesarAjaxPublicacionesWeb();
         return false;
     });
 
     addEventoCombosPaginarFormulario();
-    procesarAjaxNotaPrensaWeb();
+    procesarAjaxPublicacionesWeb();
 
 });
 
@@ -25,46 +25,19 @@ function procesarAjaxNotaPrensaWeb() {
         success: function (jsonResponse) {
             $('#loader_contenido').css('display', 'none');
             switch (pathname) {
-                case "/":
-                    listarNotaPrensaWebIndex(jsonResponse.BEAN_PAGINATION);
-                    break;
-                case "/index":
-                    listarNotaPrensaWebIndex(jsonResponse.BEAN_PAGINATION);
-                    break;
                 case "/publicaciones/noticias/notas-de-prensa":
                     listarNotaPrensaWebVerNoticias(jsonResponse.BEAN_PAGINATION);
+                    break;
+                case "/publicaciones/noticias/multimedia":
                     break;
             }
         },
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
             $('#loader_contenido').css('display', 'none');
-            viewAlertWeb('error', 'Error interno en el servidor!');
         }
     });
     return false;
-}
-
-function listarNotaPrensaWebIndex(BEAN_PAGINATION) {
-    /*PAGINATION*/
-    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
-        var cadenaContenido;
-        $.each(BEAN_PAGINATION.LIST, function (index, value) {
-            cadenaContenido = removeTagHTML(value.contenido);
-            if (index < 5) {
-                $('#idNota' + (index + 1)).val(value.id);
-                $('#tituloNotaPrensa' + (index + 1)).html(getTituloWeb(value.titulo, 45));
-                $('#resumenNotaPrensa' + (index + 1)).html(getTituloWeb(getResumenContenidoWeb(cadenaContenido, 150), 90));
-            }
-            $('#imgCNotaPrensa' + index).attr('src', value.foto);
-            $('#tituloCNotaPrensa' + index).html(value.titulo + getFormViewNotice(value.id));
-
-        });
-        $("#contenedorCarrusel").owlCarousel();
-        addEventsNoticias();
-    } else {
-        viewAlertWeb('warning', 'No se encontraron resultados');
-    }
 }
 
 function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
@@ -110,68 +83,6 @@ function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
     } else {
         viewAlertWeb('warning', 'No se encontraron resultados');
     }
-}
-
-function addEventsNoticias() {
-    jQuery(document).ready(function () {
-        jQuery(".materialize-slider").revolution({
-            sliderType: "standard",
-            sliderLayout: "fullwidth",
-            delay: 9000,
-            navigation: {
-                keyboardNavigation: "on",
-                keyboard_direction: "horizontal",
-                mouseScrollNavigation: "off",
-                onHoverStop: "off",
-                touch: {
-                    touchenabled: "on",
-                    swipe_threshold: 75,
-                    swipe_min_touches: 1,
-                    swipe_direction: "horizontal",
-                    drag_block_vertical: false
-                },
-                arrows: {
-                    style: "gyges",
-                    enable: true,
-                    hide_onmobile: false,
-                    hide_onleave: true,
-                    tmp: '',
-                    left: {
-                        h_align: "left",
-                        v_align: "center",
-                        h_offset: 10,
-                        v_offset: 0
-                    },
-                    right: {
-                        h_align: "right",
-                        v_align: "center",
-                        h_offset: 10,
-                        v_offset: 0
-                    }
-                }
-            },
-            responsiveLevels: [1240, 1024, 778, 480],
-            gridwidth: [1240, 1024, 778, 480],
-            gridheight: [500, 500, 500, 500],
-            disableProgressBar: "on",
-            parallax: {
-                type: "mouse",
-                origo: "slidercenter",
-                speed: 2000,
-                levels: [2, 3, 4, 5, 6, 7, 12, 16, 10, 50]
-            }
-        });
-    });
-}
-
-function getFormViewNotice(idNoticia) {
-    var form = "";
-    form += "<form class='form-ver-noticia' method='POST' action='notas-de-prensa'>";
-    form += "<input type='hidden' name='idNota' value='" + idNoticia + "'>";
-    form += "<input type='hidden' name='action' value='readNotaPrensa'>";
-    //form += "<button type='submit' class='btn-link' style='color: #a20505; font-weight: bold;'>Ver Noticia <i class='fa fa-long-arrow-right'></i></button>";
-    form += "</form>";
-    return form;
 }
 
 function getCardCarrusel(urlImage, titulo, contenido) {

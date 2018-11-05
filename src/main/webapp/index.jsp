@@ -30,7 +30,6 @@
         <!-- RS5.0 Layers and Navigation Styles -->
         <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/layers.css">
         <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/navigation.css">
-        <!--link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css"rel="stylesheet"-->
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -799,8 +798,7 @@
                         <strong>Galería y Multimedia</strong>
                     </h1>
                 </div>
-
-                <div class="row">
+                <div class="row" id="containerMultimedia">
                     <div class="col-md-8 col-xs-12">
                         <div class="portfolio-container text-center">
                             <ul class="portfolio-filter brand-filter" style="display: none">
@@ -811,16 +809,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-xs-12">
+                    <!--div class="col-md-4 col-xs-12">
                         <div class="featured-item" style="padding: 25px">
                             <div class="embed-responsive embed-responsive-16by9">
                                 <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/EuESIXO4-Ms?rel=0" allowfullscreen></iframe>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-12 mt-10 text-center">
+                    </div-->
+                    <!--div class="col-md-12 mt-10 text-center">
                         <a class="waves-effect waves-light btn">Ver todos</a>
-                    </div>
+                    </div-->
                 </div>
             </div>
         </section>
@@ -909,11 +907,9 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-        <!--script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script-->
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
-        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/publicaciones.js"></script>
     </body>
 </html>

@@ -262,9 +262,9 @@ public class PersonalizacionAPI extends HttpServlet {
         String path = getServletContext().getRealPath("/peam_resources/logos_principales/");
         File file = new File(path + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
         if (file.exists()) {
-            file.delete();
+            //file.delete();
             String prefijo = Utilities.getCadenaAleatoria("PROYECTOESPECIALALTOMAYO-PEAM", 5);
-            file = new File(prefijo + path + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+            file = new File(path + prefijo + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
         }
         switch (campo) {
             case "logo_peam":

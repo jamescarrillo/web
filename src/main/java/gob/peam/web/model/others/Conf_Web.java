@@ -16,7 +16,6 @@ public class Conf_Web {
     private String numero_anuncios_mostrar;
     private String icono_pagina;
 
-    // url_image::enlace::target
     private String nombre_logo_peam;
     private String url_logo_goresam;
     private String nombre_logo_goresam;
@@ -27,6 +26,10 @@ public class Conf_Web {
 
     // nombre::link::icono::target=1=>_blank
     private String redes_sociales;
+
+    private String apikey;
+    private String idusuario;
+    private String idalbum;
 
     public String getNumero_fotos_galeria() {
         return numero_fotos_galeria;
@@ -124,9 +127,33 @@ public class Conf_Web {
         this.redes_sociales = redes_sociales;
     }
 
-    @Override
-    public String toString() {
-        return "Conf_Web{" + "numero_fotos_galeria=" + numero_fotos_galeria + ", numero_videos_multimedia=" + numero_videos_multimedia + ", numero_anuncios_mostrar=" + numero_anuncios_mostrar + ", icono_pagina=" + icono_pagina + ", nombre_logo_peam=" + nombre_logo_peam + ", url_logo_goresam=" + url_logo_goresam + ", nombre_logo_goresam=" + nombre_logo_goresam + ", url_logo_portal=" + url_logo_portal + ", nombre_logo_portal=" + nombre_logo_portal + ", nombre_logo_escudo=" + nombre_logo_escudo + ", nombre_logo_presentacion_actualidad=" + nombre_logo_presentacion_actualidad + ", redes_sociales=" + redes_sociales + '}';
+    public String getApikey() {
+        return apikey;
     }
 
+    public void setApikey(String apikey) {
+        this.apikey = apikey;
+    }
+
+    public String getIdusuario() {
+        return idusuario;
+    }
+
+    public void setIdusuario(String idusuario) {
+        this.idusuario = idusuario;
+    }
+
+    public String getIdalbum() {
+        return idalbum;
+    }
+
+    public void setIdalbum(String idalbum) {
+        this.idalbum = idalbum;
+    }
+
+    @Override
+    public String toString() {
+        return "Conf_Web{" + "numero_fotos_galeria=" + numero_fotos_galeria + ", numero_videos_multimedia=" + numero_videos_multimedia + ", numero_anuncios_mostrar=" + numero_anuncios_mostrar + ", icono_pagina=" + icono_pagina + ", nombre_logo_peam=" + nombre_logo_peam + ", url_logo_goresam=" + url_logo_goresam + ", nombre_logo_goresam=" + nombre_logo_goresam + ", url_logo_portal=" + url_logo_portal + ", nombre_logo_portal=" + nombre_logo_portal + ", nombre_logo_escudo=" + nombre_logo_escudo + ", nombre_logo_presentacion_actualidad=" + nombre_logo_presentacion_actualidad + ", redes_sociales=" + redes_sociales + ", apikey=" + apikey + ", idusuario=" + idusuario + ", idalbum=" + idalbum + '}';
+    }
+    
 }

@@ -109,7 +109,30 @@ function procesarAjaxPersonalizacionWeb() {
         success: function (jsonResponse) {
             $('#modalCargandoPersonalizacion').modal("hide");
             if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
-                viewAlert('success', 'Datos Actualizados exitosamente!!!');
+                //viewAlert('success', 'Datos Actualizados exitosamente!!!');
+                swal({
+                    title: "",
+                    html: "<!--img src='img/logo_ceplomo.png' alt='Logo' style='width:150px;'><br--><h5>Datos actualizados exitosamente.</h5><strong>. . . Redirigiendo en 3 segundos!!!</strong>",
+                    type: "success",
+                    allowOutsideClick: false, //para que no cierre con clic
+                    allowEscapeKey: false, //ni con spcape
+                    focusConfirm: false,
+                    allowEnterKey: false, //que no confirme con enter
+                    showCancelButton: false,
+                    showLoaderOnConfirm: true,
+                    confirmButtonText: "<i class='fa fa-spinner fa-spin fa-2x fa-fw'></i>",
+                    confirmButtonClass: 'btn btn-outline-primary',
+                    buttonsStyling: false,
+                    timer: 5000
+                }).catch(swal.noop);
+                $('.swal2-confirm').css('border', 'none');
+                $('.swal2-confirm').css('box-shadow', 'none');
+                $('.swal2-confirm').click(function () {
+                    $(location).attr('href', '../indexgc');
+                });
+                setTimeout(function () {
+                    $(location).attr('href', '../indexgc');
+                }, 3000);
             }
         },
         error: function () {

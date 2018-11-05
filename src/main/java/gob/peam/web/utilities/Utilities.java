@@ -79,6 +79,9 @@ public class Utilities {
             conf.setNombre_logo_escudo(prop.getProperty("nombre_logo_escudo"));
             conf.setNombre_logo_presentacion_actualidad(prop.getProperty("nombre_logo_presentacion_actualidad"));
             conf.setRedes_sociales(prop.getProperty("redes_sociales"));
+            conf.setApikey(prop.getProperty("apikey"));
+            conf.setIdusuario(prop.getProperty("idusuario"));
+            conf.setIdalbum(prop.getProperty("idalbum"));
         } catch (IOException ex) {
             Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -103,6 +106,9 @@ public class Utilities {
                 prop.setProperty("nombre_logo_escudo", conf.getNombre_logo_escudo());
                 prop.setProperty("nombre_logo_presentacion_actualidad", conf.getNombre_logo_presentacion_actualidad());
                 prop.setProperty("redes_sociales", conf.getRedes_sociales());
+                prop.setProperty("apikey", conf.getApikey());
+                prop.setProperty("idusuario", conf.getIdusuario());
+                prop.setProperty("idalbum", conf.getIdalbum());
                 prop.store(new FileWriter(path + "/" + nameFile), "ARCHIVO GENERADO POR EL SISTEMA");
                 res = "OK";
             }
