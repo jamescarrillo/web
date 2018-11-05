@@ -65,7 +65,7 @@
                                 <div class="col12">
                                     <h2>Convocatorias</h2>
                                     <ul class="list-unstyled clearfix">
-                                        <li><a href="#">Convocatorias de Personal</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-personal">Convocatorias de Personal</a></li>
                                         <li><a href="#">Bienes, Servicios, Obras y Conseciones</a></li>
                                     </ul>
                                 </div>    

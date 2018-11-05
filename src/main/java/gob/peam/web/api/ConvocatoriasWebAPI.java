@@ -35,7 +35,7 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-@WebServlet(name = "ConvocatoriasWebAPI", urlPatterns = {"/convocatoria/convocatoriaspersonal"})
+@WebServlet(name = "ConvocatoriasWebAPI", urlPatterns = {"/convocatorias/convocatoria-de-personal"})
 public class ConvocatoriasWebAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")

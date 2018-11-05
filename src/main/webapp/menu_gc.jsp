@@ -94,7 +94,7 @@
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/participacionciudadana/comentariossugerencias" title="Comentarios y Sugerencias">Comentarios/Sugerencia</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/participacionciudadana/libroreclamaciones" title="Libro de Reclamaciones">Lib. Reclamaciones</a></li>
-                        <li><a href="#" title="Solicitud 27806">Solicitud 27806</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/participacionciudadana/solicitudes" title="Solicitud 27806">Solicitud 27806</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings" title="Personalización"></i><span class="hide-menu">Personalización</span></a>
@@ -110,8 +110,8 @@
     <!-- End Sidebar scroll-->
     <!-- Bottom points-->
     <div class="sidebar-footer">
-        <!-- item--><a href="javascript:void(0)" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-        <!-- item--><a href="javascript:void(0)" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
+        <!-- item--><a href="<%out.print(getServletContext().getContextPath());%>/personalizacion/web" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
+        <!-- item--><a href="<%out.print(getServletContext().getContextPath());%>/personalizacion/correo" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
         <!-- item--><a href="<%out.print(getServletContext().getContextPath());%>/cerrarsession" class="link" data-toggle="tooltip" title="Cerrar Sesión"><i class="mdi mdi-power"></i></a>
     </div>
     <!-- End Bottom points-->

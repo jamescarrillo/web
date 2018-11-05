@@ -19,7 +19,7 @@ $(document).ready(function () {
 function procesarAjaxConvocatoriaWeb() {
     var datosSerializadosCompletos = $('#' + $('#nameFormConvocatoria').val()).serialize();
     $.ajax({
-        url: getContext() + '/convocatoria/convocatoriaspersonal',
+        url: getContext() + '/convocatorias/convocatoria-de-personal',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
@@ -107,7 +107,7 @@ function procesarAjaxCalendarioWeb(coperid) {
     var datosSerializadosCompletos = $('#' + $('#nameFormCalendario').val()).serialize();
     datosSerializadosCompletos += "&CoperID=" + coperid;
     $.ajax({
-        url: getContext() + '/convocatoria/convocatoriaspersonal',
+        url: getContext() + '/convocatorias/convocatoria-de-personal',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
@@ -178,7 +178,7 @@ function procesarAjaxPuestoConvWeb(coperid) {
     var datosSerializadosCompletos = $('#' + $('#nameFormPuestoConv').val()).serialize();
     datosSerializadosCompletos += "&CoperID=" + coperid;
     $.ajax({
-        url: getContext() + '/convocatoria/convocatoriaspersonal',
+        url: getContext() + '/convocatorias/convocatoria-de-personal',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
@@ -232,7 +232,7 @@ function procesarAjaxDocumentosConvWeb(id) {
     var datosSerializadosCompletos = $('#' + $('#nameFormDocumentoCal').val()).serialize();
     datosSerializadosCompletos += "&CaleId=" + id;
     $.ajax({
-        url: getContext() + '/convocatoria/convocatoriaspersonal',
+        url: getContext() + '/convocatorias/convocatoria-de-personal',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',

@@ -763,7 +763,7 @@
                                 <i class="material-icons brand-icon">supervisor_account</i>
                             </div>
                             <div class="desc mt-15">
-                                <a href="#"><h3 class="text-peam-verde">Selección de Personal</h3></a>
+                                <a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-personal"><h3 class="text-peam-verde">Selección de Personal</h3></a>
                             </div>
                         </div>
                     </div>
