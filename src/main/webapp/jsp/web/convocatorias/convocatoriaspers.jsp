@@ -8,8 +8,6 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css" rel="stylesheet">
         <!-- FontAwesome CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- magnific-popup -->
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/magnific-popup.css" rel="stylesheet">
         <!-- flexslider -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/flexslider.css" rel="stylesheet">
         <!-- materialize -->
@@ -122,7 +120,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-md-9 col-xs-12 text-right">
+                                                                    <div class="col-xs-12 text-right">
                                                                         <ul id="paginationConvocatoria" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                                         </ul>
@@ -151,7 +149,7 @@
                                                                                             <input type="hidden" id="numberCalendario" name="numberPageCalendario" value="1">
                                                                                             <input type="hidden" id="sizePageCalendario" name="sizePageCalendario" value="15">
                                                                                         </form>
-                                                                                        
+
                                                                                         <div class="row" id="TitularCalendario" style="display: none">
                                                                                             <div class="text-center mb-30" style="margin-top: 5px;">
                                                                                                 <h2 class="text-peam-verde" id="ConvocatoriaTitulo" style="font-size: 20px"></h2>
@@ -181,7 +179,7 @@
                                                                                         </div>
 
                                                                                         <div class="row">
-                                                                                            <div class="col-md-9 col-xs-12 text-right">
+                                                                                            <div class="col-xs-12 text-right">
                                                                                                 <ul id="paginationCalendario" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                                                                 </ul>
@@ -189,7 +187,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                     <div role="tabpanel" class="tab-pane fade" id="tab-6">
-                                                                                        
+
                                                                                         <form id="FrmDocumentoCal">
                                                                                             <input type="hidden" id="nameFormDocumentoCal" value="FrmDocumentoCal">
                                                                                             <input type="hidden" id="actionDocumentoCal" name="action" value="paginarDocumentoCal">
@@ -223,7 +221,7 @@
                                                                                         </div>
 
                                                                                         <div class="row">
-                                                                                            <div class="col-md-9 col-xs-12 text-right">
+                                                                                            <div class="col-xs-12 text-right">
                                                                                                 <ul id="paginationDocumentCal" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                                                                 </ul>
@@ -235,13 +233,8 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                    </div><!-- /.row -->
-                                                                </div><!-- /.vertical-tab -->
-
-
-
-
-
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                             <div role="tabpanel" class="tab-pane fade" id="tab-3">
                                                                 <div class="row" id="TitularPlaza" style="display: none">
@@ -278,7 +271,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="row">
-                                                                    <div class="col-md-9 col-xs-12 text-right">
+                                                                    <div class="col-xs-12 text-right">
                                                                         <ul id="paginationPlaza" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                                         </ul>
@@ -288,16 +281,13 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                            </div><!-- /.border-bottom-tab -->
-
-                                        </div><!-- /.col-md-12 -->
-                                    </div><!-- /.row -->
+                                            </div>
+                                        </div>
+                                    </div>
                                 </header>
-
                                 <footer class="entry-footer">
                                     <div class="row">
-                                        <div class="col-md-9 col-xs-12 text-right">
+                                        <div class="col-xs-12 text-right">
                                             <ul id="paginationConvocatoria" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                             </ul>
@@ -347,7 +337,6 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.inview.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
 
         <!-- RS5.0 Core JS Files -->

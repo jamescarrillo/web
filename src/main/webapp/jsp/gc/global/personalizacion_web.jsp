@@ -58,25 +58,23 @@
                                     Conf_Web conf_web = (Conf_Web) request.getAttribute("conf_web");
                                 %>
                                 <div class="card-body pt-1">
-                                    <input type="hidden" id="nameForm" value="FrmAnuncio">
-                                    <input type="hidden" id="action" name="action" value="guardarPersonalizacionWeb">
-                                    <form id="FrmPersonalizacionWEB">
-                                        <div class="row">
-                                            <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                                                <label for="numero_fotos_galeria">NÚMERO DE FOTOS A MOSTRAR EN LA GALERÍA</label>
-                                                <input type="text" class="form-control form-control-sm" id="numero_fotos_galeria" name="numero_fotos_galeria" value="<%out.print(conf_web.getNumero_fotos_galeria());%>">
-                                            </div>
-                                            <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                                                <label for="numero_videos_multimedia">NÚMERO DE VIDEOS A MOSTRAR EN MULTIMEDIA</label>
-                                                <input type="text" class="form-control form-control-sm" id="numero_videos_multimedia" name="numero_videos_multimedia" value="<%out.print(conf_web.getNumero_videos_multimedia());%>">
-                                            </div>
-                                            <div class="form-group col-xs-12 col-md-4">
-                                                <label for="numero_anuncios_mostrar">NÚMERO DE ANUNCIOS A MOSTRAR EN LA WEB</label>
-                                                <input type="text" class="form-control form-control-sm" id="numero_anuncios_mostrar" name="numero_anuncios_mostrar" value="<%out.print(conf_web.getNumero_anuncios_mostrar());%>">
-                                            </div>
+                                    <div class="row">
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                            <label for="numero_fotos_galeria">NÚMERO DE FOTOS A MOSTRAR EN LA GALERÍA</label>
+                                            <input type="text" class="form-control form-control-sm" id="numero_fotos_galeria" name="numero_fotos_galeria" value="<%out.print(conf_web.getNumero_fotos_galeria());%>">
                                         </div>
+                                        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                            <label for="numero_videos_multimedia">NÚMERO DE VIDEOS A MOSTRAR EN MULTIMEDIA</label>
+                                            <input type="text" class="form-control form-control-sm" id="numero_videos_multimedia" name="numero_videos_multimedia" value="<%out.print(conf_web.getNumero_videos_multimedia());%>">
+                                        </div>
+                                        <div class="form-group col-xs-12 col-md-4">
+                                            <label for="numero_anuncios_mostrar">NÚMERO DE ANUNCIOS A MOSTRAR EN LA WEB</label>
+                                            <input type="text" class="form-control form-control-sm" id="numero_anuncios_mostrar" name="numero_anuncios_mostrar" value="<%out.print(conf_web.getNumero_anuncios_mostrar());%>">
+                                        </div>
+                                        <input type="hidden" id="action" name="action" value="guardarPersonalizacionWeb">
+                                        <input type="hidden" id="icono_pagina" name="icono_pagina" value="logo-peam.png">
                                         <input type="hidden" id="redes_sociales" value="">
-                                    </form>
+                                    </div>
                                     <div class="row">
                                         <div class="col-10 text-left mb-1">
                                             <label><strong>REDES SOCIALES</strong></label>
@@ -137,173 +135,175 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row mt-3">
-                                        <div class="form-group col-12 mb-3">
-                                            <div class="row justify-content-sm-center">
-                                                <div class="col-12 text-center">
-                                                    <div class="card border-primary borde-redondeado mb-2">
-                                                        <div class="card-body p-2">
-                                                            <div class="text-center">
-                                                                <%
-                                                                    String path_logo_peam;
-                                                                    path_logo_peam = getServletContext().getContextPath() + "/peam_resources/logos_principales/" + conf_web.getUrl_logo_peam();
-                                                                    if (!new File(path_logo_peam).exists()) {
-                                                                        path_logo_peam = getServletContext().getContextPath() + "/peam_resources/logos_principales/logo_peam_combinado_large.png";
-                                                                    }
-                                                                %>
-                                                                <img id="visorFotoLogoPeam" src='<%out.print(path_logo_peam);%>' alt="peam-img" class="rounded mx-auto d-block img-responsive" >
+                                    <form id="FrmPersonalizacionWEB">
+                                        <div class="row mt-3">
+                                            <div class="form-group col-12 mb-3">
+                                                <div class="row justify-content-sm-center">
+                                                    <div class="col-12 text-center">
+                                                        <div class="card border-primary borde-redondeado mb-2">
+                                                            <div class="card-body p-2">
+                                                                <div class="text-center">
+                                                                    <%
+                                                                        String path_logo_peam;
+                                                                        path_logo_peam = getServletContext().getContextPath() + "/peam_resources/logos_principales/" + conf_web.getNombre_logo_peam();
+                                                                        if (!new File(path_logo_peam).exists()) {
+                                                                            path_logo_peam = getServletContext().getContextPath() + "/peam_resources/logos_principales/logo_peam_combinado_large.png";
+                                                                        }
+                                                                    %>
+                                                                    <img id="visorFotoLogoPeam" src='<%out.print(path_logo_peam);%>' alt="peam-img" class="rounded mx-auto d-block img-responsive" >
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoLogoPeam" idinputfile="fileFotoLogoPeam" inputvalidacion="txtValidacionFotoLogoPeam" inputname="txtNombreFotoLogoPeam" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_principales/logo_peam_combinado_large.png");%>">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                    <div style="display: inline">
-                                                        <input id="fileFotoLogoPeam" name="fileFotoLogoPeam" inputvalidacion="txtValidacionFotoLogoPeam" class="input-file-logo" idvisor="visorFotoLogoPeam" type="file" style="display: none">
-                                                        <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoLogoPeam" idinputfile="fileFotoLogoPeam">
-                                                            <i class="fa fa-folder-open"></i>
+                                                        <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoLogoPeam" idinputfile="fileFotoLogoPeam" inputvalidacion="txtValidacionFotoLogoPeam" inputname="txtNombreFotoLogoPeam" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_principales/logo_peam_combinado_large.png");%>">
+                                                            <i class="fa fa-trash"></i>
                                                         </button>
-                                                        <input type="hidden" id="txtNombreFotoLogoPeam" name="txtNombreFotoLogoPeam" value="">
-                                                        <input type="hidden" id="txtValidacionFotoLogoPeam" name="txtValidacionFotoLogoPeam" value="">
+                                                        <div style="display: inline">
+                                                            <input id="fileFotoLogoPeam" name="fileFotoLogoPeam" inputvalidacion="txtValidacionFotoLogoPeam" class="input-file-logo" idvisor="visorFotoLogoPeam" type="file" style="display: none">
+                                                            <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoLogoPeam" idinputfile="fileFotoLogoPeam">
+                                                                <i class="fa fa-folder-open"></i>
+                                                            </button>
+                                                            <input type="hidden" id="txtNombreFotoLogoPeam" name="txtNombreFotoLogoPeam" value="<%out.print(conf_web.getNombre_logo_peam());%>">
+                                                            <input type="hidden" id="txtValidacionFotoLogoPeam" name="txtValidacionFotoLogoPeam" value="">
+                                                        </div>
+                                                        <br><small>Seleccione Logo (Recomendado: 1175px x 85px )</small>
                                                     </div>
-                                                    <br><small>Seleccione Logo (Recomendado: 1175px x 85px )</small>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group col-12 mb-3">
-                                            <div class="row justify-content-sm-center">
-                                                <div class="col-lg-4 col-md-6  col-12 text-center">
-                                                    <div class="card border-primary borde-redondeado mb-2">
-                                                        <div class="card-body p-2">
-                                                            <div class="text-center">
-                                                                <%
-                                                                    String path_logo_goresam;
-                                                                    path_logo_goresam = getServletContext().getContextPath() + "/peam_resources/logos_principales/" + conf_web.getUrl_logo_goresam();
-                                                                    if (!new File(path_logo_goresam).exists()) {
-                                                                        path_logo_goresam = getServletContext().getContextPath() + "/peam_resources/logos_principales/logo-goresam.png";
-                                                                    }
-                                                                %>
-                                                                <img id="visorFotoLogoGoresam" src='<%out.print(path_logo_goresam);%>' alt="goresam-img" class="rounded mx-auto d-block img-responsive" >
+                                            <div class="form-group col-12 mb-3">
+                                                <div class="row justify-content-sm-center">
+                                                    <div class="col-lg-4 col-md-6  col-12 text-center">
+                                                        <div class="card border-primary borde-redondeado mb-2">
+                                                            <div class="card-body p-2">
+                                                                <div class="text-center">
+                                                                    <%
+                                                                        String path_logo_goresam;
+                                                                        path_logo_goresam = getServletContext().getContextPath() + "/peam_resources/logos_principales/" + conf_web.getNombre_logo_goresam();
+                                                                        if (!new File(path_logo_goresam).exists()) {
+                                                                            path_logo_goresam = getServletContext().getContextPath() + "/peam_resources/logos_principales/logo-goresam.png";
+                                                                        }
+                                                                    %>
+                                                                    <img id="visorFotoLogoGoresam" src='<%out.print(path_logo_goresam);%>' alt="goresam-img" class="rounded mx-auto d-block img-responsive" >
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoLogoGoresam" idinputfile="fileFotoLogoGoresam" inputvalidacion="txtValidacionFotoLogoGoresam" inputname="txtNombreFotoLogoGoresam" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_principales/logo-goresam.png");%>">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                    <div style="display: inline">
-                                                        <input id="fileFotoLogoGoresam" name="fileFotoLogoGoresam" inputvalidacion="txtValidacionFotoLogoGoresam" class="input-file-logo" idvisor="visorFotoLogoGoresam" type="file" style="display: none">
-                                                        <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoLogoGoresam" idinputfile="fileFotoLogoGoresam">
-                                                            <i class="fa fa-folder-open"></i>
+                                                        <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoLogoGoresam" idinputfile="fileFotoLogoGoresam" inputvalidacion="txtValidacionFotoLogoGoresam" inputname="txtNombreFotoLogoGoresam" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_principales/logo-goresam.png");%>">
+                                                            <i class="fa fa-trash"></i>
                                                         </button>
-                                                        <input type="hidden" id="txtNombreFotoLogoGoresam" name="txtNombreFotoLogoGoresam" value="">
-                                                        <input type="hidden" id="txtValidacionFotoLogoGoresam" name="txtValidacionFotoLogoGoresam" value="">
+                                                        <div style="display: inline">
+                                                            <input id="fileFotoLogoGoresam" name="fileFotoLogoGoresam" inputvalidacion="txtValidacionFotoLogoGoresam" class="input-file-logo" idvisor="visorFotoLogoGoresam" type="file" style="display: none">
+                                                            <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoLogoGoresam" idinputfile="fileFotoLogoGoresam">
+                                                                <i class="fa fa-folder-open"></i>
+                                                            </button>
+                                                            <input type="hidden" id="txtNombreFotoLogoGoresam" name="txtNombreFotoLogoGoresam" value="<%out.print(conf_web.getNombre_logo_goresam());%>">
+                                                            <input type="hidden" id="txtValidacionFotoLogoGoresam" name="txtValidacionFotoLogoGoresam" value="">
+                                                        </div>
+                                                        <br><small>Seleccione Logo (Recomendado: 262px x 160px )</small>
                                                     </div>
-                                                    <br><small>Seleccione Logo (Recomendado: 262px x 160px )</small>
                                                 </div>
+                                                <input type="text" id="url_goresam" name="url_goresam" class="form-control form-control-sm mt-2" placeholder="URL GORESAM" value="<%out.print(conf_web.getUrl_logo_goresam());%>">
                                             </div>
-                                            <input type="text" id="url_goresam" name="url_goresam" class="form-control form-control-sm mt-2" placeholder="URL GORESAM" value="<%out.print(conf_web.getUrl_logo_goresam().split("::")[1]);%>">
-                                        </div>
-                                        <div class="form-group col-12 mb-3">
-                                            <div class="row justify-content-sm-center">
-                                                <div class="col-lg-4 col-md-6 col-12 text-center">
-                                                    <div class="card border-primary borde-redondeado mb-2">
-                                                        <div class="card-body p-2">
-                                                            <div class="text-center">
-                                                                <%
-                                                                    String path_logo_portal;
-                                                                    path_logo_portal = getServletContext().getContextPath() + "/peam_resources/logos_principales/" + conf_web.getUrl_logo_portal();
-                                                                    if (!new File(path_logo_portal).exists()) {
-                                                                        path_logo_portal = getServletContext().getContextPath() + "/peam_resources/logos_principales/portal_transparencia.png";
-                                                                    }
-                                                                %>
-                                                                <img id="visorFotoLogoPortal" src='<%out.print(path_logo_portal);%>' alt="portal-img" class="rounded mx-auto d-block img-responsive">
+                                            <div class="form-group col-12 mb-3">
+                                                <div class="row justify-content-sm-center">
+                                                    <div class="col-lg-4 col-md-6 col-12 text-center">
+                                                        <div class="card border-primary borde-redondeado mb-2">
+                                                            <div class="card-body p-2">
+                                                                <div class="text-center">
+                                                                    <%
+                                                                        String path_logo_portal;
+                                                                        path_logo_portal = getServletContext().getContextPath() + "/peam_resources/logos_principales/" + conf_web.getNombre_logo_portal();
+                                                                        if (!new File(path_logo_portal).exists()) {
+                                                                            path_logo_portal = getServletContext().getContextPath() + "/peam_resources/logos_principales/portal_transparencia.png";
+                                                                        }
+                                                                    %>
+                                                                    <img id="visorFotoLogoPortal" src='<%out.print(path_logo_portal);%>' alt="portal-img" class="rounded mx-auto d-block img-responsive">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoLogoPortal" idinputfile="fileFotoLogoPortal" inputvalidacion="txtValidacionFotoLogoPortal" inputname="txtNombreFotoLogoPortal" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_principales/portal_transparencia.png");%>">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                    <div style="display: inline">
-                                                        <input id="fileFotoLogoPortal" name="fileFotoLogoPortal" inputvalidacion="txtValidacionFotoLogoPortal" class="input-file-logo" idvisor="visorFotoLogoPortal" type="file" style="display: none">
-                                                        <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoLogoPortal" idinputfile="fileFotoLogoPortal">
-                                                            <i class="fa fa-folder-open"></i>
+                                                        <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoLogoPortal" idinputfile="fileFotoLogoPortal" inputvalidacion="txtValidacionFotoLogoPortal" inputname="txtNombreFotoLogoPortal" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_principales/portal_transparencia.png");%>">
+                                                            <i class="fa fa-trash"></i>
                                                         </button>
-                                                        <input type="hidden" id="txtNombreFotoLogoPortal" name="txtNombreFotoLogoPortal" value="">
-                                                        <input type="hidden" id="txtValidacionFotoLogoPortal" name="txtValidacionFotoLogoPortal" value="">
+                                                        <div style="display: inline">
+                                                            <input id="fileFotoLogoPortal" name="fileFotoLogoPortal" inputvalidacion="txtValidacionFotoLogoPortal" class="input-file-logo" idvisor="visorFotoLogoPortal" type="file" style="display: none">
+                                                            <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoLogoPortal" idinputfile="fileFotoLogoPortal">
+                                                                <i class="fa fa-folder-open"></i>
+                                                            </button>
+                                                            <input type="hidden" id="txtNombreFotoLogoPortal" name="txtNombreFotoLogoPortal" value="<%out.print(conf_web.getNombre_logo_portal());%>">
+                                                            <input type="hidden" id="txtValidacionFotoLogoPortal" name="txtValidacionFotoLogoPortal" value="">
+                                                        </div>
+                                                        <br><small>Seleccione Logo (Recomendado: 370px x 160px )</small>
                                                     </div>
-                                                    <br><small>Seleccione Logo (Recomendado: 370px x 160px )</small>
                                                 </div>
+                                                <input type="text" id="url_portal_transparencia" name="url_portal_transparencia" class="form-control form-control-sm mt-2" placeholder="URL PORTAL DE TRANSPARENCIA" value="<%out.print(conf_web.getUrl_logo_portal());%>">
                                             </div>
-                                            <input type="text" id="url_portal_transparencia" name="url_portal_transparencia" class="form-control form-control-sm mt-2" placeholder="URL PORTAL DE TRANSPARENCIA" value="<%out.print(conf_web.getUrl_logo_portal().split("::")[1]);%>">
-                                        </div>
-                                        <div class="form-group col-12 mb-3">
-                                            <div class="row justify-content-sm-center">
-                                                <div class="col-lg-4 col-md-6 col-12 text-center">
-                                                    <div class="card border-primary borde-redondeado mb-2">
-                                                        <div class="card-body p-2">
-                                                            <div class="text-center">
-                                                                <%
-                                                                    String path_logo_escudo;
-                                                                    path_logo_escudo = getServletContext().getContextPath() + "/peam_resources/logos_principales/" + conf_web.getUrl_logo_escudo();
-                                                                    if (!new File(path_logo_escudo).exists()) {
-                                                                        path_logo_escudo = getServletContext().getContextPath() + "/peam_resources/logos_principales/sello.png";
-                                                                    }
-                                                                %>
-                                                                <img id="visorFotoLogoEscudo" src='<%out.print(path_logo_escudo);%>' alt="escudo-img" class="rounded mx-auto d-block img-responsive" style="width: 175px; height: 160px">
+                                            <div class="form-group col-12 mb-3">
+                                                <div class="row justify-content-sm-center">
+                                                    <div class="col-lg-4 col-md-6 col-12 text-center">
+                                                        <div class="card border-primary borde-redondeado mb-2">
+                                                            <div class="card-body p-2">
+                                                                <div class="text-center">
+                                                                    <%
+                                                                        String path_logo_escudo;
+                                                                        path_logo_escudo = getServletContext().getContextPath() + "/peam_resources/logos_principales/" + conf_web.getNombre_logo_escudo();
+                                                                        if (!new File(path_logo_escudo).exists()) {
+                                                                            path_logo_escudo = getServletContext().getContextPath() + "/peam_resources/logos_principales/sello.png";
+                                                                        }
+                                                                    %>
+                                                                    <img id="visorFotoLogoEscudo" src='<%out.print(path_logo_escudo);%>' alt="escudo-img" class="rounded mx-auto d-block img-responsive" style="width: 175px; height: 160px">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoLogoEscudo" idinputfile="fileFotoLogoEscudo" inputvalidacion="txtValidacionFotoLogoEscudo" inputname="txtNombreFotoLogoEscudo" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_principales/sello.png");%>">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                    <div style="display: inline">
-                                                        <input id="fileFotoLogoEscudo" name="fileFotoLogoEscudo" inputvalidacion="txtValidacionFotoLogoEscudo" class="input-file-logo" idvisor="visorFotoLogoEscudo" type="file" style="display: none">
-                                                        <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoLogoEscudo" idinputfile="fileFotoLogoEscudo">
-                                                            <i class="fa fa-folder-open"></i>
+                                                        <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoLogoEscudo" idinputfile="fileFotoLogoEscudo" inputvalidacion="txtValidacionFotoLogoEscudo" inputname="txtNombreFotoLogoEscudo" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_principales/sello.png");%>">
+                                                            <i class="fa fa-trash"></i>
                                                         </button>
-                                                        <input type="hidden" id="txtNombreFotoLogoEscudo" name="txtNombreFotoLogoEscudo" value="">
-                                                        <input type="hidden" id="txtValidacionFotoLogoEscudo" name="txtValidacionFotoLogoEscudo" value="">
+                                                        <div style="display: inline">
+                                                            <input id="fileFotoLogoEscudo" name="fileFotoLogoEscudo" inputvalidacion="txtValidacionFotoLogoEscudo" class="input-file-logo" idvisor="visorFotoLogoEscudo" type="file" style="display: none">
+                                                            <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoLogoEscudo" idinputfile="fileFotoLogoEscudo">
+                                                                <i class="fa fa-folder-open"></i>
+                                                            </button>
+                                                            <input type="hidden" id="txtNombreFotoLogoEscudo" name="txtNombreFotoLogoEscudo" value="<%out.print(conf_web.getNombre_logo_escudo());%>">
+                                                            <input type="hidden" id="txtValidacionFotoLogoEscudo" name="txtValidacionFotoLogoEscudo" value="">
+                                                        </div>
+                                                        <br><small>Seleccione Logo (Recomendado: 175px x 160px )</small>
                                                     </div>
-                                                    <br><small>Seleccione Logo (Recomendado: 175px x 160px )</small>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group col-12 mb-3">
-                                            <div class="row justify-content-sm-center">
-                                                <div class="col-lg-4 col-md-6 col-12 text-center">
-                                                    <div class="card border-primary borde-redondeado mb-2">
-                                                        <div class="card-body p-2">
-                                                            <div class="text-center">
-                                                                <%
-                                                                    String path_logo_presentacion_actualidad;
-                                                                    path_logo_presentacion_actualidad = getServletContext().getContextPath() + "/peam_resources/logos_principales/" + conf_web.getUrl_logo_presentacion_actualidad();
-                                                                    if (!new File(path_logo_presentacion_actualidad).exists()) {
-                                                                        path_logo_presentacion_actualidad = getServletContext().getContextPath() + "/peam_resources/logos_principales/fachada_peam.png";
-                                                                    }
-                                                                %>
-                                                                <img id="visorFotoLogoPresentacionActualidad" src='<%out.print(path_logo_presentacion_actualidad);%>' alt="escudo-img" class="rounded mx-auto d-block img-responsive">
+                                            <div class="form-group col-12 mb-3">
+                                                <div class="row justify-content-sm-center">
+                                                    <div class="col-lg-4 col-md-6 col-12 text-center">
+                                                        <div class="card border-primary borde-redondeado mb-2">
+                                                            <div class="card-body p-2">
+                                                                <div class="text-center">
+                                                                    <%
+                                                                        String path_logo_presentacion_actualidad;
+                                                                        path_logo_presentacion_actualidad = getServletContext().getContextPath() + "/peam_resources/logos_principales/" + conf_web.getNombre_logo_presentacion_actualidad();
+                                                                        if (!new File(path_logo_presentacion_actualidad).exists()) {
+                                                                            path_logo_presentacion_actualidad = getServletContext().getContextPath() + "/peam_resources/logos_principales/fachada_peam.png";
+                                                                        }
+                                                                    %>
+                                                                    <img id="visorFotoLogoPresentacionActualidad" src='<%out.print(path_logo_presentacion_actualidad);%>' alt="escudo-img" class="rounded mx-auto d-block img-responsive">
+                                                                </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoLogoPresentacionActualidad" idinputfile="fileFotoLogoPresentacionActualidad" inputvalidacion="txtValidacionFotoPresentacionActualidad" inputname="txtNombreFotoLogoPresentacionActualidad" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_principales/fachada_peam.png");%>">
-                                                        <i class="fa fa-trash"></i>
-                                                    </button>
-                                                    <div style="display: inline">
-                                                        <input id="fileFotoLogoPresentacionActualidad" name="fileFotoLogoPresentacionActualidad" class="input-file-logo" idvisor="visorFotoLogoPresentacionActualidad" inputvalidacion="txtValidacionFotoPresentacionActualidad" type="file" style="display: none">
-                                                        <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoLogoPresentacionActualidad" idinputfile="fileFotoLogoPresentacionActualidad">
-                                                            <i class="fa fa-folder-open"></i>
+                                                        <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoLogoPresentacionActualidad" idinputfile="fileFotoLogoPresentacionActualidad" inputvalidacion="txtValidacionFotoPresentacionActualidad" inputname="txtNombreFotoLogoPresentacionActualidad" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_principales/fachada_peam.png");%>">
+                                                            <i class="fa fa-trash"></i>
                                                         </button>
-                                                        <input type="hidden" id="txtNombreFotoLogoPresentacionActualidad" name="txtNombreFotoLogoPresentacionActualidad" value="">
-                                                        <input type="hidden" id="txtValidacionFotoPresentacionActualidad" name="txtValidacionFotoPresentacionActualidad" value="">
+                                                        <div style="display: inline">
+                                                            <input id="fileFotoLogoPresentacionActualidad" name="fileFotoLogoPresentacionActualidad" class="input-file-logo" idvisor="visorFotoLogoPresentacionActualidad" inputvalidacion="txtValidacionFotoPresentacionActualidad" type="file" style="display: none">
+                                                            <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoLogoPresentacionActualidad" idinputfile="fileFotoLogoPresentacionActualidad">
+                                                                <i class="fa fa-folder-open"></i>
+                                                            </button>
+                                                            <input type="hidden" id="txtNombreFotoLogoPresentacionActualidad" name="txtNombreFotoLogoPresentacionActualidad" value="<%out.print(conf_web.getNombre_logo_presentacion_actualidad());%>">
+                                                            <input type="hidden" id="txtValidacionFotoPresentacionActualidad" name="txtValidacionFotoPresentacionActualidad" value="">
+                                                        </div>
+                                                        <br><small>Seleccione Logo (Recomendado: 380px x 200px )</small>
                                                     </div>
-                                                    <br><small>Seleccione Logo (Recomendado: 380px x 200px )</small>
                                                 </div>
                                             </div>
+                                            <div class="col-12 text-right">
+                                                <button type="submit" class="btn btn-info btn-sm"><i class="fa fa-floppy-o"></i>GUARDAR CONFIGURACIÓN</button>
+                                            </div>
                                         </div>
-                                        <div class="col-12 text-right">
-                                            <button type="button" class="btn btn-info btn-sm" id="btnGuardarConfWeb"><i class="fa fa-floppy-o"></i>GUARDAR CONFIGURACIÓN</button>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -365,7 +365,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="modalCargandoAnuncio" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+            <div class="modal fade" id="modalCargandoPersonalizacion" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-body">

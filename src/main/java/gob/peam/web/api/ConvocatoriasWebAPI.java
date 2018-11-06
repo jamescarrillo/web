@@ -37,8 +37,8 @@ import org.apache.commons.logging.LogFactory;
  *
  * @author JhanxD
  */
-@WebServlet(name = "ConvocatoriasWebAPI", urlPatterns = {"/convocatoria/convocatoriaspersonal",
-    "/convocatoria/bienesyservicios"})
+@WebServlet(name = "ConvocatoriasWebAPI", urlPatterns = {"/convocatorias/convocatoria-de-personal",
+    "/convocatorias/convocatoria-de-bienes-y-servicios"})
 public class ConvocatoriasWebAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
@@ -89,7 +89,7 @@ public class ConvocatoriasWebAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             switch (request.getRequestURI().substring(request.getContextPath().length())) {
-                case "/convocatoria/convocatoriaspersonal":
+                case "/convocatorias/convocatoria-de-personal":
                     this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
                     logger.info("--->" + this.action);
                     switch (this.action) {
@@ -110,7 +110,7 @@ public class ConvocatoriasWebAPI extends HttpServlet {
                             break;
                     }
                     break;
-                case "/convocatoria/bienesyservicios":
+                case "/convocatorias/convocatoria-de-bienes-y-servicios":
                     this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
                     logger.info("--->" + this.action);
                     switch (this.action) {

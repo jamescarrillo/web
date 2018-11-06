@@ -30,7 +30,6 @@
         <!-- RS5.0 Layers and Navigation Styles -->
         <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/layers.css">
         <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/navigation.css">
-        <!--link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css"rel="stylesheet"-->
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -404,9 +403,7 @@
                                         </h5>
                                     </a>
                                 </div>
-                                <!-- /.border-box -->
                             </div>
-                            <!-- /.col-md-3 -->
                             <div class="col-md-3 col-sm-6">
                                 <div class="text-center">
                                     <a href="#"> <i class="fa fa-pagelines fa-5x"
@@ -416,9 +413,7 @@
                                         </h5>
                                     </a>
                                 </div>
-                                <!-- /.border-box -->
                             </div>
-                            <!-- /.col-md-3 -->
                             <div class="col-md-3 col-sm-6">
                                 <div class="text-center">
                                     <a href="#"> <i class="fa fa-truck fa-5x" aria-hidden="true"></i>
@@ -426,20 +421,15 @@
                                     </a>
 
                                 </div>
-                                <!-- /.border-box -->
                             </div>
-                            <!-- /.col-md-3 -->
                             <div class="col-md-3 col-sm-6">
                                 <div class="text-center">
                                     <a href="#"> <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
                                         <h5 class="text-peam-verde">ESTUDIOS</h5>
                                     </a>
                                 </div>
-                                <!-- /.border-box -->
                             </div>
-                            <!-- /.col-md-3 -->
                         </div>
-                        <!-- /.row -->
                     </div>
                 </div>
             </div>         
@@ -545,18 +535,18 @@
                             </div>
                             <div class="team-title">
                                 <br>
-                                <h3>
+                                <h3 class="text-peam-negrita">
                                     <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carmén Beatriz</font></font></a>
                                 </h3>
                                 <br>
-                                <span class="mb-10"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Gerente General</font></font>
+                                <span class="mb-10"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" class="text-peam-negrita">Gerente General</font></font>
                                 </span>
                                 <br>
-                                <h5>
+                                <h5 class="text-peam-negrita">
                                     <i class="fa fa-phone"></i> (042) - 562522
                                 </h5>
                                 <br>
-                                <h5 class="mb-30">
+                                <h5 class="mb-30 text-peam-negrita">
                                     <i class="fa fa-envelope-o"></i> gerencia@peam.gob.pe
                                 </h5>
                                 <br>
@@ -584,7 +574,7 @@
                                        style="color: #6a9a32"></i>
                                 </div>
                                 <div class="desc mt-10">
-                                    <a href="#"><h3 class="text-peam-verde">DOCUMENTOS NORMATIVOS Y DE GESTIÓN</h3></a>
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion"><h3 class="text-peam-verde">DOCUMENTOS NORMATIVOS Y DE GESTIÓN</h3></a>
                                 </div>
                             </div>
                         </div>
@@ -592,7 +582,6 @@
                             <div class="featured-item border-box hover brand-hover"
                                  style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
                                 <div class="icon mb-5">
-                                    <!--i class="material-icons brand-icon">trending_up</i-->
                                     <i class="fa fa-money" aria-hidden="true" style="color: #6a9a32"></i>
                                 </div>
                                 <div class="desc mt-10">
@@ -774,7 +763,7 @@
                                 <i class="material-icons brand-icon">supervisor_account</i>
                             </div>
                             <div class="desc mt-15">
-                                <a href="#"><h3 class="text-peam-verde">Selección de Personal</h3></a>
+                                <a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-personal"><h3 class="text-peam-verde">Selección de Personal</h3></a>
                             </div>
                         </div>
                     </div>
@@ -799,28 +788,19 @@
                         <strong>Galería y Multimedia</strong>
                     </h1>
                 </div>
-
                 <div class="row">
-                    <div class="col-md-8 col-xs-12">
+                    <div class="col-xs-12">
                         <div class="portfolio-container text-center">
                             <ul class="portfolio-filter brand-filter" style="display: none">
                                 <li class="active waves-effect waves-light" data-group="all">All</li>
                             </ul>
-                            <div class="portfolio col-3 mt-15 gutter" id="containerGaleriaFotosPeam">
+                            <div class="portfolio col-4 mt-15 gutter" id="containerGaleriaFotosPeam">
 
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-4 col-xs-12">
-                        <div class="featured-item" style="padding: 25px">
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube-nocookie.com/embed/EuESIXO4-Ms?rel=0" allowfullscreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 mt-10 text-center">
-                        <a class="waves-effect waves-light btn">Ver todos</a>
-                    </div>
+                </div>
+                <div class="row mt-10" id="containerMultimedia">
                 </div>
             </div>
         </section>
@@ -909,11 +889,10 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.navigation.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
-        <!--script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script-->
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
-        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/publicaciones.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/index.js"></script>
     </body>
 </html>

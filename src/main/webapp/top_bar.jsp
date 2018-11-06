@@ -1,13 +1,26 @@
+<%@page import="gob.peam.web.model.others.Conf_Web"%>
+<%@page import="gob.peam.web.utilities.Utilities"%>
 <div class="top-bar light-green visible-md visible-lg">
     <div class="container">
         <div class="row">
-            <!-- Social Icon -->
             <div class="col-lg-4 col-md-3">
-                <!-- Social Icon -->
                 <ul class="list-inline social-top tt-animate btt">
-                    <li><a href="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs" target="_blank"><i class="fa fa-facebook" style="color: #a20505"></i></a></li>
-                    <li><a href="https://twitter.com/p_altomayo" target="_blank"><i class="fa fa-twitter" style="color: #a20505"></i></a></li>
-                    <li><a href="https://www.youtube.com/user/PEAM1140?feature=watch" target="_blank"><i class="fa fa-youtube" style="color: #a20505"></i></a></li>
+                    <%
+                        Conf_Web conf_web = Utilities.getConf_Web(getServletContext().getRealPath("/peam_resources_app/conf_app/files/"), "conf_web.properties");
+                        String[] valoresRedesSociales = conf_web.getRedes_sociales().split(":::");
+                        // nombre::link::icono::target
+                        String[] valorItem;
+                        String target;
+                        for (int i = 0; i < valoresRedesSociales.length; i++) {
+                            valorItem = valoresRedesSociales[i].split("::");
+                            if (valorItem[3].equals("1")) {
+                                target = "target='_blank'";
+                            } else {
+                                target = "";
+                            }
+                            out.print("<li><a href='" + valorItem[1] + "' " + target + "><i class='" + valorItem[2] + "' style='color: #a20505'></i></a></li>");
+                        }
+                    %>
                 </ul>
             </div>
             <div class="col-lg-8 col-me-9 text-right">
@@ -35,6 +48,6 @@
                     </li>
                 </ul>
             </div>
-        </div><!-- /.row -->
-    </div><!-- /.container -->
+        </div>
+    </div>
 </div>

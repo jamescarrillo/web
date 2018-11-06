@@ -18,14 +18,10 @@
                 </div>
             </div>
             <div id="materialize-menu" class="menuzord">
-                <!--logo start-->
-                <a href="<%out.print(getServletContext().getContextPath());%>/index" class="logo-brand" style="margin-left: 0px;margin-right: 0px">
-                    <!--img class="retina" src="assets/img/logo.png" alt=""/-->
+                <a href="<%out.print(getServletContext().getContextPath());%>/index" id="logoIndexPrincipal" class="logo-brand" style="margin-left: 0px;margin-right: 15px">
                     <img class="retina" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo_peam_combinado.png" alt=""/>
                 </a>
-                <!--logo end-->
-                <!--mega menu start-->
-                <ul class="menuzord-menu pull-right" id="menu-list">
+                <ul class="menuzord-menu pull-center" id="menu-list">
                     <li><a href="<%out.print(getServletContext().getContextPath());%>/index">Inicio</a></li>
                     <li><a href="javascript:void(0)">La institución</a>
                         <div class="megamenu">
@@ -69,7 +65,7 @@
                                 <div class="col12">
                                     <h2>Convocatorias</h2>
                                     <ul class="list-unstyled clearfix">
-                                        <li><a href="#">Convocatorias de Personal</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-personal">Convocatorias de Personal</a></li>
                                         <li><a href="#">Bienes, Servicios, Obras y Conseciones</a></li>
                                     </ul>
                                 </div>    
@@ -119,7 +115,6 @@
                         </div>
                     </li>
                 </ul>
-                <!--mega menu end-->
             </div>
         </div>
     </div>

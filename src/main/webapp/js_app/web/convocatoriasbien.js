@@ -19,7 +19,7 @@ $(document).ready(function () {
 function procesarAjaxConvocatoriaWeb() {
     var datosSerializadosCompletos = $('#' + $('#nameFormConvocatoria').val()).serialize();
     $.ajax({
-        url: getContext() + '/convocatoria/bienesyservicios',
+        url: getContext() + '/convocatorias/convocatoria-de-bienes-y-servicios',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
@@ -221,7 +221,7 @@ function procesarAjaxCalendarioWeb(coperid) {
     var datosSerializadosCompletos = $('#' + $('#nameFormCalendario').val()).serialize();
     datosSerializadosCompletos += "&CoperID=" + coperid;
     $.ajax({
-        url: getContext() + '/convocatoria/bienesyservicios',
+        url: getContext() + '/convocatorias/convocatoria-de-bienes-y-servicios',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',

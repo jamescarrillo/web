@@ -98,7 +98,7 @@ Border Bottom Tab
 .border-bottom-tab .nav-tabs.nav-justified>.active>a:focus,
 .border-bottom-tab .nav-tabs.nav-justified>.active>a:hover {
     color: #202020;
-    border-bottom: 4px solid #03a9f4!important;
+    border-bottom: 4px solid #8bc34a!important;
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
     border-top: 1px solid transparent;

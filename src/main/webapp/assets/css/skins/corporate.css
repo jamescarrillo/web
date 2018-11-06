@@ -106,7 +106,7 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 
 /* === Navigation === */
 .menuzord-menu>li {
-    margin-left: 15px;
+    margin-left: 0px;
 }
 .menuzord .menuzord-menu>li.active>a, 
 .menuzord .menuzord-menu>li.active>a>i, 
