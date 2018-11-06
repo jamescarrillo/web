@@ -59,18 +59,27 @@
                                 %>
                                 <div class="card-body pt-1">
                                     <div class="row">
-                                        <div class="form-group col-xs-12 col-sm-6 col-md-4">
-                                            <label for="numero_fotos_galeria">NÚMERO DE FOTOS A MOSTRAR EN LA GALERÍA</label>
-                                            <input type="text" class="form-control form-control-sm" id="numero_fotos_galeria" name="numero_fotos_galeria" value="<%out.print(conf_web.getNumero_fotos_galeria());%>">
-                                        </div>
-                                        <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                                        <div class="form-group col-12 col-sm-6">
                                             <label for="numero_videos_multimedia">NÚMERO DE VIDEOS A MOSTRAR EN MULTIMEDIA</label>
                                             <input type="text" class="form-control form-control-sm" id="numero_videos_multimedia" name="numero_videos_multimedia" value="<%out.print(conf_web.getNumero_videos_multimedia());%>">
                                         </div>
-                                        <div class="form-group col-xs-12 col-md-4">
+                                        <div class="form-group col-12 col-sm-6">
                                             <label for="numero_anuncios_mostrar">NÚMERO DE ANUNCIOS A MOSTRAR EN LA WEB</label>
                                             <input type="text" class="form-control form-control-sm" id="numero_anuncios_mostrar" name="numero_anuncios_mostrar" value="<%out.print(conf_web.getNumero_anuncios_mostrar());%>">
                                         </div>
+                                        <div class="form-group col-12">
+                                            <label for="apikey">API KEY</label>
+                                            <input type="text" class="form-control form-control-sm" id="apikey" name="apikey" value="<%out.print(conf_web.getApikey());%>">
+                                        </div>
+                                        <div class="form-group col-12 col-sm-6">
+                                            <label for="idusuario">IDUSUARIO</label>
+                                            <input type="text" class="form-control form-control-sm" id="idusuario" name="idusuario" value="<%out.print(conf_web.getIdusuario());%>">
+                                        </div>
+                                        <div class="form-group col-12 col-sm-6">
+                                            <label for="idalbum">IDALBUM</label>
+                                            <input type="text" class="form-control form-control-sm" id="idalbum" name="idalbum" value="<%out.print(conf_web.getIdalbum());%>">
+                                        </div>
+                                        <input type="hidden" class="form-control form-control-sm" id="numero_fotos_galeria" name="numero_fotos_galeria" value="<%out.print(conf_web.getNumero_fotos_galeria());%>">
                                         <input type="hidden" id="action" name="action" value="guardarPersonalizacionWeb">
                                         <input type="hidden" id="icono_pagina" name="icono_pagina" value="logo-peam.png">
                                         <input type="hidden" id="redes_sociales" value="">

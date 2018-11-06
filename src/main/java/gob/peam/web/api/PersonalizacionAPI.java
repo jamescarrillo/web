@@ -161,6 +161,9 @@ public class PersonalizacionAPI extends HttpServlet {
         conf.setRedes_sociales(request.getParameter("redes_sociales"));
         conf.setUrl_logo_goresam(request.getParameter("url_goresam"));
         conf.setUrl_logo_portal(request.getParameter("url_portal_transparencia"));
+        conf.setApikey(request.getParameter("apikey"));
+        conf.setIdusuario(request.getParameter("idusuario"));
+        conf.setIdalbum(request.getParameter("idalbum"));
         boolean copiar;
         try {
             Part filePart = request.getPart("fileFotoLogoPeam");
@@ -248,6 +251,7 @@ public class PersonalizacionAPI extends HttpServlet {
             if (copiar) {
                 conf = uploadFile(filePart, conf, "logo_presentacion_actualidad");
             }
+            LOG.info(conf.toString());
         } catch (IOException | ServletException e) {
             try {
                 throw e;

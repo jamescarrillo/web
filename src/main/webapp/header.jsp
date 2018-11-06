@@ -92,19 +92,22 @@
                         <div class="megamenu">
                             <div class="megamenu-row">
                                 <div class="col6">
-                                    <h2>Apps</h2>
+                                    <h2>Servicios</h2>
                                     <ul class="list-unstyled clearfix">
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/login">Gestor de Contenidos</a></li>
-                                        <li><a href="https://correo.peam.gob.pe/" target="_blank">Correo</a></li>
-                                        <li><a target="_blank">Intranet</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/glosario">Glosario</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/mapa-sitio">Mapa de Sitio</a></li>
+                                        <li><a href="http://doc.peam.gob.pe/sisgedo/app/main.php">SisGedo</a></li>
+                                        <li><a href="http://siga.peam.gob.pe:8080/SIGAWEB/">Siga Web</a></li>
+                                        <li><a href="http://lib.peam.gob.pe:8081/ArcDig/">ArcDig</a></li>
+                                        <li><a href="http://lib.peam.gob.pe/Visitas/controlVisitas/index.php?r=consultas/visitaConsulta">Registro de Visitas en Línea</a></li>
+                                        <li><a href="https://correo.peam.gob.pe/">Correo Institucional</a></li>
+                                        <li><a href="http://lib.peam.gob.pe:8081/Gps">Rastreo Satelital</a></li>
                                     </ul>
                                 </div>  
                                 <div class="col6">
                                     <h2>Consultas</h2>
                                     <ul class="list-unstyled clearfix">
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/servicios">Servicios</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/glosario">Glosario</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/mapa-sitio">Mapa de Sitio</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/acceso-informacion">Acceso a la Información</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/libro-de-reclamaciones">Libro de Reclamaciones</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/consultas-y-sugerencias">Consultas y Sugerencias</a></li>
