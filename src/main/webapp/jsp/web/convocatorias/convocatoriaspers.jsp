@@ -130,8 +130,6 @@
                                                                 </div>
                                                             </div>
                                                             <div role="tabpanel" class="tab-pane fade" id="tab-2">
-
-
                                                                 <div class="vertical-tab">
                                                                     <div class="row">
                                                                         <div class="col-sm-1 round-tab">

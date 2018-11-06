@@ -265,7 +265,7 @@ function listarDocumentoCal(BEAN_PAGINATION) {
         });
         $('#idTabDocumentos').trigger('click');
     } else {
-        viewAlertWeb('warning', "No se encontraron Documentos")
+        viewAlertWeb('warning', "No se encontraron Documentos");
         var fila;
         fila="<tr><td class='text-center' colspan='2'>Sin Documentos</td></tr>";
         $('#tbodyDocumentCal').append(fila);

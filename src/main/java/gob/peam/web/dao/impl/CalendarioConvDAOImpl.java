@@ -56,6 +56,7 @@ public class CalendarioConvDAOImpl implements CalendarioConvDAO {
                     + parameters.get("TIPO") + " ORDER BY WEB.ACTIVIDAD.DESCRIPCION "
                     + parameters.get("LIMIT"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            logger.info(pst);
             rs = pst.executeQuery();
             List<CalendarioConv> list = new ArrayList<>();
             while (rs.next()) {

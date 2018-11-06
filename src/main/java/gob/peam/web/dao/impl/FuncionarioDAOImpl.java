@@ -52,6 +52,7 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
                             + "LOWER(NOMBRES_APELLIDOS) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
                             + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
                     pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    logger.info(pst);
                     rs = pst.executeQuery();
                     while (rs.next()) {
                         Funcionario obj = new Funcionario();

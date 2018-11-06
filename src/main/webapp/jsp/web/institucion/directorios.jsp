@@ -48,29 +48,133 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="border-tab transparent-nav">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs nav-justified" role="tablist">
-                                <li role="presentation" class="active"><a href="#tab-dircontactos" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Directorio de Contactos</a></li>
-                                <li role="presentation"><a href="#tab-telinterno" class="waves-effect waves-dark" role="tab" data-toggle="tab">Directorio de Teléfono Interno</a></li>
-                            </ul>
-                            <!-- Tab panes -->
-                            <div class="panel-body">
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade in active" id="tab-dircontactos">
-                                        Trabajando....
-                                    </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="tab-telinterno">
-                                        Trabajando2....
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- /.border-bottom-tab -->
-                    </div><!-- /.col-md-12 -->
-                </div><!-- /.row -->
+                    <div class="col-xs-12">
+                        <div class="posts-content single-post">
+                            <article class="post-wrapper">
+                                <header class="entry-header-wrapper clearfix">                                    
+                                    <div class="entry-header">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="border-bottom-tab">
+                                                    <!-- Nav tabs -->
+                                                    <ul class="nav nav-tabs" role="tablist">
+                                                        <li role="presentation" class="active"><a href="#tab-dircontactos" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Directorio de Contactos</a></li>
+                                                        <li role="presentation"><a href="#tab-telinterno" class="waves-effect waves-dark" role="tab" data-toggle="tab">Directorio de Teléfono Interno</a></li>
+                                                    </ul>
+                                                    <!-- Tab panes -->
+                                                    <div class="panel-body">
+                                                        <div class="tab-content">
+                                                            <div role="tabpanel" class="tab-pane fade in active" id="tab-dircontactos">
+                                                                <div class="row">
+                                                                    <form id="FrmFuncionario">
+                                                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                                                            <div class="input-field" style="margin-top: 0px">
+                                                                                <input type="text" name="txtFuncionario" id="txtFuncionario">
+                                                                                <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Contacto</font></font></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-2 col-sm-3 col-xs-12">
+                                                                            <button type="submit" id="btnBuscarFuncionario" class="waves-effect waves-light btn" style="height: 40px; padding-top: 5px; padding-bottom: 5px;">Buscar</button>
+                                                                        </div>
+                                                                        <input type="hidden" id="nameFormFuncionario" value="FrmFuncionario">
+                                                                        <input type="hidden" id="actionFuncionario" name="action" value="paginarFuncionario">
+                                                                        <input type="hidden" id="numberPageFuncionario" name="numberPageFuncionario" value="1">
+                                                                        <input type="hidden" id="sizePageFuncionario" name="sizePageFuncionario" value="10">
+                                                                    </form>
+                                                                </div>
+                                                                <div class="row" id="loader_contenido_Funcionario">
+                                                                    <div class="col-md-1 col-md-offset-6 col-xs-2 col-xs-offset-6 mt-30">
+                                                                        <div class="loader-peam_small"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                                            <table class="table">
+                                                                                <thead class="bg-success">
+                                                                                    <tr>
+                                                                                        <th style="width: 30%;" class="align-middle">CARGOS</th>
+                                                                                        <th style="width: 30%;" class="align-middle">NOMBRES Y APELLIDOS</th>
+                                                                                        <th style="width: 20%;" class="align-middle">TELEFONO</th>
+                                                                                        <th style="width: 20%;" class="align-middle">CORREO ELECTRONICO</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody id="tbodyFuncionario">
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-9 col-xs-12 text-right">
+                                                                        <ul id="paginationFuncionario" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
-                <hr>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div role="tabpanel" class="tab-pane fade" id="tab-telinterno">
+                                                                <div class="row">
+                                                                    <form id="FrmDirectorio">
+                                                                        <div class="col-md-10 col-sm-9 col-xs-12">
+                                                                            <div class="input-field" style="margin-top: 0px">
+                                                                                <input type="text" name="txtDirectorioTelefonico" id="txtDirectorioTelefonico">
+                                                                                <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Directorio Teléfonico</font></font></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-2 col-sm-3 col-xs-12">
+                                                                            <button type="submit" id="btnBuscarDirectorio" class="waves-effect waves-light btn" style="height: 40px; padding-top: 5px; padding-bottom: 5px;">Buscar</button>
+                                                                        </div>
+                                                                        <input type="hidden" id="nameFormDirectorio" value="FrmDirectorio">
+                                                                        <input type="hidden" id="actionDirectorio" name="action" value="paginarDirectorio">
+                                                                        <input type="hidden" id="numberPageDirectorio" name="numberPageDirectorio" value="1">
+                                                                        <input type="hidden" id="sizePageDirectorio" name="sizePageDirectorio" value="10">
+                                                                    </form>
+                                                                </div>
+                                                                <div class="row" id="loader_contenido_Directorio">
+                                                                    <div class="col-md-1 col-md-offset-6 col-xs-2 col-xs-offset-6 mt-30">
+                                                                        <div class="loader-peam_small"></div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-xs-12">
+                                                                        <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                                            <table class="table">
+                                                                                <thead class="bg-success">
+                                                                                    <tr>
+                                                                                        <th style="width: 45%;" class="align-middle">OFICINA</th>
+                                                                                        <th style="width: 45%;" class="align-middle">SECCION</th>
+                                                                                        <th style="width: 10%;" class="align-middle">ANEXO</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody id="tbodyDirectorio">
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-9 col-xs-12 text-right">
+                                                                        <ul id="paginationDirectorio" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div><!-- /.border-bottom-tab -->
+                                        </div><!-- /.col-md-12 -->
+                                    </div>
+                                </header>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.row -->
+
+            <hr>
 
             </div><!-- /.container -->
         </section>
@@ -109,6 +213,7 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/directorios.js"></script>
 
     </body>
 </html>

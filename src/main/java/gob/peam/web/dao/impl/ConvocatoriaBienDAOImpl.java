@@ -67,6 +67,20 @@ public class ConvocatoriaBienDAOImpl implements ConvocatoriaBienDAO {
                 obj.setCost_participacion("COST_PARTICIPACION");
                 obj.setProceso(rs.getInt("PROCESO"));
                 obj.setEstado(rs.getBoolean("ESTADO"));
+                obj.setBase_file(rs.getString("BASES_FILE"));
+                obj.setRes_eject_file(rs.getString("RES_EJECT_FILE"));
+                obj.setAbs_consult_file(rs.getString("ABS_CONSULT_FILE"));
+                obj.setAbs_observa_file(rs.getString("ABS_OBSERVA_FILE"));
+                obj.setPro_enti_file(rs.getString("PRO_ENTI_FILE"));
+                obj.setPro_osce_file(rs.getString("PRO_OSCE_FILE"));
+                obj.setBas_inte_file(rs.getString("BAS_INTE_FILE"));
+                obj.setAct_eval_tec_file(rs.getString("ACT_EVAL_TEC_FILE"));
+                obj.setCua_compa_file(rs.getString("CUA_COMPA_FILE"));
+                obj.setActa_buena_pro_file(rs.getString("ACTA_BUENA_PRO_FILE"));
+                obj.setNoti_sus_file(rs.getString("NOTI_SUS_FILE"));
+                obj.setRes_rec_enti_file(rs.getString("RES_REC_ENTI_FILE"));
+                obj.setRes_res_trib_file(rs.getString("RES_REC_TRIB_FILE"));
+                obj.setAbs_con_obser_file(rs.getString("ABS_CON_OBSER_FILE"));
                 list.add(obj);
             }
             beanpagination.setLIST(list);

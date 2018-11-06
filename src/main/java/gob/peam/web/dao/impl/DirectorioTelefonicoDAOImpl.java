@@ -7,7 +7,6 @@ package gob.peam.web.dao.impl;
 
 import gob.peam.web.dao.DirectorioTelefonicoDAO;
 import gob.peam.web.dao.SQLCloseable;
-import gob.peam.web.model.Convocatoria_Pers;
 import gob.peam.web.model.DirectorioTelefonico;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
