@@ -217,7 +217,7 @@ public class ConvocatoriasWebAPI extends HttpServlet {
         this.parameters.clear();
         this.parameters.put("FILTER", "");
         this.parameters.put("CONVOCATORIA_PERS", " AND WEB.CALENDARIO_CONV.CONVO_ID = " + Integer.parseInt(request.getParameter("CoperID")));
-        if (request.getRequestURI().substring(request.getContextPath().length()).equals("/convocatoria/convocatoriaspersonal")) {
+        if (request.getRequestURI().substring(request.getContextPath().length()).equals("/convocatorias/convocatoria-de-personal")) {
             this.parameters.put("ORIGEN", (int) 2);
             this.parameters.put("TIPO", " AND TIPO = 2 ");
         } else {
