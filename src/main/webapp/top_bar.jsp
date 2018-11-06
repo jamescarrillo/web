@@ -32,17 +32,17 @@
                         <a href="<%out.print(getServletContext().getContextPath());%>/index" class="a-top">Inicio </a><strong style="color: #ffffff">|</strong>
                     </li>
                     <li >
-                        <a class="a-top">Mapa de Sitio </a><strong style="color: #ffffff">|</strong>
+                        <a href="<%out.print(getServletContext().getContextPath());%>/mapa-de-sitio" class="a-top">Mapa de Sitio </a><strong style="color: #ffffff">|</strong>
                     </li>
                     <li>
-                        <a class="a-top">Intranet </a><strong style="color: #ffffff">|</strong>
+                        <a href="<%out.print(getServletContext().getContextPath());%>/login" class="a-top">Gestor de Contenidos</a><strong style="color: #ffffff">|</strong>
                     </li>
                     <li>
                         <a href="https://correo.peam.gob.pe/" class="a-top" target="_blank">Correo </a><strong style="color: #ffffff">|</strong>
                     </li>
-                    <li>
+                    <!--li>
                         <a href="<%out.print(getServletContext().getContextPath());%>/servicios" class="a-top">Servicios </a><strong style="color: #ffffff">|</strong>
-                    </li>
+                    </li-->
                     <li>
                         <a href="<%out.print(getServletContext().getContextPath());%>/glosario" class="a-top">Glosario</a>
                     </li>
