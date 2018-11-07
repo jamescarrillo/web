@@ -48,7 +48,6 @@ $(document).ready(function () {
     });
 
     $("#modalCargandoNotaPrensa").on('shown.bs.modal', function () {
-        //DESPUES DE TERMINAR DE MOSTRAR EL MODAL
         procesarAjaxNotaPrensa();
     });
 
@@ -62,6 +61,8 @@ $(document).ready(function () {
         $('#FrmNotaPrensaModal select').val("-1");
         $('#FrmNotaPrensaModal input').parent().removeClass("has-danger");
         $('#FrmNotaPrensaModal select').parent().removeClass("has-danger");
+        $('#txtContenidoNotaPrensaER').val("");
+        $('#editorWebContenido').summernote('code', "");
         $('#txtEstadoNotaPrensaER').val("false");
         $('#actionNotaPrensa').val("addNotaPrensa");
         $('#txtTituloModalManNotaPrensa').html("REGISTRAR NOTA PRENSA");
@@ -88,19 +89,16 @@ function procesarAjaxNotaPrensa() {
     }
     datosSerializadosCompletos += "&numberPageNotaPrensa=" + $('#numberPageNotaPrensa').val();
     datosSerializadosCompletos += "&sizePageNotaPrensa=" + $('#sizePageNotaPrensa').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/publicaciones/notasprensa',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoNotaPrensa').modal("hide");
             if (jsonResponse.BEAN_PAGINATION !== undefined) {
                 listarNotaPrensa(jsonResponse.BEAN_PAGINATION);
             }
-
             if (jsonResponse.MESSAGE_SERVER !== undefined) {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
                     viewAlert('success', getMessageServerTransaction($('#actionManNotaPrensa').val(), 'Nota Prensa', 'a'));
@@ -109,18 +107,6 @@ function procesarAjaxNotaPrensa() {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            /*
-             if ($('#actionNotaPrensa').val().toLowerCase() === "paginarnotaprensa") {
-             listarNotaPrensa(jsonResponse.BEAN_PAGINATION);
-             } else {
-             if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
-             viewAlert('success', getMessageServerTransaction($('#actionNotaPrensa').val(), 'Nota Prensa', 'a'));
-             listarNotaPrensa(jsonResponse.BEAN_PAGINATION);
-             } else {
-             viewAlert('warning', jsonResponse.MESSAGE_SERVER);
-             }
-             }
-             */
             $("#ventanaManNotaPrensa").modal("hide");
         },
         error: function () {

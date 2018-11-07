@@ -58,7 +58,7 @@
                                     Conf_Web conf_web = (Conf_Web) request.getAttribute("conf_web");
                                 %>
                                 <div class="card-body pt-1">
-                                    <div class="row">
+                                    <div class="row mt-3">
                                         <div class="form-group col-12 col-sm-6">
                                             <label for="numero_videos_multimedia">NÚMERO DE VIDEOS A MOSTRAR EN MULTIMEDIA</label>
                                             <input type="text" class="form-control form-control-sm" id="numero_videos_multimedia" name="numero_videos_multimedia" value="<%out.print(conf_web.getNumero_videos_multimedia());%>">

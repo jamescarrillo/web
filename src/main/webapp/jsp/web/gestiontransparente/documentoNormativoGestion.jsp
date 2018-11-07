@@ -8,8 +8,6 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css" rel="stylesheet">
         <!-- FontAwesome CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- magnific-popup -->
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/magnific-popup.css" rel="stylesheet">
         <!-- flexslider -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/flexslider.css" rel="stylesheet">
         <!-- materialize -->
@@ -51,65 +49,61 @@
                     <div class="col-xs-12">
                         <div class="posts-content single-post">
                             <article class="post-wrapper">
-                                <header class="entry-header-wrapper clearfix">                                    
-                                    <div class="entry-header">
-                                        <div class="row">
-                                            <form id="FrmDocumentos">
-                                                <div class="col-md-4 col-sm-3 col-xs-12">
-                                                    <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
-                                                        <option value="0">Resoluciones Generales</option>
-                                                        <option value="2800">Actas de Sesión y Consejo Directivo</option>
-                                                        <option value="2">Documentos de Gestión</option>
-                                                        <option value="0">Normas y Directivas 12 </option>
-                                                        <option value="900">Indicadores de Desempeño</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4 col-sm-3 col-xs-12">
-                                                    <div class="input-field">
-                                                        <input type="text" name="txtTituloDocumento" id="txtTituloDocumento">
-                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <button type="submit" id="btnBuscarDocumento" class="waves-effect waves-light btn" style="height: 40px; padding-top: 5px; padding-bottom: 5px; margin-top: 35px;">Buscar</button>
-                                                </div>
-                                                <input type="hidden" id="nameForm" value="FrmDocumentos">
-                                                <input type="hidden" id="actionDocumentos" name="action" value="paginarDocumentos">
-                                                <input type="hidden" id="numberPageDocumentos" name="numberPageDocumentos" value="1">
-                                                <input type="hidden" id="sizePageDocumentos" name="sizePageDocumentos" value="10">
-                                                <input type="hidden" id="comboTipoListaDocumentos" name="comboTipoListaDocumentos" value="-1">
-                                            </form>
-                                        </div>
-                                        <div class="row" id="loader_contenido">
-                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
-                                                <div class="loader-peam_small"></div>
+                                <div class="entry-content">
+                                    <div class="row">
+                                        <form id="FrmDocumentos">
+                                            <div class="col-md-4 col-sm-3 col-xs-12">
+                                                <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                    <option value="0">Resoluciones Generales</option>
+                                                    <option value="2800">Actas de Sesión y Consejo Directivo</option>
+                                                    <option value="2">Documentos de Gestión</option>
+                                                    <option value="0">Normas y Directivas 12 </option>
+                                                    <option value="900">Indicadores de Desempeño</option>
+                                                </select>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="table-responsive table-hover" style="margin-top: 20px">
-                                                    <table class="table">
-                                                        <thead class="bg-success">
-                                                            <tr>
-                                                                <th style="width: 10%;" class="text-center align-middle">FECHA</th>
-                                                                <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
-                                                                <th style="width: 65%" class="align-middle">RESUMEN</th>
-                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tbodyDocumentos">
-                                                        </tbody>
-                                                    </table>
+                                            <div class="col-md-2 col-sm-3 col-xs-12">
+                                                <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                </select>
+                                            </div>
+                                            <div class="col-md-4 col-sm-3 col-xs-12">
+                                                <div class="input-field">
+                                                    <input type="text" name="txtTituloDocumento" id="txtTituloDocumento">
+                                                    <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento . . .</font></font></label>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-2 col-sm-3 col-xs-12">
+                                                <button type="submit" id="btnBuscarDocumento" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                            </div>
+                                            <input type="hidden" id="nameForm" value="FrmDocumentos">
+                                            <input type="hidden" id="actionDocumentos" name="action" value="paginarDocumentos">
+                                            <input type="hidden" id="numberPageDocumentos" name="numberPageDocumentos" value="1">
+                                            <input type="hidden" id="sizePageDocumentos" name="sizePageDocumentos" value="10">
+                                            <input type="hidden" id="comboTipoListaDocumentos" name="comboTipoListaDocumentos" value="-1">
+                                        </form>
+                                    </div>
+                                    <div class="row" id="loader_contenido">
+                                        <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                            <div class="loader-peam_small"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                <table class="table">
+                                                    <thead class="bg-success">
+                                                        <tr>
+                                                            <th style="width: 10%;" class="text-center align-middle">FECHA</th>
+                                                            <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
+                                                            <th style="width: 65%" class="align-middle">RESUMEN</th>
+                                                            <th style="width: 10%" class="text-center align-middle">PDF</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbodyDocumentos">
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
-                                </header>
-                                <div class="entry-content">
                                 </div>
                                 <footer class="entry-footer">
                                     <div class="row">
@@ -125,7 +119,6 @@
 
                                             </ul>
                                         </div>
-
                                     </div>
                                 </footer>
                             </article>
@@ -170,14 +163,8 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.inview.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
-
-        <!-- RS5.0 Core JS Files -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
-
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>

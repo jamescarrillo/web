@@ -1,5 +1,28 @@
 $(document).ready(function () {
 
+    $('#editorWebContenido').summernote({
+        toolbar: [
+            ['style', ['style']],
+            ['fontname', ['fontname']],
+            ['font', ['bold', 'italic', 'underline', 'clear', 'strikethrough']],
+            ['fontsize', ['fontsize']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['height', ['height']],
+            ['table', ['table']],
+            ['link', ['link']],
+            ['picture', ['picture']],
+            ['video', ['video']],
+            ['hr', ['hr']],
+            ['codeview', ['codeview']]
+        ],
+        lang: 'es-ES',
+        placeholder: 'Ingrese texto...',
+        height: 300,
+        dialogsInBody: true,
+        dialogsFade: true
+    });
+
     $('#datePickerFechaInicioER').datepicker({
         format: 'dd/mm/yyyy',
         todayHighlight: true,
@@ -21,6 +44,7 @@ $(document).ready(function () {
     });
 
     $("#FrmAnuncioModal").submit(function () {
+        $('#txtContenidoAnuncioER').val($('#editorWebContenido').summernote('code'));
         if (validarFormularioAnuncio()) {
             $("#numberPageAnuncio").val(1);
             $("#nameForm").val("FrmAnuncioModal");
@@ -44,6 +68,8 @@ $(document).ready(function () {
         $('#FrmAnuncioModal select').val("-1");
         $('#FrmAnuncioModal input').parent().removeClass("has-danger");
         $('#FrmAnuncioModal select').parent().removeClass("has-danger");
+        $('#txtContenidoAnuncioER').val("");
+        $('#editorWebContenido').summernote('code', "");
         $('#txtEstadoAnuncioER').val("false");
         $('#actionAnuncio').val("addAnuncio");
         $('#txtTituloModalManAnuncio').html("REGISTRAR ANUNCIO");
@@ -64,25 +90,25 @@ function procesarAjaxAnuncio() {
         datosSerializadosCompletos += "&txtTituloAnuncio=" + $('#txtTituloAnuncio').val();
         datosSerializadosCompletos += "&tipo=" + $('#tipo').val();
         datosSerializadosCompletos += "&estadoAnuncio=" + $('#estadoAnuncio').val();
+        datosSerializadosCompletos += "&action=" + $('#actionManAnuncio').val();
+    } else {
+        datosSerializadosCompletos += "&action=" + $('#actionAnuncio').val();
     }
     datosSerializadosCompletos += "&txtEstadoAnuncioER=" + $('#txtEstadoAnuncioER').val();
     datosSerializadosCompletos += "&numberPageAnuncio=" + $('#numberPageAnuncio').val();
     datosSerializadosCompletos += "&sizePageAnuncio=" + $('#sizePageAnuncio').val();
-    datosSerializadosCompletos += "&action=" + $('#actionAnuncio').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/publicaciones/anuncios',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoAnuncio').modal("hide");
             if ($('#actionAnuncio').val().toLowerCase() === "paginaranuncio") {
                 listarAnuncio(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
-                    viewAlert('success', getMessageServerTransaction($('#actionAnuncio').val(), 'Anuncio', 'o'));
+                    viewAlert('success', getMessageServerTransaction($('#actionManAnuncio').val(), 'Anuncio', 'o'));
                     listarAnuncio(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
@@ -127,7 +153,7 @@ function listarAnuncio(BEAN_PAGINATION) {
             cadenaContenido = replaceAll(cadenaContenido, '</p>', '\n');
             cadenaContenido = replaceAll(cadenaContenido, '<b>', '\n');
             cadenaContenido = replaceAll(cadenaContenido, '</b>', '\n');
-            
+
             cadenaTitulo = value.titulo;
             cadenaTitulo = replaceAll(cadenaTitulo, '<p>', '');
             cadenaTitulo = replaceAll(cadenaTitulo, '</p>', '\n');
@@ -215,11 +241,13 @@ function agregarEventosAnuncio() {
         $(this).click(function () {
             $('#txtIdAnuncioER').val($(this.parentElement.parentElement).attr('anu_id'));
             $('#txtTituloAnuncioER').val($(this.parentElement.parentElement).attr('titulo'));
-            $('#txtContenidoAnuncioER').val($(this.parentElement.parentElement).attr('contenido'));
+            $('#txtContenidoAnuncioER').val("");
+            //$('#txtContenidoAnuncioER').val($(this.parentElement.parentElement).attr('contenido'));
+            $('#editorWebContenido').summernote('code', $(this.parentElement.parentElement).attr('contenido'));
             $('#datePickerFechaInicioER').val($(this.parentElement.parentElement).attr('anu_fecha_ini'));
             $('#datePickerFechaFinER').val($(this.parentElement.parentElement).attr('anu_fecha_fin'));
             $('#tipoER').val($(this.parentElement.parentElement).attr('tipo'));
-            $('#actionAnuncio').val('updateAnuncio');
+            $('#actionManAnuncio').val('updateAnuncio');
             $('#txtTituloModalManAnuncio').html("EDITAR ANUNCIO");
             $('#ventanaManAnuncio').modal("show");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
@@ -254,7 +282,7 @@ function agregarEventosAnuncio() {
                 buttonsStyling: false
             }).then((result) => {
                 if (result.value) {
-                    $('#actionAnuncio').val("activateAnuncio");
+                    $('#actionManAnuncio').val("activateAnuncio");
                     $("#nameForm").val("FrmAnuncioModal");
                     $('#modalCargandoAnuncio').modal("show");
                 }
@@ -276,9 +304,6 @@ function valicacionesCamposAnuncio() {
         $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
     });
     $('#tipoER').on('change', function () {
-        $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
-    });
-    $('#txtContenidoAnuncioER').on('change', function () {
         $(this).val() === "" ? $(this.parentElement).addClass('has-danger') : $(this.parentElement).removeClass('has-danger');
     });
 }
@@ -308,12 +333,16 @@ function validarFormularioAnuncio() {
     } else {
         $(this.parentElement).removeClass('has-danger');
     }
-    if ($('#txtContenidoAnuncioER').val() === "") {
-        $($('#txtContenidoAnuncioER').parent()).addClass('has-danger');
+    if ($('#editorWebContenido').summernote('isEmpty')) {
+        viewAlert('warning', 'Por favor ingrese contenido');
         return false;
-    } else {
-        $(this.parentElement).removeClass('has-danger');
     }
+//    if ($('#txtContenidoAnuncioER').val() === "") {
+//        $($('#txtContenidoAnuncioER').parent()).addClass('has-danger');
+//        return false;
+//    } else {
+//        $(this.parentElement).removeClass('has-danger');
+//    }
     return true;
 }
 

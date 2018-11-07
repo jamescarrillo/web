@@ -154,7 +154,7 @@ var dialog = renderer.create('<div class="modal" aria-hidden="false" tabindex="-
     });
     $node.html([
         '<div class="modal-dialog">',
-        '  <div class="modal-content">',
+        '  <div class="modal-content border-primary" style="border-width: 3px">',
         (options.title
             ? '    <div class="modal-header">' +
                 '      <h4 class="modal-title">' + options.title + '</h4>' +
@@ -5902,11 +5902,11 @@ var LinkDialog = /** @class */ (function () {
         var body = [
             '<div class="form-group note-form-group">',
             "<label class=\"note-form-label\">" + this.lang.link.textToDisplay + "</label>",
-            '<input class="note-link-text form-control note-form-control  note-input" type="text" />',
+            '<input class="note-link-text form-control form-control-sm note-form-control  note-input" type="text" />',
             '</div>',
             '<div class="form-group note-form-group">',
             "<label class=\"note-form-label\">" + this.lang.link.url + "</label>",
-            '<input class="note-link-url form-control note-form-control note-input" type="text" value="http://" />',
+            '<input class="note-link-url form-control form-control-sm note-form-control note-input" type="text" value="http://" />',
             '</div>',
             !this.options.disableLinkTarget
                 ? $$1('<div/>').append(this.ui.checkbox({
@@ -5916,7 +5916,7 @@ var LinkDialog = /** @class */ (function () {
                 }).render()).html()
                 : ''
         ].join('');
-        var buttonClass = 'btn btn-primary note-btn note-btn-primary note-link-btn';
+        var buttonClass = 'btn btn-info btn-sm note-btn note-btn-primary note-link-btn';
         var footer = "<button type=\"button\" href=\"#\" class=\"" + buttonClass + "\" disabled>" + this.lang.link.insert + "</button>";
         this.$dialog = this.ui.dialog({
             className: 'link-dialog',
@@ -6120,11 +6120,11 @@ var ImageDialog = /** @class */ (function () {
             '</div>',
             '<div class="form-group note-group-image-url" style="overflow:auto;">',
             '<label class="note-form-label">' + this.lang.image.url + '</label>',
-            '<input class="note-image-url form-control note-form-control note-input ',
+            '<input class="note-image-url form-control form-control-sm note-form-control note-input ',
             ' col-md-12" type="text" />',
             '</div>'
         ].join('');
-        var buttonClass = 'btn btn-primary note-btn note-btn-primary note-image-btn';
+        var buttonClass = 'btn btn-primary btn-sm note-btn note-btn-primary note-image-btn';
         var footer = "<button type=\"submit\" href=\"#\" class=\"" + buttonClass + "\" disabled>" + this.lang.image.insert + "</button>";
         this.$dialog = this.ui.dialog({
             title: this.lang.image.insert,
@@ -6331,10 +6331,10 @@ var VideoDialog = /** @class */ (function () {
         var body = [
             '<div class="form-group note-form-group row-fluid">',
             "<label class=\"note-form-label\">" + this.lang.video.url + " <small class=\"text-muted\">" + this.lang.video.providers + "</small></label>",
-            '<input class="note-video-url form-control note-form-control note-input" type="text" />',
+            '<input class="note-video-url form-control form-control-sm note-form-control note-input" type="text" />',
             '</div>'
         ].join('');
-        var buttonClass = 'btn btn-primary note-btn note-btn-primary note-video-btn';
+        var buttonClass = 'btn btn-primary btn-sm note-btn note-btn-primary note-video-btn';
         var footer = "<button type=\"submit\" href=\"#\" class=\"" + buttonClass + "\" disabled>" + this.lang.video.insert + "</button>";
         this.$dialog = this.ui.dialog({
             title: this.lang.video.insert,

@@ -95,6 +95,9 @@ function procesarAjaxPersonalizacionWeb() {
     datosSerializadosCompletos.append('numero_anuncios_mostrar', $('#numero_anuncios_mostrar').val());
     datosSerializadosCompletos.append('icono_pagina', $('#icono_pagina').val());
     datosSerializadosCompletos.append('redes_sociales', $('#redes_sociales').val());
+    datosSerializadosCompletos.append('apikey', $('#apikey').val());
+    datosSerializadosCompletos.append('idusuario', $('#idusuario').val());
+    datosSerializadosCompletos.append('idalbum', $('#idalbum').val());
     datosSerializadosCompletos.append('action', $('#action').val());
     $.ajax({
         url: getContext() + '/personalizacion/web',

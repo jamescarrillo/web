@@ -34,14 +34,14 @@ import org.apache.commons.logging.LogFactory;
  */
 @WebServlet(name = "LaInstitucionController",
         urlPatterns = {
-            "/institucion/quienessomos",
-            "/institucion/visionmision",
-            "/institucion/objetivofunciones",
-            "/institucion/etica",
+            "/institucion/quienes-somos",
+            "/institucion/vision-y-mision",
+            "/institucion/objetivos-y-funciones",
+            "/institucion/codigo-de-etica",
             "/institucion/ubicacion",
-            "/institucion/estructuraorganica",
-            "/institucion/directorios"})
-public class LaInstitucionController extends HttpServlet {
+            "/institucion/estructura-organica",
+            "/institucion/directorios-de-contactos"})
+public class LaInstitucionAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
@@ -84,27 +84,26 @@ public class LaInstitucionController extends HttpServlet {
         //sin el /web
         try {
             switch (request.getRequestURI().substring(request.getContextPath().length())) {
-                case "/institucion/quienessomos":
+                case "/institucion/quienes-somos":
                     request.getRequestDispatcher("/jsp/web/institucion/quienessomos.jsp").forward(request, response);
                     break;
-                case "/institucion/visionmision":
+                case "/institucion/vision-y-mision":
                     request.getRequestDispatcher("/jsp/web/institucion/visionmision.jsp").forward(request, response);
                     break;
-                case "/institucion/objetivofunciones":
+                case "/institucion/objetivos-y-funciones":
                     request.getRequestDispatcher("/jsp/web/institucion/objetivofunciones.jsp").forward(request, response);
                     break;
-                case "/institucion/etica":
+                case "/institucion/codigo-de-etica":
                     request.getRequestDispatcher("/jsp/web/institucion/codigoetica.jsp").forward(request, response);
                     break;
                 case "/institucion/ubicacion":
                     request.getRequestDispatcher("/jsp/web/institucion/ubicacion.jsp").forward(request, response);
                     break;
-                case "/institucion/estructuraorganica":
+                case "/institucion/estructura-organica":
                     request.getRequestDispatcher("/jsp/web/institucion/estructuraorganica.jsp").forward(request, response);
                     break;
-                case "/institucion/directorios":
+                case "/institucion/directorios-de-contactos":
                     String accion = request.getParameter("action") == null ? "" : request.getParameter("action");
-                    logger.info("---->"+accion);
                     switch (accion) {
                         case "paginarDirectorio":
                             procesarDirectorioTelefonico(new BEAN_CRUD(this.directorioTelefonicoDAO.getPagination(getParametersDirectorioTelefonico(request))), response);

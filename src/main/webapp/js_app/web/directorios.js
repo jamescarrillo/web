@@ -26,7 +26,7 @@ $(document).ready(function () {
 function procesarAjaxDirectorioWeb() {
     var datosSerializadosCompletos = $('#' + $('#nameFormDirectorio').val()).serialize();
     $.ajax({
-        url: getContext() + '/institucion/directorios',
+        url: getContext() + '/institucion/directorios-de-contactos',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
@@ -46,7 +46,7 @@ function procesarAjaxDirectorioWeb() {
 function procesarAjaxFuncionarioWeb() {
     var datosSerializadosCompletos = $('#' + $('#nameFormFuncionario').val()).serialize();
     $.ajax({
-        url: getContext() + '/institucion/directorios',
+        url: getContext() + '/institucion/directorios-de-contactos',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
@@ -97,11 +97,11 @@ function listarDirectorio(BEAN_PAGINATION) {
                         procesarAjaxDirectorioWeb();
                     }
                 };
-        //$pagination.twbsPagination('destroy');
-        //$pagination.twbsPagination($.extend({}, defaultOptions, options));
+        $pagination.twbsPagination('destroy');
+        $pagination.twbsPagination($.extend({}, defaultOptions, options));
         $('#txtTituloDirectorio').focus();
     } else {
-        //$pagination.twbsPagination('destroy');
+        $pagination.twbsPagination('destroy');
         viewAlertWeb('warning', 'No se enconntraron resultados');
     }
     procesarAjaxFuncionarioWeb();
@@ -142,11 +142,11 @@ function listarFuncionario(BEAN_PAGINATION) {
                         procesarAjaxDirectorioWeb();
                     }
                 };
-        //$pagination.twbsPagination('destroy');
-        //$pagination.twbsPagination($.extend({}, defaultOptions, options));
+        $pagination.twbsPagination('destroy');
+        $pagination.twbsPagination($.extend({}, defaultOptions, options));
         $('#txtFuncionario').focus();
     } else {
-        //$pagination.twbsPagination('destroy');
+        $pagination.twbsPagination('destroy');
         viewAlertWeb('warning', 'No se enconntraron resultados');
     }
 }

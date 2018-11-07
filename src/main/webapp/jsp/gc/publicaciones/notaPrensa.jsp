@@ -73,8 +73,8 @@
                                                 <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarNotaPrensa'>
 
                                                 </select>
-                                                <button type="submit" id="btnBuscarNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar NotaPrensa" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                <button type="button" id="btnAbrirNuevoNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar NotaPrensa" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                <button type="submit" id="btnBuscarNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Nota de Prensa" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                                <button type="button" id="btnAbrirNuevoNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Nota de Prensa" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
                                     </form>
@@ -83,26 +83,6 @@
                         </div>
                     </div>
                     <div class="row" id="containerRegistrosNotasPrensa">
-                        <!--div class="col-lg-4 col-md-6">
-                            <div class="card blog-widget">
-                                <div class="card-body">
-                                    <div class="blog-image"><img src="../assets/images/big/img1.jpg" alt="img" class="img-responsive"></div>
-                                    <h3>Business development new rules for 2017</h3>
-                                    <label class="label label-rounded label-success">Technology</label>
-                                    <p class="m-t-20 m-b-20">
-                                        Lorem ipsum dolor sit amet, this is a consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                                    </p>
-                                    <div class="d-flex">
-                                        <div class="read"><a href="javascript:void(0)" class="link font-medium">Vista Previa</a></div>
-                                        <div class="ml-auto">
-                                            <a href="javascript:void(0)" class="link mr-2" data-toggle="tooltip" title="" data-original-title="Ocultar"><i class="far fa-hand-point-up"></i></a>
-                                            <a href="javascript:void(0)" class="link mr-2" data-toggle="tooltip" title="" data-original-title="Editar"><i class="fas fa-edit"></i></a>
-                                            <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Eliminar"><i class="fas fa-trash-alt"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div-->
                     </div>
                     <div class="row">
                         <div class="col-12">
@@ -198,7 +178,6 @@
                             </div>
                             <div class="modal-body">
                                 <div class="row">
-
                                     <div id="carouselExampleIndicators3" class="carousel slide" data-ride="carousel">
                                         <ol class="carousel-indicators">
                                             <li data-target="#carouselExampleIndicators3" data-slide-to="0" class="active"></li>
@@ -262,17 +241,14 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
         <!--Custom JavaScript -->
         <script src="<%out.print(getServletContext().getContextPath());%>/js/custom.min.js"></script>
-
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/moment/moment.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-
         <!-- ============================================================== -->
         <!-- This page plugins -->
         <!-- ============================================================== -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/sum/summernote-bs4.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/sum/lang/summernote-es-ES.js"></script>
-
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>

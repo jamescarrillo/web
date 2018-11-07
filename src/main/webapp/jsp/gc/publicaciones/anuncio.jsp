@@ -13,6 +13,7 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap/css/bootstrap.min.css"rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css"rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css"rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/sum/summernote-bs4.css" rel="stylesheet">
         <!-- Custom CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/style.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css" rel="stylesheet">
@@ -55,13 +56,14 @@
                                 <div class="card-body pt-1">
                                     <input type="hidden" id="nameForm" value="FrmAnuncio">
                                     <input type="hidden" id="actionAnuncio" name="action" value="paginarAnuncio">
+                                    <input type="hidden" id="actionManAnuncio" name="action" value="">
                                     <input type="hidden" id="numberPageAnuncio" name="numberPageAnuncio" value="1">
                                     <form id="FrmAnuncio">
                                         <div class="row mt-3">
-                                            <div class="form-group col-lg-5 col-md-8 col-12 mb-3">
+                                            <div class="form-group col-lg-5 col-md-8 col-12">
                                                 <input type="text" name="txtTituloAnuncio" id="txtTituloAnuncio" class="form-control form-control-sm" placeholder="TÍTULO O CONTENIDO">
                                             </div>
-                                            <div class="form-group col-lg-3 col-md-8 col-12 mb-3">
+                                            <div class="form-group col-lg-3 col-md-8 col-12">
                                                 <select id="tipo" name="tipo" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarAnuncio'>
                                                     <option value="-1">TIPO</option>
                                                     <option value="1">COMUNICADO</option>
@@ -70,7 +72,7 @@
                                                     <option value="3">OTROS</option>
                                                 </select>
                                             </div>
-                                            <div class="input-group col-lg-4 col-md-4 col-12 mb-3">
+                                            <div class="input-group col-lg-4 col-md-4 col-12">
                                                 <select id="estadoAnuncio" name="estadoAnuncio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarAnuncio'>
                                                     <option value="-1">TODOS</option>
                                                     <option value="true">PUBLICADOS</option>
@@ -120,7 +122,7 @@
                     <%@ include file="../../../temas_gc.jsp"%>
                 </div>
                 <div class="modal fade" id="ventanaManAnuncio" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg modal-dialog-scroll" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                             <form id="FrmAnuncioModal">
                                 <div class="modal-header">
@@ -130,13 +132,13 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body modal-body-scroll">
+                                <div class="modal-body">
                                     <div class="row">
-                                        <div class="form-group col-12 mb-3">
+                                        <div class="form-group col-md-6 col-12 mb-3">
                                             <label for="datePickerFechaInicioER">FECHA INICIO DE LA PUBLICACION</label>
                                             <input type="text" class="form-control form-control-sm" id="datePickerFechaInicioER" name="datePickerFechaInicioER" placeholder="DD/MM/AAAA"> 
                                         </div>
-                                        <div class="form-group col-12 mb-3">
+                                        <div class="form-group col-md-6 col-12 mb-3">
                                             <label for="datePickerFechaFinER">FECHA FIN DE LA PUBLICACION</label>
                                             <input type="text" class="form-control form-control-sm" id="datePickerFechaFinER" name="datePickerFechaFinER" placeholder="DD/MM/AAAA"> 
                                         </div>
@@ -154,12 +156,17 @@
                                                 <option value="4">OTROS</option>
                                             </select>
                                         </div>
-                                        <div class="form-group col-12 mb-3">
+                                        <!--div class="form-group col-12 mb-3">
                                             <label for="txtContenidoAnuncioER">CONTENIDO DEL ANUNCIO</label>
                                             <textarea class="form-control form-control-sm" id="txtContenidoAnuncioER" name="txtContenidoAnuncioER" type="text" placeholder="CONTENIDO" rows="20"></textarea>
+                                        </div-->
+                                        <div class="col-12 mb-3">
+                                            <label for="editorWebContenido">CONTENIDO</label>
+                                            <div id="editorWebContenido"></div>
                                         </div>
                                         <input id="txtIdAnuncioER" name="txtIdAnuncioER" type="hidden" value="">
                                         <input id="txtEstadoAnuncioER" name="txtEstadoAnuncioER" type="hidden" value="0">
+                                        <input id="txtContenidoAnuncioER" name="txtContenidoAnuncioER" type="hidden" value="">
                                     </div>
                                 </div>
                                 <div class="modal-footer">
@@ -204,14 +211,14 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
         <!--Custom JavaScript -->
         <script src="<%out.print(getServletContext().getContextPath());%>/js/custom.min.js"></script>
-
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/moment/moment.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-
         <!-- ============================================================== -->
         <!-- This page plugins -->
         <!-- ============================================================== -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/sum/summernote-bs4.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/sum/lang/summernote-es-ES.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>

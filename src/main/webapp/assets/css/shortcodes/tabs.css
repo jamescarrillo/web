@@ -82,7 +82,7 @@ Border Bottom Tab
     color: #bebebe;
     font-size: 16px;
     font-weight: 700;
-    text-transform: capitalize;
+    text-transform: none;
     padding: 25px 30px;
     border-left: none!important;
     border-top: none!important;

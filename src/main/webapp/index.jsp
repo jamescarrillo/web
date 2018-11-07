@@ -774,7 +774,7 @@
                                 <i class="material-icons brand-icon">widgets</i>
                             </div>
                             <div class="desc mt-15">
-                                <a href="#"><h3 class="text-peam-verde">Bienes, Servicios, Obras y Concesiones</h3></a>
+                                <a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-bienes-y-servicios"><h3 class="text-peam-verde">Bienes, Servicios, Obras y Concesiones</h3></a>
                             </div>
                         </div>
                     </div>

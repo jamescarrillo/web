@@ -29,13 +29,13 @@
                                 <div class="col12">
                                     <h2>La institución</h2>
                                     <ul class="list-unstyled clearfix">
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/quienessomos">Quienes Somos</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/visionmision">Visión / Misión</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/objetivofunciones">Objetivo / Funciones</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/etica">Código de Ética</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/quienes-somos">Quienes Somos</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/vision-y-mision">Visión / Misión</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/objetivos-y-funciones">Objetivo / Funciones</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/codigo-de-etica">Código de Ética</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/ubicacion">Ubicación</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/estructuraorganica">Estructura Orgánica</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/directorios">Directorio de Contactos</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/estructura-organica">Estructura Orgánica</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/directorios-de-contactos">Directorio de Contactos</a></li>
                                     </ul>
                                 </div>    
                             </div>
@@ -66,7 +66,7 @@
                                     <h2>Convocatorias</h2>
                                     <ul class="list-unstyled clearfix">
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-personal">Convocatorias de Personal</a></li>
-                                        <li><a href="#">Bienes, Servicios, Obras y Conseciones</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-bienes-y-servicios">Bienes, Servicios, Obras y Conseciones</a></li>
                                     </ul>
                                 </div>    
                             </div>
