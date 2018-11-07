@@ -156,12 +156,8 @@
                                                 <option value="4">OTROS</option>
                                             </select>
                                         </div>
-                                        <!--div class="form-group col-12 mb-3">
-                                            <label for="txtContenidoAnuncioER">CONTENIDO DEL ANUNCIO</label>
-                                            <textarea class="form-control form-control-sm" id="txtContenidoAnuncioER" name="txtContenidoAnuncioER" type="text" placeholder="CONTENIDO" rows="20"></textarea>
-                                        </div-->
                                         <div class="col-12 mb-3">
-                                            <label for="editorWebContenido">CONTENIDO</label>
+                                            <label for="editorWebContenido">CONTENIDO </label>
                                             <div id="editorWebContenido"></div>
                                         </div>
                                         <input id="txtIdAnuncioER" name="txtIdAnuncioER" type="hidden" value="">

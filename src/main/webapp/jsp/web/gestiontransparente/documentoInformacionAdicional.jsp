@@ -45,7 +45,7 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Documentos Normativos y de Gestión</h2>
+                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Información Adicional</h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -55,27 +55,28 @@
                                     <div class="entry-header">
                                         <div class="row">
                                             <form id="FrmDocumentos">
-                                                <div class="col-md-4 col-sm-3 col-xs-12">
+                                                <div class="col-xs-12">
                                                     <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
-                                                        <option value="0">Resoluciones Generales</option>
-                                                        <option value="2800">Actas de Sesión y Consejo Directivo</option>
-                                                        <option value="2">Documentos de Gestión</option>
-                                                        <option value="0">Normas y Directivas 12 </option>
-                                                        <option value="900">Indicadores de Desempeño</option>
+                                                        <option value="700">Recomendaciones de los Informes de Auditoría Orientadas al Mejoramiento de la Gestión</option>
+                                                        <option value="800">Evaluación de Cumplimiento de Actualización del Portal</option>
+                                                        <option value="500">Laudos</option>
+                                                        <option value="600">Actas de Conciliación</option>
+                                                        <!--option value="900">Declaraciones Juradas de Ingresos Bienes y Rentas</option-->
+                                                        <option value="1300">Informes Técnicos Previstos de Evaluación de Software</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                <div class="col-sm-4 col-xs-12">
                                                     <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-4 col-sm-3 col-xs-12">
+                                                <div class="col-sm-6 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtTituloDocumento" id="txtTituloDocumento">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <button type="submit" id="btnBuscarDocumento" class="waves-effect waves-light btn" style="height: 40px; padding-top: 5px; padding-bottom: 5px; margin-top: 35px;">Buscar</button>
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarDocumento" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
                                                 </div>
                                                 <input type="hidden" id="nameForm" value="FrmDocumentos">
                                                 <input type="hidden" id="actionDocumentos" name="action" value="paginarDocumentos">

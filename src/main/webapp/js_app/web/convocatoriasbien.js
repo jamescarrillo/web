@@ -70,12 +70,12 @@ function listarConvocatoriaWeb(BEAN_PAGINATION) {
             archivos += "file13='" + value.res_res_trib_file + "' ";
             archivos += "file14='" + value.abs_con_obser_file + "' ";
 
-            fila = "<tr convo_id='" + value.convo_id + "' "+ datos +" text='" + value.referencia + "' "+ archivos +" >";
+            fila = "<tr convo_id='" + value.convo_id + "' " + datos + " text='" + value.referencia + "' " + archivos + " >";
             fila += "<td class='align-middle'>" + value.fecha + "</td>";
             fila += "<td class='align-middle'>" + value.referencia + "</td>";
             fila += "<td class='align-middle'>" + tipo + "</td>";
             fila += "<td class='align-middle'>" + proceso + "</td>";
-            fila += "<td class='align-middle'><button class='waves-effect waves-light btn ver-Info' style='height: 40px; padding-top: 5px; padding-bottom: 5px;'>Info</button></td>";
+            fila += "<td class='align-middle'><button class='waves-effect waves-light btn ver-Info' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Info</button></td>";
             fila += "</tr>";
             console.log(fila);
             $('#tbodyConvocatoriaBien').append(fila);
@@ -189,7 +189,7 @@ function listarDatosPrincipales(titulo, valor, costo, lugar, f1, f2, f3, f4, f5,
     fila += "<td class='align-middle text-center'>" + valor + "</td>";
     fila += "<td class='align-middle text-center'>" + costo + "</td>";
     fila += "<td class='align-middle text-center'>" + lugar + "</td>";
-    fila += "<td class='align-middle text-center' style='padding-top: 5px; padding-bottom: 0px;'><button class='waves-effect waves-light btn ver-Documentos' style='height: 40px; padding-top: 5px; padding-bottom: 5px;'>Documentos</button></td>";
+    fila += "<td class='align-middle text-center' style='padding-top: 5px; padding-bottom: 0px;'><button class='waves-effect waves-light btn ver-Documentos' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Documentos</button></td>";
     fila += "</tr>";
     $('#tbodyDocumentCal').append(fila);
     agregarEventosDocumentos();

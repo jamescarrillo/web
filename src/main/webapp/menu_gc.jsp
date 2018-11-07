@@ -99,7 +99,7 @@
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings" title="Personalización"></i><span class="hide-menu">Personalización</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/personalizacion/correo" title="Configuración Correo">Conf. Correo</a></li>
+                        <!--li><a href="<%out.print(getServletContext().getContextPath());%>/personalizacion/correo" title="Configuración Correo">Conf. Correo</a></li-->
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/personalizacion/web" title="Configuración Web">Conf. Web</a></li>
                     </ul>
                 </li>

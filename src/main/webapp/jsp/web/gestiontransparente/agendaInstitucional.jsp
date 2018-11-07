@@ -8,15 +8,13 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css" rel="stylesheet">
         <!-- FontAwesome CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- magnific-popup -->
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/magnific-popup.css" rel="stylesheet">
         <!-- flexslider -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/flexslider.css" rel="stylesheet">
         <!-- materialize -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/materialize/css/materialize.min.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
         <!-- Bootstrap -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/css/jquery.toast.css" rel="stylesheet">
         <!-- shortcodes -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/shortcodes/shortcodes.css" rel="stylesheet">
         <!-- Style CSS -->
@@ -45,70 +43,68 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Adquisiciones y Contrataciones</h2>
+                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Agenda Institucional</h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="posts-content single-post">
                             <article class="post-wrapper">
-                                <header class="entry-header-wrapper clearfix">                                    
-                                    <div class="entry-header">
-                                        <div class="row">
-                                            <form id="FrmDocumentos">
-                                                <div class="col-md-4 col-sm-3 col-xs-12">
-                                                    <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
-                                                        <option value="1100">PAC y Modificatorias</option>
-                                                        <option value="100">Monto de Liquidación Final de Obra</option>
-                                                        <option value="200">Monto Adicionales de Obra</option>
-                                                        <option value="300">Informe de Supervición de Contratos</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
-                                                    </select>
-                                                </div>
-                                                <div class="col-md-4 col-sm-3 col-xs-12">
-                                                    <div class="input-field">
-                                                        <input type="text" name="txtTituloDocumento" id="txtTituloDocumento">
-                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <button type="submit" id="btnBuscarDocumento" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
-                                                </div>
-                                                <input type="hidden" id="nameForm" value="FrmDocumentos">
-                                                <input type="hidden" id="actionDocumentos" name="action" value="paginarDocumentos">
-                                                <input type="hidden" id="numberPageDocumentos" name="numberPageDocumentos" value="1">
-                                                <input type="hidden" id="sizePageDocumentos" name="sizePageDocumentos" value="10">
-                                                <input type="hidden" id="comboTipoListaDocumentos" name="comboTipoListaDocumentos" value="-1">
-                                            </form>
-                                        </div>
-                                        <div class="row" id="loader_contenido">
-                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
-                                                <div class="loader-peam_small"></div>
+                                <div class="entry-content">
+                                    <div class="row">
+                                        <form id="FrmAgenda">
+                                            <div class="col-md-3 col-sm-6 col-xs-12">
+                                                <select id="cbotipo" name="cbotipo" class="form-control combo-paginar " idBtnBuscar='btnBuscarAgenda' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                    <option value="1">Gerencia Gerencial</option>
+                                                    <option value="2">Dirección de Infraestructura</option>
+                                                    <option value="3">Dirección de Desarrollo Agropecuario</option>
+                                                    <option value="4">Dirección de Manejo Ambiental</option>
+                                                </select>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <div class="table-responsive table-hover" style="margin-top: 20px">
-                                                    <table class="table">
-                                                        <thead class="bg-success">
-                                                            <tr>
-                                                                <th style="width: 10%;" class="text-center align-middle">FECHA</th>
-                                                                <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
-                                                                <th style="width: 65%" class="align-middle">RESUMEN</th>
-                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody id="tbodyDocumentos">
-                                                        </tbody>
-                                                    </table>
+                                            <div class="col-md-5 col-sm-6 col-xs-12">
+                                                <div class="input-field">
+                                                    <input type="text" name="txtActividad" id="txtActividad">
+                                                    <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Agenda . . .</font></font></label>
                                                 </div>
+                                            </div>
+                                            <div class="col-md-2 col-sm-6 col-xs-12">
+                                                <div class="input-field">
+                                                    <input type="text" name="txtCalendario" id="txtCalendario">
+                                                    <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DD/MM/AAAA</font></font></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-2 col-sm-6 col-xs-12">
+                                                <button type="submit" id="btnBuscarAgenda" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                            </div>
+                                            <input type="hidden" id="nameForm" value="FrmAgenda">
+                                            <input type="hidden" id="actionAgenda" name="action" value="paginarAgenda">
+                                            <input type="hidden" id="numberPageAgenda" name="numberPageAgenda" value="1">
+                                            <input type="hidden" id="sizePageAgenda" name="sizePageAgenda" value="10">
+                                        </form>
+                                    </div>
+                                    <div class="row" id="loader_contenido">
+                                        <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                            <div class="loader-peam_small"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                <table class="table">
+                                                    <thead class="bg-success">
+                                                        <tr>
+                                                            <th style="width: 10%;" class="text-center align-middle">HORA</th>
+                                                            <th style="width: 10%;" class="text-center align-middle">FECHA</th>
+                                                            <th style="width: 25%" class="align-middle">ACTIVIDAD</th>
+                                                            <th style="width: 20%" class="align-middle">CIUDAD</th>
+                                                            <th style="width: 40%" class="align-middle">DIRECCIÓN</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody id="tbodyAgenda">
+                                                    </tbody>
+                                                </table>
                                             </div>
                                         </div>
                                     </div>
-                                </header>
-                                <div class="entry-content">
                                 </div>
                                 <footer class="entry-footer">
                                     <div class="row">
@@ -120,11 +116,10 @@
                                             </ul>
                                         </div>
                                         <div class="col-md-9 col-xs-12 text-right">
-                                            <ul id="paginationDocumentos" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+                                            <ul id="paginationAgenda" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                             </ul>
                                         </div>
-
                                     </div>
                                 </footer>
                             </article>
@@ -169,20 +164,14 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.inview.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
-
-        <!-- RS5.0 Core JS Files -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
-
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
-        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/gestiontransparente.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/agendainstitucionalweb.js"></script>
 
     </body>
 </html>

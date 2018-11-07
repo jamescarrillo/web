@@ -154,7 +154,7 @@ public class DocumentoAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             LOG.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentoAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

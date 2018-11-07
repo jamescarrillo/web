@@ -34,9 +34,11 @@ import javax.sql.DataSource;
  *
  * @author JhanxD
  */
-@WebServlet(name = "ConsultasWebAPI", urlPatterns = {"/consultas/consultas-y-sugerencias",
-"/consultas/libro-de-reclamaciones",
-"/consultas/acceso-informacion"})
+@WebServlet(name = "ConsultasWebAPI", urlPatterns = {
+    "/consultas/consultas-y-sugerencias",
+    "/consultas/libro-de-reclamaciones",
+    "/consultas/acceso-informacion",
+    "/consultas/portal-de-transparencia"})
 public class ConsultasWebAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
@@ -85,7 +87,7 @@ public class ConsultasWebAPI extends HttpServlet {
                             procesarConsulta(this.comentsuggestDAO.add(getConsulta(request), getParametersConsulta(request)), response);
                             break;
                         default:
-                            request.getRequestDispatcher("/jsp/web/publicaciones/comentariossugerencias.jsp").forward(request, response);
+                            request.getRequestDispatcher("/jsp/web/consultas/comentariossugerencias.jsp").forward(request, response);
                             break;
                     }
                     break;
@@ -96,7 +98,7 @@ public class ConsultasWebAPI extends HttpServlet {
                             procesarReclamo(this.libroreclamoDAO.add(getReclamo(request), getParametersReclamo(request)), response);
                             break;
                         default:
-                            request.getRequestDispatcher("/jsp/web/publicaciones/libroreclamaciones.jsp").forward(request, response);
+                            request.getRequestDispatcher("/jsp/web/consultas/libroreclamaciones.jsp").forward(request, response);
                             break;
                     }
                     break;
@@ -107,60 +109,58 @@ public class ConsultasWebAPI extends HttpServlet {
                             procesarSolicitud(this.solicitudDAO.add(getSolicitud(request), getParametersSolicitud(request)), response);
                             break;
                         default:
-                            request.getRequestDispatcher("/jsp/web/publicaciones/accesoalainformacion.jsp").forward(request, response);
+                            request.getRequestDispatcher("/jsp/web/consultas/accesoalainformacion.jsp").forward(request, response);
                             break;
                     }
                     break;
-                    }
-            }catch (SQLException ex) {
+                case "/consultas/portal-de-transparencia":
+                    request.getRequestDispatcher("/jsp/web/consultas/portaltransparencia.jsp").forward(request, response);
+                    break;
+
+            }
+        } catch (SQLException ex) {
             Logger.getLogger(PublicacionesWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
-        }
+    }
 
-        // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-        /**
-         * Handles the HTTP <code>GET</code> method.
-         *
-         * @param request servlet request
-         * @param response servlet response
-         * @throws ServletException if a servlet-specific error occurs
-         * @throws IOException if an I/O error occurs
-         */
-        @Override
-        protected void doGet
-        (HttpServletRequest request, HttpServletResponse response)
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            processRequest(request, response);
-        }
+        processRequest(request, response);
+    }
 
-        /**
-         * Handles the HTTP <code>POST</code> method.
-         *
-         * @param request servlet request
-         * @param response servlet response
-         * @throws ServletException if a servlet-specific error occurs
-         * @throws IOException if an I/O error occurs
-         */
-        @Override
-        protected void doPost
-        (HttpServletRequest request, HttpServletResponse response)
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            processRequest(request, response);
-        }
+        processRequest(request, response);
+    }
 
-        /**
-         * Returns a short description of the servlet.
-         *
-         * @return a String containing servlet description
-         */
-        @Override
-        public String getServletInfo
-        
-            () {
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
         return "Short description";
-        }// </editor-fold>
-
-    
+    }// </editor-fold>
 
     private void procesarConsulta(BEAN_CRUD bean_crud, HttpServletResponse response) {
         try {
@@ -185,7 +185,7 @@ public class ConsultasWebAPI extends HttpServlet {
         obj.setDescripcion(request.getParameter("txtMensaje"));
         return obj;
     }
-    
+
     private void procesarReclamo(BEAN_CRUD bean_crud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(bean_crud);
@@ -212,7 +212,7 @@ public class ConsultasWebAPI extends HttpServlet {
         obj.setDescripcion_atencion(request.getParameter("txtMensaje"));
         return obj;
     }
-    
+
     private void procesarSolicitud(BEAN_CRUD bean_crud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(bean_crud);

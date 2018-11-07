@@ -585,7 +585,7 @@
                                     <i class="fa fa-money" aria-hidden="true" style="color: #6a9a32"></i>
                                 </div>
                                 <div class="desc mt-10">
-                                    <a href="#"><h3 class="text-peam-verde">PRESUPUESTOS Y FINANZAS</h3></a>
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/presupuesto-y-finanzas"><h3 class="text-peam-verde">PRESUPUESTOS Y FINANZAS</h3></a>
                                 </div>
                             </div>
                         </div>
@@ -596,7 +596,7 @@
                                     <i class="material-icons brand-icon">supervisor_account</i>
                                 </div>
                                 <div class="desc">
-                                    <a href="#"><h3 class="text-peam-verde">PROYECTOS DE INVERSIÓN</h3></a>
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/proyectos-de-inversion"><h3 class="text-peam-verde">PROYECTOS DE INVERSIÓN</h3></a>
                                 </div>
                             </div>
                         </div>
@@ -608,7 +608,7 @@
                                     <i class="fa fa-users" aria-hidden="true" style="color: #6a9a32"></i>
                                 </div>
                                 <div class="desc mt-10">
-                                    <a href="#"><h3 class="text-peam-verde">RECURSOS HUMANOS</h3></a>
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/recursos-humanos"><h3 class="text-peam-verde">RECURSOS HUMANOS</h3></a>
                                 </div>
                             </div>
                         </div>
@@ -619,7 +619,7 @@
                                     <i class="material-icons brand-icon">insert_drive_file</i>
                                 </div>
                                 <div class="desc">
-                                    <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">ADQUISICIONES Y CONTRATACIONES</h3></a>
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/adquisiciones-y-contrataciones"><h3 style="margin-bottom: 0px" class="text-peam-verde">ADQUISICIONES Y CONTRATACIONES</h3></a>
                                 </div>
                             </div>
                         </div>
@@ -628,11 +628,10 @@
                             <div class="featured-item border-box hover brand-hover"
                                  style="padding-top: 20px; padding-bottom: 20px; height: 145px; border: none">
                                 <div class="icon mb-5">
-                                    <!--i class="material-icons brand-icon">cached</i-->
                                     <i class="fa fa-book" aria-hidden="true" style="color: #6a9a32"></i>
                                 </div>
                                 <div class="desc mt-10">
-                                    <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">AGENDA INSTITUCIONAL</h3></a>
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/agenda-institucional"><h3 style="margin-bottom: 0px" class="text-peam-verde">AGENDA INSTITUCIONAL</h3></a>
                                 </div>
                             </div>
                         </div>
@@ -643,7 +642,7 @@
                                     <i class="material-icons brand-icon">info</i>
                                 </div>
                                 <div class="desc">
-                                    <a href="#"><h3 style="margin-bottom: 0px" class="text-peam-verde">INFORMACIÓN ADICIONAL</h3></a>
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/informacion-adicional"><h3 style="margin-bottom: 0px" class="text-peam-verde">INFORMACIÓN ADICIONAL</h3></a>
                                 </div>
                             </div>
                         </div>
@@ -667,7 +666,7 @@
                                     <i class="material-icons brand-icon">description</i>
                                 </div>
                                 <div class="desc mt-15">
-                                    <a href="#"><h3 class="text-peam-verde">TUPA</h3></a>
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion"><h3 class="text-peam-verde">TUPA</h3></a>
                                 </div>
                             </div>
                             <!-- /.featured-item -->
@@ -679,7 +678,7 @@
                                     <i class="material-icons brand-icon">gavel</i>
                                 </div>
                                 <div class="desc mt-15">
-                                    <a href="#" class="text-peam-verde"><h3>CÓDIGO DE ÉTICA</h3></a>
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/institucion/codigo-de-etica" class="text-peam-verde"><h3>CÓDIGO DE ÉTICA</h3></a>
                                 </div>
                             </div>
                         </div>
@@ -691,7 +690,7 @@
                                        style="color: #6a9a32"></i>
                                 </div>
                                 <div class="desc mt-30">
-                                    <a href="#"><h3 class="text-peam-verde">SISGEDO</h3></a>
+                                    <a href="http://doc.peam.gob.pe/sisgedo/app/main.php"><h3 class="text-peam-verde">SISGEDO</h3></a>
                                 </div>
                             </div>
                         </div>
@@ -702,7 +701,7 @@
                                     <i class="material-icons brand-icon">local_library</i>
                                 </div>
                                 <div class="desc">
-                                    <a href="#"><h4 style="margin-bottom: 0px" class="text-peam-verde">LIBRO DE
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/consultas/libro-de-reclamaciones"><h4 style="margin-bottom: 0px" class="text-peam-verde">LIBRO DE
                                             RECLAMACIONES</h4></a>
                                 </div>
                             </div>
@@ -715,7 +714,7 @@
                                        style="color: #6a9a32"></i>
                                 </div>
                                 <div class="desc mt-20">
-                                    <a href="#"><h4 style="margin-bottom: 0px" class="text-peam-verde">SOLICITUD DE
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/consultas/acceso-informacion"><h4 style="margin-bottom: 0px" class="text-peam-verde">SOLICITUD DE
                                             ACCESO A INFORMACIÓN</h4></a>
                                 </div>
                             </div>
@@ -729,7 +728,7 @@
                                        style="color: #6a9a32"></i>
                                 </div>
                                 <div class="desc mt-30">
-                                    <a href="#"><h3 class="text-peam-verde">RESOLUCIONES</h3></a>
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion"><h3 class="text-peam-verde">RESOLUCIONES</h3></a>
                                 </div>
                             </div>
                         </div>

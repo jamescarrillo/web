@@ -98,10 +98,13 @@ public class PublicacionesWebAPI extends HttpServlet {
                     }
                     break;
                 case "/publicaciones/memorias-anuales":
+                    request.getRequestDispatcher("/estamos_trabajando_web.jsp").forward(request, response);
                     break;
                 case "/publicaciones/comunicados":
+                    request.getRequestDispatcher("/estamos_trabajando_web.jsp").forward(request, response);
                     break;
                 case "/publicaciones/otras-publicaciones":
+                    request.getRequestDispatcher("/estamos_trabajando_web.jsp").forward(request, response);
                     break;
                 default:
                     response.sendRedirect("/index");
@@ -149,7 +152,7 @@ public class PublicacionesWebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             LOG.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PublicacionesWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -181,7 +184,7 @@ public class PublicacionesWebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             LOG.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PublicacionesWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

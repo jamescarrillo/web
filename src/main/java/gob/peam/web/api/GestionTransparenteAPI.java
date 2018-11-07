@@ -88,16 +88,20 @@ public class GestionTransparenteAPI extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
+            logger.info("-> " + request.getRequestURI().substring(request.getContextPath().length()));
             switch (request.getRequestURI().substring(request.getContextPath().length())) {
                 case "/gestiontransparente/adquisiciones":
+                    request.getRequestDispatcher("/estamos_trabajando.jsp").forward(request, response);
                     break;
                 case "/gestiontransparente/gestiondocumentos":
+
                     break;
                 case "/gestiontransparente/personal":
+                    request.getRequestDispatcher("/estamos_trabajando.jsp").forward(request, response);
                     break;
                 case "/gestiontransparente/directivos":
                     action = request.getParameter("action") == null ? "" : request.getParameter("action");
-                    logger.info("---->" + action);
+                    logger.info("--jcc-->" + action);
                     switch (action) {
                         case "paginarFuncionario":
                             procesarFuncionario(new BEAN_CRUD(this.funcionarioDAO.getPagination(getParametersFuncionarios(request))), response);
@@ -135,8 +139,8 @@ public class GestionTransparenteAPI extends HttpServlet {
                     }
                     break;
                 case "/gestiontransparente/viaticos":
+                    request.getRequestDispatcher("/estamos_trabajando.jsp").forward(request, response);
                     break;
-                default:
             }
         } catch (IOException | SQLException ex) {
             Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
@@ -480,6 +484,7 @@ public class GestionTransparenteAPI extends HttpServlet {
         }
         return directivo;
     }
+
     /**
      * Returns a short description of the servlet.
      *

@@ -7,9 +7,10 @@ package gob.peam.web.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import gob.peam.web.dao.GlosarioDAO;
-import gob.peam.web.dao.impl.GlosarioDAOImpl;
+import gob.peam.web.dao.AgendaDAO;
+import gob.peam.web.dao.impl.AgendaDAOImpl;
 import gob.peam.web.utilities.BEAN_CRUD;
+import gob.peam.web.utilities.Utilities;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -27,29 +28,30 @@ import org.apache.commons.logging.LogFactory;
 
 /**
  *
- * @author JhanxD
+ * @author JamesCarrillo
  */
-@WebServlet(name = "GlosarioWebAPI", urlPatterns = {"/glosario"})
-public class GlosarioWebAPI extends HttpServlet {
-    
+@WebServlet(name = "AgendaInsitucionalWebAPI", urlPatterns = {
+    "/agendainstitucional/operacionesweb",})
+public class AgendaInsitucionalWebAPI extends HttpServlet {
+
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
     private Gson json;
     private String jsonResponse;
     private HashMap<String, Object> parameters;
-    private final Log logger = LogFactory.getLog(GlosarioAPI.class);
+    private final Log LOG = LogFactory.getLog(AgendaInsitucionalWebAPI.class);
     private String action;
-    
-    private GlosarioDAO glosarioDAO;
+
+    private AgendaDAO agendaDAO;
 
     @Override
     public void init() throws ServletException {
         super.init(); // To change body of generated methods, choose Tools | Templates.
-        //this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy HH:mm:ss").create();
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
         this.parameters = new HashMap<>();
         this.action = "";
-        this.glosarioDAO = new GlosarioDAOImpl(this.pool);
+
+        this.agendaDAO = new AgendaDAOImpl(this.pool);
     }
 
     /**
@@ -65,16 +67,14 @@ public class GlosarioWebAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
+            LOG.info(action);
             switch (this.action) {
-                case "paginarGlosario":
-                    procesarGlosario(new BEAN_CRUD(this.glosarioDAO.getPagination(getParametersGlosario(request))), response);
-                    break;
-                default:
-                    request.getRequestDispatcher("/jsp/web/gestiontransparente/glosarioweb.jsp").forward(request, response);
+                case "paginarAgenda":
+                    procesarAgenda(new BEAN_CRUD(this.agendaDAO.getPagination(getParametersAgenda(request))), response);
                     break;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(GestionTransparenteWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AgendaInsitucionalWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -117,25 +117,48 @@ public class GlosarioWebAPI extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void procesarGlosario(BEAN_CRUD bean_crud, HttpServletResponse response) {
+    private void procesarAgenda(BEAN_CRUD beanCrud, HttpServletResponse response) {
         try {
-            this.jsonResponse = this.json.toJson(bean_crud);
+            this.jsonResponse = this.json.toJson(beanCrud);
             response.setContentType("application/json");
             response.getWriter().write(this.jsonResponse);
-            this.logger.info(this.jsonResponse);
+            LOG.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(GlosarioWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AgendaInsitucionalWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
-    private HashMap<String, Object> getParametersGlosario(HttpServletRequest request) {
+
+    private HashMap<String, Object> getParametersAgenda(HttpServletRequest request) {
         this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtTituloGlosario").toLowerCase());
-        this.parameters.put("SQL_ORDERS", "FECHA_HORA DESC");
+        this.parameters.put("FILTER", request.getParameter("txtActividad").toLowerCase());
+        switch (request.getParameter("comboFecha")) {
+            case "dia":
+                this.parameters.put("SQL_FECHA", "AND EXTRACT(DAY FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
+                break;
+            case "mes":
+                this.parameters.put("SQL_FECHA", "AND EXTRACT(MONTH FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
+                break;
+            case "anho":
+                this.parameters.put("SQL_FECHA", "AND EXTRACT(YEAR FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
+                break;
+            case "todo":
+                this.parameters.put("SQL_FECHA", "");
+                break;
+        }
+
+        if (request.getParameter("txtCalendario").equals("")) {
+            this.parameters.put("SQL_CALENDARIO", "");
+        } else {
+            this.parameters.put("SQL_CALENDARIO", "OR FECHA_INICIO = '" + Utilities.getDateSQLFORMAT(request.getParameter("txtCalendario"), "dd/MM/yyyy") + "' ");
+        }
+        this.parameters.put("SQL_ESTADO", "AND ESTADO = true ");
+        this.parameters.put("SQL_TIPO", "AND TIPO = " + request.getParameter("cbotipo"));
+        this.parameters.put("SQL_ORDERS", "FECHA_INICIO DESC");
         this.parameters.put("LIMIT",
-                " LIMIT " + request.getParameter("sizePageGlosario") + " OFFSET "
-                + (Integer.parseInt(request.getParameter("numberPageGlosario")) - 1)
-                * Integer.parseInt(request.getParameter("sizePageGlosario")));
+                " LIMIT " + request.getParameter("sizePageAgenda") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageAgenda")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageAgenda")));
         return this.parameters;
     }
+
 }

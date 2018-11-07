@@ -41,7 +41,7 @@ public class ProcesoExoneradoAPI extends HttpServlet {
     private Gson json;
     private String jsonResponse;
     private HashMap<String, Object> parameters;
-    private final Log logger = LogFactory.getLog(DocumentoAPI.class);
+    private final Log logger = LogFactory.getLog(ProcesoExoneradoAPI.class);
     private String action;
 
     private ProcesoExoneradoDAO procesoExoneradoDAO;
@@ -148,7 +148,7 @@ public class ProcesoExoneradoAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             this.logger.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ProcesoExoneradoAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

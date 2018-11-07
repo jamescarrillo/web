@@ -49,7 +49,7 @@
                                     <ul class="list-unstyled clearfix">
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">Documentos Normativos y de Gestión</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/presupuesto-y-finanzas">Presupuestos y Finanzas</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/proyecto-de-inversion">Proyectos de inversión</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/proyectos-de-inversion">Proyectos de inversión</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/recursos-humanos">Recursos Humanos</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/adquisiciones-y-contrataciones">Adquisiciones y Contrataciones</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/agenda-institucional">Agenda Institucional</a></li>

@@ -145,7 +145,7 @@ var palette = renderer.create('<div class="note-color-palette"/>', function ($no
         });
     }
 });
-var dialog = renderer.create('<div class="modal" aria-hidden="false" tabindex="-1" role="dialog"/>', function ($node, options) {
+var dialog = renderer.create('<div class="modal" aria-hidden="false" tabindex="-1" role="dialog" style="z-index: 1054"/>', function ($node, options) {
     if (options.fade) {
         $node.addClass('fade');
     }

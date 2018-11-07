@@ -54,7 +54,7 @@ function listarConvocatoria(BEAN_PAGINATION) {
             fila += "<td class='align-middle'>" + value.descripcion + "</td>";
             fila += "<td class='align-middle'>" + value.fecha + "</td>";
             fila += "<td class='align-middle'>" + estado + "</td>";
-            fila += "<td class='align-middle'><button class='waves-effect waves-light btn ver-Cronograma' style='height: 40px; padding-top: 5px; padding-bottom: 5px;'>Revisar</button></td>";
+            fila += "<td class='align-middle'><button class='waves-effect waves-light btn ver-Cronograma' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Revisar</button></td>";
 
 
             fila += "</tr>";
@@ -98,7 +98,7 @@ function agregarEventosConvocatoria() {
             procesarAjaxCalendarioWeb($(this.parentElement.parentElement).attr('coper_id'));
             $('#TitularPlaza').css('display', 'block');
             $('#PlazaTitulo').html($(this.parentElement.parentElement).attr('text'));
-            
+
         });
     });
 }
@@ -138,7 +138,7 @@ function listarCalendario(BEAN_PAGINATION, id) {
             fila += "<td class='align-middle'>" + value.acti_id.descripcion + "</td>";
             fila += "<td class='align-middle'>" + value.fecha_inicio + "</td>";
             fila += "<td class='align-middle'>" + value.fecha_fin + "</td>";
-            fila += "<td class='align-middle'><button class='waves-effect waves-light btn ver-Documentos' style='height: 40px; padding-top: 5px; padding-bottom: 5px;'>Ver Documentos</button></td>";
+            fila += "<td class='align-middle'><button class='waves-effect waves-light btn ver-Documentos' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Ver Documentos</button></td>";
             fila += "</tr>";
             $('#tbodyCalendario').append(fila);
         });
@@ -212,7 +212,7 @@ function listarPuestoConv(BEAN_PAGINATION) {
         });
     } else {
         var fila;
-        fila="<tr><td class='text-center' colspan='4'>Sin Plazas Publicadas</td></tr>";
+        fila = "<tr><td class='text-center' colspan='4'>Sin Plazas Publicadas</td></tr>";
         $('#tbodyPlaza').append(fila);
         $pagination.twbsPagination('destroy');
     }
@@ -259,7 +259,7 @@ function listarDocumentoCal(BEAN_PAGINATION) {
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
             fila = "<tr id='" + value.doco_id + "'>";
             fila += "<td class='align-middle'>" + value.nombre + "</td>";
-            fila += "<td><a href='"+getContext() + "/downloadfile?type_file=downloadDocumentConvocatorias&full_file=n&file=" + value.url_file + "' class='waves-effect waves-light btn' title='Descargar' style='height: 40px; padding-top: 5px; padding-bottom: 5px;'><i class='fa fa-download' aria-hidden='true'></i> DESCARGAR</a></td>";
+            fila += "<td><a href='" + getContext() + "/downloadfile?type_file=downloadDocumentConvocatorias&full_file=n&file=" + value.url_file + "' class='waves-effect waves-light btn' title='Descargar' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'><i class='fa fa-download' aria-hidden='true'></i> DESCARGAR</a></td>";
             fila += "</tr>";
             $('#tbodyDocumentCal').append(fila);
         });
@@ -267,10 +267,10 @@ function listarDocumentoCal(BEAN_PAGINATION) {
     } else {
         viewAlertWeb('warning', "No se encontraron Documentos");
         var fila;
-        fila="<tr><td class='text-center' colspan='2'>Sin Documentos</td></tr>";
+        fila = "<tr><td class='text-center' colspan='2'>Sin Documentos</td></tr>";
         $('#tbodyDocumentCal').append(fila);
         $pagination.twbsPagination('destroy');
     }
-    
-    
+
+
 }

@@ -71,7 +71,7 @@ $(document).ready(function () {
         $('#txtContenidoAnuncioER').val("");
         $('#editorWebContenido').summernote('code', "");
         $('#txtEstadoAnuncioER').val("false");
-        $('#actionAnuncio').val("addAnuncio");
+        $('#actionManAnuncio').val("addAnuncio");
         $('#txtTituloModalManAnuncio').html("REGISTRAR ANUNCIO");
         $('#ventanaManAnuncio').modal("show");
         document.getElementsByTagName("body")[0].style.paddingRight = "0";
@@ -104,9 +104,10 @@ function procesarAjaxAnuncio() {
         dataType: 'json',
         success: function (jsonResponse) {
             $('#modalCargandoAnuncio').modal("hide");
-            if ($('#actionAnuncio').val().toLowerCase() === "paginaranuncio") {
+            if (jsonResponse.BEAN_PAGINATION !== undefined) {
                 listarAnuncio(jsonResponse.BEAN_PAGINATION);
-            } else {
+            }
+            if (jsonResponse.MESSAGE_SERVER !== undefined) {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
                     viewAlert('success', getMessageServerTransaction($('#actionManAnuncio').val(), 'Anuncio', 'o'));
                     listarAnuncio(jsonResponse.BEAN_PAGINATION);
@@ -149,21 +150,15 @@ function listarAnuncio(BEAN_PAGINATION) {
                 icono = "<i class='far fa-hand-point-up'></i>";
             }
             cadenaContenido = value.contenido;
-            cadenaContenido = replaceAll(cadenaContenido, '<p>', '');
-            cadenaContenido = replaceAll(cadenaContenido, '</p>', '\n');
-            cadenaContenido = replaceAll(cadenaContenido, '<b>', '\n');
-            cadenaContenido = replaceAll(cadenaContenido, '</b>', '\n');
+            cadenaContenido = removeTagHTML(cadenaContenido);
 
             cadenaTitulo = value.titulo;
-            cadenaTitulo = replaceAll(cadenaTitulo, '<p>', '');
-            cadenaTitulo = replaceAll(cadenaTitulo, '</p>', '\n');
-            cadenaTitulo = replaceAll(cadenaTitulo, '<b>', '\n');
-            cadenaTitulo = replaceAll(cadenaTitulo, '</b>', '\n');
+            cadenaTitulo = removeTagHTML(cadenaTitulo);
 
             atributosAnuncio = "anu_id='" + value.anu_id + "' ";
             atributosAnuncio += "tipo='" + value.tipo + "' ";
             atributosAnuncio += "titulo='" + cadenaTitulo + "' ";
-            atributosAnuncio += "contenido='" + cadenaContenido + "' ";
+            atributosAnuncio += "contenido='" + value.contenido + "' ";
             atributosAnuncio += "anu_fecha_ini='" + value.anu_fecha_ini + "' ";
             atributosAnuncio += "anu_fecha_fin='" + value.anu_fecha_fin + "' ";
             atributosAnuncio += "estado='" + value.estado + "' ";
@@ -226,6 +221,7 @@ function agregarEventosAnuncio() {
         $(this).click(function () {
             var titulo = $(this.parentElement.parentElement).attr('titulo');
             var contenido = $(this.parentElement.parentElement).attr('contenido');
+            console.log(contenido);
             $.toast({
                 heading: titulo,
                 text: contenido,
@@ -257,7 +253,24 @@ function agregarEventosAnuncio() {
     $('.btn-eliminar-anuncio').each(function () {
         $(this).click(function () {
             $('#txtIdAnuncioER').val($(this.parentElement.parentElement).attr('anu_id'));
-            viewAlertDelete("Anuncio");
+            swal({
+                title: 'PEAM',
+                text: "¿Desea eliminar este registro?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, continuar!',
+                cancelButtonText: 'No, cancelar!',
+                confirmButtonClass: 'btn btn-info',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.value) {
+                    $('#actionManAnuncio').val("deleteAnuncio");
+                    $("#nameForm").val("FrmAnuncioModal");
+                    $('#modalCargandoAnuncio').modal("show");
+                }
+            });
+            $('.swal2-confirm').css("margin-right", "15px");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
@@ -337,12 +350,6 @@ function validarFormularioAnuncio() {
         viewAlert('warning', 'Por favor ingrese contenido');
         return false;
     }
-//    if ($('#txtContenidoAnuncioER').val() === "") {
-//        $($('#txtContenidoAnuncioER').parent()).addClass('has-danger');
-//        return false;
-//    } else {
-//        $(this.parentElement).removeClass('has-danger');
-//    }
     return true;
 }
 

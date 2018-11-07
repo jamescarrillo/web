@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnioDocumento'), 2005, "-1", 'Seleccione...');
+    cargarAniosCombo($('#comboAnioDocumento'), 2005, "-1", 'AÑO');
 
     $("#FrmDocumentos").submit(function () {
         $("#nameForm").val("FrmDocumentos");
@@ -131,7 +131,7 @@ function listarDocumentos(BEAN_PAGINATION) {
         $('#txtTituloDocumento').focus();
     } else {
         $pagination.twbsPagination('destroy');
-        viewAlert('warning', 'No se enconntraron resultados');
+        viewAlert('warning', 'No se encontraron resultados');
     }
 }
 

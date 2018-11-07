@@ -31,7 +31,7 @@ import javax.sql.DataSource;
     "/documentos/operacionesweb",
     "/gestiontransparente/documentos-normativos-y-de-gestion",
     "/gestiontransparente/presupuesto-y-finanzas",
-    "/gestiontransparente/proyecto-de-inversion",
+    "/gestiontransparente/proyectos-de-inversion",
     "/gestiontransparente/recursos-humanos",
     "/gestiontransparente/adquisiciones-y-contrataciones",
     "/gestiontransparente/agenda-institucional",
@@ -208,7 +208,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
     }
 
     private String getJSP(HttpServletRequest request) {
-        String page = "";
+        String page;
         switch (request.getRequestURI().substring(request.getContextPath().length())) {
             case "/gestiontransparente/documentos-normativos-y-de-gestion":
                 page = "documentoNormativoGestion.jsp";
@@ -218,6 +218,15 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                 break;
             case "/gestiontransparente/informacion-adicional":
                 page = "documentoInformacionAdicional.jsp";
+                break;
+            case "/gestiontransparente/proyectos-de-inversion":
+                page = "proyectosinversion.jsp";
+                break;
+            case "/gestiontransparente/agenda-institucional":
+                page = "agendaInstitucional.jsp";
+                break;
+            default:
+                page = "../../../estamos_trabajando_web.jsp";
                 break;
         }
         return page;

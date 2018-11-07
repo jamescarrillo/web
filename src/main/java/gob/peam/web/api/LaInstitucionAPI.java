@@ -78,10 +78,6 @@ public class LaInstitucionAPI extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //System.out.println("->  " + request.getRequestURI().substring(request.getContextPath().length()));
-        //System.out.println("->  " + request.getRequestURI());
-        //getServletContext().getContextPath() = web
-        //sin el /web
         try {
             switch (request.getRequestURI().substring(request.getContextPath().length())) {
                 case "/institucion/quienes-somos":
@@ -172,7 +168,7 @@ public class LaInstitucionAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             this.logger.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LaInstitucionAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

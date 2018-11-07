@@ -47,7 +47,7 @@ public class ConvocatoriasWebAPI extends HttpServlet {
     private String jsonResponse;
     private HashMap<String, Object> parameters;
     private HashMap<String, Object> jsonROOT;
-    private final Log logger = LogFactory.getLog(DocumentoWebAPI.class);
+    private final Log logger = LogFactory.getLog(ConvocatoriasWebAPI.class);
     private String action;
 
     ///CONVOCATORIAS DE PERSONAL
@@ -177,7 +177,7 @@ public class ConvocatoriasWebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             this.logger.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ConvocatoriasWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

@@ -41,7 +41,7 @@ public class DirectorioTelefonicoAPI extends HttpServlet {
     private Gson json;
     private String jsonResponse;
     private HashMap<String, Object> parameters;
-    private final Log logger = LogFactory.getLog(DocumentoAPI.class);
+    private final Log logger = LogFactory.getLog(DirectorioTelefonicoAPI.class);
     private String action;
 
     private DirectorioTelefonicoDAO directorioTelefonicoDAO;
@@ -89,7 +89,7 @@ public class DirectorioTelefonicoAPI extends HttpServlet {
                     break;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(DocumentoAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DirectorioTelefonicoAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -149,7 +149,7 @@ public class DirectorioTelefonicoAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             this.logger.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(DocumentoWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DirectorioTelefonicoAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
