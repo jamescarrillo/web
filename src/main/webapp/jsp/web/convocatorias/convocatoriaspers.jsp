@@ -148,7 +148,7 @@
                                                                                         <input type="hidden" id="nameFormCalendario" value="FrmCalendario">
                                                                                         <input type="hidden" id="actionCalendario" name="action" value="paginarCalendario">
                                                                                         <input type="hidden" id="numberCalendario" name="numberPageCalendario" value="1">
-                                                                                        <input type="hidden" id="sizePageCalendario" name="sizePageCalendario" value="15">
+                                                                                        <input type="hidden" id="sizePageCalendario" name="sizePageCalendario" value="10">
                                                                                     </form>
 
                                                                                     <div class="row" id="TitularCalendario" style="display: none">
