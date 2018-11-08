@@ -221,7 +221,6 @@ function agregarEventosAnuncio() {
         $(this).click(function () {
             var titulo = $(this.parentElement.parentElement).attr('titulo');
             var contenido = $(this.parentElement.parentElement).attr('contenido');
-            console.log(contenido);
             $.toast({
                 heading: titulo,
                 text: contenido,
@@ -240,8 +239,8 @@ function agregarEventosAnuncio() {
             $('#txtContenidoAnuncioER').val("");
             //$('#txtContenidoAnuncioER').val($(this.parentElement.parentElement).attr('contenido'));
             $('#editorWebContenido').summernote('code', $(this.parentElement.parentElement).attr('contenido'));
-            $('#datePickerFechaInicioER').val($(this.parentElement.parentElement).attr('anu_fecha_ini'));
-            $('#datePickerFechaFinER').val($(this.parentElement.parentElement).attr('anu_fecha_fin'));
+            $('#datePickerFechaInicioER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('anu_fecha_ini')));
+            $('#datePickerFechaFinER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('anu_fecha_fin')));
             $('#tipoER').val($(this.parentElement.parentElement).attr('tipo'));
             $('#actionManAnuncio').val('updateAnuncio');
             $('#txtTituloModalManAnuncio').html("EDITAR ANUNCIO");

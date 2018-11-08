@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.sql.DataSource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  *
@@ -27,7 +25,6 @@ import org.apache.commons.logging.LogFactory;
  */
 public class DirectorioDAOImpl implements DirectorioDAO {
 
-    private final Log logger = LogFactory.getLog(FuncionarioDAOImpl.class);
     private final DataSource pool;
 
     public DirectorioDAOImpl(DataSource pool) {

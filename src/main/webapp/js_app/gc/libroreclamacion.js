@@ -135,7 +135,7 @@ function listarLibroReclamo(BEAN_PAGINATION) {
             card += "<p class='m-b-5'>" + value.descripcion_atencion + "</p>";
             card += "<div class='comment-footer' " + atributosLibroReclamo + ">";
             card += "<span class='text-muted pull-right mr-2'>" + value.fecha + "</span>";
-            card += "<span class='label "+labelColor+"'>" + resp + "</span>";
+            card += "<span class='label " + labelColor + "'>" + resp + "</span>";
             card += "<span class='action-icons'>";
             card += "<a style='cursor:pointer' class='link mr-2 btn-imprimir-np' data-toggle='tooltip' title='imprimir' data-original-title='Editar'><i class='fas fa-print'></i></a>";
             card += "<a style='cursor:pointer' class='link mr-2 btn-cambiar-estado-np' data-toggle='tooltip' title='" + opcion_estado + "' data-original-title='' opcion_estado='" + opcion_estado.toLowerCase() + "'>" + icono + "</a>";
@@ -172,7 +172,7 @@ function agregarEventosLibroReclamo() {
         $(this).click(function () {
             $('#txtNumeroER').val($(this.parentElement.parentElement).attr('id'));
             $('#txtAnhoER').val($(this.parentElement.parentElement).attr('anho'));
-            $('#txtFechaER').val($(this.parentElement.parentElement).attr('fecha'));
+            $('#txtFechaER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha')));
             $('#txtUsuarioER').val($(this.parentElement.parentElement).attr('usuario'));
             $('#txtCorreoER').val($(this.parentElement.parentElement).attr('e_mail'));
             $('#txtTelefonoER').val($(this.parentElement.parentElement).attr('telefono'));

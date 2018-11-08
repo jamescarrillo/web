@@ -64,14 +64,12 @@ function procesarAjaxEstudio() {
     datosSerializadosCompletos += "&numberPageEstudio=" + $('#numberPageEstudio').val();
     datosSerializadosCompletos += "&sizePageEstudio=" + $('#sizePageEstudio').val();
     datosSerializadosCompletos += "&action=" + $('#actionEstudio').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/publicaciones/estudios',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoEstudio').modal("hide");
             if ($('#actionEstudio').val().toLowerCase() === "paginarestudio") {
                 listarEstudio(jsonResponse.BEAN_PAGINATION);
@@ -202,7 +200,7 @@ function agregarEventosEstudio() {
     $('.btn-editar-np').each(function () {
         $(this).click(function () {
             $('#txtIdER').val($(this.parentElement.parentElement).attr('id'));
-            $('#txtFechaER').val($(this.parentElement.parentElement).attr('fecha'));
+            $('#txtFechaER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha')));
             $('#txtTituloER').val($(this.parentElement.parentElement).attr('titulo'));
             $('#comboSeguimientoER').val($(this.parentElement.parentElement).attr('seguimiento'));
             $('#txtFotoER').val($(this.parentElement.parentElement).attr('foto'));
@@ -226,7 +224,7 @@ function agregarEventosEstudio() {
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
-    
+
     $('.btn-cambiar-estado-estudio').each(function () {
         $(this).click(function () {
             $('#txtIdER').val($(this.parentElement.parentElement).attr('id'));

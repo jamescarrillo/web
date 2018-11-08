@@ -25,7 +25,6 @@ function validarErrores() {
         data: $('#FrmLogin').serialize(),
         success: function (jsonResponse) {
             $('#modalCargando').modal('hide');
-            console.log(jsonResponse);
             if (jsonResponse.AUTENTICACION === "CORRECTO") {
                 $(location).attr('href', 'indexgc');
             } else {
@@ -56,7 +55,6 @@ function validarErrores() {
         error: function (xhr, status, error) {
             $('#modalCargando').modal("hide");
             var errorMessage = xhr.status + ': ' + xhr.statusText;
-            console.log('Error - ' + errorMessage);
             swal(
                     {
                         title: "PEAM!",

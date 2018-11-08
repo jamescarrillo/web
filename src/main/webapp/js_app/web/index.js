@@ -107,7 +107,6 @@ function addEventsNoticias() {
 
 function addAnunciosWeb(DATA_ANUNCIOS) {
     $.each(DATA_ANUNCIOS, function (index, value) {
-        console.log(value.contenido);
         $.toast({
             heading: value.titulo,
             text: value.contenido,

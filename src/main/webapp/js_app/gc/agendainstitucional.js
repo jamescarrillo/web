@@ -5,27 +5,27 @@ $(document).ready(function () {
         todayHighlight: true,
         autoclose: true
     });
-    
+
     $('#datePickerFechaER').datepicker({
         format: 'dd/mm/yyyy',
         todayHighlight: true,
         autoclose: true
     });
-    
+
     $('#comboFecha').on('change', function () {
-    var date = new Date();
-    switch ($('#comboFecha').val()) {
-        case "dia":
-            $('#tFecha').val(date.getDay());
-            break;
-        case "mes":
-            $('#tFecha').val(date.getMonth()+1);
-            break;
-        case "anho":
-            $('#tFecha').val(date.getFullYear());
-            break;
-    }
-});
+        var date = new Date();
+        switch ($('#comboFecha').val()) {
+            case "dia":
+                $('#tFecha').val(date.getDay());
+                break;
+            case "mes":
+                $('#tFecha').val(date.getMonth() + 1);
+                break;
+            case "anho":
+                $('#tFecha').val(date.getFullYear());
+                break;
+        }
+    });
 
     $("#FrmAgenda").submit(function () {
         $("#nameForm").val("FrmAgenda");
@@ -89,14 +89,12 @@ function procesarAjaxAgenda() {
     datosSerializadosCompletos += "&sizePageAgenda=" + $('#sizePageAgenda').val();
     datosSerializadosCompletos += "&action=" + $('#actionAgenda').val();
     datosSerializadosCompletos += "&urlAgenda=" + pathname;
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/agendainstitucional/operaciones',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoAgenda').modal("hide");
             if ($('#actionAgenda').val().toLowerCase() === "paginaragenda") {
                 listarAgenda(jsonResponse.BEAN_PAGINATION);
@@ -179,7 +177,7 @@ function agregarEventosAgenda() {
     $('.editar-Agenda').each(function () {
         $(this).click(function () {
             $('#txtIdER').val($(this.parentElement.parentElement).attr('id'));
-            $('#datePickerFechaER').val($(this.parentElement.parentElement).attr('fecha_inicio'));
+            $('#datePickerFechaER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha_inicio')));
             $('#txtHoraInicioER').val($(this.parentElement.parentElement).attr('hora_inicio'));
             $('#txtHoraFinER').val($(this.parentElement.parentElement).attr('hora_final'));
             $('#txtActividadER').val($(this.parentElement.parentElement).attr('actividad'));

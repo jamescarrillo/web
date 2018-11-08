@@ -77,7 +77,6 @@ function listarConvocatoriaWeb(BEAN_PAGINATION) {
             fila += "<td class='align-middle'>" + proceso + "</td>";
             fila += "<td class='align-middle'><button class='waves-effect waves-light btn ver-Info' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Info</button></td>";
             fila += "</tr>";
-            console.log(fila);
             $('#tbodyConvocatoriaBien').append(fila);
         });
         var defaultOptions = getDefaultOptionsPagination();

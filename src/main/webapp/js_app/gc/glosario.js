@@ -58,14 +58,12 @@ function procesarAjaxGlosario() {
     datosSerializadosCompletos += "&numberPageGlosario=" + $('#numberPageGlosario').val();
     datosSerializadosCompletos += "&sizePageGlosario=" + $('#sizePageGlosario').val();
     datosSerializadosCompletos += "&action=" + $('#actionGlosario').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/glosarios',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoGlosario').modal("hide");
             if ($('#actionGlosario').val().toLowerCase() === "paginarglosario") {
                 listarGlosario(jsonResponse.BEAN_PAGINATION);

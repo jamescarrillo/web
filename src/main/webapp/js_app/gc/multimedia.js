@@ -66,7 +66,6 @@ function procesarAjaxMultimedia() {
     datosSerializadosCompletos += "&numberPageMultimedia=" + $('#numberPageMultimedia').val();
     datosSerializadosCompletos += "&sizePageMultimedia=" + $('#sizePageMultimedia').val();
     datosSerializadosCompletos += "&action=" + $('#actionMultimedia').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/publicaciones/multimedia',
         type: 'POST',
@@ -151,7 +150,7 @@ function listarMultimedia(BEAN_PAGINATION) {
             card += "<div class='blog-image'></div>";
 
             card += "<h3 class='" + textColor + "'>" + value.titulo + "</h3>";
-            card += "<div class='embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item' src='"+value.fuente+"'></iframe></div>";
+            card += "<div class='embed-responsive embed-responsive-16by9'><iframe class='embed-responsive-item' src='" + value.fuente + "'></iframe></div>";
             card += "<label class='label label-rounded label-success'>" + value.fecha + "</label>";
 
             //card += cadenaContenido;
@@ -207,7 +206,7 @@ function agregarEventosMultimedia() {
     $('.btn-editar-np').each(function () {
         $(this).click(function () {
             $('#txtIdER').val($(this.parentElement.parentElement).attr('id'));
-            $('#txtFechaER').val($(this.parentElement.parentElement).attr('fecha'));
+            $('#txtFechaER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha')));
             $('#txtTituloER').val($(this.parentElement.parentElement).attr('titulo'));
             $('#txtFuenteER').val($(this.parentElement.parentElement).attr('fuente'));
             $('#actionMultimedia').val('updateMultimedia');

@@ -67,7 +67,7 @@ $(document).ready(function () {
         }
         return false;
     });
-    
+
     $("#FrmDocumentCalModal").submit(function () {
         if (validarFormularioDocumentCal()) {
             $("#numberPageDocumentCal").val(1);
@@ -105,7 +105,7 @@ $(document).ready(function () {
         //DESPUES DE TERMINAR DE MOSTRAR EL MODAL
         procesarAjaxPuestoConv();
     });
-    
+
     $("#modalCargandoDocumentCal").on('shown.bs.modal', function () {
         //DESPUES DE TERMINAR DE MOSTRAR EL MODAL
         procesarAjaxDocumentCal();
@@ -126,7 +126,7 @@ $(document).ready(function () {
     $("#ventanaManPuestoConv").on('hidden.bs.modal', function () {
         $("#actionPuestoConv").val("paginarPuestoConv");
     });
-    
+
     $("#ventanaManDocumentCal").on('hidden.bs.modal', function () {
         $("#actionDocumentCal").val("paginarDocumentCal");
     });
@@ -177,7 +177,7 @@ $(document).ready(function () {
         $('#ventanaManActividad').modal("show");
         document.getElementsByTagName("body")[0].style.paddingRight = "0";
     });
-    
+
     $('#btnAbrirNuevoDocumentCal').click(function () {
         $('#FrmDocumentCalModal input').val("");
         $('#FrmDocumentCalModal input').parent().removeClass("has-danger");
@@ -483,12 +483,12 @@ function listarCalendarioConv(BEAN_PAGINATION) {
             fila += "convo_id='" + value.convo_id + "' ";
             fila += "tipo='" + value.tipo + "' ";
             fila += ">";
-            fila += "<td class='align-middle " + text_color + "'>" + value.acti_id.descripcion + "</td>";
-            fila += "<td class='align-middle " + text_color + "'>" + value.fecha_inicio + "</td>";
-            fila += "<td class='align-middle " + text_color + "'>" + value.fecha_fin + "</td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm editar-Calendario' data-toggle='tooltip' title='Editar Actividad'><i class='fas fa-edit'></i></button></td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm eliminar-Calendario' data-toggle='tooltip' title='Eliminar Actividad'><i class='fas fa-trash-alt'></i></button></td>";
-            fila += "<td class='align-middle " + text_color + "'><button class='btn btn-success btn-sm archivos' data-toggle='tooltip' title='Adminstra archivos'><i class='fa fa-download'></i>ARCHIVOS</button></td>";
+            fila += "<td class='align-middle text-small-table" + text_color + "'>" + value.acti_id.descripcion + "</td>";
+            fila += "<td class='align-middle text-small-table" + text_color + "'>" + value.fecha_inicio + "</td>";
+            fila += "<td class='align-middle text-small-table" + text_color + "'>" + value.fecha_fin + "</td>";
+            fila += "<td class='align-middle text-small-table" + text_color + "'><button class='btn btn-success btn-sm editar-Calendario' data-toggle='tooltip' title='Editar Actividad'><i class='fas fa-edit'></i></button></td>";
+            fila += "<td class='align-middle text-small-table" + text_color + "'><button class='btn btn-success btn-sm eliminar-Calendario' data-toggle='tooltip' title='Eliminar Actividad'><i class='fas fa-trash-alt'></i></button></td>";
+            fila += "<td class='align-middle text-small-table" + text_color + "'><button class='btn btn-success btn-sm archivos' data-toggle='tooltip' title='Adminstra archivos'><i class='fa fa-download'></i>ARCHIVOS</button></td>";
             fila += "</tr>";
             $('#tbodyCalendarioConv').append(fila);
         });
@@ -522,17 +522,15 @@ function agregarEventosCalendarioConv() {
     $('.editar-Calendario').each(function () {
         $(this).click(function () {
             $('#txtIdERCC').val($(this.parentElement.parentElement).attr('id'));
-            $('#txtFechaInicioERCC').val($(this.parentElement.parentElement).attr('fecha_inicio'));
-            $('#txtFechaFinERCC').val($(this.parentElement.parentElement).attr('fecha_fin'));
+            $('#txtFechaInicioERCC').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha_inicio')));
+            $('#txtFechaFinERCC').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha_fin')));
             $('#nameFormAC').val("FrmActividadCalendario");
             $('#actionActividad').val("paginarActividad");
             procesarAjaxActividad();
             $('#actionCalendarioConv').val('updateCalendarioConv');
             $('#txtTituloModalManCalendarioConv').html("EDITAR ACTIVIDAD");
-            console.log($(this.parentElement.parentElement).attr('acti_id'));
             $('#FrmCalendarioConvModal input').parent().removeClass("has-danger");
             $('#FrmCalendarioConvModal select').parent().removeClass("has-danger");
-            console.log($('#comboActividadCC').val());
             $('#ventanaManCalendarioConv').modal("show");
             $('#comboActividadCC').val($(this.parentElement.parentElement).attr('acti_id'));
             document.getElementsByTagName("body")[0].style.paddingRight = "0";

@@ -58,14 +58,12 @@ function procesarAjaxDirectorioTelefonico() {
     datosSerializadosCompletos += "&numberPageDirectorioTelefonico=" + $('#numberPageDirectorioTelefonico').val();
     datosSerializadosCompletos += "&sizePageDirectorioTelefonico=" + $('#sizePageDirectorioTelefonico').val();
     datosSerializadosCompletos += "&action=" + $('#actionDirectorioTelefonico').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/directoriostelefonicos',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoDirectorioTelefonico').modal("hide");
             if ($('#actionDirectorioTelefonico').val().toLowerCase() === "paginardirectoriotelefonico") {
                 listarDirectorioTelefonico(jsonResponse.BEAN_PAGINATION);

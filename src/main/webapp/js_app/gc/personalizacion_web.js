@@ -24,9 +24,7 @@ $(document).ready(function () {
             buttonsStyling: false
         }).then((result) => {
             if (result.value) {
-                console.log("acepto");
                 if (validarFormularioConWeb()) {
-                    console.log("valido correctamente");
                     $('#redes_sociales').val(getCadenaRedesSociales());
                     $('#modalCargandoPersonalizacion').modal("show");
                 }

@@ -207,10 +207,10 @@
                                                 class="table color-bordered-table muted-bordered-table table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th style="width: 40%" >ACTIVIDAD</th>
-                                                        <th style="width: 10%" >FECHA_INICIO</th>
-                                                        <th style="width: 10%" >FECHA_FIN</th>
-                                                        <th colspan="3" style="width: 20%" >ACCIONES</th>
+                                                        <th style="width: 80%" class="text-small-table">ACTIVIDAD</th>
+                                                        <th style="width: 7%" class="text-small-table text-center">FECHA INICIO</th>
+                                                        <th style="width: 7%" class="text-small-table text-center">FECHA FIN</th>
+                                                        <th colspan="3" style="width: 20%" class="text-small-table text-center">ACCIONES</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="tbodyCalendarioConv">
@@ -267,11 +267,11 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        <div class="form-group col-12 mb-3">
+                                        <div class="form-group col-sm-6 col-12 mb-3">
                                             <label for="txtFechaInicioERCC">FECHA INICIAL</label>
                                             <input class="form-control form-control-sm" id="txtFechaInicioERCC" name="txtFechaInicioERCC" type="text" placeholder="Fecha Inicial"> 
                                         </div>
-                                        <div class="form-group col-12 mb-3">
+                                        <div class="form-group col-sm-6 col-12 mb-3">
                                             <label for="txtFechaFinERCC">FECHA FIN</label>
                                             <input class="form-control form-control-sm" id="txtFechaFinERCC" name="txtFechaFinERCC" type="text" placeholder="Fecha Final">
                                         </div>
@@ -331,7 +331,7 @@
                                     <div class="row">
                                         <div class="form-group col-12 mb-3">
                                             <label for="txtActividadERAC">ACTIVIDAD</label>
-                                            <input class="form-control form-control-sm" id="txtActividadERAC" name="txtActividadERAC" type="text" placeholder="Nombre de Actividad"> 
+                                            <textarea class="form-control form-control-sm" id="txtActividadERAC" name="txtActividadERAC" type="text" placeholder="Nombre de Actividad" rows="3"></textarea>
                                         </div>
                                         <input id="txtActiIdERAC" name="txtActiIdERAC" type="hidden" value="">
                                     </div>

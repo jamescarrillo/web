@@ -44,7 +44,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header bg-light">
-                                    <strong class="text-info">CONVOCATORIAS DE BIENES, SERVICIOS Y CONCE.</strong>
+                                    <strong class="text-info">CONVOCATORIAS DE BIENES, SERVICIOS Y CONSECIONES</strong>
                                 </div>
                                 <div class="card-body pt-1">
                                     <input type="hidden" id="nameForm" value="FrmConvocatoriaBien">
@@ -59,7 +59,6 @@
                                                 <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarConvocatoriaBien'>
 
                                                 </select>
-
                                             </div>
                                             <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
                                                 <select id="comboTipoListaConvocatoriaBien" name="comboTipoListaConvocatoriaBien" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarConvocatoriaBien'>
@@ -81,10 +80,10 @@
                                                     <thead>
                                                         <tr>
                                                             <th style="width: 10%" class="text-medium-table">FECHA</th>
-                                                            <th style="width: 60%" class="text-medium-table">SINTESIS</th>
+                                                            <th style="width: 70%" class="text-medium-table">SINTESIS</th>
                                                             <th style="width: 10%" class="text-medium-table">TIPO</th>
-                                                            <th style="width: 20%" class="text-medium-table">PROCESO</th>
-                                                            <th colspan="5" class="text-medium-table">ACCIONES</th>
+                                                            <th style="width: 10%" class="text-medium-table">PROCESO</th>
+                                                            <th colspan="5" class="text-medium-table" style="width: 10%">ACCIONES</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody id="tbodyConvocatoriaBien">
@@ -507,10 +506,10 @@
                                                 class="table color-bordered-table muted-bordered-table table-hover">
                                                 <thead>
                                                     <tr>
-                                                        <th style="width: 40%" >ACTIVIDAD</th>
-                                                        <th style="width: 10%" >FECHA_INICIO</th>
-                                                        <th style="width: 10%" >FECHA_FIN</th>
-                                                        <th colspan="2" style="width: 20%" >ACCIONES</th>
+                                                        <th style="width: 40%" class="text-medium-table">ACTIVIDAD</th>
+                                                        <th style="width: 10%" class="text-medium-table text-center">FECHA INICIO</th>
+                                                        <th style="width: 10%" class="text-medium-table text-center">FECHA FIN</th>
+                                                        <th colspan="2" style="width: 10%" class="text-medium-table text-center">ACCIONES</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="tbodyCalendarioConv">
@@ -556,7 +555,7 @@
                 </div>
                 <div class="modal fade" id="ventanaManCalendarioConv" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                        <div class="modal-content border-primary" style="border-width: 3px">
                             <form id="FrmCalendarioConvModal">
                                 <div class="modal-header">
                                     <h6 class="modal-title" id="txtTituloModalManCalendarioConv"></h6>
@@ -567,11 +566,11 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        <div class="form-group col-12 mb-3">
+                                        <div class="form-group col-sm-6 col-12 mb-3">
                                             <label for="txtFechaInicioERCC">FECHA INICIAL</label>
                                             <input class="form-control form-control-sm" id="txtFechaInicioERCC" name="txtFechaInicioERCC" type="text" placeholder="Fecha Inicial"> 
                                         </div>
-                                        <div class="form-group col-12 mb-3">
+                                        <div class="form-group col-sm-6 col-12 mb-3">
                                             <label for="txtFechaFinERCC">FECHA FIN</label>
                                             <input class="form-control form-control-sm" id="txtFechaFinERCC" name="txtFechaFinERCC" type="text" placeholder="Fecha Final">
                                         </div>
@@ -617,8 +616,8 @@
                 </div>
                 <!-- ACTIVIDADES -->
                 <div class="modal fade" id="ventanaManActividad" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content border-warning" style="border-width: 3px">
                             <form id="FrmActividadModal">
                                 <div class="modal-header">
                                     <h6 class="modal-title" id="txtTituloModalManActividad"></h6>
@@ -631,7 +630,7 @@
                                     <div class="row">
                                         <div class="form-group col-12 mb-3">
                                             <label for="txtActividadERAC">ACTIVIDAD</label>
-                                            <input class="form-control form-control-sm" id="txtActividadERAC" name="txtActividadERAC" type="text" placeholder="Nombre de Actividad"> 
+                                            <textarea class="form-control form-control-sm" id="txtActividadERAC" name="txtActividadERAC" type="text" placeholder="Nombre de Actividad" rows="3"></textarea> 
                                         </div>
                                         <input id="txtActiIdERAC" name="txtActiIdERAC" type="hidden" value="">
                                     </div>
@@ -659,7 +658,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <footer class="footer"> © 2018 Peam </footer>
             </div>
         </div>

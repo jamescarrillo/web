@@ -62,9 +62,9 @@ function procesarAjaxSolicitud() {
                 listarSolicitud(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
-                    if ($('#actionSolicitud').val().toLowerCase()==="revisarsolicitud") {
-                        viewAlert('success',"Solicitud Atendida Correctamente");
-                    }else{
+                    if ($('#actionSolicitud').val().toLowerCase() === "revisarsolicitud") {
+                        viewAlert('success', "Solicitud Atendida Correctamente");
+                    } else {
                         viewAlert('success', getMessageServerTransaction($('#actionSolicitud').val(), 'Solicitud', 'a'));
                     }
                     listarSolicitud(jsonResponse.BEAN_PAGINATION);
@@ -101,28 +101,28 @@ function listarSolicitud(BEAN_PAGINATION) {
                 labelColor = "label-light-info";
                 textColor = "text-danger";
             } else {
-                resp = "Ya se atendió. El "+value.fecha_atendido+". ";
+                resp = "Ya se atendió. El " + value.fecha_atendido + ". ";
                 labelColor = "label-light-success";
                 textColor = "";
             }
             switch (value.forma) {
                 case 1:
-                    formato="COPIA SIMPLE";
+                    formato = "COPIA SIMPLE";
                     break;
                 case 2:
-                    formato="COPIA FEDATEADA";
+                    formato = "COPIA FEDATEADA";
                     break;
                 case 3:
-                    formato="CD";
+                    formato = "CD";
                     break;
                 case 4:
-                    formato="E_MAIL";
+                    formato = "E_MAIL";
                     break;
                 case 5:
-                    formato="OTRO";
+                    formato = "OTRO";
                     break;
                 case null:
-                    formato="OTRO";
+                    formato = "OTRO";
                     break;
             }
             atributosSolicitud = "id='" + value.soli_id + "' ";
@@ -181,7 +181,7 @@ function agregarEventosSolicitud() {
     $('.btn-editar-np').each(function () {
         $(this).click(function () {
             $('#txtSoli_IdER').val($(this.parentElement.parentElement).attr('id'));
-            $('#txtFechaER').val($(this.parentElement.parentElement).attr('fecha_registro'));
+            $('#txtFechaER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha_registro')));
             $('#txtUsuarioER').val($(this.parentElement.parentElement).attr('usuario'));
             $('#txtEmailER').val($(this.parentElement.parentElement).attr('e_mail'));
             $('#txtTelefonoER').val($(this.parentElement.parentElement).attr('telefono'));

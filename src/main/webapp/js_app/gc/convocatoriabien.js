@@ -5,7 +5,7 @@ $(document).ready(function () {
         todayHighlight: true,
         autoclose: true
     });
-    
+
     $('#txtFechaInicioERCC').datepicker({
         format: 'dd/mm/yyyy',
         todayHighlight: true,
@@ -19,7 +19,7 @@ $(document).ready(function () {
     });
 
     cargarAniosCombo($('#comboAnio'), 2000, "-1", 'TODOS');
-    
+
     $("#FrmCalendarioConv").submit(function () {
         $("#nameFormCC").val("FrmCalendarioConv");
         $("#numberPageCalendarioConv").val(1);
@@ -27,7 +27,7 @@ $(document).ready(function () {
         $('#modalCargandoCalendarioConv').modal("show");
         return false;
     });
-    
+
     $("#FrmCalendarioConvModal").submit(function () {
         if (validarFormularioCalendarioConv()) {
             $("#numberPageCalendarioConv").val(1);
@@ -37,7 +37,7 @@ $(document).ready(function () {
         }
         return false;
     });
-    
+
     $("#FrmActividadModal").submit(function () {
         if (validarFormularioActividad()) {
             $("#nameFormAC").val("FrmActividadModal");
@@ -45,7 +45,7 @@ $(document).ready(function () {
         }
         return false;
     });
-    
+
     $("#modalCargandoCalendarioConv").on('shown.bs.modal', function () {
         //DESPUES DE TERMINAR DE MOSTRAR EL MODAL
         procesarAjaxCalendarioConv();
@@ -55,7 +55,7 @@ $(document).ready(function () {
         //DESPUES DE TERMINAR DE MOSTRAR EL MODAL
         procesarAjaxActividad();
     });
-    
+
     $("#ventanaManCalendarioConv").on('hidden.bs.modal', function () {
         $("#actionCalendarioConv").val("paginarCalendarioConv");
     });
@@ -63,7 +63,7 @@ $(document).ready(function () {
     $("#ventanaManActividad").on('hidden.bs.modal', function () {
         $("#actionActividad").val("paginarActividad");
     });
-    
+
     $('#btnAbrirNuevoCalendarioConv').click(function () {
         $('#FrmCalendarioConvModal input').val("");
         $('#FrmCalendarioConvModal select').val("-1");
@@ -89,7 +89,7 @@ $(document).ready(function () {
         $('#ventanaManActividad').modal("show");
         document.getElementsByTagName("body")[0].style.paddingRight = "0";
     });
-    
+
     $('#btnEditarActividad').click(function () {
         $('#actionActividad').val("updateActividad");
         $('#FrmActividadModal input').parent().removeClass("has-danger");
@@ -144,10 +144,10 @@ $(document).ready(function () {
     $("#ventanaManConvocatoriaBien").on('hidden.bs.modal', function () {
         $("#actionConvocatoriaBien").val("paginarConvocatoriaBien");
     });
-    
+
     $("#ventanaArchivos").on('hidden.bs.modal', function () {
-    acum = "";
-    cadena = "";
+        acum = "";
+        cadena = "";
     });
 
     $('#btnAbrirNuevoConvocatoriaBien').click(function () {
@@ -173,10 +173,10 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB1').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB1');
         $('#txtNombreFileResultadoActualCB1').val($('#txtNombreArchivoCB1').val());
-        cadena += ", bases_file = 'C_" + $('#txtNombreFileResultadoActualCB1').val()+"'";
-        acum+=",1";
-     });
-     
+        cadena += ", bases_file = 'C_" + $('#txtNombreFileResultadoActualCB1').val() + "'";
+        acum += ",1";
+    });
+
     $('#btnSeleccionarArchivoCB2').click(function () {
         $('#fileArchivoCB2').trigger('click');
     });
@@ -186,8 +186,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB2').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB2');
         $('#txtNombreFileResultadoActualCB2').val($('#txtNombreArchivoCB2').val());
-        cadena += ", res_eject_file ='C_" + $('#txtNombreFileResultadoActualCB2').val()+"'";
-        acum+=",2";
+        cadena += ", res_eject_file ='C_" + $('#txtNombreFileResultadoActualCB2').val() + "'";
+        acum += ",2";
     });
     $('#btnSeleccionarArchivoCB3').click(function () {
         $('#fileArchivoCB3').trigger('click');
@@ -198,8 +198,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB3').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB3');
         $('#txtNombreFileResultadoActualCB3').val($('#txtNombreArchivoCB3').val());
-        cadena += ", abs_con_obser_file = 'C_" + $('#txtNombreFileResultadoActualCB3').val()+"'";
-        acum+=",3";
+        cadena += ", abs_con_obser_file = 'C_" + $('#txtNombreFileResultadoActualCB3').val() + "'";
+        acum += ",3";
     });
     $('#btnSeleccionarArchivoCB4').click(function () {
         $('#fileArchivoCB4').trigger('click');
@@ -210,8 +210,9 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB4').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB4');
         $('#txtNombreFileResultadoActualCB4').val($('#txtNombreArchivoCB4').val());
-        cadena += ", abs_consult_file = 'C_" + $('#txtNombreFileResultadoActualCB4').val()+"'";
-        acum+=",4";;
+        cadena += ", abs_consult_file = 'C_" + $('#txtNombreFileResultadoActualCB4').val() + "'";
+        acum += ",4";
+        ;
     });
     $('#btnSeleccionarArchivoCB5').click(function () {
         $('#fileArchivoCB5').trigger('click');
@@ -222,8 +223,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB5').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB5');
         $('#txtNombreFileResultadoActualCB5').val($('#txtNombreArchivoCB5').val());
-        cadena += ", abs_observa_file = 'C_" + $('#txtNombreFileResultadoActualCB5').val()+"'";
-        acum+=",5";
+        cadena += ", abs_observa_file = 'C_" + $('#txtNombreFileResultadoActualCB5').val() + "'";
+        acum += ",5";
     });
     $('#btnSeleccionarArchivoCB6').click(function () {
         $('#fileArchivoCB6').trigger('click');
@@ -234,8 +235,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB6').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB6');
         $('#txtNombreFileResultadoActualCB6').val($('#txtNombreArchivoCB6').val());
-        cadena += ", pro_enti_file = 'C_" + $('#txtNombreFileResultadoActualCB6').val()+"'";
-        acum+=",6";
+        cadena += ", pro_enti_file = 'C_" + $('#txtNombreFileResultadoActualCB6').val() + "'";
+        acum += ",6";
     });
     $('#btnSeleccionarArchivoCB7').click(function () {
         $('#fileArchivoCB7').trigger('click');
@@ -246,8 +247,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB7').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB7');
         $('#txtNombreFileResultadoActualCB7').val($('#txtNombreArchivoCB7').val());
-        cadena += ", pro_osce_file = 'C_" + $('#txtNombreFileResultadoActualCB7').val()+"'";
-        acum+=",7";
+        cadena += ", pro_osce_file = 'C_" + $('#txtNombreFileResultadoActualCB7').val() + "'";
+        acum += ",7";
     });
     $('#btnSeleccionarArchivoCB8').click(function () {
         $('#fileArchivoCB8').trigger('click');
@@ -258,8 +259,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB8').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB8');
         $('#txtNombreFileResultadoActualCB8').val($('#txtNombreArchivoCB8').val());
-        cadena += ", bas_inte_file = 'C_" + $('#txtNombreFileResultadoActualCB8').val()+"'";
-        acum+=",8";
+        cadena += ", bas_inte_file = 'C_" + $('#txtNombreFileResultadoActualCB8').val() + "'";
+        acum += ",8";
     });
     $('#btnSeleccionarArchivoCB9').click(function () {
         $('#fileArchivoCB9').trigger('click');
@@ -270,8 +271,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB9').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB9');
         $('#txtNombreFileResultadoActualCB9').val($('#txtNombreArchivoCB9').val());
-        cadena += ", act_eval_tec_file = 'C_" + $('#txtNombreFileResultadoActualCB9').val()+"'";
-        acum+=",9";
+        cadena += ", act_eval_tec_file = 'C_" + $('#txtNombreFileResultadoActualCB9').val() + "'";
+        acum += ",9";
     });
     $('#btnSeleccionarArchivoCB10').click(function () {
         $('#fileArchivoCB10').trigger('click');
@@ -282,8 +283,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB10').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB10');
         $('#txtNombreFileResultadoActualCB10').val($('#txtNombreArchivoCB10').val());
-        cadena += ", cua_compa_file = 'C_" + $('#txtNombreFileResultadoActualCB10').val()+"'";
-        acum+=",10";
+        cadena += ", cua_compa_file = 'C_" + $('#txtNombreFileResultadoActualCB10').val() + "'";
+        acum += ",10";
     });
     $('#btnSeleccionarArchivoCB11').click(function () {
         $('#fileArchivoCB11').trigger('click');
@@ -294,8 +295,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB11').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB11');
         $('#txtNombreFileResultadoActualCB11').val($('#txtNombreArchivoCB11').val());
-        cadena += ", acta_buena_pro_file = 'C_" + $('#txtNombreFileResultadoActualCB11').val()+"'";
-        acum+=",11";
+        cadena += ", acta_buena_pro_file = 'C_" + $('#txtNombreFileResultadoActualCB11').val() + "'";
+        acum += ",11";
     });
     $('#btnSeleccionarArchivoCB12').click(function () {
         $('#fileArchivoCB12').trigger('click');
@@ -306,8 +307,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB12').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB12');
         $('#txtNombreFileResultadoActualCB12').val($('#txtNombreArchivoCB12').val());
-        cadena += ", noti_sus_file = 'C_" + $('#txtNombreFileResultadoActualCB12').val()+"'";
-        acum+=",12";
+        cadena += ", noti_sus_file = 'C_" + $('#txtNombreFileResultadoActualCB12').val() + "'";
+        acum += ",12";
     });
     $('#btnSeleccionarArchivoCB13').click(function () {
         $('#fileArchivoCB13').trigger('click');
@@ -318,8 +319,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB13').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB13');
         $('#txtNombreFileResultadoActualCB13').val($('#txtNombreArchivoCB13').val());
-        cadena += ", res_rec_enti_file = 'C_" + $('#txtNombreFileResultadoActualCB13').val()+"'";
-        acum+=",13";
+        cadena += ", res_rec_enti_file = 'C_" + $('#txtNombreFileResultadoActualCB13').val() + "'";
+        acum += ",13";
     });
     $('#btnSeleccionarArchivoCB14').click(function () {
         $('#fileArchivoCB14').trigger('click');
@@ -330,8 +331,8 @@ $(document).ready(function () {
         $('#txtValidacionArchivoCB14').val('SI');
         readViewNameFile(this, 'txtNombreArchivoCB14');
         $('#txtNombreFileResultadoActualCB14').val($('#txtNombreArchivoCB14').val());
-        cadena += ", res_rec_trib_file = 'C_" + $('#txtNombreFileResultadoActualCB14').val()+"'";
-        acum+=",14";
+        cadena += ", res_rec_trib_file = 'C_" + $('#txtNombreFileResultadoActualCB14').val() + "'";
+        acum += ",14";
     });
     addEventoCombosPaginar();
     valicacionesCamposConvocatoriaBien();
@@ -353,14 +354,12 @@ function procesarAjaxConvocatoriaBien() {
     datosSerializadosCompletos += "&numberPageConvocatoriaBien=" + $('#numberPageConvocatoriaBien').val();
     datosSerializadosCompletos += "&sizePageConvocatoriaBien=" + $('#sizePageConvocatoriaBien').val();
     datosSerializadosCompletos += "&action=" + $('#actionConvocatoriaBien').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/convocatorias/bsc',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoConvocatoriaBien').modal("hide");
             if ($('#actionConvocatoriaBien').val().toLowerCase() === "paginarconvocatoriabien") {
                 listarConvocatoriaBien(jsonResponse.BEAN_PAGINATION);
@@ -477,7 +476,7 @@ function agregarEventosConvocatoriaBien() {
             $('#txtConvoIdER').val($(this.parentElement.parentElement).attr('convo_id'));
             $('#txtTituloER').val($(this.parentElement.parentElement).attr('titulo'));
             $('#txtReferenciaER').val($(this.parentElement.parentElement).attr('referencia'));
-            $('#txtFechaER').val($(this.parentElement.parentElement).attr('fecha'));
+            $('#txtFechaER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha')));
             $('#txtTipoER').val($(this.parentElement.parentElement).attr('tipo'));
             $('#txtValorReferencialER').val($(this.parentElement.parentElement).attr('val_referencial'));
             $('#txtCostoParticipacionER').val($(this.parentElement.parentElement).attr('cost_participacion'));
@@ -620,7 +619,7 @@ function validarFormularioConvocatoriaBien() {
     return true;
 }
 
-function validarFormularioArchivos(){
+function validarFormularioArchivos() {
     return true;
 }
 
@@ -644,14 +643,14 @@ function procesarAjaxArchivos(cadena, acum) {
         success: function (jsonResponse) {
             $('#modalCargandoArchivos').modal("hide");
             if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
-                    viewAlert('success', 'Documentos correctamente subidos');
-                } else {
-                    viewAlert('warning', jsonResponse.MESSAGE_SERVER);
-                }
-            
+                viewAlert('success', 'Documentos correctamente subidos');
+            } else {
+                viewAlert('warning', jsonResponse.MESSAGE_SERVER);
+            }
+
             $("#ventanaArchivos").modal("hide");
             data1 = new FormData();
-            data1=null;
+            data1 = null;
         },
         error: function () {
             $('#modalCargandoArchivos').modal("hide");
@@ -767,18 +766,16 @@ function agregarEventosCalendarioConv() {
     $('.editar-Calendario').each(function () {
         $(this).click(function () {
             $('#txtIdERCC').val($(this.parentElement.parentElement).attr('id'));
-            $('#txtFechaInicioERCC').val($(this.parentElement.parentElement).attr('fecha_inicio'));
-            $('#txtFechaFinERCC').val($(this.parentElement.parentElement).attr('fecha_fin'));
+            $('#txtFechaInicioERCC').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha_inicio')));
+            $('#txtFechaFinERCC').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha_fin')));
             $('#nameFormAC').val("FrmActividadCalendario");
             $('#actionActividad').val("paginarActividad");
             procesarAjaxActividad();
             $('#actionCalendarioConv').val('updateCalendarioConv');
             $('#txtTituloModalManCalendarioConv').html("EDITAR ACTIVIDAD");
-            console.log($(this.parentElement.parentElement).attr('descripcion'));
             $('#FrmCalendarioConvModal input').parent().removeClass("has-danger");
             $('#FrmCalendarioConvModal select').parent().removeClass("has-danger");
             $('#comboActividadCC').val($(this.parentElement.parentElement).attr('descripcion'));
-            console.log($('#comboActividadCC').val());
             $('#ventanaManCalendarioConv').modal("show");
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });

@@ -1,8 +1,3 @@
-<%-- 
-    Document   : procesoexonerado
-    Created on : 22/10/2018, 10:20:06 AM
-    Author     : James Carrillo
---%>
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
@@ -48,48 +43,51 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header bg-light">
-                                    <strong class="text-info">PROCESOS EXONERADOS</strong>
+                                    <strong class="text-info"><%out.print(request.getAttribute("titleFinanzas").toString().toUpperCase());%></strong>
                                 </div>
                                 <div class="card-body pt-1">
-                                    <input type="hidden" id="nameForm" value="FrmProcesoExonerado">
-                                    <input type="hidden" id="actionProcesoExonerado" name="action" value="paginarProcesoExonerado">
-                                    <input type="hidden" id="numberPageProcesoExonerado" name="numberPageProcesoExonerado" value="1">
-                                    <form id="FrmProcesoExonerado">
+                                    <input type="hidden" id="nameForm" value="FrmFinanza">
+                                    <input type="hidden" id="actionFinanza" name="action" value="paginarFinanza">
+                                    <input type="hidden" id="numberPageFinanza" name="numberPageFinanza" value="1">
+                                    <form id="FrmFinanza">
                                         <div class="row mt-3">
-                                            <div class="form-group col-lg-7 col-md-8 col-12 mb-3">
-                                                <input type="text" name="txtProcesoExonerado" id="txtProcesoExonerado" class="form-control form-control-sm" placeholder="DESCRIPCION O CONTRATISTA">
+                                            <div class="form-group col-lg-6 col-12 mb-3">
+                                                <input type="text" name="txtDescripcionFinanza" id="txtDescripcionFinanza" class="form-control form-control-sm" placeholder="">
                                             </div>
-                                            <div class="input-group col-lg-5 col-md-4 col-12 mb-3">
-                                                <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarProcesoExonerado'>
+                                            <div class="form-group col-lg-2 col-md-6 col-12 mb-3">
+                                                <select id="comboAnioFinanza" name="comboAnioFinanza" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarFinanza'>
 
                                                 </select>
-                                                <button type="submit" id="btnBuscarProcesoExonerado" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Proceso Exonerado" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                <button type="button" id="btnAbrirNuevoProcesoExonerado" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Proceso Exonerado" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                            </div>
+                                            <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
+                                                <select id="comboTipoListaFinanza" name="comboTipoListaFinanza" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarFinanza'>
+                                                    <option value="-1">TODOS</option>
+                                                    <option value="true">ACTIVOS</option>
+                                                    <option value="false">INACTIVOS</option>
+                                                </select>
+                                                <button type="submit" id="btnBuscarFinanza" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Documento" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                                <button type="button" id="btnAbrirNuevoFinanza" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Agregar Documento" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                             </div>
                                         </div>
                                     </form>
                                     <div class="row">
                                         <div class="col-12">
-                                            <div class="table-responsive" id="tablaProcesoExonerado">
+                                            <div class="table-responsive">
                                                 <table
                                                     class="table color-bordered-table muted-bordered-table table-hover">
                                                     <thead>
                                                         <tr>
                                                             <th style="width: 10%" class="text-medium-table">FECHA</th>
-                                                            <th style="width: 40%" class="text-medium-table">DESCRIPCION</th>
-                                                            <th style="width: 10%" class="text-medium-table">MONTO</th>
-                                                            <th style="width: 20%" class="text-medium-table">CONTRATISTA</th>
-                                                            <th style="width: 10%" class="text-medium-table">RUC</th>
-                                                            <th colspan="3" class="text-medium-table">ACCIONES</th>
+                                                            <th style="width: 75%" class="text-medium-table">RESUMEN</th>
+                                                            <th colspan="4" class="text-medium-table">ACCIONES</th>
                                                         </tr>
                                                     </thead>
-                                                    <tbody id="tbodyProcesoExonerado">
+                                                    <tbody id="tbodyFinanza">
                                                     </tbody>
                                                 </table>
                                             </div>
                                         </div>
                                     </div>
-
                                     <div class="row">
                                         <div class="col-12">
                                             <div class="card "
@@ -98,7 +96,7 @@
                                                      style="padding-top: 10px; padding-bottom: 10px">
                                                     <div class="row">
                                                         <div class="col-md-2 col-sm-3 col-4">
-                                                            <select id="sizePageProcesoExonerado" name="sizePageProcesoExonerado" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarProcesoExonerado'>
+                                                            <select id="sizePageFinanza" name="sizePageFinanza" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarFinanza'>
                                                                 <option value="10">10</option>
                                                                 <option value="15">15</option>
                                                                 <option value="20">20</option>
@@ -106,7 +104,7 @@
                                                         </div>
                                                         <div class="col-md-10 col-sm-9 col-8">
                                                             <nav aria-label="Page navigation example">
-                                                                <ul id="paginationProcesoExonerado"
+                                                                <ul id="paginationFinanza"
                                                                     class="pagination pagination-sm justify-content-end">
 
                                                                 </ul>
@@ -124,12 +122,12 @@
                     </div>
                     <%@ include file="../../../temas_gc.jsp"%>
                 </div>
-                <div class="modal fade" id="ventanaManProcesoExonerado" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal fade" id="ventanaManFinanza" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
-                            <form id="FrmProcesoExoneradoModal">
+                            <form id="FrmFinanzaModal">
                                 <div class="modal-header">
-                                    <h6 class="modal-title" id="txtTituloModalManProcesoExonerado"></h6>
+                                    <h6 class="modal-title" id="txtTituloModalManFinanza"></h6>
                                     <button type="button" class="close" data-dismiss="modal"
                                             aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -137,48 +135,27 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        <div class="form-group col-sm-6 col-12 mb-3">
-                                            <label for="txtNroExoneracionER">NUMERO DE EXONERACION</label>
-                                            <input class="form-control form-control-sm" id="txtNroExoneracionER" name="txtNroExoneracionER" type="text" placeholder="Nro de la Exoneración">
-                                        </div>
-                                        <div class="form-group col-sm-6 col-12 mb-3">
-                                            <label for="datePickerFAProcesoExoneradoER">FECHA SEACE</label>
-                                            <input class="form-control form-control-sm" id="datePickerFAProcesoExoneradoER" name="datePickerFAProcesoExoneradoER" type="text" placeholder="DD/MM/AAAA">
+                                        <div class="form-group col-12 mb-3">
+                                            <label for="txtFechaFinanzaER">FECHA</label>
+                                            <input type="text" class="form-control form-control-sm" id="txtFechaFinanzaER" name="txtFechaFinanzaER" placeholder="TÍTULO">
                                         </div>
                                         <div class="form-group col-12 mb-3">
-                                            <label for="txtCausaER">CAUSA</label>
-                                            <input class="form-control form-control-sm" id="txtCausaER" name="txtCausaER" type="text" placeholder="Causa de Exoneración">
+                                            <label for="txtDescripcionER">RESUMEN</label>
+                                            <textarea type="text" class="form-control form-control-sm" id="txtDescripcionFinanzaER" name="txtDescripcionFinanzaER" placeholder="RESUMEN" rows="6"></textarea>
                                         </div>
-                                        <div class="form-group col-sm-6 col-12 mb-3">
-                                            <label for="txtObjetoER">OBJETO DEL PROCESO</label>
-                                            <textarea class="form-control form-control-sm" id="txtObjetoER" name="txtObjetoER" rows="4" placeholder="Objeto del proceso (Bienes, Servicios u Obras)"></textarea>
-                                        </div>
-                                        <div class="form-group col-sm-6 col-12 mb-3">
-                                            <label for="txtDescripcionER">DESCRIPCION</label>
-                                            <textarea class="form-control form-control-sm" id="txtDescripcionER" name="txtDescripcionER" rows="4" placeholder="Descripcion del Proceso"></textarea>
-                                        </div>
-                                        <div class="form-group col-12 mb-3">
-                                            <label for="txtContratistaER">CONTRATISTA</label>
-                                            <input class="form-control form-control-sm" id="txtContratistaER" name="txtContratistaER" type="text" placeholder="Nombre del Contratista"> 
-                                        </div>
-                                        <div class="form-group col-sm-6 col-12 mb-3">
-                                            <label for="txtMontoER">MONTO</label>
-                                            <input class="form-control form-control-sm" id="txtMontoER" name="txtMontoER" type="text" placeholder="Monto del contrato de la exoneración"> 
-                                        </div>
-                                        <div class="form-group col-sm-6 col-12 mb-3">
-                                            <label for="txtRucER">RUC</label>
-                                            <input class="form-control form-control-sm" id="txtRucER" name="txtRucER" type="text" placeholder="R.U.C."> 
-                                        </div>
-                                        <div class="form-group col-12 mb-3">
-                                            <label for="txtUrlER">URL</label>
-                                            <input class="form-control form-control-sm" id="txtUrlER" name="txtUrlER" type="text" placeholder="Link del SEACE"> 
-                                        </div>
-                                        <input id="txtIdER" name="txtIdER" type="hidden" value="">
                                     </div>
+                                    <input type="hidden" id="txtIdFinanzaER" name="txtIdFinanzaER">
+                                    <input type="hidden" id="txtAnhoFinanzaER" name="txtAnhoFinanzaER">
+                                    <input type="hidden" id="txtMesFinanzaER" name="txtMesFinanzaER">
+                                    <input type="hidden" id="txtTituloFinanzaER" name="txtTituloFinanzaER">
+                                    <input type="hidden" id="txtDocumentoFinanzaER" name="txtDocumentoFinanzaER">
+                                    <input type="hidden" id="txtUbicacionFinanzaER" name="txtUbicacionFinanzaER">
+                                    <input type="hidden" id="txtEstadoFinanzaER" name="txtEstadoFinanzaER">
+                                    <input type="hidden" id="txtDocu_idFinanzaER" name="txtDocu_idFinanzaER">
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
-                                    <button type="submit" id="btnGuardar" class="btn btn-outline-info btn-sm">
+                                    <button type="submit" class="btn btn-outline-info btn-sm">
                                         <i class="fa fa-floppy-o"></i> GUARDAR
                                     </button>
                                 </div>
@@ -186,7 +163,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="modalCargandoProcesoExonerado" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+                <%@ include file="../global/documentos_arcdig.jsp"%>
+                <div class="modal fade" id="modalCargandoFinanza" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <div class="progress" style="margin-bottom: 0px;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                        Cargando...
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="modalCargandoFinanza2" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
                     <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                             <div class="modal-body">
@@ -219,23 +210,14 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sparkline/jquery.sparkline.min.js"></script>
         <!--Custom JavaScript -->
         <script src="<%out.print(getServletContext().getContextPath());%>/js/custom.min.js"></script>
-
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/moment/moment.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
-
-        <!-- ============================================================== -->
-        <!-- This page plugins -->
-        <!-- ============================================================== -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/styleswitcher/jQuery.style.switcher.js"></script>
-
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/procesoexonerado.js"></script>
-
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/finanzas.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/finanzas_arcdig.js"></script>
     </body>
 
 </html>
-
-    
-

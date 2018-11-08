@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    
+
     $('#datePickerFAProcesoExoneradoER').datepicker({
         format: 'dd/mm/yyyy',
         todayHighlight: true,
@@ -7,7 +7,7 @@ $(document).ready(function () {
     });
 
     cargarAniosCombo($('#comboAnio'), 2000, "-1", 'TODOS');
-    
+
     $("#FrmProcesoExonerado").submit(function () {
         $("#nameForm").val("FrmProcesoExonerado");
         $("#numberPageProcesoExonerado").val(1);
@@ -64,14 +64,12 @@ function procesarAjaxProcesoExonerado() {
     datosSerializadosCompletos += "&numberPageProcesoExonerado=" + $('#numberPageProcesoExonerado').val();
     datosSerializadosCompletos += "&sizePageProcesoExonerado=" + $('#sizePageProcesoExonerado').val();
     datosSerializadosCompletos += "&action=" + $('#actionProcesoExonerado').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/convocatorias/procesosexonerados',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoProcesoExonerado').modal("hide");
             if ($('#actionProcesoExonerado').val().toLowerCase() === "paginarprocesoexonerado") {
                 listarProcesoExonerado(jsonResponse.BEAN_PAGINATION);
@@ -121,7 +119,7 @@ function listarProcesoExonerado(BEAN_PAGINATION) {
             fila += "<td class='align-middle text-medium-table' >" + value.monto + "</td>";
             fila += "<td class='align-middle text-medium-table' >" + value.contratista + "</td>";
             fila += "<td class='align-middle text-medium-table' >" + value.ruc + "</td>";
-            fila += "<td class='align-middle '><a target='_blank' class='btn btn-secondary btn-sm' href='"+value.url+"'><i class='fab fa-firefox'></i></a></td>";
+            fila += "<td class='align-middle '><a target='_blank' class='btn btn-secondary btn-sm' href='" + value.url + "'><i class='fab fa-firefox'></i></a></td>";
             fila += "<td class='align-middle '><button class='btn btn-secondary btn-sm editar-ProcesoExonerado'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle text-medium-table'><button class='btn btn-secondary btn-sm eliminar-ProcesoExonerado'><i class='fas fa-trash-alt'></i></button></td>";
             fila += "</tr>";
@@ -152,7 +150,7 @@ function agregarEventosProcesoExonerado() {
             $('#txtObjetoER').val($(this.parentElement.parentElement).attr('objeto'));
             $('#txtDescripcionER').val($(this.parentElement.parentElement).attr('descripcion'));
             $('#txtContratistaER').val($(this.parentElement.parentElement).attr('contratista'));
-            $('#datePickerFAProcesoExoneradoER').val($(this.parentElement.parentElement).attr('fecha'));
+            $('#datePickerFAProcesoExoneradoER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha')));
             $('#txtMontoER').val($(this.parentElement.parentElement).attr('monto'));
             $('#actionProcesoExonerado').val('updateProcesoExonerado');
             $('#txtTituloModalManProcesoExonerado').html("EDITAR PROCESO EXONERADO");

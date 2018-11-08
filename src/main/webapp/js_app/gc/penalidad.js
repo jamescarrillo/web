@@ -58,14 +58,12 @@ function procesarAjaxPenalidad() {
     datosSerializadosCompletos += "&numberPagePenalidad=" + $('#numberPagePenalidad').val();
     datosSerializadosCompletos += "&sizePagePenalidad=" + $('#sizePagePenalidad').val();
     datosSerializadosCompletos += "&action=" + $('#actionPenalidad').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/convocatorias/penalidades',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoPenalidad').modal("hide");
             if ($('#actionPenalidad').val().toLowerCase() === "paginarpenalidad") {
                 listarPenalidad(jsonResponse.BEAN_PAGINATION);

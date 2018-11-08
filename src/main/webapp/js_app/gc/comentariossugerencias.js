@@ -142,6 +142,7 @@ function agregarEventosComentSuggest() {
         $(this).click(function () {
             $('#txtNumeroER').val($(this.parentElement.parentElement).attr('id'));
             $('#txtFechaER').val($(this.parentElement.parentElement).attr('fecha'));
+            $('#txtFechaER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha')));
             $('#txtUsuarioER').val($(this.parentElement.parentElement).attr('usuario'));
             $('#txtCorreoER').val($(this.parentElement.parentElement).attr('correo'));
             $('#txtTemaER').val($(this.parentElement.parentElement).attr('tema'));

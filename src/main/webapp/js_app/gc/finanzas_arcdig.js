@@ -1,5 +1,5 @@
 $(document).ready(function () {
-   
+
     cargarAniosCombo($('#comboAnioDocumentosArcDig'), 2005, "-1", 'AÑO');
 
     $("#FrmDocumentosArcDig").submit(function () {
@@ -10,7 +10,7 @@ $(document).ready(function () {
         return false;
     });
 
-    $('#btnAbrirNuevoDocumento').click(function () {
+    $('#btnAbrirNuevoFinanza').click(function () {
         $('#tbodyDocumentosArcDig').empty();
         $('#txtTituloResumenDocumentosArcDig').val("");
         $('#comboAnioDocumentosArcDig').val("-1");
@@ -28,8 +28,8 @@ $(document).ready(function () {
         procesarAjaxDocumentosArcDig();
     });
 
-    $("#modalCargandoDocumentos2").on('shown.bs.modal', function () {
-        procesarAjaxDocumentosADD();
+    $("#modalCargandoFinanza2").on('shown.bs.modal', function () {
+        procesarAjaxFinanzasADD();
     });
 
     procesarAjaxEtiquetas();
@@ -126,6 +126,7 @@ function listarDocumentosArcDig(BEAN_PAGINATION) {
 
 function agregarEventosSeleccionarDocumentos() {
     var tr;
+    var valores;
     $('.seleccionar-documento').each(function (index, value) {
         $(this).click(function () {
             tr = $(this.parentElement.parentElement);
@@ -141,19 +142,24 @@ function agregarEventosSeleccionarDocumentos() {
                 buttonsStyling: false
             }).then((result) => {
                 if (result.value) {
-                    $('#txtIdDocumentoER').val($(tr).attr('docu_id'));
-                    $('#txtUsuaPublicIdDocumentoER').val($(tr).attr('usua_id'));
-                    $('#txtTituloDocumentoER').val($(tr).attr('docu_titulo'));
-                    $('#txtResumenDocumentoER').val($(tr).attr('docu_resumen'));
-                    $('#txtOrigenDocumentoER').val($(tr).attr('docu_origen_archivo'));
-                    $('#txtTidoDocumentoER').val($(tr).attr('tido_id'));
-                    $('#txtFechaDoxDocumentoER').val($(tr).attr('docu_fecha_docx'));
-                    if ($(tr).attr('docu_metadata').toLowerCase() !== "undefined") {
-                        $('#txtMetaDataDocumentoER').val($(tr).attr('docu_metadata'));
+                    $('#txtDocu_idFinanzaER').val($(tr).attr('docu_id'));
+                    $('#txtTituloFinanzaER').val($(tr).attr('docu_titulo'));
+                    $('#txtDescripcionFinanzaER').val($(tr).attr('docu_resumen'));
+                    $('#txtDocumentoFinanzaER').val("");
+                    $('#txtUbicacionFinanzaER').val("");
+                    $('#txtEstadoFinanzaER').val("false");
+                    $('#txtFechaFinanzaER').val($(tr).attr('docu_fecha_docx')); // dd/MM/yyyy
+                    if ($(tr).attr('docu_fecha_docx') !== "undefined") {
+                        valores = $(tr).attr('docu_fecha_docx').split("/");
+                        $('#txtAnhoFinanzaER').val(valores[2]);
+                        $('#txtMesFinanzaER').val(valores[1]);
+                    } else {
+                        $('#txtAnhoFinanzaER').val("");
+                        $('#txtMesFinanzaER').val("");
                     }
-                    $('#actionDocumentos').val("addDocumento");
-                    $("#nameForm").val("FrmDocumentoModal");
-                    $('#modalCargandoDocumentos2').modal("show");
+                    $('#actionFinanza').val("addFinanza");
+                    $("#nameForm").val("FrmFinanzaModal");
+                    $('#modalCargandoFinanza2').modal("show");
                 }
             });
             $('.swal2-confirm').css("margin-right", "15px");
@@ -161,36 +167,36 @@ function agregarEventosSeleccionarDocumentos() {
     });
 }
 
-function procesarAjaxDocumentosADD() {
+function procesarAjaxFinanzasADD() {
     var pathname = window.location.pathname;
     pathname = pathname.substring(getContext().length, pathname.length);
     var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
-    if ($('#nameForm').val().toLowerCase() !== "frmdocumentos") {
-        datosSerializadosCompletos += "&txtTituloDocumento=" + $('#txtTituloDocumentoER').val();
-        datosSerializadosCompletos += "&comboAnioDocumento=" + $('#comboAnioDocumento').val();
-        datosSerializadosCompletos += "&comboTipoListaDocumentos=FALSE";
-        datosSerializadosCompletos += "&numberPageDocumentos=" + $('#numberPageDocumentos').val();
-        datosSerializadosCompletos += "&sizePageDocumentos=" + $('#sizePageDocumentos').val();
+    if ($('#nameForm').val().toLowerCase() !== "frmfinanza") {
+        datosSerializadosCompletos += "&txtDescripcionFinanza=" + $('#txtDescripcionFinanza').val();
+        datosSerializadosCompletos += "&comboAnioFinanza=" + $('#comboAnioFinanza').val();
+        datosSerializadosCompletos += "&comboTipoListaFinanza=-1";
+        datosSerializadosCompletos += "&numberPageFinanza=" + $('#numberPageFinanza').val();
+        datosSerializadosCompletos += "&sizePageFinanza=" + $('#sizePageFinanza').val();
+        datosSerializadosCompletos += "&url_finanzas=" + pathname;
     }
-    datosSerializadosCompletos += "&action=" + $('#actionDocumentos').val();
-    datosSerializadosCompletos += "&urlDocumentos=" + pathname;
+    datosSerializadosCompletos += "&action=" + $('#actionFinanza').val();
     $.ajax({
-        url: getContext() + '/documentos/operaciones',
+        url: getContext() + '/finanzas/operaciones',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            $('#modalCargandoDocumentos2').modal("hide");
+            $('#modalCargandoFinanza2').modal("hide");
             if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
                 $('#ventanaDocumentosArcDig').modal("hide");
-                viewAlert('success', getMessageServerTransaction($('#actionDocumentos').val(), 'Documento', 'o'));
-                listarDocumentos(jsonResponse.BEAN_PAGINATION);
+                viewAlert('success', getMessageServerTransaction($('#actionFinanza').val(), 'Documento', 'o'));
+                listarFinanza(jsonResponse.BEAN_PAGINATION);
             } else {
                 viewAlert('warning', jsonResponse.MESSAGE_SERVER);
             }
         },
         error: function () {
-            $('#modalCargandoDocumentos2').modal("hide");
+            $('#modalCargandoFinanza2').modal("hide");
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
             viewAlert('error', 'Error interno en el servidor!');
         }

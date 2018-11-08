@@ -77,11 +77,11 @@
                 <li class="nav-small-cap">ADICIONALES</li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-book-multiple" title="Información Financiera y Presupuestal"></i><span class="hide-menu">Inf. Fin. Presupuestal</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="#" title="Estados de Cambio en el patrimonio Neto">E.C. Patrimonio Neto</a></li>
-                        <li><a href="#" title="Estados de Flujo Efectivos">E. Flujo Efectivo</a></li>
-                        <li><a href="#" title="Estado de Gestión">E. Gestión</a></li>
-                        <li><a href="#" title="Infraestructura Presupuestal y Financiera">I.P. Financiera</a></li>
-                        <li><a href="#" title="Saldos de Balance">Saldos Balance</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/patrimonio" title="Estados de Cambio en el patrimonio Neto">E.C. Patrimonio Neto</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/flujoefectivo" title="Estados de Flujo Efectivos">E. Flujo Efectivo</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/gestion" title="Estado de Gestión">E. Gestión</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/pendiente" title="Infraestructura Presupuestal y Financiera">I.P. Financiera</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/saldos" title="Saldos de Balance">Saldos Balance</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-bookmark-outline" title="Otros"></i><span class="hide-menu">Otros</span></a>

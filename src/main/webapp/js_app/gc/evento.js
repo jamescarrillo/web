@@ -64,14 +64,12 @@ function procesarAjaxEvento() {
     datosSerializadosCompletos += "&numberPageEvento=" + $('#numberPageEvento').val();
     datosSerializadosCompletos += "&sizePageEvento=" + $('#sizePageEvento').val();
     datosSerializadosCompletos += "&action=" + $('#actionEvento').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/publicaciones/eventos',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            console.log(jsonResponse);
             $('#modalCargandoEvento').modal("hide");
             if ($('#actionEvento').val().toLowerCase() === "paginarevento") {
                 listarEvento(jsonResponse.BEAN_PAGINATION);
@@ -201,7 +199,7 @@ function agregarEventosEvento() {
     $('.btn-editar-np').each(function () {
         $(this).click(function () {
             $('#txtIdER').val($(this.parentElement.parentElement).attr('id'));
-            $('#txtFechaER').val($(this.parentElement.parentElement).attr('fecha'));
+            $('#txtFechaER').datepicker('setDate', getDateJS($(this.parentElement.parentElement).attr('fecha')));
             $('#txtTituloER').val($(this.parentElement.parentElement).attr('titulo'));
             $('#txtAreaER').val($(this.parentElement.parentElement).attr('area'));
             $('#txtFotoER').val($(this.parentElement.parentElement).attr('foto'));
@@ -220,7 +218,7 @@ function agregarEventosEvento() {
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
-    
+
     $('.btn-cambiar-estado-evento').each(function () {
         $(this).click(function () {
             $('#txtIdER').val($(this.parentElement.parentElement).attr('id'));
