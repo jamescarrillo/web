@@ -55,13 +55,12 @@ function listarConvocatoria(BEAN_PAGINATION) {
             fila += "<td class='align-middle'>" + value.fecha + "</td>";
             fila += "<td class='align-middle'>" + estado + "</td>";
             fila += "<td class='align-middle'><button class='waves-effect waves-light btn ver-Cronograma' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Revisar</button></td>";
-
-
             fila += "</tr>";
             $('#tbodyConvocatoria').append(fila);
         });
         var defaultOptions = getDefaultOptionsPagination();
         var totalPages = getTotalPages(BEAN_PAGINATION.COUNT_FILTER, parseInt($('#sizePageConvocatoria').val()));
+        console.log(totalPages);
         var options =
                 {
                     startPage: parseInt($('#numberPageConvocatoria').val()),
@@ -75,7 +74,7 @@ function listarConvocatoria(BEAN_PAGINATION) {
                     onPageClick: function (evt, page) {
                         $('#actionConvocatoria').val('paginarConvocatoria');
                         $('#numberPageConvocatoria').val(page);
-                        $('#nameForm').val('FrmConvocatoria');
+                        $('#nameFormConvocatoria').val('FrmConvocatoria');
                         $('#loader_contenido_Convocatoria').css('display', 'block');
                         procesarAjaxConvocatoriaWeb();
                     }
@@ -144,6 +143,7 @@ function listarCalendario(BEAN_PAGINATION, id) {
         });
         var defaultOptions = getDefaultOptionsPagination();
         var totalPages = getTotalPages(BEAN_PAGINATION.COUNT_FILTER, parseInt($('#sizePageCalendario').val()));
+        console.log(totalPages);
         var options =
                 {
                     startPage: parseInt($('#numberPageCalendario').val()),
@@ -157,7 +157,7 @@ function listarCalendario(BEAN_PAGINATION, id) {
                     onPageClick: function (evt, page) {
                         $('#actionCalendario').val('paginarCalendario');
                         $('#numberPageCalendario').val(page);
-                        $('#nameForm').val('FrmCalendario');
+                        $('#nameFormCalendario').val('FrmCalendario');
                         $('#loader_contenido_Calendario').css('display', 'block');
                         procesarAjaxCalendarioWeb(id);
                     }

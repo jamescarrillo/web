@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -8,8 +8,6 @@ package gob.peam.web.dao.impl;
 import gob.peam.web.dao.EstudioDAO;
 import gob.peam.web.dao.SQLCloseable;
 import gob.peam.web.model.Estudio;
-import gob.peam.web.model.Evento;
-import gob.peam.web.model.LineaAccion;
 import gob.peam.web.model.Persona;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
