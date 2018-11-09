@@ -394,40 +394,38 @@
                 </div>
                 <div class="row">
                     <div class="clients-grid">
-                        <div class="row">
-                            <div class="col-md-3 col-sm-6">
-                                <div class="text-center">
-                                    <a href="#"> <i class="fa fa-home fa-5x" aria-hidden="true"></i>
-                                        <h5 class="text-peam-verde">
-                                            DIRECCIÓN DE <br>INFRAESTRUCTURA
-                                        </h5>
-                                    </a>
-                                </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="text-center">
+                                <a href="#"> <i class="fa fa-home fa-5x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde">
+                                        DIRECCIÓN DE <br>INFRAESTRUCTURA
+                                    </h5>
+                                </a>
                             </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="text-center">
-                                    <a href="#"> <i class="fa fa-pagelines fa-5x"
-                                                    aria-hidden="true"></i>
-                                        <h5 class="text-peam-verde">
-                                            DIRECCIÓN DE <br>MANEJO AMBIENTAL
-                                        </h5>
-                                    </a>
-                                </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="text-center">
+                                <a href="#"> <i class="fa fa-pagelines fa-5x"
+                                                aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde">
+                                        DIRECCIÓN DE <br>MANEJO AMBIENTAL
+                                    </h5>
+                                </a>
                             </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="text-center">
-                                    <a href="#"> <i class="fa fa-truck fa-5x" aria-hidden="true"></i>
-                                        <h5 class="text-peam-verde">DIRECCIÓN DE DESARROLLO AGROPECUARIO</h5>
-                                    </a>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="text-center">
+                                <a href="#"> <i class="fa fa-truck fa-5x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde">DIRECCIÓN DE DESARROLLO AGROPECUARIO</h5>
+                                </a>
 
-                                </div>
                             </div>
-                            <div class="col-md-3 col-sm-6">
-                                <div class="text-center">
-                                    <a href="#"> <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
-                                        <h5 class="text-peam-verde">ESTUDIOS</h5>
-                                    </a>
-                                </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="text-center">
+                                <a href="#"> <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde">ESTUDIOS</h5>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -563,87 +561,78 @@
                         <strong>Gestión Transparente</strong>
                     </h1>
                 </div>
-                <div class="container-fluid">
-                    <div class="row no-gutter">
-                        <div
-                            class="col-lg-2 col-lg-offset-1 col-sm-4 col-md-offset-0 col-sm-offset-0 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
-                                <div class="icon mb-5">
-                                    <i class="fa fa-files-o" aria-hidden="true"
-                                       style="color: #6a9a32"></i>
-                                </div>
-                                <div class="desc mt-10">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion"><h3 class="text-peam-verde">DOCUMENTOS NORMATIVOS Y DE GESTIÓN</h3></a>
-                                </div>
+                <div class="row">
+                    <div class="clients-grid">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">
+                                    <i class="fa fa-files-o fa-4x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde" style="margin-top: 5px">
+                                        DOCUMENTOS NORMATIVOS <br>Y DE GESTIÓN
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
-                                <div class="icon mb-5">
-                                    <i class="fa fa-money" aria-hidden="true" style="color: #6a9a32"></i>
-                                </div>
-                                <div class="desc mt-10">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/presupuesto-y-finanzas"><h3 class="text-peam-verde">PRESUPUESTOS Y FINANZAS</h3></a>
-                                </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/presupuesto-y-finanzas">
+                                    <i class="fa fa-money fa-4x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde" style="margin-top: 5px">
+                                        PRESUPUESTOS Y <br>FINANZAS
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
-                                <div class="icon mb-5">
-                                    <i class="material-icons brand-icon">supervisor_account</i>
-                                </div>
-                                <div class="desc">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/proyectos-de-inversion"><h3 class="text-peam-verde">PROYECTOS DE INVERSIÓN</h3></a>
-                                </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/proyectos-de-inversion">
+                                    <div class="icon" style="height: 60px">
+                                        <i class="material-icons brand-icon brand-hover" style="font-size: 5em">supervisor_account</i>
+                                    </div>
+                                    <h5 class="text-peam-verde" style="margin-top: 5px">
+                                        PROYECTOS DE <br>INVERSIÓN
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 0px; height: 145px; border: none">
-                                <div class="icon mb-5">
-                                    <!--i class="material-icons brand-icon">supervisor_account</i-->
-                                    <i class="fa fa-users" aria-hidden="true" style="color: #6a9a32"></i>
-                                </div>
-                                <div class="desc mt-10">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/recursos-humanos"><h3 class="text-peam-verde">RECURSOS HUMANOS</h3></a>
-                                </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-20 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/recursos-humanos">
+                                    <i class="fa fa-users fa-4x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde" style="margin-top: 5px">
+                                        RECURSOS HUMANOS
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 20px; height: 145px; border: none">
-                                <div class="icon mb-5">
-                                    <i class="material-icons brand-icon">insert_drive_file</i>
-                                </div>
-                                <div class="desc">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/adquisiciones-y-contrataciones"><h3 style="margin-bottom: 0px" class="text-peam-verde">ADQUISICIONES Y CONTRATACIONES</h3></a>
-                                </div>
+                        <div class="col-lg-2 col-lg-offset-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/adquisiciones-y-contrataciones">
+                                    <i class="fa fa-sticky-note fa-4x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde" style="margin-top: 5px">
+                                        ADQUISICIONES Y <br>CONTRATACIONES
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                        <div
-                            class="col-lg-2 col-lg-offset-4 col-md-3 col-md-offset-0 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 20px; height: 145px; border: none">
-                                <div class="icon mb-5">
-                                    <i class="fa fa-book" aria-hidden="true" style="color: #6a9a32"></i>
-                                </div>
-                                <div class="desc mt-10">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/agenda-institucional"><h3 style="margin-bottom: 0px" class="text-peam-verde">AGENDA INSTITUCIONAL</h3></a>
-                                </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 mb-20 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/agenda-institucional">
+                                    <i class="fa fa-book fa-4x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde" style="margin-top: 5px">
+                                        AGENDA INSTITUCIONAL
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 20px; height: 145px; border: none">
-                                <div class="icon mb-5">
-                                    <i class="material-icons brand-icon">info</i>
-                                </div>
-                                <div class="desc">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/informacion-adicional"><h3 style="margin-bottom: 0px" class="text-peam-verde">INFORMACIÓN ADICIONAL</h3></a>
-                                </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/informacion-adicional">
+                                    <i class="fa fa-exclamation-circle fa-4x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde" style="margin-top: 5px">
+                                        INFORMACIÓN ADICIONAL
+                                    </h5>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -657,90 +646,84 @@
                         <strong>Favoritos</strong>
                     </h1>
                 </div>
-                <div class="container-fluid">
-                    <div class="row no-gutter">
-                        <div class="col-lg-2 col-lg-offset-1 col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-0 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
-                                <div class="icon mb-10">
-                                    <i class="material-icons brand-icon">description</i>
-                                </div>
-                                <div class="desc mt-15">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion"><h3 class="text-peam-verde">TUPA</h3></a>
-                                </div>
-                            </div>
-                            <!-- /.featured-item -->
-                        </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                                <div class="icon mb-10">
-                                    <i class="material-icons brand-icon">gavel</i>
-                                </div>
-                                <div class="desc mt-15">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/institucion/codigo-de-etica" class="text-peam-verde"><h3>CÓDIGO DE ÉTICA</h3></a>
-                                </div>
+                <div class="row">
+                    <div class="clients-grid">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">
+                                    <div class="icon">
+                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">description</i>
+                                    </div>
+                                    <h5 class="text-peam-verde">
+                                        TUPA
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                                <div class="icon">
-                                    <i class="fa fa-folder-open" aria-hidden="true"
-                                       style="color: #6a9a32"></i>
-                                </div>
-                                <div class="desc mt-30">
-                                    <a href="http://doc.peam.gob.pe/sisgedo/app/main.php"><h3 class="text-peam-verde">SISGEDO</h3></a>
-                                </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/institucion/codigo-de-etica">
+                                    <div class="icon">
+                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">gavel</i>
+                                    </div>
+                                    <h5 class="text-peam-verde">
+                                        CÓDIGO DE ÉTICA
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-3 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                                <div class="icon mb-10">
-                                    <i class="material-icons brand-icon">local_library</i>
-                                </div>
-                                <div class="desc">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/consultas/libro-de-reclamaciones"><h4 style="margin-bottom: 0px" class="text-peam-verde">LIBRO DE
-                                            RECLAMACIONES</h4></a>
-                                </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="http://doc.peam.gob.pe/sisgedo/app/main.php">
+                                    <i class="fa fa-folder-open fa-4x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde">
+                                        SISGEDO
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                                <div class="icon">
-                                    <i class="fa fa-share-square-o" aria-hidden="true"
-                                       style="color: #6a9a32"></i>
-                                </div>
-                                <div class="desc mt-20">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/consultas/acceso-informacion"><h4 style="margin-bottom: 0px" class="text-peam-verde">SOLICITUD DE
-                                            ACCESO A INFORMACIÓN</h4></a>
-                                </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/consultas/libro-de-reclamaciones">
+                                    <div class="icon" style="height: 60px">
+                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">local_library</i>
+                                    </div>
+                                    <h5 class="text-peam-verde">
+                                        LIBRO DE <br>RECLAMACIONES
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-lg-offset-4 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                                <div class="icon">
-                                    <!--i class="material-icons brand-icon">insert_drive_file</i-->
-                                    <i class="fa fa-file-text" aria-hidden="true"
-                                       style="color: #6a9a32"></i>
-                                </div>
-                                <div class="desc mt-30">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion"><h3 class="text-peam-verde">RESOLUCIONES</h3></a>
-                                </div>
+                        <div class="col-lg-2 col-lg-offset-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/consultas/acceso-informacion">
+                                    <i class="fa fa-share-square-o fa-4x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde">
+                                        SOLICITUD DE ACCESO <br>A INFORMACIÓN
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-sm-4 mt-15">
-                            <div class="featured-item border-box hover brand-hover"
-                                 style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px">
-                                <div class="icon mb-10">
-                                    <i class="material-icons brand-icon">share</i>
-                                </div>
-                                <div class="desc mt-15">
-                                    <a href="#"><h3 class="text-peam-verde">CONTROL INTERNO</h3></a>
-                                </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">
+                                    <i class="fa fa-file-text fa-4x" aria-hidden="true"></i>
+                                    <h5 class="text-peam-verde" style="margin-top: 5px">
+                                        RESOLUCIONES
+                                    </h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="">
+                                    <div class="icon" style="height: 60px">
+                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">share</i>
+                                    </div>
+                                    <h5 class="text-peam-verde">
+                                        CONTROL INTERNO
+                                    </h5>
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -754,26 +737,30 @@
                         <strong>Convocatorias</strong>
                     </h1>
                 </div>
-                <div class="container-fluid">
-                    <div class="col-lg-3 col-lg-offset-3 col-md-4 col-md-offset-2 col-sm-5 col-sm-offset-1 col-xs-12 col-xs-offset-0">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
-                            <div class="icon mb-10">
-                                <i class="material-icons brand-icon">supervisor_account</i>
-                            </div>
-                            <div class="desc mt-15">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-personal"><h3 class="text-peam-verde">Selección de Personal</h3></a>
+                <div class="row">
+                    <div class="clients-grid">
+                        <div class="col-lg-2 col-lg-offset-4 col-md-4 col-md-offset-2 col-sm-6 col-xs-offset-0 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-personal">
+                                    <div class="icon" style="height: 60px">
+                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">supervisor_account</i>
+                                    </div>
+                                    <h5 class="text-peam-verde">
+                                        SELECCIÓN DE <br>PERSONAL
+                                    </h5>
+                                </a>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-12">
-                        <div class="featured-item border-box hover brand-hover"
-                             style="padding-top: 20px; padding-bottom: 20px; border: 0px; height: 145px;">
-                            <div class="icon mb-10">
-                                <i class="material-icons brand-icon">widgets</i>
-                            </div>
-                            <div class="desc mt-15">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-bienes-y-servicios"><h3 class="text-peam-verde">Bienes, Servicios, Obras y Concesiones</h3></a>
+                        <div class="col-lg-2 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-bienes-y-servicios">
+                                    <div class="icon" style="height: 60px">
+                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">widgets</i>
+                                    </div>
+                                    <h5 class="text-peam-verde">
+                                        BIENES, SERVICIOS, OBRAS <br>Y CONSECIONES
+                                    </h5>
+                                </a>
                             </div>
                         </div>
                     </div>

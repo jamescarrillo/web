@@ -30,7 +30,7 @@ function validarErrores() {
             } else {
                 swal(
                         {
-                            title: "SisBu",
+                            title: "PEAM!",
                             text: jsonResponse.AUTENTICACION,
                             type: "error",
                             confirmButtonText: "Aceptar",
@@ -38,11 +38,11 @@ function validarErrores() {
                             buttonsStyling: false
                         }
                 );
-                if (jsonResponse.AUTENTICACION.toLowerCase() === "el usuario ingresado no existe") {
+                if (jsonResponse.AUTENTICACION.toLowerCase() === "El usuario ingresado no existe") {
                     $('#txtUsuario').val("");
                     $('#txtPass').val("");
                     $('#txtUsuario').focus();
-                } else if (jsonResponse.AUTENTICACION.toLowerCase() === "contraseña incorrecta") {
+                } else if (jsonResponse.AUTENTICACION.toLowerCase() === "Contraseña incorrecta") {
                     $('#txtPass').val("");
                     $('#txtPass').focus();
                 } else {
