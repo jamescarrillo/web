@@ -7,6 +7,9 @@ package gob.peam.web.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import gob.peam.web.dao.CorreoDAO;
+import gob.peam.web.dao.impl.CorreoDAOImpl;
+import gob.peam.web.model.Correo;
 import gob.peam.web.model.others.Conf_Web;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.Utilities;
@@ -15,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -49,12 +53,16 @@ public class PersonalizacionAPI extends HttpServlet {
     private static final Logger LOG = Logger.getLogger(DocumentoAPI.class.getName());
     private String action;
 
+    private CorreoDAO correoDAO;
+
     @Override
     public void init() throws ServletException {
         super.init(); // To change body of generated methods, choose Tools | Templates.
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
         this.parameters = new HashMap<>();
         this.action = "";
+
+        this.correoDAO = new CorreoDAOImpl(this.pool);
 
     }
 
@@ -69,35 +77,42 @@ public class PersonalizacionAPI extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        switch (request.getRequestURI().substring(request.getContextPath().length())) {
-            case "/personalizacion/web":
-                this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-                LOG.info(action);
-                switch (this.action) {
-                    case "guardarPersonalizacionWeb":
-                        BEAN_CRUD beancrud = new BEAN_CRUD();
-                        beancrud.setMESSAGE_SERVER(Utilities.setConf_Web(getConf_Web(request), getServletContext().getRealPath("/peam_resources_app/conf_app/files/"), "conf_web.properties"));
-                        procesarPersonalizacion(beancrud, response);
-                        break;
-                    default:
-                        request.setAttribute("conf_web", Utilities.getConf_Web(getServletContext().getRealPath("/peam_resources_app/conf_app/files/"), "conf_web.properties"));
-                        LOG.info(Utilities.getConf_Web(getServletContext().getRealPath("/peam_resources_app/conf_app/files/"), "conf_web.properties").toString());
-                        request.getRequestDispatcher("/jsp/gc/global/personalizacion_web.jsp").forward(request, response);
-                        break;
-                }
-                break;
-            case "/personalizacion/correo":
-                this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-                LOG.info(action);
-                switch (this.action) {
-                    case "guardarPersonalizacionCorreo":
-                        break;
-                    default:
-                        request.getRequestDispatcher("/jsp/gc/global/personalizacion_correo.jsp").forward(request, response);
-                        break;
-                }
-                break;
+        try {
+            switch (request.getRequestURI().substring(request.getContextPath().length())) {
+                case "/personalizacion/web":
+                    this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
+                    LOG.info(action);
+                    switch (this.action) {
+                        case "guardarPersonalizacionWeb":
+                            BEAN_CRUD beancrud = new BEAN_CRUD();
+                            beancrud.setMESSAGE_SERVER(Utilities.setConf_Web(getConf_Web(request), getServletContext().getRealPath("/peam_resources_app/conf_app/files/"), "conf_web.properties"));
+                            procesarPersonalizacion(beancrud, response);
+                            break;
+                        default:
+                            request.setAttribute("conf_web", Utilities.getConf_Web(getServletContext().getRealPath("/peam_resources_app/conf_app/files/"), "conf_web.properties"));
+                            LOG.info(Utilities.getConf_Web(getServletContext().getRealPath("/peam_resources_app/conf_app/files/"), "conf_web.properties").toString());
+                            request.getRequestDispatcher("/jsp/gc/global/personalizacion_web.jsp").forward(request, response);
+                            break;
+                    }
+                    break;
+                case "/personalizacion/correo":
+                    this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
+                    LOG.info("------" + action);
+                    switch (this.action) {
+                        case "paginarCorreo":
+                            procesarCorreo(new BEAN_CRUD(this.correoDAO.getPagination(getParametersCorreo(request))), response);
+                            break;
+                        case "guardarPersonalizacionCorreo":
+                            procesarCorreo(this.correoDAO.update(getCorreo(request), getParametersCorreo(request)), response);
+                            break;
+                        default:
+                            request.getRequestDispatcher("/jsp/gc/global/personalizacion_correo.jsp").forward(request, response);
+                            break;
+                    }
+                    break;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DocumentoAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
@@ -305,4 +320,30 @@ public class PersonalizacionAPI extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    private void procesarCorreo(BEAN_CRUD bean_crud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(bean_crud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(PersonalizacionAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap<String, Object> getParametersCorreo(HttpServletRequest request) {
+        this.parameters.clear();
+        return this.parameters;
+    }
+
+    private Correo getCorreo(HttpServletRequest request) {
+        Correo obj = new Correo();
+        obj.setId(Integer.parseInt(request.getParameter("txtIdER")));
+        obj.setPara_correo(request.getParameter("txtParaER"));
+        obj.setParte_correo(request.getParameter("txtDeParteER"));
+        obj.setCc_correo(request.getParameter("txtCC_CorreoER"));
+        obj.setMensaje_correo(request.getParameter("txtMensajeER"));
+        obj.setEstado(Boolean.parseBoolean(request.getParameter("comboEstadoER")));
+        return obj;
+    }
 }

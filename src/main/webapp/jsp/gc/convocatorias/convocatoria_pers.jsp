@@ -471,7 +471,7 @@
                     <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content border-primary" style="border-width: 3px">
                             <div class="modal-header">
-                                <h6 class="modal-title">ARCHIVOS</h6>
+                                <h6 class="modal-title" id="titulosArchivos"></h6>
                                 <button type="button" class="close" data-dismiss="modal"
                                         aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -483,8 +483,14 @@
                                 <input type="hidden" id="txtCalendarioId" name="txtCalendarioId">
                                 <input type="hidden" id="numberPageDocumentCal" name="numberPageDocumentCal" value="1">
                                 <div class="row">
-                                    <div class="col-12 mt-3">
-                                        <div class="table-responsive" id="tablaDocumentCal">
+                                    <div class="col-10 text-left mb-1 mt-3">
+                                        <label><strong>Lista de Archivos</strong></label>
+                                    </div>
+                                    <div class="col-2 text-right mb-1 mt-3">
+                                        <button type="button" id="btnAbrirNuevoDocumentCal" class="btn btn-info btn-sm mr-3" data-toggle="tooltip" title="Subir Archivo" style="height: 33px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                    </div>                               
+                                    <div class="col-12">
+                                         <div class="table-responsive" id="tablaDocumentCal">
                                             <table
                                                 class="table color-bordered-table muted-bordered-table table-hover">
                                                 <thead>
@@ -502,7 +508,6 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" id="btnAbrirNuevoDocumentCal" class="btn btn-info btn-sm mr-3" data-toggle="tooltip" title="Subir Archivo" style="height: 33px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                 <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Cerrar</button>
                             </div>
                         </div>

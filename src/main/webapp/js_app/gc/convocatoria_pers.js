@@ -511,6 +511,7 @@ function agregarEventosCalendarioConv() {
     $('.archivos').each(function () {
         $(this).click(function () {
             $('#txtCalendarioId').val($(this.parentElement.parentElement).attr('id'));
+            $('#titulosArchivos').html($(this.parentElement.parentElement).attr('descripcion'));
             $('#modalCargandoDocumentCal').modal("show");
             $('#ventanaDocumentCal').modal("show");
             $('#actionDocumentCal').val("paginarDocumentCal");
