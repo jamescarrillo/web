@@ -94,7 +94,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                     request.getRequestDispatcher("/estamos_trabajando.jsp").forward(request, response);
                     break;
                 case "/gestiontransparente/gestiondocumentos":
-
+                    request.getRequestDispatcher("/estamos_trabajando.jsp").forward(request, response);
                     break;
                 case "/gestiontransparente/personal":
                     request.getRequestDispatcher("/estamos_trabajando.jsp").forward(request, response);

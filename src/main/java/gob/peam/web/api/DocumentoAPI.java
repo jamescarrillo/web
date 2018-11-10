@@ -99,7 +99,7 @@ public class DocumentoAPI extends HttpServlet {
                     procesarDocumento(this.documentoDAO.cambiarEstado(Integer.parseInt(request.getParameter("txtIdDocumentoER")), Boolean.parseBoolean(request.getParameter("txtEstadoDocumentoER")), getParametersDocumentos(request)), response);
                     break;
                 default:
-                    request.getRequestDispatcher("/jsp/gc/global/documento.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/gc/global/" + getJSP(request)).forward(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -172,11 +172,7 @@ public class DocumentoAPI extends HttpServlet {
             this.parameters.put("SQL_ESTADO", "AND DOCU_ESTADO = " + request.getParameter("comboTipoListaDocumentos") + " ");
         }
         this.parameters.put("SQL_CATE_ID", "AND CATE_ID = " + getCategoriaId(request));
-        if (getTidoId(request).equals("")) {
-            this.parameters.put("SQL_TIDO_ID", "");
-        } else {
-            this.parameters.put("SQL_TIDO_ID", "AND TIDO_ID = " + getTidoId(request));
-        }
+        this.parameters.put("SQL_TIDO_ID", "");
         //SOLO PAR ELIMINAR
         this.parameters.put("CATE_ID", getCategoriaId(request));
         //
@@ -250,18 +246,21 @@ public class DocumentoAPI extends HttpServlet {
             case "/gestiontransparente/recomendacionesauditorias":
                 categoria_id = "700";
                 break;
+            case "/gestiontransparente/declaracionjurada":
+                categoria_id = "1200";
+                break;
         }
         return categoria_id;
     }
 
-    private String getTidoId(HttpServletRequest request) {
-        String tido_id = "";
-        switch (request.getParameter("urlDocumentos")) {
-            default:
-                tido_id = "";
-                break;
+    private String getJSP(HttpServletRequest request) {
+        String jsp;
+        if (request.getRequestURI().substring(request.getContextPath().length()).equals("/gestiontransparente/declaracionjurada")) {
+            jsp = "documento2.jsp";
+        } else {
+            jsp = "documento.jsp";
         }
-        return tido_id;
+        return jsp;
     }
 
     /**

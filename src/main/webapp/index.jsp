@@ -396,7 +396,7 @@
                     <div class="clients-grid">
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center">
-                                <a href="#"> <i class="fa fa-home fa-5x" aria-hidden="true"></i>
+                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/direccion-de-infraestructura"> <i class="fa fa-home fa-5x" aria-hidden="true"></i>
                                     <h5 class="text-peam-verde">
                                         DIRECCIÓN DE <br>INFRAESTRUCTURA
                                     </h5>
@@ -405,8 +405,8 @@
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center">
-                                <a href="#"> <i class="fa fa-pagelines fa-5x"
-                                                aria-hidden="true"></i>
+                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/direccion-de-manejo-ambiental"> <i class="fa fa-pagelines fa-5x"
+                                                                                                                                                  aria-hidden="true"></i>
                                     <h5 class="text-peam-verde">
                                         DIRECCIÓN DE <br>MANEJO AMBIENTAL
                                     </h5>
@@ -415,7 +415,7 @@
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center">
-                                <a href="#"> <i class="fa fa-truck fa-5x" aria-hidden="true"></i>
+                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/direccion-de-desarrollo-agropecuario"> <i class="fa fa-truck fa-5x" aria-hidden="true"></i>
                                     <h5 class="text-peam-verde">DIRECCIÓN DE DESARROLLO AGROPECUARIO</h5>
                                 </a>
 
@@ -423,7 +423,7 @@
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center">
-                                <a href="#"> <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
+                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/area-de-estudios"> <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
                                     <h5 class="text-peam-verde">ESTUDIOS</h5>
                                 </a>
                             </div>
