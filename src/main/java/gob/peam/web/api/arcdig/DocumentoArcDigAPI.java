@@ -13,7 +13,6 @@ import gob.peam.web.dao.others.DocumentoArcDigDAO;
 import gob.peam.web.dao.others.EtiquetaDAO;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -167,6 +166,11 @@ public class DocumentoArcDigAPI extends HttpServlet {
             this.parameters.put("SQL_ETIQUETA", "");
         } else {
             this.parameters.put("SQL_ETIQUETA", "AND DE.ETIQ_ID = " + request.getParameter("comboEtiquetasDocumentosArcDig").toLowerCase());
+        }
+        if (request.getParameter("txtTido").equals("-1")) {
+            this.parameters.put("SQL_TIDO", "");
+        } else {
+            this.parameters.put("SQL_TIDO", "AND D.TIDO_ID = " + Integer.parseInt(request.getParameter("txtTido")));
         }
         if (request.getParameter("comboAnioDocumentosArcDig").equals("-1")) {
             this.parameters.put("SQL_ANIO", " ");

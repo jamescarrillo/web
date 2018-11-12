@@ -44,6 +44,7 @@ public class DocumentoArcDigDAOImpl implements DocumentoArcDigDAO {
                     + "INNER JOIN DOCUMENTO_ETIQUETA DE ON DE.DOCU_ID = D.DOCU_ID WHERE "
                     + "(LOWER(D.DOCU_TITULO) LIKE CONCAT('%',?,'%') OR LOWER(D.DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
                     + "AND D.DOCU_FECHA_DOCX != ''"
+                    + parameters.get("SQL_TIDO") + " "
                     + parameters.get("SQL_ANIO") + " "
                     + parameters.get("SQL_ETIQUETA") + " "
                     + parameters.get("SQL_ESTADO") + " ");
@@ -59,6 +60,7 @@ public class DocumentoArcDigDAOImpl implements DocumentoArcDigDAO {
                             + "INNER JOIN DOCUMENTO_ETIQUETA DE ON DE.DOCU_ID = D.DOCU_ID WHERE "
                             + "(LOWER(D.DOCU_TITULO) LIKE CONCAT('%',?,'%') OR LOWER(D.DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
                             + "AND D.DOCU_FECHA_DOCX != ''"
+                            + parameters.get("SQL_TIDO") + " "
                             + parameters.get("SQL_ANIO") + " "
                             + parameters.get("SQL_ETIQUETA") + " "
                             + parameters.get("SQL_ESTADO") + " "

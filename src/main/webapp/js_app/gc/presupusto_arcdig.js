@@ -10,11 +10,44 @@ $(document).ready(function () {
         return false;
     });
 
-    $('#btnAbrirNuevoFinanza').click(function () {
+    $('#btnAbrirVerArcdig').click(function () {
         $('#tbodyDocumentosArcDig').empty();
         $('#txtTituloResumenDocumentosArcDig').val("");
         $('#comboAnioDocumentosArcDig').val("-1");
         $('#sizePageDocumentosArcDig').val("5");
+        if ($('#txtTipoER').val() === "1") {
+            $('#txtTido').val("13");
+        } else {
+            $('#txtTido').val("14");
+        }
+        $('#nameFormArcDig').val("FrmDocumentosArcDig");
+        $('#actionDocumentosArcDig').val("paginarDocumentosArcDig");
+        $('#numberPageDocumentosArcDig').val("1");
+        $('#txtTituloModalDocumentosArcDig').html("GESTIÓN DE DOCUMENTOS [ARCDIG]");
+        $('#ventanaDocumentosArcDig').modal("show");
+        $('#modalCargandoDocumentosArcDig').modal("show");
+        document.getElementsByTagName("body")[0].style.paddingRight = "0";
+    });
+
+    $('#btnAbrirVerArcdigFinanza').click(function () {
+        $('#tbodyDocumentosArcDig').empty();
+        $('#txtTituloResumenDocumentosArcDig').val("");
+        $('#comboAnioDocumentosArcDig').val("-1");
+        $('#sizePageDocumentosArcDig').val("5");
+        switch ($('#txtTipoFinanzaER').val()) {
+            case "1":
+                $('#txtTido').val("19");
+                break;
+            case "2":
+                $('#txtTido').val("15");
+                break;
+            case "3":
+                $('#txtTido').val("16");
+                break;
+            case "4":
+                $('#txtTido').val("17");
+                break;
+        }
         $('#nameFormArcDig').val("FrmDocumentosArcDig");
         $('#actionDocumentosArcDig').val("paginarDocumentosArcDig");
         $('#numberPageDocumentosArcDig').val("1");
@@ -28,45 +61,17 @@ $(document).ready(function () {
         procesarAjaxDocumentosArcDig();
     });
 
-    $("#modalCargandoFinanza2").on('shown.bs.modal', function () {
-        procesarAjaxFinanzasADD();
-    });
-
-    procesarAjaxEtiquetas();
-
-    addEventoCombosPaginar();
+    //procesarAjaxEtiquetas();
 
 });
 
-function procesarAjaxEtiquetas() {
-    var datosSerializadosCompletos = "action=paginarEtiquetas";
-    $.ajax({
-        url: getContext() + '/documentos/arcdig',
-        type: 'POST',
-        data: datosSerializadosCompletos,
-        dataType: 'json',
-        success: function (jsonResponse) {
-            $('#modalCargandoDocumentosArcDig').modal("hide");
-            $('#comboEtiquetasDocumentosArcDig').append("<option value='-1'>ETIQUETA</option>");
-            $.each(jsonResponse.BEAN_PAGINATION.LIST, function (index, value) {
-                $('#comboEtiquetasDocumentosArcDig').append("<option value='" + value.etiq_id + "'>" + value.etiq_nombre + "</option>");
-            });
-        },
-        error: function () {
-            $('#modalCargandoDocumentosArcDig').modal("hide");
-            /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
-            viewAlert('error', 'Error interno en el servidor!');
-        }
-    });
-    return false;
-}
 
 function procesarAjaxDocumentosArcDig() {
     var datosSerializadosCompletos = $('#' + $('#nameFormArcDig').val()).serialize();
     datosSerializadosCompletos += "&numberPageDocumentosArcDig=" + $('#numberPageDocumentosArcDig').val();
     datosSerializadosCompletos += "&sizePageDocumentosArcDig=" + $('#sizePageDocumentosArcDig').val();
     datosSerializadosCompletos += "&action=" + $('#actionDocumentosArcDig').val();
-    datosSerializadosCompletos += "&txtTido=-1";
+    datosSerializadosCompletos += "&txtTido=" + $('#txtTido').val();
     $.ajax({
         url: getContext() + '/documentos/arcdig',
         type: 'POST',
@@ -118,14 +123,50 @@ function listarDocumentosArcDig(BEAN_PAGINATION) {
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
         $('#txtTituloResumenDocumentosArcDig').focus();
-        agregarEventosSeleccionarDocumentos();
+        if ($('#txtTido').val()==="13" || $('#txtTido').val()==="14") {
+            agregarEventosSeleccionarDocumentos1();
+        }else{
+            agregarEventosSeleccionarDocumentos2();
+        }
+        
     } else {
         $pagination.twbsPagination('destroy');
         viewAlert('warning', 'No se enconntraron resultados');
     }
 }
 
-function agregarEventosSeleccionarDocumentos() {
+function agregarEventosSeleccionarDocumentos1() {
+    var tr;
+    var valores;
+    $('.seleccionar-documento').each(function (index, value) {
+        $(this).click(function () {
+            tr = $(this.parentElement.parentElement);
+            swal({
+                title: 'PEAM',
+                text: "¿Desea agregar este Documento?",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Sí, continuar!',
+                cancelButtonText: 'No, cancelar!',
+                confirmButtonClass: 'btn btn-info',
+                cancelButtonClass: 'btn btn-danger',
+                buttonsStyling: false
+            }).then((result) => {
+                if (result.value) {
+                    $('#txtDocuIdER').val($(tr).attr('docu_id'));
+                    $('#txtFechaAprobacionER').datepicker('setDate', getDateJS($(tr).attr('docu_fecha_docx')));
+                    $('#txtDescripcionER').val($(tr).attr('docu_resumen'));
+                    $('#txtEstadoER').val("true");
+                    $('#ventanaDocumentosArcDig').modal("hide");
+
+                }
+            });
+            $('.swal2-confirm').css("margin-right", "15px");
+        });
+    });
+}
+
+function agregarEventosSeleccionarDocumentos2() {
     var tr;
     var valores;
     $('.seleccionar-documento').each(function (index, value) {
@@ -158,49 +199,11 @@ function agregarEventosSeleccionarDocumentos() {
                         $('#txtAnhoFinanzaER').val("");
                         $('#txtMesFinanzaER').val("");
                     }
-                    $('#actionFinanza').val("addFinanza");
-                    $("#nameForm").val("FrmFinanzaModal");
-                    $('#modalCargandoFinanza2').modal("show");
+                    $('#txtEstadoFinanzaER').val("true");
+                    $('#ventanaDocumentosArcDig').modal("hide");
                 }
             });
             $('.swal2-confirm').css("margin-right", "15px");
         });
     });
-}
-
-function procesarAjaxFinanzasADD() {
-    var pathname = window.location.pathname;
-    pathname = pathname.substring(getContext().length, pathname.length);
-    var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
-    if ($('#nameForm').val().toLowerCase() !== "frmfinanza") {
-        datosSerializadosCompletos += "&txtDescripcionFinanza=" + $('#txtDescripcionFinanza').val();
-        datosSerializadosCompletos += "&comboAnioFinanza=" + $('#comboAnioFinanza').val();
-        datosSerializadosCompletos += "&comboTipoListaFinanza=-1";
-        datosSerializadosCompletos += "&numberPageFinanza=" + $('#numberPageFinanza').val();
-        datosSerializadosCompletos += "&sizePageFinanza=" + $('#sizePageFinanza').val();
-        datosSerializadosCompletos += "&url_finanzas=" + pathname;
-    }
-    datosSerializadosCompletos += "&action=" + $('#actionFinanza').val();
-    $.ajax({
-        url: getContext() + '/finanzas/operaciones',
-        type: 'POST',
-        data: datosSerializadosCompletos,
-        dataType: 'json',
-        success: function (jsonResponse) {
-            $('#modalCargandoFinanza2').modal("hide");
-            if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
-                $('#ventanaDocumentosArcDig').modal("hide");
-                viewAlert('success', getMessageServerTransaction($('#actionFinanza').val(), 'Documento', 'o'));
-                listarFinanza(jsonResponse.BEAN_PAGINATION);
-            } else {
-                viewAlert('warning', jsonResponse.MESSAGE_SERVER);
-            }
-        },
-        error: function () {
-            $('#modalCargandoFinanza2').modal("hide");
-            /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
-            viewAlert('error', 'Error interno en el servidor!');
-        }
-    });
-    return false;
 }
