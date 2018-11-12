@@ -42,18 +42,10 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="card">
-                                <div class="card-header bg-light">
-                                    <strong class="text-info">Administrar el Envío de Correos</strong>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
                                 <div class="card-header bg-white">
+                                    <strong class="text-info">ADMINISTRAR EL ENVIO DE CORREOS</strong>
+                                </div>
+                                <div class="card-body pt-1">
                                     <input type="hidden" id="nameForm" value="FrmCorreo">
                                     <input type="hidden" id="actionCorreo" name="action" value="paginarCorreo">
                                     <form id="FrmCorreo">
@@ -154,5 +146,4 @@
     <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/personalizacion_correo.js"></script>
 
 </body>
-
 </html>

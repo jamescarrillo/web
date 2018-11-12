@@ -185,6 +185,7 @@ public class EventoDAOImpl implements EventoDAO{
                 pst.setBoolean(1, false);
             }
             pst.setInt(2, (int) id);
+            logger.info(pst);
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");

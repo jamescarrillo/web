@@ -8,9 +8,13 @@ package gob.peam.web.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import gob.peam.web.dao.FinanzaDAO;
+import gob.peam.web.dao.PresupuestoDAO;
 import gob.peam.web.dao.impl.FinanzaDAOImpl;
+import gob.peam.web.dao.impl.PresupuestoDAOImpl;
 import gob.peam.web.model.Finanza;
+import gob.peam.web.model.Presupuesto;
 import gob.peam.web.utilities.BEAN_CRUD;
+import gob.peam.web.utilities.Utilities;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.HashMap;
@@ -27,15 +31,10 @@ import javax.sql.DataSource;
 
 /**
  *
- * @author JamesCarrillo
+ * @author JhanxD
  */
-@WebServlet(name = "FinanzaAPI", urlPatterns = {
-    "/finanzas/operaciones",
-    "/finanzas/patrimonio",
-    "/finanzas/flujoefectivo",
-    "/finanzas/gestion",
-    "/finanzas/saldos"})
-public class FinanzaAPI extends HttpServlet {
+@WebServlet(name = "PresupuestoAPI", urlPatterns = {"/finanzas/pendiente"})
+public class PresupuestoAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
@@ -43,9 +42,11 @@ public class FinanzaAPI extends HttpServlet {
     private Gson json;
     private String jsonResponse;
     private HashMap<String, Object> parameters;
-    private static final Logger LOG = Logger.getLogger(FinanzaAPI.class.getName());
+    private HashMap<String, Object> parametersF;
+    private static final Logger LOG = Logger.getLogger(PresupuestoAPI.class.getName());
     private String action;
 
+    private PresupuestoDAO presupuestoDAO;
     private FinanzaDAO finanzaDAO;
 
     @Override
@@ -53,8 +54,10 @@ public class FinanzaAPI extends HttpServlet {
         super.init(); // To change body of generated methods, choose Tools | Templates.
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
         this.parameters = new HashMap<>();
+        this.parametersF = new HashMap<>();
         this.action = "";
 
+        this.presupuestoDAO = new PresupuestoDAOImpl(this.pool);
         this.finanzaDAO = new FinanzaDAOImpl(this.pool);
     }
 
@@ -71,8 +74,23 @@ public class FinanzaAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-            LOG.info(action);
+            LOG.info("--->" + action);
             switch (this.action) {
+                case "paginarPresupuesto":
+                    procesarPresupuesto(new BEAN_CRUD(this.presupuestoDAO.getPagination(getParametersPresupuesto(request))), response);
+                    break;
+                case "addPresupuesto":
+                    procesarPresupuesto(this.presupuestoDAO.add(getPresupuesto(request), getParametersPresupuesto(request)), response);
+                    break;
+                case "updatePresupuesto":
+                    procesarPresupuesto(this.presupuestoDAO.update(getPresupuesto(request), getParametersPresupuesto(request)), response);
+                    break;
+                case "deletePresupuesto":
+                    procesarPresupuesto(this.presupuestoDAO.delete(Integer.parseInt(request.getParameter("txtIdPresupuestoER")), getParametersPresupuesto(request)), response);
+                    break;
+                case "activatePresupuesto":
+                    procesarPresupuesto(this.presupuestoDAO.activate(Integer.parseInt(request.getParameter("txtIdPresupuestoER")), getParametersPresupuesto(request)), response);                    
+                    break;
                 case "paginarFinanza":
                     procesarFinanza(new BEAN_CRUD(this.finanzaDAO.getPagination(getParametersFinanzas(request))), response);
                     break;
@@ -89,12 +107,11 @@ public class FinanzaAPI extends HttpServlet {
                     procesarFinanza(this.finanzaDAO.cambiarEstado(Integer.parseInt(request.getParameter("txtIdFinanzaER")), Boolean.parseBoolean(request.getParameter("txtEstadoFinanzaER")), getParametersFinanzas(request)), response);
                     break;
                 default:
-                    request.setAttribute("titleFinanzas", getTitleFinanzas(request));
-                    request.getRequestDispatcher("/jsp/gc/finanzas/finanza.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/gc/finanzas/presupuesto.jsp").forward(request, response);
                     break;
             }
         } catch (SQLException ex) {
-            Logger.getLogger(FinanzaAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(PresupuestoAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -137,7 +154,74 @@ public class FinanzaAPI extends HttpServlet {
         }
     }
 
-    /*DOCUMENTOS*/
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+    private void procesarPresupuesto(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(PresupuestoAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap<String, Object> getParametersPresupuesto(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", request.getParameter("txtTituloPresupuesto").toLowerCase());
+        String tipo = "comboAnioPresupuesto" + request.getParameter("DatoTipo");
+        if (request.getParameter(tipo).equals("-1")) {
+            this.parameters.put("SQL_ANIO", "");
+        } else {
+            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter(tipo) + "' ");
+        }
+        if (request.getParameter("comboTipoListaPresupuesto").equals("-1")) {
+            this.parameters.put("SQL_ESTADO", "");
+        } else {
+            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("comboTipoListaPresupuesto") + " ");
+        }
+        if (request.getParameter("action").equals("activatePresupuesto")) {
+            if (request.getParameter("txtEstadoER").equals("true")) {
+                this.parameters.put("ESTADOP", "true");
+            } else {
+                this.parameters.put("ESTADOP", "false");
+            }
+        }
+        this.parameters.put("SQL_TIDO_ID", "AND TIPO = " + request.getParameter("DatoTipo"));
+        this.parameters.put("SQL_ORDERS", "FECHA_APROBACION DESC");
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePagePresupuesto") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPagePresupuesto")) - 1)
+                * Integer.parseInt(request.getParameter("sizePagePresupuesto")));
+        return this.parameters;
+    }
+
+    private Presupuesto getPresupuesto(HttpServletRequest request) {
+        Presupuesto presupuesto = new Presupuesto();
+        if (request.getParameter("action").equals("updatePresupuesto")) {
+            presupuesto.setId(Integer.parseInt(request.getParameter("txtIdPresupuestoER")));
+        }
+        presupuesto.setAnho(request.getParameter("txtFechaAprobacionER").substring(6, 10));
+        presupuesto.setDescripcion(request.getParameter("txtDescripcionER"));
+        presupuesto.setDocu_id(Integer.parseInt(request.getParameter("txtDocuIdER")));
+        presupuesto.setEstado(Boolean.parseBoolean(request.getParameter("txtEstadoER")));
+        presupuesto.setFecha_aprobacion(Utilities.getDateSQLFORMAT(request.getParameter("txtFechaAprobacionER"), "dd/MM/yyyy"));
+        presupuesto.setResolucion_aprobacion(request.getParameter("txtResolucionAprobacionER"));
+        presupuesto.setTipo(Integer.parseInt(request.getParameter("txtTipoER")));
+        presupuesto.setTitulo_formato(request.getParameter("txtTituloFormatoER"));
+        presupuesto.setUbicacion(request.getParameter("txtUbicacionER"));
+        return presupuesto;
+    }
+    
     private void procesarFinanza(BEAN_CRUD beanCrud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(beanCrud);
@@ -150,26 +234,27 @@ public class FinanzaAPI extends HttpServlet {
     }
 
     private HashMap<String, Object> getParametersFinanzas(HttpServletRequest request) {
-        this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtDescripcionFinanza").toLowerCase());
-        if (request.getParameter("comboAnioFinanza").equals("-1")) {
-            this.parameters.put("SQL_ANIO", "AND FECHA != '' ");
+        this.parametersF.clear();
+        this.parametersF.put("FILTER", request.getParameter("txtDescripcionFinanza").toLowerCase());
+        String tipo = "comboAnioFinanza" + request.getParameter("DatoTipoFinanza");
+        if (request.getParameter(tipo).equals("-1")) {
+            this.parametersF.put("SQL_ANIO", "");
         } else {
-            this.parameters.put("SQL_ANIO", "AND FECHA != '' AND SUBSTRING(FECHA,7,4) = '" + request.getParameter("comboAnioFinanza") + "' ");
+            this.parametersF.put("SQL_ANIO", "AND ANHO = '" + request.getParameter(tipo) + "' ");
         }
         if (request.getParameter("comboTipoListaFinanza").equals("-1")) {
-            this.parameters.put("SQL_ESTADO", "");
+            this.parametersF.put("SQL_ESTADO", "");
         } else {
-            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("comboTipoListaFinanza") + " ");
+            this.parametersF.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("comboTipoListaFinanza") + " ");
         }
-        this.parameters.put("SQL_TIPO", "AND TIPO = " + getTipo(request));
+        this.parametersF.put("SQL_TIPO", "AND TIPO = " + request.getParameter("DatoTipoFinanza"));
 
-        this.parameters.put("SQL_ORDERS", "TO_DATE(FECHA,'DD/MM/YYYY') DESC");
-        this.parameters.put("LIMIT",
+        this.parametersF.put("SQL_ORDERS", "ANHO DESC");
+        this.parametersF.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageFinanza") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageFinanza")) - 1)
                 * Integer.parseInt(request.getParameter("sizePageFinanza")));
-        return this.parameters;
+        return this.parametersF;
     }
 
     private Finanza getFinanza(HttpServletRequest request) {
@@ -179,7 +264,7 @@ public class FinanzaAPI extends HttpServlet {
             finanza.setDescripcion(request.getParameter("txtDescripcionFinanzaER"));
             finanza.setFecha(request.getParameter("txtFechaFinanzaER")); // -> dd/MM/yyyy
         } else {
-            finanza.setTipo(Integer.parseInt(getTipo(request)));
+            finanza.setTipo(Integer.parseInt(request.getParameter("txtTipoFinanzaER")));
             finanza.setAnho(request.getParameter("txtAnhoFinanzaER"));
             finanza.setMes(request.getParameter("txtMesFinanzaER"));
             finanza.setTitulo_formato(request.getParameter("txtTituloFinanzaER"));
@@ -192,53 +277,5 @@ public class FinanzaAPI extends HttpServlet {
         }
         return finanza;
     }
-
-    private String getTitleFinanzas(HttpServletRequest request) {
-        String title = "";
-        switch (request.getRequestURI().substring(request.getContextPath().length())) {
-            case "/finanzas/patrimonio":
-                title = "Estados de Cambio en el Patrimonio Neto";
-                break;
-            case "/finanzas/flujoefectivo":
-                title = "Estados de Flujo de Efectivo";
-                break;
-            case "/finanzas/gestion":
-                title = "Estados de Gestión";
-                break;
-            case "/finanzas/saldos":
-                title = "Saldos de Balance";
-                break;
-        }
-        return title;
-    }
-
-    private String getTipo(HttpServletRequest request) {
-        String tipo = "";
-        switch (request.getParameter("url_finanzas")) {
-            case "/finanzas/patrimonio":
-                tipo = "6";
-                break;
-            case "/finanzas/flujoefectivo":
-                tipo = "7";
-                break;
-            case "/finanzas/gestion":
-                tipo = "8";
-                break;
-            case "/finanzas/saldos":
-                tipo = "5";
-                break;
-        }
-        return tipo;
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }

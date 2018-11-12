@@ -65,6 +65,7 @@ function procesarAjaxDocumentosArcDig() {
     var datosSerializadosCompletos = $('#' + $('#nameFormArcDig').val()).serialize();
     datosSerializadosCompletos += "&numberPageDocumentosArcDig=" + $('#numberPageDocumentosArcDig').val();
     datosSerializadosCompletos += "&sizePageDocumentosArcDig=" + $('#sizePageDocumentosArcDig').val();
+    datosSerializadosCompletos += "&txtTido=-1";
     datosSerializadosCompletos += "&action=" + $('#actionDocumentosArcDig').val();
     $.ajax({
         url: getContext() + '/documentos/arcdig',
