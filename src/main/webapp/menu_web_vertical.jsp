@@ -8,10 +8,3 @@
         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/otras-publicaciones"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Otras Publicaciones</font></font></a></li>
     </ul>
 </div>
-
-<!--div class="widget widget_tt_twitter">
-    <i class="fa fa-twitter"></i>
-    <div id="twitter-gallery-feed">
-        <div class="twitter-widget"></div>
-    </div>
-</div-->

@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -43,12 +44,12 @@
                     <div class='col-lg-8 col-xs-12'>
                         <article class='post-wrapper'>
                             <div class='thumb-wrapper waves-effect waves-block waves-light'>
-                                <a><img src='<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/lineas_accion/infraestructura.jpg' class='img-responsive' alt='imgNoticia'></a>
+                                <a><img src='<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/lineas_accion/<%out.print(request.getAttribute("foto_banner"));%>' class='img-responsive' alt='img-banner'></a>
                             </div>
                             <div class='blog-content'>
                                 <header class='entry-header-wrapper'>
                                     <div class='entry-header'>
-                                        <h2 class='entry-title text-peam-negrita'><a id="idTituloNoticiaPrincipal" style="font-size: 23px;">Dirección de Infraestructura</a></h2>
+                                        <h2 class='entry-title text-peam-negrita'><a style="font-size: 21px;"><%out.print(request.getAttribute("title_linea_accion"));%></a></h2>
                                         <div class='entry-meta'>
                                             <ul class='list-inline'>
                                                 <li>
@@ -57,11 +58,11 @@
                                             </ul>
                                         </div>
                                         <div class="row">
-                                            <div class="col-lg-2 col-lg-offset-5">
-                                                <a><img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/lineas_accion/directores/director_infraestructura.jpg" alt=""></a>                
+                                            <div class="col-lg-2 col-lg-offset-5 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
+                                                <a><img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/lineas_accion/directores/<%out.print(request.getAttribute("foto_director"));%>" alt="img-director"></a>                
                                             </div>
                                             <div class="col-xs-12 text-center mt-10 mb-10">
-                                                <i class='fa fa-user'></i> <a>Ing. John William Sanchez Rodriguez - DIRECTOR DE INFRAESTRUCTURA</a>
+                                                <i class='fa fa-user'></i><a> <%out.print(request.getAttribute("director_cargo"));%></a>
                                             </div>
                                         </div>
                                         <h2 class='text-peam-negrita'><a>Funciones</a></h2>
@@ -69,22 +70,23 @@
                                 </header>
                                 <div class='entry-content text-peam' id="idContenidoNoticiaPrincipal" style="font-size: 18px;text-align: justify">
                                     <ul>
-                                        <li><i class="fa fa-check-square-o"></i> Programar, controlar y supervisar la ejecución de obras que ejecute el Proyecto Especial.</li>
-                                        <li><i class="fa fa-check-square-o"></i> Controlar y archivar los expedientes técnicos y planoteca especializada correspondientes a las obras dentro del ámbito del Proyecto Especial.</li>
-                                        <li><i class="fa fa-check-square-o"></i> Efectuar el seguimiento a los contratos de ejecución y supervisión de obras, así como los contratos de bienes y servicios relacionados con la ejecución de obras por ejecución presupuestaria directa.</li>
-                                        <li><i class="fa fa-check-square-o"></i> Supervisar las labores de mantenimiento y operación de las obras y equipos designados a su Dirección.</li>
-                                        <li><i class="fa fa-check-square-o"></i> Dirigir y supervisar los cálculos de valorizaciones de obras y servicios que el Proyecto Especial ejecute.</li>
-                                        <li><i class="fa fa-check-square-o"></i> Proponer a la Gerencia General la designación de los Comités para efectos de convocatorias y para la recepción y liquidaciones de obras.</li>
-                                        <li><i class="fa fa-check-square-o"></i> Formular informes periódicos de avances de las obras y servicios.</li>
-                                        <li><i class="fa fa-check-square-o"></i> Formular el Plan de Actividades y evaluar su cumplimiento.</li>
+                                        <%
+                                            List<String> list = (List<String>) request.getAttribute("funciones");
+                                            for (int i = 0; i < list.size(); i++) {
+                                                out.print("<li><i class='fa fa-check-square-o'></i> " + list.get(i) + "</li>");
+                                            }
+                                        %>
                                     </ul>
                                 </div>
+                                <br>
                                 <footer class="entry-footer">
-                                    <ul class="list-inline pull-left">
-                                        <li><a href="#" title="Descargar en PDF"><i class="fa fa-file-pdf-o"></i></a></li>
-                                        <li><a href="#" title="Descargar en WORD"><i class="fa fa-file-text"></i></a></li>
-                                        <li><a href="#" title="Descargar en PPT"><i class="fa fa-file-powerpoint-o"></i></a></li>
-                                    </ul>
+                                    <div class='text-center'>
+                                        <h3 class='text-peam-negrita'><a>Ultimos Estudios</a></h3>
+                                    </div>
+                                    <div class='text-center'>
+                                        <a style="margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;" class='waves-effect waves-light btn' href='http://ofi5.mef.gob.pe/sosem2/' target="_blank">PROYECTOS POR CÓDIGO SNIP</a>
+                                        <a style="margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;" class='waves-effect waves-light btn' href='http://ofi5.mef.gob.pe/wp/BusquedaAvanzada.aspx' target="_blank">PROYECTOS POR UNIDAD FORMULADA</a>
+                                    </div>
                                 </footer>
                             </div>
                         </article>
@@ -95,6 +97,7 @@
                                 <div class="fb-page" data-href="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs">Proyecto Especial Alto Mayo</a></blockquote></div>
                             </div>
                         </div>
+                        <%@ include file = "../../../menu_web_vertical_lineas.jsp" %> 
                     </div>
                 </div>
                 <hr>

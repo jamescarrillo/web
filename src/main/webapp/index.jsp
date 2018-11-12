@@ -423,7 +423,7 @@
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/area-de-estudios"> <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
+                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/estudios"> <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
                                     <h5 class="text-peam-verde">ESTUDIOS</h5>
                                 </a>
                             </div>
