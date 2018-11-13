@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
     <head>
         <%@ include file = "../../../att_head.jsp" %> 
@@ -37,14 +38,14 @@
         <section class="padding-bottom-100" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">UbicaciÛn</h2>
+                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Ubicaci√≥n</h2>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="border-tab transparent-nav">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-justified" role="tablist">
-                                <li role="presentation" class="active"><a href="#tab-ubicacion" class="waves-effect waves-dark"  role="tab" data-toggle="tab">UbicaciÛn</a></li>
+                                <li role="presentation" class="active"><a href="#tab-ubicacion" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Ubicaci√≥n</a></li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="panel-body">
@@ -55,13 +56,13 @@
                                                 <iframe class="col-12" style="float: left; padding: 20px;" height="450px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.pe/maps?ie=UTF8&amp;cid=3653831969751690139&amp;q=Proyecto+Especial+Alto+Mayo&amp;gl=PE&amp;hl=es&amp;t=m&amp;ll=-6.043346,-76.971502&amp;spn=0.012803,0.012875&amp;z=15&amp;output=embed"></iframe> 
                                             </div>
                                             <div class="col-md-8 col-xs-12 text-peam" style="font-size: 16px;text-align: justify">
-                                                <p>El Valle del Alto Mayo est· situado en la parte nor - oeste de la RegiÛn San MartÌn, en el Per˙, comprende dentro de su ·mbito a las provincias de Moyobamba y Rioja.</p>
-                                                <p>El ·mbito geogr·fico de acciÛn principal del Proyecto Especial Alto Mayo se ubica en la zona del Alto Mayo, comprendidas en las provincias de Moyobamba y Rioja, adem·s de las zonas
-                                                    priorizadas en los distritos de Pinto Recodo y Alonso de Alvarado de la Provincia de Lamas, comprendida dentro de la RegiÛn San MartÌn.</p>
-                                                <p>El ·rea de acciÛn actual lo constituyen 157,000 Ha. de tierras agrÌcolas y pecuarias de un total de 755,519 Ha. en el Alto Mayo, distribuidos: 486,448 Ha. y 269,071 Ha., en las m·rgenes
-                                                    derecha e izquierda del RÌo Mayo, respectivamente.</p>
+                                                <p>El Valle del Alto Mayo est√° situado en la parte nor - oeste de la Regi√≥n San Mart√≠n, en el Per√∫, comprende dentro de su √°mbito a las provincias de Moyobamba y Rioja.</p>
+                                                <p>El √°mbito geogr√°fico de acci√≥n principal del Proyecto Especial Alto Mayo se ubica en la zona del Alto Mayo, comprendidas en las provincias de Moyobamba y Rioja, adem√°s de las zonas
+                                                    priorizadas en los distritos de Pinto Recodo y Alonso de Alvarado de la Provincia de Lamas, comprendida dentro de la Regi√≥n San Mart√≠n.</p>
+                                                <p>El √°rea de acci√≥n actual lo constituyen 157,000 Ha. de tierras agr√≠colas y pecuarias de un total de 755,519 Ha. en el Alto Mayo, distribuidos: 486,448 Ha. y 269,071 Ha., en las m√°rgenes
+                                                    derecha e izquierda del R√≠o Mayo, respectivamente.</p>
                                                 <p>La sede central del proyecto se encuentra ubicada en el distrito y provincia de Moyobamba.</p>
-                                                <p>Adem·s cuenta con Oficinas de CoordinaciÛn en la jurisdicciÛn de la Provincia de Rioja, distritos de Rioja y Nueva Cajamarca y en la jurisdicciÛn de la Provincia de Moyobamba, los
+                                                <p>Adem√°s cuenta con Oficinas de Coordinaci√≥n en la jurisdicci√≥n de la Provincia de Rioja, distritos de Rioja y Nueva Cajamarca y en la jurisdicci√≥n de la Provincia de Moyobamba, los
                                                     Centros Poblados de Pueblo Libre y Pacayzapa.</p>
                                             </div>
                                         </div>

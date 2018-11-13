@@ -56,7 +56,7 @@
                                         <div class="row">
                                             <form id="FrmDocumentos">
                                                 <div class="col-xs-12">
-                                                    <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                    <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
                                                         <option value="700">Recomendaciones de los Informes de Auditoría Orientadas al Mejoramiento de la Gestión</option>
                                                         <option value="800">Evaluación de Cumplimiento de Actualización del Portal</option>
                                                         <option value="500">Laudos</option>
@@ -66,7 +66,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-4 col-xs-12">
-                                                    <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                    <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-6 col-xs-12">

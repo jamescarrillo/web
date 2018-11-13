@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
     <head>
         <%@ include file = "../../../att_head.jsp" %> 
@@ -37,26 +38,26 @@
         <section class="padding-bottom-100" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Visi髇 y Misi髇</h2>
+                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Visi贸n y Misi贸n</h2>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="border-tab transparent-nav">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-justified" role="tablist">
-                                <li role="presentation" class="active"><a href="#tab-vision" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Nuestra Visi髇</a></li>
-                                <li role="presentation"><a href="#tab-mision" class="waves-effect waves-dark" role="tab" data-toggle="tab">Nuestra Misi髇</a></li>
+                                <li role="presentation" class="active"><a href="#tab-vision" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Nuestra Visi贸n</a></li>
+                                <li role="presentation"><a href="#tab-mision" class="waves-effect waves-dark" role="tab" data-toggle="tab">Nuestra Misi贸n</a></li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="panel-body">
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade in active text-peam" id="tab-vision" style="font-size: 16px;text-align: justify">
-                                        <p class="ml-10 mr-10">Liderar, la gesti髇 p鷅lica especializada en planes, programas y proyectos de inversi髇 hacia la excelencia, con 閠ica y alto sentido humanitario, al servicio de la familia y comunidad del Alto Mayo.</p>
+                                        <p class="ml-10 mr-10">Liderar, la gesti贸n p煤blica especializada en planes, programas y proyectos de inversi贸n hacia la excelencia, con 茅tica y alto sentido humanitario, al servicio de la familia y comunidad del Alto Mayo.</p>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade text-peam" id="tab-mision" style="font-size: 16px;text-align: justify">
-                                        <p class="ml-10 mr-10">Somos un equipo humano responsable especializado en la ejecuci髇 de planes, programas y proyectos de inversi髇 p鷅lica,
-                                            transferencia de capacidades, gesti髇 organizacional y asistencia t閏nica para lograr procesos productivos de calidad
-                                            y en buen uso tecnol骻ico, para lograr el desarrollo socio econ髆ico productivo y ambiental del Alto Mayo.
+                                        <p class="ml-10 mr-10">Somos un equipo humano responsable especializado en la ejecuci贸n de planes, programas y proyectos de inversi贸n p煤blica,
+                                            transferencia de capacidades, gesti贸n organizacional y asistencia t茅cnica para lograr procesos productivos de calidad
+                                            y en buen uso tecnol贸gico, para lograr el desarrollo socio econ贸mico productivo y ambiental del Alto Mayo.
                                         </p>
                                     </div>
                                 </div>

@@ -257,3 +257,11 @@ function removeTagHTML(cadena) {
      return str.replace(/<[^>]*>/g, ''); 
      */
 }
+
+function getStringDateFormat(cadenaFecha) {
+    //cadenaFecha -> dd/MM/yyyy
+    var valores = cadenaFecha.split("/");
+    var fecha = new Date(parseInt(valores[2]), parseInt(valores[1]), parseInt(valores[0]), 0, 0, 0);
+    var options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
+    return fecha.toLocaleDateString("es-ES", options);
+}

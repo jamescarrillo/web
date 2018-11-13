@@ -98,7 +98,7 @@ Border Bottom Tab
 .border-bottom-tab .nav-tabs.nav-justified>.active>a:focus,
 .border-bottom-tab .nav-tabs.nav-justified>.active>a:hover {
     color: #202020;
-    border-bottom: 4px solid #8bc34a!important;
+    border-bottom: 4px solid #00793D!important;
     border-left: 1px solid transparent;
     border-right: 1px solid transparent;
     border-top: 1px solid transparent;
@@ -189,7 +189,7 @@ Border Tabs
 
 .border-tab.transparent-nav .nav-tabs>li.active::after {
     /*border-bottom: 3px solid #03a9f4;*/
-    border-bottom: 3px solid #8bc34a;
+    border-bottom: 3px solid #00793D;
 }
 
 .border-tab.transparent-nav .nav-tabs>li.active>a, 
@@ -199,7 +199,7 @@ Border Tabs
 .border-tab.transparent-nav .nav-tabs.nav-justified>.active>a:focus, 
 .border-tab.transparent-nav .nav-tabs.nav-justified>.active>a:hover {
     /*color: #03a9f4;*/
-    color: #8bc34a;
+    color: #00793D;
 }
 
 

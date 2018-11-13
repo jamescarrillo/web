@@ -149,7 +149,7 @@ Common featured boxes
     color: #673ab7;
 }
 .green-icon {
-    color: #8bc34a;
+    color: #00793D;
 }
 .cyan-icon {
     color: #00bcd4;
@@ -179,7 +179,7 @@ Common featured boxes
     background-color: #673ab7 !important;
 }
 .green-hover:hover {
-    background-color: #8bc34a  !important;
+    background-color: #00793D  !important;
 }
 
 
@@ -220,7 +220,7 @@ Common featured boxes
     background-color: #9c27b0;
 }
 .icon-hover-green:hover .icon{
-    background-color: #8bc34a;
+    background-color: #00793D;
 }
 .icon-hover-red:hover .icon{
     background-color: #f6483f;
@@ -461,7 +461,7 @@ Owl Carousel Customize
 .brand-dot.owl-theme .owl-dots .owl-dot.active span, 
 .brand-dot.owl-theme .owl-dots .owl-dot:hover span {
     /*background: #03a9f4;*/
-    background: #8bc34a;
+    background: #00793D;
 }
 
 

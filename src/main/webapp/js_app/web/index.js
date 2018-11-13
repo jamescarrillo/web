@@ -138,7 +138,7 @@ function addMultimediaWeb(DATA_MULTIMEDIA) {
         $('#containerMultimedia').append(card);
     });
     //ADD BUTTON VIEW ALL
-    $('#containerMultimedia').append("<div class='col-md-12 mt-10 text-center'><a class='waves-effect waves-light btn' href='publicaciones/noticias/multimedia'>Ver todos <i class='fa fa-long-arrow-right'></i></a></div>");
+    $('#containerMultimedia').append("<div class='col-md-12 mt-10 text-center'><a class='waves-effect waves-light btn' href='publicaciones/noticias/multimedia' style='font-size: 18px;'>Ver todos <i class='fa fa-long-arrow-right'></i></a></div>");
 }
 
 function procesarAjaxGaleriaWeb(apikey, idusuario, idalbum, numero_fotos_mostrar) {

@@ -93,7 +93,7 @@ a > * {
 a:focus,
 a:hover {
     /*color: #03a9f4;*/
-    color: #a20505;
+    color: #f50303;
     outline: none;
     text-decoration: none;
 }
@@ -2082,7 +2082,7 @@ KEY FRAME
 }
 
 .search-trigger i:hover {
-    color: #03a9f4;
+    color: #00793D;
 }
 .tt-nav.sticky .search-trigger i.material-icons {
     line-height: 62px;

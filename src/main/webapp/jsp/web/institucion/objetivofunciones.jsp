@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
     <head>
         <%@ include file = "../../../att_head.jsp" %> 
@@ -44,7 +45,7 @@
                         <div class="border-tab transparent-nav">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-justified" role="tablist">
-                                <li role="presentation" class="active"><a href="#tab-objetivos" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Objetivos Estrat間icos</a></li>
+                                <li role="presentation" class="active"><a href="#tab-objetivos" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Objetivos Estrat茅gicos</a></li>
                                 <li role="presentation"><a href="#tab-funciones" class="waves-effect waves-dark" role="tab" data-toggle="tab">Funciones</a></li>
                             </ul>
                             <!-- Tab panes -->
@@ -85,44 +86,44 @@
                                             <div class="row">
                                                 <div class="col-md-6">
                                                     <i class="fa fa-check-square-o"></i>
-                                                    Formular el Plan Estrat間ico de Desarrollo del PEAM, en armon韆 con los Planes Estrat間icos Regional y Nacional, y los objetivos del Proyecto, y de acuerdo a lo establecido en los Convenios de Cooperaci髇 T閏nica Internacional que le corresponda ejecutar.
+                                                    Formular el Plan Estrat茅gico de Desarrollo del PEAM, en armon铆a con los Planes Estrat茅gicos Regional y Nacional, y los objetivos del Proyecto, y de acuerdo a lo establecido en los Convenios de Cooperaci贸n T茅cnica Internacional que le corresponda ejecutar.
                                                 </div>
                                                 <div class="col-md-6">
                                                     <i class="fa fa-check-square-o"></i>
-                                                    Formular los Poyectos Anuales de Presupuesto de la Instituci髇 y gestiona su aprobaci髇 en los diferentes niveles: GRSM, Direcci髇 Nacional del Presuspuesto P鷅lico-MEF y Comisi髇 de Presupuesto del Congreso de la Rep鷅lica.
+                                                    Formular los Poyectos Anuales de Presupuesto de la Instituci贸n y gestiona su aprobaci贸n en los diferentes niveles: GRSM, Direcci贸n Nacional del Presuspuesto P煤blico-MEF y Comisi贸n de Presupuesto del Congreso de la Rep煤blica.
                                                 </div>
                                                 <div class="col-md-6">
                                                     <i class="fa fa-check-square-o"></i>
-                                                    Programa, dirige, ejecuta, controla y supervisa las diferentes obras y actividades para el cumplimiento de las metas f韘icas y financieras en funci髇 de los recursos econ髆icos asignados.
+                                                    Programa, dirige, ejecuta, controla y supervisa las diferentes obras y actividades para el cumplimiento de las metas f铆sicas y financieras en funci贸n de los recursos econ贸micos asignados.
                                                 </div>
                                                 <div class="col-md-6">
                                                     <i class="fa fa-check-square-o"></i>
-                                                    Contrataci髇 de empresas y personas naturales o jur韉icas para la ejecuci髇 de estudios y obras de los Proyectos a su cargo, de acuerdo con las exigencias de la Ley y Reglamento de Adquisiciones y Contrataciones del Estado.
+                                                    Contrataci贸n de empresas y personas naturales o jur铆dicas para la ejecuci贸n de estudios y obras de los Proyectos a su cargo, de acuerdo con las exigencias de la Ley y Reglamento de Adquisiciones y Contrataciones del Estado.
                                                 </div>
                                                 <div class="col-md-6">
                                                     <i class="fa fa-check-square-o"></i>
-                                                    Eval鷄 la gesti髇 y el nivel de ejecuci髇 de las diferentes obras o proyectos productivos, en funci髇 de la programaci髇 anual, teniendo en cuenta el dise駉 total del Proyecto sujeto a evaluaci髇.
+                                                    Eval煤a la gesti贸n y el nivel de ejecuci贸n de las diferentes obras o proyectos productivos, en funci贸n de la programaci贸n anual, teniendo en cuenta el dise帽o total del Proyecto sujeto a evaluaci贸n.
                                                 </div>
                                                 <div class="col-md-6">
                                                     <i class="fa fa-check-square-o"></i>
-                                                    Realizar el seguimiento y evaluaci髇 de los efectos e impactos de la ejecuci髇 del PEAM, sobre el incremento de la producci髇 y productividad agropecuaria en el area de influencia y ar閍s adyacentes, sobre el nivel de vida de la poblaci髇 y sobre la econom韆 en conjunto, estableciendo compraciones con las metas obtenidas en per韔dos anteriores.
+                                                    Realizar el seguimiento y evaluaci贸n de los efectos e impactos de la ejecuci贸n del PEAM, sobre el incremento de la producci贸n y productividad agropecuaria en el area de influencia y ar茅as adyacentes, sobre el nivel de vida de la poblaci贸n y sobre la econom铆a en conjunto, estableciendo compraciones con las metas obtenidas en per铆odos anteriores.
                                                 </div>
 
                                                 <div class="col-md-6">
                                                     <i class="fa fa-check-square-o"></i>
-                                                    Coordina con el GRSM, los aspectos t閏nicos, jur韉icos, normativos, laborales, econ髆icos y financieros relacionados con la ejecuci髇 del PEAM.
+                                                    Coordina con el GRSM, los aspectos t茅cnicos, jur铆dicos, normativos, laborales, econ贸micos y financieros relacionados con la ejecuci贸n del PEAM.
                                                 </div>
                                                 <div class="col-md-6">
                                                     <i class="fa fa-check-square-o"></i>
-                                                    Investiga y realiza acciones de difusi髇 en aspectos relevantes para el desarrollo de los proyectos a su cargo, tales tales como la conservaci髇, mejoramiento y uso adecuado de los recursos agua, suelo y bosques, manejo integral de cuencas, ecosistemas y aprovechamiento adecuado de los recursos naturales.
+                                                    Investiga y realiza acciones de difusi贸n en aspectos relevantes para el desarrollo de los proyectos a su cargo, tales tales como la conservaci贸n, mejoramiento y uso adecuado de los recursos agua, suelo y bosques, manejo integral de cuencas, ecosistemas y aprovechamiento adecuado de los recursos naturales.
                                                 </div>
                                                 <div class="col-md-6">
                                                     <i class="fa fa-check-square-o"></i>
-                                                    Promueve la participaci髇 de los beneficios de las obras o proyectos ejecutados, ademas de propiciar la inversi髇 privado en proyectos agropecuarios y agroindustriales, principalmente de aquellos orientados a la exportaci髇.
+                                                    Promueve la participaci贸n de los beneficios de las obras o proyectos ejecutados, ademas de propiciar la inversi贸n privado en proyectos agropecuarios y agroindustriales, principalmente de aquellos orientados a la exportaci贸n.
                                                 </div>
                                                 <div class="col-md-6">
                                                     <i class="fa fa-check-square-o"></i>
-                                                    Ejecuta los estudios de factibilidad que sean necesarios en apoyo al desarrollo de proyectos espec韋icos de inversi髇.
+                                                    Ejecuta los estudios de factibilidad que sean necesarios en apoyo al desarrollo de proyectos espec铆ficos de inversi贸n.
                                                 </div>
                                                 <div class="col-md-6">
                                                     <i class="fa fa-check-square-o"></i>

@@ -291,6 +291,7 @@ public class LineasAccionWebAPI extends HttpServlet {
         } else {
             this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioObra") + "' ");
         }
+        //cboSeguimiento
         this.parameters.put("SQL_ORDERS", "ANHO DESC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageObra") + " OFFSET "

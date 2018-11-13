@@ -23,11 +23,11 @@
                 </a>
                 <ul class="menuzord-menu pull-center" id="menu-list">
                     <li><a href="<%out.print(getServletContext().getContextPath());%>/index">Inicio</a></li>
-                    <li><a href="javascript:void(0)">La institución</a>
+                    <li><a href="javascript:void(0)">La Institución</a>
                         <div class="megamenu">
                             <div class="megamenu-row">
                                 <div class="col12">
-                                    <h2>La institución</h2>
+                                    <h2>La Institución</h2>
                                     <ul class="list-unstyled clearfix">
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/quienes-somos">Quienes Somos</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/vision-y-mision">Visión / Misión</a></li>
@@ -95,12 +95,11 @@
                                     <h2>Servicios</h2>
                                     <ul class="list-unstyled clearfix">
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/login">Gestor de Contenidos</a></li>
-                                        <li><a href="http://doc.peam.gob.pe/sisgedo/app/main.php">SisGedo</a></li>
+                                        <li><a href="http://doc.peam.gob.pe/sisgedo/app/main.php">Sistema de Trámite Documentario (SisGedo)</a></li>
                                         <li><a href="http://siga.peam.gob.pe:8080/SIGAWEB/">Siga Web</a></li>
                                         <li><a href="http://lib.peam.gob.pe:8081/ArcDig/">ArcDig</a></li>
                                         <li><a href="http://lib.peam.gob.pe/Visitas/controlVisitas/index.php?r=consultas/visitaConsulta">Registro de Visitas en Línea</a></li>
                                         <li><a href="https://correo.peam.gob.pe/">Correo Institucional</a></li>
-                                        <li><a href="http://lib.peam.gob.pe:8081/Gps">Rastreo Satelital</a></li>
                                     </ul>
                                 </div>  
                                 <div class="col6">

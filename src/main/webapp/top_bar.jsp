@@ -18,7 +18,7 @@
                             } else {
                                 target = "";
                             }
-                            out.print("<li><a href='" + valorItem[1] + "' " + target + "><i class='" + valorItem[2] + "' style='color: #a20505'></i></a></li>");
+                            out.print("<li><a href='" + valorItem[1] + "' " + target + "><i class='" + valorItem[2] + "' style='color: #ffffff'></i></a></li>");
                         }
                     %>
                 </ul>

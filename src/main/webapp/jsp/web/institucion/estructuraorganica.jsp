@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
     <head>
         <%@ include file = "../../../att_head.jsp" %> 
@@ -37,7 +38,7 @@
         <section class="padding-bottom-100">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 60px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Estructura Org·nica</h2>
+                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Estructura Org√°nica</h2>
                 </div>
 
                 <div class="row">
@@ -45,7 +46,7 @@
                         <div class="border-tab transparent-nav">
                             <!-- Nav tabs -->
                             <ul class="nav nav-tabs nav-justified" role="tablist">
-                                <li role="presentation" class="active"><a href="#tab-estructura_or" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Estructura Org·nica</a></li>
+                                <li role="presentation" class="active"><a href="#tab-estructura_or" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Estructura Org√°nica</a></li>
                             </ul>
                             <!-- Tab panes -->
                             <div class="panel-body">

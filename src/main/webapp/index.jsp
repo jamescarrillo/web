@@ -122,7 +122,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota1" value="">
                                 <input type="hidden" name="action" id="action1" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más <i class='fa fa-long-arrow-right'></i></button>
                             </form>
                         </div>
                     </li>
@@ -186,7 +186,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota2" value="">
                                 <input type="hidden" name="action" id="action2" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más <i class='fa fa-long-arrow-right'></i></button>
                             </form>
                         </div>
                     </li>
@@ -250,7 +250,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota3" value="">
                                 <input type="hidden" name="action" id="action3" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más <i class='fa fa-long-arrow-right'></i></button>
                             </form>
                         </div>
                     </li>
@@ -314,7 +314,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota4" value="">
                                 <input type="hidden" name="action" id="action4" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más <i class='fa fa-long-arrow-right'></i></button>
                             </form>
                         </div>
                     </li>
@@ -378,7 +378,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota5" value="">
                                 <input type="hidden" name="action" id="action5" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light">Leer más <i class='fa fa-long-arrow-right'></i></button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más <i class='fa fa-long-arrow-right'></i></button>
                             </form>
                         </div>
                     </li>
@@ -677,7 +677,7 @@
                                 <a href="http://doc.peam.gob.pe/sisgedo/app/main.php">
                                     <i class="fa fa-folder-open fa-4x" aria-hidden="true"></i>
                                     <h5 class="text-peam-verde">
-                                        SISGEDO
+                                        Sistema de Trámite <br>Documentario (SISGEDO)
                                     </h5>
                                 </a>
                             </div>
@@ -758,7 +758,7 @@
                                         <i class="material-icons brand-icon brand-hover" style="font-size: 4em">widgets</i>
                                     </div>
                                     <h5 class="text-peam-verde">
-                                        BIENES, SERVICIOS, OBRAS <br>Y CONSECIONES
+                                        CONVOCATORIA BIENES, SERVICIOS, OBRAS <br>Y CONCESIONES
                                     </h5>
                                 </a>
                             </div>

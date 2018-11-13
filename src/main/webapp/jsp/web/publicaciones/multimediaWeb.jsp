@@ -73,7 +73,7 @@
                                             <div role="tabpanel" class="tab-pane fade" id="tab-filtros">
                                                 <div class="form-group col-xs-12">
                                                     <label for="sizePageMultimedia_" style="font-size: 14px;">N° videos a mostrar</label>
-                                                    <select id="sizePageMultimedia_" idformulario="FrmMultimedia" idinput="sizePageMultimedia" class="form-control combo-paginar-formulario" style="border: 1px solid #8bc34a">
+                                                    <select id="sizePageMultimedia_" idformulario="FrmMultimedia" idinput="sizePageMultimedia" class="form-control combo-paginar-formulario" style="border: 1px solid #00793D">
                                                         <option value="6">6</option>
                                                         <option value="8">8</option>
                                                         <option value="10">10</option>
@@ -83,7 +83,7 @@
                                                 </div>
                                                 <div class="form-group col-xs-12">
                                                     <label for="comboAnioMultimedia_" style="font-size: 14px;">Año</label>
-                                                    <select id="comboAnioMultimedia_" idformulario="FrmMultimedia" idinput="comboAnio" class="form-control combo-paginar-formulario" style="border: 1px solid #8bc34a">
+                                                    <select id="comboAnioMultimedia_" idformulario="FrmMultimedia" idinput="comboAnio" class="form-control combo-paginar-formulario" style="border: 1px solid #00793D">
                                                     </select>
                                                 </div>
                                             </div>

@@ -56,7 +56,7 @@
                                         <div class="row">
                                             <form id="FrmDocumentos">
                                                 <div class="col-md-4 col-sm-3 col-xs-12">
-                                                    <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                    <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
                                                         <option value="1100">PAC y Modificatorias</option>
                                                         <option value="100">Monto de Liquidación Final de Obra</option>
                                                         <option value="200">Monto Adicionales de Obra</option>
@@ -64,7 +64,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                    <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4 col-sm-3 col-xs-12">

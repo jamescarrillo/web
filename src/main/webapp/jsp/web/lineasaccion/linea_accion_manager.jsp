@@ -1,5 +1,6 @@
 <%@page import="java.util.List"%>
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
     <head>
         <%@ include file = "../../../att_head.jsp" %> 
@@ -38,7 +39,7 @@
         <section class="padding-bottom-100" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Nuestras L韓eas de Acci髇</h2>
+                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Nuestras L铆neas de Acci贸n</h2>
                 </div>
                 <div class="row" style="margin-bottom: 60px;">
                     <div class='col-lg-8 col-xs-12'>
@@ -75,7 +76,7 @@
                                             for (int i = 0; i < list.size(); i++) {
                                                 out.print("<li><i class='fa fa-check-square-o'></i> " + list.get(i) + "</li>");
                                             }
-                                            %>
+                                        %>
                                     </ul>
                                 </div>
                             </div>
@@ -97,10 +98,10 @@
                                         <div class="row">
                                             <form id="FrmObra">
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarObra' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                    <select id="cboSeguimiento" name="cboSeguimiento" class="form-control combo-paginar " idBtnBuscar='btnBuscarObra' style="border: 1px solid #8bc34a; margin-top: 40px">
                                                         <option value="-1">TODOS</option>
                                                         <option value="Finalizado">Finalizado</option>
-                                                        <option value="En Ejecucion">En Ejecuci髇</option>
+                                                        <option value="En Ejecucion">En Ejecuci贸n</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
@@ -119,11 +120,11 @@
                                                 <input type="hidden" id="nameForm" value="FrmObra">
                                                 <input type="hidden" id="actionObra" name="action" value="paginarObra">
                                                 <input type="hidden" id="numberPageObra" name="numberPageObra" value="1">
-                                                <input type="hidden" id="sizePageObra" name="sizePageObra" value="10">
-                                                <input type="hidden" id="comboTipoListaObra" name="comboTipoListaObra" value="-1">
+                                                <input type="hidden" id="sizePageObra" name="sizePageObra" value="5">
                                             </form>
+                                            <button type="button" id="btnAbrirModal" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">MOSSTRAR MODAL</button>
                                         </div>
-                                        <div class="row" id="loader_contenido" style="display: none">
+                                        <div class="row" id="loader_contenido">
                                             <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
                                                 <div class="loader-peam_small"></div>
                                             </div>
@@ -131,29 +132,54 @@
 
                                     </div>
                                 </header>
-                                <div class="entry-content">
-                                    <!--div class="row equal-height-row">
+                                <div class="entry-content" id="containerObras">
+                                    <!--div class="row equal-height-row mb-30">
                                         <div class="col-md-7">
                                             <div class="valign-wrapper equal-height-column">
                                                 <div class="hero-intro valign-cell">
-                                                    <h2 class="text-peam-negrita text-peam-verde mb-20">
-                                                        COMPONENTE DE INTERVENCI覰 AMBIENTAL DEL PIP: MEJORAMIENTO DEL CAMINO VECINAL EMP. PE-5N (INDA袳) - SECTOR SHANGO (MOYOBAMBA), DISTRITO DE MOYOBAMBA, PROVINCIA DE MOYOBAMBA - SAN MART蚇.
-                                                    </h2>
-                                                    <h5 class="text-peam">
-                                                        <strong>MONTO INVERSI覰: </strong>S/ 52585
-                                                    </h5>
-                                                    <div class="progress-section">
-                                                        <span class="progress-title"><strong>Avance F韘ico</strong></span>
-                                                        <div class="progress">
-                                                            <div class="progress-bar brand-bg six-sec-ease-in-out" style="background-color: #6a9a32!important" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
-                                                                <span>90%</span>
-                                                            </div>
+                                                    <h2 class='text-peam-negrita text-peam-verde mb-20'>COMPONENTE DE INTERVENCI脫N AMBIENTAL DEL PIP: MEJORAMIENTO DEL CAMINO VECINAL EMP. PE-5N (INDA脩E) - SECTOR SHANGO (MOYOBAMBA), DISTRITO DE MOYOBAMBA, PROVINCIA DE MOYOBAMBA - SAN MART脥N.</h2>
+                                                    <div class="row">
+                                                        <div class="col-xs-6">
+                                                            <h5 class='text-peam text-peam-negrita'><i class='fa fa-money'></i> Monto de la Inversi贸n</h5>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <h5 class='text-peam text-righ'>S/ 52585</h5>
                                                         </div>
                                                     </div>
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-xs-6">
+                                                            <h5 class="text-peam text-peam-negrita">
+                                                                <i class='fa fa-calendar'></i> Fecha Inicio
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <h5 class="text-peam text-right">
+                                                                01/04/2018
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-xs-6">
+                                                            <h5 class="text-peam text-peam-negrita">
+                                                                <i class='fa fa-calendar'></i> Fecha Finalizaci贸n
+                                                            </h5>
+                                                        </div>
+                                                        <div class="col-xs-6">
+                                                            <h5 class="text-peam text-right">
+                                                                30/09/2018
+                                                            </h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class='progress-section'>
+                                                        <span class='progress-title'><strong>Avance F铆sico</strong></span>
+                                                        <div class='progress'><div class='progress-bar brand-bg six-sec-ease-in-out' style='background-color: #6a9a32!important' role='progressbar' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100'><span>90%</span></div></div>
+                                                    </div>
+                                                    
                                                     <div class="progress-section">
                                                         <span class="progress-title"><strong>Avance Financiero</strong></span>
                                                         <div class="progress">
-                                                            <div class="progress-bar brand-bg six-sec-ease-in-out" style="background-color: #6a9a32!important" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
+                                                            <div class="progress-bar brand-bg six-sec-ease-in-out" style="background-color: #6a9a32!important" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
                                                                 <span>90%</span>
                                                             </div>
                                                         </div>
@@ -161,20 +187,18 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-5 hero-thumb equal-height-column">
-                                            <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/lineas_accion/<%out.print(request.getAttribute("foto_banner"));%>" class="img-responsive" alt="Image">
-                                            <h5 class="text-center mt-10">Camino vecinal Inda馿 - sector Shango</h5>
+                                        <div class='col-md-5 hero-thumb equal-height-column'>
+                                            <img style='border: 3px solid;color: #6a9a32' src='' class='img-responsive' alt='Image'>
+                                            <h5 class='text-center mt-10'>Camino vecinal Inda帽e - sector Shango</h5>
                                             <div class='text-center'>
-                                                <a style="margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;" class='waves-effect waves-light btn' target="_blank">Ver Detalle</a>
-                                                <a style="margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;" class='waves-effect waves-light btn' target="_blank">Galer韆</a>
-                                                <a style="margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;" class='waves-effect waves-light btn' target="_blank">Link infobras</a>
-                                            </div>
-                                            <div class='text-center'>
-                                                <a style="margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;" class='waves-effect waves-light btn grey-blue' target="_blank">En Ejecuci髇</a>
+                                                <a style='margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;' class='waves-effect waves-light btn' target='_blank'>Ver Detalle</a>
+                                                <a style='margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;' class='waves-effect waves-light btn' target='_blank'>Galer铆a</a>
+                                                <a style='margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;' class='waves-effect waves-light btn' target='_blank'>Link infobras</a>
+                                                <a style='margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;' class='waves-effect waves-light btn grey-blue' target='_blank'>En Ejecuci贸n</a>
                                             </div>
                                         </div>
-                                    </div-->
-
+                                    </div>
+                                    <hr-->
                                 </div>
                                 <footer class="entry-footer">
                                     <div class="row">
@@ -200,6 +224,25 @@
                 <hr>
             </div><!-- /.container -->
         </section>
+        <div id="myModal" class="modal-peam">
+            <!-- Modal content -->
+            <div class="modal-content-peam">
+                <div class="modal-header-peam">
+                    <span class="close" id="btnCerrarModal">&times;</span>
+                    <h2 style="margin-top: 15px;">
+                        COMPONENTE DE INTERVENCI脫N AMBIENTAL DEL PIP: MEJORAMIENTO DEL CAMINO VECINAL EMP. PE-5N (INDA脩E) - SECTOR SHANGO (MOYOBAMBA), DISTRITO DE MOYOBAMBA, PROVINCIA DE MOYOBAMBA - SAN MART脥N.
+                    </h2>
+                </div>
+                <div class="modal-body-peam">
+                    <p>Some text in the Modal Body</p>
+                    <p>Some other text...</p>
+                </div>
+                <div class="modal-footer-peam">
+                    <h5 style="margin-top: 10px;" class="text-peam-negrita">PROYECTO ESPECIAL ALTO MAYO</h5>
+                </div>
+            </div>
+
+        </div>
         <%@ include file = "../../../footer.jsp" %>  
         <div id="fb-root"></div>
         <script>(function (d, s, id) {
@@ -230,6 +273,6 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
-
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/lineaaccion.js"></script>
     </body>
 </html>

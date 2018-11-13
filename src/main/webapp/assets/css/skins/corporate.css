@@ -17,13 +17,14 @@
 .btn,
 .btn:hover,
 button:focus {
-    background-color: #6a9a32;
+    background-color: #00793D;
 }
 
 
 /*link style*/
 a {
-    color: #6a9a32;
+    /*color: #6a9a32;*/
+    color: #00793D;
 }
 
 
@@ -40,8 +41,8 @@ input[type=tel]:focus:not([readonly]),
 input[type=number]:focus:not([readonly]), 
 input[type=search]:focus:not([readonly]), 
 textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid #71c44c;
-    box-shadow: 0 1px 0 0 #71c44c; 
+    border-bottom: 1px solid #00793D;
+    box-shadow: 0 1px 0 0 #00793D; 
 }
 
 input[type=text]:focus:not([readonly]) + label, 
@@ -55,7 +56,7 @@ input[type=tel]:focus:not([readonly]) + label,
 input[type=number]:focus:not([readonly]) + label, 
 input[type=search]:focus:not([readonly]) + label, 
 textarea.materialize-textarea:focus:not([readonly]) + label {
-    color: #71c44c !important; 
+    color: #00793D !important; 
 }
 
 
@@ -67,7 +68,7 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 .contact-info .mail a:hover,
 .portfolio-with-title .portfolio-title h2 a:hover, 
 .portfolio-with-title .portfolio-title p a:hover {
-    color: #6a9a32 !important; /*theme primary color*/
+    color: #00793D !important; /*theme primary color*/
 }
 
 .brand-bg,
@@ -77,7 +78,7 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 .brand-filter li.active,
 .icon-hover-brand:hover .icon {
     background-color: rgba(255,255,255,.15) !important; /*theme primary background color*/
-    color: #a20505 !important;
+    color: #f50303 !important;
 }
 
 .brand-bg.darken-2 {
@@ -98,10 +99,10 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 
 /*Nav Search*/
 .search-trigger i:hover {
-    color: #71c44c;
+    color: #00793D;
 }
 .active-search .search-trigger .search-btn {
-    background-color: rgba(113, 196, 76, 0.9);
+    background-color: #00793D;
 }
 
 
@@ -113,23 +114,23 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 .menuzord .menuzord-menu>li.active>a>i, 
 .menuzord .menuzord-menu>li:hover>a, 
 .menuzord .menuzord-menu>li:hover>a>i {
-    color: #71c44c !important;
+    color: #00793D !important;
 }
 
 .nav-border-bottom .menuzord .menuzord-menu>li.active>a, 
 .nav-border-bottom .menuzord .menuzord-menu>li:hover>a {
-    border-bottom: 3px solid #71c44c;
+    border-bottom: 3px solid #00793D;
 }
 
 .menuzord-menu ul.dropdown li.active>a, 
 .menuzord-menu ul.dropdown li:hover>a, 
 .menuzord-menu>li>.megamenu .megamenu-row li:hover>a {
-    color: #71c44c;
+    color: #00793D;
 }
 
 .menuzord-menu ul.dropdown li >a::before, 
 .menuzord-menu>li>.megamenu .megamenu-row li >a::before {
-    background-color: #71c44c;
+    background-color: #00793D;
 }
 
 
@@ -185,7 +186,7 @@ Background banner images
 .vertical-tab .nav-tabs>li.active>a, 
 .vertical-tab .nav-tabs>li.active>a:focus, 
 .vertical-tab .nav-tabs>li.active>a:hover {
-    background-color: #71c44c;
+    background-color: #00793D;
     color: #fff;
     border: 1px solid transparent;
 }
@@ -286,5 +287,5 @@ Background banner images
 .footer-four .social-link li a i:hover,
 .team-title h3 a:hover,
 .team-social-links li a:hover {
-    color: #71c44c;
+    color: #00793D;
 }

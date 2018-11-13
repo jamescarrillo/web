@@ -43,29 +43,34 @@
         <section class="section-padding grid-news">
             <div class="container">
                 <div class="row" style="margin-bottom: 60px; display: none" id="contenedorNoticiaPrincial">
-                    <div class='col-lg-8 col-xs-12'>
+                    <div class='col-lg-8 col-lg-offset-0 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 '>
                         <article class='post-wrapper'>
                             <div class='thumb-wrapper waves-effect waves-block waves-light'>
-                                <a><img id="idImgNoticiaPrincipal" src='' class='img-responsive' alt='imgNoticia'></a>
+                                <a><div class="image-peam"><img id="idImgNoticiaPrincipal" src='' class='img-responsive' alt='imgNoticia'></div></a>
+                                <div class="description_float">
+                                    <div class='entry-meta'>
+                                        <ul class='list-inline'>
+                                            <li style="margin-right: 0px">
+                                                <a id="idFechaPublicacionNoticiaPrincipal" style="color: #ffffff; font-size: 10px">Jan 15, 2016</a>
+                                            </li>
+                                            <li style="color: #ffffff">
+                                                /<a id="idFuenteNoticiaPrincipal" style="color: #ffffff; padding-left: 10px; font-size: 10px">PROYECTO ESPECIAL ALTO MAYO</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                             <div class='blog-content'>
                                 <header class='entry-header-wrapper'>
                                     <div class='entry-header'>
-                                        <h2 class='entry-title text-peam-negrita'><a id="idTituloNoticiaPrincipal" style="font-size: 23px;">Ideas That Moved Us in 2015</a></h2>
-                                        <div class='entry-meta'>
-                                            <ul class='list-inline'>
-                                                <li>
-                                                    <a id="idFuenteNoticiaPrincipal">PROYECTO ESPECIAL ALTO MAYO</a>
-                                                </li>
-                                                <li>
-                                                    <i class='fa fa-clock-o'></i> <a id="idFechaPublicacionNoticiaPrincipal">Jan 15, 2016</a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        <h2 class='text-peam-negrita'><a id="idTituloNoticiaPrincipal" style="font-size: 23px;text-transform: uppercase;">Ideas That Moved Us in 2015</a></h2>
                                     </div>
                                 </header>
-                                <div class='entry-content text-peam' id="idContenidoNoticiaPrincipal" style="font-size: 17px;text-align: justify">
-
+                                <!--ul class="list-inline social-top tt-animate btt" style="margin-bottom: 0px">
+                                    <li><a class="waves-effect waves-circle waves-light btn-floating btn-large blue" href="https://www.facebook.com/sharer/sharer.php?u=https%3A//www.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/" target="_blank"><i class="fa fa-facebook" style="color: #ffffff"></i></a></li>
+                                </ul-->
+                                <div class='entry-content text-peam' id="idContenidoNoticiaPrincipal" style="font-size: 17px;text-align: justify;">
                                 </div>
                                 <footer class="entry-footer">
                                     <ul class="list-inline pull-left">
@@ -77,7 +82,7 @@
                             </div>
                         </article>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" id="containerFBLG">
                         <div class="tt-sidebar-wrapper" role="complementary">
                             <div class="widget widget_search mb-20">
                                 <div class="fb-page" data-href="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs" data-tabs="timeline" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs" class="fb-xfbml-parse-ignore"><a href="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs">Proyecto Especial Alto Mayo</a></blockquote></div>
@@ -111,7 +116,7 @@
                                                     <input type="hidden" id="comboAnio" name="comboAnio" value="-1">
                                                     <input type="hidden" id="estadoNotaPrensa" name="estadoNotaPrensa" value="true">
                                                     <input type="hidden" id="numberPageNotaPrensa" name="numberPageNotaPrensa" value="1">
-                                                    <input type="hidden" id="sizePageNotaPrensa" name="sizePageNotaPrensa" value="13">
+                                                    <input type="hidden" id="sizePageNotaPrensa" name="sizePageNotaPrensa" value="7">
                                                     <input type="text" class="form-control" value="" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" placeholder="Buscar. . .">
                                                     <button type="submit"><i class="fa fa-search"></i></button>
 
@@ -120,7 +125,8 @@
                                             <div role="tabpanel" class="tab-pane fade" id="tab-filtros">
                                                 <div class="form-group col-xs-12">
                                                     <label for="sizePageNotaPrensa_" style="font-size: 14px;">N° Noticias a mostrar</label>
-                                                    <select id="sizePageNotaPrensa_" idformulario="FrmNotaPrensa" idinput="sizePageNotaPrensa" class="form-control combo-paginar-formulario" style="border: 1px solid #8bc34a">
+                                                    <select id="sizePageNotaPrensa_" idformulario="FrmNotaPrensa" idinput="sizePageNotaPrensa" class="form-control combo-paginar-formulario" style="border: 1px solid #00793D">
+                                                        <option value="7">6</option>
                                                         <option value="13">12</option>
                                                         <option value="16">15</option>
                                                         <option value="19">18</option>
@@ -130,7 +136,7 @@
                                                 </div>
                                                 <div class="form-group col-xs-12">
                                                     <label for="comboAnioNoticia_" style="font-size: 14px;">Año</label>
-                                                    <select id="comboAnioNoticia_" idformulario="FrmNotaPrensa" idinput="comboAnio" class="form-control combo-paginar-formulario" style="border: 1px solid #8bc34a">
+                                                    <select id="comboAnioNoticia_" idformulario="FrmNotaPrensa" idinput="comboAnio" class="form-control combo-paginar-formulario" style="border: 1px solid #00793D">
                                                     </select>
                                                 </div>
                                             </div>
@@ -143,7 +149,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="widget widget_search mb-20">
+                            <div class="widget widget_search mb-20 text-center">
                                 <div class="fb-page" 
                                      data-href="https://web.facebook.com/Proyecto-Especial-Alto-Mayo-188571127885448/?ref=br_rs"
                                      data-width="380" 
@@ -152,6 +158,7 @@
                             </div>
 
                             <%@ include file = "../../../menu_web_vertical.jsp" %> 
+                            <!--div class="fb-share-button" data-href="http://www.peam.gob.pe/GestionTransparente" data-layout="button_count" data-size="large" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%3A8084%2Fweb%2Fpublicaciones%2Fnoticias%2Fnotas-de-prensa&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"></a></div-->
                         </div>
                     </div>
                 </div>
@@ -169,6 +176,16 @@
                 js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.2';
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));</script>
+        
+        
+        <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery-2.1.3.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/materialize/js/materialize.min.js"></script>

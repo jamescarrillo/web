@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">
     <head>
         <%@ include file = "../../../att_head.jsp" %> 
@@ -51,7 +52,7 @@
                                             <div class="border-bottom-tab">
                                                 <ul class="nav nav-tabs" role="tablist">
                                                     <li role="presentation" class="active"><a href="#tab-directorio-contactos" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Directorio de Contactos</a></li>
-                                                    <li role="presentation"><a href="#tab-directorio-de-telefono-interno" class="waves-effect waves-dark" role="tab" data-toggle="tab">Directorio de Teléfono Interno</a></li>
+                                                    <li role="presentation"><a href="#tab-directorio-de-telefono-interno" class="waves-effect waves-dark" role="tab" data-toggle="tab">Directorio de TelÃ©fono Interno</a></li>
                                                 </ul>
                                                 <div class="panel-body" style="padding-bottom: 0px;">
                                                     <div class="tab-content">
@@ -119,7 +120,7 @@
                                                                     <div class="col-md-10 col-sm-9 col-xs-12">
                                                                         <div class="input-field" style="margin-top: 0px">
                                                                             <input type="text" name="txtDirectorioTelefonico" id="txtDirectorioTelefonico">
-                                                                            <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Directorio Teléfonico . . .</font></font></label>
+                                                                            <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Directorio TelÃ©fonico . . .</font></font></label>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-2 col-sm-3 col-xs-12">

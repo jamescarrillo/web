@@ -64,11 +64,11 @@
                                                             <div class="row">
                                                                 <form id="FrmConvocatoria">
                                                                     <div class="col-md-2 col-sm-3 col-xs-12">
-                                                                        <select id="comboAnioConvocatoria" name="comboAnioConvocatoria" class="form-control combo-paginar" idBtnBuscar='btnBuscarConvocatoria' style="border: 1px solid #8bc34a;">
+                                                                        <select id="comboAnioConvocatoria" name="comboAnioConvocatoria" class="form-control combo-paginar" idBtnBuscar='btnBuscarConvocatoria' style="border: 1px solid #00793D;">
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-md-2 col-sm-3 col-xs-12">
-                                                                        <select id="comboTipoEstado" name="comboTipoEstado" class="form-control combo-paginar" idBtnBuscar='btnBuscarConvocatoria' style="border: 1px solid #8bc34a;">
+                                                                        <select id="comboTipoEstado" name="comboTipoEstado" class="form-control combo-paginar" idBtnBuscar='btnBuscarConvocatoria' style="border: 1px solid #00793D;">
                                                                             <option value="-1">TODOS</option>
                                                                             <option value="true">VIGENTES</option>
                                                                             <option value="false">FINALIZADOS</option>

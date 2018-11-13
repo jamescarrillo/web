@@ -8,8 +8,6 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css" rel="stylesheet">
         <!-- FontAwesome CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- magnific-popup -->
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/magnific-popup.css" rel="stylesheet">
         <!-- flexslider -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/flexslider.css" rel="stylesheet">
         <!-- materialize -->
@@ -108,7 +106,7 @@
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <div class="col-6">
                                                         <div class="input-field">
-                                                            <select id="comboTipoFormato" name="comboTipoFormato" class="form-control" style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                            <select id="comboTipoFormato" name="comboTipoFormato" class="form-control" style="border: 1px solid #00793D; margin-top: 40px">
                                                                 <option value="-1">FORMATO DE ENTREGA</option>
                                                                 <option value="1">COPIA SIMPLE</option>
                                                                 <option value="2">COPIA FEDATEADA</option>
@@ -190,7 +188,6 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.inview.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
 
         <!-- RS5.0 Core JS Files -->

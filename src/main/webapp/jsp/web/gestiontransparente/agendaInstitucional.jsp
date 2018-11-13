@@ -53,7 +53,7 @@
                                     <div class="row">
                                         <form id="FrmAgenda">
                                             <div class="col-md-3 col-sm-6 col-xs-12">
-                                                <select id="cbotipo" name="cbotipo" class="form-control combo-paginar " idBtnBuscar='btnBuscarAgenda' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                <select id="cbotipo" name="cbotipo" class="form-control combo-paginar " idBtnBuscar='btnBuscarAgenda' style="border: 1px solid #00793D; margin-top: 40px">
                                                     <option value="1">Gerencia Gerencial</option>
                                                     <option value="2">Dirección de Infraestructura</option>
                                                     <option value="3">Dirección de Desarrollo Agropecuario</option>

@@ -53,7 +53,7 @@
                                     <div class="row">
                                         <form id="FrmDocumentos">
                                             <div class="col-md-4 col-sm-3 col-xs-12">
-                                                <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
                                                     <option value="0">Resoluciones Generales</option>
                                                     <option value="2800">Actas de Sesión y Consejo Directivo</option>
                                                     <option value="2">Documentos de Gestión</option>
@@ -62,7 +62,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-md-2 col-sm-3 col-xs-12">
-                                                <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
                                                 </select>
                                             </div>
                                             <div class="col-md-4 col-sm-3 col-xs-12">

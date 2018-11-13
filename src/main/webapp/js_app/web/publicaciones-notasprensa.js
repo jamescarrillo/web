@@ -51,9 +51,9 @@ function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
             if (value.id.toString() === $('#idNota').val()) {
                 $('#idImgNoticiaPrincipal').attr('src', value.foto);
                 $('#idTituloNoticiaPrincipal').html(value.titulo);
-                $('#idFuenteNoticiaPrincipal').html(value.fuente);
+                $('#idFuenteNoticiaPrincipal').html(value.fuente.toUpperCase());
                 $('#idContenidoNoticiaPrincipal').html(value.contenido + "<br>");
-                $('#idFechaPublicacionNoticiaPrincipal').html(value.fecha);
+                $('#idFechaPublicacionNoticiaPrincipal').html((getStringDateFormat(value.fecha)).toUpperCase());
             } else {
                 contador++;
                 if (contador % 3 === 0) {
@@ -69,7 +69,7 @@ function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
 
         $('.ir-ver-noticia').each(function (index, value) {
             $(this).click(function () {
-                $(this.parentElement).submit();
+                $(this.parentElement.parentElement).submit();
             });
         });
     } else {
@@ -93,26 +93,41 @@ function getCardCarrusel(urlImage, titulo, contenido) {
 
 function getCardViewNoticia(foto, titulo, contenido, idnota, fecha_publicacion, fuente) {
     var article = "";
-    article += "<div class='col-md-4 col-sm-6 col-xs-12'>";
+    article += "<div class='col-sm-4 col-xs-6'>";
     article += "<article class='post-wrapper'>";
     article += "<div class='thumb-wrapper waves-effect waves-block waves-light'><a><img src='" + foto + "' class='img-responsive' alt=''></a></div>";
     article += "<div class='blog-content'>";
     article += "<header class='entry-header-wrapper'>";
-    article += "<div class='entry-header'>";
-    article += "<h2 class='entry-title text-peam-negrita'><a>" + titulo + "</a></h2>";
-    article += "<div class='entry-meta'><ul class='list-inline'><li><a>" + fuente + "</a></li><li><i class='fa fa-clock-o'></i> <a>" + fecha_publicacion + "</a></li></ul></div>";
-    article += "</div>";
-    article += "</header>";
-    article += "<div class='entry-content text-peam'><p>" + contenido + "</p></div>";
-    article += "<footer class='entry-footer'>";
+    article += "<div class=''>";
+    //article += "<div class='entry-header'>";
     article += "<form class='form-ver-noticia' method='POST' action='notas-de-prensa'>";
     article += "<input type='hidden' name='idNota' value='" + idnota + "'>";
     article += "<input type='hidden' name='action' value='readNotaPrensa'>";
-    article += "<a class='readmore pull-right ir-ver-noticia'>Leer m&aacute;s <i class='fa fa-long-arrow-right'></i></a>";
+    article += "<h3><a class='text-peam ir-ver-noticia' style='font-size: 15px;text-transform: uppercase;'>" + titulo + "</a></h3>";
     article += "</form>";
-    article += "</footer>";
+    //article += "<div class='entry-meta'><ul class='list-inline'><li><a>" + fuente + "</a></li><li><i class='fa fa-clock-o'></i> <a>" + fecha_publicacion + "</a></li></ul></div>";
+    //article += "<div class='entry-meta'><ul class='list-inline'><li><a>" + fuente + "</a></li></ul></div>";
+    article += "</div>";
+    article += "</header>";
+    //article += "<div class='entry-content text-peam'><p>" + contenido + "</p></div>";
+//    article += "<footer class='entry-footer'>";
+//    article += "<form class='form-ver-noticia' method='POST' action='notas-de-prensa'>";
+//    article += "<input type='hidden' name='idNota' value='" + idnota + "'>";
+//    article += "<input type='hidden' name='action' value='readNotaPrensa'>";
+//    article += "<a class='readmore pull-right ir-ver-noticia' style='font-size: 17px'>Leer más <i class='fa fa-long-arrow-right'></i></a>";
+//    article += "</form>";
+//    article += "</footer>";
     article += "</div>";
     article += "</article>";
     article += "</div>";
     return article;
 }
+
+$(window).resize(function () {
+    var ancho = $(window).width();
+    if (ancho < 1200) {
+        $('#containerFBLG').css('display','none');
+    }else{
+        $('#containerFBLG').css('display','block');
+    }
+});
