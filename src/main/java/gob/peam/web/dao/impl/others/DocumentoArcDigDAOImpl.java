@@ -41,9 +41,9 @@ public class DocumentoArcDigDAOImpl implements DocumentoArcDigDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(D.DOCU_ID) AS COUNT FROM DOCUMENTO D "
-                    + "INNER JOIN DOCUMENTO_ETIQUETA DE ON DE.DOCU_ID = D.DOCU_ID WHERE "
+                    + parameters.get("SQL_ETIQUETA_SI") + " WHERE "
                     + "(LOWER(D.DOCU_TITULO) LIKE CONCAT('%',?,'%') OR LOWER(D.DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
-                    + "AND D.DOCU_FECHA_DOCX != ''"
+                    + "AND D.DOCU_FECHA_DOCX != '' "
                     + parameters.get("SQL_TIDO") + " "
                     + parameters.get("SQL_ANIO") + " "
                     + parameters.get("SQL_ETIQUETA") + " "
@@ -57,9 +57,9 @@ public class DocumentoArcDigDAOImpl implements DocumentoArcDigDAO {
                 if (rs.getInt("COUNT") > 0) {
                     pst = conn.prepareStatement("SELECT D.DOCU_ID, D.USUA_ID, D.DOCU_TITULO, D.DOCU_RESUMEN, D.DOCU_FECHA_DOCX, "
                             + "D.DOCU_ORIGEN_ARCHIVO, D.TIDO_ID,  D.CATE_ID, D.DOCU_METADATA FROM DOCUMENTO D "
-                            + "INNER JOIN DOCUMENTO_ETIQUETA DE ON DE.DOCU_ID = D.DOCU_ID WHERE "
+                            + parameters.get("SQL_ETIQUETA_SI") + " WHERE "
                             + "(LOWER(D.DOCU_TITULO) LIKE CONCAT('%',?,'%') OR LOWER(D.DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
-                            + "AND D.DOCU_FECHA_DOCX != ''"
+                            + "AND D.DOCU_FECHA_DOCX != '' "
                             + parameters.get("SQL_TIDO") + " "
                             + parameters.get("SQL_ANIO") + " "
                             + parameters.get("SQL_ETIQUETA") + " "

@@ -160,7 +160,12 @@ public class DocumentoArcDigAPI extends HttpServlet {
         this.parameters.put("FILTER", request.getParameter("txtTituloResumenDocumentosArcDig").toLowerCase());
         if (this.parameters.get("FILTER").equals("")) {
             //GET EL FILTRO DEL COMBO
-
+        }
+        ///solo para  otras publicaciones, por el momento
+        if (Integer.parseInt(request.getParameter("txtTido"))==21) {
+            this.parameters.put("SQL_ETIQUETA_SI", "");
+        }else{
+            this.parameters.put("SQL_ETIQUETA_SI", "INNER JOIN DOCUMENTO_ETIQUETA DE ON DE.DOCU_ID = D.DOCU_ID ");
         }
         if (request.getParameter("comboEtiquetasDocumentosArcDig").equals("-1")) {
             this.parameters.put("SQL_ETIQUETA", "");
