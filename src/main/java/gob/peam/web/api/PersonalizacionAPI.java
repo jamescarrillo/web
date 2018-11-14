@@ -232,23 +232,6 @@ public class PersonalizacionAPI extends HttpServlet {
             if (copiar) {
                 conf = uploadFile(filePart, conf, "logo_portal");
             }
-            filePart = request.getPart("fileFotoLogoEscudo");
-            switch (request.getParameter("txtValidacionFotoLogoEscudo")) {
-                case "SI":
-                    copiar = true;
-                    break;
-                case "DEFECTO":
-                    conf.setNombre_logo_escudo(getServletContext().getRealPath("/peam_resources/logos_principales/sello.png"));
-                    copiar = false;
-                    break;
-                default:
-                    copiar = false;
-                    conf.setNombre_logo_escudo(request.getParameter("txtNombreFotoLogoEscudo"));
-                    break;
-            }
-            if (copiar) {
-                conf = uploadFile(filePart, conf, "logo_escudo");
-            }
             filePart = request.getPart("fileFotoLogoPresentacionActualidad");
             switch (request.getParameter("txtValidacionFotoPresentacionActualidad")) {
                 case "SI":
@@ -294,9 +277,6 @@ public class PersonalizacionAPI extends HttpServlet {
                 break;
             case "logo_portal":
                 conf_web.setNombre_logo_portal(file.getName());
-                break;
-            case "logo_escudo":
-                conf_web.setNombre_logo_escudo(file.getName());
                 break;
             case "logo_presentacion_actualidad":
                 conf_web.setNombre_logo_presentacion_actualidad(file.getName());

@@ -78,7 +78,7 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
 .brand-filter li.active,
 .icon-hover-brand:hover .icon {
     background-color: rgba(255,255,255,.15) !important; /*theme primary background color*/
-    color: #f50303 !important;
+    color: #FF0000 !important;
 }
 
 .brand-bg.darken-2 {
@@ -160,7 +160,7 @@ Background banner images
 
 /*portfolio*/
 .portfolio-wrapper .bg-overlay {
-    background-color: rgba(113, 196, 76, 0.85);
+    background-color: rgba(0, 121, 61, 0.35);
 }
 
 

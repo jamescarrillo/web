@@ -84,6 +84,7 @@
                                         <input type="hidden" id="icono_pagina" name="icono_pagina" value="logo-peam.png">
                                         <input type="hidden" id="redes_sociales" value="">
                                     </div>
+                                    <hr style="border-top: 5px solid rgba(0,0,0,.1)">
                                     <div class="row">
                                         <div class="col-10 text-left mb-1">
                                             <label><strong>REDES SOCIALES</strong></label>
@@ -144,8 +145,152 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <hr style="border-top: 5px solid rgba(0,0,0,.1)">           
                                     <form id="FrmPersonalizacionWEB">
                                         <div class="row mt-3">
+                                            <div class="form-group col-12 mb-3">
+                                                <label>DIRECTOR DE INFRAESTRUCTURA</label>
+                                                <input type="text" class="form-control form-control-sm mb-2" placeholder="DIRECTOR DE INFRAESTRUCTURA" value="<%out.print(conf_web.getDirector_infraestructura());%>">
+                                                <div class="row justify-content-sm-center">
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 col-12 text-center">
+                                                        <div class="card border-primary borde-redondeado mb-2">
+                                                            <div class="card-body p-2">
+                                                                <div class="text-center">
+                                                                    <%
+                                                                        String path_director_infraestructura;
+                                                                        //path_director_infraestructura = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/" + conf_web.getNombre_foto_director_infraestructura();
+                                                                        path_director_infraestructura = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/cgcsem.png";
+                                                                        System.out.println(path_director_infraestructura);
+                                                                        if (!new File(path_director_infraestructura).exists()) {
+                                                                            path_director_infraestructura = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/default_director.png";
+                                                                            System.out.println(path_director_infraestructura);
+                                                                        }
+                                                                    %>
+                                                                    <img id="visorFotoDirInfra" src='<%out.print(path_director_infraestructura);%>' alt="director-img" class="rounded mx-auto d-block img-responsive" >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoDirInfra" idinputfile="fileFotoDirInfra" inputvalidacion="txtValidacionFotoDirInfra" inputname="txtNombreFotoDirInfra" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/default_director.png");%>">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                        <div style="display: inline">
+                                                            <input id="fileFotoDirInfra" name="fileFotoDirInfra" inputvalidacion="txtValidacionFotoDirInfra" class="input-file-logo" idvisor="visorFotoDirInfra" type="file" style="display: none">
+                                                            <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoDirInfra" idinputfile="fileFotoDirInfra">
+                                                                <i class="fa fa-folder-open"></i>
+                                                            </button>
+                                                            <input type="hidden" id="txtNombreFotoDirInfra" name="txtNombreFotoDirInfra" value="<%out.print(conf_web.getNombre_foto_director_infraestructura());%>">
+                                                            <input type="hidden" id="txtValidacionFotoDirInfra" name="txtValidacionFotoDirInfra" value="">
+                                                        </div>
+                                                        <br><small>Seleccione Foto</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-12 mb-3">
+                                                <label>DIRECTOR DE MANEJO AMBIENTAL</label>
+                                                <input type="text" class="form-control form-control-sm mb-2" placeholder="DIRECTOR DE MANEJO AMBIENTAL" value="<%out.print(conf_web.getDirector_manejo_ambiental());%>">
+                                                <div class="row justify-content-sm-center">
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 col-12 text-center">
+                                                        <div class="card border-primary borde-redondeado mb-2">
+                                                            <div class="card-body p-2">
+                                                                <div class="text-center">
+                                                                    <%
+                                                                        String path_director_manejo_ambiental;
+                                                                        path_director_manejo_ambiental = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/" + conf_web.getNombre_foto_director_manejo_ambiental();
+                                                                        path_director_manejo_ambiental = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/director_infraestructura.jpg";
+                                                                        if (!new File(path_director_manejo_ambiental).exists()) {
+                                                                            path_director_manejo_ambiental = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/default_director.png";
+                                                                        }
+                                                                    %>
+                                                                    <img id="visorFotoDirManAmbi" src='<%out.print(path_director_manejo_ambiental);%>' alt="director-img" class="rounded mx-auto d-block img-responsive" >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoDirManAmbi" idinputfile="fileFotoDirManAmbi" inputvalidacion="txtValidacionFotoDirManAmbi" inputname="txtNombreFotoDirManAmbi" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/default_director.png");%>">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                        <div style="display: inline">
+                                                            <input id="fileFotoDirManAmbi" name="fileFotoDirManAmbi" inputvalidacion="txtValidacionFotoDirManAmbi" class="input-file-logo" idvisor="visorFotoDirManAmbi" type="file" style="display: none">
+                                                            <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoDirManAmbi" idinputfile="fileFotoDirManAmbi">
+                                                                <i class="fa fa-folder-open"></i>
+                                                            </button>
+                                                            <input type="hidden" id="txtNombreFotoDirManAmbi" name="txtNombreFotoDirManAmbi" value="<%out.print(conf_web.getNombre_foto_director_manejo_ambiental());%>">
+                                                            <input type="hidden" id="txtValidacionFotoDirManAmbi" name="txtValidacionFotoDirManAmbi" value="">
+                                                        </div>
+                                                        <br><small>Seleccione Foto</small>
+                                                    </div>
+                                                </div>
+                                            </div>    
+                                            <div class="form-group col-12 mb-3">
+                                                <label>DIRECTOR DE DESARROLLO AGROPECUARIO</label>
+                                                <input type="text" class="form-control form-control-sm mb-2" placeholder="DIRECTOR DE DESARROLLO AGROPECUARIO" value="<%out.print(conf_web.getDirector_desarrollo_agropecuario());%>">
+                                                <div class="row justify-content-sm-center">
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 col-12 text-center">
+                                                        <div class="card border-primary borde-redondeado mb-2">
+                                                            <div class="card-body p-2">
+                                                                <div class="text-center">
+                                                                    <%
+                                                                        String path_director_desarrollo_agropecuario;
+                                                                        path_director_desarrollo_agropecuario = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/" + conf_web.getNombre_foto_director_desarrollo_agropecuario();
+                                                                        if (!new File(path_director_desarrollo_agropecuario).exists()) {
+                                                                            path_director_desarrollo_agropecuario = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/default_director.png";
+                                                                        }
+                                                                    %>
+                                                                    <img id="visorFotoDirDesAgro" src='<%out.print(path_director_desarrollo_agropecuario);%>' alt="director-img" class="rounded mx-auto d-block img-responsive" >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoDirDesAgro" idinputfile="fileFotoDirDesAgro" inputvalidacion="txtValidacionFotoDirDesAgro" inputname="txtNombreFotoDirDesAgro" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/default_director.png");%>">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                        <div style="display: inline">
+                                                            <input id="fileFotoDirDesAgro" name="fileFotoDirDesAgro" inputvalidacion="txtValidacionFotoDirDesAgro" class="input-file-logo" idvisor="visorFotoDirDesAgro" type="file" style="display: none">
+                                                            <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoDirDesAgro" idinputfile="fileFotoDirDesAgro">
+                                                                <i class="fa fa-folder-open"></i>
+                                                            </button>
+                                                            <input type="hidden" id="txtNombreFotoDirDesAgro" name="txtNombreFotoDirDesAgro" value="<%out.print(conf_web.getNombre_foto_director_desarrollo_agropecuario());%>">
+                                                            <input type="hidden" id="txtValidacionFotoDirDesAgro" name="txtValidacionFotoDirDesAgro" value="">
+                                                        </div>
+                                                        <br><small>Seleccione Foto</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-12 mb-3">
+                                                <label>RESPONSABLE DEL ÁREA ESTUDIOS</label>
+                                                <input type="text" class="form-control form-control-sm mb-2" placeholder="RESPONSABLE DEL ÁREA ESTUDIOS" value="<%out.print(conf_web.getDirector_area_estudios());%>">
+                                                <div class="row justify-content-sm-center">
+                                                    <div class="col-lg-3 col-md-4 col-xs-6 col-12 text-center">
+                                                        <div class="card border-primary borde-redondeado mb-2">
+                                                            <div class="card-body p-2">
+                                                                <div class="text-center">
+                                                                    <%
+                                                                        String path_director_estudios;
+                                                                        path_director_estudios = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/" + conf_web.getNombre_foto_director_area_estudios();
+                                                                        if (!new File(path_director_estudios).exists()) {
+                                                                            path_director_estudios = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/default_director.png";
+                                                                        }
+                                                                    %>
+                                                                    <img id="visorFotoDirEstudios" src='<%out.print(path_director_estudios);%>' alt="director-img" class="rounded mx-auto d-block img-responsive" >
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoDirEstudios" idinputfile="fileFotoDirEstudios" inputvalidacion="txtValidacionFotoDirEstudios" inputname="txtNombreFotoDirEstudios" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/default_director.png");%>">
+                                                            <i class="fa fa-trash"></i>
+                                                        </button>
+                                                        <div style="display: inline">
+                                                            <input id="fileFotoDirEstudios" name="fileFotoDirEstudios" inputvalidacion="txtValidacionFotoDirEstudios" class="input-file-logo" idvisor="visorFotoDirEstudios" type="file" style="display: none">
+                                                            <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoDirEstudios" idinputfile="fileFotoDirEstudios">
+                                                                <i class="fa fa-folder-open"></i>
+                                                            </button>
+                                                            <input type="hidden" id="txtNombreFotoDirEstudios" name="txtNombreFotoDirEstudios" value="<%out.print(conf_web.getNombre_foto_director_area_estudios());%>">
+                                                            <input type="hidden" id="txtValidacionFotoDirEstudios" name="txtValidacionFotoDirEstudios" value="">
+                                                        </div>
+                                                        <br><small>Seleccione Foto</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="container">
+                                                <div class="col-12 mt-3 mb-3" style="border-top: 5px solid rgba(0,0,0,.1);"></div>
+                                            </div>    
                                             <div class="form-group col-12 mb-3">
                                                 <div class="row justify-content-sm-center">
                                                     <div class="col-12 text-center">
@@ -243,38 +388,6 @@
                                                     </div>
                                                 </div>
                                                 <input type="text" id="url_portal_transparencia" name="url_portal_transparencia" class="form-control form-control-sm mt-2" placeholder="URL PORTAL DE TRANSPARENCIA" value="<%out.print(conf_web.getUrl_logo_portal());%>">
-                                            </div>
-                                            <div class="form-group col-12 mb-3">
-                                                <div class="row justify-content-sm-center">
-                                                    <div class="col-lg-4 col-md-6 col-12 text-center">
-                                                        <div class="card border-primary borde-redondeado mb-2">
-                                                            <div class="card-body p-2">
-                                                                <div class="text-center">
-                                                                    <%
-                                                                        String path_logo_escudo;
-                                                                        path_logo_escudo = getServletContext().getContextPath() + "/peam_resources/logos_principales/" + conf_web.getNombre_logo_escudo();
-                                                                        if (!new File(path_logo_escudo).exists()) {
-                                                                            path_logo_escudo = getServletContext().getContextPath() + "/peam_resources/logos_principales/sello.png";
-                                                                        }
-                                                                    %>
-                                                                    <img id="visorFotoLogoEscudo" src='<%out.print(path_logo_escudo);%>' alt="escudo-img" class="rounded mx-auto d-block img-responsive" style="width: 175px; height: 160px">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <button type="button" class="btn btn-secondary btn-sm btn-eliminar-logo" idvisor="visorFotoLogoEscudo" idinputfile="fileFotoLogoEscudo" inputvalidacion="txtValidacionFotoLogoEscudo" inputname="txtNombreFotoLogoEscudo" logo_default="<%out.print(getServletContext().getContextPath() + "/peam_resources/logos_principales/sello.png");%>">
-                                                            <i class="fa fa-trash"></i>
-                                                        </button>
-                                                        <div style="display: inline">
-                                                            <input id="fileFotoLogoEscudo" name="fileFotoLogoEscudo" inputvalidacion="txtValidacionFotoLogoEscudo" class="input-file-logo" idvisor="visorFotoLogoEscudo" type="file" style="display: none">
-                                                            <button type="button" class="btn btn-info btn-sm btn-seleccionar-logo" idvisor="visorFotoLogoEscudo" idinputfile="fileFotoLogoEscudo">
-                                                                <i class="fa fa-folder-open"></i>
-                                                            </button>
-                                                            <input type="hidden" id="txtNombreFotoLogoEscudo" name="txtNombreFotoLogoEscudo" value="<%out.print(conf_web.getNombre_logo_escudo());%>">
-                                                            <input type="hidden" id="txtValidacionFotoLogoEscudo" name="txtValidacionFotoLogoEscudo" value="">
-                                                        </div>
-                                                        <br><small>Seleccione Logo (Recomendado: 175px x 160px )</small>
-                                                    </div>
-                                                </div>
                                             </div>
                                             <div class="form-group col-12 mb-3">
                                                 <div class="row justify-content-sm-center">

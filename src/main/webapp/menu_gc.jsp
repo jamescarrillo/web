@@ -23,14 +23,14 @@
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false" title="Agenda institucional"><i class="mdi mdi-book-open"></i><span class="hide-menu">Agenda Inst.</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/agendainstitucional/agendagerencial" title="Agenda Gerencial">Agenda Gerencial</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/agendainstitucional/directordesarrollo" title="Director de desarrollo Agropecuario">Dir. Desarrollo Agro</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/agendainstitucional/directorinfraestructura" title="Director de Infraestructura">Dir. de Infraestructura</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/agendainstitucional/directormanejoambiental" title="Director de Manejo Ambiental">Director M. Ambiental</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/agendainstitucional/directordesarrollo" title="Director de desarrollo Agropecuario">Director Desarrollo <br>Agropecuario</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/agendainstitucional/directorinfraestructura" title="Director de Infraestructura">Director de <br>Infraestructura</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/agendainstitucional/directormanejoambiental" title="Director de Manejo Ambiental">Director Manejo <br>Ambiental</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-folder-multiple-outline"></i><span class="hide-menu">Convocatorias</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/adicionalesobras" title="Adicionales de Obras">Ad. de Obras</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/adicionalesobras" title="Adicionales de Obras">Adicionales de Obras</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/comitesencargados" title="Comites Encargados">Comites Encargados</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/bsc" title="Convocatorias Bienes/Servicios/Conseciones">Convocatorias B/S/C</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/personal" title="Convocatorias Personal">Convocatorias Personal</a></li>
@@ -42,20 +42,20 @@
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false" title="Gestión Transparente"><i class="mdi mdi-bullseye"></i><span class="hide-menu">Gest. Transparente</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/actasconciliacion" title="Actas de Conciliación">Ac. Conciliación</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/actassession" title="Actas de Sesión de Consejo Directivo">Ac. Sesión de C.D</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/adquisiciones" title="Adquisiciones y Contrataciones">Ad. y Contrataciones</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/actasconciliacion" title="Actas de Conciliación">Actas Conciliación</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/actassession" title="Actas de Sesión de Consejo Directivo">Actas Sesión de C.D</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/adquisiciones" title="Adquisiciones y Contrataciones">Adquisiciones y <br>Contrataciones</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/declaracionjurada" title="Declaraciones Juradas">Declaraciones Juradas</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/evaluacionactualizacion" title="Evaluación de Actualización">Evaluación Actualización</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/gestiondocumentos" title="Gestión de Documentos">Gest. Documentos</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/gestiondocumentos" title="Gestión de Documentos">Gestión Documentos</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/indicadoresdesempenio" title="Indicadores de Desempeño">Indicadores Desempeño</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/itp" title="ITP Evaluación de Software">ITP Ev. de Software</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/itp" title="ITP Evaluación de Software">ITP Evaluación de <br>Software</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/laudos" title="Laudos">Laudos</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/modificatoriaspac" title="Modificatorias del PAC">Modificatorias PAC</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/personal" title="Personal">Personal</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/directivos" title="Plan Gerencial y Directivos">PG y Directivos</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/directivos" title="Plan Gerencial y Directivos">Plan Gerencial y <br>Directivos</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/proyectosinversion" title="Proyecto de Inversión">Proyecto de Inversión</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/recomendacionesauditorias" title="Recomendaciones de Auditorías">Rec. Auditorías</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/recomendacionesauditorias" title="Recomendaciones de Auditorías">Recomendaciones de <br>Auditorías</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/viaticos" title="Viáticos">Viáticos</a></li>
                     </ul>
                 </li>
@@ -66,7 +66,7 @@
                         <!--li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/destacados" title="Destacados">Destacados</a></li-->
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/estudios" title="Estudios">Estudios</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/eventos" title="Eventos">Eventos</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/manuales">M. Anuales</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/manuales">Memorias Anuales</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/notasprensa" title="Notas de Prensa">Notas de Prensa</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/multimedia" title="Noticias Multimedia">Noticias Multimedia</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/obrasyproyectos" title="Obras y Proyectos">Obras y Proyectos</a></li>
@@ -75,31 +75,31 @@
                 </li>
                 <li class="nav-devider"></li>
                 <li class="nav-small-cap">ADICIONALES</li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-book-multiple" title="Información Financiera y Presupuestal"></i><span class="hide-menu">Inf. Fin. Presupuestal</span></a>
+                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-book-multiple" title="Información Financiera y Presupuestal"></i><span class="hide-menu">Inf. Financiera <br>Presupuestal</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/patrimonio" title="Estados de Cambio en el patrimonio Neto">E.C. Patrimonio Neto</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/flujoefectivo" title="Estados de Flujo Efectivos">E. Flujo Efectivo</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/gestion" title="Estado de Gestión">E. Gestión</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/patrimonio" title="Estados de Cambio en el patrimonio Neto">Estados de Cambio en<br>elPatrimonio Neto</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/flujoefectivo" title="Estados de Flujo Efectivos">Estados de Flujo de Efectivo</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/gestion" title="Estados de Gestión">Estados de Gestión</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/pendiente" title="Infraestructura Presupuestal y Financiera">I.P. Financiera</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/saldos" title="Saldos de Balance">Saldos Balance</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/finanzas/saldos" title="Saldos de Balance">Saldos de Balance</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-bookmark-outline" title="Otros"></i><span class="hide-menu">Otros</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/directoriostelefonicos" title="Directorio Telefónico">Dir. Telefónico</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/glosarios" title="Glosario de Terminos">G. Terminos</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/directoriostelefonicos" title="Directorio Telefónico">Directorio Telefónico</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/glosarios" title="Glosario de Terminos">Glosario Terminos</a></li>
                     </ul>
                 </li>
-                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-tab" title="Participación Ciudadana"></i><span class="hide-menu">Part. Ciudadana</span></a>
+                <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-tab" title="Participación Ciudadana"></i><span class="hide-menu">Participación <br>Ciudadana</span></a>
                     <ul aria-expanded="false" class="collapse">
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/participacionciudadana/comentariossugerencias" title="Comentarios y Sugerencias">Comentarios/Sugerencia</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/participacionciudadana/libroreclamaciones" title="Libro de Reclamaciones">Lib. Reclamaciones</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/participacionciudadana/libroreclamaciones" title="Libro de Reclamaciones">Libro Reclamaciones</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/participacionciudadana/solicitudes" title="Solicitud 27806">Solicitud 27806</a></li>
                     </ul>
                 </li>
                 <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="ti-settings" title="Personalización"></i><span class="hide-menu">Personalización</span></a>
                     <ul aria-expanded="false" class="collapse">
-                        <!--li><a href="<%out.print(getServletContext().getContextPath());%>/personalizacion/correo" title="Configuración Correo">Conf. Correo</a></li-->
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/personalizacion/correo" title="Configuración Correo">Conf. Correo</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/personalizacion/web" title="Configuración Web">Conf. Web</a></li>
                     </ul>
                 </li>

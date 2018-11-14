@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row" style="margin-top: 5px; margin-bottom: 5px" id="row_logos_lg">
-        <div class="col-md-2 col-md-offset-1" style="width: 150px;margin-left: 80px;">
+        <div class="col-md-2" style="width: 150px;margin-left: 120px;">
             <a href="<%out.print(conf_web.getUrl_logo_goresam());%>" target="_blank">
                 <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo-goresam.png" alt="" style="height: 70px;margin-top: 5px"/>
             </a>
@@ -13,11 +13,6 @@
         <div class="col-md-2" style="padding-top: 10px;width: 160px">
             <a href="<%out.print(conf_web.getUrl_logo_portal());%>" target="_blank">
                 <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/portal_transparencia.png" alt=""/>
-            </a>
-        </div>
-        <div class="col-md-1" style="padding-top: 10px">
-            <a>
-                <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/sello.png" alt=""/>
             </a>
         </div>
     </div>

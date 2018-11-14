@@ -178,7 +178,7 @@
 
 .h1-title:after {
     content: "";
-    border: 1px solid #f50303;
+    border: 1px solid #FF0000;
     bottom: 0;
     display: block;
     margin-top: 3px;
@@ -312,7 +312,7 @@
 
 .modal-header-peam {
     padding: 2px 16px;
-    background-color: #8bc34a;
+    background-color: #00793D;
     color: white;
 }
 
@@ -320,7 +320,7 @@
 
 .modal-footer-peam {
     padding: 2px 16px;
-    background-color: #8bc34a;
+    background-color: #00793D;
     color: white;
 }
 

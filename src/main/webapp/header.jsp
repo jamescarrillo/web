@@ -13,7 +13,7 @@
                             <input type="text" name="search" id="search">
                             <label for="search" class="">Busca aquí...</label>
                         </div>
-                        <button class="btn search-button waves-effect waves-light" type="submit" style="background-color:  #a20505"><i class="material-icons">search</i></button>
+                        <button class="btn search-button waves-effect waves-light" type="submit" style="background-color: #8b8c8d"><i class="material-icons">search</i></button>
                     </form>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                                     <h2>Convocatorias</h2>
                                     <ul class="list-unstyled clearfix">
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-personal">Convocatorias de Personal</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-bienes-y-servicios">Bienes, Servicios, Obras y Conseciones</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-bienes-y-servicios">Bienes, Servicios, Obras y Concesiones</a></li>
                                     </ul>
                                 </div>    
                             </div>
