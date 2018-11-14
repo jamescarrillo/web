@@ -58,7 +58,8 @@ function listarCorreo(BEAN_PAGINATION) {
         $('#txtCC_CorreoER').val(value.cc_correo);
         $('#txtDeParteER').val(value.parte_correo);
         $('#txtMensajeER').val(value.mensaje_correo);
-        $('#comboEstadoER').val(value.estado);
+        var est=value.estado;
+        $('#comboEstadoER').val(est.toLocaleString());
     });
 }
 
