@@ -9,7 +9,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import gob.peam.web.dao.ObraDAO;
 import gob.peam.web.dao.impl.ObraDAOImpl;
+import gob.peam.web.model.others.Conf_Web;
 import gob.peam.web.utilities.BEAN_CRUD;
+import gob.peam.web.utilities.Utilities;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -23,7 +25,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 
 /**
@@ -40,7 +41,6 @@ public class LineasAccionWebAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
-    private HttpSession session;
     private Gson json;
     private String jsonResponse;
     private HashMap<String, Object> parameters;
@@ -48,7 +48,7 @@ public class LineasAccionWebAPI extends HttpServlet {
     private String action;
 
     private ObraDAO ObraDAO;
-    
+
     @Override
     public void init() throws ServletException {
         super.init(); // To change body of generated methods, choose Tools | Templates.
@@ -78,10 +78,11 @@ public class LineasAccionWebAPI extends HttpServlet {
                     procesarObra(new BEAN_CRUD(this.ObraDAO.getPagination(getParametersObra(request))), response);
                     break;
                 default:
+                    Conf_Web conf_web = Utilities.getConf_Web(getServletContext().getRealPath("/peam_resources_app/conf_app/files/"), "conf_web.properties");
                     request.setAttribute("foto_banner", getFotoBanner(request));
-                    request.setAttribute("foto_director", getFotoDirector(request));
+                    request.setAttribute("foto_director", getFotoDirector(request, conf_web));
                     request.setAttribute("title_linea_accion", getTituloLineaAccion(request));
-                    request.setAttribute("director_cargo", getDirectorCargoLineaAccion(request));
+                    request.setAttribute("director_cargo", getDirectorCargoLineaAccion(request, conf_web));
                     request.setAttribute("funciones", getListFunciones(request));
                     request.getRequestDispatcher("/jsp/web/lineasaccion/" + getJSP(request)).forward(request, response);
                     break;
@@ -215,39 +216,47 @@ public class LineasAccionWebAPI extends HttpServlet {
         return list;
     }
 
-    private String getDirectorCargoLineaAccion(HttpServletRequest request) {
+    private String getDirectorCargoLineaAccion(HttpServletRequest request, Conf_Web conf) {
         String r = "";
         switch (request.getRequestURI().substring(request.getContextPath().length())) {
             case "/lineas-de-accion/direccion-de-infraestructura":
-                r = "Ing. John William Sanchez Rodriguez - DIRECTOR DE INFRAESTRUCTURA";
+                //r = "Ing. John William Sanchez Rodriguez - DIRECTOR DE INFRAESTRUCTURA";
+                r = conf.getDirector_infraestructura() + " - DIRECTOR DE INFRAESTRUCTURA";
                 break;
             case "/lineas-de-accion/direccion-de-manejo-ambiental":
-                r = "Ing. Marilyn Rivera Briones - DIRECTOR DE MANEJO AMBIENTAL";
+                //r = "Ing. Marilyn Rivera Briones - DIRECTOR DE MANEJO AMBIENTAL";
+                r = conf.getDirector_manejo_ambiental() + " - DIRECTOR DE MANEJO AMBIENTAL";
                 break;
             case "/lineas-de-accion/direccion-de-desarrollo-agropecuario":
-                r = "Ing. Luis Alberto Villavicencio Zuasnabar - DIRECTOR DE DESARROLLO AGROPECUARIO";
+                //r = "Ing. Luis Alberto Villavicencio Zuasnabar - DIRECTOR DE DESARROLLO AGROPECUARIO";
+                r = conf.getDirector_desarrollo_agropecuario() + " - DIRECTOR DE DESARROLLO AGROPECUARIO";
                 break;
             case "/lineas-de-accion/estudios":
-                r = "Adan Fabian Vergara - RESPONSABLE ÁREA DE ESTUDIOS";
+                //r = "Adan Fabian Vergara - RESPONSABLE ÁREA DE ESTUDIOS";
+                r = conf.getDirector_area_estudios() + " - RESPONSABLE ÁREA DE ESTUDIOS";
                 break;
         }
         return r;
     }
 
-    private String getFotoDirector(HttpServletRequest request) {
+    private String getFotoDirector(HttpServletRequest request, Conf_Web conf) {
         String r = "";
         switch (request.getRequestURI().substring(request.getContextPath().length())) {
             case "/lineas-de-accion/direccion-de-infraestructura":
-                r = "director_infraestructura.jpg";
+                //r = "director_infraestructura.jpg";
+                r = conf.getNombre_foto_director_infraestructura();
                 break;
             case "/lineas-de-accion/direccion-de-manejo-ambiental":
-                r = "director_ambiental.jpg";
+                //r = "director_ambiental.jpg";
+                r = conf.getNombre_foto_director_manejo_ambiental();
                 break;
             case "/lineas-de-accion/direccion-de-desarrollo-agropecuario":
-                r = "director_agropecuario.jpg";
+                //r = "director_agropecuario.jpg";
+                r = conf.getNombre_foto_director_desarrollo_agropecuario();
                 break;
             case "/lineas-de-accion/estudios":
-                r = "responsable_estudios.jpg";
+                //r = "responsable_estudios.jpg";
+                r = conf.getNombre_foto_director_area_estudios();
                 break;
         }
         return r;
@@ -286,18 +295,37 @@ public class LineasAccionWebAPI extends HttpServlet {
     private HashMap<String, Object> getParametersObra(HttpServletRequest request) {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtDescripcion").toLowerCase());
-        if (request.getParameter("comboAnioObra").equals("-1")) {
-            this.parameters.put("SQL_ANIO", "");
-        } else {
-            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioObra") + "' ");
+        String sql_anio = " AND ESTADO = true ";
+        if (!request.getParameter("comboAnioObra").equals("-1")) {
+            sql_anio += " AND ANHO = '" + request.getParameter("comboAnioObra") + "' ";
         }
-        //cboSeguimiento
+        if (!request.getParameter("cboSeguimiento").equals("-1")) {
+            sql_anio += " AND SEGUIMIENTO = '" + request.getParameter("cboSeguimiento") + "' ";
+        }
+        sql_anio += " AND AREA = " + getIdArea(request)+ " ";
+        this.parameters.put("SQL_ANIO", sql_anio);
         this.parameters.put("SQL_ORDERS", "ANHO DESC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageObra") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageObra")) - 1)
                 * Integer.parseInt(request.getParameter("sizePageObra")));
         return this.parameters;
+    }
+
+    private int getIdArea(HttpServletRequest request) {
+        int id = 0;
+        switch (request.getParameter("url")) {
+            case "/lineas-de-accion/direccion-de-infraestructura":
+                id = 1;
+                break;
+            case "/lineas-de-accion/direccion-de-manejo-ambiental":
+                id = 2;
+                break;
+            case "/lineas-de-accion/direccion-de-desarrollo-agropecuario":
+                id = 3;
+                break;
+        }
+        return id;
     }
 
     /**

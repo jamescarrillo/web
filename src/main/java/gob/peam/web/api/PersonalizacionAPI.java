@@ -179,6 +179,11 @@ public class PersonalizacionAPI extends HttpServlet {
         conf.setApikey(request.getParameter("apikey"));
         conf.setIdusuario(request.getParameter("idusuario"));
         conf.setIdalbum(request.getParameter("idalbum"));
+        //DIRECTORES
+        conf.setDirector_infraestructura(request.getParameter("txtDirectorInfraestructura"));
+        conf.setDirector_manejo_ambiental(request.getParameter("txtDirectorManejoAmbiental"));
+        conf.setDirector_desarrollo_agropecuario(request.getParameter("txtDirectorDesarrolloAgropecuario"));
+        conf.setDirector_area_estudios(request.getParameter("txtResponsableEstudios"));
         boolean copiar;
         try {
             Part filePart = request.getPart("fileFotoLogoPeam");
@@ -187,7 +192,7 @@ public class PersonalizacionAPI extends HttpServlet {
                     copiar = true;
                     break;
                 case "DEFECTO":
-                    conf.setNombre_logo_peam(getServletContext().getRealPath("/peam_resources/logos_principales/logo_peam_combinado_large.png"));
+                    conf.setNombre_logo_peam("logo_peam_combinado_large.png");
                     copiar = false;
                     break;
                 default:
@@ -204,7 +209,7 @@ public class PersonalizacionAPI extends HttpServlet {
                     copiar = true;
                     break;
                 case "DEFECTO":
-                    conf.setNombre_logo_goresam(getServletContext().getRealPath("/peam_resources/logos_principales/logo-goresam.png"));
+                    conf.setNombre_logo_goresam("logo-goresam.png");
                     copiar = false;
                     break;
                 default:
@@ -221,7 +226,7 @@ public class PersonalizacionAPI extends HttpServlet {
                     copiar = true;
                     break;
                 case "DEFECTO":
-                    conf.setNombre_logo_portal(getServletContext().getRealPath("/peam_resources/logos_principales/portal_transparencia.png"));
+                    conf.setNombre_logo_portal("portal_transparencia.png");
                     copiar = false;
                     break;
                 default:
@@ -238,7 +243,7 @@ public class PersonalizacionAPI extends HttpServlet {
                     copiar = true;
                     break;
                 case "DEFECTO":
-                    conf.setNombre_logo_presentacion_actualidad(getServletContext().getRealPath("/peam_resources/logos_principales/fachada_peam.png"));
+                    conf.setNombre_logo_presentacion_actualidad("fachada_peam.png");
                     copiar = false;
                     break;
                 default:
@@ -248,6 +253,75 @@ public class PersonalizacionAPI extends HttpServlet {
             }
             if (copiar) {
                 conf = uploadFile(filePart, conf, "logo_presentacion_actualidad");
+            }
+            //DIRECTORES
+            filePart = request.getPart("fileFotoDirInfra");
+            switch (request.getParameter("txtValidacionFotoDirInfra")) {
+                case "SI":
+                    copiar = true;
+                    break;
+                case "DEFECTO":
+                    conf.setNombre_foto_director_infraestructura("default_director.png");
+                    copiar = false;
+                    break;
+                default:
+                    copiar = false;
+                    conf.setNombre_foto_director_infraestructura(request.getParameter("txtNombreFotoDirInfra"));
+                    break;
+            }
+            if (copiar) {
+                conf = uploadFileDirector(filePart, conf, "infraestructura");
+            }
+            filePart = request.getPart("fileFotoDirManAmbi");
+            switch (request.getParameter("txtValidacionFotoDirManAmbi")) {
+                case "SI":
+                    copiar = true;
+                    break;
+                case "DEFECTO":
+                    conf.setNombre_foto_director_manejo_ambiental("default_director.png");
+                    copiar = false;
+                    break;
+                default:
+                    copiar = false;
+                    conf.setNombre_foto_director_manejo_ambiental(request.getParameter("txtNombreFotoDirManAmbi"));
+                    break;
+            }
+            if (copiar) {
+                conf = uploadFileDirector(filePart, conf, "ambiental");
+            }
+            filePart = request.getPart("fileFotoDirDesAgro");
+            switch (request.getParameter("txtValidacionFotoDirDesAgro")) {
+                case "SI":
+                    copiar = true;
+                    break;
+                case "DEFECTO":
+                    conf.setNombre_foto_director_desarrollo_agropecuario("default_director.png");
+                    copiar = false;
+                    break;
+                default:
+                    copiar = false;
+                    conf.setNombre_foto_director_desarrollo_agropecuario(request.getParameter("txtNombreFotoDirDesAgro"));
+                    break;
+            }
+            if (copiar) {
+                conf = uploadFileDirector(filePart, conf, "agropecuario");
+            }
+            filePart = request.getPart("fileFotoDirEstudios");
+            switch (request.getParameter("txtValidacionFotoDirEstudios")) {
+                case "SI":
+                    copiar = true;
+                    break;
+                case "DEFECTO":
+                    conf.setNombre_foto_director_area_estudios("default_director.png");
+                    copiar = false;
+                    break;
+                default:
+                    copiar = false;
+                    conf.setNombre_foto_director_area_estudios(request.getParameter("txtNombreFotoDirEstudios"));
+                    break;
+            }
+            if (copiar) {
+                conf = uploadFileDirector(filePart, conf, "estudios");
             }
             LOG.info(conf.toString());
         } catch (IOException | ServletException e) {
@@ -290,6 +364,36 @@ public class PersonalizacionAPI extends HttpServlet {
         return conf_web;
     }
 
+    
+    private Conf_Web uploadFileDirector(Part filePart, Conf_Web conf_web, String campo) {
+        String path = getServletContext().getRealPath("/peam_resources/logos_complementos/lineas_accion/directores/");
+        File file = new File(path + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+        if (file.exists()) {
+            //file.delete();
+            String prefijo = Utilities.getCadenaAleatoria("PROYECTOESPECIALALTOMAYO-PEAM", 5);
+            file = new File(path + prefijo + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
+        }
+        switch (campo) {
+            case "infraestructura":
+                conf_web.setNombre_foto_director_infraestructura(file.getName());
+                break;
+            case "ambiental":
+                conf_web.setNombre_foto_director_manejo_ambiental(file.getName());
+                break;
+            case "agropecuario":
+                conf_web.setNombre_foto_director_desarrollo_agropecuario(file.getName());
+                break;
+            case "estudios":
+                conf_web.setNombre_foto_director_area_estudios(file.getName());
+                break;
+        }
+        try (InputStream input = filePart.getInputStream()) {
+            Files.copy(input, file.toPath());
+        } catch (IOException ex) {
+            Logger.getLogger(PersonalizacionAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return conf_web;
+    }
     /**
      * Returns a short description of the servlet.
      *

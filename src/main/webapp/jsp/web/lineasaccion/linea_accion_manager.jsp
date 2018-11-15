@@ -22,6 +22,7 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/css/style_web.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/skins/corporate.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.css"rel="stylesheet">
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -76,7 +77,7 @@
                                             for (int i = 0; i < list.size(); i++) {
                                                 out.print("<li><i class='fa fa-check-square-o'></i> " + list.get(i) + "</li>");
                                             }
-                                        %>
+                                            %>
                                     </ul>
                                 </div>
                             </div>
@@ -98,14 +99,14 @@
                                         <div class="row">
                                             <form id="FrmObra">
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="cboSeguimiento" name="cboSeguimiento" class="form-control combo-paginar " idBtnBuscar='btnBuscarObra' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                    <select id="cboSeguimiento" name="cboSeguimiento" class="form-control combo-paginar " idBtnBuscar='btnBuscarObra' style="border: 1px solid #00793D; margin-top: 40px">
                                                         <option value="-1">TODOS</option>
                                                         <option value="Finalizado">Finalizado</option>
                                                         <option value="En Ejecucion">En Ejecución</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioObra" name="comboAnioObra" class="form-control combo-paginar" idBtnBuscar='btnBuscarObra' style="border: 1px solid #8bc34a; margin-top: 40px">
+                                                    <select id="comboAnioObra" name="comboAnioObra" class="form-control combo-paginar" idBtnBuscar='btnBuscarObra' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-3 col-xs-12">
@@ -122,7 +123,6 @@
                                                 <input type="hidden" id="numberPageObra" name="numberPageObra" value="1">
                                                 <input type="hidden" id="sizePageObra" name="sizePageObra" value="5">
                                             </form>
-                                            <button type="button" id="btnAbrirModal" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">MOSSTRAR MODAL</button>
                                         </div>
                                         <div class="row" id="loader_contenido">
                                             <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
@@ -133,72 +133,7 @@
                                     </div>
                                 </header>
                                 <div class="entry-content" id="containerObras">
-                                    <!--div class="row equal-height-row mb-30">
-                                        <div class="col-md-7">
-                                            <div class="valign-wrapper equal-height-column">
-                                                <div class="hero-intro valign-cell">
-                                                    <h2 class='text-peam-negrita text-peam-verde mb-20'>COMPONENTE DE INTERVENCIÓN AMBIENTAL DEL PIP: MEJORAMIENTO DEL CAMINO VECINAL EMP. PE-5N (INDAÑE) - SECTOR SHANGO (MOYOBAMBA), DISTRITO DE MOYOBAMBA, PROVINCIA DE MOYOBAMBA - SAN MARTÍN.</h2>
-                                                    <div class="row">
-                                                        <div class="col-xs-6">
-                                                            <h5 class='text-peam text-peam-negrita'><i class='fa fa-money'></i> Monto de la Inversión</h5>
-                                                        </div>
-                                                        <div class="col-xs-6">
-                                                            <h5 class='text-peam text-righ'>S/ 52585</h5>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="row">
-                                                        <div class="col-xs-6">
-                                                            <h5 class="text-peam text-peam-negrita">
-                                                                <i class='fa fa-calendar'></i> Fecha Inicio
-                                                            </h5>
-                                                        </div>
-                                                        <div class="col-xs-6">
-                                                            <h5 class="text-peam text-right">
-                                                                01/04/2018
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-xs-6">
-                                                            <h5 class="text-peam text-peam-negrita">
-                                                                <i class='fa fa-calendar'></i> Fecha Finalización
-                                                            </h5>
-                                                        </div>
-                                                        <div class="col-xs-6">
-                                                            <h5 class="text-peam text-right">
-                                                                30/09/2018
-                                                            </h5>
-                                                        </div>
-                                                    </div>
-                                                    <div class='progress-section'>
-                                                        <span class='progress-title'><strong>Avance Físico</strong></span>
-                                                        <div class='progress'><div class='progress-bar brand-bg six-sec-ease-in-out' style='background-color: #6a9a32!important' role='progressbar' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100'><span>90%</span></div></div>
-                                                    </div>
-                                                    
-                                                    <div class="progress-section">
-                                                        <span class="progress-title"><strong>Avance Financiero</strong></span>
-                                                        <div class="progress">
-                                                            <div class="progress-bar brand-bg six-sec-ease-in-out" style="background-color: #6a9a32!important" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
-                                                                <span>90%</span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class='col-md-5 hero-thumb equal-height-column'>
-                                            <img style='border: 3px solid;color: #6a9a32' src='' class='img-responsive' alt='Image'>
-                                            <h5 class='text-center mt-10'>Camino vecinal Indañe - sector Shango</h5>
-                                            <div class='text-center'>
-                                                <a style='margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;' class='waves-effect waves-light btn' target='_blank'>Ver Detalle</a>
-                                                <a style='margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;' class='waves-effect waves-light btn' target='_blank'>Galería</a>
-                                                <a style='margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;' class='waves-effect waves-light btn' target='_blank'>Link infobras</a>
-                                                <a style='margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;' class='waves-effect waves-light btn grey-blue' target='_blank'>En Ejecución</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr-->
+                                    
                                 </div>
                                 <footer class="entry-footer">
                                     <div class="row">
@@ -227,18 +162,128 @@
         <div id="myModal" class="modal-peam">
             <!-- Modal content -->
             <div class="modal-content-peam">
-                <div class="modal-header-peam">
+                <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
                     <span class="close" id="btnCerrarModal">&times;</span>
-                    <h2 style="margin-top: 15px;">
-                        COMPONENTE DE INTERVENCIÓN AMBIENTAL DEL PIP: MEJORAMIENTO DEL CAMINO VECINAL EMP. PE-5N (INDAÑE) - SECTOR SHANGO (MOYOBAMBA), DISTRITO DE MOYOBAMBA, PROVINCIA DE MOYOBAMBA - SAN MARTÍN.
+                    <h2 style="margin-top: 15px;" id="descripcionModal">
+                        OBRA
                     </h2>
                 </div>
                 <div class="modal-body-peam">
-                    <p>Some text in the Modal Body</p>
-                    <p>Some other text...</p>
+                    <div class="row mt-10">
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class='text-peam text-peam-negrita'><i class='fa fa-money'></i> Monto de la Inversión</h5>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class='text-peam text-righ' id="montoInversionModal">$ 999999</h5>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class="text-peam text-peam-negrita">Estado de la Obra</h5>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label id="estadoObraModal" style="font-size: 14px; background-color:#00793D;border-radius: 80px; padding-left: 10px; padding-right: 10px; color: #ffffff">
+                                En Ejecución
+                            </label>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class="text-peam text-peam-negrita">
+                                <i class='fa fa-calendar'></i> Fecha Inicio
+                            </h5>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class="text-peam" id="fechaInicioModal">
+                                21/09/2018
+                            </h5>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class="text-peam text-peam-negrita">
+                                <i class='fa fa-calendar'></i> Fecha Finalización
+                            </h5>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class="text-peam" id="fechaFinalizacionModal">
+                                21/09/2018
+                            </h5>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <div class='progress-section'>
+                                <span class='progress-title'><strong>Avance Físico</strong></span>
+                                <div class='progress'>
+                                    <div class='progress-bar brand-bg six-sec-ease-in-out' style='background-color: #6a9a32!important' role='progressbar' aria-valuenow='90' aria-valuemin='0' aria-valuemax='100'>
+                                        <span id="avanceFisicoModal">0%</span>
+                                    </div>
+                                </div>
+                            </div>                            
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <div class="progress-section">
+                                <span class="progress-title"><strong>Avance Financiero</strong></span>
+                                <div class="progress">
+                                    <div class="progress-bar brand-bg six-sec-ease-in-out" style="background-color: #6a9a32!important" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
+                                        <span id="avanceFinancieroModal">0%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class='text-peam text-peam-negrita'><i class='fa fa-clock-o'></i> Tiempo de Ejecución</h5>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class='text-peam text-righ' id="tiempoEjecucionModal">21 Días</h5>
+                        </div>  
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class='text-peam text-peam-negrita'>Modalidad de Ejecución</h5>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class='text-peam text-righ' id="modalidadEjecucionModal">Administración</h5>
+                        </div>  
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class='text-peam text-peam-negrita'>SNIP</h5>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class='text-peam text-righ' id="snipModal">123456</h5>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <h5 class="text-peam text-peam-negrita">Fecha Actualización</h5>
+                        </div>
+                        <div class="col-md-3 col-sm-6 col-xs-12">
+                            <label id="fechaActualizacionModal" style="font-size: 14px; background-color:#f38504;border-radius: 80px; padding-left: 10px; padding-right: 10px; color: #ffffff">
+                                Septiembre-2018
+                            </label>
+                        </div>
+                        <div class="form-group col-md-6 col-xs-12" style="margin-bottom: 0px;">
+                            <h5 class='text-peam text-peam-negrita' style="margin-bottom: 10px;">Ubicación</h5>
+                            <h5 class='text-peam text-righ' style="margin-bottom: 10px;" id="ubicacionModal">Distrito de Moyobamba - sector Shango</h5>
+                        </div>
+                        <div class="form-group col-md-6 col-xs-12" style="margin-bottom: 0px;">
+                            <h5 class='text-peam text-peam-negrita' style="margin-bottom: 10px;">Contratista</h5>
+                            <h5 class='text-peam text-righ' style="margin-bottom: 10px;" id="contratistaModal">-</h5>
+                        </div>
+                        <div class="form-group col-md-6 col-xs-12" style="margin-bottom: 0px;">
+                            <h5 class='text-peam text-peam-negrita' style="margin-bottom: 10px;">Supervisor</h5>
+                            <h5 class='text-peam text-righ' style="margin-bottom: 10px;" id="supervisorModal">-</h5>
+                        </div>
+                        <div class="form-group col-md-6 col-xs-12" style="margin-bottom: 0px;">
+                            <h5 class='text-peam text-peam-negrita' style="margin-bottom: 10px;">Residente</h5>
+                            <h5 class='text-peam text-righ' style="margin-bottom: 10px;" id="residenteModal">-</h5>
+                        </div>
+                        <div class="col-md-3 col-xs-12">
+                            <h5 class='text-peam text-peam-negrita' id="lblobservacion">Observacion</h5>
+                        </div>
+                        <div class="col-md-9 col-xs-12">
+                            <h5 class='text-peam text-righ' id="observacionModal">-</h5>
+                        </div>
+                        <br>
+                        <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                            <img id="fotoModal" style="border: 3px solid;color: #00793D" src="https://farm2.staticflickr.com/1819/30084242478_40dcb73f95.jpg" class="img-responsive" alt="Image">
+                            <h5 class="text-center mt-10" id="leyendaModal" style="margin-bottom: 0px">Camino vecinal Indañe - sector Shango</h5>
+                            <!--div class="text-center">
+                                <a style="margin-top: 5px;height: 30px; padding-top: 2px; padding-bottom: 2px;margin-right: 3px" class="waves-effect waves-light btn" target="_blank" href="https://www.flickr.com/photos/83313636@N07/albums/72157688002137405">Galería</a>
+                            </div-->
+                        </div>
+                    </div>
                 </div>
-                <div class="modal-footer-peam">
-                    <h5 style="margin-top: 10px;" class="text-peam-negrita">PROYECTO ESPECIAL ALTO MAYO</h5>
+                <div class="modal-footer-peam" style="background-color: #ffffff; border-top: #00793D solid; border-width: 2px">
+                    <h6 style="margin-top: 10px;" class="text-peam-negrita">PROYECTO ESPECIAL ALTO MAYO</h6>
                 </div>
             </div>
 
@@ -269,6 +314,7 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>

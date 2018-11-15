@@ -150,7 +150,7 @@
                                         <div class="row mt-3">
                                             <div class="form-group col-12 mb-3">
                                                 <label>DIRECTOR DE INFRAESTRUCTURA</label>
-                                                <input type="text" class="form-control form-control-sm mb-2" placeholder="DIRECTOR DE INFRAESTRUCTURA" value="<%out.print(conf_web.getDirector_infraestructura());%>">
+                                                <input id="txtDirectorInfraestructura" name="txtDirectorInfraestructura" type="text" class="form-control form-control-sm mb-2" placeholder="DIRECTOR DE INFRAESTRUCTURA" value="<%out.print(conf_web.getDirector_infraestructura());%>">
                                                 <div class="row justify-content-sm-center">
                                                     <div class="col-lg-3 col-md-4 col-xs-6 col-12 text-center">
                                                         <div class="card border-primary borde-redondeado mb-2">
@@ -158,9 +158,7 @@
                                                                 <div class="text-center">
                                                                     <%
                                                                         String path_director_infraestructura;
-                                                                        //path_director_infraestructura = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/" + conf_web.getNombre_foto_director_infraestructura();
-                                                                        path_director_infraestructura = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/cgcsem.png";
-                                                                        System.out.println(path_director_infraestructura);
+                                                                        path_director_infraestructura = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/" + conf_web.getNombre_foto_director_infraestructura();
                                                                         if (!new File(path_director_infraestructura).exists()) {
                                                                             path_director_infraestructura = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/default_director.png";
                                                                             System.out.println(path_director_infraestructura);
@@ -187,7 +185,7 @@
                                             </div>
                                             <div class="form-group col-12 mb-3">
                                                 <label>DIRECTOR DE MANEJO AMBIENTAL</label>
-                                                <input type="text" class="form-control form-control-sm mb-2" placeholder="DIRECTOR DE MANEJO AMBIENTAL" value="<%out.print(conf_web.getDirector_manejo_ambiental());%>">
+                                                <input id="txtDirectorManejoAmbiental" name="txtDirectorManejoAmbiental" type="text" class="form-control form-control-sm mb-2" placeholder="DIRECTOR DE MANEJO AMBIENTAL" value="<%out.print(conf_web.getDirector_manejo_ambiental());%>">
                                                 <div class="row justify-content-sm-center">
                                                     <div class="col-lg-3 col-md-4 col-xs-6 col-12 text-center">
                                                         <div class="card border-primary borde-redondeado mb-2">
@@ -196,7 +194,6 @@
                                                                     <%
                                                                         String path_director_manejo_ambiental;
                                                                         path_director_manejo_ambiental = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/" + conf_web.getNombre_foto_director_manejo_ambiental();
-                                                                        path_director_manejo_ambiental = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/director_infraestructura.jpg";
                                                                         if (!new File(path_director_manejo_ambiental).exists()) {
                                                                             path_director_manejo_ambiental = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/default_director.png";
                                                                         }
@@ -222,7 +219,7 @@
                                             </div>    
                                             <div class="form-group col-12 mb-3">
                                                 <label>DIRECTOR DE DESARROLLO AGROPECUARIO</label>
-                                                <input type="text" class="form-control form-control-sm mb-2" placeholder="DIRECTOR DE DESARROLLO AGROPECUARIO" value="<%out.print(conf_web.getDirector_desarrollo_agropecuario());%>">
+                                                <input id="txtDirectorDesarrolloAgropecuario" name="txtDirectorDesarrolloAgropecuario" type="text" class="form-control form-control-sm mb-2" placeholder="DIRECTOR DE DESARROLLO AGROPECUARIO" value="<%out.print(conf_web.getDirector_desarrollo_agropecuario());%>">
                                                 <div class="row justify-content-sm-center">
                                                     <div class="col-lg-3 col-md-4 col-xs-6 col-12 text-center">
                                                         <div class="card border-primary borde-redondeado mb-2">
@@ -256,7 +253,7 @@
                                             </div>
                                             <div class="form-group col-12 mb-3">
                                                 <label>RESPONSABLE DEL ÁREA ESTUDIOS</label>
-                                                <input type="text" class="form-control form-control-sm mb-2" placeholder="RESPONSABLE DEL ÁREA ESTUDIOS" value="<%out.print(conf_web.getDirector_area_estudios());%>">
+                                                <input id="txtResponsableEstudios" name="txtResponsableEstudios" type="text" class="form-control form-control-sm mb-2" placeholder="RESPONSABLE DEL ÁREA ESTUDIOS" value="<%out.print(conf_web.getDirector_area_estudios());%>">
                                                 <div class="row justify-content-sm-center">
                                                     <div class="col-lg-3 col-md-4 col-xs-6 col-12 text-center">
                                                         <div class="card border-primary borde-redondeado mb-2">

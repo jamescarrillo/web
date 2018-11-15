@@ -276,5 +276,29 @@ function validarFormularioConWeb() {
     } else {
         $(this.parentElement).removeClass('has-danger');
     }
+    if ($('#txtDirectorInfraestructura').val() === "") {
+        $($('#txtDirectorInfraestructura').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#txtDirectorManejoAmbiental').val() === "") {
+        $($('#txtDirectorManejoAmbiental').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#txtDirectorDesarrolloAgropecuario').val() === "") {
+        $($('#txtDirectorDesarrolloAgropecuario').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
+    if ($('#txtResponsableEstudios').val() === "") {
+        $($('#txtResponsableEstudios').parent()).addClass('has-danger');
+        return false;
+    } else {
+        $(this.parentElement).removeClass('has-danger');
+    }
     return true;
 }

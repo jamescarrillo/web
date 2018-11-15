@@ -54,6 +54,7 @@ public class ObraDAOImpl implements ObraDAO {
                     + String.valueOf(parameters.get("SQL_ANIO")) + "ORDER BY "
                     + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            logger.info(pst);
             rs = pst.executeQuery();
             List<Obra> list = new ArrayList<>();
             while (rs.next()) {

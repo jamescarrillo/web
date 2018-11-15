@@ -532,9 +532,8 @@
                                 <a href="#"><img src="peam_resources_app/fotos_users/gerente2.jpg" class="img-responsive" alt="Imagen"></a>
                             </div>
                             <div class="team-title">
-                                <br>
                                 <h3 class="text-peam-negrita">
-                                    <a href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carmén Beatriz</font></font></a>
+                                    <a href="#" style="text-transform: none"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carmen Beatriz Ríos Vásquez</font></font></a>
                                 </h3>
                                 <br>
                                 <span class="mb-10"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" class="text-peam-negrita">Gerente General</font></font>
@@ -545,7 +544,7 @@
                                 </h5>
                                 <br>
                                 <h5 class="mb-30 text-peam-negrita">
-                                    <i class="fa fa-envelope-o"></i> gerencia@peam.gob.pe
+                                    <i class="fa fa-envelope-o"></i> <a href="mailto:gerencia@peam.gob.pe">gerencia@peam.gob.pe</a>
                                 </h5>
                                 <br>
                             </div>

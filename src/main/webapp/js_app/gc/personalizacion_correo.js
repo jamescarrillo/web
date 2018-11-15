@@ -100,12 +100,12 @@ function validarFormularioCorreo() {
     } else {
         $(this.parentElement).removeClass('has-danger');
     }
-    if ($('#txtMensajeER').val() === "") {
-        $($('#txtMensajeER').parent()).addClass('has-danger');
-        return false;
-    } else {
-        $(this.parentElement).removeClass('has-danger');
-    }
+//    if ($('#txtMensajeER').val() === "") {
+//        $($('#txtMensajeER').parent()).addClass('has-danger');
+//        return false;
+//    } else {
+//        $(this.parentElement).removeClass('has-danger');
+//    }
     if ($('#comboEstadoER').val() === "-1") {
         $($('#comboEstadoER').parent()).addClass('has-danger');
         return false;
