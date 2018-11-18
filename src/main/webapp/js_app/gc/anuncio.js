@@ -162,7 +162,7 @@ function listarAnuncio(BEAN_PAGINATION) {
             atributosAnuncio += "anu_fecha_ini='" + value.anu_fecha_ini + "' ";
             atributosAnuncio += "anu_fecha_fin='" + value.anu_fecha_fin + "' ";
             atributosAnuncio += "estado='" + value.estado + "' ";
-            cadenaContenido = getResumenContenidoWeb(cadenaContenido, 120) + "...";
+            cadenaContenido = getResumenContenidoWeb(cadenaContenido, 120) + " . . .";
             card = "<div class='col-lg-4 col-md-6'>";
 
             card += "<div class='card blog-widget'>";
@@ -227,8 +227,11 @@ function agregarEventosAnuncio() {
                 position: 'top-right',
                 hideAfter: false
             });
-            $('.jq-toast-single').css('border', '3px solid #a20505');
-            $('.jq-toast-heading').addClass('text-peam-negrita');
+            $('.jq-toast-single').css('border', '3px solid #00793D');
+            $('.jq-toast-single').css('border', '3px solid #00793D');
+            $('.jq-toast-heading').addClass('text-peam text-center');
+            $('.jq-toast-heading').css('color', '#00793D');
+            $('.jq-toast-heading').css('font-weight', 'bold');
         });
     });
 

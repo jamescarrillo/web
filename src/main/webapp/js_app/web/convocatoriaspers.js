@@ -45,16 +45,16 @@ function listarConvocatoria(BEAN_PAGINATION) {
         var estado;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
             if (value.estado) {
-                estado = "VIGENTE";
+                estado = "<label style='font-size: 10px; background-color:#00793D;border-radius: 80px; padding-left: 10px; padding-right: 10px; color: #ffffff'>VIGENTE</label>";
             } else {
-                estado = "FINALIZADO";
+                estado = "<label style='font-size: 10px; background-color:#FF0000;border-radius: 80px; padding-left: 10px; padding-right: 10px; color: #ffffff'>FINALIZADO</label>";
             }
             fila = "<tr coper_id='" + value.coper_id + "' text='" + value.convocatoria + "'>";
             fila += "<td class='align-middle'>" + value.convocatoria + "</td>";
             fila += "<td class='align-middle'>" + value.descripcion + "</td>";
-            fila += "<td class='align-middle'>" + value.fecha + "</td>";
-            fila += "<td class='align-middle'>" + estado + "</td>";
-            fila += "<td class='align-middle'><button class='waves-effect waves-light btn ver-Cronograma' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Revisar</button></td>";
+            fila += "<td class='align-middle text-center'>" + value.fecha + "</td>";
+            fila += "<td class='align-middle text-center'>" + estado + "</td>";
+            fila += "<td class='align-middle text-center'><button class='waves-effect waves-light btn ver-Cronograma' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Revisar</button></td>";
             fila += "</tr>";
             $('#tbodyConvocatoria').append(fila);
         });

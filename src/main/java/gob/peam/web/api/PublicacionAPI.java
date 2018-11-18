@@ -7,15 +7,11 @@ package gob.peam.web.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import gob.peam.web.dao.FinanzaDAO;
 import gob.peam.web.dao.PublicacionDAO;
-import gob.peam.web.dao.impl.FinanzaDAOImpl;
 import gob.peam.web.dao.impl.PublicacionDAOImpl;
 import gob.peam.web.model.Publicacion;
 import gob.peam.web.utilities.BEAN_CRUD;
-import gob.peam.web.utilities.Utilities;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
@@ -70,7 +66,7 @@ public class PublicacionAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-            LOG.info("--->" + action);
+            LOG.info(action);
             switch (this.action) {
                 case "paginarPublicacion":
                     procesarPublicacion(new BEAN_CRUD(this.publicacionDAO.getPagination(getParametersPublicacion(request))), response);

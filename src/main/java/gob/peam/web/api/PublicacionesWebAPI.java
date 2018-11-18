@@ -7,10 +7,14 @@ package gob.peam.web.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import gob.peam.web.dao.AnuncioDAO;
 import gob.peam.web.dao.MultimediaDAO;
 import gob.peam.web.dao.NotaPrensaDAO;
+import gob.peam.web.dao.PublicacionDAO;
+import gob.peam.web.dao.impl.AnuncioDAOImpl;
 import gob.peam.web.dao.impl.MultimediaDAOImpl;
 import gob.peam.web.dao.impl.NotaPrensaDAOImpl;
+import gob.peam.web.dao.impl.PublicacionDAOImpl;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -48,6 +52,8 @@ public class PublicacionesWebAPI extends HttpServlet {
 
     private NotaPrensaDAO notaPrensaDAO;
     private MultimediaDAO multimediaDAO;
+    private AnuncioDAO anuncioDAO;
+    private PublicacionDAO publicacionDAO;
 
     @Override
     public void init() throws ServletException {
@@ -58,6 +64,8 @@ public class PublicacionesWebAPI extends HttpServlet {
 
         this.notaPrensaDAO = new NotaPrensaDAOImpl(this.pool);
         this.multimediaDAO = new MultimediaDAOImpl(this.pool);
+        this.anuncioDAO = new AnuncioDAOImpl(this.pool);
+        this.publicacionDAO = new PublicacionDAOImpl(this.pool);
     }
 
     /**
@@ -97,14 +105,32 @@ public class PublicacionesWebAPI extends HttpServlet {
                             break;
                     }
                     break;
+                case "/publicaciones/comunicados":
+                    this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
+                    LOG.info(this.action);
+                    switch (this.action) {
+                        case "paginarComunicado":
+                            procesarAnuncio(new BEAN_CRUD(this.anuncioDAO.getPagination(getParametersAnuncio(request))), response);
+                            break;
+                        default:
+                            request.getRequestDispatcher("/jsp/web/publicaciones/comunicadosWeb.jsp").forward(request, response);
+                            break;
+                    }
+                    break;
                 case "/publicaciones/memorias-anuales":
                     request.getRequestDispatcher("/estamos_trabajando_web.jsp").forward(request, response);
                     break;
-                case "/publicaciones/comunicados":
-                    request.getRequestDispatcher("/estamos_trabajando_web.jsp").forward(request, response);
-                    break;
                 case "/publicaciones/otras-publicaciones":
-                    request.getRequestDispatcher("/estamos_trabajando_web.jsp").forward(request, response);
+                    this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
+                    LOG.info(this.action);
+                    switch (this.action) {
+                        case "paginarPublicacion":
+                            procesarPublicacion(new BEAN_CRUD(this.publicacionDAO.getPagination(getParametersPublicacion(request))), response);
+                            break;
+                        default:
+                            request.getRequestDispatcher("/jsp/web/publicaciones/otrasPublicacionesWeb.jsp").forward(request, response);
+                            break;
+                    }
                     break;
                 default:
                     response.sendRedirect("/index");
@@ -207,6 +233,60 @@ public class PublicacionesWebAPI extends HttpServlet {
                 " LIMIT " + request.getParameter("sizePageMultimedia") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageMultimedia")) - 1)
                 * Integer.parseInt(request.getParameter("sizePageMultimedia")));
+        return this.parameters;
+    }
+
+    private void procesarAnuncio(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(AnuncioAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap getParametersAnuncio(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", request.getParameter("txtTituloComunicado"));
+        this.parameters.put("SQL_ESTADO", "AND ESTADO = TRUE");
+        this.parameters.put("ESTADOP", "true");
+        this.parameters.put("SQL_TIPO", "");
+        this.parameters.put("SQL_ORDERS", "ANU_FECHA_INI DESC");
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePageComunicado") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageComunicado")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageComunicado")));
+        return this.parameters;
+    }
+
+    private void procesarPublicacion(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(PublicacionAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap<String, Object> getParametersPublicacion(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", request.getParameter("txtTituloPublicacion").toLowerCase());
+        if (request.getParameter("comboAnioPublicacion").equals("-1")) {
+            this.parameters.put("SQL_ANIO", "");
+        } else {
+            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioPublicacion") + "' ");
+        }
+        this.parameters.put("SQL_ESTADO", "AND ESTADO = TRUE");
+        this.parameters.put("SQL_TIPO", "AND TIPO = 3");
+        this.parameters.put("SQL_ORDERS", "ID DESC");
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePagePublicacion") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPagePublicacion")) - 1)
+                * Integer.parseInt(request.getParameter("sizePagePublicacion")));
         return this.parameters;
     }
 

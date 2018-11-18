@@ -68,7 +68,7 @@ public class PenalidadAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-            this.logger.info("ACTION -> " + this.action);
+            this.logger.info(this.action);
             switch (this.action) {
                 case "paginarPenalidad":
                     procesarPenalidad(new BEAN_CRUD(this.penalidadDAO.getPagination(getParametersPenalidad(request))), response);

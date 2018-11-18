@@ -38,35 +38,12 @@
         <section class="padding-bottom-100">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 60px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Estructura Orgánica</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Estructura Orgánica</h2>
                 </div>
-
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="border-tab transparent-nav">
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs nav-justified" role="tablist">
-                                <li role="presentation" class="active"><a href="#tab-estructura_or" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Estructura Orgánica</a></li>
-                            </ul>
-                            <!-- Tab panes -->
-                            <div class="panel-body">
-                                <div class="tab-content">
-                                    <div role="tabpanel" class="tab-pane fade in active" id="tab-estructura_or">
-                                        <div class="row">
-                                            <div class="col-md-8 col-xs-12">
-                                                <p>Estamos trabajando...</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div><!-- /.border-bottom-tab -->
-                    </div><!-- /.col-md-12 -->
-                </div><!-- /.row -->
-
+                </div>
                 <hr>
-
-            </div><!-- /.container -->
+            </div>
         </section>
         <%@ include file = "../../../footer.jsp" %>  
         <!-- jQuery -->
@@ -74,7 +51,7 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/materialize/js/materialize.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/menuzord.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/bootstrap-tabcollapse.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/bootstrap-collapsecollapse.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.easing.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.sticky.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/smoothscroll.min.js"></script>

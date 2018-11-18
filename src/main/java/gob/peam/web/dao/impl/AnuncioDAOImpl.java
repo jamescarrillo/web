@@ -177,8 +177,10 @@ public class AnuncioDAOImpl implements AnuncioDAO {
         List<Anuncio> list = new ArrayList<>(cantidad);
         try (Connection conn = pool.getConnection()) {
             try (PreparedStatement pst = conn.prepareStatement("SELECT TITULO, CONTENIDO FROM WEB.ANUNCIO WHERE "
-                    + "CURRENT_DATE BETWEEN TO_DATE(ANU_FECHA_INI,'YYYY-MM-DD') AND TO_DATE(ANU_FECHA_FIN,'YYYY-MM-DD') "
+                    + "(CURRENT_DATE BETWEEN TO_DATE(ANU_FECHA_INI,'YYYY-MM-DD') AND TO_DATE(ANU_FECHA_FIN,'YYYY-MM-DD')) "
+                    + "AND ESTADO = TRUE "
                     + "LIMIT ? OFFSET 0")) {
+                LOG.info(pst.toString());
                 pst.setInt(1, cantidad);
                 try (ResultSet rs = pst.executeQuery()) {
                     while (rs.next()) {

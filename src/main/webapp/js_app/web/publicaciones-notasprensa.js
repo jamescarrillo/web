@@ -103,7 +103,7 @@ function getCardViewNoticia(foto, titulo, contenido, idnota, fecha_publicacion, 
     article += "<form class='form-ver-noticia' method='POST' action='notas-de-prensa'>";
     article += "<input type='hidden' name='idNota' value='" + idnota + "'>";
     article += "<input type='hidden' name='action' value='readNotaPrensa'>";
-    article += "<h3><a class='text-peam ir-ver-noticia' style='font-size: 15px;text-transform: uppercase;'>" + titulo + "</a></h3>";
+    article += "<h3><a class='text-peam-negrita-verde ir-ver-noticia' style='font-size: 15px;text-transform: uppercase;'>" + titulo + "</a></h3>";
     article += "</form>";
     //article += "<div class='entry-meta'><ul class='list-inline'><li><a>" + fuente + "</a></li><li><i class='fa fa-clock-o'></i> <a>" + fecha_publicacion + "</a></li></ul></div>";
     //article += "<div class='entry-meta'><ul class='list-inline'><li><a>" + fuente + "</a></li></ul></div>";

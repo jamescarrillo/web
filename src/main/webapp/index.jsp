@@ -102,7 +102,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div id="resumenNotaPrensa1">
+                            <div id="resumenNotaPrensa1" class="text-left">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -122,7 +122,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota1" value="">
                                 <input type="hidden" name="action" id="action1" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más <i class='fa fa-long-arrow-right'></i></button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más</button>
                             </form>
                         </div>
                     </li>
@@ -166,7 +166,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-center" id="resumenNotaPrensa2">
+                            <div class="text-left" id="resumenNotaPrensa2">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -186,7 +186,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota2" value="">
                                 <input type="hidden" name="action" id="action2" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más <i class='fa fa-long-arrow-right'></i></button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más</button>
                             </form>
                         </div>
                     </li>
@@ -230,7 +230,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-center" id="resumenNotaPrensa3">
+                            <div class="text-left" id="resumenNotaPrensa3">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -250,7 +250,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota3" value="">
                                 <input type="hidden" name="action" id="action3" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más <i class='fa fa-long-arrow-right'></i></button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más</button>
                             </form>
                         </div>
                     </li>
@@ -294,7 +294,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-center" id="resumenNotaPrensa4">
+                            <div class="text-left" id="resumenNotaPrensa4">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -314,7 +314,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota4" value="">
                                 <input type="hidden" name="action" id="action4" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más <i class='fa fa-long-arrow-right'></i></button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más</button>
                             </form>
                         </div>
                     </li>
@@ -358,7 +358,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-center" id="resumenNotaPrensa5">
+                            <div class="text-left" id="resumenNotaPrensa5">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -378,7 +378,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota5" value="">
                                 <input type="hidden" name="action" id="action5" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más <i class='fa fa-long-arrow-right'></i></button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;">Leer más</button>
                             </form>
                         </div>
                     </li>
@@ -388,7 +388,7 @@
         <section class="section-padding" style=" padding-top: 40px; padding-bottom: 40px;">
             <div class="container">
                 <div class="text-center mb-20">
-                    <h2 class="h1-title section-title text-peam-verde">
+                    <h2 class="section-title text-peam-verde-subrayado">
                         <strong>Nuestras Líneas de Acción</strong>
                     </h2>
                 </div>
@@ -396,35 +396,45 @@
                     <div class="clients-grid">
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/direccion-de-infraestructura"> <i class="fa fa-home fa-5x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde">
-                                        DIRECCIÓN DE <br>INFRAESTRUCTURA
+                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/direccion-de-infraestructura"> 
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-home fa-5x" aria-hidden="true"></i>
+                                        <br>
+                                        Dirección de <br>Infraestructura
+                                    </h5>
+                                </a>                                
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/direccion-de-manejo-ambiental">
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-pagelines fa-5x"></i>
+                                        <br>
+                                        Dirección de <br>Manejo Ambiental
                                     </h5>
                                 </a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/direccion-de-manejo-ambiental"> <i class="fa fa-pagelines fa-5x"
-                                                                                                                                                  aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde">
-                                        DIRECCIÓN DE <br>MANEJO AMBIENTAL
+                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/direccion-de-desarrollo-agropecuario"> 
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-truck fa-5x" aria-hidden="true"></i>
+                                        <br>
+                                        Dirección de Desarrollo <br>Agropecuario
                                     </h5>
                                 </a>
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
                             <div class="text-center">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/direccion-de-desarrollo-agropecuario"> <i class="fa fa-truck fa-5x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde">DIRECCIÓN DE DESARROLLO AGROPECUARIO</h5>
-                                </a>
-
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6">
-                            <div class="text-center">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/estudios"> <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde">ESTUDIOS</h5>
+                                <a href="<%out.print(getServletContext().getContextPath());%>/lineas-de-accion/estudios">
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-graduation-cap fa-5x" aria-hidden="true"></i>
+                                        <br>
+                                        Estudios
+                                    </h5>
                                 </a>
                             </div>
                         </div>
@@ -435,14 +445,14 @@
         <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
                 <div class="text-center mb-20">
-                    <h1 class="h1-title section-title text-peam-verde">
+                    <h1 class="section-title text-peam-verde-subrayado">
                         <strong>Noticias</strong>
                     </h1>
                 </div>
                 <div class="row">
-                    <div class="col-lg-9 col-md-8 col-xs-12" id="idColumnaCarrusel" style="height: 500px">
+                    <div class="col-md-5 col-md-offset-2 col-sm-8 col-sm-offset-0 col-xs-10 col-xs-offset-1 mt-15" id="idColumnaCarrusel">
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
+                            <!--ol class="carousel-indicators">
                                 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
                                 <li data-target="#myCarousel" data-slide-to="1"></li>
                                 <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -453,66 +463,66 @@
                                 <li data-target="#myCarousel" data-slide-to="7"></li>
                                 <li data-target="#myCarousel" data-slide-to="8"></li>
                                 <li data-target="#myCarousel" data-slide-to="9"></li>
-                            </ol>
+                            </ol-->
                             <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa0" src="" alt="Noticia" style="height: 495px">
+                                <div class="item active image-peam">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa0" src="" alt="Noticia" >
                                     <div class="carousel-caption">
-                                        <h3 id="tituloCNotaPrensa0" class="text-peam-negrita-fondo"></h3>
+                                        <h4 id="tituloCNotaPrensa0" class="text-peam-negrita-fondo"></h4>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa1" src="" alt="Noticia" style="height: 495px">
+                                <div class="item image-peam">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa1" src="" alt="Noticia" >
                                     <div class="carousel-caption">
-                                        <h3 id="tituloCNotaPrensa1" class="text-peam-negrita-fondo"></h3>
+                                        <h4 id="tituloCNotaPrensa1" class="text-peam-negrita-fondo"></h4>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa2" src="" alt="Noticia" style="height: 495px">
+                                <div class="item image-peam">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa2" src="" alt="Noticia" >
                                     <div class="carousel-caption">
-                                        <h3 id="tituloCNotaPrensa2" class="text-peam-negrita-fondo"></h3>
+                                        <h4 id="tituloCNotaPrensa2" class="text-peam-negrita-fondo"></h4>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa3" src="" alt="Noticia" style="height: 495px">
+                                <div class="item image-peam">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa3" src="" alt="Noticia" >
                                     <div class="carousel-caption">
-                                        <h3 id="tituloCNotaPrensa3" class="text-peam-negrita-fondo"></h3>
+                                        <h4 id="tituloCNotaPrensa3" class="text-peam-negrita-fondo"></h4>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa4" src="" alt="Noticia" style="height: 495px">
+                                <div class="item image-peam">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa4" src="" alt="Noticia" >
                                     <div class="carousel-caption">
-                                        <h3 id="tituloCNotaPrensa4" class="text-peam-negrita-fondo"></h3>
+                                        <h4 id="tituloCNotaPrensa4" class="text-peam-negrita-fondo"></h4>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa5" src="" alt="Noticia" style="height: 495px">
+                                <div class="item image-peam">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa5" src="" alt="Noticia" >
                                     <div class="carousel-caption">
-                                        <h3 id="tituloCNotaPrensa5" class="text-peam-negrita-fondo"></h3>
+                                        <h4 id="tituloCNotaPrensa5" class="text-peam-negrita-fondo"></h4>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa6" src="" alt="Noticia" style="height: 495px">
+                                <div class="item image-peam">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa6" src="" alt="Noticia" >
                                     <div class="carousel-caption">
-                                        <h3 id="tituloCNotaPrensa6" class="text-peam-negrita-fondo"></h3>
+                                        <h4 id="tituloCNotaPrensa6" class="text-peam-negrita-fondo"></h4>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa7" src="" alt="Noticia" style="height: 495px">
+                                <div class="item image-peam">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa7" src="" alt="Noticia" >
                                     <div class="carousel-caption">
-                                        <h3 id="tituloCNotaPrensa7" class="text-peam-negrita-fondo"> </h3>
+                                        <h4 id="tituloCNotaPrensa7" class="text-peam-negrita-fondo"> </h4>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa8" src="" alt="Noticia" style="height: 495px">
+                                <div class="item image-peam">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa8" src="" alt="Noticia" >
                                     <div class="carousel-caption">
-                                        <h3 id="tituloCNotaPrensa8" class="text-peam-negrita-fondo"></h3>
+                                        <h4 id="tituloCNotaPrensa8" class="text-peam-negrita-fondo"></h4>
                                     </div>
                                 </div>
-                                <div class="item">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa9" src="" alt="Noticia" style="height: 495px">
+                                <div class="item image-peam">
+                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa9" src="" alt="Noticia" >
                                     <div class="carousel-caption">
-                                        <h3 id="tituloCNotaPrensa9" class="text-peam-negrita-fondo"></h3>
+                                        <h4 id="tituloCNotaPrensa9" class="text-peam-negrita-fondo"></h4>
                                     </div>
                                 </div>
                             </div>
@@ -526,27 +536,23 @@
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3 col-xs-10 col-xs-offset-1">
+                    <div class="col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2 mt-15">
                         <div class="team-wrapper text-center">
                             <div class="team-img">
                                 <a href="#"><img src="peam_resources_app/fotos_users/gerente2.jpg" class="img-responsive" alt="Imagen"></a>
                             </div>
-                            <div class="team-title">
+                            <div class="team-title" style="padding-top: 15px;">
                                 <h3 class="text-peam-negrita">
                                     <a href="#" style="text-transform: none"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carmen Beatriz Ríos Vásquez</font></font></a>
                                 </h3>
-                                <br>
                                 <span class="mb-10"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" class="text-peam-negrita">Gerente General</font></font>
                                 </span>
-                                <br>
                                 <h5 class="text-peam-negrita">
                                     <i class="fa fa-phone"></i> (042) - 562522
                                 </h5>
-                                <br>
-                                <h5 class="mb-30 text-peam-negrita">
+                                <h5 class="mb-20 text-peam-verde-index">
                                     <i class="fa fa-envelope-o"></i> <a href="mailto:gerencia@peam.gob.pe">gerencia@peam.gob.pe</a>
                                 </h5>
-                                <br>
                             </div>
                         </div>
                     </div>
@@ -556,80 +562,85 @@
         <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
                 <div class="text-center mb-20">
-                    <h1 class="h1-title section-title text-peam-verde">
+                    <h1 class="section-title text-peam-verde-subrayado">
                         <strong>Gestión Transparente</strong>
                     </h1>
                 </div>
                 <div class="row">
                     <div class="clients-grid">
-                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-20">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">
-                                    <i class="fa fa-files-o fa-4x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde" style="margin-top: 5px">
-                                        DOCUMENTOS NORMATIVOS <br>Y DE GESTIÓN
+                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
+                                        <i class="fa fa-files-o fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Documentos Normativos <br>y de Gestión
                                     </h5>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-20">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/presupuesto-y-finanzas">
-                                    <i class="fa fa-money fa-4x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde" style="margin-top: 5px">
-                                        PRESUPUESTOS Y <br>FINANZAS
+                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
+                                        <i class="fa fa-money fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Presupuestos y <br>Finanzas
                                     </h5>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-20">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/proyectos-de-inversion">
-                                    <div class="icon" style="height: 60px">
-                                        <i class="material-icons brand-icon brand-hover" style="font-size: 5em">supervisor_account</i>
-                                    </div>
-                                    <h5 class="text-peam-verde" style="margin-top: 5px">
-                                        PROYECTOS DE <br>INVERSIÓN
+                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
+                                        <i class="fa fa-archive fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Proyectos de <br>Inversión
                                     </h5>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb-20 mt-15">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-20 mt-20">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/recursos-humanos">
-                                    <i class="fa fa-users fa-4x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde" style="margin-top: 5px">
-                                        RECURSOS HUMANOS
+                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
+                                        <i class="fa fa-users fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Recursos Humanos
                                     </h5>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-lg-offset-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 mt-15">
+                        <div class="col-lg-2 col-lg-offset-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 mt-20">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/adquisiciones-y-contrataciones">
-                                    <i class="fa fa-sticky-note fa-4x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde" style="margin-top: 5px">
-                                        ADQUISICIONES Y <br>CONTRATACIONES
+                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
+                                        <i class="fa fa-sticky-note fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Adquisiciones y <br>Contrataciones
                                     </h5>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-6 mb-20 mt-15">
+                        <div class="col-lg-2 col-md-4 col-sm-6 mb-20 mt-20">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/agenda-institucional">
-                                    <i class="fa fa-book fa-4x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde" style="margin-top: 5px">
-                                        AGENDA INSTITUCIONAL
+                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
+                                        <i class="fa fa-book fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Agenda Institucional
                                     </h5>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-6 mt-15">
+                        <div class="col-lg-2 col-md-4 col-sm-6 mt-20">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/informacion-adicional">
-                                    <i class="fa fa-exclamation-circle fa-4x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde" style="margin-top: 5px">
-                                        INFORMACIÓN ADICIONAL
+                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
+                                        <i class="fa fa-exclamation-circle fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Información Adicional
                                     </h5>
                                 </a>
                             </div>
@@ -641,7 +652,7 @@
         <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
                 <div class="text-center mb-20">
-                    <h1 class="h1-title section-title text-peam-verde">
+                    <h1 class="section-title text-peam-verde-subrayado">
                         <strong>Favoritos</strong>
                     </h1>
                 </div>
@@ -650,10 +661,9 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">
-                                    <div class="icon">
-                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">description</i>
-                                    </div>
-                                    <h5 class="text-peam-verde">
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-file-text fa-4x" aria-hidden="true"></i>
+                                        <br>
                                         TUPA
                                     </h5>
                                 </a>
@@ -662,11 +672,10 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/institucion/codigo-de-etica">
-                                    <div class="icon">
-                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">gavel</i>
-                                    </div>
-                                    <h5 class="text-peam-verde">
-                                        CÓDIGO DE ÉTICA
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-gavel fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Código de Ética
                                     </h5>
                                 </a>
                             </div>
@@ -674,8 +683,9 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
                             <div class="text-center">
                                 <a href="http://doc.peam.gob.pe/sisgedo/app/main.php">
-                                    <i class="fa fa-folder-open fa-4x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde">
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-folder-open fa-4x" aria-hidden="true"></i>
+                                        <br>
                                         Sistema de Trámite <br>Documentario (SISGEDO)
                                     </h5>
                                 </a>
@@ -684,11 +694,10 @@
                         <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/consultas/libro-de-reclamaciones">
-                                    <div class="icon" style="height: 60px">
-                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">local_library</i>
-                                    </div>
-                                    <h5 class="text-peam-verde">
-                                        LIBRO DE <br>RECLAMACIONES
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-pencil-square-o fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Libro de <br>Reclamaciones
                                     </h5>
                                 </a>
                             </div>
@@ -696,9 +705,10 @@
                         <div class="col-lg-2 col-lg-offset-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 mt-15">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/consultas/acceso-informacion">
-                                    <i class="fa fa-share-square-o fa-4x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde">
-                                        SOLICITUD DE ACCESO <br>A INFORMACIÓN
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-share-square-o fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Solicitud de Acceso <br>a la Información
                                     </h5>
                                 </a>
                             </div>
@@ -706,9 +716,10 @@
                         <div class="col-lg-2 col-md-4 col-sm-6 mt-15">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">
-                                    <i class="fa fa-file-text fa-4x" aria-hidden="true"></i>
-                                    <h5 class="text-peam-verde" style="margin-top: 5px">
-                                        RESOLUCIONES
+                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
+                                        <i class="fa fa-file-text fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Resoluciones
                                     </h5>
                                 </a>
                             </div>
@@ -716,11 +727,10 @@
                         <div class="col-lg-2 col-md-4 col-sm-6 mt-15">
                             <div class="text-center">
                                 <a href="">
-                                    <div class="icon" style="height: 60px">
-                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">share</i>
-                                    </div>
-                                    <h5 class="text-peam-verde">
-                                        CONTROL INTERNO
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-share-alt fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Control Interno
                                     </h5>
                                 </a>
                             </div>
@@ -732,7 +742,7 @@
         <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
                 <div class="text-center mb-20">
-                    <h1 class="h1-title section-title text-peam-verde">
+                    <h1 class="section-title text-peam-verde-subrayado">
                         <strong>Convocatorias</strong>
                     </h1>
                 </div>
@@ -741,11 +751,10 @@
                         <div class="col-lg-2 col-lg-offset-4 col-md-4 col-md-offset-2 col-sm-6 col-xs-offset-0 mt-15">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-personal">
-                                    <div class="icon" style="height: 60px">
-                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">supervisor_account</i>
-                                    </div>
-                                    <h5 class="text-peam-verde">
-                                        SELECCIÓN DE <br>PERSONAL
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-users fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Selección de <br>Personal
                                     </h5>
                                 </a>
                             </div>
@@ -753,11 +762,10 @@
                         <div class="col-lg-2 col-md-4 col-sm-6 mt-15">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/convocatorias/convocatoria-de-bienes-y-servicios">
-                                    <div class="icon" style="height: 60px">
-                                        <i class="material-icons brand-icon brand-hover" style="font-size: 4em">widgets</i>
-                                    </div>
-                                    <h5 class="text-peam-verde">
-                                        CONVOCATORIA BIENES, SERVICIOS, OBRAS <br>Y CONCESIONES
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-cubes fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Convocatoria de Bienes, Servicios, Obras <br>y Concesiones
                                     </h5>
                                 </a>
                             </div>
@@ -769,7 +777,7 @@
         <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
                 <div class="text-center mb-20">
-                    <h1 class="h1-title section-title text-peam-verde">
+                    <h1 class="section-title text-peam-verde-subrayado">
                         <strong>Galería y Multimedia</strong>
                     </h1>
                 </div>

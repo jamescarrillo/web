@@ -8,8 +8,6 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css" rel="stylesheet">
         <!-- FontAwesome CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- magnific-popup -->
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/magnific-popup.css" rel="stylesheet">
         <!-- flexslider -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/flexslider.css" rel="stylesheet">
         <!-- materialize -->
@@ -45,22 +43,29 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Adquisiciones y Contrataciones</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Adquisiciones y Contrataciones</h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
-                        <div class="posts-content single-post">
-                            <article class="post-wrapper">
-                                <header class="entry-header-wrapper clearfix">                                    
-                                    <div class="entry-header">
+                        <div class="panel-group feature-accordion brand-accordion icon angle-icon" id="tab">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#tab" href="#tab-documentos" aria-expanded="true" class="">
+                                            Documentos
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-documentos" class="panel-collapse collapse in" aria-expanded="true" style="">
+                                    <div class="panel-body">
                                         <div class="row">
                                             <form id="FrmDocumentos">
                                                 <div class="col-md-4 col-sm-3 col-xs-12">
                                                     <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
                                                         <option value="1100">PAC y Modificatorias</option>
                                                         <option value="100">Monto de Liquidación Final de Obra</option>
-                                                        <option value="200">Monto Adicionales de Obra</option>
-                                                        <option value="300">Informe de Supervición de Contratos</option>
+                                                        <option value="200">Monto Adicionales de las Obras</option>
+                                                        <option value="300">Informes de Supervición de Contratos</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
@@ -94,9 +99,9 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%;" class="text-center align-middle">FECHA</th>
-                                                                <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
-                                                                <th style="width: 65%" class="align-middle">RESUMEN</th>
+                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
+                                                                <th style="width: 65%" class="align-middle">Resumen</th>
                                                                 <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                             </tr>
                                                         </thead>
@@ -106,31 +111,200 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationDocumentos" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
-                                </header>
-                                <div class="entry-content">
                                 </div>
-                                <footer class="entry-footer">
-                                    <div class="row">
-                                        <div class="col-md-3 col-xs-12">
-                                            <ul class="list-inline pull-left">
-                                                <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
-                                                <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
-                                                <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-9 col-xs-12 text-right">
-                                            <ul id="paginationDocumentos" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
-
-                                            </ul>
-                                        </div>
-
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-ordenes-de-compra" aria-expanded="false">
+                                            Ordenes de Compras de Bienes
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-ordenes-de-compra" class="panel-collapse collapse" aria-expanded="false">
+                                    <div class="panel-body">
+                                        Estamos Trabajando...
                                     </div>
-                                </footer>
-                            </article>
-                        </div>
-                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-ordenes-de-servicio" aria-expanded="false">
+                                            Ordenes de Servicios
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-ordenes-de-servicio" class="panel-collapse collapse" aria-expanded="false">
+                                    <div class="panel-body">
+                                        Estamos Trabajando...
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-gastos-en-publicidad" aria-expanded="false">
+                                            Gastos en Publicidad
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-gastos-en-publicidad" class="panel-collapse collapse" aria-expanded="false">
+                                    <div class="panel-body">
+                                        Estamos Trabajando...
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-gastos-en-telefonia" aria-expanded="false">
+                                            Gastos en Telefonía
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-gastos-en-telefonia" class="panel-collapse collapse" aria-expanded="false">
+                                    <div class="panel-body">
+                                        Estamos Trabajando...
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-uso-de-vehiculos" aria-expanded="false">
+                                            Uso de Vehículos
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-uso-de-vehiculos" class="panel-collapse collapse" aria-expanded="false">
+                                    <div class="panel-body">
+                                        Estamos Trabajando...
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-principales-de-proveedores" aria-expanded="false">
+                                            Principales Proveedores
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-principales-de-proveedores" class="panel-collapse collapse" aria-expanded="false">
+                                    <div class="panel-body">
+                                        Estamos Trabajando...
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-viaticos-y-pasajes" aria-expanded="false">
+                                            Viáticos y Pasajes
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-viaticos-y-pasajes" class="panel-collapse collapse" aria-expanded="false">
+                                    <div class="panel-body">
+                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-penalidades-aplicadas" aria-expanded="false">
+                                            Penalidades Aplicadas
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-penalidades-aplicadas" class="panel-collapse collapse" aria-expanded="false">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <form id="FrmPenalidad">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioPenalidad" name="comboAnioPenalidad" class="form-control combo-paginar" idBtnBuscar='btnBuscarPenalidad' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtPenalidad" id="txtPenalidad">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Contratista</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <button type="submit" id="btnBuscarPenalidad" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormPenalidad" value="FrmPenalidad">
+                                                <input type="hidden" id="actionPenalidad" name="action" value="paginarPenalidad">
+                                                <input type="hidden" id="numberPagePenalidad" name="numberPagePenalidad" value="1">
+                                                <input type="hidden" id="sizePagePenalidad" name="sizePagePenalidad" value="10">
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_penalidad">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="text-center align-middle">CONTRATO S/</th>
+                                                                <th style="width: 35%" class="align-middle">CONTRATISTA</th>
+                                                                <th style="width: 10%" class="text-center align-middle">RUC</th>
+                                                                <th style="width: 10%" class="text-center align-middle">TIPO</th>
+                                                                <th style="width: 35%" class="align-middle">OBJETO DE PROCESO</th>
+                                                                <th style="width: 15%" class="text-center align-middle">MONTO PENALIDAD S/</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyPenalidad">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationPenalidad" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>                  
+                    </div>
                     <div class="col-xs-12 text-center">
                         <div class="widget widget_search mb-20">
                             <div class="fb-page" 
@@ -169,12 +343,9 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.inview.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
-
         <!-- RS5.0 Core JS Files -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
-
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
@@ -183,6 +354,7 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/gestiontransparente.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/penalidad.js"></script>
 
     </body>
 </html>

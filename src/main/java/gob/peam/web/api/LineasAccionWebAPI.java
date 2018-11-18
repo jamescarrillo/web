@@ -133,6 +133,9 @@ public class LineasAccionWebAPI extends HttpServlet {
             case "/lineas-de-accion/direccion-de-desarrollo-agropecuario":
                 r = "Dirección de Desarrollo Agropecuario";
                 break;
+            case "/lineas-de-accion/estudios":
+                r = "Estudios";
+                break;
         }
         return r;
     }
@@ -302,7 +305,7 @@ public class LineasAccionWebAPI extends HttpServlet {
         if (!request.getParameter("cboSeguimiento").equals("-1")) {
             sql_anio += " AND SEGUIMIENTO = '" + request.getParameter("cboSeguimiento") + "' ";
         }
-        sql_anio += " AND AREA = " + getIdArea(request)+ " ";
+        sql_anio += " AND AREA = " + getIdArea(request) + " ";
         this.parameters.put("SQL_ANIO", sql_anio);
         this.parameters.put("SQL_ORDERS", "ANHO DESC");
         this.parameters.put("LIMIT",

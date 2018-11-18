@@ -8,8 +8,6 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css" rel="stylesheet">
         <!-- FontAwesome CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- magnific-popup -->
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/magnific-popup.css" rel="stylesheet">
         <!-- flexslider -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/flexslider.css" rel="stylesheet">
         <!-- materialize -->
@@ -92,7 +90,7 @@
                 </div>
                 <hr>
                 <div class="text-center mb-30" style="margin-top: 40px;">
-                    <h1 class="text-peam-verde h1-title" id="idTituloMasNoticias"><strong>Más Noticias</strong></h1>
+                    <h1 class="text-peam-verde-subrayado" id="idTituloMasNoticias"><strong>Más Noticias</strong></h1>
                     <input type="hidden" id="idNota" value="<%out.print((request.getParameter("idNota") == null ? "-1" : request.getParameter("idNota")));%>">
                 </div>
                 <div class="row">
@@ -101,7 +99,7 @@
                     </div>
                     <div class="col-md-3">
                         <div class="tt-sidebar-wrapper" role="complementary">
-                            <div class="widget widget_search mb-20">
+                            <div class="widget widget_search" style="margin-bottom: 10px">
                                 <div class="border-tab transparent-nav">
                                     <ul class="nav nav-tabs nav-justified" role="tablist">
                                         <li role="presentation" class="active"><a href="#tab-busquedas" class="waves-effect waves-dark"  role="tab" data-toggle="tab">BUSQUEDAS</a></li>
@@ -117,7 +115,7 @@
                                                     <input type="hidden" id="estadoNotaPrensa" name="estadoNotaPrensa" value="true">
                                                     <input type="hidden" id="numberPageNotaPrensa" name="numberPageNotaPrensa" value="1">
                                                     <input type="hidden" id="sizePageNotaPrensa" name="sizePageNotaPrensa" value="7">
-                                                    <input type="text" class="form-control" value="" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" placeholder="Buscar. . .">
+                                                    <input type="text" class="form-control" value="" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" placeholder="Buscar . . .">
                                                     <button type="submit"><i class="fa fa-search"></i></button>
 
                                                 </form>
@@ -176,16 +174,18 @@
                 js.src = 'https://connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v3.2';
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));</script>
-        
-        
+
+
         <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = 'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2';
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = 'https://connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v3.2';
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery-2.1.3.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/bootstrap/js/bootstrap.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/materialize/js/materialize.min.js"></script>
@@ -199,12 +199,9 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.inview.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
-
         <!-- RS5.0 Core JS Files -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
-
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
@@ -212,6 +209,5 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/publicaciones-notasprensa.js"></script>
-
     </body>
 </html>

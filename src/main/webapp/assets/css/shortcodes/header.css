@@ -230,7 +230,7 @@ header.sticky .menuzord-menu>li>a,
 }
 
 .nav-border-bottom .menuzord-menu>li>a {
-    line-height: 99px;
+    line-height: 79px;
 }
 
 .tt-nav.sticky .menuzord-menu>li>a {
@@ -252,8 +252,8 @@ header.sticky .menuzord-menu>li>a,
 .menuzord-menu>li>.megamenu h2 {
     font-size: 13px;
     font-weight: 700;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin-top: 0px;
+    margin-bottom: 10px;
     padding-left: 15px;
 }
 
@@ -264,7 +264,7 @@ header.sticky .menuzord-menu>li>a,
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     /*text-transform: capitalize;*/
-    letter-spacing: .5px;
+    letter-spacing: .0px;
     font-weight: normal;
 }
 .menuzord {
@@ -417,7 +417,7 @@ header.sticky .menuzord-menu>li>a,
     background-color: #fafafa;
 }
 .menuzord-menu>li>.megamenu .megamenu-row li a {
-    padding: 8px 20px;
+    padding: 1px 20px;
 }
 
 .menuzord-menu ul.dropdown.dropdown-left {
