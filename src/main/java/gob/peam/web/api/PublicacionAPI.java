@@ -29,7 +29,9 @@ import javax.sql.DataSource;
  *
  * @author JhanxD
  */
-@WebServlet(name = "PublicacionAPI", urlPatterns = {"/publicaciones/otraspublicaciones"})
+@WebServlet(name = "PublicacionAPI", urlPatterns = {"/publicaciones/otraspublicaciones",
+    "/publicaciones/operaciones",
+    "/publicaciones/manuales"})
 public class PublicacionAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
@@ -84,7 +86,8 @@ public class PublicacionAPI extends HttpServlet {
                     procesarPublicacion(this.publicacionDAO.activate(Integer.parseInt(request.getParameter("txtIdPublicacionER")), getParametersPublicacion(request)), response);
                     break;
                 default:
-                    request.getRequestDispatcher("/jsp/gc/publicaciones/otraspublicaciones.jsp").forward(request, response);
+                    request.setAttribute("titlePublicacion", getTitlePublicacion(request));
+                    request.getRequestDispatcher("/jsp/gc/publicaciones/publicaciones.jsp").forward(request, response);
                     break;
             }
         } catch (SQLException ex) {
@@ -205,17 +208,24 @@ public class PublicacionAPI extends HttpServlet {
             case "/publicaciones/otraspublicaciones":
                 tipo = "3";
                 break;
-//            case "/finanzas/flujoefectivo":
-//                tipo = "7";
-//                break;
-//            case "/finanzas/gestion":
-//                tipo = "8";
-//                break;
-//            case "/finanzas/saldos":
-//                tipo = "5";
-//                break;
+            case "/publicaciones/manuales":
+                tipo = "1";
+                break;
         }
         return tipo;
+    }
+
+    private String getTitlePublicacion(HttpServletRequest request) {
+        String titulo = "";
+        switch (request.getRequestURI().substring(request.getContextPath().length())) {
+            case "/publicaciones/otraspublicaciones":
+                titulo = "OTRAS PUBLICACIONES";
+                break;
+            case "/publicaciones/manuales":
+                titulo = "MEMORIAS ANUALES";
+                break;
+        }
+        return titulo;
     }
 
 }

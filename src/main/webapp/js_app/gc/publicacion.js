@@ -73,7 +73,7 @@ function procesarAjaxPublicacion() {
     datosSerializadosCompletos += "&url_publicacion=" + pathname;
     console.log($('#txtFechaPublicacionER').val());
     $.ajax({
-        url: getContext() + '/publicaciones/otraspublicaciones',
+        url: getContext() + '/publicaciones/operaciones',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
