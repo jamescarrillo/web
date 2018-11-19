@@ -50,4 +50,11 @@
             </a>
         </div>
     </div>
+    <div class="row" id="row_logos_xs">
+        <div class="col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2" style="padding-top: 15px">
+            <a href="<%out.print(getServletContext().getContextPath());%>/index">
+                <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo_peam_combinado_large.png" alt="" style="height: 30px"/>
+            </a>
+        </div>
+    </div>
 </div>

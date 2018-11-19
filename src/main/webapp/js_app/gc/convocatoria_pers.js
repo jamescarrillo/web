@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnio'), 2000, "-1", 'TODOS');
+    cargarAniosCombo($('#comboAnio'), 2000, "-1", 'Todos');
 
     $('#txtFechaInicioERCC').datepicker({
         format: 'dd/mm/yyyy',

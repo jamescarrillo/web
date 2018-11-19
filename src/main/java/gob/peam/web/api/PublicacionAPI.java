@@ -66,7 +66,7 @@ public class PublicacionAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-            LOG.info("--->" + action);
+            LOG.info(action);
             switch (this.action) {
                 case "paginarPublicacion":
                     procesarPublicacion(new BEAN_CRUD(this.publicacionDAO.getPagination(getParametersPublicacion(request))), response);

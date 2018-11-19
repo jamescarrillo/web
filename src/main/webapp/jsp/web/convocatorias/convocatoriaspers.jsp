@@ -43,7 +43,7 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Convocatorias de Personal</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Convocatorias de Personal</h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -54,9 +54,9 @@
                                         <div class="col-md-12">
                                             <div class="border-bottom-tab">
                                                 <ul class="nav nav-tabs" role="tablist">
-                                                    <li role="presentation" class="active"><a id="idtabConvocatorias" href="#tab-1" role="tab" class="waves-effect waves-dark" data-toggle="tab">PRINCIPAL</a></li>
-                                                    <li role="presentation"><a id="idtabCalendario" href="#tab-2" role="tab" class="waves-effect waves-dark" data-toggle="tab">CRONOGRAMA DE ACTIVIDADES</a></li>
-                                                    <li role="presentation"><a href="#tab-3" role="tab" class="waves-effect waves-dark" data-toggle="tab">PLAZAS</a></li>
+                                                    <li role="presentation" class="active"><a style="padding-top: 5px; padding-bottom: 5px" id="idtabConvocatorias" href="#tab-1" role="tab" class="waves-effect waves-dark" data-toggle="tab">Principal</a></li>
+                                                    <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" id="idtabCalendario" href="#tab-2" role="tab" class="waves-effect waves-dark" data-toggle="tab">Cronograma de Actividades</a></li>
+                                                    <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-3" role="tab" class="waves-effect waves-dark" data-toggle="tab">Plazas</a></li>
                                                 </ul>
                                                 <div class="panel-body" style="padding-bottom: 0px;">
                                                     <div class="tab-content">
@@ -69,9 +69,9 @@
                                                                     </div>
                                                                     <div class="col-md-2 col-sm-3 col-xs-12">
                                                                         <select id="comboTipoEstado" name="comboTipoEstado" class="form-control combo-paginar" idBtnBuscar='btnBuscarConvocatoria' style="border: 1px solid #00793D;">
-                                                                            <option value="-1">TODOS</option>
-                                                                            <option value="true">VIGENTES</option>
-                                                                            <option value="false">FINALIZADOS</option>
+                                                                            <option value="-1">Todos</option>
+                                                                            <option value="true">Vigentes</option>
+                                                                            <option value="false">Finalizados</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-md-6 col-sm-9 col-xs-12">
@@ -100,11 +100,11 @@
                                                                         <table class="table">
                                                                             <thead class="bg-success">
                                                                                 <tr>
-                                                                                    <th style="width: 25%;" class="align-middle">CONVOCATOTIA</th>
-                                                                                    <th style="width: 50%;" class="align-middle">DESCRIPCION</th>
-                                                                                    <th style="width: 10%;" class="align-middle">FECHA</th>
-                                                                                    <th style="width: 15%;" class="align-middle">ESTADO</th>
-                                                                                    <th style="width: 10%;" class="align-middle">CRONOGRAMA</th>
+                                                                                    <th style="width: 25%;" class="align-middle">Convocatoria</th>
+                                                                                    <th style="width: 55%;" class="align-middle">Descripción</th>
+                                                                                    <th style="width: 10%;" class="align-middle text-center">Fecha</th>
+                                                                                    <th style="width: 10%;" class="align-middle text-center">Estado</th>
+                                                                                    <th style="width: 10%;" class="align-middle text-center">Cronograma</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody id="tbodyConvocatoria">
@@ -163,10 +163,10 @@
                                                                                                 <table class="table">
                                                                                                     <thead class="bg-success">
                                                                                                         <tr>
-                                                                                                            <th style="width: 45%;" class="align-middle">ACTIVIDAD</th>
-                                                                                                            <th style="width: 20%;" class="align-middle">FECHA INICIO</th>
-                                                                                                            <th style="width: 20%;" class="align-middle">FECHA FINAL</th>
-                                                                                                            <th style="width: 20%;" class="align-middle">DETALLE</th>
+                                                                                                            <th style="width: 45%;" class="align-middle">Actividad</th>
+                                                                                                            <th style="width: 20%;" class="align-middle">Fecha Inicio</th>
+                                                                                                            <th style="width: 20%;" class="align-middle">Fecha Fin</th>
+                                                                                                            <th style="width: 20%;" class="align-middle">Detalle</th>
                                                                                                         </tr>
                                                                                                     </thead>
                                                                                                     <tbody id="tbodyCalendario">
@@ -214,8 +214,8 @@
                                                                                                 <table class="table">
                                                                                                     <thead class="bg-success">
                                                                                                         <tr>
-                                                                                                            <th style="width: 80%;" class="align-middle">DOCUMENTO</th>
-                                                                                                            <th style="width: 20%;" class="align-middle">ACCION</th>
+                                                                                                            <th style="width: 80%;" class="align-middle">Documento</th>
+                                                                                                            <th style="width: 20%;" class="align-middle">Acción</th>
                                                                                                         </tr>
                                                                                                     </thead>
                                                                                                     <tbody id="tbodyDocumentCal">
@@ -268,10 +268,10 @@
                                                                         <table class="table">
                                                                             <thead class="bg-success">
                                                                                 <tr>
-                                                                                    <th style="width: 50%;" class="align-middle">CARGO</th>
-                                                                                    <th style="width: 15%;" class="align-middle">INGRESO MENSUAL</th>
-                                                                                    <th style="width: 15%;" class="align-middle">MODALIDAD</th>
-                                                                                    <th style="width: 15%;" class="align-middle">VACANTES</th>
+                                                                                    <th style="width: 50%;" class="align-middle">Cargo</th>
+                                                                                    <th style="width: 15%;" class="align-middle">Ingreso Mensual</th>
+                                                                                    <th style="width: 15%;" class="align-middle">Modalidad</th>
+                                                                                    <th style="width: 15%;" class="align-middle">Vacantes</th>
                                                                                 </tr>
 
                                                                             </thead>

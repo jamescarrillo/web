@@ -102,7 +102,8 @@ textarea.materialize-textarea:focus:not([readonly]) + label {
     color: #00793D;
 }
 .active-search .search-trigger .search-btn {
-    background-color: #00793D;
+    /*background-color: #00793D;*/
+    background-color: #00793d59;
 }
 
 

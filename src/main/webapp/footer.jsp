@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <br>
-                    <span style="color: #ffffff">Copyright &copy; 2018 <strong style="cursor: pointer">Peam</strong> &nbsp; | &nbsp;  Todos los derechos reservados &nbsp;</span>
+                    <span style="color: #ffffff">Copyright &copy; 2018 <strong style="cursor: pointer">Proyecto Especial Alto Mayo</strong> &nbsp; | &nbsp;  Todos los derechos reservados &nbsp;</span>
                     <!--h6 style="color: #ffffff"><strong>Ubícanos</strong></h6-->
                     <br>
                     <div class="footer-intro" style="margin-top: 10px">

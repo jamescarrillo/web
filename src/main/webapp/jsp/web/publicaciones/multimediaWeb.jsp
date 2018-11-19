@@ -8,8 +8,6 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css" rel="stylesheet">
         <!-- FontAwesome CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- magnific-popup -->
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/magnific-popup.css" rel="stylesheet">
         <!-- flexslider -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/flexslider.css" rel="stylesheet">
         <!-- materialize -->
@@ -41,7 +39,7 @@
         <section class="section-padding grid-news" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30">
-                    <h1 class="text-peam-verde h1-title"><strong>Noticias Multimedia</strong></h1>
+                    <h1 class="text-peam-verde-subrayado"><strong>Noticias Multimedia</strong></h1>
                 </div>
                 <div class="row" style="margin-bottom: 60px;">
                     <div class="col-md-8 col-xs-12">
@@ -50,7 +48,7 @@
                     </div>
                     <div class="col-md-4 col-xs-12">
                         <div class="tt-sidebar-wrapper" role="complementary">
-                            <div class="widget widget_search mb-20">
+                            <div class="widget widget_search" style="margin-bottom: 10px">
                                 <div class="border-tab transparent-nav">
                                     <ul class="nav nav-tabs nav-justified" role="tablist">
                                         <li role="presentation" class="active"><a href="#tab-busquedas" class="waves-effect waves-dark"  role="tab" data-toggle="tab">BUSQUEDAS</a></li>
@@ -66,7 +64,7 @@
                                                     <input type="hidden" id="estadoMultimedia" name="estadoMultimedia" value="true">
                                                     <input type="hidden" id="numberPageMultimedia" name="numberPageMultimedia" value="1">
                                                     <input type="hidden" id="sizePageMultimedia" name="sizePageMultimedia" value="6">
-                                                    <input type="text" class="form-control" value="" name="txtMultimedia" id="txtTituloMultimedia" placeholder="Buscar. . .">
+                                                    <input type="text" class="form-control" value="" name="txtMultimedia" id="txtTituloMultimedia" placeholder="Buscar . . .">
                                                     <button type="submit"><i class="fa fa-search"></i></button>
                                                 </form>
                                             </div>
@@ -133,12 +131,9 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.inview.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
-
         <!-- RS5.0 Core JS Files -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
-
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>

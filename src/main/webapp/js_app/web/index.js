@@ -33,7 +33,7 @@ function addNoticiasWeb(DATA_NOTASPRENSA) {
             if (index < 5) {
                 $('#idNota' + (index + 1)).val(value.id);
                 $('#tituloNotaPrensa' + (index + 1)).html(getTituloWeb(value.titulo, 45));
-                $('#resumenNotaPrensa' + (index + 1)).html(getTituloWeb(getResumenContenidoWeb(cadenaContenido, 150), 90));
+                $('#resumenNotaPrensa' + (index + 1)).html(getTituloWeb(getResumenContenidoWeb(cadenaContenido, 150), 90) + ". . .");
             }
             $('#imgCNotaPrensa' + index).attr('src', value.foto);
             $('#tituloCNotaPrensa' + index).html(value.titulo + getFormViewNoticeWeb(value.id));
@@ -114,8 +114,10 @@ function addAnunciosWeb(DATA_ANUNCIOS) {
             hideAfter: false
         });
     });
-    $('.jq-toast-single').css('border', '3px solid #a20505');
-    $('.jq-toast-heading').addClass('text-peam-negrita');
+    $('.jq-toast-single').css('border', '3px solid #00793D');
+    $('.jq-toast-heading').addClass('text-peam text-center');
+    $('.jq-toast-heading').css('color', '#00793D');
+    $('.jq-toast-heading').css('font-weight', 'bold');
 }
 
 function addMultimediaWeb(DATA_MULTIMEDIA) {

@@ -43,68 +43,62 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Agenda Institucional</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Otras Publicaciones</h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="posts-content single-post">
                             <article class="post-wrapper">
+                                <header class="entry-header-wrapper clearfix">                                    
+                                    <div class="entry-header">
+                                        <div class="row">
+                                            <form id="FrmPublicacion">
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <select id="comboAnioPublicacion" name="comboAnioPublicacion" class="form-control combo-paginar" idBtnBuscar='btnBuscarPublicacion' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtTituloPublicacion" id="txtTituloPublicacion">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Publicacion</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarPublicacion" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameForm" value="FrmPublicacion">
+                                                <input type="hidden" id="actionPublicacion" name="action" value="paginarPublicacion">
+                                                <input type="hidden" id="numberPagePublicacion" name="numberPagePublicacion" value="1">
+                                                <input type="hidden" id="sizePagePublicacion" name="sizePagePublicacion" value="10">
+                                                <input type="hidden" id="comboTipoListaPublicacion" name="comboTipoListaPublicacion" value="-1">
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                                <th style="width: 25%" class="align-middle">Título</th>
+                                                                <th style="width: 65%" class="align-middle">Descripción</th>
+                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyPublicacion">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </header>
                                 <div class="entry-content">
-                                    <div class="row">
-                                        <form id="FrmAgenda">
-                                            <div class="col-md-3 col-sm-6 col-xs-12">
-                                                <select id="cbotipo" name="cbotipo" class="form-control combo-paginar " idBtnBuscar='btnBuscarAgenda' style="border: 1px solid #00793D; margin-top: 40px">
-                                                    <option value="1">Gerencia Gerencial</option>
-                                                    <option value="2">Dirección de Infraestructura</option>
-                                                    <option value="3">Dirección de Desarrollo Agropecuario</option>
-                                                    <option value="4">Dirección de Manejo Ambiental</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-md-5 col-sm-6 col-xs-12">
-                                                <div class="input-field">
-                                                    <input type="text" name="txtActividad" id="txtActividad">
-                                                    <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Agenda . . .</font></font></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-xs-12">
-                                                <div class="input-field">
-                                                    <input type="text" name="txtCalendario" id="txtCalendario">
-                                                    <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DD/MM/AAAA</font></font></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-2 col-sm-6 col-xs-12">
-                                                <button type="submit" id="btnBuscarAgenda" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
-                                            </div>
-                                            <input type="hidden" id="nameForm" value="FrmAgenda">
-                                            <input type="hidden" id="actionAgenda" name="action" value="paginarAgenda">
-                                            <input type="hidden" id="numberPageAgenda" name="numberPageAgenda" value="1">
-                                            <input type="hidden" id="sizePageAgenda" name="sizePageAgenda" value="10">
-                                        </form>
-                                    </div>
-                                    <div class="row" id="loader_contenido">
-                                        <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
-                                            <div class="loader-peam_small"></div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <div class="table-responsive table-hover" style="margin-top: 20px">
-                                                <table class="table">
-                                                    <thead class="bg-success">
-                                                        <tr>
-                                                            <th style="width: 10%;" class="text-center align-middle">Hora</th>
-                                                            <th style="width: 10%;" class="text-center align-middle">Fecha</th>
-                                                            <th style="width: 25%" class="align-middle">Actividad</th>
-                                                            <th style="width: 20%" class="align-middle">Ciudad</th>
-                                                            <th style="width: 40%" class="align-middle">Dirección</th>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody id="tbodyAgenda">
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <footer class="entry-footer">
                                     <div class="row">
@@ -116,10 +110,11 @@
                                             </ul>
                                         </div>
                                         <div class="col-md-9 col-xs-12 text-right">
-                                            <ul id="paginationAgenda" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+                                            <ul id="paginationPublicacion" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                             </ul>
                                         </div>
+
                                     </div>
                                 </footer>
                             </article>
@@ -165,13 +160,18 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
+
+        <!-- RS5.0 Core JS Files -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/sweetalert/sweetalert.min.js"></script>
+
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.tools.min.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/jquery.themepunch.revolution.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js/jquery.Pagination.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
-        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/agendainstitucionalweb.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/publicaciones-otraspublicaciones.js"></script>
 
     </body>
 </html>

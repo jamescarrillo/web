@@ -8,7 +8,13 @@ package gob.peam.web.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import gob.peam.web.dao.DocumentoDAO;
+import gob.peam.web.dao.FinanzaDAO;
+import gob.peam.web.dao.PenalidadDAO;
+import gob.peam.web.dao.PresupuestoDAO;
 import gob.peam.web.dao.impl.DocumentoDAOImpl;
+import gob.peam.web.dao.impl.FinanzaDAOImpl;
+import gob.peam.web.dao.impl.PenalidadDAOImpl;
+import gob.peam.web.dao.impl.PresupuestoDAOImpl;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -30,7 +36,7 @@ import javax.sql.DataSource;
 @WebServlet(name = "GestionTransparenteWebAPI", urlPatterns = {
     "/documentos/operacionesweb",
     "/gestiontransparente/documentos-normativos-y-de-gestion",
-    "/gestiontransparente/presupuesto-y-finanzas",
+    "/gestiontransparente/presupuestos-y-finanzas",
     "/gestiontransparente/proyectos-de-inversion",
     "/gestiontransparente/recursos-humanos",
     "/gestiontransparente/adquisiciones-y-contrataciones",
@@ -42,20 +48,34 @@ public class GestionTransparenteWebAPI extends HttpServlet {
     private DataSource pool;
     private Gson json;
     private String jsonResponse;
+    private String jsonResponseFinanza;
+    private String jsonResponsePenalidad;
     private HashMap<String, Object> parameters;
+    private HashMap<String, Object> parametersF;
+    private HashMap<String, Object> parametersF2;
+    private HashMap<String, Object> parametersPenalidad;
     private static final Logger LOG = Logger.getLogger(GestionTransparenteWebAPI.class.getName());
     private String action;
 
     private DocumentoDAO documentoDAO;
+    private PresupuestoDAO presupuestoDAO;
+    private FinanzaDAO finanzaDAO;
+    private PenalidadDAO penalidadDAO;
 
     @Override
     public void init() throws ServletException {
         super.init(); // To change body of generated methods, choose Tools | Templates.
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
         this.parameters = new HashMap<>();
+        this.parametersF = new HashMap<>();
+        this.parametersF2 = new HashMap<>();
+        this.parametersPenalidad = new HashMap<>();
         this.action = "";
 
         this.documentoDAO = new DocumentoDAOImpl(this.pool);
+        this.presupuestoDAO = new PresupuestoDAOImpl(this.pool);
+        this.finanzaDAO = new FinanzaDAOImpl(this.pool);
+        this.penalidadDAO = new PenalidadDAOImpl(this.pool);
     }
 
     /*
@@ -75,6 +95,18 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             switch (this.action) {
                 case "paginarDocumentos":
                     procesarDocumento(new BEAN_CRUD(this.documentoDAO.getPagination(getParametersDocumentos(request))), response);
+                    break;
+                case "paginarPresupuesto":
+                    procesarPresupuesto(new BEAN_CRUD(this.presupuestoDAO.getPagination(getParametersPresupuesto(request))), response);
+                    break;
+                case "paginarFinanza":
+                    procesarFinanza(new BEAN_CRUD(this.finanzaDAO.getPagination(getParametersFinanzas(request))), response);
+                    break;
+                case "paginarFinanza2":
+                    procesarFinanza(new BEAN_CRUD(this.finanzaDAO.getPagination(getParametersFinanzas2(request))), response);
+                    break;
+                case "paginarPenalidad":
+                    procesarPenalidad(new BEAN_CRUD(this.penalidadDAO.getPagination(getParametersPenalidad(request))), response);
                     break;
                 default:
                     request.getRequestDispatcher("/jsp/web/gestiontransparente/" + getJSP(request)).forward(request, response);
@@ -225,6 +257,9 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             case "/gestiontransparente/agenda-institucional":
                 page = "agendaInstitucional.jsp";
                 break;
+            case "/gestiontransparente/presupuestos-y-finanzas":
+                page = "presupuestosFinanzas.jsp";
+                break;
             default:
                 page = "../../../estamos_trabajando_web.jsp";
                 break;
@@ -243,6 +278,122 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                 break;
         }
         return tido_id;
+    }
+
+    private void procesarPresupuesto(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionTransparenteWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap<String, Object> getParametersPresupuesto(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", request.getParameter("txtPresupuestoInstitucional").toLowerCase());
+        if (request.getParameter("comboAnioPresupuestoInstitucional").equals("-1")) {
+            this.parameters.put("SQL_ANIO", "");
+        } else {
+            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioPresupuestoInstitucional") + "' ");
+        }
+        this.parameters.put("SQL_ESTADO", "AND ESTADO = TRUE");
+        if (request.getParameter("comboTipoPresupuestoInstitucional").equals("-1")) {
+            this.parameters.put("SQL_TIDO_ID", "");
+        } else {
+            this.parameters.put("SQL_TIDO_ID", "AND TIPO = " + request.getParameter("comboTipoPresupuestoInstitucional"));
+        }
+        this.parameters.put("SQL_ORDERS", "FECHA_APROBACION DESC");
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePagePresupuestoInstitucional") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPagePresupuestoInstitucional")) - 1)
+                * Integer.parseInt(request.getParameter("sizePagePresupuestoInstitucional")));
+        return this.parameters;
+    }
+
+    private void procesarFinanza(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponseFinanza = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponseFinanza);
+            LOG.info(this.jsonResponseFinanza);
+        } catch (IOException ex) {
+            Logger.getLogger(FinanzaAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap<String, Object> getParametersFinanzas(HttpServletRequest request) {
+        this.parametersF.clear();
+        this.parametersF.put("FILTER", request.getParameter("txtInfoFinanciera").toLowerCase());
+        if (request.getParameter("comboAnioInfoFinanciera").equals("-1")) {
+            this.parametersF.put("SQL_ANIO", "");
+        } else {
+            this.parametersF.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioInfoFinanciera") + "' ");
+        }
+        this.parametersF.put("SQL_ESTADO", "AND ESTADO = TRUE");
+        if (request.getParameter("comboCategoriaInfoFinanciera").equals("-1")) {
+            this.parametersF.put("SQL_TIPO", "");
+        } else {
+            this.parametersF.put("SQL_TIPO", "AND TIPO = " + request.getParameter("comboCategoriaInfoFinanciera"));
+        }
+        this.parametersF.put("SQL_ORDERS", "ANHO DESC");
+        this.parametersF.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePageInfoFinanciera") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageInfoFinanciera")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageInfoFinanciera")));
+        return this.parametersF;
+    }
+
+    private HashMap<String, Object> getParametersFinanzas2(HttpServletRequest request) {
+        this.parametersF2.clear();
+        this.parametersF2.put("FILTER", request.getParameter("txtInfoPresupuestal").toLowerCase());
+        if (request.getParameter("comboAnioInfoPresupuestal").equals("-1")) {
+            this.parametersF2.put("SQL_ANIO", "");
+        } else {
+            this.parametersF2.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioInfoPresupuestal") + "' ");
+        }
+        this.parametersF2.put("SQL_ESTADO", "AND ESTADO = TRUE");
+        if (request.getParameter("comboCategoriaInfoPresupuestal").equals("-1")) {
+            this.parametersF2.put("SQL_TIPO", "");
+        } else {
+            this.parametersF2.put("SQL_TIPO", "AND TIPO = " + request.getParameter("comboCategoriaInfoPresupuestal"));
+        }
+        this.parametersF2.put("SQL_ORDERS", "ANHO DESC");
+        this.parametersF2.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePageInfoPresupuestal") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageInfoPresupuestal")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageInfoPresupuestal")));
+        return this.parametersF2;
+    }
+
+    private void procesarPenalidad(BEAN_CRUD bean_crud, HttpServletResponse response) {
+        try {
+            this.jsonResponsePenalidad = this.json.toJson(bean_crud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponsePenalidad);
+            LOG.info(this.jsonResponsePenalidad);
+        } catch (IOException ex) {
+            Logger.getLogger(PenalidadAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap<String, Object> getParametersPenalidad(HttpServletRequest request) {
+        this.parametersPenalidad.clear();
+        this.parametersPenalidad.put("FILTER", request.getParameter("txtPenalidad").toLowerCase());
+        if (request.getParameter("comboAnioPenalidad").equals("-1")) {
+            this.parametersPenalidad.put("SQL_ANIO", "");
+        } else {
+            this.parametersPenalidad.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioPenalidad") + "' ");
+        }
+
+        this.parametersPenalidad.put("SQL_ORDERS", "CONTRATISTA, ANHO DESC");
+        this.parametersPenalidad.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePagePenalidad") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPagePenalidad")) - 1)
+                * Integer.parseInt(request.getParameter("sizePagePenalidad")));
+        return this.parametersPenalidad;
     }
 
     /**

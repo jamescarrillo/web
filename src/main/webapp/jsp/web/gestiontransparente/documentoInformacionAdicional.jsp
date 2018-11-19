@@ -8,8 +8,6 @@
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/iconfont/material-icons.css" rel="stylesheet">
         <!-- FontAwesome CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-        <!-- magnific-popup -->
-        <link href="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/magnific-popup.css" rel="stylesheet">
         <!-- flexslider -->
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/flexslider.css" rel="stylesheet">
         <!-- materialize -->
@@ -45,7 +43,7 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Información Adicional</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Información Adicional</h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -65,11 +63,11 @@
                                                         <option value="1300">Informes Técnicos Previstos de Evaluación de Software</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-sm-4 col-xs-12">
+                                                <div class="col-sm-2 col-xs-12">
                                                     <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-sm-6 col-xs-12">
+                                                <div class="col-sm-8 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtTituloDocumento" id="txtTituloDocumento">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
@@ -96,9 +94,9 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%;" class="text-center align-middle">FECHA</th>
-                                                                <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
-                                                                <th style="width: 65%" class="align-middle">RESUMEN</th>
+                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
+                                                                <th style="width: 65%" class="align-middle">Resumen</th>
                                                                 <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                             </tr>
                                                         </thead>
@@ -171,7 +169,6 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.inview.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery.shuffle.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/flexSlider/jquery.flexslider-min.js"></script>
-        <script src="<%out.print(getServletContext().getContextPath());%>/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/scripts.js"></script>
 
         <!-- RS5.0 Core JS Files -->

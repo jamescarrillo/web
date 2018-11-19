@@ -42,7 +42,7 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Convocatorias de Bienes, Servicios y Conseciones</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Convocatorias de Bienes, Servicios y Conseciones</h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -53,9 +53,9 @@
                                         <div class="col-md-12">
                                             <div class="border-bottom-tab">
                                                 <ul class="nav nav-tabs" role="tablist">
-                                                    <li role="presentation" class="active"><a id="idtabConvocatorias" href="#tab-1" role="tab" class="waves-effect waves-dark" data-toggle="tab">CONVOCATORIAS</a></li>
-                                                    <li role="presentation"><a id="idtabCalendario" href="#tab-2" role="tab" class="waves-effect waves-dark" data-toggle="tab">DATOS PRINCIPALES</a></li>
-                                                    <li role="presentation"><a id="idtabArchivos" href="#tab-3" role="tab" class="waves-effect waves-dark" data-toggle="tab">DOCUMENTOS</a></li>
+                                                    <li role="presentation" class="active"><a style="padding-top: 5px; padding-bottom: 5px" id="idtabConvocatorias" href="#tab-1" role="tab" class="waves-effect waves-dark" data-toggle="tab">Convocatorias</a></li>
+                                                    <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" id="idtabCalendario" href="#tab-2" role="tab" class="waves-effect waves-dark" data-toggle="tab">Datos Principales</a></li>
+                                                    <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" id="idtabArchivos" href="#tab-3" role="tab" class="waves-effect waves-dark" data-toggle="tab">Documentos</a></li>
                                                 </ul>
                                                 <div class="panel-body" style="padding-bottom: 0px;">
                                                     <div class="tab-content">
@@ -68,9 +68,9 @@
                                                                     </div>
                                                                     <div class="col-md-2 col-sm-3 col-xs-12">
                                                                         <select id="comboTipoListaConvocatoria" name="comboTipoListaConvocatoria" class="form-control combo-paginar" idBtnBuscar='btnBuscarConvocatoria' style="border: 1px solid #00793D;">
-                                                                            <option value="-1">TODOS</option>
-                                                                            <option value="true">VIGENTES</option>
-                                                                            <option value="false">FINALIZADOS</option>
+                                                                            <option value="-1">Todos</option>
+                                                                            <option value="true">Vigentes</option>
+                                                                            <option value="false">Finalizados</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col-md-6 col-sm-9 col-xs-12">
@@ -99,11 +99,11 @@
                                                                         <table class="table">
                                                                             <thead class="bg-success">
                                                                                 <tr>
-                                                                                    <th style="width: 15%;" class="align-middle">FECHA</th>
-                                                                                    <th style="width: 50%;" class="align-middle">SINTESIS</th>
-                                                                                    <th style="width: 10%;" class="align-middle">TIPO</th>
-                                                                                    <th style="width: 15%;" class="align-middle">PROCESO</th>
-                                                                                    <th style="width: 10%;" class="align-middle">ACCIONES</th>
+                                                                                    <th style="width: 10%;" class="align-middle text-center">Fecha</th>
+                                                                                    <th style="width: 60%;" class="align-middle">Síntesis</th>
+                                                                                    <th style="width: 10%;" class="align-middle text-center">Tipo</th>
+                                                                                    <th style="width: 15%;" class="align-middle text-center">Proceso</th>
+                                                                                    <th style="width: 10%;" class="align-middle text-center">Acción</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody id="tbodyConvocatoriaBien">

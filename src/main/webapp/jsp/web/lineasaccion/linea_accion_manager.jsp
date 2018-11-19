@@ -40,7 +40,7 @@
         <section class="padding-bottom-100" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Nuestras Líneas de Acción</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Nuestras Líneas de Acción</h2>
                 </div>
                 <div class="row" style="margin-bottom: 60px;">
                     <div class='col-lg-8 col-xs-12'>
@@ -63,7 +63,7 @@
                                             <div class="col-lg-2 col-lg-offset-5 col-sm-4 col-sm-offset-4 col-xs-6 col-xs-offset-3">
                                                 <a><img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/lineas_accion/directores/<%out.print(request.getAttribute("foto_director"));%>" alt="img-director"></a>                
                                             </div>
-                                            <div class="col-xs-12 text-center mt-10 mb-10">
+                                            <div class="col-xs-12 text-peam-verde-index text-center mt-10 mb-10">
                                                 <i class='fa fa-user'></i><a> <%out.print(request.getAttribute("director_cargo"));%></a>
                                             </div>
                                         </div>

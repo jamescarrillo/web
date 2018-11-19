@@ -38,7 +38,7 @@
         <section class="padding-bottom-100" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Nuestras Líneas de Acción</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Nuestras Líneas de Acción</h2>
                 </div>
                 <div class="row" style="margin-bottom: 60px;">
                     <div class='col-lg-8 col-xs-12'>

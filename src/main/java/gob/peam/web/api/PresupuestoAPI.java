@@ -74,7 +74,7 @@ public class PresupuestoAPI extends HttpServlet {
             throws ServletException, IOException {
         try {
             this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-            LOG.info("--->" + action);
+            LOG.info(action);
             switch (this.action) {
                 case "paginarPresupuesto":
                     procesarPresupuesto(new BEAN_CRUD(this.presupuestoDAO.getPagination(getParametersPresupuesto(request))), response);

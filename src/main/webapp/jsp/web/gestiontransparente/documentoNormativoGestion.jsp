@@ -43,7 +43,7 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Documentos Normativos y de Gestión</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Documentos Normativos y de Gestión</h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -92,9 +92,9 @@
                                                 <table class="table">
                                                     <thead class="bg-success">
                                                         <tr>
-                                                            <th style="width: 10%;" class="text-center align-middle">FECHA</th>
-                                                            <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
-                                                            <th style="width: 65%" class="align-middle">RESUMEN</th>
+                                                            <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                            <th style="width: 25%" class="align-middle">Título Documento</th>
+                                                            <th style="width: 65%" class="align-middle">Resumen</th>
                                                             <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                         </tr>
                                                     </thead>
