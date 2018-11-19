@@ -9,10 +9,13 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import gob.peam.web.dao.DirectivoDAO;
 import gob.peam.web.dao.FuncionarioDAO;
+import gob.peam.web.dao.ViaticoDAO;
 import gob.peam.web.dao.impl.DirectivoDAOImpl;
 import gob.peam.web.dao.impl.FuncionarioDAOImpl;
+import gob.peam.web.dao.impl.ViaticoDAOImpl;
 import gob.peam.web.model.Directivo;
 import gob.peam.web.model.Funcionario;
+import gob.peam.web.model.Viatico;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.Utilities;
 import java.io.File;
@@ -63,6 +66,7 @@ public class GestionTransparenteAPI extends HttpServlet {
     private String action;
     private DirectivoDAO directivoDAO;
     private FuncionarioDAO funcionarioDAO;
+    private ViaticoDAO viaticoDAO;
 
     @Override
     public void init() throws ServletException {
@@ -74,6 +78,7 @@ public class GestionTransparenteAPI extends HttpServlet {
         this.action = "";
         this.directivoDAO = new DirectivoDAOImpl(this.pool);
         this.funcionarioDAO = new FuncionarioDAOImpl(this.pool);
+        this.viaticoDAO=new ViaticoDAOImpl(this.pool);
     }
 
     /**
@@ -101,7 +106,7 @@ public class GestionTransparenteAPI extends HttpServlet {
                     break;
                 case "/gestiontransparente/directivos":
                     action = request.getParameter("action") == null ? "" : request.getParameter("action");
-                    logger.info("--jcc-->" + action);
+                    logger.info(action);
                     switch (action) {
                         case "paginarFuncionario":
                             procesarFuncionario(new BEAN_CRUD(this.funcionarioDAO.getPagination(getParametersFuncionarios(request))), response);
@@ -139,8 +144,25 @@ public class GestionTransparenteAPI extends HttpServlet {
                     }
                     break;
                 case "/gestiontransparente/viaticos":
-                    request.getRequestDispatcher("/estamos_trabajando.jsp").forward(request, response);
-                    break;
+                    action = request.getParameter("action") == null ? "" : request.getParameter("action");
+                    logger.info("---->" + action);
+                    switch (action) {
+                        case "paginarViatico":
+                            procesarViatico(new BEAN_CRUD(this.viaticoDAO.getPagination(getParametersViatico(request))), response);
+                            break;
+                        case "addViatico":
+                            procesarViatico(this.viaticoDAO.add(getViatico(request), getParametersViatico(request)), response);
+                            break;
+                        case "updateViatico":
+                            procesarViatico(this.viaticoDAO.update(getViatico(request), getParametersViatico(request)), response);
+                            break;
+                        case "deleteViatico":
+                            procesarViatico(this.viaticoDAO.delete(Long.parseLong(request.getParameter("txtIdER")), getParametersViatico(request)), response);
+                            break;
+                        default:
+                            request.getRequestDispatcher("/jsp/gc/gestion_transparente/viaticos.jsp").forward(request, response);
+                            break;
+                    }
             }
         } catch (IOException | SQLException ex) {
             Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
@@ -494,5 +516,55 @@ public class GestionTransparenteAPI extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+    
+    private void procesarViatico(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            logger.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(PublicacionAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap<String, Object> getParametersViatico(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", request.getParameter("txtTituloViatico").toLowerCase());
+        if (request.getParameter("comboAnioViatico").equals("-1")) {
+            this.parameters.put("SQL_ANIO", "");
+        } else {
+            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioViatico") + "' ");
+        }
+        this.parameters.put("SQL_ORDERS", "ID DESC");
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePageViatico") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageViatico")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageViatico")));
+        return this.parameters;
+    }
+
+    private Viatico getViatico(HttpServletRequest request) {
+        Viatico viatico = new Viatico();
+        if (request.getParameter("action").equals("updateViatico")) {
+            viatico.setId(Integer.parseInt(request.getParameter("txtIdER")));
+        }
+        viatico.setAnho(request.getParameter("txtFechaSalidaER").substring(6,10));
+        viatico.setMes(request.getParameter("txtFechaSalidaER").substring(3,5));
+        viatico.setTipo_viatico(request.getParameter("comboTipoViaticoER"));
+        viatico.setModalidad(request.getParameter("comboModalidadER"));
+        viatico.setArea_oficina(request.getParameter("txtAreaOficinaER"));
+        viatico.setUsuarios(request.getParameter("txtUsuariosER"));
+        viatico.setFuente_financiamiento(request.getParameter("txtFuenteFinanciamientoER"));
+        viatico.setFecha_salida(Utilities.getDateSQLFORMAT(request.getParameter("txtFechaSalidaER"), "dd/MM/yyyy"));
+        viatico.setFecha_retorno(Utilities.getDateSQLFORMAT(request.getParameter("txtFechaRetornoER"), "dd/MM/yyyy"));
+        viatico.setRuta(request.getParameter("txtRutaER"));
+        viatico.setAutorizacion_viaje(request.getParameter("txtAutorizacionViajeER"));
+        viatico.setCosto_pasajes(Double.parseDouble(request.getParameter("txtCostoPasajesER")));
+        viatico.setViaticos(Double.parseDouble(request.getParameter("txtViaticosER")));
+        viatico.setEstado(Boolean.parseBoolean(request.getParameter("txtEstadoViaticoER")));
+
+        return viatico;
+    }
 
 }
