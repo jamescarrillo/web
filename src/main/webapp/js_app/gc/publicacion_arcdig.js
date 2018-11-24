@@ -15,7 +15,16 @@ $(document).ready(function () {
         $('#txtTituloResumenDocumentosArcDig').val("");
         $('#comboAnioDocumentosArcDig').val("-1");
         $('#sizePageDocumentosArcDig').val("5");
-        $('#txtTido').val("21");
+        var pathname = window.location.pathname;
+        pathname = pathname.substring(getContext().length, pathname.length);
+        switch (pathname) {
+            case "/publicaciones/otraspublicaciones":
+                $('#txtTido').val(21);
+                break;
+            case "/publicaciones/manuales":
+                $('#txtTido').val(20);
+                break;
+        };
         $('#nameFormArcDig').val("FrmDocumentosArcDig");
         $('#actionDocumentosArcDig').val("paginarDocumentosArcDig");
         $('#numberPageDocumentosArcDig').val("1");
@@ -91,7 +100,7 @@ function listarDocumentosArcDig(BEAN_PAGINATION) {
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
         $('#txtTituloResumenDocumentosArcDig').focus();
-            agregarEventosSeleccionarDocumentos();
+        agregarEventosSeleccionarDocumentos();
 
     } else {
         $pagination.twbsPagination('destroy');

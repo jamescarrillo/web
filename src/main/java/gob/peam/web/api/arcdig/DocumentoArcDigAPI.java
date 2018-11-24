@@ -162,7 +162,7 @@ public class DocumentoArcDigAPI extends HttpServlet {
             //GET EL FILTRO DEL COMBO
         }
         ///solo para  otras publicaciones, por el momento
-        if (Integer.parseInt(request.getParameter("txtTido"))==21) {
+        if (Integer.parseInt(request.getParameter("txtTido"))==21 || Integer.parseInt(request.getParameter("txtTido"))==20) {
             this.parameters.put("SQL_ETIQUETA_SI", "");
         }else{
             this.parameters.put("SQL_ETIQUETA_SI", "INNER JOIN DOCUMENTO_ETIQUETA DE ON DE.DOCU_ID = D.DOCU_ID ");

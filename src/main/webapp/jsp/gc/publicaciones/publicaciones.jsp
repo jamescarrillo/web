@@ -43,7 +43,7 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header bg-light">
-                                    <strong class="text-info">OTRAS PUBLICACIONES</strong>
+                                    <strong class="text-info"><%out.print(request.getAttribute("titlePublicacion").toString().toUpperCase());%></strong>
                                 </div>
                                 <div class="card-body pt-1">
                                     <div class="modal-body p-0">
