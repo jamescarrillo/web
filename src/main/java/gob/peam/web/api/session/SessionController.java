@@ -6,7 +6,7 @@
 package gob.peam.web.api.session;
 
 import com.google.gson.Gson;
-import gob.peam.web.dao.impl.UsuarioDAO;
+import gob.peam.web.dao.impl.UsuarioDAOImpl;
 import gob.peam.web.model.Usuario;
 import gob.peam.web.utilities.Encriptar;
 import java.io.IOException;
@@ -33,13 +33,13 @@ public class SessionController extends HttpServlet {
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
 
-    private UsuarioDAO usuarioDAO;
+    private UsuarioDAOImpl usuarioDAO;
     private Gson json;
 
     @Override
     public void init() throws ServletException {
         super.init(); //To change body of generated methods, choose Tools | Templates.
-        usuarioDAO = new UsuarioDAO(pool);
+        usuarioDAO = new UsuarioDAOImpl(pool);
         json = new Gson();
     }
 

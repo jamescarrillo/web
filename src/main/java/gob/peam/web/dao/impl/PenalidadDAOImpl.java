@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import javax.sql.DataSource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 
 /**
  *
@@ -27,7 +25,6 @@ import org.apache.commons.logging.LogFactory;
  */
 public class PenalidadDAOImpl implements PenalidadDAO {
 
-    private final Log logger = LogFactory.getLog(DirectivoDAOImpl.class);
     private final DataSource pool;
 
     public PenalidadDAOImpl(DataSource pool) {

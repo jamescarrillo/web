@@ -1,3 +1,8 @@
+<%-- 
+    Document   : documentoAdquisicionContratacion.jsp
+    Created on : 23/11/2018, 09:32:34 PM
+    Author     : JamesCarrillo
+--%>
 <!DOCTYPE html>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <html lang="es">

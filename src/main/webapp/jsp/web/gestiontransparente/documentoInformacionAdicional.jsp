@@ -54,27 +54,27 @@
                                         <div class="row">
                                             <form id="FrmDocumentos">
                                                 <div class="col-xs-12">
-                                                    <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 20px">
                                                         <option value="700">Recomendaciones de los Informes de Auditoría Orientadas al Mejoramiento de la Gestión</option>
                                                         <option value="800">Evaluación de Cumplimiento de Actualización del Portal</option>
                                                         <option value="500">Laudos</option>
                                                         <option value="600">Actas de Conciliación</option>
-                                                        <!--option value="900">Declaraciones Juradas de Ingresos Bienes y Rentas</option-->
+                                                        <!--option value="1200">Declaraciones Juradas de Ingresos Bienes y Rentas</option-->
                                                         <option value="1300">Informes Técnicos Previstos de Evaluación de Software</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-2 col-xs-12">
-                                                    <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 20px">
                                                     </select>
                                                 </div>
                                                 <div class="col-sm-8 col-xs-12">
-                                                    <div class="input-field">
+                                                    <div class="input-field" style="margin-top: 25px">
                                                         <input type="text" name="txtTituloDocumento" id="txtTituloDocumento">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-2 col-xs-12">
-                                                    <button type="submit" id="btnBuscarDocumento" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                    <button type="submit" id="btnBuscarDocumento" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 25px;">Buscar</button>
                                                 </div>
                                                 <input type="hidden" id="nameForm" value="FrmDocumentos">
                                                 <input type="hidden" id="actionDocumentos" name="action" value="paginarDocumentos">

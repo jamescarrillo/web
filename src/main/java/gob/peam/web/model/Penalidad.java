@@ -10,6 +10,7 @@ package gob.peam.web.model;
  * @author JamesCarrillo
  */
 public class Penalidad {
+
     private Integer id;
     private String anho;
     private String contratista;
@@ -100,6 +101,5 @@ public class Penalidad {
     public void setMonto_penalidad(String monto_penalidad) {
         this.monto_penalidad = monto_penalidad;
     }
-    
-    
+
 }

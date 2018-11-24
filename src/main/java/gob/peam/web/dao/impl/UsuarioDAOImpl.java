@@ -17,11 +17,11 @@ import javax.sql.DataSource;
  *
  * @author James Carrillo
  */
-public class UsuarioDAO {
+public class UsuarioDAOImpl {
 
     private final DataSource pool;
 
-    public UsuarioDAO(DataSource pool) {
+    public UsuarioDAOImpl(DataSource pool) {
         this.pool = pool;
     }
 
