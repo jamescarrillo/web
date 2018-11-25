@@ -86,6 +86,7 @@ public class PublicacionAPI extends HttpServlet {
                     procesarPublicacion(this.publicacionDAO.activate(Integer.parseInt(request.getParameter("txtIdPublicacionER")), getParametersPublicacion(request)), response);
                     break;
                 default:
+                    LOG.info("ENTRO DEFAULT");
                     request.setAttribute("titlePublicacion", getTitlePublicacion(request));
                     request.getRequestDispatcher("/jsp/gc/publicaciones/publicaciones.jsp").forward(request, response);
                     break;

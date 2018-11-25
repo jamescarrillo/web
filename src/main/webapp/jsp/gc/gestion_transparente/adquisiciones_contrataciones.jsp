@@ -69,7 +69,7 @@
                                         </ul>
                                         <div class="tab-content tabcontent-border">
                                             <div class="tab-pane p-20 active show" id="tab-compra-de-bienes" role="tabpanel">
-                                                <input type="hidden" id="nameFormOrdenesCompra" value="FrmOrdenCompra">
+                                                <input type="hidden" id="nameFormOrdenCompra" value="FrmOrdenCompra">
                                                 <input type="hidden" id="actionOrdenCompra" name="action" value="paginarOrdenCompra">
                                                 <input type="hidden" id="numberPageOrdenCompra" name="numberPageOrdenCompra" value="1">
                                                 <form id="FrmOrdenCompra">
@@ -78,13 +78,11 @@
                                                             <input type="text" name="txtProveedorOrdenCompra" id="txtProveedorOrdenCompra" class="form-control form-control-sm" placeholder="PROVEEDOR">
                                                         </div>
                                                         <div class="input-group col-lg-4 col-12 mb-3">
-                                                            <select id="comboTipoListaOrdenCompra" name="comboTipoListaOrdenCompra" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarOrdenCompra'>
-                                                                <option value="-1">TODOS</option>
-                                                                <option value="true">ACTIVOS</option>
-                                                                <option value="false">ANACTIVOS</option>
+                                                            <select id="comboAnioOrdenCompra" name="comboAnioOrdenCompra" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarOrdenCompra'>
+
                                                             </select>
                                                             <button type="submit" id="btnBuscarOrdenCompra" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Orden de Compra" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="ventanaManOrdenCompra" data-toggle="tooltip" title="Agregar Orden de Compra" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="ventanaManOrdenCompra" idaccion="actionOrdenCompra" value_accion="addOrdenCompra" data-toggle="tooltip" title="Agregar Orden de Compra" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -148,13 +146,11 @@
                                                             <input type="text" name="txtProveedorOrdenServicio" id="txtProveedorOrdenServicio" class="form-control form-control-sm" placeholder="PROVEEDOR">
                                                         </div>
                                                         <div class="input-group col-lg-4 col-12 mb-3">
-                                                            <select id="comboTipoListaOrdenServicio" name="comboTipoListaOrdenServicio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarOrdenServicio'>
-                                                                <option value="-1">TODOS</option>
-                                                                <option value="true">PUBLICOS</option>
-                                                                <option value="false">NO PUBLICOS</option>
+                                                            <select id="comboAnioOrdenServicio" name="comboAnioOrdenServicio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarOrdenServicio'>
+
                                                             </select>
                                                             <button type="submit" id="btnBuscarOrdenServicio" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Orden de Servicio" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="ventanaManOrdenServicio" data-toggle="tooltip" title="Agregar Orden de Servicio" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="ventanaManOrdenServicio" idaccion="actionOrdenServicio" value_accion="addOrdenServicio" data-toggle="tooltip" title="Agregar Orden de Servicio" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -188,7 +184,7 @@
                                                                  style="padding-top: 10px; padding-bottom: 10px">
                                                                 <div class="row">
                                                                     <div class="col-md-2 col-sm-3 col-4">
-                                                                        <select id="sizePageOrdenServicio" name="sizePageOrdenServicio" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarPresupuesto2'>
+                                                                        <select id="sizePageOrdenServicio" name="sizePageOrdenServicio" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarOrdenServicio'>
                                                                             <option value="10">10</option>
                                                                             <option value="15">15</option>
                                                                             <option value="20">20</option>
@@ -217,13 +213,11 @@
                                                             <input type="text" name="txtProveedorPublicidad" id="txtProveedorPublicidad" class="form-control form-control-sm" placeholder="PROVEEDOR">
                                                         </div>
                                                         <div class="input-group col-lg-4 col-12 mb-3">
-                                                            <select id="comboTipoListaPublicidad" name="comboTipoListaPublicidad" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPublicidad'>
-                                                                <option value="-1">TODOS</option>
-                                                                <option value="true">ACTIVOS</option>
-                                                                <option value="false">INACTIVOS</option>
+                                                            <select id="comboAnioPublicidad" name="comboAnioPublicidad" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPublicidad'>
+
                                                             </select>
                                                             <button type="submit" id="btnBuscarPublicidad" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Publicidad" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="ventanaManPublicidad" data-toggle="tooltip" title="Agregar Publicidad" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="ventanaManPublicidad" idaccion="actionPublicidad" value_accion="addPublicidad"  data-toggle="tooltip" title="Agregar Publicidad" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -281,16 +275,14 @@
                                                 <form id="FrmTelefonia">
                                                     <div class="row mt-3">
                                                         <div class="form-group col-lg-8 col-12 mb-3">
-                                                            <input type="text" name="txtProveedorTelefonia" id="txtProveedorTelefonia" class="form-control form-control-sm" placeholder="PROVEEDOR">
+                                                            <input type="text" name="txtAreaTelefonia" id="txtAreaTelefonia" class="form-control form-control-sm" placeholder="AREA / OFICINA">
                                                         </div>
                                                         <div class="input-group col-lg-4 col-12 mb-3">
-                                                            <select id="comboTipoListaTelefonia" name="comboTipoListaTelefonia" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarTelefonia'>
-                                                                <option value="-1">TODOS</option>
-                                                                <option value="true">ACTIVOS</option>
-                                                                <option value="false">INACTIVOS</option>
+                                                            <select id="comboAnioTelefonia" name="comboAnioTelefonia" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarTelefonia'>
+
                                                             </select>
-                                                            <button type="submit" id="btnBuscarTelefonia" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Documento" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="" data-toggle="tooltip" title="Agregar Documento" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                            <button type="submit" id="btnBuscarTelefonia" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Telefonia" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="ventanaManTelefonia" idaccion="actionTelefonia" value_accion="addTelefonia" data-toggle="tooltip" title="Agregar Documento" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -300,11 +292,11 @@
                                                             <table class="table color-bordered-table muted-bordered-table table-hover">
                                                                 <thead>
                                                                     <tr>
-                                                                        <th style="width: 10%" class="text-medium-table">TIPO</th>
-                                                                        <th style="width: 10%" class="text-medium-table">NUMERO</th>
+                                                                        <th style="width: 15%" class="text-medium-table">TIPO</th>
+                                                                        <th style="width: 15%" class="text-medium-table">NUMERO</th>
                                                                         <th style="width: 25%" class="text-medium-table">AREA/OFICINA</th>
                                                                         <th style="width: 25%" class="text-medium-table">ASIGNADO A</th>
-                                                                        <th style="width: 25%" class="text-medium-table">CARGO</th>
+                                                                        <th style="width: 20%" class="text-medium-table">CARGO</th>
                                                                         <th style="width: 10%" class="text-medium-table">IMPORTE</th>
                                                                         <th style="width: 5%" class="text-medium-table"></th>
                                                                     </tr>
@@ -349,16 +341,14 @@
                                                 <form id="FrmVehiculo">
                                                     <div class="row mt-3">
                                                         <div class="form-group col-lg-8 col-12 mb-3">
-                                                            <input type="text" name="txtProveedorVehiculo" id="txtProveedorVehiculo" class="form-control form-control-sm" placeholder="PROVEEDOR">
+                                                            <input type="text" name="txtAreaVehiculo" id="txtAreaVehiculo" class="form-control form-control-sm" placeholder="ASIGNADO">
                                                         </div>
                                                         <div class="input-group col-lg-4 col-12 mb-3">
-                                                            <select id="comboTipoListaVehiculo" name="comboTipoListaVehiculo" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarVehiculo'>
-                                                                <option value="-1">TODOS</option>
-                                                                <option value="true">ACTIVOS</option>
-                                                                <option value="false">INACTIVOS</option>
+                                                            <select id="comboAnioVehiculo" name="comboAnioVehiculo" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarVehiculo'>
+
                                                             </select>
                                                             <button type="submit" id="btnBuscarVehiculo" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Documento" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="" data-toggle="tooltip" title="Agregar Documento" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="ventanaManVehiculo" idaccion="actionVehiculo" value_accion="addVehiculo" data-toggle="tooltip" title="Agregar Documento" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -370,12 +360,12 @@
                                                                     <tr>
                                                                         <th style="width: 10%" class="text-medium-table">Clase</th>
                                                                         <th style="width: 10%" class="text-medium-table">Vehículo</th>
-                                                                        <th style="width: 10%" class="text-medium-table">Placa</th>
+                                                                        <th style="width: 15%" class="text-medium-table">Placa</th>
                                                                         <th style="width: 10%" class="text-medium-table">SOAT</th>
-                                                                        <th style="width: 30%" class="text-medium-table">Asignado a</th>
+                                                                        <th style="width: 35%" class="text-medium-table">Asignado a</th>
                                                                         <th style="width: 10%" class="text-medium-table">Recorrido Km</th>
-                                                                        <th style="width: 10%" class="text-medium-table">Tipo Combustible</th>
-                                                                        <th style="width: 10%" class="text-medium-table">Costo Combustible</th>
+                                                                        <th style="width: 8%" class="text-medium-table">Tipo Combustible</th>
+                                                                        <th style="width: 8%" class="text-medium-table">Costo Combustible</th>
                                                                         <th style="width: 5%" class="text-medium-table"></th>
                                                                     </tr>
                                                                 </thead>
@@ -422,13 +412,11 @@
                                                             <input type="text" name="txtProveedor" id="txtProveedor" class="form-control form-control-sm" placeholder="PROVEEDOR">
                                                         </div>
                                                         <div class="input-group col-lg-4 col-12 mb-3">
-                                                            <select id="comboTipoListaProveedor" name="comboTipoListaProveedor" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarProveedor'>
-                                                                <option value="-1">TODOS</option>
-                                                                <option value="true">ACTIVOS</option>
-                                                                <option value="false">INACTIVOS</option>
+                                                            <select id="comboAnioProveedor" name="comboAnioProveedor" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarProveedor'>
+
                                                             </select>
                                                             <button type="submit" id="btnBuscarProveedor" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Proveedor" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="" data-toggle="tooltip" title="Agregar Proveedor" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                            <button type="button" class="btn waves-effect waves-light btn-info btn-sm btn-abrir-modal" idmodal="ventanaManProveedor" idaccion="actionProveedor" value_accion="addProveedor" data-toggle="tooltip" title="Agregar Proveedor" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -500,41 +488,33 @@
                             </div>
                             <div class="modal-body modal-body-scroll">
                                 <div class="row">
-                                    <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
-                                        <label for="txtMesOrdenCompraER">MES</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtMesOrdenCompraER" name="txtMesOrdenCompraER" placeholder="MES"> 
-                                    </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
-                                        <label for="txtAnhoOrdenCompraER">AÑO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtAnhoOrdenCompraER" name="txtAnhoOrdenCompraER" placeholder="MES"> 
-                                    </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
+                                    <div class="form-group col-sm-6 col-12 mb-3">
                                         <label for="txtFechaOrdenCompraER">FECHA</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtFechaOrdenCompraER" name="txtFechaOrdenCompraER" placeholder="FECHA"> 
+                                        <input type="text" class="form-control form-control-sm input-date input-text" id="txtFechaOrdenCompraER" name="txtFechaOrdenCompraER" placeholder="FECHA"> 
                                     </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
+                                    <div class="form-group col-sm-6 col-12 mb-3">
                                         <label for="txtOrdenCompraOrdenCompraER">N° ORDEN</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtOrdenCompraOrdenCompraER" name="txtOrdenCompraOrdenCompraER" placeholder="N° ORDEN"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtOrdenCompraOrdenCompraER" name="txtOrdenCompraOrdenCompraER" placeholder="N° ORDEN"> 
                                     </div>
-                                    <div class="form-group col-md-8 col-12 mb-3">
+                                    <div class="form-group col-12 mb-3">
                                         <label for="txtFuenteFinanciamientoOrdenCompraER">FUENTE FINANCIAMIENTO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtFuenteFinanciamientoOrdenCompraER" name="txtFuenteFinanciamientoOrdenCompraER" placeholder="FUENTE FINANCIAMIENTO"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtFuenteFinanciamientoOrdenCompraER" name="txtFuenteFinanciamientoOrdenCompraER" placeholder="FUENTE FINANCIAMIENTO"> 
                                     </div>
                                     <div class="form-group col-12 mb-3">
                                         <label for="txtProveedorOrdenCompraER">PROVEEDOR</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtProveedorOrdenCompraER" name="txtProveedorOrdenCompraER" placeholder="PROVEEDOR"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtProveedorOrdenCompraER" name="txtProveedorOrdenCompraER" placeholder="PROVEEDOR"> 
                                     </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
+                                    <div class="form-group col-md-4 col-sm-6 col-12 mb-3">  
                                         <label for="txtMontoOrdenCompraER">MONTO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtMontoOrdenCompraER" name="txtMontoOrdenCompraER" placeholder="MONTO"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtMontoOrdenCompraER" name="txtMontoOrdenCompraER" placeholder="MONTO"> 
                                     </div>
                                     <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
                                         <label for="txtFinanciamientoOrdenCompraER">FINANCIAMIENTO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtFinanciamientoOrdenCompraER" name="txtFinanciamientoOrdenCompraER" placeholder="FINANCIAMIENTO"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtFinanciamientoOrdenCompraER" name="txtFinanciamientoOrdenCompraER" placeholder="FINANCIAMIENTO"> 
                                     </div>
                                     <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
                                         <label for="txtNSiafOrdenCompraER">N° SIAF</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtNSiafOrdenCompraER" name="txtNSiafOrdenCompraER" placeholder="N° SIAF"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtNSiafOrdenCompraER" name="txtNSiafOrdenCompraER" placeholder="N° SIAF"> 
                                     </div>
                                     <input id="txtIdOrdenCompraER" name="txtIdOrdenCompraER" type="hidden" value="">
                                 </div>
@@ -562,41 +542,33 @@
                             </div>
                             <div class="modal-body modal-body-scroll">
                                 <div class="row">
-                                    <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
-                                        <label for="txtMesOrdenServicioER">MES</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtMesOrdenServicioER" name="txtMesOrdenServicioER" placeholder="MES"> 
-                                    </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
-                                        <label for="txtAnhoOrdenServicioER">AÑO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtAnhoOrdenServicioER" name="txtAnhoOrdenServicioER" placeholder="MES"> 
-                                    </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
+                                    <div class="form-group col-sm-6 col-12 mb-3">
                                         <label for="txtFechaOrdenServicioER">FECHA</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtFechaOrdenServicioER" name="txtFechaOrdenServicioER" placeholder="FECHA"> 
+                                        <input type="text" class="form-control form-control-sm input-date input-text" id="txtFechaOrdenServicioER" name="txtFechaOrdenServicioER" placeholder="FECHA"> 
                                     </div>
-                                    <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
+                                    <div class="form-group col-sm-6 col-12 mb-3">
                                         <label for="txtOrdenServicioOrdenServicioER">N° ORDEN</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtOrdenServicioOrdenServicioER" name="txtOrdenServicioOrdenServicioER" placeholder="N° ORDEN"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtOrdenServicioOrdenServicioER" name="txtOrdenServicioOrdenServicioER" placeholder="N° ORDEN"> 
                                     </div>
-                                    <div class="form-group col-md-8 col-12 mb-3">
+                                    <div class="form-group col-12 mb-3">
                                         <label for="txtFuenteFinanciamientoOrdenServicioER">FUENTE FINANCIAMIENTO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtFuenteFinanciamientoOrdenServicioER" name="txtFuenteFinanciamientoOrdenServicioER" placeholder="FUENTE FINANCIAMIENTO"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtFuenteFinanciamientoOrdenServicioER" name="txtFuenteFinanciamientoOrdenServicioER" placeholder="FUENTE FINANCIAMIENTO"> 
                                     </div>
                                     <div class="form-group col-12 mb-3">
                                         <label for="txtProveedorOrdenServicioER">PROVEEDOR</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtProveedorOrdenServicioER" name="txtProveedorOrdenServicioER" placeholder="PROVEEDOR"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtProveedorOrdenServicioER" name="txtProveedorOrdenServicioER" placeholder="PROVEEDOR"> 
                                     </div>
                                     <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
                                         <label for="txtMontoOrdenServicioER">MONTO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtMontoOrdenServicioER" name="txtMontoOrdenServicioER" placeholder="MONTO"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtMontoOrdenServicioER" name="txtMontoOrdenServicioER" placeholder="MONTO"> 
                                     </div>
                                     <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
                                         <label for="txtFinanciamientoOrdenServicioER">FINANCIAMIENTO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtFinanciamientoOrdenServicioER" name="txtFinanciamientoOrdenServicioER" placeholder="FINANCIAMIENTO"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtFinanciamientoOrdenServicioER" name="txtFinanciamientoOrdenServicioER" placeholder="FINANCIAMIENTO"> 
                                     </div>
                                     <div class="form-group col-md-4 col-sm-6 col-12 mb-3">
                                         <label for="txtNSiafOrdenServicioER">N° SIAF</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtNSiafOrdenServicioER" name="txtNSiafOrdenServicioER" placeholder="N° SIAF"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtNSiafOrdenServicioER" name="txtNSiafOrdenServicioER" placeholder="N° SIAF"> 
                                     </div>
                                     <input id="txtIdOrdenServicioER" name="txtIdOrdenServicioER" type="hidden" value="">
                                 </div>
@@ -626,55 +598,55 @@
                                 <div class="row">
                                     <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
                                         <label for="txtAnhoPublicidadER">AÑO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtAnhoPublicidadER" name="txtAnhoPublicidadER" placeholder="MES"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtAnhoPublicidadER" name="txtAnhoPublicidadER" placeholder="AÑO"> 
                                     </div>
                                     <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
                                         <label for="txtBienesServiciosPublicidadER">BIEN/SERVICIO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtBienesServiciosPublicidadER" name="txtBienesServiciosPublicidadER" placeholder="BIEN/SERVICIO"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtBienesServiciosPublicidadER" name="txtBienesServiciosPublicidadER" placeholder="BIEN/SERVICIO"> 
                                     </div>
                                     <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
                                         <label for="txtProcesoPublicidadER">PROCESO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtProcesoPublicidadER" name="txtProcesoPublicidadER" placeholder="PROCESO"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtProcesoPublicidadER" name="txtProcesoPublicidadER" placeholder="PROCESO"> 
                                     </div>
                                     <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
                                         <label for="txtContratoPublicidadER">CONTRATO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtContratoPublicidadER" name="txtContratoPublicidadER" placeholder="CONTRATO"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtContratoPublicidadER" name="txtContratoPublicidadER" placeholder="CONTRATO"> 
                                     </div>
                                     <div class="form-group col-lg-8 col-12 mb-3">
                                         <label for="txtFuenteFinanciamientoPublicidadER">FUENTE FINANCIAMIENTO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtFuenteFinanciamientoPublicidadER" name="txtFuenteFinanciamientoPublicidadER" placeholder="FUENTE FINANCIAMIENTO"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtFuenteFinanciamientoPublicidadER" name="txtFuenteFinanciamientoPublicidadER" placeholder="FUENTE FINANCIAMIENTO"> 
                                     </div>
                                     <div class="form-group col-12 mb-3">
                                         <label for="txtObjetoContratoPublicidadER">OBJETO CONTRATO</label>
-                                        <textarea type="text" class="form-control form-control-sm " id="txtObjetoContratoPublicidadER" name="txtObjetoContratoPublicidadER" placeholder="OBJETO CONTRATO" rows="3"></textarea>
+                                        <textarea type="text" class="form-control form-control-sm input-text" id="txtObjetoContratoPublicidadER" name="txtObjetoContratoPublicidadER" placeholder="OBJETO CONTRATO" rows="3"></textarea>
                                     </div>
                                     <div class="form-group col-lg-8 col-sm-6 col-12 mb-3">
                                         <label for="txtValorReferenciaPublicidadER">VALOR DE REFERENCIA</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtValorReferenciaPublicidadER" name="txtValorReferenciaPublicidadER" placeholder="VALOR DE REFERENCIA"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtValorReferenciaPublicidadER" name="txtValorReferenciaPublicidadER" placeholder="VALOR DE REFERENCIA"> 
                                     </div>
                                     <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
                                         <label for="txtRucPublicidadER">RUC</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtRucPublicidadER" name="txtRucPublicidadER" placeholder="RUC"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtRucPublicidadER" name="txtRucPublicidadER" placeholder="RUC"> 
                                     </div>
                                     <div class="form-group col-12 mb-3">
                                         <label for="txtProveedorPublicidadER">PROVEEDOR</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtProveedorPublicidadER" name="txtProveedorPublicidadER" placeholder="PROVEEDOR"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtProveedorPublicidadER" name="txtProveedorPublicidadER" placeholder="PROVEEDOR"> 
                                     </div>
                                     <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
-                                        <label for="txtNContratoPublicidadER">N° CONTRATO</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtNContratoPublicidadER" name="txtNContratoPublicidadER" placeholder="N°CONTRATO"> 
+                                        <label for="txtNContratoPublicidadER">MONTO CONTRATO</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtNContratoPublicidadER" name="txtNContratoPublicidadER" placeholder="MONTO CONTRATO"> 
                                     </div>
                                     <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
                                         <label for="txtPenalidadPublicidadER">PENALIDAD</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtPenalidadPublicidadER" name="txtPenalidadPublicidadER" placeholder="PENALIDAD"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtPenalidadPublicidadER" name="txtPenalidadPublicidadER" placeholder="PENALIDAD"> 
                                     </div>
                                     <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
                                         <label for="txtCostoFinalPublicidadER">COSTO FINAL</label>
-                                        <input type="text" class="form-control form-control-sm " id="txtCostoFinalPublicidadER" name="txtCostoFinalPublicidadER" placeholder="COSTO FINAL"> 
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtCostoFinalPublicidadER" name="txtCostoFinalPublicidadER" placeholder="COSTO FINAL"> 
                                     </div>
                                     <div class="form-group col-12 mb-3">
                                         <label for="txtObservacionesPublicidadER">OBSERVACIONES</label>
-                                        <textarea type="text" class="form-control form-control-sm " id="txtObservacionesPublicidadER" name="txtObservacionesPublicidadER" placeholder="OBSERVACIONES" rows="3"></textarea>
+                                        <textarea type="text" class="form-control form-control-sm input-text" id="txtObservacionesPublicidadER" name="txtObservacionesPublicidadER" placeholder="OBSERVACIONES" rows="3"></textarea>
                                     </div>  
                                     <input id="txtIdPublicidadER" name="txtIdPublicidadER" type="hidden" value="">
                                 </div>
@@ -689,6 +661,188 @@
                     </div>
                 </div>
             </div>
+            <div class="modal fade" id="ventanaManTelefonia" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-scroll" role="document">
+                    <div class="modal-content">
+                        <form id="FrmTelefoniaModal">
+                            <div class="modal-header">
+                                <h6 class="modal-title">REGISTRAR TELEFONÍA</h6>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body modal-body-scroll">
+                                <div class="row">
+                                    <div class="form-group col-sm-6 col-12 mb-3">
+                                        <label for="txtMesTelefoniaER">MES</label>
+                                        <select class="form-control form-control-sm cbo-meses input-select" id="txtMesTelefoniaER" name="txtMesTelefoniaER">
+                                            <option value="-1">Seleccione...</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-sm-6 col-12 mb-3">
+                                        <label for="txtAnhoTelefoniaER">AÑO</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtAnhoTelefoniaER" name="txtAnhoTelefoniaER" placeholder="AÑO"> 
+                                    </div>
+                                    <div class="form-group col-sm-6 col-12 mb-3">
+                                        <label for="txtTipoTelefoniaER">TIPO</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtTipoTelefoniaER" name="txtTipoTelefoniaER" placeholder="TIPO">
+                                    </div>
+                                    <div class="form-group col-sm-6 col-12 mb-3">
+                                        <label for="txtNumeroTelefoniaER">NUMERO</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtNumeroTelefoniaER" name="txtNumeroTelefoniaER" placeholder="NUMERO">
+                                    </div>
+                                    <div class="form-group col-12 mb-3">
+                                        <label for="txtAreaOficinaTelefoniaER">AREA / OFICINA</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtAreaOficinaTelefoniaER" name="txtAreaOficinaTelefoniaER" placeholder="AREA / OFICINA"> 
+                                    </div>
+                                    <div class="form-group col-12 mb-3">
+                                        <label for="txtAsignadoATelefoniaER">ASIGNADO A</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtAsignadoATelefoniaER" name="txtAsignadoATelefoniaER" placeholder="ASIGNADO A"> 
+                                    </div>
+                                    <div class="form-group col-sm-6 col-12 mb-3">
+                                        <label for="txtCargoActividadTelefoniaER">CARGO / ACTIVIDAD</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtCargoActividadTelefoniaER" name="txtCargoActividadTelefoniaER" placeholder="CARGO / ACTIVIDAD"> 
+                                    </div>
+                                    <div class="form-group col-sm-6 col-12 mb-3">
+                                        <label for="txtImporteTelefoniaER">IMPORTE</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtImporteTelefoniaER" name="txtImporteTelefoniaER" placeholder="IMPORTE"> 
+                                    </div>
+                                    <input id="txtIdTelefoniaER" name="txtIdTelefoniaER" type="hidden" value="">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
+                                <button type="submit" class="btn btn-outline-info btn-sm">
+                                    <i class="fa fa-floppy-o"></i> GUARDAR
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>    
+            <div class="modal fade" id="ventanaManVehiculo" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <form id="FrmVehiculoModal">
+                            <div class="modal-header">
+                                <h6 class="modal-title">REGISTRAR VEHÍCULO</h6>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
+                                        <label for="txtMesVehiculoER">MES</label>
+                                        <select class="form-control form-control-sm cbo-meses input-select" id="txtMesVehiculoER" name="txtMesVehiculoER">
+                                            <option value="-1">Seleccione...</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
+                                        <label for="txtAnhoVehiculoER">AÑO</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtAnhoVehiculoER" name="txtAnhoVehiculoER" placeholder="AÑO"> 
+                                    </div>
+                                    <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
+                                        <label for="txtTipoClaseVehiculoER">TIPO CLASE</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtTipoClaseVehiculoER" name="txtTipoClaseVehiculoER" placeholder="TIPO CLASE">
+                                    </div>
+                                    <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
+                                        <label for="txtClaseVehiculoER">CLASE VEHÍCULO</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtClaseVehiculoER" name="txtClaseVehiculoER" placeholder="CLASE VEHÍCULO">
+                                    </div>
+                                    <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
+                                        <label for="txtTipoCombustibleVehiculoER">TIPO COMBUSTIBLE</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtTipoCombustibleVehiculoER" name="txtTipoCombustibleVehiculoER" placeholder="TIPO COMBUSTIBLE">
+                                    </div>
+                                    <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
+                                        <label for="txtRecorridoKmVehiculoER">RECORRIDO KM</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtRecorridoKmVehiculoER" name="txtRecorridoKmVehiculoER" placeholder="RECORRIDO KM">
+                                    </div>
+                                    <div class="form-group col-12 mb-3">
+                                        <label for="txtAsignadoVehiculoER">ASIGNADO A</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtAsignadoVehiculoER" name="txtAsignadoVehiculoER" placeholder="ASIGNADO A"> 
+                                    </div>  
+                                    <div class="form-group col-12 mb-3">
+                                        <label for="txtCargoActividadVehiculoER">CARGO / ACTIVIDAD</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtCargoActividadVehiculoER" name="txtCargoActividadVehiculoER" placeholder="CARGO / ACTIVIDAD"> 
+                                    </div>                                    
+                                    <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
+                                        <label for="txtCostoCombustibleVehiculoER">COSTO COMBUSTIBLE</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtCostoCombustibleVehiculoER" name="txtCostoCombustibleVehiculoER" placeholder="COSTO COMBUSTIBLE">
+                                    </div>
+                                    <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
+                                        <label for="txtSoatFechaVencimientoVehiculoER">FECHA VENCIMIENTO SOAT</label>
+                                        <input type="text" class="form-control form-control-sm input-text input-date" id="txtSoatFechaVencimientoVehiculoER" name="txtSoatFechaVencimientoVehiculoER" placeholder="DD/MM/AAAA">
+                                    </div>
+                                    <div class="form-group col-lg-4 col-12 mb-3">
+                                        <label for="txtPlacaVehiculoER">PLACA</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtPlacaVehiculoER" name="txtPlacaVehiculoER" placeholder="PLACA">
+                                    </div>
+                                    <div class="form-group col-12 mb-3">
+                                        <label for="txtObservacionesVehiculoER">OBSERVACIONES</label>
+                                        <textarea type="text" class="form-control form-control-sm input-text" id="txtObservacionesVehiculoER" name="txtObservacionesVehiculoER" placeholder="OBSERVACIONES" rows="3"></textarea>
+                                    </div>
+                                    <input id="txtIdVehiculoER" name="txtIdVehiculoER" type="hidden" value="">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
+                                <button type="submit" class="btn btn-outline-info btn-sm">
+                                    <i class="fa fa-floppy-o"></i> GUARDAR
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="ventanaManProveedor" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <form id="FrmProveedorModal">
+                            <div class="modal-header">
+                                <h6 class="modal-title">REGISTRAR PROVEEDOR</h6>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
+                                        <label for="txtAnhoProveedorER">AÑO</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtAnhoProveedorER" name="txtAnhoProveedorER" placeholder="AÑO"> 
+                                    </div>
+                                    <div class="form-group col-lg-4 col-sm-6 col-12 mb-3">
+                                        <label for="txtTrimestreProveedorER">TRIMESTRE</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtTrimestreProveedorER" name="txtTrimestreProveedorER" placeholder="TRIMESTRE"> 
+                                    </div>
+                                    <div class="form-group col-lg-4 col-12 mb-3">
+                                        <label for="txtRucProveedorER">RUC</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtRucProveedorER" name="txtRucProveedorER" placeholder="RUC">
+                                    </div>
+                                    <div class="form-group col-12 mb-3">
+                                        <label for="txtProveedorER">PROVEEDOR</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtProveedorER" name="txtProveedorER" placeholder="PROVEEDOR">
+                                    </div>
+                                    <div class="form-group col-12 mb-3">
+                                        <label for="txtImporteProveedorER">IMPORTE</label>
+                                        <input type="text" class="form-control form-control-sm input-text" id="txtImporteProveedorER" name="txtImporteProveedorER" placeholder="IMPORTE"> 
+                                    </div>
+                                    <input id="txtIdProveedorER" name="txtIdProveedorER" type="hidden" value="">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
+                                <button type="submit" class="btn btn-outline-info btn-sm">
+                                    <i class="fa fa-floppy-o"></i> GUARDAR
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> 
             <div class="modal fade" id="modalCargandoOrdenCompra" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
@@ -754,7 +908,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="modalCargandoPreveedor" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+            <div class="modal fade" id="modalCargandoProveedor" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-body">

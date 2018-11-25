@@ -98,7 +98,7 @@ public class OrdenServicioDAOImpl implements gob.peam.web.dao.OrdenServicioDAO {
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("SELECT COUNT(ID) AS COUNT FROM WEB.F00008 WHERE ORDEN_COMPRA = ?");
+            pst = conn.prepareStatement("SELECT COUNT(ID) AS COUNT FROM WEB.F00008 WHERE ORDEN_SERVICIO = ?");
             pst.setString(1, obj.getOrden_servicio());
             LOG.info(pst.toString());
             rs = pst.executeQuery();

@@ -152,7 +152,8 @@ function listarEstudio(BEAN_PAGINATION) {
 
             card += "<div class='d-flex' " + atributosEstudio + ">";
 
-            card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            //card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            card += "<div class='read'></div>";
 
             card += "<div class='ml-auto'>";
 

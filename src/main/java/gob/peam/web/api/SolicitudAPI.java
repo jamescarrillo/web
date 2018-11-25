@@ -12,7 +12,6 @@ import gob.peam.web.dao.impl.SolicitudDAOImpl;
 import gob.peam.web.model.Solicitud;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.logging.Level;
