@@ -49,7 +49,7 @@ $(document).ready(function () {
 
 function procesarAjaxGlosario() {
     var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
-    if ($('#nameForm').val().toLowerCase() !== "frmdglosario") {
+    if ($('#nameForm').val().toLowerCase() !== "frmglosario") {
         //AGREGAMOS LOS PARAMETROS DEL FORMULARIO DE BUSQUEDA
         datosSerializadosCompletos += "&txtGlosario=" + $('#txtGlosario').val();
         datosSerializadosCompletos += "&comboAnio=" + $('#comboAnio').val();
@@ -69,13 +69,13 @@ function procesarAjaxGlosario() {
                 listarGlosario(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManGlosario").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionGlosario').val(), 'Glosario de Términos', 'o'));
                     listarGlosario(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManGlosario").modal("hide");
         },
         error: function () {
             $('#modalCargandoGlosario').modal("hide");

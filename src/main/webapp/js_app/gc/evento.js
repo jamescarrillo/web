@@ -75,13 +75,13 @@ function procesarAjaxEvento() {
                 listarEvento(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManEvento").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionEvento').val(), 'Evento', 'o'));
                     listarEvento(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManEvento").modal("hide");
         },
         error: function () {
             $('#modalCargandoEvento').modal("hide");

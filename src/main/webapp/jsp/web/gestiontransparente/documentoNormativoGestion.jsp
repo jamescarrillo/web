@@ -54,10 +54,10 @@
                                         <form id="FrmDocumentos">
                                             <div class="col-md-4 col-sm-3 col-xs-12">
                                                 <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
-                                                    <option value="0">Resoluciones Generales</option>
+                                                    <option value="100">Resoluciones Generales</option>
                                                     <option value="2800">Actas de Sesión y Consejo Directivo</option>
-                                                    <option value="2">Documentos de Gestión</option>
-                                                    <option value="0">Normas y Directivas 12 </option>
+                                                    <option value="100">Documentos de Gestión</option>
+                                                    <option value="100">Normas y Directivas 12 </option>
                                                     <option value="900">Indicadores de Desempeño</option>
                                                 </select>
                                             </div>
@@ -79,6 +79,7 @@
                                             <input type="hidden" id="numberPageDocumentos" name="numberPageDocumentos" value="1">
                                             <input type="hidden" id="sizePageDocumentos" name="sizePageDocumentos" value="10">
                                             <input type="hidden" id="comboTipoListaDocumentos" name="comboTipoListaDocumentos" value="-1">
+                                            <input type="hidden" id="tido_id" name="tido_id" value="10">
                                         </form>
                                     </div>
                                     <div class="row" id="loader_contenido">

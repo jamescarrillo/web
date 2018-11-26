@@ -11,6 +11,8 @@ import gob.peam.web.dao.DirectivoDAO;
 import gob.peam.web.dao.FuncionarioDAO;
 import gob.peam.web.dao.OrdenCompraDAO;
 import gob.peam.web.dao.OrdenServicioDAO;
+import gob.peam.web.dao.PersonalCategoriaDAO;
+import gob.peam.web.dao.PersonalDAO;
 import gob.peam.web.dao.ProveedorDAO;
 import gob.peam.web.dao.PublicidadDAO;
 import gob.peam.web.dao.TelefoniaDAO;
@@ -20,6 +22,8 @@ import gob.peam.web.dao.impl.DirectivoDAOImpl;
 import gob.peam.web.dao.impl.FuncionarioDAOImpl;
 import gob.peam.web.dao.impl.OrdenCompraDAOImpl;
 import gob.peam.web.dao.impl.OrdenServicioDAOImpl;
+import gob.peam.web.dao.impl.PersonalCategoriaDAOImpl;
+import gob.peam.web.dao.impl.PersonalDAOImpl;
 import gob.peam.web.dao.impl.ProveedorDAOImpl;
 import gob.peam.web.dao.impl.PublicidadDAOImpl;
 import gob.peam.web.dao.impl.TelefoniaDAOImpl;
@@ -29,6 +33,8 @@ import gob.peam.web.model.Directivo;
 import gob.peam.web.model.Funcionario;
 import gob.peam.web.model.OrdenCompra;
 import gob.peam.web.model.OrdenServicio;
+import gob.peam.web.model.Personal;
+import gob.peam.web.model.PersonalCategoria;
 import gob.peam.web.model.Proveedor;
 import gob.peam.web.model.Publicidad;
 import gob.peam.web.model.Telefonia;
@@ -105,6 +111,9 @@ public class GestionTransparenteAPI extends HttpServlet {
     private VehiculoDAO vehiculoDAO;
     private ProveedorDAO proveedorDAO;
 
+    private PersonalDAO personalDAO;
+    private PersonalCategoriaDAO personalCategoriaDAO;
+
     @Override
     public void init() throws ServletException {
         super.init(); // To change body of generated methods, choose Tools | Templates.
@@ -129,6 +138,9 @@ public class GestionTransparenteAPI extends HttpServlet {
         this.telefoniaDAO = new TelefoniaDAOImpl(this.pool);
         this.vehiculoDAO = new VehiculoDAOImpl(this.pool);
         this.proveedorDAO = new ProveedorDAOImpl(this.pool);
+        
+        this.personalDAO = new PersonalDAOImpl(this.pool);
+        this.personalCategoriaDAO = new PersonalCategoriaDAOImpl(this.pool);
     }
 
     /**
@@ -147,7 +159,6 @@ public class GestionTransparenteAPI extends HttpServlet {
             switch (request.getRequestURI().substring(request.getContextPath().length())) {
                 case "/gestiontransparente/adquisiciones":
                     this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-                    this.logger.info(action);
                     switch (action) {
                         case "paginarOrdenCompra":
                             procesarOrdenCompra(new BEAN_CRUD(this.ordenCompraDAO.getPagination(getParametersOrdenCompra(request))), response);
@@ -209,14 +220,36 @@ public class GestionTransparenteAPI extends HttpServlet {
                     }
                     break;
                 case "/gestiontransparente/gestiondocumentos":
-                    request.getRequestDispatcher("/estamos_trabajando.jsp").forward(request, response);
+                    request.getRequestDispatcher("/jsp/gc/gestion_transparente/gestion_documentos.jsp").forward(request, response);
                     break;
                 case "/gestiontransparente/personal":
-                    request.getRequestDispatcher("/estamos_trabajando.jsp").forward(request, response);
+                    this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
+                    switch (action) {
+                        case "paginarPersonal":
+                            procesarPersonal(new BEAN_CRUD(this.personalDAO.getPagination(getParametersPersonal(request))), response);
+                            break;
+                        case "addPersonal":
+                            procesarPersonal(this.personalDAO.add(getPersonal(request), getParametersPersonal(request)), response);
+                            break;
+                        case "deletePersonal":
+                            procesarPersonal(this.personalDAO.delete(Long.parseLong(request.getParameter("txtIdPersonalER")), getParametersPersonal(request)), response);
+                            break;
+                        case "paginarPersonalCategoria":
+                            procesarPersonalCategoria(new BEAN_CRUD(this.personalCategoriaDAO.getPagination(getParametersPersonalCategoria(request))), response);
+                            break;
+                        case "addPersonalCategoria":
+                            procesarPersonalCategoria(this.personalCategoriaDAO.add(getPersonalCategoria(request), getParametersPersonalCategoria(request)), response);
+                            break;
+                        case "deletePersonalCategoria":
+                            procesarPersonalCategoria(this.personalCategoriaDAO.delete(Long.parseLong(request.getParameter("txtIdPersonalCategoriaER")), getParametersPersonalCategoria(request)), response);
+                            break;
+                        default:
+                            request.getRequestDispatcher("/jsp/gc/gestion_transparente/personal.jsp").forward(request, response);
+                            break;
+                    }
                     break;
                 case "/gestiontransparente/directivos":
                     this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-                    this.logger.info(action);
                     switch (action) {
                         case "paginarFuncionario":
                             procesarFuncionario(new BEAN_CRUD(this.funcionarioDAO.getPagination(getParametersFuncionarios(request))), response);
@@ -255,7 +288,6 @@ public class GestionTransparenteAPI extends HttpServlet {
                     break;
                 case "/gestiontransparente/viaticos":
                     this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-                    this.logger.info(action);
                     switch (action) {
                         case "paginarViatico":
                             procesarViatico(new BEAN_CRUD(this.viaticoDAO.getPagination(getParametersViatico(request))), response);
@@ -931,6 +963,100 @@ public class GestionTransparenteAPI extends HttpServlet {
         proveedor.setImporte(Double.parseDouble(request.getParameter("txtImporteProveedorER")));
         proveedor.setEstado(true);
         return proveedor;
+    }
+
+    private void procesarPersonal(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            logger.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap<String, Object> getParametersPersonal(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", request.getParameter("txtPersonal").toLowerCase());
+        this.parameters.put("SQL_ORDERS", "ID DESC, APELLIDOS_NOMBRES ASC");
+        this.parameters.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("cboTipoPersonal"));
+        if (request.getParameter("comboAnioPersonal").equals("-1")) {
+            this.parameters.put("SQL_ANIO", "");
+        } else {
+            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioPersonal") + "'");
+        }
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePagePersonal") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPagePersonal")) - 1)
+                * Integer.parseInt(request.getParameter("sizePagePersonal")));
+        return this.parameters;
+    }
+
+    private Personal getPersonal(HttpServletRequest request) {
+        Personal personal = new Personal();
+        personal.setAnho(request.getParameter("txtAnhoPersonalER"));
+        personal.setDenominacion("");
+        personal.setTrimestre(Integer.parseInt(request.getParameter("txtTrimestrePersonalER")));
+        personal.setCargo(request.getParameter("txtCargoDependenciaPersonalER"));
+        personal.setCodigo_formato("");
+        personal.setPension(request.getParameter("txtPensionPersonalER"));
+        personal.setFecha_ingreso(request.getParameter("txtFechaIngresoPersonalER"));
+        personal.setFecha_cede(request.getParameter("txtFechaSesePersonalER"));
+        personal.setApellidos_nombres(request.getParameter("txtApellidosNombresPersonalER"));
+        personal.setNumero_dni(request.getParameter("txtDniPersonal"));
+        personal.setCodigo_civil(request.getParameter("txtRegimenLaboralPersonalER"));
+        personal.setOficina_area(request.getParameter("txtAreaDependenciaPersonalER"));
+        personal.setRemuneracion_mensual(Double.parseDouble(request.getParameter("txtRemuneracionHonorarioPersonalER")));
+        personal.setBeneficios(Double.parseDouble(request.getParameter("txtOtrosIngresosER")));
+        personal.setIngreso_total(Double.parseDouble(request.getParameter("txtIngresoTotalER")));
+        personal.setTipo(Integer.parseInt(request.getParameter("cboTipoPersonalER")));
+        personal.setCategoria(request.getParameter("txtCategoriaPersonalER"));
+        personal.setBonificacion_quinq(Double.parseDouble(request.getParameter("txtEscolaridadER")));
+        personal.setEstado(Boolean.TRUE);
+        personal.setObservacion(request.getParameter("txtObservacionER"));
+        return personal;
+    }
+
+    private void procesarPersonalCategoria(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            logger.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private HashMap<String, Object> getParametersPersonalCategoria(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", request.getParameter("txtCategoriaPersonalCategoria").toLowerCase());
+        this.parameters.put("SQL_ORDERS", "CATEGORIA ASC");
+        this.parameters.put("SQL_ESTADO", "");
+        if (request.getParameter("comboAnioPersonalCategoria").equals("-1")) {
+            this.parameters.put("SQL_ANIO", "");
+        } else {
+            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioPersonalCategoria") + "'");
+        }
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePagePersonalCategoria") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPagePersonalCategoria")) - 1)
+                * Integer.parseInt(request.getParameter("sizePagePersonalCategoria")));
+        return this.parameters;
+    }
+
+    private PersonalCategoria getPersonalCategoria(HttpServletRequest request) {
+        PersonalCategoria perca = new PersonalCategoria();
+        perca.setAnho(request.getParameter("txtAnhoPersonalCategoriaER"));
+        perca.setTrimestre(Integer.parseInt(request.getParameter("txtTrimestrePersonalCategoriaER")));
+        perca.setCodigo(request.getParameter("txtCodigoPersonalCategoriaER"));
+        perca.setCategoria(request.getParameter("txtCategoriaPersonalCategoriaER"));
+        perca.setRemuneracion_minima(Double.parseDouble(request.getParameter("txtRMinimaPersonalCategoriaER")));
+        perca.setRemuneracion_maxima(Double.parseDouble(request.getParameter("txtRMaximaPersonalCategoriaER")));
+        perca.setNumero_trabajadores(Integer.parseInt(request.getParameter("txtNTrabajadoresPersonalCategoriaER")));
+        perca.setEstado(Boolean.TRUE);
+        return perca;
     }
 
 }

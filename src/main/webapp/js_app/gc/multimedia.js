@@ -77,13 +77,13 @@ function procesarAjaxMultimedia() {
                 listarMultimedia(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManMultimedia").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionMultimedia').val(), 'Noticia Multimedia', 'a'));
                     listarMultimedia(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManMultimedia").modal("hide");
         },
         error: function () {
             $('#modalCargandoMultimedia').modal("hide");

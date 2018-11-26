@@ -42,14 +42,18 @@ public class PersonalDAOImpl implements PersonalDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(ID) AS COUNT FROM WEB.F00010 WHERE "
-                    + "LOWER(APELLIDOS_NOMBRES) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
+                    + "LOWER(APELLIDOS_NOMBRES) LIKE CONCAT('%',?,'%') "
+                    + parameters.get("SQL_ESTADO") + " "
+                    + parameters.get("SQL_ANIO"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
                 if (rs.getInt("COUNT") > 0) {
                     pst = conn.prepareStatement("SELECT * FROM WEB.F00010 WHERE "
-                            + "LOWER(APELLIDOS_NOMBRES) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
+                            + "LOWER(APELLIDOS_NOMBRES) LIKE CONCAT('%',?,'%') "
+                            + parameters.get("SQL_ESTADO") + " "
+                            + parameters.get("SQL_ANIO") + " "
                             + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
                     pst.setString(1, String.valueOf(parameters.get("FILTER")));
                     rs = pst.executeQuery();
@@ -60,7 +64,7 @@ public class PersonalDAOImpl implements PersonalDAO {
                         obj.setTrimestre(rs.getInt("TRIMESTRE"));
                         obj.setCargo(rs.getString("CARGO"));
                         obj.setFecha_ingreso(rs.getString("FECHA_INGRESO"));
-                        obj.setFecha_cede(rs.getString("FECHA_SEDE"));
+                        obj.setFecha_cede(rs.getString("FECHA_CEDE"));
                         obj.setApellidos_nombres(rs.getString("APELLIDOS_NOMBRES"));
                         obj.setNumero_dni(rs.getString("NUMERO_DNI"));
                         obj.setCodigo_civil(rs.getString("CODIGO_CIVIL"));
@@ -105,7 +109,7 @@ public class PersonalDAOImpl implements PersonalDAO {
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
             pst = conn.prepareStatement("INSERT INTO WEB.F00010(ID,ANHO,DENOMINACION,TRIMESTRE,CARGO,CODIGO_FORMATO,"
-                    + "PENSION,FECHA_INGRESO,FECHA_SEDE,APELLIDOS_NOMBRES,NUMERO_DNI,CODIGO_CIVIL,OFICINA_AREA,REMUNERACION_MENSUAL,"
+                    + "PENSION,FECHA_INGRESO,FECHA_CEDE,APELLIDOS_NOMBRES,NUMERO_DNI,CODIGO_CIVIL,OFICINA_AREA,REMUNERACION_MENSUAL,"
                     + "BENEFICIOS,INGRESO_TOTAL,TIPO,CATEGORIA,ESTADO,OBSERVACION,BONIFICACION_QUINQ) "
                     + "VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.f00010),"
                     + "?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");

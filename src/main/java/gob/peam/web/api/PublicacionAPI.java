@@ -29,9 +29,10 @@ import javax.sql.DataSource;
  *
  * @author JhanxD
  */
-@WebServlet(name = "PublicacionAPI", urlPatterns = {"/publicaciones/otraspublicaciones",
+@WebServlet(name = "PublicacionAPI", urlPatterns = {
+    "/publicaciones/otraspublicaciones",
     "/publicaciones/operaciones",
-    "/publicaciones/manuales"})
+    "/publicaciones/memorias"})
 public class PublicacionAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
@@ -86,7 +87,6 @@ public class PublicacionAPI extends HttpServlet {
                     procesarPublicacion(this.publicacionDAO.activate(Integer.parseInt(request.getParameter("txtIdPublicacionER")), getParametersPublicacion(request)), response);
                     break;
                 default:
-                    LOG.info("ENTRO DEFAULT");
                     request.setAttribute("titlePublicacion", getTitlePublicacion(request));
                     request.getRequestDispatcher("/jsp/gc/publicaciones/publicaciones.jsp").forward(request, response);
                     break;
@@ -209,7 +209,7 @@ public class PublicacionAPI extends HttpServlet {
             case "/publicaciones/otraspublicaciones":
                 tipo = "3";
                 break;
-            case "/publicaciones/manuales":
+            case "/publicaciones/memorias":
                 tipo = "1";
                 break;
         }
@@ -222,7 +222,7 @@ public class PublicacionAPI extends HttpServlet {
             case "/publicaciones/otraspublicaciones":
                 titulo = "OTRAS PUBLICACIONES";
                 break;
-            case "/publicaciones/manuales":
+            case "/publicaciones/memorias":
                 titulo = "MEMORIAS ANUALES";
                 break;
         }

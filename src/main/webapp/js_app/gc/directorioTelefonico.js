@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     cargarAniosCombo($('#comboAnio'), 2000, "-1", 'TODOS');
-    
+
     $("#FrmDirectorioTelefonico").submit(function () {
         $("#nameForm").val("FrmDirectorioTelefonico");
         $("#numberPageDirectorioTelefonico").val(1);
@@ -69,13 +69,13 @@ function procesarAjaxDirectorioTelefonico() {
                 listarDirectorioTelefonico(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManDirectorioTelefonico").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionDirectorioTelefonico').val(), 'Directorio Telefonico', 'o'));
                     listarDirectorioTelefonico(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManDirectorioTelefonico").modal("hide");
         },
         error: function () {
             $('#modalCargandoDirectorioTelefonico').modal("hide");

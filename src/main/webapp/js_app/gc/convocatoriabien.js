@@ -365,13 +365,13 @@ function procesarAjaxConvocatoriaBien() {
                 listarConvocatoriaBien(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManConvocatoriaBien").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionConvocatoriaBien').val(), 'Convocatoria', 'a'));
                     listarConvocatoriaBien(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManConvocatoriaBien").modal("hide");
         },
         error: function () {
             $('#modalCargandoConvocatoriaBien').modal("hide");

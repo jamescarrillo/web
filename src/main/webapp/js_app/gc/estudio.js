@@ -75,13 +75,13 @@ function procesarAjaxEstudio() {
                 listarEstudio(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManEstudio").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionEstudio').val(), 'Estudio', 'o'));
                     listarEstudio(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManEstudio").modal("hide");
         },
         error: function () {
             $('#modalCargandoEstudio').modal("hide");

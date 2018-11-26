@@ -45,7 +45,7 @@
                                 <div class="card-header bg-light">
                                     <strong class="text-info">ADQUISICIONES Y CONTRATACIONES</strong>
                                 </div>
-                                <div class="card-body pt-1">
+                                <div class="card-body" style="padding: 0px">
                                     <div class="modal-body p-0">
                                         <ul class="nav nav-tabs" role="tablist">
                                             <li class="nav-item">
