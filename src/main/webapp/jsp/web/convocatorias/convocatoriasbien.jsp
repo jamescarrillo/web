@@ -52,11 +52,6 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="border-bottom-tab">
-                                                <ul class="nav nav-tabs" role="tablist">
-                                                    <li role="presentation" class="active"><a style="padding-top: 5px; padding-bottom: 5px" id="idtabConvocatorias" href="#tab-1" role="tab" class="waves-effect waves-dark" data-toggle="tab">Convocatorias</a></li>
-                                                    <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" id="idtabCalendario" href="#tab-2" role="tab" class="waves-effect waves-dark" data-toggle="tab">Datos Principales</a></li>
-                                                    <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" id="idtabArchivos" href="#tab-3" role="tab" class="waves-effect waves-dark" data-toggle="tab">Documentos</a></li>
-                                                </ul>
                                                 <div class="panel-body" style="padding-bottom: 0px;">
                                                     <div class="tab-content">
                                                         <div role="tabpanel" class="tab-pane fade in active" id="tab-1">
@@ -129,111 +124,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div role="tabpanel" class="tab-pane fade" id="tab-2">
-                                                            <div class="row" id="TitularCalendario" style="display: none">
-                                                                <div class="text-center" style="margin-top: 5px;">
-                                                                    <p class="text-peam-verde text-peam-negrita" id="ConvocatoriaTitulo" style="font-size: 20px;"></p>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div class="table-responsive table-hover" style="margin-top: 20px">
-                                                                        <table class="table">
-                                                                            <thead class="bg-success">
-                                                                                <tr>
-                                                                                    <th style="width: 40%;" class="align-middle">TITULO</th>
-                                                                                    <th style="width: 20%;" class="align-middle text-center">VALOR REFERENCIAL</th>
-                                                                                    <th style="width: 20%;" class="align-middle text-center">COSTO PARTICIPACION</th>
-                                                                                    <th style="width: 20%;" class="align-middle text-center">LUGAR DE REGISTRO</th>
-                                                                                    <th style="width: 10%;" class="align-middle text-center">ACCION</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody id="tbodyDocumentCal">
-                                                                                <tr>
-                                                                                    <td class="text-center" colspan="4">Escoga una Convocatoria</td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <form id="FrmCalendario">
-                                                                <input type="hidden" id="nameFormCalendario" value="FrmCalendario">
-                                                                <input type="hidden" id="actionCalendario" name="action" value="paginarCalendario">
-                                                                <input type="hidden" id="numberCalendario" name="numberPageCalendario" value="1">
-                                                                <input type="hidden" id="sizePageCalendario" name="sizePageCalendario" value="15">
-                                                            </form>
-                                                            <div class="row">
-                                                                <div class="text-center" style="margin-top: 5px;">
-                                                                    <h2 class="text-peam-negrita" style="font-size: 20px;">CRONOGRAMA DE ACTIVIDADES</h2>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div class="table-responsive table-hover" style="margin-top: 20px">
-                                                                        <table class="table">
-                                                                            <thead class="bg-success">
-                                                                                <tr>
-                                                                                    <th style="width: 65%;" class="align-middle">ACTIVIDAD</th>
-                                                                                    <th style="width: 20%;" class="align-middle text-center">FECHA INICIO</th>
-                                                                                    <th style="width: 20%;" class="align-middle text-center">FECHA FINAL</th>
-
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody id="tbodyCalendario">
-                                                                                <tr>
-                                                                                    <td class="text-center" colspan="4">Escoga una convocatoria</td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                            <br>
-                                                            <div class="row">
-                                                                <div class="col-md-3 col-xs-12">
-                                                                    <ul class="list-inline pull-left">
-                                                                        <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
-                                                                        <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
-                                                                        <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <div class="col-md-9 col-xs-12 text-right">
-                                                                    <ul id="paginationCalendario" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
-
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div role="tabpanel" class="tab-pane fade" id="tab-3">
-                                                            <div class="row" id="TitularCalendario2" style="display: none">
-                                                                <div class="text-center mb-30" style="margin-top: 5px;">
-                                                                    <p class="text-peam-verde text-peam-negrita" id="ConvocatoriaTitulo2" style="font-size: 20px"></p>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div class="table-responsive table-hover" style="margin-top: 20px">
-                                                                        <table class="table">
-                                                                            <thead class="bg-success">
-                                                                                <tr>
-                                                                                    <th style="width: 80%;" class="align-middle">DOCUMENTOS</th>
-                                                                                    <th style="width: 20%;" class="align-middle">DESCARGAR</th>
-                                                                                </tr>
-
-                                                                            </thead>
-                                                                            <tbody id="tbodyArchivos">
-                                                                                <tr>
-                                                                                    <td class="text-center" colspan="2">Sin Documentos Publicados</td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -241,6 +131,149 @@
                                     </div>
                                 </div>
                             </article>
+                        </div>
+                    </div>
+
+                    <div id="ModalDatos" class="modal-peam">
+                        <!-- Modal content -->
+                        <div class="modal-content-peam">
+                            <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
+                                <span class="close" id="btnCerrarModalDatos">&times;</span>
+                                <h2 style="margin-top: 15px;" id="DatosModal">
+                                    Datos Principales
+                                </h2>
+                            </div>
+                            <div class="modal-body-peam">
+                                <div class="row mt-10">
+                                    <div class="container-fluid">
+                                        <div class="row" id="TitularCalendario" style="display: none">
+                                            <div class="text-center" style="margin-top: 5px;">
+                                                <p class="text-peam-verde text-peam-negrita" id="ConvocatoriaTitulo" style="font-size: 20px;"></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 40%;" class="align-middle">TITULO</th>
+                                                                <th style="width: 20%;" class="align-middle text-center">VALOR REFERENCIAL</th>
+                                                                <th style="width: 20%;" class="align-middle text-center">COSTO PARTICIPACION</th>
+                                                                <th style="width: 20%;" class="align-middle text-center">LUGAR DE REGISTRO</th>
+                                                                <th style="width: 10%;" class="align-middle text-center">ACCION</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyDocumentCal">
+                                                            <tr>
+                                                                <td class="text-center" colspan="4">Escoga una Convocatoria</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form id="FrmCalendario">
+                                            <input type="hidden" id="nameFormCalendario" value="FrmCalendario">
+                                            <input type="hidden" id="actionCalendario" name="action" value="paginarCalendario">
+                                            <input type="hidden" id="numberCalendario" name="numberPageCalendario" value="1">
+                                            <input type="hidden" id="sizePageCalendario" name="sizePageCalendario" value="15">
+                                        </form>
+                                        <div class="row">
+                                            <div class="text-center" style="margin-top: 5px;">
+                                                <h2 class="text-peam-negrita" style="font-size: 20px;">CRONOGRAMA DE ACTIVIDADES</h2>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 65%;" class="align-middle">ACTIVIDAD</th>
+                                                                <th style="width: 20%;" class="align-middle text-center">FECHA INICIO</th>
+                                                                <th style="width: 20%;" class="align-middle text-center">FECHA FINAL</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyCalendario">
+                                                            <tr>
+                                                                <td class="text-center" colspan="4">Escoga una convocatoria</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationCalendario" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer-peam" style="background-color: #ffffff; border-top: #00793D solid; border-width: 2px">
+                                <h6 style="margin-top: 10px;" class="text-peam-negrita">PROYECTO ESPECIAL ALTO MAYO</h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ModalDocumentosBien" class="modal-peam">
+                        <!-- Modal content -->
+                        <div class="modal-content-peam">
+                            <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
+                                <span class="close" id="btnCerrarModalDocumentosBien">&times;</span>
+                                <h2 style="margin-top: 15px;" id="DocumentosBienModal">
+                                    Documentos
+                                </h2>
+                            </div>
+                            <div class="modal-body-peam">
+                                <div class="row mt-10">
+                                    <div class="container-fluid">
+                                        <div class="row" id="TitularCalendario2" style="display: none">
+                                            <div class="text-center mb-30" style="margin-top: 5px;">
+                                                <p class="text-peam-verde text-peam-negrita" id="ConvocatoriaTitulo2" style="font-size: 20px"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 80%;" class="align-middle">DOCUMENTOS</th>
+                                                                <th style="width: 20%;" class="align-middle">DESCARGAR</th>
+                                                            </tr>
+
+                                                        </thead>
+                                                        <tbody id="tbodyArchivos">
+                                                            <tr>
+                                                                <td class="text-center" colspan="2">Sin Documentos Publicados</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer-peam" style="background-color: #ffffff; border-top: #00793D solid; border-width: 2px">
+                                <h6 style="margin-top: 10px;" class="text-peam-negrita">PROYECTO ESPECIAL ALTO MAYO</h6>
+                            </div>
                         </div>
                     </div>
 

@@ -10,6 +10,14 @@ $(document).ready(function () {
         procesarAjaxConvocatoriaWeb();
         return false;
     });
+    
+    $('#btnCerrarModalDatos').click(function () {
+        $('#ModalDatos').css('display', 'none');
+    });
+    
+    $('#btnCerrarModalDocumentosBien').click(function () {
+        $('#ModalDocumentosBien').css('display', 'none');
+    });
 
     addEventoCombosPaginar();
     procesarAjaxConvocatoriaWeb();
@@ -211,7 +219,7 @@ function listarDatosPrincipales(titulo, valor, costo, lugar, f1, f2, f3, f4, f5,
 function agregarEventosDocumentos() {
     $('.ver-Documentos').each(function () {
         $(this).click(function () {
-            $('#idtabArchivos').trigger('click');
+            $('#ModalDocumentosBien').css('display', 'block');
         });
     });
 }
@@ -324,7 +332,7 @@ function listarCalendario(BEAN_PAGINATION, id) {
                 };
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
-        $('#idtabCalendario').trigger('click');
+        $('#ModalDatos').css('display', 'block');
     } else {
         $pagination.twbsPagination('destroy');
         viewAlertWeb('warning', 'No se enconntraron resultados');
