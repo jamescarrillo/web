@@ -10,6 +10,17 @@ $(document).ready(function () {
         procesarAjaxConvocatoriaWeb();
         return false;
     });
+    
+    $('#btnCerrarModalCronogramas').click(function () {
+        $('#ModalCronogramas').css('display', 'none');
+    });
+    
+    $('#btnCerrarModalDocumentos').click(function () {
+        $('#ModalDocumentos').css('display', 'none');
+    });
+    $('#btnCerrarModalPlazas').click(function () {
+        $('#ModalPlazas').css('display', 'none');
+    });
 
     addEventoCombosPaginar();
     procesarAjaxConvocatoriaWeb();
@@ -54,7 +65,8 @@ function listarConvocatoria(BEAN_PAGINATION) {
             fila += "<td class='align-middle'>" + value.descripcion + "</td>";
             fila += "<td class='align-middle text-center'>" + value.fecha + "</td>";
             fila += "<td class='align-middle text-center'>" + estado + "</td>";
-            fila += "<td class='align-middle text-center'><button class='waves-effect waves-light btn ver-Cronograma' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Revisar</button></td>";
+            fila += "<td class='align-middle text-center'><button class='waves-effect waves-light btn ver-Cronograma' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Cronogramas</button></td>";
+            fila += "<td class='align-middle text-center'><button class='waves-effect waves-light btn ver-Plazas' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Plazas</button></td>";
             fila += "</tr>";
             $('#tbodyConvocatoria').append(fila);
         });
@@ -95,8 +107,16 @@ function agregarEventosConvocatoria() {
             $('#TitularCalendario').css('display', 'block');
             $('#ConvocatoriaTitulo').html($(this.parentElement.parentElement).attr('text'));
             procesarAjaxCalendarioWeb($(this.parentElement.parentElement).attr('coper_id'));
+            $('#ModalCronogramas').css('display', 'block');
+
+        });
+    });
+    $('.ver-Plazas').each(function () {
+        $(this).click(function () {
+            procesarAjaxPuestoConvWeb($(this.parentElement.parentElement).attr('coper_id'));
             $('#TitularPlaza').css('display', 'block');
             $('#PlazaTitulo').html($(this.parentElement.parentElement).attr('text'));
+            $('#ModalPlazas').css('display', 'block');
 
         });
     });
@@ -165,9 +185,6 @@ function listarCalendario(BEAN_PAGINATION, id) {
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
         agregarEventosCalendario();
-        procesarAjaxPuestoConvWeb(id);
-        $('#idtabCalendario').trigger('click');
-        $('#idTabactividades').trigger('click');
     } else {
         $pagination.twbsPagination('destroy');
         viewAlertWeb('warning', 'No se enconntraron resultados');
@@ -224,6 +241,7 @@ function agregarEventosCalendario() {
             $('#TitularActividad').css('display', 'block');
             $('#ActividadTitulo').html($(this.parentElement.parentElement).attr('desc'));
             procesarAjaxDocumentosConvWeb($(this.parentElement.parentElement).attr('id'));
+            
         });
     });
 }
@@ -263,7 +281,7 @@ function listarDocumentoCal(BEAN_PAGINATION) {
             fila += "</tr>";
             $('#tbodyDocumentCal').append(fila);
         });
-        $('#idTabDocumentos').trigger('click');
+        $('#ModalDocumentos').css('display', 'block');
     } else {
         viewAlertWeb('warning', "No se encontraron Documentos");
         var fila;
