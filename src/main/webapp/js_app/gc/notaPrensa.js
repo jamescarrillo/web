@@ -101,13 +101,13 @@ function procesarAjaxNotaPrensa() {
             }
             if (jsonResponse.MESSAGE_SERVER !== undefined) {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManNotaPrensa").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionManNotaPrensa').val(), 'Nota Prensa', 'a'));
                     listarNotaPrensa(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManNotaPrensa").modal("hide");
         },
         error: function () {
             $('#modalCargandoNotaPrensa').modal("hide");

@@ -171,10 +171,10 @@ public class DocumentoAPI extends HttpServlet {
         } else {
             this.parameters.put("SQL_ESTADO", "AND DOCU_ESTADO = " + request.getParameter("comboTipoListaDocumentos") + " ");
         }
-        this.parameters.put("SQL_CATE_ID", "AND CATE_ID = " + getCategoriaId(request));
-        this.parameters.put("SQL_TIDO_ID", "");
+        this.parameters.put("SQL_CATE_ID", " " + getCategoriaIdFinal(request));
+        this.parameters.put("SQL_TIDO_ID", " " + getTidoIdFinal(request));
         //SOLO PAR ELIMINAR
-        this.parameters.put("CATE_ID", getCategoriaId(request));
+        this.parameters.put("CATE_ID", getCategoriaIdFinal(request));
         //
         this.parameters.put("SQL_ORDERS", "TO_DATE(DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
         this.parameters.put("LIMIT",
@@ -251,6 +251,26 @@ public class DocumentoAPI extends HttpServlet {
                 break;
         }
         return categoria_id;
+    }
+
+    private String getCategoriaIdFinal(HttpServletRequest request) {
+        String categoria_id = getCategoriaId(request);
+        if (categoria_id.equals("-1")) {
+            if (request.getParameter("cate_id") != null) {
+                categoria_id = "AND CATE_ID <" + request.getParameter("cate_id");
+            }
+        } else {
+            categoria_id = "AND DOCU_FECHA_DOCX != ''  AND CATE_ID =" + categoria_id;
+        }
+        return categoria_id;
+    }
+
+    private String getTidoIdFinal(HttpServletRequest request) {
+        String tido_id = "";
+        if (request.getParameter("tido_id") != null) {
+            tido_id = "AND TIDO_ID = " + request.getParameter("tido_id");
+        }
+        return tido_id;
     }
 
     private String getJSP(HttpServletRequest request) {

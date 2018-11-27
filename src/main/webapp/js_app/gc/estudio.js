@@ -75,13 +75,13 @@ function procesarAjaxEstudio() {
                 listarEstudio(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManEstudio").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionEstudio').val(), 'Estudio', 'o'));
                     listarEstudio(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManEstudio").modal("hide");
         },
         error: function () {
             $('#modalCargandoEstudio').modal("hide");
@@ -152,7 +152,8 @@ function listarEstudio(BEAN_PAGINATION) {
 
             card += "<div class='d-flex' " + atributosEstudio + ">";
 
-            card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            //card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            card += "<div class='read'></div>";
 
             card += "<div class='ml-auto'>";
 

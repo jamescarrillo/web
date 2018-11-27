@@ -109,13 +109,13 @@ function procesarAjaxAnuncio() {
             }
             if (jsonResponse.MESSAGE_SERVER !== undefined) {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManAnuncio").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionManAnuncio').val(), 'Anuncio', 'o'));
                     listarAnuncio(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManAnuncio").modal("hide");
         },
         error: function () {
             $('#modalCargandoAnuncio').modal("hide");

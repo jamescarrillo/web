@@ -61,13 +61,13 @@ function procesarAjaxComentSuggest() {
                 listarComentSuggest(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManComentSuggest").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionComentSuggest').val(), 'Comentario/Sugerencia', 'o(a)'));
                     listarComentSuggest(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManComentSuggest").modal("hide");
         },
         error: function () {
             $('#modalCargandoComentSuggest').modal("hide");

@@ -41,16 +41,18 @@ public class PersonalCategoriaDAOImpl implements PersonalCategoriaDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(ID) AS COUNT FROM WEB.F00009 WHERE "
-                    + "LOWER(CATEGORIA) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
+                    + "LOWER(CATEGORIA) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ANIO"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            LOG.info(pst.toString());
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
                 if (rs.getInt("COUNT") > 0) {
                     pst = conn.prepareStatement("SELECT * FROM WEB.F00009 WHERE "
-                            + "LOWER(CATEGORIA) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
+                            + "LOWER(CATEGORIA) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ANIO")
                             + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
                     pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    LOG.info(pst.toString());
                     rs = pst.executeQuery();
                     while (rs.next()) {
                         PersonalCategoria obj = new PersonalCategoria();

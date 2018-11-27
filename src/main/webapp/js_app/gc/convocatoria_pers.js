@@ -247,13 +247,13 @@ function procesarAjaxConvocatoriaPers() {
                 listarConvocatoriaPers(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManConvocatoriaPers").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionConvocatoriaPers').val(), 'Convocatoria de Personal', 'o'));
                     listarConvocatoriaPers(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManConvocatoriaPers").modal("hide");
         },
         error: function () {
             $('#modalCargandoConvocatoriaPers').modal("hide");

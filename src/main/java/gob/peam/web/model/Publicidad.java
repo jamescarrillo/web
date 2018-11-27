@@ -19,10 +19,10 @@ public class Publicidad {
     private String proceso;
     private String contrato;
     private String objeto_contrato;
-    private Double valor_referencia;
+    private Double valor_referencial;
     private String proveedor;
     private String ruc;
-    private Double numero_contrato;
+    private Double monto_contrato;
     private Double penalidad;
     private Double costo_final;
     private String observaciones;
@@ -84,12 +84,12 @@ public class Publicidad {
         this.objeto_contrato = objeto_contrato;
     }
 
-    public Double getValor_referencia() {
-        return valor_referencia;
+    public Double getMonto_contrato() {
+        return monto_contrato;
     }
 
-    public void setValor_referencia(Double valor_referencia) {
-        this.valor_referencia = valor_referencia;
+    public void setMonto_contrato(Double monto_contrato) {
+        this.monto_contrato = monto_contrato;
     }
 
     public String getProveedor() {
@@ -108,12 +108,12 @@ public class Publicidad {
         this.ruc = ruc;
     }
 
-    public Double getNumero_contrato() {
-        return numero_contrato;
+    public Double getValor_referencial() {
+        return valor_referencial;
     }
 
-    public void setNumero_contrato(Double numero_contrato) {
-        this.numero_contrato = numero_contrato;
+    public void setValor_referencial(Double valor_referencial) {
+        this.valor_referencial = valor_referencial;
     }
 
     public Double getPenalidad() {

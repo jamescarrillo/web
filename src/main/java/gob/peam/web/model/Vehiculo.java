@@ -19,6 +19,7 @@ public class Vehiculo {
     private String mes;
     private String tipo_clase;
     private String clase_vehiculo;
+    private String asignado_a;
     private String cargo_actividad;
     private String tipo_combustible;
     private Double recorrido_km;
@@ -66,6 +67,14 @@ public class Vehiculo {
 
     public void setClase_vehiculo(String clase_vehiculo) {
         this.clase_vehiculo = clase_vehiculo;
+    }
+
+    public String getAsignado_a() {
+        return asignado_a;
+    }
+
+    public void setAsignado_a(String asignado_a) {
+        this.asignado_a = asignado_a;
     }
 
     public String getCargo_actividad() {

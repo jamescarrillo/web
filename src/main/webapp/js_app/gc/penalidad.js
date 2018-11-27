@@ -69,13 +69,13 @@ function procesarAjaxPenalidad() {
                 listarPenalidad(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManPenalidad").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionPenalidad').val(), 'Penalidad', 'a'));
                     listarPenalidad(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManPenalidad").modal("hide");
         },
         error: function () {
             $('#modalCargandoPenalidad').modal("hide");

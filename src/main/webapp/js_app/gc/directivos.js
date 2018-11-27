@@ -74,7 +74,7 @@ $(document).ready(function () {
     });
 
     valicacionesCamposDirectivo();
-    
+
     $('#datePickerFechaDesignacion').datepicker({
         format: 'dd/mm/yyyy',
         todayHighlight: true,
@@ -184,13 +184,13 @@ function procesarAjaxFuncionario() {
                 listarFuncionario(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManFuncionario").modal("hide");
                     listarFuncionario(jsonResponse.BEAN_PAGINATION);
                     viewAlert('success', getMessageServerTransaction($('#actionFuncionario').val(), 'Funcionario', 'o'));
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManFuncionario").modal("hide");
         },
         error: function () {
             $('#modalCargandoFuncionario').modal("hide");
@@ -249,7 +249,7 @@ function listarFuncionario(BEAN_PAGINATION) {
             fila += "<td class='align-middle " + text_color + "'>" + value.nombres_apellidos + "</td>";
             fila += "<td class='align-middle " + text_color + "'>" + value.cargo + "</td>";
             fila += "<td class='align-middle " + text_color + "'>" + value.telefono + "</td>";
-            fila += "<td class='align-middle " + text_color + "'><a href='"+getContext() + "/downloadfile?type_file=downloadCV&full_file=n&file=" + value.hoja_vida + "' class='btn btn-secondary btn-sm' title='Descargar'><i class='fa fa-download' aria-hidden='true'></i></a></td>";
+            fila += "<td class='align-middle " + text_color + "'><a href='" + getContext() + "/downloadfile?type_file=downloadCV&full_file=n&file=" + value.hoja_vida + "' class='btn btn-secondary btn-sm' title='Descargar'><i class='fa fa-download' aria-hidden='true'></i></a></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm finalizar-activar' data-toggle='tooltip' title='" + tooltip + "' opcion='" + tooltip.toLowerCase() + "'><i class='" + icon + "'></i></button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm editar-funcionario'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm eliminar-funcionario'><i class='fas fa-trash-alt'></i></button></td>";
@@ -326,8 +326,8 @@ function agregarEventosFuncionario() {
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
-    
-        $('.eliminar-funcionario').each(function () {
+
+    $('.eliminar-funcionario').each(function () {
         $(this).click(function () {
             $('#txtIdFuncionarioER').val($(this.parentElement.parentElement).attr('id'));
             viewAlertDelete("Funcionario");
@@ -523,7 +523,7 @@ function listarDirectivo(BEAN_PAGINATION) {
             fila += "<td class='align-middle " + text_color + "'>" + value.nombres_apellidos + "</td>";
             fila += "<td class='align-middle " + text_color + "'>" + value.cargo + "</td>";
             fila += "<td class='align-middle " + text_color + "'>" + value.telefono + "</td>";
-            fila += "<td class='align-middle " + text_color + "'><a href='"+getContext() + "/downloadfile?type_file=downloadCV&full_file=n&file=" + value.hoja_vida + "' class='btn btn-secondary btn-sm' title='Descargar'><i class='fa fa-download' aria-hidden='true'></i></a></td>";
+            fila += "<td class='align-middle " + text_color + "'><a href='" + getContext() + "/downloadfile?type_file=downloadCV&full_file=n&file=" + value.hoja_vida + "' class='btn btn-secondary btn-sm' title='Descargar'><i class='fa fa-download' aria-hidden='true'></i></a></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm finalizarD-activarD' data-toggle='tooltip' title='" + tooltip + "' opcion='" + tooltip.toLowerCase() + "'><i class='" + icon + "'></i></button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm editar-directivo'><i class='fas fa-edit'></i></button></td>";
             fila += "<td class='align-middle " + text_color + "'><button class='btn btn-secondary btn-sm eliminar-directivo'><i class='fas fa-trash-alt'></i></button></td>";
@@ -598,8 +598,8 @@ function agregarEventosDirectivo() {
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
         });
     });
-    
-        $('.eliminar-directivo').each(function () {
+
+    $('.eliminar-directivo').each(function () {
         $(this).click(function () {
             $('#txtIdDirectivoERDIR').val($(this.parentElement.parentElement).attr('id'));
             viewAlertDelete("Directivo");

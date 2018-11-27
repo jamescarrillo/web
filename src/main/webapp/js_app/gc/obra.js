@@ -86,13 +86,13 @@ function procesarAjaxObra() {
                 listarObra(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManObra").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionObra').val(), 'Obra', 'o'));
                     listarObra(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManObra").modal("hide");
         },
         error: function () {
             $('#modalCargandoObra').modal("hide");
@@ -158,7 +158,7 @@ function listarObra(BEAN_PAGINATION) {
             atributosObra += "observacion='" + value.observacion + "' ";
             atributosObra += "infobras='" + value.infobras + "' ";
             atributosObra += "leyenda='" + value.leyenda + "' ";
-            
+
             //cadenaContenido = cadenaContenido.substring(0, 120) + "...";
             cadenaContenido = getResumenContenidoWeb(cadenaContenido, 120) + "...";
             card = "<div class='col-lg-4 col-md-6'>";
@@ -169,7 +169,7 @@ function listarObra(BEAN_PAGINATION) {
 
             card += "<div class='blog-image'><img src='" + value.foto + "' alt='img' class='img-responsive'></div>";
 
-            card += "<h3 class='" + textColor + "'>" + cadenaContenido+ "</h3>";
+            card += "<h3 class='" + textColor + "'>" + cadenaContenido + "</h3>";
 
             card += "<p class='m-t-15 m-b-20 " + textColor + "'>" + value.fechaInicio + "</p>";
 
@@ -177,7 +177,8 @@ function listarObra(BEAN_PAGINATION) {
 
             card += "<div class='d-flex' " + atributosObra + ">";
 
-            card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            //card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            card += "<div class='read'></div>";
 
             card += "<div class='ml-auto'>";
 

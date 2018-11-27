@@ -63,13 +63,13 @@ function procesarAjaxLibroReclamo() {
                 listarLibroReclamo(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManLibroReclamo").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionLibroReclamo').val(), 'Reclamo', 'o'));
                     listarLibroReclamo(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManLibroReclamo").modal("hide");
         },
         error: function () {
             $('#modalCargandoLibroReclamo').modal("hide");

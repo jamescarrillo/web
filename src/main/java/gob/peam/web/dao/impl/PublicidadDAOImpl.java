@@ -62,10 +62,10 @@ public class PublicidadDAOImpl implements gob.peam.web.dao.PublicidadDAO {
                         publicidad.setProceso(rs.getString("PROCESO"));
                         publicidad.setContrato(rs.getString("CONTRATO"));
                         publicidad.setObjeto_contrato(rs.getString("OBJETO_CONTRATO"));
-                        publicidad.setValor_referencia(rs.getDouble("VALOR_REFERENCIA"));
+                        publicidad.setValor_referencial(rs.getDouble("VALOR_REFERENCIAL"));
                         publicidad.setProveedor(rs.getString("PROVEEDOR"));
                         publicidad.setRuc(rs.getString("RUC"));
-                        publicidad.setNumero_contrato(rs.getDouble("NUMERO_CONTRATO"));
+                        publicidad.setMonto_contrato(rs.getDouble("MONTO_CONTRATO"));
                         publicidad.setPenalidad(rs.getDouble("PENALIDAD"));
                         publicidad.setCosto_final(rs.getDouble("COSTO_FINAL"));
                         publicidad.setObservaciones(rs.getString("OBSERVACIONES"));
@@ -101,8 +101,8 @@ public class PublicidadDAOImpl implements gob.peam.web.dao.PublicidadDAO {
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("INSERT INTO WEB.F00026(ID,ANHO,BIENES_SERVICIO,FUENTE_FINANCIAMIENTO,"
-                    + "PROCESO,CONTRATO,OBJETO_CONTRATO,VALOR_REFERENCIA,PROVEDDOR,RUC,NUMERO_CONTRATO,"
+            pst = conn.prepareStatement("INSERT INTO WEB.F00026(ID,ANHO,BIENES_SERVICIOS,FUENTE_FINANCIAMIENTO,"
+                    + "PROCESO,CONTRATO,OBJETO_CONTRATO,VALOR_REFERENCIAL,PROVEEDOR,RUC,MONTO_CONTRATO,"
                     + "PENALIDAD,COSTO_FINAL,OBSERVACIONES,ESTADO)"
                     + "VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.f00026),"
                     + "?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -112,10 +112,10 @@ public class PublicidadDAOImpl implements gob.peam.web.dao.PublicidadDAO {
             pst.setString(4, obj.getProceso());
             pst.setString(5, obj.getContrato());
             pst.setString(6, obj.getObjeto_contrato());
-            pst.setDouble(7, obj.getValor_referencia());
+            pst.setDouble(7, obj.getValor_referencial());
             pst.setString(8, obj.getProveedor());
             pst.setString(9, obj.getRuc());
-            pst.setDouble(10, obj.getNumero_contrato());
+            pst.setDouble(10, obj.getMonto_contrato());
             pst.setDouble(11, obj.getPenalidad());
             pst.setDouble(12, obj.getCosto_final());
             pst.setString(13, obj.getObservaciones());
@@ -139,19 +139,19 @@ public class PublicidadDAOImpl implements gob.peam.web.dao.PublicidadDAO {
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("UPDATE WEB.F00026 SET ANHO = ?, BIENES_SERVICIO = ?, FUENTE_FINANCIAMIENTO = ?,"
-                    + "PROCESO = ?, CONTRATO = ?, OBJETO_CONTRATO = ?, VALOR_REFERENCIA = ?, PROVEDDOR = ?, RUC = ?, "
-                    + "NUMERO_CONTRATO = ?, PENALIDAD = ?,COSTO_FINAL = ?, OBSERVACIONES = ?, ESTADO = ? WHERE ID = ?");
+            pst = conn.prepareStatement("UPDATE WEB.F00026 SET ANHO = ?, BIENES_SERVICIOS = ?, FUENTE_FINANCIAMIENTO = ?,"
+                    + "PROCESO = ?, CONTRATO = ?, OBJETO_CONTRATO = ?, VALOR_REFERENCIAL = ?, PROVEDDOR = ?, RUC = ?, "
+                    + "MONTO_CONTRATO = ?, PENALIDAD = ?,COSTO_FINAL = ?, OBSERVACIONES = ?, ESTADO = ? WHERE ID = ?");
             pst.setString(1, obj.getAnho());
             pst.setString(2, obj.getBienes_servicios());
             pst.setString(3, obj.getFuente_financiamiento());
             pst.setString(4, obj.getProceso());
             pst.setString(5, obj.getContrato());
             pst.setString(6, obj.getObjeto_contrato());
-            pst.setDouble(7, obj.getValor_referencia());
+            pst.setDouble(7, obj.getValor_referencial());
             pst.setString(8, obj.getProveedor());
             pst.setString(9, obj.getRuc());
-            pst.setDouble(10, obj.getNumero_contrato());
+            pst.setDouble(10, obj.getMonto_contrato());
             pst.setDouble(11, obj.getPenalidad());
             pst.setDouble(12, obj.getCosto_final());
             pst.setString(13, obj.getObservaciones());

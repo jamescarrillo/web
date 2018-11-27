@@ -41,7 +41,7 @@ public class DocumentoDAOImpl implements DocumentoDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(DOCU_ID) AS COUNT FROM WEB.DOCUMENTO WHERE "
-                    + "LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') AND DOCU_FECHA_DOCX != '' "
+                    + "LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') "
                     + parameters.get("SQL_ANIO") + " "
                     + parameters.get("SQL_ESTADO") + " "
                     + parameters.get("SQL_TIDO_ID") + " "
@@ -53,7 +53,7 @@ public class DocumentoDAOImpl implements DocumentoDAO {
                 beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
                 if (rs.getInt("COUNT") > 0) {
                     pst = conn.prepareStatement("SELECT * FROM WEB.DOCUMENTO WHERE "
-                            + "LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') AND DOCU_FECHA_DOCX != '' "
+                            + "LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') "
                             + parameters.get("SQL_ANIO") + " "
                             + parameters.get("SQL_ESTADO") + " "
                             + parameters.get("SQL_TIDO_ID") + " "

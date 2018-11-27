@@ -66,7 +66,7 @@
                         <!--li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/destacados" title="Destacados">Destacados</a></li-->
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/estudios" title="Estudios">Estudios</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/eventos" title="Eventos">Eventos</a></li>
-                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/manuales">Memorias Anuales</a></li>
+                        <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/memorias">Memorias Anuales</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/notasprensa" title="Notas de Prensa">Notas de Prensa</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/multimedia" title="Noticias Multimedia">Noticias Multimedia</a></li>
                         <li><a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/obrasyproyectos" title="Obras y Proyectos">Obras y Proyectos</a></li>

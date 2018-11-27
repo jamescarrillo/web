@@ -46,7 +46,6 @@ public class ConvocatoriasWebAPI extends HttpServlet {
     private Gson json;
     private String jsonResponse;
     private HashMap<String, Object> parameters;
-    private HashMap<String, Object> jsonROOT;
     private final Log logger = LogFactory.getLog(ConvocatoriasWebAPI.class);
     private String action;
 
@@ -65,7 +64,6 @@ public class ConvocatoriasWebAPI extends HttpServlet {
         //this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy HH:mm:ss").create();
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
         this.parameters = new HashMap<>();
-        this.jsonROOT = new HashMap<>();
         this.action = "";
 
         this.convocatoriapersDAO = new Convocatoria_PersDAOImpl(this.pool);

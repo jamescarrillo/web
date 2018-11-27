@@ -75,13 +75,13 @@ function procesarAjaxEvento() {
                 listarEvento(jsonResponse.BEAN_PAGINATION);
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManEvento").modal("hide");
                     viewAlert('success', getMessageServerTransaction($('#actionEvento').val(), 'Evento', 'o'));
                     listarEvento(jsonResponse.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
             }
-            $("#ventanaManEvento").modal("hide");
         },
         error: function () {
             $('#modalCargandoEvento').modal("hide");
@@ -151,7 +151,8 @@ function listarEvento(BEAN_PAGINATION) {
 
             card += "<div class='d-flex' " + atributosEvento + ">";
 
-            card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            //card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            card += "<div class='read'></div>";
 
             card += "<div class='ml-auto'>";
 

@@ -40,7 +40,7 @@ public class VehiculoDAOImpl implements gob.peam.web.dao.VehiculoDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(ID) AS COUNT FROM WEB.F00014 WHERE "
-                    + "LOWER(AREA_OFICINA) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
+                    + "LOWER(ASIGNADO_A) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             LOG.info(pst.toString());
             rs = pst.executeQuery();
@@ -48,7 +48,7 @@ public class VehiculoDAOImpl implements gob.peam.web.dao.VehiculoDAO {
                 beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
                 if (rs.getInt("COUNT") > 0) {
                     pst = conn.prepareStatement("SELECT * FROM WEB.F00014 WHERE "
-                            + "LOWER(AREA_OFICINA) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
+                            + "LOWER(ASIGNADO_A) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
                             + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
                     pst.setString(1, String.valueOf(parameters.get("FILTER")));
                     LOG.info(pst.toString());
@@ -60,6 +60,7 @@ public class VehiculoDAOImpl implements gob.peam.web.dao.VehiculoDAO {
                         vehiculo.setMes(rs.getString("MES"));
                         vehiculo.setTipo_clase(rs.getString("TIPO_CLASE"));
                         vehiculo.setClase_vehiculo(rs.getString("CLASE_VEHICULO"));
+                        vehiculo.setAsignado_a(rs.getString("ASIGNADO_A"));
                         vehiculo.setCargo_actividad(rs.getString("CARGO_ACTIVIDAD"));
                         vehiculo.setTipo_combustible(rs.getString("TIPO_COMBUSTIBLE"));
                         vehiculo.setRecorrido_km(rs.getDouble("RECORRIDO_KM"));
@@ -100,22 +101,23 @@ public class VehiculoDAOImpl implements gob.peam.web.dao.VehiculoDAO {
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
             pst = conn.prepareStatement("INSERT INTO WEB.F00014(ID,ANHO,MES,TIPO_CLASE,"
-                    + "CLASE_VEHICULO,CARGO_ACTIVIDAD,TIPO_COMBUSTIBLE,RECORRIDO_KM,"
+                    + "CLASE_VEHICULO,ASIGNADO_A,CARGO_ACTIVIDAD,TIPO_COMBUSTIBLE,RECORRIDO_KM,"
                     + "COSTO_COMBUSTIBLE,SOAT_FECHA_VENCIMIENTO,PLACA,OBSERVACIONES,ESTADO)"
                     + "VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.f00014),"
-                    + "?,?,?,?,?,?,?,?,?,?,?,?)");
+                    + "?,?,?,?,?,?,?,?,?,?,?,?,?)");
             pst.setString(1, obj.getAnho());
             pst.setString(2, obj.getMes());
             pst.setString(3, obj.getTipo_clase());
             pst.setString(4, obj.getClase_vehiculo());
-            pst.setString(5, obj.getCargo_actividad());
-            pst.setString(6, obj.getTipo_combustible());
-            pst.setDouble(7, obj.getRecorrido_km());
-            pst.setDouble(8, obj.getCosto_combustible());
-            pst.setDate(9, obj.getSoat_fecha_vencimiento());
-            pst.setString(10, obj.getPlaca());
-            pst.setString(11, obj.getObservaciones());
-            pst.setBoolean(12, obj.getEstado());
+            pst.setString(5, obj.getAsignado_a());
+            pst.setString(6, obj.getCargo_actividad());
+            pst.setString(7, obj.getTipo_combustible());
+            pst.setDouble(8, obj.getRecorrido_km());
+            pst.setDouble(9, obj.getCosto_combustible());
+            pst.setDate(10, obj.getSoat_fecha_vencimiento());
+            pst.setString(11, obj.getPlaca());
+            pst.setString(12, obj.getObservaciones());
+            pst.setBoolean(13, obj.getEstado());
             LOG.info(pst.toString());
             pst.executeUpdate();
             conn.commit();
@@ -136,22 +138,23 @@ public class VehiculoDAOImpl implements gob.peam.web.dao.VehiculoDAO {
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
             pst = conn.prepareStatement("UPDATE WEB.F00014 SET ANHO = ?, MES = ?, TIPO_CLASE = ?,"
-                    + "CLASE_VEHICULO = ?, CARGO_ACTIVIDAD = ?, TIPO_COMBUSTIBLE = ?, RECORRIDO_KM = ?,"
+                    + "CLASE_VEHICULO = ?, ASIGNADO_A = ?, CARGO_ACTIVIDAD = ?, TIPO_COMBUSTIBLE = ?, RECORRIDO_KM = ?,"
                     + "COSTO_COMBUSTIBLE = ?, SOAT_FECHA_VENCIMIENTO = ?, PLACA = ?, OBSERVACIONES = ?, "
                     + "ESTADO = ? WHERE ID = ?");
             pst.setString(1, obj.getAnho());
             pst.setString(2, obj.getMes());
             pst.setString(3, obj.getTipo_clase());
             pst.setString(4, obj.getClase_vehiculo());
-            pst.setString(5, obj.getCargo_actividad());
-            pst.setString(6, obj.getTipo_combustible());
-            pst.setDouble(7, obj.getRecorrido_km());
-            pst.setDouble(8, obj.getCosto_combustible());
-            pst.setDate(9, obj.getSoat_fecha_vencimiento());
-            pst.setString(10, obj.getPlaca());
-            pst.setString(11, obj.getObservaciones());
-            pst.setBoolean(12, obj.getEstado());
-            pst.setInt(13, obj.getId());
+            pst.setString(5, obj.getAsignado_a());
+            pst.setString(6, obj.getCargo_actividad());
+            pst.setString(7, obj.getTipo_combustible());
+            pst.setDouble(8, obj.getRecorrido_km());
+            pst.setDouble(9, obj.getCosto_combustible());
+            pst.setDate(10, obj.getSoat_fecha_vencimiento());
+            pst.setString(11, obj.getPlaca());
+            pst.setString(12, obj.getObservaciones());
+            pst.setBoolean(13, obj.getEstado());
+            pst.setInt(14, obj.getId());
             LOG.info(pst.toString());
             pst.executeUpdate();
             conn.commit();
