@@ -72,7 +72,6 @@ function listarConvocatoria(BEAN_PAGINATION) {
         });
         var defaultOptions = getDefaultOptionsPagination();
         var totalPages = getTotalPages(BEAN_PAGINATION.COUNT_FILTER, parseInt($('#sizePageConvocatoria').val()));
-        console.log(totalPages);
         var options =
                 {
                     startPage: parseInt($('#numberPageConvocatoria').val()),
@@ -163,7 +162,6 @@ function listarCalendario(BEAN_PAGINATION, id) {
         });
         var defaultOptions = getDefaultOptionsPagination();
         var totalPages = getTotalPages(BEAN_PAGINATION.COUNT_FILTER, parseInt($('#sizePageCalendario').val()));
-        console.log(totalPages);
         var options =
                 {
                     startPage: parseInt($('#numberPageCalendario').val()),
