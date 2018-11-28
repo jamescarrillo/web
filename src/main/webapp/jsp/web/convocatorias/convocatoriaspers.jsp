@@ -152,7 +152,7 @@
                                         <form id="FrmCalendario">
                                             <input type="hidden" id="nameFormCalendario" value="FrmCalendario">
                                             <input type="hidden" id="actionCalendario" name="action" value="paginarCalendario">
-                                            <input type="hidden" id="numberCalendario" name="numberPageCalendario" value="1">
+                                            <input type="hidden" id="numberPageCalendario" name="numberPageCalendario" value="1">
                                             <input type="hidden" id="sizePageCalendario" name="sizePageCalendario" value="10">
                                         </form>
 
@@ -194,8 +194,10 @@
                                                 </ul>
                                             </div>
                                             <div class="col-md-9 col-xs-12 text-right">
+                                                
+                                                
                                                 <ul id="paginationCalendario" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
-
+                                                    
                                                 </ul>
                                             </div>
                                         </div>
