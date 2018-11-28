@@ -77,7 +77,7 @@
                                             for (int i = 0; i < list.size(); i++) {
                                                 out.print("<li><i class='fa fa-check-square-o'></i> " + list.get(i) + "</li>");
                                             }
-                                            %>
+                                        %>
                                     </ul>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
                                     </div>
                                 </header>
                                 <div class="entry-content" id="containerObras">
-                                    
+
                                 </div>
                                 <footer class="entry-footer">
                                     <div class="row">

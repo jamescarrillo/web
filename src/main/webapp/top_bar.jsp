@@ -26,7 +26,7 @@
             <div class="col-lg-8 col-me-9 text-right">
                 <ul class="topbar-cta no-margin">
                     <li class="mr-20 li-top">
-                        <a class="a-top"><i class="material-icons mr-10">&#xE0B9;</i>info@peam.com</a>
+                        <a class="a-top" href="mailto:info@peam.gob.pe"><i class="material-icons mr-10">&#xE0B9;</i>info@peam.com</a>
                     </li>
                     <li>
                         <a href="<%out.print(getServletContext().getContextPath());%>/index" class="a-top">Inicio </a><strong style="color: #ffffff">|</strong>

@@ -12,6 +12,7 @@ import gob.peam.web.dao.impl.ObraDAOImpl;
 import gob.peam.web.model.others.Conf_Web;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.Utilities;
+import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -261,6 +262,9 @@ public class LineasAccionWebAPI extends HttpServlet {
                 //r = "responsable_estudios.jpg";
                 r = conf.getNombre_foto_director_area_estudios();
                 break;
+        }
+        if (!new File( getServletContext().getContextPath()+"/peam_resources/logos_complementos/lineas_accion/directores/"+r).exists()) {
+            r = "default_usuario.png";
         }
         return r;
     }

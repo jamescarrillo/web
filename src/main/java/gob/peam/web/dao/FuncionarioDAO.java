@@ -14,7 +14,8 @@ import java.util.HashMap;
  *
  * @author JamesCarrillo
  */
-public interface FuncionarioDAO extends CRUD<Funcionario>{
+public interface FuncionarioDAO extends CRUD<Funcionario> {
+
     BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException;
-    
+
 }

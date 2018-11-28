@@ -86,4 +86,9 @@ public class Usuario {
         this.persona = persona;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" + "usua_id=" + usua_id + ", usua_login=" + usua_login + ", usua_clave=" + usua_clave + ", usua_fecha_registro=" + usua_fecha_registro + ", usua_fecha_caducidad=" + usua_fecha_caducidad + ", usua_estado=" + usua_estado + ", usua_firma_digital=" + usua_firma_digital + ", persona=" + persona + '}';
+    }
+    
 }

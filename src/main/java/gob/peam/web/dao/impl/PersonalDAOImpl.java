@@ -25,15 +25,15 @@ import javax.sql.DataSource;
  * @author JamesCarrillo
  */
 public class PersonalDAOImpl implements PersonalDAO {
-
+    
     private static final Logger LOG = Logger.getLogger(PersonalDAOImpl.class.getName());
-
+    
     private final DataSource pool;
-
+    
     public PersonalDAOImpl(DataSource pool) {
         this.pool = pool;
     }
-
+    
     @Override
     public BEAN_PAGINATION getPagination(HashMap<String, Object> parameters, Connection conn) throws SQLException {
         BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
@@ -63,6 +63,7 @@ public class PersonalDAOImpl implements PersonalDAO {
                         obj.setAnho(rs.getString("ANHO"));
                         obj.setTrimestre(rs.getInt("TRIMESTRE"));
                         obj.setCargo(rs.getString("CARGO"));
+                        obj.setPension(rs.getString("PENSION"));
                         obj.setFecha_ingreso(rs.getString("FECHA_INGRESO"));
                         obj.setFecha_cede(rs.getString("FECHA_CEDE"));
                         obj.setApellidos_nombres(rs.getString("APELLIDOS_NOMBRES"));
@@ -89,7 +90,7 @@ public class PersonalDAOImpl implements PersonalDAO {
         }
         return beanpagination;
     }
-
+    
     @Override
     public BEAN_PAGINATION getPagination(HashMap<String, Object> parameters) throws SQLException {
         BEAN_PAGINATION beansPagination = null;
@@ -100,7 +101,7 @@ public class PersonalDAOImpl implements PersonalDAO {
         }
         return beansPagination;
     }
-
+    
     @Override
     public BEAN_CRUD add(Personal obj, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
@@ -143,12 +144,12 @@ public class PersonalDAOImpl implements PersonalDAO {
         }
         return beancrud;
     }
-
+    
     @Override
     public BEAN_CRUD update(Personal obj, HashMap<String, Object> parameters) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
     @Override
     public BEAN_CRUD delete(long id, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
@@ -168,10 +169,10 @@ public class PersonalDAOImpl implements PersonalDAO {
         }
         return beancrud;
     }
-
+    
     @Override
     public Personal get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+    
 }

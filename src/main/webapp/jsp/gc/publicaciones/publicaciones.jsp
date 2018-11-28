@@ -47,75 +47,71 @@
                                 </div>
                                 <div class="card-body pt-1">
                                     <div class="modal-body p-0">
-
-                                        <div class="tab-content tabcontent-border">
-
-                                            <input type="hidden" id="nameForm" value="FrmPublicacion">
-                                            <input type="hidden" id="actionPublicacion" name="action" value="paginarPublicacion">
-                                            <input type="hidden" id="numberPagePublicacion" name="numberPagePublicacion" value="1">
-                                            <form id="FrmPublicacion">
-                                                <div class="row mt-3">
-                                                    <div class="form-group col-lg-6 col-12 mb-3">
-                                                        <input type="text" name="txtTituloPublicacion" id="txtTituloPublicacion" class="form-control form-control-sm" placeholder="DESCRIPCION">
-                                                    </div>
-                                                    <div class="form-group col-lg-2 col-md-6 col-12 mb-3">
-                                                        <select id="comboAnioPublicacion" name="comboAnioPublicacion" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPublicacion'>
-
-                                                        </select>
-                                                    </div>
-                                                    <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
-                                                        <select id="comboTipoListaPublicacion" name="comboTipoListaPublicacion" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPublicacion'>
-                                                            <option value="-1">TODOS</option>
-                                                            <option value="true">PUBLICOS</option>
-                                                            <option value="false">NO PUBLICOS</option>
-                                                        </select>
-                                                        <button type="submit" id="btnBuscarPublicacion" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Publicacion" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                        <button type="button" id="btnAbrirNuevoPublicacion" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Agregar Publicacion" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
-                                                    </div>
+                                        <input type="hidden" id="nameForm" value="FrmPublicacion">
+                                        <input type="hidden" id="actionPublicacion" name="action" value="paginarPublicacion">
+                                        <input type="hidden" id="numberPagePublicacion" name="numberPagePublicacion" value="1">
+                                        <form id="FrmPublicacion">
+                                            <div class="row mt-3">
+                                                <div class="form-group col-lg-6 col-12 mb-3">
+                                                    <input type="text" name="txtTituloPublicacion" id="txtTituloPublicacion" class="form-control form-control-sm" placeholder="DESCRIPCION">
                                                 </div>
-                                            </form>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="table-responsive" id="tabla1">
-                                                        <table
-                                                            class="table color-bordered-table muted-bordered-table table-hover">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th style="width: 10%" class="text-medium-table">AÑO</th>
-                                                                    <th style="width: 45%" class="text-medium-table">TITULO</th>
-                                                                    <th style="width: 45%" class="text-medium-table">DESCRIPCION</th>
-                                                                    <th colspan="4" class="text-medium-table">ACCIONES</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody id="tbodyPublicacion">
-                                                            </tbody>
-                                                        </table>
-                                                    </div>
+                                                <div class="form-group col-lg-2 col-md-6 col-12 mb-3">
+                                                    <select id="comboAnioPublicacion" name="comboAnioPublicacion" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPublicacion'>
+
+                                                    </select>
+                                                </div>
+                                                <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
+                                                    <select id="comboTipoListaPublicacion" name="comboTipoListaPublicacion" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarPublicacion'>
+                                                        <option value="-1">TODOS</option>
+                                                        <option value="true">PUBLICOS</option>
+                                                        <option value="false">NO PUBLICOS</option>
+                                                    </select>
+                                                    <button type="submit" id="btnBuscarPublicacion" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Publicacion" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                                    <button type="button" id="btnAbrirNuevoPublicacion" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Agregar Publicacion" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-12">
-                                                    <div class="card "
-                                                         style="height: 50px; margin-bottom: 0px">
-                                                        <div class="card-body"
-                                                             style="padding-top: 10px; padding-bottom: 10px">
-                                                            <div class="row">
-                                                                <div class="col-md-2 col-sm-3 col-4">
-                                                                    <select id="sizePagePublicacion" name="sizePagePublicacion" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarPublicacion'>
-                                                                        <option value="10">10</option>
-                                                                        <option value="15">15</option>
-                                                                        <option value="20">20</option>
-                                                                    </select>
-                                                                </div>
-                                                                <div class="col-md-10 col-sm-9 col-8">
-                                                                    <nav aria-label="Page navigation example">
-                                                                        <ul id="paginationPublicacion"
-                                                                            class="pagination pagination-sm justify-content-end">
+                                        </form>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="table-responsive" id="tabla1">
+                                                    <table
+                                                        class="table color-bordered-table muted-bordered-table table-hover">
+                                                        <thead>
+                                                            <tr>
+                                                                <th style="width: 10%" class="text-medium-table">AÑO</th>
+                                                                <th style="width: 45%" class="text-medium-table">TITULO</th>
+                                                                <th style="width: 45%" class="text-medium-table">DESCRIPCION</th>
+                                                                <th colspan="4" class="text-medium-table">ACCIONES</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyPublicacion">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div class="card "
+                                                     style="height: 50px; margin-bottom: 0px">
+                                                    <div class="card-body"
+                                                         style="padding-top: 10px; padding-bottom: 10px">
+                                                        <div class="row">
+                                                            <div class="col-md-2 col-sm-3 col-4">
+                                                                <select id="sizePagePublicacion" name="sizePagePublicacion" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarPublicacion'>
+                                                                    <option value="10">10</option>
+                                                                    <option value="15">15</option>
+                                                                    <option value="20">20</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-10 col-sm-9 col-8">
+                                                                <nav aria-label="Page navigation example">
+                                                                    <ul id="paginationPublicacion"
+                                                                        class="pagination pagination-sm justify-content-end">
 
-                                                                        </ul>
+                                                                    </ul>
 
-                                                                    </nav>
-                                                                </div>
+                                                                </nav>
                                                             </div>
                                                         </div>
                                                     </div>

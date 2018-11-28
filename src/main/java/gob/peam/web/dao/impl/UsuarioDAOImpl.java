@@ -5,6 +5,7 @@
  */
 package gob.peam.web.dao.impl;
 
+import gob.peam.web.dao.SQLCloseable;
 import gob.peam.web.model.Persona;
 import gob.peam.web.model.Usuario;
 import java.sql.Connection;
@@ -27,8 +28,8 @@ public class UsuarioDAOImpl {
 
     public Usuario getUserValidation(String login) throws SQLException {
         Usuario usuario = null;
-        try (Connection connPool = pool.getConnection()) {
-            try (PreparedStatement pst = connPool.prepareStatement("SELECT USUA_ID, USUA_CLAVE, USUA_ESTADO, U.PERS_ID, PERS_DNI, PERS_NOMBRE, "
+        try (Connection conn = pool.getConnection()) {
+            try (PreparedStatement pst = conn.prepareStatement("SELECT USUA_ID, USUA_CLAVE, USUA_ESTADO, U.PERS_ID, PERS_DNI, PERS_NOMBRE, "
                     + "PERS_APELLIDO_PATERNO, PERS_APELLIDO_MATERNO, PERS_CARGO FROM ADMINISTRACION.USUARIO U "
                     + "INNER JOIN ADMINISTRACION.PERSONA P ON U.PERS_ID = P.PERS_ID WHERE USUA_LOGIN = ?");) {
                 pst.setString(1, login);
@@ -54,6 +55,38 @@ public class UsuarioDAOImpl {
             throw e;
         }
         return usuario;
+    }
+
+    public String updateUser(Usuario usuario) throws SQLException {
+        String res = "";
+        PreparedStatement pst;
+        ResultSet rs;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("SELECT COUNT(USUA_ID) AS COUNT FROM ADMINISTRACION.USUARIO "
+                    + "WHERE USUA_LOGIN = ? AND USUA_ID != ?");
+            pst.setString(1, usuario.getUsua_login());
+            pst.setInt(2, usuario.getUsua_id());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                if (rs.getInt("COUNT") == 0) {
+                    pst = conn.prepareStatement("UPDATE ADMINISTRACION.USUARIO SET USUA_LOGIN = ?, "
+                            + "USUA_CLAVE = ? WHERE USUA_ID = ?");
+                    pst.setString(1, usuario.getUsua_login());
+                    pst.setString(2, usuario.getUsua_clave());
+                    pst.setInt(3, usuario.getUsua_id());
+                    pst.executeUpdate();
+                    conn.commit();
+                    res = "ok";
+                } else {
+                    res = "No se actualizó, ya existe un Usuario con el nombre login ingresado";
+                }
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+        return res;
     }
 
 }

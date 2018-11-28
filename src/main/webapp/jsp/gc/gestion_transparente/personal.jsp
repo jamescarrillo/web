@@ -63,7 +63,7 @@
                                                 <form id="FrmPersonal">
                                                     <div class="row">
                                                         <div class="form-group col-lg-3 col-md-4 col-12 mb-3">
-                                                            <select class="form-control form-control-sm" id="cboTipoPersonal" name="cboTipoPersonal">
+                                                            <select class="form-control form-control-sm combo-paginar" id="cboTipoPersonal" name="cboTipoPersonal" idBtnBuscar='btnBuscarPersonal'>
                                                                 <option value="1">PLANILLA</option>
                                                                 <option value="2">LOCADOR DE SERVICIOS</option>
                                                                 <option value="3">CONTRATOS ADMINISTRATIVOS DE SERVICIO</option>
@@ -128,12 +128,12 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="tab-pane p-20" id="tab-compra-de-servicios" role="tabpanel">
+                                            <div class="tab-pane p-20" id="tab-personal-por-categorias" role="tabpanel">
                                                 <input type="hidden" id="nameFormPersonalCategoria" value="FrmPersonalCategoria">
                                                 <input type="hidden" id="actionPersonalCategoria" name="action" value="paginarPersonalCategoria">
                                                 <input type="hidden" id="numberPagePersonalCategoria" name="numberPagePersonalCategoria" value="1">
                                                 <form id="FrmPersonalCategoria">
-                                                    <div class="row mt-3">
+                                                    <div class="row">
                                                         <div class="form-group col-lg-8 col-12 mb-3">
                                                             <input type="text" name="txtCategoriaPersonalCategoria" id="txtCategoriaPersonalCategoria" class="form-control form-control-sm" placeholder="CATEGORIA">
                                                         </div>

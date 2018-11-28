@@ -43,7 +43,7 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Otras Publicaciones</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px"><%out.print(request.getAttribute("title"));%></h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -66,6 +66,7 @@
                                                 <div class="col-sm-2 col-xs-12">
                                                     <button type="submit" id="btnBuscarPublicacion" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
                                                 </div>
+                                                <input type="hidden" id="tipo" name="tipo" value="<%out.print(request.getAttribute("tipo"));%>">
                                                 <input type="hidden" id="nameForm" value="FrmPublicacion">
                                                 <input type="hidden" id="actionPublicacion" name="action" value="paginarPublicacion">
                                                 <input type="hidden" id="numberPagePublicacion" name="numberPagePublicacion" value="1">

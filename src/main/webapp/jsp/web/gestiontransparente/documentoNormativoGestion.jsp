@@ -54,11 +54,11 @@
                                         <form id="FrmDocumentos">
                                             <div class="col-md-4 col-sm-3 col-xs-12">
                                                 <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
-                                                    <option value="100">Resoluciones Generales</option>
-                                                    <option value="2800">Actas de Sesión y Consejo Directivo</option>
-                                                    <option value="100">Documentos de Gestión</option>
-                                                    <option value="100">Normas y Directivas 12 </option>
-                                                    <option value="900">Indicadores de Desempeño</option>
+                                                    <option value="100" tido_id="10">Resoluciones Generales</option>
+                                                    <option value="2800" tido_id="">Actas de Sesión y Consejo Directivo</option>
+                                                    <option value="100" tido_id="11">Documentos de Gestión</option>
+                                                    <option value="100" tido_id="12">Normas y Directivas 12 </option>
+                                                    <option value="900" tido_id="">Indicadores de Desempeño</option>
                                                 </select>
                                             </div>
                                             <div class="col-md-2 col-sm-3 col-xs-12">
@@ -78,7 +78,6 @@
                                             <input type="hidden" id="actionDocumentos" name="action" value="paginarDocumentos">
                                             <input type="hidden" id="numberPageDocumentos" name="numberPageDocumentos" value="1">
                                             <input type="hidden" id="sizePageDocumentos" name="sizePageDocumentos" value="10">
-                                            <input type="hidden" id="comboTipoListaDocumentos" name="comboTipoListaDocumentos" value="-1">
                                             <input type="hidden" id="tido_id" name="tido_id" value="10">
                                         </form>
                                     </div>

@@ -98,7 +98,7 @@
                                                                         <th style="width: 35%" class="text-medium-table">Proveedor</th>
                                                                         <th style="width: 10%" class="text-medium-table">Finan.</th>
                                                                         <th style="width: 10%" class="text-medium-table">Monto</th>
-                                                                        <th style="width: 10%" class="text-medium-table">N°Siaf</th>
+                                                                        <th style="width: 10%" class="text-medium-table">N°SIAF</th>
                                                                         <th style="width: 5%" class="text-medium-table"></th>
                                                                     </tr>
                                                                 </thead>

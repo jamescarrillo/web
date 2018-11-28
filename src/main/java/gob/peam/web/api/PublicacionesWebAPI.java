@@ -38,7 +38,8 @@ import javax.sql.DataSource;
     "/publicaciones/noticias/multimedia",
     "/publicaciones/memorias-anuales",
     "/publicaciones/comunicados",
-    "/publicaciones/otras-publicaciones"
+    "/publicaciones/otras-publicaciones",
+    "/publicaciones/control-interno"
 })
 public class PublicacionesWebAPI extends HttpServlet {
 
@@ -118,7 +119,9 @@ public class PublicacionesWebAPI extends HttpServlet {
                     }
                     break;
                 case "/publicaciones/memorias-anuales":
-                    request.getRequestDispatcher("/estamos_trabajando_web.jsp").forward(request, response);
+                    request.setAttribute("title", "Memorias Anuales");
+                    request.setAttribute("tipo", "1");
+                    request.getRequestDispatcher("/jsp/web/publicaciones/otrasPublicacionesWeb.jsp").forward(request, response);
                     break;
                 case "/publicaciones/otras-publicaciones":
                     this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
@@ -128,9 +131,14 @@ public class PublicacionesWebAPI extends HttpServlet {
                             procesarPublicacion(new BEAN_CRUD(this.publicacionDAO.getPagination(getParametersPublicacion(request))), response);
                             break;
                         default:
+                            request.setAttribute("title", "Otras Publicaciones");
+                            request.setAttribute("tipo", "3");
                             request.getRequestDispatcher("/jsp/web/publicaciones/otrasPublicacionesWeb.jsp").forward(request, response);
                             break;
                     }
+                    break;
+                case "/publicaciones/control-interno":
+                    request.getRequestDispatcher("/jsp/web/publicaciones/control_interno.jsp").forward(request, response);
                     break;
                 default:
                     response.sendRedirect("/index");
@@ -281,7 +289,7 @@ public class PublicacionesWebAPI extends HttpServlet {
             this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioPublicacion") + "' ");
         }
         this.parameters.put("SQL_ESTADO", "AND ESTADO = TRUE");
-        this.parameters.put("SQL_TIPO", "AND TIPO = 3");
+        this.parameters.put("SQL_TIPO", "AND TIPO = " + request.getParameter("tipo"));
         this.parameters.put("SQL_ORDERS", "ID DESC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePagePublicacion") + " OFFSET "

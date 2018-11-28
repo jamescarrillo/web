@@ -28,7 +28,7 @@ import javax.sql.DataSource;
  * @author James Carrillo
  */
 @WebServlet(name = "SessionController", urlPatterns = {"/session"})
-public class SessionController extends HttpServlet {
+public class SessionAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
@@ -81,9 +81,9 @@ public class SessionController extends HttpServlet {
                 response.setContentType("application/json");
                 response.getWriter().write(cadenajson);
             } catch (SQLException ex) {
-                Logger.getLogger(SessionController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SessionAPI.class.getName()).log(Level.SEVERE, null, ex);
             } catch (Exception ex) {
-                Logger.getLogger(SessionController.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(SessionAPI.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
             response.sendRedirect("indexgc");

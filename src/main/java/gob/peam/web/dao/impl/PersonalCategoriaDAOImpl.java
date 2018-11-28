@@ -96,9 +96,9 @@ public class PersonalCategoriaDAOImpl implements PersonalCategoriaDAO {
         try (Connection conn = pool.getConnection();
                 SQLCloseable finish = conn::rollback;) {
             conn.setAutoCommit(false);
-            pst = conn.prepareStatement("INSERT INTO WEB.F00009(ID,ANHO,TRIMESTRE,CODIGO,CATEGORIA,REMUNERACION_MINIMA,REMUNERACION_MAXIMA,"
-                    + "NUMERO_TRABAJADORES,ESTADO) "
-                    + "VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.f00012),?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            pst = conn.prepareStatement("INSERT INTO WEB.F00009(ID,ANHO,TRIMESTRE,CODIGO,CATEGORIA,"
+                    + "REMUNERACION_MINIMA,REMUNERACION_MAXIMA,NUMERO_TRABAJADORES,ESTADO) "
+                    + "VALUES((select case when max(id) is null then 1 else cast((max(id)+1) as integer) end id  from web.f00009),?,?,?,?,?,?,?,?)");
             pst.setString(1, obj.getAnho());
             pst.setInt(2, obj.getTrimestre());
             pst.setString(3, obj.getCodigo());
@@ -125,7 +125,22 @@ public class PersonalCategoriaDAOImpl implements PersonalCategoriaDAO {
 
     @Override
     public BEAN_CRUD delete(long id, HashMap<String, Object> parameters) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        BEAN_CRUD beancrud = new BEAN_CRUD();
+        PreparedStatement pst;
+        try (Connection conn = pool.getConnection();
+                SQLCloseable finish = conn::rollback;) {
+            conn.setAutoCommit(false);
+            pst = conn.prepareStatement("DELETE FROM WEB.F00009 WHERE ID = ?");
+            pst.setInt(1, (int) id);
+            pst.executeUpdate();
+            conn.commit();
+            beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beancrud;
     }
 
     @Override

@@ -52,7 +52,7 @@ function procesarAjaxPresupuestosInstitucionalWeb() {
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
             $('#loader_contenido_PresupuestoInstitucional').css('display', 'none');
-            viewAlertWeb('error', 'Error interno en el servidor!');
+            console.log('error', 'Error interno en el servidor!');
         }
     });
     return false;
@@ -127,7 +127,7 @@ function procesarAjaxInformacionFinancieraWeb() {
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
             $('#loader_contenido_InfoFinanciera').css('display', 'none');
-            viewAlertWeb('error', 'Error interno en el servidor!');
+            console.log('error', 'Error interno en el servidor!');
         }
     });
     return false;
@@ -194,7 +194,7 @@ function procesarAjaxInformacionPresupustalWeb() {
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
             $('#loader_contenido_InfoPresupuestal').css('display', 'none');
-            viewAlertWeb('error', 'Error interno en el servidor!');
+            console.log('error', 'Error interno en el servidor!');
         }
     });
     return false;

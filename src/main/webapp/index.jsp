@@ -726,7 +726,7 @@
                         </div>
                         <div class="col-lg-2 col-md-4 col-sm-6 mt-15">
                             <div class="text-center">
-                                <a href="">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/control-interno">
                                     <h5 class="text-peam-verde-index">
                                         <i class="fa fa-share-alt fa-4x" aria-hidden="true"></i>
                                         <br>

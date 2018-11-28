@@ -51,8 +51,8 @@
                                         <div class="col-md-12">
                                             <div class="border-bottom-tab">
                                                 <ul class="nav nav-tabs" role="tablist">
-                                                    <li role="presentation" class="active"><a href="#tab-directorio-contactos" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Directorio de Contactos</a></li>
-                                                    <li role="presentation"><a href="#tab-directorio-de-telefono-interno" class="waves-effect waves-dark" role="tab" data-toggle="tab">Directorio de Teléfono Interno</a></li>
+                                                    <li role="presentation" class="active"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-directorio-contactos" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Directorio de Contactos</a></li>
+                                                    <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-directorio-de-telefono-interno" class="waves-effect waves-dark" role="tab" data-toggle="tab">Directorio de Teléfono Interno</a></li>
                                                 </ul>
                                                 <div class="panel-body" style="padding-bottom: 0px;">
                                                     <div class="tab-content">

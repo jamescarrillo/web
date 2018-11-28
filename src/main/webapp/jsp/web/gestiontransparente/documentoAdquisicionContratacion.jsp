@@ -93,7 +93,7 @@
                                                 <input type="hidden" id="comboTipoListaDocumentos" name="comboTipoListaDocumentos" value="-1">
                                             </form>
                                         </div>
-                                        <div class="row" id="loader_contenido">
+                                        <div class="row" id="loader_contenido" style="display: none">
                                             <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
                                                 <div class="loader-peam_small"></div>
                                             </div>
@@ -145,7 +145,68 @@
                                 </div>
                                 <div id="tab-ordenes-de-compra" class="panel-collapse collapse" aria-expanded="false">
                                     <div class="panel-body">
-                                        Estamos Trabajando...
+                                        <div class="row">
+                                            <form id="FrmOrdenCompra">                                               
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioOrdenCompra" name="comboAnioOrdenCompra" class="form-control combo-paginar" idBtnBuscar='btnBuscarOrdenCompra' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtProveedorOrdenCompra" id="txtProveedorOrdenCompra">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Orden Compra</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarOrdenCompra" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormOrdenCompra" value="FrmOrdenCompra">
+                                                <input type="hidden" id="actionOrdenCompra" name="action" value="paginarOrdenCompra">
+                                                <input type="hidden" id="numberPageOrdenCompra" name="numberPageOrdenCompra" value="1">
+                                                <input type="hidden" id="sizePageOrdenCompra" name="sizePageOrdenCompra" value="10">                                                
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_orden_compra" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%" class="text-medium-table text-center">N° Orden</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">N° SIAF</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha de Emisión</th>
+                                                                <th style="width: 35%" class="text-medium-table">Fuente Financiamiento</th>
+                                                                <th style="width: 35%" class="text-medium-table">Proveedor</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Monto</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyOrdenCompra">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationOrdenCompra" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -159,7 +220,68 @@
                                 </div>
                                 <div id="tab-ordenes-de-servicio" class="panel-collapse collapse" aria-expanded="false">
                                     <div class="panel-body">
-                                        Estamos Trabajando...
+                                        <div class="row">
+                                            <form id="FrmOrdenServicio">                                               
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioOrdenServicio" name="comboAnioOrdenServicio" class="form-control combo-paginar" idBtnBuscar='btnBuscarOrdenServicio' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtProveedorOrdenServicio" id="txtProveedorOrdenServicio">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Orden Servicio</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarOrdenServicio" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormOrdenServicio" value="FrmOrdenServicio">
+                                                <input type="hidden" id="actionOrdenServicio" name="action" value="paginarOrdenServicio">
+                                                <input type="hidden" id="numberPageOrdenServicio" name="numberPageOrdenServicio" value="1">
+                                                <input type="hidden" id="sizePageOrdenServicio" name="sizePageOrdenServicio" value="10">                                                
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_orden_servicio" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%" class="text-medium-table text-center">N° Orden</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">N° SIAF</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha de Emisión</th>
+                                                                <th style="width: 35%" class="text-medium-table">Fuente Financiamiento</th>
+                                                                <th style="width: 35%" class="text-medium-table">Proveedor</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Monto</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyOrdenServicio">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationOrdenServicio" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +295,68 @@
                                 </div>
                                 <div id="tab-gastos-en-publicidad" class="panel-collapse collapse" aria-expanded="false">
                                     <div class="panel-body">
-                                        Estamos Trabajando...
+                                        <div class="row">
+                                            <form id="FrmPublicidad">                                               
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioPublicidad" name="comboAnioPublicidad" class="form-control combo-paginar" idBtnBuscar='btnBuscarPublicidad' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtProveedorPublicidad" id="txtProveedorPublicidad">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Publicidad</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarPublicidad" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormPublicidad" value="FrmPublicidad">
+                                                <input type="hidden" id="actionPublicidad" name="action" value="paginarPublicidad">
+                                                <input type="hidden" id="numberPagePublicidad" name="numberPagePublicidad" value="1">
+                                                <input type="hidden" id="sizePagePublicidad" name="sizePagePublicidad" value="10">                                                
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_publicidad" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 20%" class="text-medium-table text-center">N° Contrato</th>
+                                                                <th style="width: 25%" class="text-medium-table">Objeto de Contrato</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">RUC</th>
+                                                                <th style="width: 20%" class="text-medium-table">Proveedor</th>
+                                                                <th style="width: 10%" class="text-medium-table">Penalidad S/</th>
+                                                                <th style="width: 12%" class="text-medium-table text-center">Costo Final S/</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyPublicidad">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationPublicidad" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +370,68 @@
                                 </div>
                                 <div id="tab-gastos-en-telefonia" class="panel-collapse collapse" aria-expanded="false">
                                     <div class="panel-body">
-                                        Estamos Trabajando...
+                                        <div class="row">
+                                            <form id="FrmTelefonia">                                               
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioTelefonia" name="comboAnioTelefonia" class="form-control combo-paginar" idBtnBuscar='btnBuscarTelefonia' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtAreaTelefonia" id="txtAreaTelefonia">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Área/Oficina</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarTelefonia" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormTelefonia" value="FrmTelefonia">
+                                                <input type="hidden" id="actionTelefonia" name="action" value="paginarTelefonia">
+                                                <input type="hidden" id="numberPageTelefonia" name="numberPageTelefonia" value="1">
+                                                <input type="hidden" id="sizePageTelefonia" name="sizePageTelefonia" value="10">                                                
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_telefonia" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Tipo</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Número</th>
+                                                                <th style="width: 25%" class="text-medium-table">Área/Oficina</th>
+                                                                <th style="width: 25%" class="text-medium-table">Asignado a</th>
+                                                                <th style="width: 20%" class="text-medium-table">Cargo</th>
+                                                                <th style="width: 15%" class="text-medium-table text-center">Importe S/</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyTelefonia">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationTelefonia" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +445,70 @@
                                 </div>
                                 <div id="tab-uso-de-vehiculos" class="panel-collapse collapse" aria-expanded="false">
                                     <div class="panel-body">
-                                        Estamos Trabajando...
+                                        <div class="row">
+                                            <form id="FrmVehiculo">                                               
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioVehiculo" name="comboAnioVehiculo" class="form-control combo-paginar" idBtnBuscar='btnBuscarVehiculo' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtAreaVehiculo" id="txtAreaVehiculo">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Chofer</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarVehiculo" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormVehiculo" value="FrmVehiculo">
+                                                <input type="hidden" id="actionVehiculo" name="action" value="paginarVehiculo">
+                                                <input type="hidden" id="numberPageVehiculo" name="numberPageVehiculo" value="1">
+                                                <input type="hidden" id="sizePageVehiculo" name="sizePageVehiculo" value="10">                                                
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_vehiculo" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Vehículo</th>
+                                                                <th style="width: 20%" class="text-medium-table">Asignado a</th>
+                                                                <th style="width: 20%" class="text-medium-table">Chofer</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Recorrido KM</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Vencimiento de SOAT</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Tipo de Combustible</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Combustible S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Placa</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyVehiculo">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationVehiculo" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -215,7 +522,65 @@
                                 </div>
                                 <div id="tab-principales-de-proveedores" class="panel-collapse collapse" aria-expanded="false">
                                     <div class="panel-body">
-                                        Estamos Trabajando...
+                                        <div class="row">
+                                            <form id="FrmProveedor">                                               
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioProveedor" name="comboAnioProveedor" class="form-control combo-paginar" idBtnBuscar='btnBuscarProveedor' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtProveedor" id="txtProveedor">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Proveedor</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarProveedor" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormProveedor" value="FrmProveedor">
+                                                <input type="hidden" id="actionProveedor" name="action" value="paginarProveedor">
+                                                <input type="hidden" id="numberPageProveedor" name="numberPageProveedor" value="1">
+                                                <input type="hidden" id="sizePageProveedor" name="sizePageProveedor" value="10">                                                
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_proveedor" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%" class="text-medium-table text-center">RUC</th>
+                                                                <th style="width: 80%" class="text-medium-table">Proveedor</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Importe</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyProveedor">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationProveedor" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +594,69 @@
                                 </div>
                                 <div id="tab-viaticos-y-pasajes" class="panel-collapse collapse" aria-expanded="false">
                                     <div class="panel-body">
-                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                                        <div class="row">
+                                            <form id="FrmViatico">                                               
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioViatico" name="comboAnioViatico" class="form-control combo-paginar" idBtnBuscar='btnBuscarViatico' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtTituloViatico" id="txtTituloViatico">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Ruta o Usuario</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarViatico" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormViatico" value="FrmViatico">
+                                                <input type="hidden" id="actionViatico" name="action" value="paginarViatico">
+                                                <input type="hidden" id="numberPageViatico" name="numberPageViatico" value="1">
+                                                <input type="hidden" id="sizePageViatico" name="sizePageViatico" value="10">                                                
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_viatico" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 20%" class="text-medium-table">Oficia/Área</th>
+                                                                <th style="width: 20%" class="text-medium-table">Usuario</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Salida</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Retorno</th>
+                                                                <th style="width: 20%" class="text-medium-table">Ruta</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Pasaje</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Viático</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyViatico">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationViatico" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -264,7 +691,7 @@
                                                 <input type="hidden" id="sizePagePenalidad" name="sizePagePenalidad" value="10">
                                             </form>
                                         </div>
-                                        <div class="row" id="loader_contenido_penalidad">
+                                        <div class="row" id="loader_contenido_penalidad" style="display: none">
                                             <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
                                                 <div class="loader-peam_small"></div>
                                             </div>
@@ -275,12 +702,12 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%;" class="text-center align-middle">CONTRATO S/</th>
-                                                                <th style="width: 35%" class="align-middle">CONTRATISTA</th>
-                                                                <th style="width: 10%" class="text-center align-middle">RUC</th>
-                                                                <th style="width: 10%" class="text-center align-middle">TIPO</th>
-                                                                <th style="width: 35%" class="align-middle">OBJETO DE PROCESO</th>
-                                                                <th style="width: 15%" class="text-center align-middle">MONTO PENALIDAD S/</th>
+                                                                <th style="width: 10%;" class="text-medium-table text-center align-middle">CONTRATO S/</th>
+                                                                <th style="width: 35%" class="text-medium-table align-middle">CONTRATISTA</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center align-middle">RUC</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center align-middle">TIPO</th>
+                                                                <th style="width: 35%" class="text-medium-table align-middle">OBJETO DE PROCESO</th>
+                                                                <th style="width: 15%" class="text-medium-table text-center align-middle">MONTO PENALIDAD S/</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyPenalidad">
@@ -358,8 +785,8 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
-        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/gestiontransparente.js"></script>
-        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/penalidad.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/gestiontransparente_adquisiciones.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/gestiontransparente_adquisiciones2.js"></script>
 
     </body>
 </html>

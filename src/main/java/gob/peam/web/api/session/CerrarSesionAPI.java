@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
  * @author James Carrillo
  */
 @WebServlet(name = "CerrarSesionController", urlPatterns = {"/cerrarsession"})
-public class CerrarSesionController extends HttpServlet {
+public class CerrarSesionAPI extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>

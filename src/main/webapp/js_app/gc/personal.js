@@ -8,7 +8,7 @@ $(document).ready(function () {
         todayHighlight: true,
         autoclose: true
     });
-    
+
     $('#btnAbrirNPersonal').click(function () {
         $('.input-text').val("");
         $('.input-text').parent().removeClass('has-danger');
@@ -68,7 +68,7 @@ $(document).ready(function () {
     });
 
     $("#modalCargandoPersonalCategoria").on('shown.bs.modal', function () {
-
+        procesarAjaxPersonalCategoria();
     });
 
     $('.input-text').on('change', function () {
@@ -81,6 +81,7 @@ $(document).ready(function () {
 
     addEventoCombosPaginar();
     $("#modalCargandoPersonal").modal("show");
+    procesarAjaxPersonalCategoria();
 
 });
 
@@ -94,7 +95,6 @@ function procesarAjaxPersonal() {
     datosSerializadosCompletos += "&numberPagePersonal=" + $('#numberPagePersonal').val();
     datosSerializadosCompletos += "&sizePagePersonal=" + $('#sizePagePersonal').val();
     datosSerializadosCompletos += "&action=" + $('#actionPersonal').val();
-    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/gestiontransparente/personal',
         type: 'POST',
@@ -132,9 +132,7 @@ function listarPersonal(BEAN_PAGINATION) {
         var dni;
         var cargo;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
-            fila = "<tr ";
-            fila += "id='" + value.id + "' ";
-            fila += ">";
+            fila = "<tr>";
             if (value.numero_dni !== undefined) {
                 dni = value.numero_dni;
             } else {
@@ -151,7 +149,7 @@ function listarPersonal(BEAN_PAGINATION) {
             fila += "<td class='text-middle'>" + cargo + "</td>";
             fila += "<td class='text-middle'>" + value.codigo_civil + "</td>";
             fila += "<td class='text-middle'>" + value.ingreso_total + "</td>";
-            fila += "<td class='align-middle'><button class='btn btn-secondary btn-sm eliminar-personal'><i class='fas fa-trash-alt'></i></button></td>";
+            fila += "<td class='align-middle'><button id='" + value.id + "' class='btn btn-secondary btn-sm eliminar-personal'><i class='fas fa-trash-alt'></i></button></td>";
             fila += "</tr>";
             $('#tbodyPersonal').append(fila);
         });
@@ -169,6 +167,81 @@ function listarPersonal(BEAN_PAGINATION) {
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
         $('#txtPersonal').focus();
+    } else {
+        $pagination.twbsPagination('destroy');
+        viewAlert('warning', 'No se enconntraron resultados');
+    }
+}
+
+function procesarAjaxPersonalCategoria() {
+    var datosSerializadosCompletos = $('#' + $('#nameFormPersonalCategoria').val()).serialize();
+    if ($('#nameFormPersonalCategoria').val().toLowerCase() !== "frmpersonalcategoria") {
+        datosSerializadosCompletos += "&txtCategoriaPersonalCategoria=";
+        datosSerializadosCompletos += "&comboAnioPersonalCategoria=" + $('#comboAnioPersonalCategoria').val();
+    }
+    datosSerializadosCompletos += "&numberPagePersonalCategoria=" + $('#numberPagePersonalCategoria').val();
+    datosSerializadosCompletos += "&sizePagePersonalCategoria=" + $('#sizePagePersonalCategoria').val();
+    datosSerializadosCompletos += "&action=" + $('#actionPersonalCategoria').val();
+    $.ajax({
+        url: getContext() + '/gestiontransparente/personal',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            $('#modalCargandoPersonalCategoria').modal("hide");
+            if ($('#actionPersonalCategoria').val().toLowerCase() === "paginarpersonalcategoria") {
+                listarPersonalCategoria(jsonResponse.BEAN_PAGINATION);
+            } else {
+                if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
+                    $("#ventanaManPersonalCategoria").modal("hide");
+                    viewAlert('success', getMessageServerTransaction($('#actionPersonalCategoria').val(), 'Personal por Categoria', 'o'));
+                    listarPersonalCategoria(jsonResponse.BEAN_PAGINATION);
+                } else {
+                    viewAlert('warning', jsonResponse.MESSAGE_SERVER);
+                }
+            }
+        },
+        error: function () {
+            $('#modalCargandoPersonalCategoria').modal("hide");
+            $("#ventanaManPersonalCategoria").modal("hide");
+            viewAlert('error', 'Error interno en el servidor!');
+        }
+    });
+    return false;
+}
+
+function listarPersonalCategoria(BEAN_PAGINATION) {
+    /*PAGINATION*/
+    var $pagination = $('#paginationPersonalCategoria');
+    $('#tbodyPersonalCategoria').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var fila;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            fila = "<tr>";
+            fila += "<td class='text-middle'>" + value.codigo + "</td>";
+            fila += "<td class='text-middle'>" + value.trimestre + "</td>";
+            fila += "<td class='text-middle'>" + value.categoria + "</td>";
+            fila += "<td class='text-middle'>" + value.remuneracion_minima + "</td>";
+            fila += "<td class='text-middle'>" + value.remuneracion_maxima + "</td>";
+            fila += "<td class='text-middle'>" + value.numero_trabajadores + "</td>";
+            fila += "<td class='align-middle'><button id='" + value.id + "' class='btn btn-secondary btn-sm eliminar-personal-categoria'><i class='fas fa-trash-alt'></i></button></td>";
+            fila += "</tr>";
+            $('#tbodyPersonalCategoria').append(fila);
+        });
+        $('.eliminar-personal-categoria').each(function (index, value) {
+            $(this).click(function () {
+                $('#nameFormPersonalCategoria').val("FrmPersonalCategoriaModal");
+                $('#txtIdPersonalCategoriaER').val($(this).attr("id"));
+                viewAlertDelete('PersonalCategoria');
+            });
+        });
+        var defaultOptions = getDefaultOptionsPagination();
+        var options = getOptionsPagination(BEAN_PAGINATION.COUNT_FILTER, $('#sizePagePersonalCategoria'),
+                $('#numberPagePersonalCategoria'), $('#actionPersonalCategoria'), 'paginarPersonalCategoria',
+                $('#nameFormPersonalCategoria'), 'FrmPersonalCategoria', $('#modalCargandoPersonalCategoria'));
+        $pagination.twbsPagination('destroy');
+        $pagination.twbsPagination($.extend({}, defaultOptions, options));
+        $('#txtCategoriaPersonalCategoria').focus();
     } else {
         $pagination.twbsPagination('destroy');
         viewAlert('warning', 'No se enconntraron resultados');
