@@ -11,7 +11,9 @@ function procesarAjaxIndexWeb() {
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
+            //console.log(jsonResponse);
             $('#loader_contenido').css('display', 'none');
+            addDataGerencia(jsonResponse.DATA_FUNCIONARIOS);
             procesarAjaxGaleriaWeb(jsonResponse.GALERIA_APIKEY, jsonResponse.GALERIA_IDUSUARIO, jsonResponse.GALERIA_IDALBUM, jsonResponse.GALERIA_NUM_FOTOS_MOSTRAR);
             addNoticiasWeb(jsonResponse.DATA_NOTASPRENSA);
             addAnunciosWeb(jsonResponse.DATA_ANUNCIOS);
@@ -22,6 +24,23 @@ function procesarAjaxIndexWeb() {
         }
     });
     return false;
+}
+
+function addDataGerencia(DATA_FUNCIONARIOS) {
+    $(DATA_FUNCIONARIOS.LIST).each(function (index, value) {
+        $('#imgGG').attr("src", "/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto);
+        $('#nombreGG').html(value.nombres_apellidos);
+        $('#cargoGG').html(value.cargo);
+        var valoresTele = value.telefono.split(" ");
+        var tele;
+        if (valoresTele.length >= 3) {
+            tele = valoresTele[0] + " " + valoresTele[1] + " " + valoresTele[2];
+        } else {
+            tele = value.telefono;
+        }
+        $('#telefonoGG').html("<i class='fa fa-phone'></i> " + tele);
+        $('#correoGG').html("<i class='fa fa-envelope-o'></i> " + value.e_mail);
+    });
 }
 
 function addNoticiasWeb(DATA_NOTASPRENSA) {

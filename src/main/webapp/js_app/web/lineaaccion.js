@@ -8,11 +8,8 @@ $(document).ready(function () {
         return false;
     });
 
-    $('#btnAbrirModal').click(function () {
-        $('#myModal').css('display', 'block');
-    });
-
     $('#btnCerrarModal').click(function () {
+        $('#header').css('display', 'block');
         $('#myModal').css('display', 'none');
     });
 
@@ -226,6 +223,7 @@ function procesarAjaxObrasWeb() {
                         }
                         $('#fotoModal').attr('src', $(this.parentElement).attr('foto'));
                         $('#leyendaModal').html($(this.parentElement).attr('observacion'));
+                        $('#header').css('display', 'none');
                         $('#myModal').css('display', 'block');
                     });
                 });

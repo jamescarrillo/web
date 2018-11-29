@@ -125,8 +125,8 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        
-                                                        
+
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -138,17 +138,16 @@
                     </div>
                     <div id="ModalCronogramas" class="modal-peam">
                         <!-- Modal content -->
-                        <div class="modal-content-peam">
+                        <div class="modal-content-peam modal-dialog-scroll">
                             <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
                                 <span class="close" id="btnCerrarModalCronogramas">&times;</span>
-                                <h2 style="margin-top: 15px;" id="CronogramaModal">
+                                <h2 class="text-peam-verde" style="margin-top: 15px;" id="CronogramaModal">
                                     Cronograma de Actividades
                                 </h2>
                             </div>
-                            <div class="modal-body-peam">
+                            <div class="modal-body-peam modal-body-scroll">
                                 <div class="row mt-10">
                                     <div class="container-fluid">
-
                                         <form id="FrmCalendario">
                                             <input type="hidden" id="nameFormCalendario" value="FrmCalendario">
                                             <input type="hidden" id="actionCalendario" name="action" value="paginarCalendario">
@@ -157,8 +156,8 @@
                                         </form>
 
                                         <div class="row" id="TitularCalendario" style="display: none">
-                                            <div class="text-center" style="margin-top: 5px;">
-                                                <h2 class="text-peam-verde" id="ConvocatoriaTitulo" style="font-size: 20px"></h2>
+                                            <div class="col-xs-12 text-center" style="margin-top: 5px;">
+                                                <h2 class="text-peam-verde text-peam-negrita" id="ConvocatoriaTitulo" style="font-size: 20px;margin-bottom: 0px"></h2>
                                             </div>
                                         </div>
 
@@ -194,10 +193,10 @@
                                                 </ul>
                                             </div>
                                             <div class="col-md-9 col-xs-12 text-right">
-                                                
-                                                
+
+
                                                 <ul id="paginationCalendario" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
-                                                    
+
                                                 </ul>
                                             </div>
                                         </div>
@@ -211,14 +210,14 @@
                     </div>
                     <div id="ModalDocumentos" class="modal-peam">
                         <!-- Modal content -->
-                        <div class="modal-content-peam">
+                        <div class="modal-content-peam modal-dialog-scroll" style="width: 70%;border: #00793D solid;border-width: 3px">
                             <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
                                 <span class="close" id="btnCerrarModalDocumentos">&times;</span>
-                                <h2 style="margin-top: 15px;" id="DocumentosModal">
+                                <h2 class="text-peam-verde" style="margin-top: 15px;" id="DocumentosModal">
                                     Documentos
                                 </h2>
                             </div>
-                            <div class="modal-body-peam">
+                            <div class="modal-body-peam modal-body-scroll">
                                 <div class="row mt-10">
                                     <div class="container-fluid">
                                         <form id="FrmDocumentoCal">
@@ -228,11 +227,10 @@
                                             <input type="hidden" id="sizePageDocumentoCal" name="sizePageDocumentoCal" value="10">
                                         </form>
                                         <div class="row" id="TitularActividad" style="display: none">
-                                            <div class="text-center" style="margin-top: 5px;">
-                                                <h2 class="text-peam-verde" id="ActividadTitulo" style="font-size: 20px"></h2>
+                                            <div class="col-xs-12 text-center" style="margin-top: 5px;">
+                                                <h2 class="text-peam-verde text-peam-negrita" id="ActividadTitulo" style="font-size: 20px;margin-bottom: 0px"></h2>
                                             </div>
                                         </div>
-
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <div class="table-responsive table-hover" style="margin-top: 20px">
@@ -254,20 +252,6 @@
                                         </div>
                                         <hr>
                                         <br>
-                                        <div class="row">
-                                            <div class="col-md-3 col-xs-12">
-                                                <ul class="list-inline pull-left">
-                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
-                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
-                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-md-9 col-xs-12 text-right">
-                                                <ul id="paginationDocumentCal" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
-
-                                                </ul>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -278,19 +262,19 @@
                     </div>
                     <div id="ModalPlazas" class="modal-peam">
                         <!-- Modal content -->
-                        <div class="modal-content-peam">
+                        <div class="modal-content-peam modal-dialog-scroll">
                             <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
                                 <span class="close" id="btnCerrarModalPlazas">&times;</span>
-                                <h2 style="margin-top: 15px;" id="PlazasModal">
+                                <h2 class="text-peam-verde" style="margin-top: 15px;" id="PlazasModal">
                                     Plazas
                                 </h2>
                             </div>
-                            <div class="modal-body-peam">
+                            <div class="modal-body-peam modal-body-scroll">
                                 <div class="row mt-10">
                                     <div class="container-fluid">
                                         <div class="row" id="TitularPlaza" style="display: none">
-                                            <div class="text-center" style="margin-top: 5px;">
-                                                <h2 class="text-peam-verde text-peam-negrita" id="PlazaTitulo" style="font-size: 20px"></h2>
+                                            <div class="col-xs-12 text-center" style="margin-top: 5px;">
+                                                <h2 class="text-peam-verde text-peam-negrita" id="PlazaTitulo" style="font-size: 20px;margin-bottom: 0px"></h2>
                                             </div>
                                         </div>
                                         <form id="FrmPuestoConv">
@@ -331,7 +315,7 @@
                                     </div>
                                 </div>
                             </div>
-                        <div class="modal-footer-peam" style="background-color: #ffffff; border-top: #00793D solid; border-width: 2px">
+                            <div class="modal-footer-peam" style="background-color: #ffffff; border-top: #00793D solid; border-width: 2px">
                                 <h6 style="margin-top: 10px;" class="text-peam-negrita">PROYECTO ESPECIAL ALTO MAYO</h6>
                             </div>
                         </div>

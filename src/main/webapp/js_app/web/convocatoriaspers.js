@@ -10,15 +10,17 @@ $(document).ready(function () {
         procesarAjaxConvocatoriaWeb();
         return false;
     });
-    
+
     $('#btnCerrarModalCronogramas').click(function () {
+        $('#header').css('display', 'block');
         $('#ModalCronogramas').css('display', 'none');
     });
-    
+
     $('#btnCerrarModalDocumentos').click(function () {
         $('#ModalDocumentos').css('display', 'none');
     });
     $('#btnCerrarModalPlazas').click(function () {
+        $('#header').css('display', 'block');
         $('#ModalPlazas').css('display', 'none');
     });
 
@@ -106,6 +108,7 @@ function agregarEventosConvocatoria() {
             $('#TitularCalendario').css('display', 'block');
             $('#ConvocatoriaTitulo').html($(this.parentElement.parentElement).attr('text'));
             procesarAjaxCalendarioWeb($(this.parentElement.parentElement).attr('coper_id'));
+            $('#header').css('display', 'none');
             $('#ModalCronogramas').css('display', 'block');
 
         });
@@ -115,6 +118,7 @@ function agregarEventosConvocatoria() {
             procesarAjaxPuestoConvWeb($(this.parentElement.parentElement).attr('coper_id'));
             $('#TitularPlaza').css('display', 'block');
             $('#PlazaTitulo').html($(this.parentElement.parentElement).attr('text'));
+            $('#header').css('display', 'none');
             $('#ModalPlazas').css('display', 'block');
 
         });
@@ -239,7 +243,7 @@ function agregarEventosCalendario() {
             $('#TitularActividad').css('display', 'block');
             $('#ActividadTitulo').html($(this.parentElement.parentElement).attr('desc'));
             procesarAjaxDocumentosConvWeb($(this.parentElement.parentElement).attr('id'));
-            
+
         });
     });
 }

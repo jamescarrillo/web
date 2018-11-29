@@ -64,7 +64,7 @@
                                                 <a><img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/lineas_accion/directores/<%out.print(request.getAttribute("foto_director"));%>" alt="img-director"></a>                
                                             </div>
                                             <div class="col-xs-12 text-peam-verde-index text-center mt-10 mb-10">
-                                                <i class='fa fa-user'></i><a> <%out.print(request.getAttribute("director_cargo"));%></a>
+                                                <a><i class='fa fa-user'></i> <%out.print(request.getAttribute("director_cargo"));%></a>
                                             </div>
                                         </div>
                                         <h2 class='text-peam-negrita'><a>Funciones</a></h2>
@@ -77,7 +77,7 @@
                                             for (int i = 0; i < list.size(); i++) {
                                                 out.print("<li><i class='fa fa-check-square-o'></i> " + list.get(i) + "</li>");
                                             }
-                                        %>
+                                            %>
                                     </ul>
                                 </div>
                             </div>
@@ -161,14 +161,14 @@
         </section>
         <div id="myModal" class="modal-peam">
             <!-- Modal content -->
-            <div class="modal-content-peam">
+            <div class="modal-content-peam  modal-dialog-scroll">
                 <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
                     <span class="close" id="btnCerrarModal">&times;</span>
                     <h2 style="margin-top: 15px;" id="descripcionModal">
                         OBRA
                     </h2>
                 </div>
-                <div class="modal-body-peam">
+                <div class="modal-body-peam modal-body-scroll">
                     <div class="row mt-10">
                         <div class="col-md-3 col-sm-6 col-xs-12">
                             <h5 class='text-peam text-peam-negrita'><i class='fa fa-money'></i> Monto de la Inversión</h5>
@@ -214,7 +214,7 @@
                                 </div>
                             </div>                            
                         </div>
-                        <div class="col-md-6 col-xs-12">
+                        <div class="col-md-5 col-xs-12">
                             <div class="progress-section">
                                 <span class="progress-title"><strong>Avance Financiero</strong></span>
                                 <div class="progress">
@@ -286,7 +286,6 @@
                     <h6 style="margin-top: 10px;" class="text-peam-negrita">PROYECTO ESPECIAL ALTO MAYO</h6>
                 </div>
             </div>
-
         </div>
         <%@ include file = "../../../footer.jsp" %>  
         <div id="fb-root"></div>

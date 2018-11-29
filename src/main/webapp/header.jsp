@@ -106,7 +106,7 @@
                                     <h2>Consultas</h2>
                                     <ul class="list-unstyled clearfix">
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/glosario" target="_blank">Glosario</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/mapa-sitio" target="_blank">Mapa de Sitio</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/mapa-de-sitio" target="_blank">Mapa de Sitio</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/acceso-informacion">Acceso a la Información</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/libro-de-reclamaciones">Libro de Reclamaciones</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/consultas/consultas-y-sugerencias">Consultas y Sugerencias</a></li>

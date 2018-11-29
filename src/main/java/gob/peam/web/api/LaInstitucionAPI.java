@@ -23,7 +23,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -45,12 +44,10 @@ public class LaInstitucionAPI extends HttpServlet {
 
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
-    private HttpSession session;
     private Gson json;
     private String jsonResponse;
     private HashMap<String, Object> parameters;
     private final Log logger = LogFactory.getLog(DocumentoAPI.class);
-    private String action;
 
     private DirectorioTelefonicoDAO directorioTelefonicoDAO;
     private FuncionarioDAO funcionarioDAO;
@@ -60,7 +57,6 @@ public class LaInstitucionAPI extends HttpServlet {
         super.init(); // To change body of generated methods, choose Tools | Templates.
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
         this.parameters = new HashMap<>();
-        this.action = "";
 
         this.directorioTelefonicoDAO = new DirectorioTelefonicoDAOImpl(this.pool);
         this.funcionarioDAO = new FuncionarioDAOImpl(this.pool);

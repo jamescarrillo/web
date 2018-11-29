@@ -263,7 +263,7 @@ public class LineasAccionWebAPI extends HttpServlet {
                 r = conf.getNombre_foto_director_area_estudios();
                 break;
         }
-        if (!new File( getServletContext().getContextPath()+"/peam_resources/logos_complementos/lineas_accion/directores/"+r).exists()) {
+        if (!new File(getServletContext().getRealPath("/peam_resources/logos_complementos/lineas_accion/directores/" + r)).exists()) {
             r = "default_usuario.png";
         }
         return r;

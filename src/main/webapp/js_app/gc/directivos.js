@@ -34,6 +34,7 @@ $(document).ready(function () {
     });
 
     $('#btnAbrirNuevoDirectivo').click(function () {
+        $('#fileFotoDIR').val(null);
         $('#FrmDirectivoModal input').val("");
         $('#FrmDirectivoModal select').val("-1");
         $('#FrmDirectivoModal input').parent().removeClass("has-danger");
@@ -109,6 +110,7 @@ $(document).ready(function () {
     });
 
     $('#btnAbrirNuevoFuncionario').click(function () {
+        $('#fileFoto').val(null);
         $('#FrmFuncionarioModal input').val("");
         $('#FrmFuncionarioModal select').val("-1");
         $('#FrmFuncionarioModal input').parent().removeClass("has-danger");
@@ -143,7 +145,7 @@ $(document).ready(function () {
     $('#btnEliminarFoto').click(function () {
         $("#fileFoto").val(null);
         $("#txtNombreFoto").val("");
-        var urlLogo = getContexApp() + "/peam_resources_app/conf_app/img/default_user.png";
+        var urlLogo = getContext() + "/peam_resources_app/conf_app/img/default_user.png";
         $('#visorFoto').attr('src', urlLogo);
         $('#txtValidacionFoto').val('DEFECTO');
     });
@@ -292,9 +294,11 @@ function agregarEventosFuncionario() {
             }
             if ($(this.parentElement.parentElement).attr('foto') !== "undefined") {
                 $('#txtNombreFoto').val($(this.parentElement.parentElement).attr('foto'));
+                $('#visorFoto').attr('src', "/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + $(this.parentElement.parentElement).attr('foto'));
             } else {
                 $('#txtNombreFoto').val("");
             }
+            $('#fileFoto').val(null);
             if ($(this.parentElement.parentElement).attr('hoja_vida') !== "undefined") {
                 $('#txtNombreCv').val($(this.parentElement.parentElement).attr('hoja_vida'));
             } else {
@@ -565,9 +569,11 @@ function agregarEventosDirectivo() {
             }
             if ($(this.parentElement.parentElement).attr('foto') !== "undefined") {
                 $('#txtNombreFotoDIR').val($(this.parentElement.parentElement).attr('foto'));
+                $('#visorFotoDIR').attr('src', "/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + $(this.parentElement.parentElement).attr('foto'));
             } else {
                 $('#txtNombreFotoDIR').val("");
             }
+            $('#fileFotoDIR').val(null);
             if ($(this.parentElement.parentElement).attr('hoja_vida') !== "undefined") {
                 $('#txtNombreCvDIR').val($(this.parentElement.parentElement).attr('hoja_vida'));
             } else {

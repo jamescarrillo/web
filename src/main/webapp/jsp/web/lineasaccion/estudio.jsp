@@ -62,7 +62,7 @@
                                                 <a><img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/lineas_accion/directores/<%out.print(request.getAttribute("foto_director"));%>" alt="img-director"></a>                
                                             </div>
                                             <div class="col-xs-12 text-center mt-10 mb-10">
-                                                <i class='fa fa-user'></i><a> <%out.print(request.getAttribute("director_cargo"));%></a>
+                                                <a><i class='fa fa-user'></i> <%out.print(request.getAttribute("director_cargo"));%></a>
                                             </div>
                                         </div>
                                         <h2 class='text-peam-negrita'><a>Funciones</a></h2>

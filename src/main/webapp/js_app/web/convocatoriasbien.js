@@ -10,11 +10,12 @@ $(document).ready(function () {
         procesarAjaxConvocatoriaWeb();
         return false;
     });
-    
+
     $('#btnCerrarModalDatos').click(function () {
+        $('#header').css('display', 'block');
         $('#ModalDatos').css('display', 'none');
     });
-    
+
     $('#btnCerrarModalDocumentosBien').click(function () {
         $('#ModalDocumentosBien').css('display', 'none');
     });
@@ -332,6 +333,7 @@ function listarCalendario(BEAN_PAGINATION, id) {
                 };
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
+        $('#header').css('display', 'none');
         $('#ModalDatos').css('display', 'block');
     } else {
         $pagination.twbsPagination('destroy');

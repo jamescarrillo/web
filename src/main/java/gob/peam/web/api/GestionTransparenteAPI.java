@@ -45,6 +45,7 @@ import gob.peam.web.utilities.Utilities;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
@@ -138,7 +139,7 @@ public class GestionTransparenteAPI extends HttpServlet {
         this.telefoniaDAO = new TelefoniaDAOImpl(this.pool);
         this.vehiculoDAO = new VehiculoDAOImpl(this.pool);
         this.proveedorDAO = new ProveedorDAOImpl(this.pool);
-        
+
         this.personalDAO = new PersonalDAOImpl(this.pool);
         this.personalCategoriaDAO = new PersonalCategoriaDAOImpl(this.pool);
     }
@@ -499,12 +500,12 @@ public class GestionTransparenteAPI extends HttpServlet {
             if (request.getParameter("action").equals("updateFuncionario")) {
                 funcionario.setId(Integer.parseInt(request.getParameter("txtIdFuncionarioER")));
             }
-            funcionario.setOrganigrama(request.getParameter("comboOficinaER"));
-            funcionario.setNombres_apellidos(request.getParameter("txtNombreCompletoER"));
-            funcionario.setCargo(request.getParameter("txtCargoER"));
-            funcionario.setNivel_remunerativo(request.getParameter("txtNivelER"));
-            funcionario.setNumero_dni(request.getParameter("txtDniER"));
-            funcionario.setResolucion(request.getParameter("txtDesignadoPorER"));
+            funcionario.setOrganigrama(new String(request.getParameter("comboOficinaER").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            funcionario.setNombres_apellidos(new String(request.getParameter("txtNombreCompletoER").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            funcionario.setCargo(new String(request.getParameter("txtCargoER").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            funcionario.setNivel_remunerativo(new String(request.getParameter("txtNivelER").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            funcionario.setNumero_dni(new String(request.getParameter("txtDniER").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            funcionario.setResolucion(new String(request.getParameter("txtDesignadoPorER").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
             if (!request.getParameter("datePickerFechaDesignacion").equals("")) {
                 funcionario.setFecha_designacion(Utilities.getDateSQLFORMAT(request.getParameter("datePickerFechaDesignacion"), "dd/MM/yyyy"));
             }
@@ -512,9 +513,9 @@ public class GestionTransparenteAPI extends HttpServlet {
             funcionario.setFax(request.getParameter("txtFaxER"));
             funcionario.setE_mail(request.getParameter("txtEmailER"));
             //funcionario.setFoto(request.getParameter(""));
-            funcionario.setProfesion(request.getParameter("txtProfesionER"));
-            funcionario.setResumen(request.getParameter("txtResumenER"));
-            funcionario.setRegimen_laboral(request.getParameter("txtRegimenLaboralER"));
+            funcionario.setProfesion(new String(request.getParameter("txtProfesionER").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            funcionario.setResumen(new String(request.getParameter("txtResumenER").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            funcionario.setRegimen_laboral(new String(request.getParameter("txtRegimenLaboralER").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
             funcionario.setRetribucion_mensual(Double.parseDouble(request.getParameter("txtRetribucionMensualER")));
             //funcionario.setHoja_vida(request.getParameter("txtNombreFileResultadoActual"));
             funcionario.setEstado(Boolean.parseBoolean(request.getParameter("comboEstadoER")));
@@ -623,12 +624,13 @@ public class GestionTransparenteAPI extends HttpServlet {
             if (request.getParameter("action").equals("updateDirectivo")) {
                 directivo.setId(Integer.parseInt(request.getParameter("txtIdDirectivoERDIR")));
             }
-            directivo.setInstitucion(request.getParameter("comboInstitucionERDIR"));
-            directivo.setNombres_apellidos(request.getParameter("txtNombreCompletoERDIR"));
-            directivo.setCargo(request.getParameter("txtCargoERDIR"));
-            directivo.setNivel_remunerativo(request.getParameter("txtNivelERDIR"));
+            //new String(request.getParameter("txtNombreER").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8)
+            directivo.setInstitucion(new String(request.getParameter("comboInstitucionERDIR").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            directivo.setNombres_apellidos(new String(request.getParameter("txtNombreCompletoERDIR").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            directivo.setCargo(new String(request.getParameter("txtCargoERDIR").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            directivo.setNivel_remunerativo(new String(request.getParameter("txtNivelERDIR").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
             directivo.setNumero_dni(request.getParameter("txtDniERDIR"));
-            directivo.setResolucion(request.getParameter("txtDesignadoPorERDIR"));
+            directivo.setResolucion(new String(request.getParameter("txtDesignadoPorERDIR").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
             if (!request.getParameter("datePickerFechaDesignacionDIR").equals("")) {
                 directivo.setFecha_designacion(Utilities.getDateSQLFORMAT(request.getParameter("datePickerFechaDesignacionDIR"), "dd/MM/yyyy"));
             }
@@ -636,9 +638,9 @@ public class GestionTransparenteAPI extends HttpServlet {
             directivo.setFax(request.getParameter("txtFaxERDIR"));
             directivo.setE_mail(request.getParameter("txtEmailERDIR"));
             //directivo.setFoto(request.getParameter(""));
-            directivo.setProfesion(request.getParameter("txtProfesionERDIR"));
-            directivo.setResumen(request.getParameter("txtResumenERDIR"));
-            directivo.setRegimen_laboral(request.getParameter("txtRegimenLaboralERDIR"));
+            directivo.setProfesion(new String(request.getParameter("txtProfesionERDIR").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            directivo.setResumen(new String(request.getParameter("txtResumenERDIR").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+            directivo.setRegimen_laboral(new String(request.getParameter("txtRegimenLaboralERDIR").toUpperCase().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
             directivo.setRetribucion_mensual(Double.parseDouble(request.getParameter("txtRetribucionMensualERDIR")));
             //directivo.setHoja_vida(request.getParameter("txtNombreFileResultadoActual"));
             directivo.setEstado(Boolean.parseBoolean(request.getParameter("comboEstadoERDIR")));

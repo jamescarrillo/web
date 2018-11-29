@@ -133,21 +133,20 @@
                             </article>
                         </div>
                     </div>
-
                     <div id="ModalDatos" class="modal-peam">
                         <!-- Modal content -->
-                        <div class="modal-content-peam">
+                        <div class="modal-content-peam modal-dialog-scroll">
                             <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
                                 <span class="close" id="btnCerrarModalDatos">&times;</span>
-                                <h2 style="margin-top: 15px;" id="DatosModal">
+                                <h2 class="text-peam-verde" style="margin-top: 15px;" id="DatosModal">
                                     Datos Principales
                                 </h2>
                             </div>
-                            <div class="modal-body-peam">
+                            <div class="modal-body-peam modal-body-scroll">
                                 <div class="row mt-10">
                                     <div class="container-fluid">
                                         <div class="row" id="TitularCalendario" style="display: none">
-                                            <div class="text-center" style="margin-top: 5px;">
+                                            <div class="col-xs-12 text-center" style="margin-top: 5px;">
                                                 <p class="text-peam-verde text-peam-negrita" id="ConvocatoriaTitulo" style="font-size: 20px;"></p>
                                             </div>
                                         </div>
@@ -232,22 +231,21 @@
 
                     <div id="ModalDocumentosBien" class="modal-peam">
                         <!-- Modal content -->
-                        <div class="modal-content-peam">
+                        <div class="modal-content-peam modal-dialog-scroll" style="width: 70%;border: #00793D solid;border-width: 3px">
                             <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
                                 <span class="close" id="btnCerrarModalDocumentosBien">&times;</span>
-                                <h2 style="margin-top: 15px;" id="DocumentosBienModal">
+                                <h2 class="text-peam-verde" style="margin-top: 15px;" id="DocumentosBienModal">
                                     Documentos
                                 </h2>
                             </div>
-                            <div class="modal-body-peam">
+                            <div class="modal-body-peam modal-body-scroll">
                                 <div class="row mt-10">
                                     <div class="container-fluid">
                                         <div class="row" id="TitularCalendario2" style="display: none">
-                                            <div class="text-center mb-30" style="margin-top: 5px;">
+                                            <div class="col-xs-12 text-center" style="margin-top: 5px;">
                                                 <p class="text-peam-verde text-peam-negrita" id="ConvocatoriaTitulo2" style="font-size: 20px"></p>
                                             </div>
                                         </div>
-
                                         <div class="row">
                                             <div class="col-xs-12">
                                                 <div class="table-responsive table-hover" style="margin-top: 20px">

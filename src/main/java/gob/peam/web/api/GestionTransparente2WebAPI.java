@@ -153,6 +153,9 @@ public class GestionTransparente2WebAPI extends HttpServlet {
                 case "paginarProveedor":
                     procesarProveedor(new BEAN_CRUD(this.proveedorDAO.getPagination(getParametersProveedor(request))), response);
                     break;
+                case "getDataOrganigrama":
+                    procesarDataOrganigrama(request, response);
+                    break;
                 case "getDataRRHH":
                     procesarDataRRHH(request, response);
                     break;
@@ -233,6 +236,20 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             this.JSONROOT.clear();
             this.JSONROOT.put("DATA_PERSONAL", this.personalDAO.getPagination(getParametersPersonal(request)));
             this.JSONROOT.put("DATA_PERSONAL_PORCATEGORIAS", this.personalCategoriaDAO.getPagination(getParametersPersonalCategoria(request)));
+            this.JSONROOT.put("DATA_FUNCIONARIOS", this.funcionarioDAO.getPagination(getParametersFuncionarios()));
+            this.JSONROOT.put("DATA_DIRECTIVOS", this.directivoDAO.getPagination(getParametersDirectivos()));
+            this.jsonResponseRRHH = this.json.toJson(this.JSONROOT);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponseRRHH);
+            LOG.info(this.jsonResponseRRHH);
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void procesarDataOrganigrama(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            this.JSONROOT.clear();
             this.JSONROOT.put("DATA_FUNCIONARIOS", this.funcionarioDAO.getPagination(getParametersFuncionarios()));
             this.JSONROOT.put("DATA_DIRECTIVOS", this.directivoDAO.getPagination(getParametersDirectivos()));
             this.jsonResponseRRHH = this.json.toJson(this.JSONROOT);

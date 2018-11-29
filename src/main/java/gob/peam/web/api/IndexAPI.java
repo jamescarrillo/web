@@ -8,9 +8,11 @@ package gob.peam.web.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import gob.peam.web.dao.AnuncioDAO;
+import gob.peam.web.dao.FuncionarioDAO;
 import gob.peam.web.dao.MultimediaDAO;
 import gob.peam.web.dao.NotaPrensaDAO;
 import gob.peam.web.dao.impl.AnuncioDAOImpl;
+import gob.peam.web.dao.impl.FuncionarioDAOImpl;
 import gob.peam.web.dao.impl.MultimediaDAOImpl;
 import gob.peam.web.dao.impl.NotaPrensaDAOImpl;
 import gob.peam.web.model.others.Conf_Web;
@@ -41,6 +43,7 @@ public class IndexAPI extends HttpServlet {
     private Gson json;
     private String jsonResponse;
     private HashMap<String, Object> parameters;
+    private HashMap<String, Object> parametersFuncionario;
     private HashMap<String, Object> JSONROOT;
     private static final Logger LOG = Logger.getLogger(IndexAPI.class.getName());
     private String action;
@@ -48,18 +51,21 @@ public class IndexAPI extends HttpServlet {
     private NotaPrensaDAO notaPrensaDAO;
     private MultimediaDAO multimediaDAO;
     private AnuncioDAO anuncioDAO;
+    private FuncionarioDAO funcionarioDAO;
 
     @Override
     public void init() throws ServletException {
         super.init(); // To change body of generated methods, choose Tools | Templates.
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
         this.parameters = new HashMap<>();
+        this.parametersFuncionario = new HashMap<>();
         this.JSONROOT = new HashMap<>();
         this.action = "";
 
         this.notaPrensaDAO = new NotaPrensaDAOImpl(this.pool);
         this.multimediaDAO = new MultimediaDAOImpl(this.pool);
         this.anuncioDAO = new AnuncioDAOImpl(this.pool);
+        this.funcionarioDAO = new FuncionarioDAOImpl(this.pool);
     }
 
     /**
@@ -121,7 +127,7 @@ public class IndexAPI extends HttpServlet {
             this.JSONROOT.put("DATA_NOTASPRENSA", this.notaPrensaDAO.getPagination(getParametersNotasPrensa()));
             this.JSONROOT.put("DATA_MULTIMEDIA", this.multimediaDAO.getPagination(getParametersMultimedia(conf_web)));
             this.JSONROOT.put("DATA_ANUNCIOS", this.anuncioDAO.getAnunciosDia(Integer.parseInt(conf_web.getNumero_anuncios_mostrar())));
-            this.JSONROOT.put("DATA_GERENTE", "");
+            this.JSONROOT.put("DATA_FUNCIONARIOS", this.funcionarioDAO.getPagination(getParametersFuncionarios()));
             this.JSONROOT.put("GALERIA_APIKEY", conf_web.getApikey());
             this.JSONROOT.put("GALERIA_IDUSUARIO", conf_web.getIdusuario());
             this.JSONROOT.put("GALERIA_IDALBUM", conf_web.getIdalbum());
@@ -154,6 +160,15 @@ public class IndexAPI extends HttpServlet {
         this.parameters.put("SQL_ORDERS", "FECHA DESC");
         this.parameters.put("LIMIT", " LIMIT " + conf_web.getNumero_videos_multimedia() + " OFFSET 0");
         return this.parameters;
+    }
+
+    private HashMap<String, Object> getParametersFuncionarios() {
+        this.parametersFuncionario.clear();
+        this.parametersFuncionario.put("FILTER", "");
+        this.parametersFuncionario.put("SQL_ESTADO", "AND ESTADO = TRUE AND DESTACADO = TRUE AND ORGANIGRAMA ='GERENCIA GENERAL'");
+        this.parametersFuncionario.put("SQL_ORDERS", "NOMBRES_APELLIDOS");
+        this.parametersFuncionario.put("LIMIT", "");
+        return this.parametersFuncionario;
     }
 
     /**

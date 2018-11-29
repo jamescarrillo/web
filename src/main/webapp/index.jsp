@@ -539,19 +539,20 @@
                     <div class="col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2 mt-15">
                         <div class="team-wrapper text-center">
                             <div class="team-img">
-                                <a href="#"><img src="peam_resources_app/fotos_users/gerente2.jpg" class="img-responsive" alt="Imagen"></a>
+                                <a><img id="imgGG" src="peam_resources_app/fotos_users/gerente2.jpg" class="img-responsive" alt="Imagen"></a>
                             </div>
                             <div class="team-title" style="padding-top: 15px;">
                                 <h3 class="text-peam-negrita">
-                                    <a href="#" style="text-transform: none"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Carmen Beatriz Ríos Vásquez</font></font></a>
+                                    <a style="text-transform: none" id="nombreGG">Carmen Beatriz Ríos Vásquez</a>
                                 </h3>
-                                <span class="mb-10"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;" class="text-peam-negrita">Gerente General</font></font>
+                                <span class="mb-10 text-peam-negrita" id="cargoGG">
+                                    Gerente General
                                 </span>
-                                <h5 class="text-peam-negrita">
-                                    <i class="fa fa-phone"></i> (042) - 562522
+                                <h5 class="text-peam-negrita" id="telefonoGG">
+                                    <i class='fa fa-phone'></i> (042) - 562522
                                 </h5>
-                                <h5 class="mb-20 text-peam-verde-index">
-                                    <i class="fa fa-envelope-o"></i> <a href="mailto:gerencia@peam.gob.pe">gerencia@peam.gob.pe</a>
+                                <h5 class="mb-20 text-peam-verde-index" id="correoGG">
+                                    <i class='fa fa-envelope-o'></i> <a href='mailto:gerencia@peam.gob.pe'>gerencia@peam.gob.pe</a>
                                 </h5>
                             </div>
                         </div>

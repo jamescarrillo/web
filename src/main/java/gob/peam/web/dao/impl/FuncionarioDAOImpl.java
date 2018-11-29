@@ -44,6 +44,7 @@ public class FuncionarioDAOImpl implements FuncionarioDAO {
             pst = conn.prepareStatement("SELECT COUNT(ID) AS COUNT FROM WEB.F00013 WHERE "
                     + "LOWER(NOMBRES_APELLIDOS) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            this.logger.info(pst.toString());
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
