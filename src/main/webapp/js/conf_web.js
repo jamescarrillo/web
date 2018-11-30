@@ -29,7 +29,7 @@ function procesarAjaxBusquedaWeb() {
         dataType: 'json',
         success: function (jsonResponse) {
             $('#loader_contenido_busqueda').css('display', 'none');
-            console.log(jsonResponse);
+            //console.log(jsonResponse);
             $('#containerBusqueda').empty();
             var div;
             $(jsonResponse.DATA_BUSQUEDA).each(function (index, value) {

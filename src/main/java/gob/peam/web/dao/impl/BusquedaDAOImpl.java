@@ -32,14 +32,14 @@ public class BusquedaDAOImpl {
         List<Busqueda> list = new ArrayList<>(sizePage);
         try (Connection conn = this.pool.getConnection()) {
             String query = "SELECT titulo_formato t, descripcion d, "
-                    + " CASE WHEN titulo_formato='Misión' THEN './institucion/vision-y-mision'"
-                    + " WHEN titulo_formato='Visión' THEN './institucion/vision-y-mision'"
-                    + " WHEN titulo_formato='Ubicación' THEN './institucion/ubicacion'"
-                    + " WHEN titulo_formato='Estructura Orgánica (Organigrama)' THEN './institucion/estructura-organica'"
-                    + " WHEN titulo_formato='Directorio Telefónico' THEN './institucion/directorios-de-contactos'"
-                    + " ELSE './institucion/objetivos-y-funciones'"
+                    + " CASE WHEN titulo_formato='Misión' THEN '/web/institucion/vision-y-mision'"
+                    + " WHEN titulo_formato='Visión' THEN '/web/institucion/vision-y-mision'"
+                    + " WHEN titulo_formato='Ubicación' THEN '/web/institucion/ubicacion'"
+                    + " WHEN titulo_formato='Estructura Orgánica (Organigrama)' THEN '/web/institucion/estructura-organica'"
+                    + " WHEN titulo_formato='Directorio Telefónico' THEN '/web/institucion/directorios-de-contactos'"
+                    + " ELSE '/web/institucion/objetivos-y-funciones'"
                     + " END  r from web.f00025 where ((concat(titulo_formato, ' ', descripcion) ILIKE CONCAT('%',?,'%')))"
-                    + " UNION SELECT titulo t, substring(contenido from 1 for 301) d, concat('./publicaciones/noticias/notas-de-prensa?action=readNotaPrensa&idNota=',id)  r  from web.f00021 where ((concat(titulo) ILIKE CONCAT('%',?,'%')))"
+                    + " UNION SELECT titulo t, substring(contenido from 1 for 301) d, concat('/web/publicaciones/noticias/notas-de-prensa?action=readNotaPrensa&idNota=',id)  r  from web.f00021 where ((concat(titulo) ILIKE CONCAT('%',?,'%')))"
                     + " UNION SELECT docu_titulo t, substring(docu_resumen from 1 for 301) d, concat('http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=',docu_id,'&anho=',trim(substring(docu_fecha_docx from 7)))  r  from web.documento where ((concat(docu_titulo) ILIKE CONCAT('%',?,'%')))";
             //ADD DELIMITADOR
             query += " LIMIT " + sizePage + " OFFSET 0";

@@ -39,7 +39,7 @@ function addDataGerencia(DATA_FUNCIONARIOS) {
             tele = value.telefono;
         }
         $('#telefonoGG').html("<i class='fa fa-phone'></i> " + tele);
-        $('#correoGG').html("<i class='fa fa-envelope-o'></i> " + value.e_mail);
+        $('#correoGG').html("<a href='mailto:" + value.e_mail + "'><i class='fa fa-envelope-o'></i> " + value.e_mail + "</a>");
     });
 }
 

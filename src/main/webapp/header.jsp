@@ -27,15 +27,11 @@
                                 </h5>
                             </div>
                             <div class="modal-body-peam modal-body-scroll">
+                                <div class="row">
+                                    
+                                </div>
                                 <div class="row" style="margin-top: 20px;" id="containerBusqueda">
-                                    <!--div class="col-xs-12">
-                                        <a href="./publicaciones/noticias/notas-de-prensa?action=readNotaPrensa&amp;idNota=492">
-                                            <h3 style='background-color: #00793D; color: #ffffff;cursor: pointer; padding: 10px; text-decoration: underline'>SSSSSSSSSConstrucción de puente Yuracyacu en Nueva Cajamarca tiene avance del 15%</h3>
-                                        </a>
-                                        <p>La construcción del puente Yuracyacu en el distrito de Nueva Cajamarca, 
-                                            provincia de Rioja, ya tiene un avance del 15%, así lo informó el gerente del PEAM, Ing. Wilson Becerra Pérez, luego de una inspección realizada a la zona.</p>
-                                        <p>"La contratista trabaja en las dos márgenes, cada frente de tra</p>
-                                    </div-->
+                                    
                                 </div>
                             </div>
                             <div class="modal-footer-peam" style="background-color: #ffffff; border-top: #00793D solid; border-width: 2px">
