@@ -12,6 +12,7 @@ import gob.peam.web.dao.FuncionarioDAO;
 import gob.peam.web.dao.MultimediaDAO;
 import gob.peam.web.dao.NotaPrensaDAO;
 import gob.peam.web.dao.impl.AnuncioDAOImpl;
+import gob.peam.web.dao.impl.BusquedaDAOImpl;
 import gob.peam.web.dao.impl.FuncionarioDAOImpl;
 import gob.peam.web.dao.impl.MultimediaDAOImpl;
 import gob.peam.web.dao.impl.NotaPrensaDAOImpl;
@@ -37,7 +38,7 @@ import javax.sql.DataSource;
  */
 @WebServlet(name = "IndexAPI", urlPatterns = {"/index"})
 public class IndexAPI extends HttpServlet {
-
+    
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
     private Gson json;
@@ -47,12 +48,13 @@ public class IndexAPI extends HttpServlet {
     private HashMap<String, Object> JSONROOT;
     private static final Logger LOG = Logger.getLogger(IndexAPI.class.getName());
     private String action;
-
+    
     private NotaPrensaDAO notaPrensaDAO;
     private MultimediaDAO multimediaDAO;
     private AnuncioDAO anuncioDAO;
     private FuncionarioDAO funcionarioDAO;
-
+    private BusquedaDAOImpl busquedaDAO;
+    
     @Override
     public void init() throws ServletException {
         super.init(); // To change body of generated methods, choose Tools | Templates.
@@ -61,11 +63,12 @@ public class IndexAPI extends HttpServlet {
         this.parametersFuncionario = new HashMap<>();
         this.JSONROOT = new HashMap<>();
         this.action = "";
-
+        
         this.notaPrensaDAO = new NotaPrensaDAOImpl(this.pool);
         this.multimediaDAO = new MultimediaDAOImpl(this.pool);
         this.anuncioDAO = new AnuncioDAOImpl(this.pool);
         this.funcionarioDAO = new FuncionarioDAOImpl(this.pool);
+        this.busquedaDAO = new BusquedaDAOImpl(this.pool);
     }
 
     /**
@@ -84,6 +87,9 @@ public class IndexAPI extends HttpServlet {
         switch (this.action) {
             case "getDataIndex":
                 procesarDataIndex(response);
+                break;
+            case "buscarPage":
+                procesBusqueda(request, response);
                 break;
             default:
                 request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -119,7 +125,7 @@ public class IndexAPI extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     private void procesarDataIndex(HttpServletResponse response) {
         try {
             Conf_Web conf_web = Utilities.getConf_Web(getServletContext().getRealPath("/peam_resources_app/conf_app/files/"), "conf_web.properties");
@@ -137,10 +143,23 @@ public class IndexAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             LOG.info(this.jsonResponse);
         } catch (SQLException | IOException ex) {
-            Logger.getLogger(PublicacionesWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(IndexAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
+    private void procesBusqueda(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            this.JSONROOT.clear();
+            this.JSONROOT.put("DATA_BUSQUEDA", this.busquedaDAO.getBusqueda(request.getParameter("txtBusquedaPage"), 100));
+            this.jsonResponse = this.json.toJson(this.JSONROOT);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (SQLException | IOException ex) {
+            Logger.getLogger(IndexAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private HashMap<String, Object> getParametersNotasPrensa() {
         this.parameters.clear();
         LocalDate localdate = LocalDate.now();
@@ -151,7 +170,7 @@ public class IndexAPI extends HttpServlet {
         this.parameters.put("LIMIT", " LIMIT 10 OFFSET 0");
         return this.parameters;
     }
-
+    
     private HashMap<String, Object> getParametersMultimedia(Conf_Web conf_web) {
         this.parameters.clear();
         this.parameters.put("FILTER", "");
@@ -161,7 +180,7 @@ public class IndexAPI extends HttpServlet {
         this.parameters.put("LIMIT", " LIMIT " + conf_web.getNumero_videos_multimedia() + " OFFSET 0");
         return this.parameters;
     }
-
+    
     private HashMap<String, Object> getParametersFuncionarios() {
         this.parametersFuncionario.clear();
         this.parametersFuncionario.put("FILTER", "");

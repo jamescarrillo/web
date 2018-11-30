@@ -179,7 +179,34 @@ public class NotaPrensaDAOImpl implements NotaPrensaDAO {
 
     @Override
     public NotaPrensa get(long id) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        NotaPrensa obj = null;
+        try (Connection conn = this.pool.getConnection()) {
+            try (PreparedStatement pst = conn.prepareStatement("SELECT * FROM WEB.F00021 WHERE ID = ?")) {
+                pst.setInt(1, (int) id);
+                LOG.info(pst.toString());
+                try (ResultSet rs = pst.executeQuery()) {
+                    while (rs.next()) {
+                        obj = new NotaPrensa();
+                        obj.setId(rs.getInt("ID"));
+                        obj.setAnho(rs.getString("ANHO"));
+                        obj.setTitulo(rs.getString("TITULO"));
+                        obj.setFuente(rs.getString("FUENTE"));
+                        obj.setContenido(rs.getString("CONTENIDO"));
+                        obj.setFecha(rs.getDate("FECHA"));
+                        obj.setFoto(rs.getString("FOTO"));
+                        obj.setEstado(rs.getBoolean("ESTADO"));
+                        Persona per = new Persona();
+                        per.setPers_id(rs.getInt("SUBIDO_POR"));
+                        obj.setSubido_por(per);
+                        obj.setFecha_creacion(rs.getDate("FECHA_CREACION"));
+                        obj.setFecha_actualizacion(rs.getDate("FECHA_ACTUALIZACION"));
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw e;
+        }
+        return obj;
     }
 
     @Override

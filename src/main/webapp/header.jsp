@@ -8,13 +8,41 @@
                 </div>
                 <i class="search-close material-icons">close</i>
                 <div class="search-form-wrapper">
-                    <form action="#" class="white-form">
+                    <form id="FrmBusquedaPage" class="white-form">
                         <div class="input-field">
-                            <input type="text" name="search" id="search">
+                            <input type="text" name="txtBusquedaPage" id="txtBusquedaPage">
                             <label for="search" class="">Busca aquí...</label>
                         </div>
                         <button class="btn search-button waves-effect waves-light" type="submit" style="background-color: #8b8c8d"><i class="material-icons">search</i></button>
+                        <input type="hidden" name="action" id="actionBusquedaPage">
+
                     </form>
+                    <div id="ventanaModalBusqueda" class="modal-peam" style="z-index: 2000">
+                        <!-- Modal content -->
+                        <div class="modal-content-peam  modal-dialog-scroll contentMyModal" style="width: 80%">
+                            <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
+                                <span class="close" id="btnCerrarModalBusqueda">&times;</span>
+                                <h5 class="text-peam-verde text-peam-negrita" style="margin-top: 15px;">
+                                    CONTENIDO DE BUSQUEDA
+                                </h5>
+                            </div>
+                            <div class="modal-body-peam modal-body-scroll">
+                                <div class="row" style="margin-top: 20px;" id="containerBusqueda">
+                                    <!--div class="col-xs-12">
+                                        <a href="./publicaciones/noticias/notas-de-prensa?action=readNotaPrensa&amp;idNota=492">
+                                            <h3 style='background-color: #00793D; color: #ffffff;cursor: pointer; padding: 10px; text-decoration: underline'>SSSSSSSSSConstrucción de puente Yuracyacu en Nueva Cajamarca tiene avance del 15%</h3>
+                                        </a>
+                                        <p>La construcción del puente Yuracyacu en el distrito de Nueva Cajamarca, 
+                                            provincia de Rioja, ya tiene un avance del 15%, así lo informó el gerente del PEAM, Ing. Wilson Becerra Pérez, luego de una inspección realizada a la zona.</p>
+                                        <p>"La contratista trabaja en las dos márgenes, cada frente de tra</p>
+                                    </div-->
+                                </div>
+                            </div>
+                            <div class="modal-footer-peam" style="background-color: #ffffff; border-top: #00793D solid; border-width: 2px">
+                                <h6 style="margin-top: 10px;" class="text-peam-negrita">PROYECTO ESPECIAL ALTO MAYO</h6>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="materialize-menu" class="menuzord" style="height: 82px">

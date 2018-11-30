@@ -194,7 +194,8 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         this.parameters.put("SQL_ESTADO", "AND DOCU_ESTADO = TRUE");
         this.parameters.put("SQL_CATE_ID", " " + getCategoriaIdFinal(request));
         this.parameters.put("SQL_TIDO_ID", " " + getTidoIdFinal(request));
-        this.parameters.put("SQL_ORDERS", "TO_DATE(DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
+        //this.parameters.put("SQL_ORDERS", "TO_DATE(DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
+        this.parameters.put("SQL_ORDERS", "DOCU_TITULO ASC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageDocumentos") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageDocumentos")) - 1)

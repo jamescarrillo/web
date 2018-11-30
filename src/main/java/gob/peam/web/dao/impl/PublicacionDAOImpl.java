@@ -24,8 +24,8 @@ import javax.sql.DataSource;
  *
  * @author JhanxD
  */
-public class PublicacionDAOImpl implements PublicacionDAO{
-    
+public class PublicacionDAOImpl implements PublicacionDAO {
+
     private static final Logger LOG = Logger.getLogger(DocumentoDAOImpl.class.getName());
     private final DataSource pool;
 
@@ -173,7 +173,7 @@ public class PublicacionDAOImpl implements PublicacionDAO{
     public Publicacion get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     @Override
     public BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
@@ -199,5 +199,5 @@ public class PublicacionDAOImpl implements PublicacionDAO{
         }
         return beancrud;
     }
-    
+
 }

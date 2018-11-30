@@ -8,7 +8,7 @@ $(document).ready(function () {
         procesarAjaxDirectorioWeb();
         return false;
     });
-    
+
     $("#FrmFuncionario").submit(function () {
         $('#tbodyFuncionario').empty();
         $('#numberPageFuncionario').val("1");
@@ -37,7 +37,7 @@ function procesarAjaxDirectorioWeb() {
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
             $('#loader_contenido_Directorio').css('display', 'none');
-            viewAlertWeb('error', 'Error interno en el servidor!');
+            //viewAlertWeb('error', 'Error interno en el servidor!');
         }
     });
     return false;
@@ -57,7 +57,7 @@ function procesarAjaxFuncionarioWeb() {
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
             $('#loader_contenido_Funcionario').css('display', 'none');
-            viewAlertWeb('error', 'Error interno en el servidor!');
+            //viewAlertWeb('error', 'Error interno en el servidor!');
         }
     });
     return false;

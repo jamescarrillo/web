@@ -15,6 +15,7 @@ import gob.peam.web.dao.impl.AnuncioDAOImpl;
 import gob.peam.web.dao.impl.MultimediaDAOImpl;
 import gob.peam.web.dao.impl.NotaPrensaDAOImpl;
 import gob.peam.web.dao.impl.PublicacionDAOImpl;
+import gob.peam.web.model.NotaPrensa;
 import gob.peam.web.utilities.BEAN_CRUD;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -88,6 +89,9 @@ public class PublicacionesWebAPI extends HttpServlet {
                     switch (this.action) {
                         case "paginarNotaPrensa":
                             procesarNotaPrensa(new BEAN_CRUD(this.notaPrensaDAO.getPagination(getParametersNotasPrensa(request))), response);
+                            break;
+                        case "getNotaPrensa":
+                            procesarNotaPrensa2(request, response);
                             break;
                         case "readNotaPrensa":
                             request.getRequestDispatcher("/jsp/web/publicaciones/notaPrensaWeb.jsp").forward(request, response);
@@ -186,6 +190,22 @@ public class PublicacionesWebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             LOG.info(this.jsonResponse);
         } catch (IOException ex) {
+            Logger.getLogger(PublicacionesWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void procesarNotaPrensa2(HttpServletRequest request, HttpServletResponse response) {
+        try {
+            NotaPrensa obj = this.notaPrensaDAO.get(Long.parseLong(request.getParameter("idNota")));
+            if (obj != null) {
+                this.jsonResponse = this.json.toJson(obj);
+            } else {
+                this.jsonResponse = this.json.toJson("");
+            }
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException | SQLException ex) {
             Logger.getLogger(PublicacionesWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
