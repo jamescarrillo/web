@@ -203,29 +203,28 @@ public class ConvocatoriaBienAPI extends HttpServlet {
         this.parameters.clear();
         if (request.getParameter("action").equals("uploadConvocatoriaBien")) {
             this.parameters.put("ARCHIVO", String.valueOf(request.getParameter("txtCadena")).substring(1));
-        } else {
-            this.parameters.put("FILTER", request.getParameter("txtConvocatoriaBien").toLowerCase());
-            if (request.getParameter("comboAnio").equals("-1")) {
-                this.parameters.put("SQL_ANIO", "");
-            } else {
-                this.parameters.put("SQL_ANIO", "AND ANHO = '1" + String.valueOf(request.getParameter("comboAnio")).substring(2, 4) + "' ");
-            }
-            if (request.getParameter("comboTipoListaConvocatoriaBien").equals("-1")) {
-                this.parameters.put("SQL_ESTADO", "");
-            } else {
-                this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("comboTipoListaConvocatoriaBien") + " ");
-            }
-            if (request.getParameter("txtEstadoER").equals("true")) {
-                this.parameters.put("ESTADO", "false");
-            } else {
-                this.parameters.put("ESTADO", "true");
-            }
-            this.parameters.put("SQL_ORDERS", "FECHA DESC");
-            this.parameters.put("LIMIT",
-                    " LIMIT " + request.getParameter("sizePageConvocatoriaBien") + " OFFSET "
-                    + (Integer.parseInt(request.getParameter("numberPageConvocatoriaBien")) - 1)
-                    * Integer.parseInt(request.getParameter("sizePageConvocatoriaBien")));
         }
+        this.parameters.put("FILTER", request.getParameter("txtConvocatoriaBien").toLowerCase());
+        if (request.getParameter("comboAnio").equals("-1")) {
+            this.parameters.put("SQL_ANIO", "");
+        } else {
+            this.parameters.put("SQL_ANIO", "AND ANHO = '1" + String.valueOf(request.getParameter("comboAnio")).substring(2, 4) + "' ");
+        }
+        if (request.getParameter("comboTipoListaConvocatoriaBien").equals("-1")) {
+            this.parameters.put("SQL_ESTADO", "");
+        } else {
+            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("comboTipoListaConvocatoriaBien") + " ");
+        }
+        if (request.getParameter("txtEstadoER").equals("true")) {
+            this.parameters.put("ESTADO", "false");
+        } else {
+            this.parameters.put("ESTADO", "true");
+        }
+        this.parameters.put("SQL_ORDERS", "FECHA DESC");
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePageConvocatoriaBien") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageConvocatoriaBien")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageConvocatoriaBien")));
         return this.parameters;
     }
 
@@ -256,30 +255,30 @@ public class ConvocatoriaBienAPI extends HttpServlet {
             ///PARTE DOCUMENTO
             String longi = String.valueOf(request.getParameter("txtCantidad")).substring(1);
             logger.info(longi);
-            String[] longitud =longi.split(",");
+            String[] longitud = longi.split(",");
             for (int i = 0; i < longitud.length; i++) {
-                Part filePart = request.getPart("fileArchivoCB"+longitud[i]);
-            boolean copiar = true;
-            File fileTemp = null;
-            switch (request.getParameter("txtValidacionArchivoCB"+longitud[i])) {
-                case "SI":
-                    //HAY UN ARCHIVO QUE HA VENIDO
-                    if (!request.getParameter("txtNombreFileResultadoActualCB"+longitud[i]).equals("")) {
-                        fileTemp = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/ArchvivosConvocatorias/C_" + String.valueOf(request.getParameter("txtNombreFileResultadoActualCB"+longitud[i]))));
-                    }
-                    break;
-                default:
-                    copiar = false; //YA NO SE COPIA PORQUE ES EL MISMO, NO HAY ARCHIVO
-                    break;
+                Part filePart = request.getPart("fileArchivoCB" + longitud[i]);
+                boolean copiar = true;
+                File fileTemp = null;
+                switch (request.getParameter("txtValidacionArchivoCB" + longitud[i])) {
+                    case "SI":
+                        //HAY UN ARCHIVO QUE HA VENIDO
+                        if (!request.getParameter("txtNombreFileResultadoActualCB" + longitud[i]).equals("")) {
+                            fileTemp = new File(getServletContext().getRealPath("/peam_resources_app/conf_app/ArchvivosConvocatorias/C_" + String.valueOf(request.getParameter("txtNombreFileResultadoActualCB" + longitud[i]))));
+                        }
+                        break;
+                    default:
+                        copiar = false; //YA NO SE COPIA PORQUE ES EL MISMO, NO HAY ARCHIVO
+                        break;
+                }
+                if (fileTemp != null && fileTemp.exists()) {
+                    fileTemp.delete();
+                }
+                if (copiar) {
+                    obj = uploadFile(filePart, obj);
+                }
             }
-            if (fileTemp != null && fileTemp.exists()) {
-                fileTemp.delete();
-            }
-            if (copiar) {
-                obj = uploadFile(filePart, obj);
-            }
-            }
-            
+
         } catch (IOException | ServletException ex) {
             Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -300,7 +299,7 @@ public class ConvocatoriaBienAPI extends HttpServlet {
         }
         return obj;
     }
-    
+
     private void procesarCalendario_Conv(BEAN_CRUD bean_crud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(bean_crud);
@@ -338,7 +337,7 @@ public class ConvocatoriaBienAPI extends HttpServlet {
         obj.setTipo((int) 1);
         return obj;
     }
-    
+
     /// ACTIVIDADES
     private void procesarActividad(BEAN_CRUD beanCrud, HttpServletResponse response) {
         try {
@@ -372,6 +371,5 @@ public class ConvocatoriaBienAPI extends HttpServlet {
         obj.setActi_tipo((int) 1);
         return obj;
     }
-
 
 }

@@ -43,6 +43,7 @@ public class ConvocatoriaBienDAOImpl implements ConvocatoriaBienDAO {
             pst = conn.prepareStatement("SELECT COUNT(CONVO_ID) AS CANT FROM WEB.CONVOCATORIA_BIEN WHERE "
                     + "(LOWER(REFERENCIA) LIKE CONCAT('%',?,'%')) " + String.valueOf(parameters.get("SQL_ESTADO")));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            logger.info(pst);
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
@@ -178,8 +179,9 @@ public class ConvocatoriaBienDAOImpl implements ConvocatoriaBienDAO {
             rs = pst.executeQuery();
             while (rs.next()) {
                 if (rs.getInt("CANT") <= 0) {
-                    pst = conn.prepareStatement("DELETE FROM WEB.CONVOCATORIA_PERS WHERE COPER_ID = ?");
+                    pst = conn.prepareStatement("DELETE FROM WEB.CONVOCATORIA_BIEN WHERE CONVO_ID = ?");
                     pst.setInt(1, (int) id);
+                    logger.info(pst);
                     pst.executeUpdate();
                     conn.commit();
                     beancrud.setMESSAGE_SERVER("ok");
@@ -238,6 +240,7 @@ public class ConvocatoriaBienDAOImpl implements ConvocatoriaBienDAO {
             pst.executeUpdate();
             conn.commit();
             beancrud.setMESSAGE_SERVER("ok");
+            beancrud.setBEAN_PAGINATION(getPagination(parameters, conn));
             pst.close();
         } catch (SQLException ex) {
             throw ex;

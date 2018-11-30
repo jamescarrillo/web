@@ -123,11 +123,13 @@ $(document).ready(function () {
     });
 
     $("#FrmArchivosModal").submit(function () {
-        if (validarFormularioArchivos()) {
+        if (validarUploadArchivos() !== 14) {
             $("#numberPageConvocatoriaBien").val(1);
             $("#nameForm").val("FrmArchivosModal");
             $('#modalCargandoArchivos').modal("show");
             //viewAlert('warning', 'Estamos trabajando!');
+        }else{
+            viewAlert('warning', 'No puede guardar, no ha subido archivos');
         }
         return false;
     });
@@ -394,6 +396,7 @@ function listarConvocatoriaBien(BEAN_PAGINATION) {
         var tooltip;
         var ttipo;
         var pproceso;
+        var archivos;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
             if (!value.estado) {
                 text_color = "text-danger";
@@ -432,6 +435,23 @@ function listarConvocatoriaBien(BEAN_PAGINATION) {
                     pproceso = "DESIERTO";
                     break;
             }
+
+            archivos = "file1='" + value.base_file + "' ";
+            archivos += "file2='" + value.res_eject_file + "' ";
+            archivos += "file4='" + value.abs_consult_file + "' ";
+            archivos += "file5='" + value.abs_observa_file + "' ";
+            archivos += "file6='" + value.pro_enti_file + "' ";
+            archivos += "file7='" + value.pro_osce_file + "' ";
+            archivos += "file8='" + value.bas_inte_file + "' ";
+            archivos += "file9='" + value.act_eval_tec_file + "' ";
+            archivos += "file10='" + value.cua_compa_file + "' ";
+            archivos += "file11='" + value.acta_buena_pro_file + "' ";
+            archivos += "file12='" + value.noti_sus_file + "' ";
+            archivos += "file13='" + value.res_rec_enti_file + "' ";
+            archivos += "file14='" + value.res_res_trib_file + "' ";
+            archivos += "file3='" + value.abs_con_obser_file + "' ";
+
+
             fila = "<tr ";
             fila += "convo_id='" + value.convo_id + "' ";
             fila += "titulo='" + value.titulo + "' ";
@@ -443,7 +463,7 @@ function listarConvocatoriaBien(BEAN_PAGINATION) {
             fila += "cost_participacion='" + value.cost_participacion + "' ";
             fila += "proceso='" + value.proceso + "' ";
             fila += "estado='" + value.estado + "' ";
-            fila += ">";
+            fila += archivos + " + >";
             fila += "<td class='text-center align-middle text-medium-table " + text_color + "'>" + value.fecha + "</td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'>" + value.referencia + "</td>";
             fila += "<td class='align-middle text-medium-table " + text_color + "'>" + ttipo + "</td>";
@@ -466,7 +486,7 @@ function listarConvocatoriaBien(BEAN_PAGINATION) {
         $('#txtNombreConvocatoriaBien').focus();
     } else {
         $pagination.twbsPagination('destroy');
-        viewAlert('warning', 'No se enconntraron resultados');
+        viewAlert('warning', 'No se encontraron resultados');
     }
 }
 
@@ -507,6 +527,9 @@ function agregarEventosConvocatoriaBien() {
     $('.Documentos').each(function () {
         $(this).click(function () {
             $('#txtConvoIdER').val($(this.parentElement.parentElement).attr('convo_id'));
+            for (var i = 1; i < 15; i++) {
+                cargardocumentos($(this.parentElement.parentElement).attr('file' + i), i);
+            }
             $('#ventanaArchivos').modal("show");
 
             document.getElementsByTagName("body")[0].style.paddingRight = "0";
@@ -537,6 +560,26 @@ function agregarEventosConvocatoriaBien() {
             $('.swal2-confirm').css("margin-right", "15px");
         });
     });
+}
+
+function cargardocumentos(nombre, orden) {
+    var dato;
+    if (nombre !== 'undefined') {
+        dato = nombre.toString().substr(2);
+        $('#txtNombreArchivoCB' + orden).val(dato);
+    } else {
+        $('#txtNombreArchivoCB' + orden).val("");
+    }
+}
+
+function validarUploadArchivos() {
+    var total = 0;
+    for (var orden = 0; orden < 15; orden++) {
+        if ($('#txtNombreFileResultadoActualCB' + orden).val() === "") {
+            total++;
+        }
+    }
+    return total;
 }
 
 function valicacionesCamposConvocatoriaBien() {
@@ -619,16 +662,18 @@ function validarFormularioConvocatoriaBien() {
     return true;
 }
 
-function validarFormularioArchivos() {
-    return true;
-}
-
 function procesarAjaxArchivos(cadena, acum) {
     var form = $('#FrmArchivosModal')[0];
     var data1 = new FormData(form);
     data1.append('txtCadena', cadena);
     data1.append('txtCantidad', acum);
     data1.append('txtConvoIdER', $('#txtConvoIdER').val());
+    data1.append('txtConvocatoriaBien', $('#txtConvocatoriaBien').val());
+    data1.append('comboAnio', $('#comboAnio').val());
+    data1.append('txtEstadoER', $('#txtEstadoER').val());
+    data1.append('comboTipoListaConvocatoriaBien', $('#comboTipoListaConvocatoriaBien').val());
+    data1.append('numberPageConvocatoriaBien',  $('#numberPageConvocatoriaBien').val());
+    data1.append('sizePageConvocatoriaBien', $('#sizePageConvocatoriaBien').val());
     data1.append('action', "uploadConvocatoriaBien");
     $.ajax({
         url: getContext() + '/convocatorias/bsc',
@@ -644,6 +689,7 @@ function procesarAjaxArchivos(cadena, acum) {
             $('#modalCargandoArchivos').modal("hide");
             if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
                 viewAlert('success', 'Documentos correctamente subidos');
+                listarConvocatoriaBien(jsonResponse.BEAN_PAGINATION);
             } else {
                 viewAlert('warning', jsonResponse.MESSAGE_SERVER);
             }
@@ -691,7 +737,7 @@ function procesarAjaxCalendarioConv() {
             } else {
                 if (jsonResponse.MESSAGE_SERVER.toLowerCase() === "ok") {
                     viewAlert('success', getMessageServerTransaction($('#actionCalendarioConv').val(), 'Actividad', 'a'));
-                    listarCalendarioConv(jsonResponse.BEAN_PAGINATION);
+                    listarCalendarioConv(jsonResponse.BEAN_PAGINATION.BEAN_PAGINATION);
                 } else {
                     viewAlert('warning', jsonResponse.MESSAGE_SERVER);
                 }
