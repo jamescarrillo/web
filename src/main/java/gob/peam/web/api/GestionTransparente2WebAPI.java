@@ -295,9 +295,9 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         this.parametersOrdenCompra.put("FILTER", request.getParameter("txtProveedorOrdenCompra").toLowerCase());
         this.parametersOrdenCompra.put("SQL_ORDERS", "FECHA_COMPRA DESC");
         if (request.getParameter("comboAnioOrdenCompra").equals("-1")) {
-            this.parametersOrdenCompra.put("SQL_ESTADO", "");
+            this.parametersOrdenCompra.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersOrdenCompra.put("SQL_ESTADO", "AND ANHO = '" + request.getParameter("comboAnioOrdenCompra") + "'");
+            this.parametersOrdenCompra.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioOrdenCompra") + "' ");
         }
         this.parametersOrdenCompra.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageOrdenCompra") + " OFFSET "
@@ -322,9 +322,9 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         this.parametersOrdenServicio.put("FILTER", request.getParameter("txtProveedorOrdenServicio").toLowerCase());
         this.parametersOrdenServicio.put("SQL_ORDERS", "FECHA_COMPRA DESC");
         if (request.getParameter("comboAnioOrdenServicio").equals("-1")) {
-            this.parametersOrdenServicio.put("SQL_ESTADO", "");
+            this.parametersOrdenServicio.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersOrdenServicio.put("SQL_ESTADO", "AND ANHO = '" + request.getParameter("comboAnioOrdenServicio") + "'");
+            this.parametersOrdenServicio.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioOrdenServicio") + "' ");
         }
         this.parametersOrdenServicio.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageOrdenServicio") + " OFFSET "
@@ -349,9 +349,9 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         this.parametersPublicidad.put("FILTER", request.getParameter("txtProveedorPublicidad").toLowerCase());
         this.parametersPublicidad.put("SQL_ORDERS", "ANHO DESC");
         if (request.getParameter("comboAnioPublicidad").equals("-1")) {
-            this.parametersPublicidad.put("SQL_ESTADO", "");
+            this.parametersPublicidad.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersPublicidad.put("SQL_ESTADO", "AND ANHO = '" + request.getParameter("comboAnioPublicidad") + "'");
+            this.parametersPublicidad.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPublicidad") + "' ");
         }
         this.parametersPublicidad.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePagePublicidad") + " OFFSET "
@@ -376,9 +376,9 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         this.parametersTelefonia.put("FILTER", request.getParameter("txtAreaTelefonia").toLowerCase());
         this.parametersTelefonia.put("SQL_ORDERS", "AREA_OFICINA ASC");
         if (request.getParameter("comboAnioTelefonia").equals("-1")) {
-            this.parametersTelefonia.put("SQL_ESTADO", "");
+            this.parametersTelefonia.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersTelefonia.put("SQL_ESTADO", "AND ANHO = '" + request.getParameter("comboAnioTelefonia") + "'");
+            this.parametersTelefonia.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioTelefonia") + "' ");
         }
         this.parametersTelefonia.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageTelefonia") + " OFFSET "
@@ -403,9 +403,9 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         this.parametersVehiculo.put("FILTER", request.getParameter("txtAreaVehiculo").toLowerCase());
         this.parametersVehiculo.put("SQL_ORDERS", "ID DESC");
         if (request.getParameter("comboAnioVehiculo").equals("-1")) {
-            this.parametersVehiculo.put("SQL_ESTADO", "");
+            this.parametersVehiculo.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersVehiculo.put("SQL_ESTADO", "AND ANHO = '" + request.getParameter("comboAnioVehiculo") + "'");
+            this.parametersVehiculo.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioVehiculo") + "' ");
         }
         this.parametersVehiculo.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageVehiculo") + " OFFSET "
@@ -432,7 +432,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         if (request.getParameter("comboAnioProveedor").equals("-1")) {
             this.parametersProveedor.put("SQL_ESTADO", "");
         } else {
-            this.parametersProveedor.put("SQL_ESTADO", "AND ANHO = '" + request.getParameter("comboAnioProveedor") + "'");
+            this.parametersProveedor.put("SQL_ESTADO", "AND ANHO = '" + request.getParameter("comboAnioProveedor") + "' ");
         }
         this.parametersProveedor.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageProveedor") + " OFFSET "
@@ -460,7 +460,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         if (request.getParameter("comboAnioPersonal").equals("-1")) {
             this.parameters.put("SQL_ANIO", "");
         } else {
-            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioPersonal") + "'");
+            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioPersonal") + "' ");
         }
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePagePersonal") + " OFFSET "
@@ -491,7 +491,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         if (request.getParameter("comboAnioPersonalCategoria").equals("-1")) {
             this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE ");
         } else {
-            this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonalCategoria") + "'");
+            this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonalCategoria") + "' ");
         }
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePagePersonalCategoria") + " OFFSET "

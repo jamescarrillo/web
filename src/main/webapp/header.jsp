@@ -27,11 +27,13 @@
                                 </h5>
                             </div>
                             <div class="modal-body-peam modal-body-scroll">
-                                <div class="row">
-                                    
+                                <div class="row" id="loader_contenido_busqueda">
+                                    <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                        <div class="loader-peam_small"></div>
+                                    </div>
                                 </div>
                                 <div class="row" style="margin-top: 20px;" id="containerBusqueda">
-                                    
+
                                 </div>
                             </div>
                             <div class="modal-footer-peam" style="background-color: #ffffff; border-top: #00793D solid; border-width: 2px">

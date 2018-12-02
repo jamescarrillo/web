@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_documentos_normativos_gestion" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3f26ffa6-1b38-4ff2-aec2-9a3902389a08">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CONEXION_PEAM"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="229"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="763"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#DFF0D8">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset_tabla" uuid="13f3ddb8-a4d8-4fb2-9898-154e0ca05598">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CONEXION_PEAM"/>
+		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="266"/>
+		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="726"/>
+		<parameter name="sql_anho_tabla" class="java.lang.String">
+			<defaultValueExpression><![CDATA["AND SUBSTRING(DOCU_FECHA_DOCX,7,4) = '2018'"]]></defaultValueExpression>
+		</parameter>
+		<parameter name="sql_fecha_tabla" class="java.lang.String">
+			<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+		</parameter>
+		<parameter name="sql_tido_tabla" class="java.lang.String">
+			<defaultValueExpression><![CDATA["AND TIDO_ID = 10"]]></defaultValueExpression>
+		</parameter>
+		<parameter name="sql_cate_tabla" class="java.lang.String">
+			<defaultValueExpression><![CDATA["AND CATE_ID < 100"]]></defaultValueExpression>
+		</parameter>
+		<queryString language="SQL">
+			<![CDATA[SELECT 
+CASE 
+WHEN DOCU_FECHA_DOCX IS NULL THEN '' ELSE
+CASE 
+WHEN LENGTH(DOCU_FECHA_DOCX)>2 THEN DOCU_FECHA_DOCX ELSE '' END
+ END AS DOCU_FECHA_DOCX, 
+DOCU_TITULO, DOCU_RESUMEN 
+FROM WEB.DOCUMENTO 
+WHERE DOCU_ESTADO = TRUE  
+$P!{sql_anho_tabla}  
+$P!{sql_fecha_tabla} 
+$P!{sql_tido_tabla} 
+$P!{sql_cate_tabla} 
+ORDER BY DOCU_TITULO ASC]]>
+		</queryString>
+		<field name="docu_fecha_docx" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="docu_fecha_docx"/>
+		</field>
+		<field name="docu_titulo" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="docu_titulo"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="documento"/>
+		</field>
+		<field name="docu_resumen" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="docu_resumen"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="documento"/>
+		</field>
+	</subDataset>
+	<parameter name="title_reporte" class="java.lang.String"/>
+	<parameter name="sql_anho" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2018"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="sql_fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="sql_tido" class="java.lang.String">
+		<defaultValueExpression><![CDATA["AND TIDO_ID = 10"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="sql_cate" class="java.lang.String">
+		<defaultValueExpression><![CDATA["AND CATE_ID < 100"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="field_encabezado_tabla" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<parameter name="path_cabecera" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:/Users/JamesCarrillo/JaspersoftWorkspace/reportes_peam/web/cabecera_horizontal.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="path_logo_goresam" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT 1 AS NUMERO]]>
+	</queryString>
+	<field name="numero" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="numero"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="800" height="75" uuid="7728d7ec-613e-4719-85a1-6cef7b351f7e"/>
+				<subreportParameter name="title_reporte_cabecera">
+					<subreportParameterExpression><![CDATA[$P{title_reporte}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="path_logo_goresam_cabecera">
+					<subreportParameterExpression><![CDATA[$P{path_logo_goresam}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:/Users/JamesCarrillo/JaspersoftWorkspace/reportes_peam/web/cabecera_horizontal.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="0" y="80" width="800" height="20" uuid="fa117a43-119c-42b7-995e-8dcee7b172db"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{field_encabezado_tabla}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="55" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="800" height="55" uuid="99835799-f409-4d72-9e38-cfc6d7c6bd3c">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="Dataset_tabla" uuid="b45c7725-fc8c-4852-a14a-034bea75e1e0">
+						<datasetParameter name="sql_anho_tabla">
+							<datasetParameterExpression><![CDATA[$P{sql_anho}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="sql_fecha_tabla">
+							<datasetParameterExpression><![CDATA[$P{sql_fecha}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="sql_tido_tabla">
+							<datasetParameterExpression><![CDATA[$P{sql_tido}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="sql_cate_tabla">
+							<datasetParameterExpression><![CDATA[$P{sql_cate}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="70" uuid="9493f487-6296-4996-9f28-f93c8a41714a">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="25" uuid="0bc8e84d-9a2f-4008-a6f7-c2f1513e26b0"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[FECHA]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="70" height="30" uuid="8e882b54-992b-47b2-b8c8-8251ba80e9f1"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{docu_fecha_docx}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="190" uuid="0f41c915-3eb9-423c-9d9a-1417d40f42ed">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="190" height="25" uuid="32df67ff-e832-4135-bd91-a1d78bbe4c2e"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TÍTULO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField>
+								<reportElement x="0" y="0" width="190" height="30" uuid="721c9af0-0eee-4126-baca-03426df89cae"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{docu_titulo}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="540" uuid="76a3d66a-fbf6-49f8-a35d-420327fd7a9a">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="540" height="25" uuid="59a003f6-e8ab-4bee-8411-456082a77110"/>
+								<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3"/>
+								<textElement>
+									<font size="12" isBold="true"/>
+								</textElement>
+								<text><![CDATA[RESUMEN]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:detailCell style="Table_TD" height="30">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="540" height="30" uuid="4900043f-2356-48f1-92c4-0c4ab23bc1ad"/>
+								<box topPadding="3" leftPadding="3" bottomPadding="3" rightPadding="3"/>
+								<textElement textAlignment="Justified" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{docu_resumen}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="2" width="800" height="1" uuid="44a7a8f6-4f04-4904-a7f0-8277018701bd"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineColor="#00793D"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="8" width="800" height="20" uuid="41b89987-b07e-4195-add3-dd7c63ecede3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Proyecto Especial Alto Mayo]]></text>
+			</staticText>
+			<textField hyperlinkType="Reference" hyperlinkTarget="Blank">
+				<reportElement x="10" y="8" width="100" height="20" uuid="d8776f44-3d7a-40cf-a7e9-e1da99be45f9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["www.peam.gob.pe"]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://www.peam.gob.pe/"]]></hyperlinkReferenceExpression>
+				<hyperlinkTooltipExpression><![CDATA["Proyecto Especial Alto Mayo"]]></hyperlinkTooltipExpression>
+			</textField>
+			<textField>
+				<reportElement x="670" y="8" width="70" height="20" uuid="e778ab68-718f-43af-ac19-8e381ac9063b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="740" y="8" width="60" height="20" uuid="7adf7ca4-c0e1-4d16-8421-b590aeba20d5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

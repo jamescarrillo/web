@@ -262,3 +262,8 @@ function getStringDateFormat(cadenaFecha) {
     var options = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'};
     return fecha.toLocaleDateString("es-ES", options);
 }
+
+function openReport(parametros) {
+    var cadena = "/web/viewreport?" + parametros;
+    window.open(cadena, "");
+}

@@ -62,6 +62,72 @@ $(document).ready(function () {
         return false;
     });
 
+    var parameters;
+    $('.view-reporte-oc').each(function () {
+        $(this).click(function () {
+            if ($('#comboAnioOrdenCompra').val() !== "-1") {
+                parameters = "report=reporte_ordenes_compra";
+                parameters += "&format=" + $(this).attr('format');
+                parameters += "&anho=" + $('#comboAnioOrdenCompra').val();
+                openReport(parameters);
+            } else {
+                viewAlertWeb('warning', 'Por favor seleccione un Año');
+            }
+        });
+    });
+    
+    $('.view-reporte-os').each(function () {
+        $(this).click(function () {
+            if ($('#comboAnioOrdenServicio').val() !== "-1") {
+                parameters = "report=reporte_ordenes_servicio";
+                parameters += "&format=" + $(this).attr('format');
+                parameters += "&anho=" + $('#comboAnioOrdenServicio').val();
+                openReport(parameters);
+            } else {
+                viewAlertWeb('warning', 'Por favor seleccione un Año');
+            }
+        });
+    });
+    
+    $('.view-reporte-pu').each(function () {
+        $(this).click(function () {
+            if ($('#comboAnioPublicidad').val() !== "-1") {
+                parameters = "report=reporte_gastos_publicidad";
+                parameters += "&format=" + $(this).attr('format');
+                parameters += "&anho=" + $('#comboAnioPublicidad').val();
+                openReport(parameters);
+            } else {
+                viewAlertWeb('warning', 'Por favor seleccione un Año');
+            }
+        });
+    });
+    
+    $('.view-reporte-tel').each(function () {
+        $(this).click(function () {
+            if ($('#comboAnioTelefonia').val() !== "-1") {
+                parameters = "report=reporte_gastos_telefonia";
+                parameters += "&format=" + $(this).attr('format');
+                parameters += "&anho=" + $('#comboAnioTelefonia').val();
+                openReport(parameters);
+            } else {
+                viewAlertWeb('warning', 'Por favor seleccione un Año');
+            }
+        });
+    });
+    
+    $('.view-reporte-vehiculo').each(function () {
+        $(this).click(function () {
+            if ($('#comboAnioVehiculo').val() !== "-1") {
+                parameters = "report=reporte_uso_vehiculo";
+                parameters += "&format=" + $(this).attr('format');
+                parameters += "&anho=" + $('#comboAnioVehiculo').val();
+                openReport(parameters);
+            } else {
+                viewAlertWeb('warning', 'Por favor seleccione un Año');
+            }
+        });
+    });
+
     addEventoCombosPaginar();
     processAjaxDataAdquisiciones();
 
@@ -129,9 +195,9 @@ function listarOrdenCompra(BEAN_PAGINATION) {
         var tr;
         var siaf;
         $(BEAN_PAGINATION.LIST).each(function (index, value) {
-            if(value.nro_siaf !== undefined){
+            if (value.nro_siaf !== undefined) {
                 siaf = value.nro_siaf;
-            }else{
+            } else {
                 siaf = "";
             }
             tr = "<tr>";
@@ -140,7 +206,7 @@ function listarOrdenCompra(BEAN_PAGINATION) {
             tr += "<td class='text-center'>" + value.fecha_compra + "</td>";
             tr += "<td>" + value.fuente_financiamiento + "</td>";
             tr += "<td>" + value.proveedor + "</td>";
-            tr += "<td class='text-center'>" + value.monto + "</td>";
+            tr += "<td class='text-center'>" + value.monto.toFixed(2) + "</td>";
             tr += "</tr>";
             $('#tbodyOrdenCompra').append(tr);
         });
@@ -202,9 +268,9 @@ function listarOrdenServicio(BEAN_PAGINATION) {
         var tr;
         var siaf;
         $(BEAN_PAGINATION.LIST).each(function (index, value) {
-            if(value.nro_siaf !== undefined){
+            if (value.nro_siaf !== undefined) {
                 siaf = value.nro_siaf;
-            }else{
+            } else {
                 siaf = "";
             }
             tr = "<tr>";
@@ -213,7 +279,7 @@ function listarOrdenServicio(BEAN_PAGINATION) {
             tr += "<td class='text-center'>" + value.fecha_compra + "</td>";
             tr += "<td>" + value.fuente_financiamiento + "</td>";
             tr += "<td>" + value.proveedor + "</td>";
-            tr += "<td class='text-center'>" + value.monto + "</td>";
+            tr += "<td class='text-center'>" + value.monto.toFixed(2) + "</td>";
             tr += "</tr>";
             $('#tbodyOrdenServicio').append(tr);
         });

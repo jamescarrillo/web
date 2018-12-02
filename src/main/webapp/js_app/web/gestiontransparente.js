@@ -10,6 +10,35 @@ $(document).ready(function () {
         procesarAjaxDocumentosWeb();
         return false;
     });
+    var parameters;
+    $('.view-reporte').each(function () {
+        $(this).click(function () {
+            if ($('#comboAnioDocumento').val() !== "-1" && $("#cate_id option:selected").attr('tido_id') !== "11") {
+                parameters = "report=reporte_documentos_normativos_gestion";
+                parameters += "&format=" + $(this).attr('format');
+                parameters += "&anho=" + $('#comboAnioDocumento').val();
+                parameters += "&cate_id=" + $('#cate_id').val();
+                parameters += "&tido_id=" + $('#tido_id').val();
+                openReport(parameters);
+            } else {
+                if ($("#cate_id option:selected").attr('tido_id') === "12" || $("#cate_id option:selected").attr('tido_id') === "11") {
+                    parameters = "report=reporte_documentos_normativos_gestion";
+                    parameters += "&format=" + $(this).attr('format');
+                    parameters += "&anho=";
+                    parameters += "&cate_id=" + $('#cate_id').val();
+                    parameters += "&tido_id=" + $('#tido_id').val();
+                    openReport(parameters);
+                } else {
+                    viewAlertWeb('warning', 'Por favor seleccione un Año');
+                }
+            }
+
+        });
+    });
+
+    $('#cate_id').on('change', function () {
+        $('#tido_id').val($("#cate_id option:selected").attr('tido_id'));
+    });
 
     addEventoCombosPaginar();
     procesarAjaxDocumentosWeb();
@@ -57,24 +86,24 @@ function listarDocumentos(BEAN_PAGINATION) {
             cadenaFecha = value.docu_fecha_docx.split('/');
             if (cadenaFecha.length === 3) {
                 fecha = value.docu_fecha_docx;
-            }else{
+            } else {
                 fecha = "";
             }
             fila = "<tr class='" + color_fila + "' ";
             /*
-            fila += "docu_id='" + value.docu_id + "' ";
-            fila += "usa_public_id='" + value.usa_public_id + "' ";
-            fila += "docu_descripcion='" + value.docu_descripcion + "' ";
-            fila += "docu_titulo='" + value.docu_titulo + "' ";
-            fila += "docu_resumen='" + value.docu_resumen + "' ";
-            fila += "docu_origen_archivo='" + value.docu_origen_archivo + "' ";
-            fila += "tipo_id='" + value.tipo_id + "' ";
-            fila += "docu_estado='" + value.docu_estado + "' ";
-            fila += "docu_activo='" + value.docu_activo + "' ";
-            fila += "docu_fecha_docx='" + value.docu_fecha_docx + "' ";
-            fila += "cate_id='" + value.cate_id + "' ";
-            fila += "docu_metadata='" + value.docu_metadata + "' ";
-            */
+             fila += "docu_id='" + value.docu_id + "' ";
+             fila += "usa_public_id='" + value.usa_public_id + "' ";
+             fila += "docu_descripcion='" + value.docu_descripcion + "' ";
+             fila += "docu_titulo='" + value.docu_titulo + "' ";
+             fila += "docu_resumen='" + value.docu_resumen + "' ";
+             fila += "docu_origen_archivo='" + value.docu_origen_archivo + "' ";
+             fila += "tipo_id='" + value.tipo_id + "' ";
+             fila += "docu_estado='" + value.docu_estado + "' ";
+             fila += "docu_activo='" + value.docu_activo + "' ";
+             fila += "docu_fecha_docx='" + value.docu_fecha_docx + "' ";
+             fila += "cate_id='" + value.cate_id + "' ";
+             fila += "docu_metadata='" + value.docu_metadata + "' ";
+             */
             fila += ">";
             fila += "<td class='text-center align-middle'>" + fecha + "</td>";
             fila += "<td class='align-middle'>" + value.docu_titulo + "</td>";

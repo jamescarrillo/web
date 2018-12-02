@@ -22,6 +22,23 @@ $(document).ready(function () {
         return false;
     });
 
+    var parameters;
+    $('.view-reporte').each(function () {
+        $(this).click(function () {
+            if ($('#comboAnioDocumento').val() !== "-1") {
+                parameters = "report=reporte_documentos_adquisiciones";
+                parameters += "&format=" + $(this).attr('format');
+                parameters += "&anho=" + $('#comboAnioDocumento').val();
+                parameters += "&cate_id=" + $('#cate_id').val();
+                parameters += "&tido_id=";
+                openReport(parameters);
+            } else {
+                viewAlertWeb('warning', 'Por favor seleccione un Año');
+            }
+
+        });
+    });
+
     $("#FrmViatico").submit(function () {
         $("#nameFormViatico").val("FrmViatico");
         $("#numberPageViatico").val(1);
@@ -29,10 +46,6 @@ $(document).ready(function () {
         $('#loader_contenido_viatico').css("display", "block");
         procesarAjaxViaticoWeb();
         return false;
-    });
-
-    $('#cate_id').on('change', function () {
-        $('#tido_id').val($("#cate_id option:selected").attr('tido_id'));
     });
 
     addEventoCombosPaginar();

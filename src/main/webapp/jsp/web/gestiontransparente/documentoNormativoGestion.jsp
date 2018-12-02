@@ -54,10 +54,10 @@
                                         <form id="FrmDocumentos">
                                             <div class="col-md-4 col-sm-3 col-xs-12">
                                                 <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
-                                                    <option value="100" tido_id="10">Resoluciones Generales</option>
+                                                    <option value="100" tido_id="10">Resoluciones Gerenciales</option>
                                                     <option value="2800" tido_id="">Actas de Sesión y Consejo Directivo</option>
                                                     <option value="100" tido_id="11">Documentos de Gestión</option>
-                                                    <option value="100" tido_id="12">Normas y Directivas 12 </option>
+                                                    <option value="100" tido_id="12">Normas y Directivas 12</option>
                                                     <option value="900" tido_id="">Indicadores de Desempeño</option>
                                                 </select>
                                             </div>
@@ -109,9 +109,10 @@
                                     <div class="row">
                                         <div class="col-md-3 col-xs-12">
                                             <ul class="list-inline pull-left">
-                                                <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
-                                                <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
-                                                <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                <li><a class="view-reporte" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                <li><a class="view-reporte" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                <li><a class="view-reporte" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                <li><a class="view-reporte" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
                                             </ul>
                                         </div>
                                         <div class="col-md-9 col-xs-12 text-right">

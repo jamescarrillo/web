@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="cabecera_horizontal" pageWidth="802" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="84604a6d-d465-4a9a-b09d-c3a708806186">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CONEXION_PEAM"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="title_reporte_cabecera" class="java.lang.String"/>
+	<parameter name="path_logo_goresam_cabecera" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:/LOGOS PEAM/logo-goresam.png"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[select 1 as numero]]>
+	</queryString>
+	<field name="numero" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="numero"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="75" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="11" y="5" width="110" height="59" uuid="3656dfc1-0e3e-4f96-b845-20f48744ceac"/>
+				<box topPadding="5"/>
+				<imageExpression><![CDATA[$P{path_logo_goresam_cabecera}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="121" y="40" width="569" height="24" uuid="95cba202-bebe-46f5-a830-2856c01962c3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{title_reporte_cabecera}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="690" y="10" width="110" height="15" uuid="c77c4d84-d11a-4c47-bea9-609d368ec548"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="690" y="25" width="110" height="15" uuid="dcdcdf91-f378-4f66-b3cd-eb24a5fb7254"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="121" y="5" width="336" height="35" forecolor="#FF0000" uuid="2ca66dfe-9992-419b-8752-7035342a8b27"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROYECTO ESPECIAL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="457" y="5" width="233" height="35" forecolor="#00793D" uuid="cbe9d264-da33-4f2c-aed2-589cd095a6e8"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="22" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ALTO MAYO]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="2" width="800" height="1" uuid="25894b40-a857-40d5-bb6b-75bff0e11830"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineColor="#00793D"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="70" width="800" height="1" uuid="70aaede5-384e-4a24-997c-b2ce84d0a8f6"/>
+				<graphicElement>
+					<pen lineWidth="6.0" lineColor="#00793D"/>
+				</graphicElement>
+			</line>
+		</band>
+	</title>
+</jasperReport>

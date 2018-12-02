@@ -2,7 +2,8 @@ $(document).ready(function () {
     $("#FrmBusquedaPage").submit(function () {
         if ($('#txtBusquedaPage').val() !== "") {
             $('#actionBusquedaPage').val("buscarPage");
-            //$('#loader_contenido_busqueda').css('display', 'block');
+            $('#loader_contenido_busqueda').css('display', 'block');
+            $('#ventanaModalBusqueda').css('display', "block");
             procesarAjaxBusquedaWeb();
         } else {
             viewAlertWeb('warning', 'Por favor ingrese texto');
@@ -40,7 +41,7 @@ function procesarAjaxBusquedaWeb() {
                 div += "</div>";
                 $('#containerBusqueda').append(div);
             });
-            $('#ventanaModalBusqueda').css('display', "block");
+            
         },
         error: function () {
             $('#loader_contenido_busqueda').css('display', 'none');
