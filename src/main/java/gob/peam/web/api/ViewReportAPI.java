@@ -56,7 +56,10 @@ public class ViewReportAPI extends HttpServlet {
             reports.put("reporte_gastos_publicidad", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_gastos_publicidad.jrxml")));
             reports.put("reporte_gastos_telefonia", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_gastos_telefonia.jrxml")));
             reports.put("reporte_uso_vehiculo", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_uso_vehiculo.jrxml")));
-
+            reports.put("reporte_proveedores", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_proveedores.jrxml")));
+            reports.put("reporte_viaticos", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_viaticos.jrxml")));
+            reports.put("reporte_personal_categorias", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_personal_categorias.jrxml")));
+            reports.put("reporte_personal", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_personal.jrxml")));
         } catch (JRException ex) {
             Logger.getLogger(ViewReportAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -98,14 +101,18 @@ public class ViewReportAPI extends HttpServlet {
                 exportarVehiculo(request, response);
                 break;
             case "reporte_proveedores":
-                exportarOrdenServicio(request, response);
+                exportarProveedores(request, response);
                 break;
             case "reporte_viaticos":
-                exportarOrdenServicio(request, response);
+                exportarViaticos(request, response);
                 break;
-            case "reporte_penalidades":
-                exportarOrdenServicio(request, response);
+            case "reporte_personal_categorias":
+                exportarPersonalCategorias(request, response);
                 break;
+            case "reporte_personal":
+                exportarPersonal(request, response);
+                break;
+
             default:
                 response.sendRedirect("");
                 break;
@@ -318,6 +325,131 @@ public class ViewReportAPI extends HttpServlet {
                 Logger.getLogger(ViewReportAPI.class.getName()).log(Level.SEVERE, null, ex1);
             }
         }
+    }
+
+    private void exportarProveedores(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        /*PARAMETROS GENERALES*/
+        cargarParametrosGenerales();
+        /*PARAMETROS ESPECIFICOS*/
+        this.parameters.put("title_reporte", "REPORTE DE PRINCIPALES PROVEEDORES");
+        this.parameters.put("field_encabezado_tabla", "AÑO: " + request.getParameter("anho"));
+        this.parameters.put("anho", request.getParameter("anho"));
+        try (Connection conn = pool.getConnection()) {
+            LOG.info(this.parameters.toString());
+            this.jasperPrint = JasperFillManager.fillReport((JasperReport) this.reports.get("reporte_proveedores"), parameters, conn);
+            this.extension = getFormato(request);
+            this.byts = JeccFormatReport.getReport(this.jasperPrint, this.extension);
+            response.setContentLength(this.byts.length);
+            response.setHeader("Content-disposition", "inline; filename=reporte." + this.extension);
+            response.setContentType("application/" + this.extension);
+            try (ServletOutputStream ouputstream = response.getOutputStream()) {
+                ouputstream.write(this.byts, 0, this.byts.length);
+            }
+        } catch (SQLException | JRException ex) {
+            try {
+                throw ex;
+            } catch (SQLException | JRException ex1) {
+                Logger.getLogger(ViewReportAPI.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+    }
+
+    private void exportarViaticos(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        /*PARAMETROS GENERALES*/
+        cargarParametrosGenerales();
+        /*PARAMETROS ESPECIFICOS*/
+        this.parameters.put("title_reporte", "REPORTE DE GASTOS DE PASAJES Y VIÁTICOS");
+        this.parameters.put("field_encabezado_tabla", "AÑO: " + request.getParameter("anho"));
+        this.parameters.put("anho", request.getParameter("anho"));
+        try (Connection conn = pool.getConnection()) {
+            LOG.info(this.parameters.toString());
+            this.jasperPrint = JasperFillManager.fillReport((JasperReport) this.reports.get("reporte_viaticos"), parameters, conn);
+            this.extension = getFormato(request);
+            this.byts = JeccFormatReport.getReport(this.jasperPrint, this.extension);
+            response.setContentLength(this.byts.length);
+            response.setHeader("Content-disposition", "inline; filename=reporte." + this.extension);
+            response.setContentType("application/" + this.extension);
+            try (ServletOutputStream ouputstream = response.getOutputStream()) {
+                ouputstream.write(this.byts, 0, this.byts.length);
+            }
+        } catch (SQLException | JRException ex) {
+            try {
+                throw ex;
+            } catch (SQLException | JRException ex1) {
+                Logger.getLogger(ViewReportAPI.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+    }
+
+    private void exportarPersonalCategorias(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        /*PARAMETROS GENERALES*/
+        cargarParametrosGenerales();
+        /*PARAMETROS ESPECIFICOS*/
+        this.parameters.put("title_reporte", "REMUNERACIÓN POR CATEGORÍAS");
+        this.parameters.put("field_encabezado_tabla", request.getParameter("trimestre").equals("1") ? "PRIMER TRIMESTRE" + " - " + request.getParameter("anho") : "SEGUNDO TRIMESTRE" + " - " + request.getParameter("anho"));
+        this.parameters.put("anho", request.getParameter("anho"));
+        try (Connection conn = pool.getConnection()) {
+            LOG.info(this.parameters.toString());
+            this.jasperPrint = JasperFillManager.fillReport((JasperReport) this.reports.get("reporte_personal_categorias"), parameters, conn);
+            this.extension = getFormato(request);
+            this.byts = JeccFormatReport.getReport(this.jasperPrint, this.extension);
+            response.setContentLength(this.byts.length);
+            response.setHeader("Content-disposition", "inline; filename=reporte." + this.extension);
+            response.setContentType("application/" + this.extension);
+            try (ServletOutputStream ouputstream = response.getOutputStream()) {
+                ouputstream.write(this.byts, 0, this.byts.length);
+            }
+        } catch (SQLException | JRException ex) {
+            try {
+                throw ex;
+            } catch (SQLException | JRException ex1) {
+                Logger.getLogger(ViewReportAPI.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+    }
+
+    private void exportarPersonal(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        /*PARAMETROS GENERALES*/
+        cargarParametrosGenerales();
+        /*PARAMETROS ESPECIFICOS*/
+        this.parameters.put("title_reporte", getTitleReportePersonal(request.getParameter("tipo")));
+        this.parameters.put("field_encabezado_tabla", "AÑO: " + request.getParameter("anho"));
+        this.parameters.put("anho", request.getParameter("anho"));
+        this.parameters.put("tipo", Integer.parseInt(request.getParameter("tipo")));
+        try (Connection conn = pool.getConnection()) {
+            LOG.info(this.parameters.toString());
+            this.jasperPrint = JasperFillManager.fillReport((JasperReport) this.reports.get("reporte_personal"), parameters, conn);
+            this.extension = getFormato(request);
+            this.byts = JeccFormatReport.getReport(this.jasperPrint, this.extension);
+            response.setContentLength(this.byts.length);
+            response.setHeader("Content-disposition", "inline; filename=reporte." + this.extension);
+            response.setContentType("application/" + this.extension);
+            try (ServletOutputStream ouputstream = response.getOutputStream()) {
+                ouputstream.write(this.byts, 0, this.byts.length);
+            }
+        } catch (SQLException | JRException ex) {
+            try {
+                throw ex;
+            } catch (SQLException | JRException ex1) {
+                Logger.getLogger(ViewReportAPI.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+    }
+
+    private String getTitleReportePersonal(String tipo) {
+        String title = "REPORTE ";
+        switch (tipo) {
+            case "1":
+                title += "DE PERSONAL Y REMUNERACIONES (RÉGIMEN LABORAL D.L. 728)";
+                break;
+            case "2":
+                title += "DE PERSONAL Y REMUNERACIONES (LOCACIÓN DE SERVICIOS)";
+                break;
+            case "3":
+                title += "DE PERSONAL Y REMUNERACIONES (REGIMEN CAS)";
+                break;
+        }
+        return title;
     }
 
     private boolean validarParametrosReporteDocumentos(HttpServletRequest request) {

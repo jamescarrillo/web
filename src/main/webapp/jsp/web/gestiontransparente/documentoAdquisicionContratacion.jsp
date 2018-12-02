@@ -573,9 +573,10 @@
                                         <div class="row">
                                             <div class="col-md-3 col-xs-12">
                                                 <ul class="list-inline pull-left">
-                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
-                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
-                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                    <li><a class="view-reporte-proveedor" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a class="view-reporte-proveedor" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a class="view-reporte-proveedor" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                    <li><a class="view-reporte-proveedor" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-md-9 col-xs-12 text-right">
@@ -649,9 +650,10 @@
                                         <div class="row">
                                             <div class="col-md-3 col-xs-12">
                                                 <ul class="list-inline pull-left">
-                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
-                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
-                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                    <li><a class="view-reporte-viatico" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a class="view-reporte-viatico" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a class="view-reporte-viatico" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                    <li><a class="view-reporte-viatico" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-md-9 col-xs-12 text-right">
@@ -722,14 +724,14 @@
                                         <hr>
                                         <br>
                                         <div class="row">
-                                            <div class="col-md-3 col-xs-12">
+                                            <!--div class="col-md-3 col-xs-12">
                                                 <ul class="list-inline pull-left">
                                                     <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
                                                     <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
                                                     <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
                                                 </ul>
-                                            </div>
-                                            <div class="col-md-9 col-xs-12 text-right">
+                                            </div-->
+                                            <div class="col-xs-12 text-right">
                                                 <ul id="paginationPenalidad" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                 </ul>

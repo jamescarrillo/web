@@ -382,9 +382,9 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtTituloViatico").toLowerCase());
         if (request.getParameter("comboAnioViatico").equals("-1")) {
-            this.parameters.put("SQL_ANIO", "");
+            this.parameters.put("SQL_ANIO", "ESTADO = TRUE  ");
         } else {
-            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioViatico") + "' ");
+            this.parameters.put("SQL_ANIO", "ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioViatico") + "' ");
         }
         this.parameters.put("SQL_ORDERS", "ID DESC");
         this.parameters.put("LIMIT",

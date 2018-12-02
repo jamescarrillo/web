@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_viaticos" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="249c9844-da19-4e46-88ac-28133a07f481">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CONEXION_PEAM"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#DFF0D8">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset_tabla" uuid="4bfbd247-4066-4d53-a2e4-d1f33acacad2">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CONEXION_PEAM"/>
+		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="255"/>
+		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="737"/>
+		<parameter name="anho_tabla" class="java.lang.String">
+			<defaultValueExpression><![CDATA["2018"]]></defaultValueExpression>
+		</parameter>
+		<queryString language="SQL">
+			<![CDATA[SELECT TIPO_VIATICO, MODALIDAD, AREA_OFICINA, USUARIOS, FECHA_SALIDA, FECHA_RETORNO,  RUTA, FUENTE_FINANCIAMIENTO, 
+COSTO_PASAJES, VIATICOS 
+FROM WEB.F00018 WHERE ESTADO = TRUE 
+AND ANHO = $P{anho_tabla}   
+ORDER BY ID DESC]]>
+		</queryString>
+		<field name="tipo_viatico" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="tipo_viatico"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00018"/>
+		</field>
+		<field name="modalidad" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="modalidad"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00018"/>
+		</field>
+		<field name="area_oficina" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="area_oficina"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00018"/>
+		</field>
+		<field name="usuarios" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="usuarios"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00018"/>
+		</field>
+		<field name="fecha_salida" class="java.sql.Date">
+			<property name="com.jaspersoft.studio.field.label" value="fecha_salida"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00018"/>
+		</field>
+		<field name="fecha_retorno" class="java.sql.Date">
+			<property name="com.jaspersoft.studio.field.label" value="fecha_retorno"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00018"/>
+		</field>
+		<field name="ruta" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ruta"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00018"/>
+		</field>
+		<field name="fuente_financiamiento" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="fuente_financiamiento"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00018"/>
+		</field>
+		<field name="costo_pasajes" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="costo_pasajes"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00018"/>
+		</field>
+		<field name="viaticos" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="viaticos"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00018"/>
+		</field>
+		<variable name="total_viaticos" class="java.math.BigDecimal" calculation="Sum">
+			<variableExpression><![CDATA[$F{viaticos}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="field_encabezado_tabla" class="java.lang.String">
+		<defaultValueExpression><![CDATA["AÑO: 2018"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="anho" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2018"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="title_reporte" class="java.lang.String">
+		<defaultValueExpression><![CDATA["REPORTE DE ORDENES DE COMPRAS DE BIENES"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="path_cabecera" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:/Users/JamesCarrillo/JaspersoftWorkspace/reportes_peam/web/cabecera_horizontal.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="path_logo_goresam" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 21 AS NUMERO]]>
+	</queryString>
+	<field name="numero" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="numero"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="800" height="75" uuid="56d3c884-591b-4a52-8ca7-637e7ed9ec81"/>
+				<subreportParameter name="title_reporte_cabecera">
+					<subreportParameterExpression><![CDATA[$P{title_reporte}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="path_logo_goresam_cabecera">
+					<subreportParameterExpression><![CDATA[$P{path_logo_goresam}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:/Users/JamesCarrillo/JaspersoftWorkspace/reportes_peam/web/cabecera_horizontal.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="1" y="75" width="800" height="20" uuid="37fc8ebe-dd42-4fda-9750-e102b472c43d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{field_encabezado_tabla}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="70" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="800" height="70" uuid="91f68f6d-2394-4efe-9d16-fa4385ed9a1f">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset_tabla" uuid="c4ef0580-c6c9-4faf-a92d-a5c498bfbdb3">
+						<datasetParameter name="anho_tabla">
+							<datasetParameterExpression><![CDATA[$P{anho}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="50" uuid="e1f6d0a1-4f47-47e1-889e-2863867664c8">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="25" uuid="a8db62d8-fc3c-4569-8932-75d80aba11ca"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TIPO VIÁTICO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="50" height="20" uuid="328dcc95-644b-433c-b411-5dea57662939"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{tipo_viatico}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="50" uuid="5afac122-e142-4acf-b782-a3f0ccad48fb">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="25" uuid="7717d834-ff4d-4bb6-bbd7-f11e08b29d10"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[MODALIDAD]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="50" height="20" uuid="27953151-b073-438d-80b7-4855f2a3ff81"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{modalidad}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="130" uuid="5078592b-06d9-4a12-bdfa-52efd6be0a58">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="130" height="25" uuid="395754f2-b266-497a-b096-3dee92f36119"/>
+								<box leftPadding="4"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ÁREA / OFICINA]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="130" height="20" uuid="e925464e-1c09-4ad3-b0a7-a6b7295dec16"/>
+								<box leftPadding="4"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{area_oficina}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="130" uuid="9c23d0b4-6e4e-4902-a236-3467cb0c6711">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="130" height="25" uuid="479e014a-de42-4baf-a57d-3a54b5059c83"/>
+								<box leftPadding="4"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[USUARIO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="130" height="20" uuid="ab3d7913-4888-4658-a8ea-bcfeb53c53de"/>
+								<box leftPadding="4"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{usuarios}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="50" uuid="a5504f0b-12ab-4cdd-8422-3d9f351225cc">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="25" uuid="32e15a03-5cfb-435c-83e2-a96b890eab30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[FECHA SALIDA]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="50" height="20" uuid="fa57faae-9f22-47f5-a763-ff0ea1efebdc"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{fecha_salida}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="50" uuid="19cd07bb-131d-49de-a4f9-bf4339796813">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="25" uuid="328d64be-5a07-4b65-b29a-680decd2d53c"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[FECHA RETORNO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="50" height="20" uuid="ab03e383-96da-4df1-93af-2333901e920b"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{fecha_retorno}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="160" uuid="86695a1a-a508-408c-ad0e-77372e805090">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="160" height="25" uuid="3c71c604-31c7-40ba-ad02-093e4c122d8f"/>
+								<box leftPadding="4"/>
+								<textElement textAlignment="Left" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[RUTA]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="160" height="20" uuid="2f744dec-fa45-4713-a578-1486fc29e095"/>
+								<box leftPadding="4"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ruta}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="70" uuid="bc7e10d1-8365-49d8-b1c2-64265ba25ea3">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="70" height="25" uuid="b388ad88-200c-48b0-a6b9-e8db55a5af62"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[FUENTE FINANCIAMIENTO]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField isStretchWithOverflow="true">
+								<reportElement x="0" y="0" width="70" height="20" uuid="7a680f9c-1d00-4f8c-a02d-aaacfcf330b7"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{fuente_financiamiento}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="50" uuid="f91bf3a6-27e4-419d-abe9-a943b929b97a">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="25" uuid="1cae1b77-d654-46c7-925f-5bf978d9df29"/>
+								<box rightPadding="4"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[COSTO PASAJE (S/.)]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="50" height="25" uuid="5cb2be59-dff4-4694-916b-fd9243dd5b68"/>
+								<box rightPadding="4"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL (S/.)]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="50" height="20" uuid="5387b171-1261-48f3-9747-5be82784f63f"/>
+								<box rightPadding="4"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{costo_pasajes}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="60" uuid="4e2dfce4-4983-4399-ad2e-3d6982acd8f1">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="60" height="25" uuid="147e3f6b-5cf5-40ce-8d4f-3debd718fa75"/>
+								<box rightPadding="4"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font size="8" isBold="true"/>
+								</textElement>
+								<text><![CDATA[VIÁTICOS]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="25" uuid="e464f58b-b576-44f0-8096-18076fd4997e"/>
+								<box rightPadding="4"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{total_viaticos}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="60" height="20" uuid="12bc9a9f-b63c-46b8-adfd-d1280d8c37bf"/>
+								<box rightPadding="4"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{viaticos}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="2" width="800" height="1" uuid="bb7e4bcd-b60e-41c0-91b4-158fdf7a8d23"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineColor="#00793D"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="8" width="800" height="20" uuid="16ebecd4-cfa3-4c0d-a260-575aef0ef87e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Proyecto Especial Alto Mayo]]></text>
+			</staticText>
+			<textField hyperlinkType="Reference" hyperlinkTarget="Blank">
+				<reportElement x="10" y="8" width="100" height="20" uuid="d0970cdc-52f5-488f-b9cf-f2ae0542a285"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["www.peam.gob.pe"]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://www.peam.gob.pe/"]]></hyperlinkReferenceExpression>
+				<hyperlinkTooltipExpression><![CDATA["Proyecto Especial Alto Mayo"]]></hyperlinkTooltipExpression>
+			</textField>
+			<textField>
+				<reportElement x="670" y="8" width="70" height="20" uuid="b6892842-7455-4f2a-b9b0-9e18c1d6cbe7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="740" y="8" width="60" height="20" uuid="0ce5b72a-79ba-4ac5-9acc-a5d59e5071b5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

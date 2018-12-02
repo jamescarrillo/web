@@ -430,9 +430,9 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         this.parametersProveedor.put("FILTER", request.getParameter("txtProveedor").toLowerCase());
         this.parametersProveedor.put("SQL_ORDERS", "PROVEEDOR ASC");
         if (request.getParameter("comboAnioProveedor").equals("-1")) {
-            this.parametersProveedor.put("SQL_ESTADO", "");
+            this.parametersProveedor.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersProveedor.put("SQL_ESTADO", "AND ANHO = '" + request.getParameter("comboAnioProveedor") + "' ");
+            this.parametersProveedor.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioProveedor") + "' ");
         }
         this.parametersProveedor.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageProveedor") + " OFFSET "
@@ -458,9 +458,9 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         this.parameters.put("SQL_ORDERS", "ID DESC, APELLIDOS_NOMBRES ASC");
         this.parameters.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("cboTipoPersonal"));
         if (request.getParameter("comboAnioPersonal").equals("-1")) {
-            this.parameters.put("SQL_ANIO", "");
+            this.parameters.put("SQL_ANIO", "AND ESTADO = TRUE ");
         } else {
-            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioPersonal") + "' ");
+            this.parameters.put("SQL_ANIO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonal") + "' ");
         }
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePagePersonal") + " OFFSET "

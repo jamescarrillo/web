@@ -75,7 +75,7 @@ $(document).ready(function () {
             }
         });
     });
-    
+
     $('.view-reporte-os').each(function () {
         $(this).click(function () {
             if ($('#comboAnioOrdenServicio').val() !== "-1") {
@@ -88,7 +88,7 @@ $(document).ready(function () {
             }
         });
     });
-    
+
     $('.view-reporte-pu').each(function () {
         $(this).click(function () {
             if ($('#comboAnioPublicidad').val() !== "-1") {
@@ -101,7 +101,7 @@ $(document).ready(function () {
             }
         });
     });
-    
+
     $('.view-reporte-tel').each(function () {
         $(this).click(function () {
             if ($('#comboAnioTelefonia').val() !== "-1") {
@@ -114,13 +114,39 @@ $(document).ready(function () {
             }
         });
     });
-    
+
     $('.view-reporte-vehiculo').each(function () {
         $(this).click(function () {
             if ($('#comboAnioVehiculo').val() !== "-1") {
                 parameters = "report=reporte_uso_vehiculo";
                 parameters += "&format=" + $(this).attr('format');
                 parameters += "&anho=" + $('#comboAnioVehiculo').val();
+                openReport(parameters);
+            } else {
+                viewAlertWeb('warning', 'Por favor seleccione un Año');
+            }
+        });
+    });
+
+    $('.view-reporte-proveedor').each(function () {
+        $(this).click(function () {
+            if ($('#comboAnioProveedor').val() !== "-1") {
+                parameters = "report=reporte_proveedores";
+                parameters += "&format=" + $(this).attr('format');
+                parameters += "&anho=" + $('#comboAnioProveedor').val();
+                openReport(parameters);
+            } else {
+                viewAlertWeb('warning', 'Por favor seleccione un Año');
+            }
+        });
+    });
+
+    $('.view-reporte-viatico').each(function () {
+        $(this).click(function () {
+            if ($('#comboAnioViatico').val() !== "-1") {
+                parameters = "report=reporte_viaticos";
+                parameters += "&format=" + $(this).attr('format');
+                parameters += "&anho=" + $('#comboAnioViatico').val();
                 openReport(parameters);
             } else {
                 viewAlertWeb('warning', 'Por favor seleccione un Año');
@@ -555,7 +581,7 @@ function listarProveedor(BEAN_PAGINATION) {
             tr = "<tr>";
             tr += "<td class='text-medium-table text-center'>" + value.ruc + "</td>";
             tr += "<td class='text-medium-table'>" + value.proveedor + "</td>";
-            tr += "<td class='text-medium-table text-center'>" + value.importe + "</td>";
+            tr += "<td class='text-medium-table text-center'>" + value.importe.toFixed(2) + "</td>";
             tr += "</tr>";
             $('#tbodyProveedor').append(tr);
         });

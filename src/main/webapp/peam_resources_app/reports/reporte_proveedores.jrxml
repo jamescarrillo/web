@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_proveedores" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="165367e6-0c5d-4d65-bfc5-f99be96618db">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CONEXION_PEAM"/>
+	<style name="Table_TH" mode="Opaque" backcolor="#DFF0D8">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="Table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+			<topPen lineWidth="0.5" lineColor="#000000"/>
+			<leftPen lineWidth="0.5" lineColor="#000000"/>
+			<bottomPen lineWidth="0.5" lineColor="#000000"/>
+			<rightPen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Dataset_tabla" uuid="7afa71b4-e15a-40ca-916c-7ee0883b62bb">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CONEXION_PEAM"/>
+		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="276"/>
+		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="716"/>
+		<parameter name="anho_tabla" class="java.lang.String">
+			<defaultValueExpression><![CDATA["2018"]]></defaultValueExpression>
+		</parameter>
+		<queryString language="SQL">
+			<![CDATA[SELECT RUC, PROVEEDOR, IMPORTE
+FROM WEB.F00006 WHERE ESTADO = TRUE AND ANHO = $P{anho_tabla}  ORDER BY PROVEEDOR ASC]]>
+		</queryString>
+		<field name="ruc" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="ruc"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00006"/>
+		</field>
+		<field name="proveedor" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="proveedor"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00006"/>
+		</field>
+		<field name="importe" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.label" value="importe"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00006"/>
+		</field>
+		<variable name="total_importe" class="java.math.BigDecimal" calculation="Sum">
+			<variableExpression><![CDATA[$F{importe}]]></variableExpression>
+		</variable>
+	</subDataset>
+	<parameter name="field_encabezado_tabla" class="java.lang.String">
+		<defaultValueExpression><![CDATA["AÑO: 2018"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="anho" class="java.lang.String">
+		<defaultValueExpression><![CDATA["2018"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="title_reporte" class="java.lang.String">
+		<defaultValueExpression><![CDATA["REPORTE DE ORDENES DE COMPRAS DE BIENES"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="path_cabecera" class="java.lang.String">
+		<defaultValueExpression><![CDATA["C:/Users/JamesCarrillo/JaspersoftWorkspace/reportes_peam/web/cabecera_horizontal.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="path_logo_goresam" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 21 AS NUMERO]]>
+	</queryString>
+	<field name="numero" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="numero"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="800" height="75" uuid="ace37b40-9f37-4741-bdbe-ed4d3a4be403"/>
+				<subreportParameter name="title_reporte_cabecera">
+					<subreportParameterExpression><![CDATA[$P{title_reporte}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="path_logo_goresam_cabecera">
+					<subreportParameterExpression><![CDATA[$P{path_logo_goresam}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["C:/Users/JamesCarrillo/JaspersoftWorkspace/reportes_peam/web/cabecera_horizontal.jasper"]]></subreportExpression>
+			</subreport>
+			<textField>
+				<reportElement x="1" y="75" width="800" height="20" uuid="1c23615a-3d23-4690-96d4-9f2c8e9bff77"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{field_encabezado_tabla}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<detail>
+		<band height="70" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="800" height="70" uuid="56a5a834-35ac-4f93-9d4b-abbcbd5b0289">
+					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
+					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
+					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
+					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
+				</reportElement>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="Dataset_tabla" uuid="f50f68b7-06cf-4df9-bfcc-87d18e2f87c6">
+						<datasetParameter name="anho_tabla">
+							<datasetParameterExpression><![CDATA[$P{anho}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column width="120" uuid="cf2a91ca-3ac2-4372-83c3-3cc681d294a9">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="120" height="25" uuid="2f6b00cf-3ab4-435b-bb71-e35cc9d55452"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[RUC]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1"/>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="120" height="20" uuid="a2fd9c69-be38-4037-a7fa-724f50708d74"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{ruc}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="540" uuid="03929f0a-3974-43cd-8a39-d26020981569">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="540" height="25" uuid="7813d2dc-23d8-4c14-b981-8512479957d2"/>
+								<box leftPadding="4"/>
+								<textElement verticalAlignment="Middle"/>
+								<text><![CDATA[PROVEEDOR]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="540" height="25" uuid="236b1f7f-be2c-4bf9-b28e-0c28301f3357"/>
+								<box leftPadding="0" rightPadding="4"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[TOTAL (S/.)]]></text>
+							</staticText>
+						</jr:tableFooter>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="540" height="20" uuid="70936f47-77e2-4dd0-bf65-4cdae06403c3"/>
+								<box leftPadding="4"/>
+								<textElement verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{proveedor}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column width="140" uuid="0cf339fc-325d-437b-9658-cd686d47d86b">
+						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column3"/>
+						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
+							<staticText>
+								<reportElement x="0" y="0" width="140" height="25" uuid="ad13fc68-90db-4301-bf4e-8ad14f658168"/>
+								<box rightPadding="4"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle">
+									<font isBold="true"/>
+								</textElement>
+								<text><![CDATA[IMPORTE (S/.)]]></text>
+							</staticText>
+						</jr:tableHeader>
+						<jr:tableFooter style="Table_TH" height="25" rowSpan="1">
+							<textField>
+								<reportElement x="0" y="0" width="140" height="25" uuid="995b2c9d-90b0-48db-83e8-1b5c83e828a1"/>
+								<box rightPadding="4"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$V{total_importe}]]></textFieldExpression>
+							</textField>
+						</jr:tableFooter>
+						<jr:detailCell style="Table_TD" height="20">
+							<textField>
+								<reportElement x="0" y="0" width="140" height="20" uuid="ee7ed92a-14bb-4f59-88ec-bf9f06936261"/>
+								<box rightPadding="4"/>
+								<textElement textAlignment="Right" verticalAlignment="Middle"/>
+								<textFieldExpression><![CDATA[$F{importe}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="2" width="800" height="1" uuid="40ba7dab-4e33-491d-8e9d-a36e31926488"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineColor="#00793D"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="8" width="800" height="20" uuid="c4352e75-9784-4335-bc5f-676f259e26b4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Proyecto Especial Alto Mayo]]></text>
+			</staticText>
+			<textField hyperlinkType="Reference" hyperlinkTarget="Blank">
+				<reportElement x="10" y="8" width="100" height="20" uuid="431cd0fc-89ea-4175-b0a9-d23c581d616b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["www.peam.gob.pe"]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://www.peam.gob.pe/"]]></hyperlinkReferenceExpression>
+				<hyperlinkTooltipExpression><![CDATA["Proyecto Especial Alto Mayo"]]></hyperlinkTooltipExpression>
+			</textField>
+			<textField>
+				<reportElement x="670" y="8" width="70" height="20" uuid="0a867d09-bcc9-4d49-847e-aa49cca872c3"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="740" y="8" width="60" height="20" uuid="8bfaeb88-038f-4dd8-ab4e-322d9009fd7b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

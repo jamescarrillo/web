@@ -21,6 +21,39 @@ $(document).ready(function () {
         return false;
     });
 
+    var parameters;
+    $('.view-reporte-personal-categoria').each(function () {
+        $(this).click(function () {
+            if ($('#comboAnioPersonalCategoria').val() !== "-1") {
+                if ($('#comboTrimestrePersonalCategoria').val() !== "-1") {
+                    parameters = "report=reporte_personal_categorias";
+                    parameters += "&format=" + $(this).attr('format');
+                    parameters += "&anho=" + $('#comboAnioPersonalCategoria').val();
+                    parameters += "&trimestre=" + $('#comboTrimestrePersonalCategoria').val();
+                    openReport(parameters);
+                } else {
+                    viewAlertWeb('warning', 'Por favor seleccione un Trimestre');
+                }
+            } else {
+                viewAlertWeb('warning', 'Por favor seleccione un Año');
+            }
+        });
+    });
+
+    $('.view-reporte-personal').each(function () {
+        $(this).click(function () {
+            if ($('#comboAnioPersonal').val() !== "-1") {
+                parameters = "report=reporte_personal";
+                parameters += "&format=" + $(this).attr('format');
+                parameters += "&anho=" + $('#comboAnioPersonal').val();
+                parameters += "&tipo=" + $('#cboTipoPersonal').val();
+                openReport(parameters);
+            } else {
+                viewAlertWeb('warning', 'Por favor seleccione un Año');
+            }
+        });
+    });
+
     addEventoCombosPaginar();
     processAjaxDataRRHH();
 });
