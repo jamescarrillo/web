@@ -43,7 +43,7 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Libro de Reclamaciones</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Libro de Reclamaciones</h2>
                 </div>
                 <div style="display:block; width: 100%; text-align: center; margin-top: 7px; margin-bottom: 20px;">
                     Estimado usuario, el Libro de Reclamaciones Virtual es sólo para lo estipulado en el <b style="font-weight: bold">D.S. N° 042-2011-PCM</b>; en caso de realizar una sugerencia o comentario hacer uso del siguiente formulario: <a href="./consultas-y-sugerencias">AQUI </a>

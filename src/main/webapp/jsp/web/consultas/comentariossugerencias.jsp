@@ -43,7 +43,7 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Sugerencias y Comentarios</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Sugerencias y Comentarios</h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">

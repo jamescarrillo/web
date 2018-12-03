@@ -43,7 +43,7 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde h1-title" style="font-size: 30px">Solicitud de Acceso a la Información</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Solicitud de Acceso a la Información</h2>
                 </div>
                 <div style="display:block; width: 100%; text-align: center; margin-top: 7px; margin-bottom: 20px;">
                     <a href="http://www.peru.gob.pe/normas/docs/LEY_27806.pdf" target="_blank">Ley Nº 27806 - Ley de Transparencia y Acceso a la Información Pública</a>
