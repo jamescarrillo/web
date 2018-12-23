@@ -56,7 +56,6 @@ $(window).resize(function () {
     var alto = $(window).height();
     var ancho = $(window).width();
     //alert("alto: "+alto+" ancho:"+ancho);
-    console.log('aaaaaaaaaaaaaaa' + alto + ' con ' + ancho);
 });
 
 

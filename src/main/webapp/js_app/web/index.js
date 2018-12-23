@@ -54,20 +54,52 @@ function addNoticiasWeb(DATA_NOTASPRENSA) {
                 $('#tituloNotaPrensa' + (index + 1)).html(getTituloWeb(value.titulo, 45));
                 $('#resumenNotaPrensa' + (index + 1)).html(getTituloWeb(getResumenContenidoWeb(cadenaContenido, 150), 90) + ". . .");
             }
-            $('#imgCNotaPrensa' + index).attr('src', value.foto);
-            $('#tituloCNotaPrensa' + index).html(value.titulo + getFormViewNoticeWeb(value.id));
+            //LAS NOTICIAS EN LA SECCIÓN NOTICIAS
+            $('#myCarouselNoticias').append(getItemNoticia(value.titulo, value.foto, value.id));
+            //$('#imgCNotaPrensa' + index).attr('src', value.foto);
+            //$('#tituloCNotaPrensa' + index).html(value.titulo + getFormViewNoticeWeb(value.id));
+        });
+        $("#myCarouselNoticias").owlCarousel({
+            loop: true,
+            margin: 2,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 2
+                }
+            }
         });
         $("#contenedorCarrusel").owlCarousel();
         addEventsNoticias();
     }
 }
 
+function getItemNoticia(title, foto, idnoticia) {
+    var div = "<div class= 'item item-noticia-slider'>";
+    div += "<img src='" + foto + "'>";
+    div += "<div class='btn_float_noticias text-center'>";
+    //div += "<a class='waves-effect waves-light btn' style='height: 30px;padding-top: 2px;padding-bottom: 2px;'>Leer</a>";
+    div +=  getFormViewNoticeWeb(idnoticia);
+    div += "</div>";
+    div += "<div class='description_float_noticias text-center'>";
+    div += "<h5>" + title + "</h5>";
+    div += "</div>";
+    div += "</div>";
+    return div;
+}
+
 function getFormViewNoticeWeb(idNoticia) {
     var form = "";
-    form += "<form class='form-ver-noticia' method='POST' action='notas-de-prensa'>";
+    form += "<form class='form-ver-noticia' method='POST' action='publicaciones/noticias/notas-de-prensa'>";
     form += "<input type='hidden' name='idNota' value='" + idNoticia + "'>";
     form += "<input type='hidden' name='action' value='readNotaPrensa'>";
-    //form += "<button type='submit' class='btn-link' style='color: #a20505; font-weight: bold;'>Ver Noticia <i class='fa fa-long-arrow-right'></i></button>";
+    form += "<button type='submit' class='waves-effect waves-light btn' style='height: 30px;padding-top: 2px;padding-bottom: 2px;'>Leer</button>";
     form += "</form>";
     return form;
 }
@@ -159,7 +191,7 @@ function addMultimediaWeb(DATA_MULTIMEDIA) {
         $('#containerMultimedia').append(card);
     });
     //ADD BUTTON VIEW ALL
-    $('#containerMultimedia').append("<div class='col-md-12 mt-10 text-center'><a class='waves-effect waves-light btn' href='publicaciones/noticias/multimedia' style='font-size: 18px;'>Ver todos <i class='fa fa-long-arrow-right'></i></a></div>");
+    $('#containerMultimedia').append("<div class='col-md-12 mt-10 text-center'><a class='waves-effect waves-light btn' href='publicaciones/noticias/multimedia' style='font-size: 18px;'>Ver todos</a></div>");
 }
 
 function procesarAjaxGaleriaWeb(apikey, idusuario, idalbum, numero_fotos_mostrar) {

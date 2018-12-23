@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $("#FrmBusquedaPage").submit(function () {
         if ($('#txtBusquedaPage').val() !== "") {
             $('#actionBusquedaPage').val("buscarPage");
@@ -6,8 +7,9 @@ $(document).ready(function () {
             $('#ventanaModalBusqueda').css('display', "block");
             procesarAjaxBusquedaWeb();
         } else {
-            viewAlertWeb('warning', 'Por favor ingrese texto');
+            alert("Por favor ingrese texto!");
         }
+        procesarAjaxBusquedaWeb();
         return false;
     });
 
@@ -41,7 +43,7 @@ function procesarAjaxBusquedaWeb() {
                 div += "</div>";
                 $('#containerBusqueda').append(div);
             });
-            
+
         },
         error: function () {
             $('#loader_contenido_busqueda').css('display', 'none');
@@ -113,10 +115,8 @@ $(window).resize(function () {
 
     if (ancho < 750) {
         $('#logoIndexPrincipal').css('margin-top', '5px');
-        $('#materialize-menu').css('height', '52px');
     } else {
-        $('#logoIndexPrincipal').css('margin-top', '20px');
-        $('#materialize-menu').css('height', '82px');
+        $('#logoIndexPrincipal').css('margin-top', '10px');
     }
 
     if (ancho >= 750 && ancho < 850) {
@@ -132,11 +132,4 @@ $(window).resize(function () {
         $('#logoIndexPrincipal').css('display', 'block');
         $('#menu-list').css('margin-left', '0px');
     }
-    /*
-     if (ancho > 1200) {
-     $('#menu-list').css('margin-right', '40px');
-     } else {
-     $('#menu-list').css('margin-right', '0px');
-     }
-     */
 });

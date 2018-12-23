@@ -1,10 +1,10 @@
-<header id="header" class="tt-nav nav-border-bottom" style="height: 80px">
+<header id="header" class="tt-nav nav-border-bottom">
     <div class="header-sticky light-header">
         <div class="container">
             <div class="search-wrapper">
                 <div class="search-trigger pull-right">
                     <div class="search-btn"></div>
-                    <i class="material-icons">search</i>
+                    <i style="display: block" class="material-icons">search</i>
                 </div>
                 <i class="search-close material-icons">close</i>
                 <div class="search-form-wrapper">
@@ -43,8 +43,8 @@
                     </div>
                 </div>
             </div>
-            <div id="materialize-menu" class="menuzord" style="height: 82px">
-                <a href="<%out.print(getServletContext().getContextPath());%>/index" id="logoIndexPrincipal" class="logo-brand" style="margin-left: 0px;margin-right: 30px; margin-top: 20px">
+            <div id="materialize-menu" class="menuzord">
+                <a href="<%out.print(getServletContext().getContextPath());%>/index" id="logoIndexPrincipal" class="logo-brand" style="margin-left: 0px;margin-right: 30px; margin-top: 10px">
                     <img class="retina" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo_peam_combinado.png" alt=""/>
                 </a>
                 <ul class="menuzord-menu pull-center" id="menu-list">
@@ -142,6 +142,7 @@
                             </div>
                         </div>
                     </li>
+                    <!--li><a class="search-trigger" style="margin-top: 15px"><i class="fa fa-search"></i></a></li-->
                 </ul>
             </div>
         </div>

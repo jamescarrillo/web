@@ -444,110 +444,36 @@
         </section>
         <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
-                <div class="text-center mb-20">
-                    <h1 class="section-title text-peam-verde-subrayado">
-                        <strong>Noticias</strong>
-                    </h1>
-                </div>
                 <div class="row">
-                    <div class="col-md-5 col-md-offset-2 col-sm-8 col-sm-offset-0 col-xs-10 col-xs-offset-1 mt-15" id="idColumnaCarrusel">
-                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                            <!--ol class="carousel-indicators">
-                                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                                <li data-target="#myCarousel" data-slide-to="1"></li>
-                                <li data-target="#myCarousel" data-slide-to="2"></li>
-                                <li data-target="#myCarousel" data-slide-to="3"></li>
-                                <li data-target="#myCarousel" data-slide-to="4"></li>
-                                <li data-target="#myCarousel" data-slide-to="5"></li>
-                                <li data-target="#myCarousel" data-slide-to="6"></li>
-                                <li data-target="#myCarousel" data-slide-to="7"></li>
-                                <li data-target="#myCarousel" data-slide-to="8"></li>
-                                <li data-target="#myCarousel" data-slide-to="9"></li>
-                            </ol-->
-                            <div class="carousel-inner">
-                                <div class="item active image-peam">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa0" src="" alt="Noticia" >
-                                    <div class="carousel-caption">
-                                        <h4 id="tituloCNotaPrensa0" class="text-peam-negrita-fondo"></h4>
-                                    </div>
-                                </div>
-                                <div class="item image-peam">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa1" src="" alt="Noticia" >
-                                    <div class="carousel-caption">
-                                        <h4 id="tituloCNotaPrensa1" class="text-peam-negrita-fondo"></h4>
-                                    </div>
-                                </div>
-                                <div class="item image-peam">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa2" src="" alt="Noticia" >
-                                    <div class="carousel-caption">
-                                        <h4 id="tituloCNotaPrensa2" class="text-peam-negrita-fondo"></h4>
-                                    </div>
-                                </div>
-                                <div class="item image-peam">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa3" src="" alt="Noticia" >
-                                    <div class="carousel-caption">
-                                        <h4 id="tituloCNotaPrensa3" class="text-peam-negrita-fondo"></h4>
-                                    </div>
-                                </div>
-                                <div class="item image-peam">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa4" src="" alt="Noticia" >
-                                    <div class="carousel-caption">
-                                        <h4 id="tituloCNotaPrensa4" class="text-peam-negrita-fondo"></h4>
-                                    </div>
-                                </div>
-                                <div class="item image-peam">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa5" src="" alt="Noticia" >
-                                    <div class="carousel-caption">
-                                        <h4 id="tituloCNotaPrensa5" class="text-peam-negrita-fondo"></h4>
-                                    </div>
-                                </div>
-                                <div class="item image-peam">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa6" src="" alt="Noticia" >
-                                    <div class="carousel-caption">
-                                        <h4 id="tituloCNotaPrensa6" class="text-peam-negrita-fondo"></h4>
-                                    </div>
-                                </div>
-                                <div class="item image-peam">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa7" src="" alt="Noticia" >
-                                    <div class="carousel-caption">
-                                        <h4 id="tituloCNotaPrensa7" class="text-peam-negrita-fondo"> </h4>
-                                    </div>
-                                </div>
-                                <div class="item image-peam">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa8" src="" alt="Noticia" >
-                                    <div class="carousel-caption">
-                                        <h4 id="tituloCNotaPrensa8" class="text-peam-negrita-fondo"></h4>
-                                    </div>
-                                </div>
-                                <div class="item image-peam">
-                                    <img class="img-responsive img-responsive-peam" id="imgCNotaPrensa9" src="" alt="Noticia" >
-                                    <div class="carousel-caption">
-                                        <h4 id="tituloCNotaPrensa9" class="text-peam-negrita-fondo"></h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
+                    <div class="col-md-9" id="idColumnaCarrusel">
+                        <div class="text-center mb-20">
+                            <h1 class="section-title text-peam-verde-subrayado">
+                                <strong>Noticias</strong>
+                            </h1>
+                        </div>
+                        <div id="myCarouselNoticias" class="owl-carousel owl-theme">
+
                         </div>
                     </div>
                     <div class="col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2 mt-15">
-                        <div class="team-wrapper text-center">
-                            <div class="team-img">
-                                <a><img id="imgGG" src="peam_resources_app/fotos_users/gerente2.jpg" class="img-responsive" alt="Imagen"></a>
+                        <div class="text-center mb-0">
+                            <h1 class="section-title text-peam-verde-subrayado">
+                                <strong>Agenda</strong>
+                            </h1>
+                        </div>
+                        <article class='post-wrapper' style="padding: 0px; margin: 0px">
+                            <div class='thumb-wrapper waves-effect waves-block waves-light' style="margin-bottom: 0px">
+                                <a><img id="imgGG" src='' class='img-responsive' alt='imgNoticia'></a>
+                                <div class="description_float_gerente">
+                                    <span class="text-peam-negrita" id="cargoGG" style="color: white">
+                                        Gerente General
+                                    </span>
+                                </div>
                             </div>
-                            <div class="team-title" style="padding-top: 15px;">
+                            <div class='blog-content text-center' style="padding: 10px">
                                 <h3 class="text-peam-negrita">
                                     <a style="text-transform: none" id="nombreGG">Carmen Beatriz Ríos Vásquez</a>
                                 </h3>
-                                <span class="mb-10 text-peam-negrita" id="cargoGG">
-                                    Gerente General
-                                </span>
                                 <h5 class="text-peam-negrita" id="telefonoGG">
                                     <i class='fa fa-phone'></i> (042) - 562522
                                 </h5>
@@ -555,7 +481,8 @@
                                     <i class='fa fa-envelope-o'></i> <a href='mailto:gerencia@peam.gob.pe'>gerencia@peam.gob.pe</a>
                                 </h5>
                             </div>
-                        </div>
+
+                        </article>
                     </div>
                 </div>
             </div>
@@ -586,7 +513,7 @@
                                     <h5 class="text-peam-verde-index" style="margin-top: 5px">
                                         <i class="fa fa-money fa-4x" aria-hidden="true"></i>
                                         <br>
-                                        Presupuestos y <br>Finanzas
+                                        Presupuesto y <br>Finanzas
                                     </h5>
                                 </a>
                             </div>
@@ -604,17 +531,6 @@
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 mb-20 mt-20">
                             <div class="text-center">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/recursos-humanos">
-                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
-                                        <i class="fa fa-users fa-4x" aria-hidden="true"></i>
-                                        <br>
-                                        Recursos Humanos
-                                    </h5>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-lg-offset-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 mt-20">
-                            <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/adquisiciones-y-contrataciones">
                                     <h5 class="text-peam-verde-index" style="margin-top: 5px">
                                         <i class="fa fa-sticky-note fa-4x" aria-hidden="true"></i>
@@ -624,7 +540,19 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-6 mb-20 mt-20">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-20 mt-20">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/recursos-humanos">
+                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
+                                        <i class="fa fa-users fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Recursos Humanos
+                                    </h5>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-20 mt-20">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/agenda-institucional">
                                     <h5 class="text-peam-verde-index" style="margin-top: 5px">
@@ -635,7 +563,7 @@
                                 </a>
                             </div>
                         </div>
-                        <div class="col-lg-2 col-md-4 col-sm-6 mt-20">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-20 mt-20">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/informacion-adicional">
                                     <h5 class="text-peam-verde-index" style="margin-top: 5px">
@@ -646,9 +574,15 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb-20 mt-20">
+                            <div class="text-center" id="contenedorPortal">
+                                <a href="http://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13940&id_tema=1&ver=D#.XB7yO1xKg_6" target="_blank">
+                                    <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/portal_x200.png" style="margin: 10px auto">
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
         </section>
         <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
@@ -659,6 +593,50 @@
                 </div>
                 <div class="row">
                     <div class="clients-grid">
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="http://doc.peam.gob.pe/sisgedo/app/main.php">
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-folder-open fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Sistema de Trámite <br>Documentario (SISGEDO)
+                                    </h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/consultas/libro-de-reclamaciones">
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-pencil-square-o fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Libro de <br>Reclamaciones
+                                    </h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/consultas/acceso-informacion">
+                                    <h5 class="text-peam-verde-index">
+                                        <i class="fa fa-share-square-o fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Solicitud de Acceso a la <br>Información Pública
+                                    </h5>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
+                            <div class="text-center">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">
+                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
+                                        <i class="fa fa-file-text fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Resoluciones <br>Gerenciales
+                                    </h5>
+                                </a>
+                            </div>
+                        </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
                             <div class="text-center">
                                 <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">
@@ -683,55 +661,22 @@
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
                             <div class="text-center">
-                                <a href="http://doc.peam.gob.pe/sisgedo/app/main.php">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/control-interno">
                                     <h5 class="text-peam-verde-index">
-                                        <i class="fa fa-folder-open fa-4x" aria-hidden="true"></i>
+                                        <i class="fa fa-share-alt fa-4x" aria-hidden="true"></i>
                                         <br>
-                                        Sistema de Trámite <br>Documentario (SISGEDO)
+                                        Control Interno
                                     </h5>
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 mt-15">
                             <div class="text-center">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/consultas/libro-de-reclamaciones">
+                                <a href="https://correo.peam.gob.pe/">
                                     <h5 class="text-peam-verde-index">
-                                        <i class="fa fa-pencil-square-o fa-4x" aria-hidden="true"></i>
+                                        <i class="fa fa-envelope-o fa-4x" aria-hidden="true"></i>
                                         <br>
-                                        Libro de <br>Reclamaciones
-                                    </h5>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-lg-offset-3 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 mt-15">
-                            <div class="text-center">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/consultas/acceso-informacion">
-                                    <h5 class="text-peam-verde-index">
-                                        <i class="fa fa-share-square-o fa-4x" aria-hidden="true"></i>
-                                        <br>
-                                        Solicitud de Acceso <br>a la Información
-                                    </h5>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-sm-6 mt-15">
-                            <div class="text-center">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">
-                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
-                                        <i class="fa fa-file-text fa-4x" aria-hidden="true"></i>
-                                        <br>
-                                        Resoluciones
-                                    </h5>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-lg-2 col-md-4 col-sm-6 mt-15">
-                            <div class="text-center">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/publicaciones/control-interno">
-                                    <h5 class="text-peam-verde-index">
-                                        <i class="fa fa-share-alt fa-4x" aria-hidden="true"></i>
-                                        <br>
-                                        Control Interno
+                                        Correo Institucional
                                     </h5>
                                 </a>
                             </div>
@@ -798,9 +743,53 @@
                 </div>
             </div>
         </section>
-        <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
+
+        <section style="background-color: #00793D; padding-bottom: 40px; padding-top: 40px">
+            <div class="container">
+                <div class="mb-10">
+                    <h3 class="text-peam-subrayado-enlaces-externos">
+                        <strong>Enlaces Externos</strong>
+                    </h3>
+                </div>
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-xs-3">
+                        <a href="http://www.bn.com.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">Banco de la Nación</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=article&id=1592&Itemid=101376&lang=es" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">FONIPREL</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">GORESAM</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="https://apps.contraloria.gob.pe/infobras/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">INFObras</a>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-xs-3">
+                        <a href="http://www.sanciones.gob.pe/transparencia/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">Transparencia RNSDD</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="http://www2.seace.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">SE@CE</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">SNIP</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="http://www.sunat.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">SUNAT</a>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-xs-3">
+                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=section&id=37&Itemid=100143&lang=es" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">Transparencia Económica</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-padding" style="padding-top: 0px; padding-bottom: 110px;">
             <div class="container">			
-                <div class="row">
+                <!--div class="row">
                     <div class="featured-carousel brand-dot">
                         <div class="featured-item" style="padding: 0px;">
                             <a href="http://www.bn.com.pe/" target="_blank">
@@ -848,7 +837,7 @@
                             </a>						
                         </div>
                     </div>
-                </div>
+                </div-->
             </div>
         </section>
 
