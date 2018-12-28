@@ -172,7 +172,8 @@ function listarNotaPrensa(BEAN_PAGINATION) {
 
             card += "<div class='d-flex' " + atributosNotaPrensa + ">";
 
-            card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            //card += "<div class='read'><a class='link font-medium btn-vista-previa-np' style='cursor:pointer'>Vista Previa</a></div>";
+            card += "<div class='read'>ID: "+value.id+"</div>";
 
             card += "<div class='ml-auto'>";
 

@@ -44,11 +44,357 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12">
-                    <div id='organigrama'>
+                <div class="col-md-10 col-md-offset-1 col-xs-12- col-xs-offset-0" style="
+                     overflow: auto;
+                     /* background: #ecf0f1; */
+                     background: #ffffff;
+                     padding: 50px;
+                     -webkit-user-select: none;
+                     -moz-user-select: none;
+                     -ms-user-select: none;
+                     user-select: none;
+                     ">
+                    <table>
+                        <tbody id="tbodyOrganigrama">
+                            <tr>
+                                <td style="width: 12.5%"></td>
+                                <td style="width: 12.5%"></td>
+                                <td style="width: 12.5%"></td>
+                                <td style="width: 12.5%"></td>
+                                <td style="width: 12.5%"></td>
+                                <td style="width: 12.5%"></td>
+                                <td style="width: 12.5%"></td>
+                                <td style="width: 12.5%"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="8" class="text-center">
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 5px solid #466c92;
+                                        background: #466c92;
+                                        color: #ecf0f1;
+                                        display: inline-block;
+                                        padding: 20px 10px;
+                                        margin: 0 10px;
+                                        cursor: pointer;
+                                        " id="idgrsm">
+                                        GRSM
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="8" style="height: 10px"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" 
+                                    style="
+                                    border-width: 2px;
+                                    border-right: 2px solid #34495e;
+                                    height: 30px
+                                    ">                                    
+                                </td>
+                                <td colspan="4" 
+                                    style="
+                                    border-width: 2px;
+                                    border-left: 2px solid #34495e;
+                                    height: 30px
+                                    ">                                    
+                                </td>
+                            </tr>
 
-                    </div>
-                </div>
+                            <tr>
+                                <td colspan="8" class="text-center">
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 5px solid #466c92;
+                                        background: #466c92;
+                                        color: #ecf0f1;
+                                        display: inline-block;
+                                        padding: 20px 10px;
+                                        margin: 0 10px;
+                                        cursor: pointer;
+                                        " id="idConsejoDirectivo">
+                                        CONSEJO DIRECTIVO
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="8" style="height: 10px"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" 
+                                    style="
+                                    border-width: 2px;
+                                    border-right: 2px solid #34495e;
+                                    height: 30px
+                                    ">                                    
+                                </td>
+                                <td colspan="4" 
+                                    style="
+                                    border-width: 2px;
+                                    border-left: 2px solid #34495e;
+                                    height: 30px
+                                    ">                                    
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td colspan="6" class="text-center">
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 5px solid #00793D;
+                                        background: #00793D;
+                                        color: #ecf0f1;
+                                        display: inline-block;
+                                        padding: 20px 10px;
+                                        margin: 0 10px;
+                                        cursor: pointer;
+                                        text-align: center;
+                                        " id="idOrganoControlInstitucional">
+                                        ÓRGANO DE CONTROL INSTITUCIONAL
+                                    </div>
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 2px solid #34495e;
+                                        display: inline-block;
+                                        ">
+                                    </div>
+                                    <div
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 5px solid #466c92;
+                                        background: #466c92;
+                                        color: #ecf0f1;
+                                        display: inline-block;
+                                        padding: 20px 10px;
+                                        margin: 0 10px;
+                                        cursor: pointer;
+                                        " id="idGerenciaGeneral">
+                                        GERENCIA GENERAL
+                                    </div>
+                                </td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="8" style="height: 10px"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" 
+                                    style="
+                                    border-width: 2px;
+                                    border-right: 2px solid #34495e;
+                                    height: 30px
+                                    ">                                    
+                                </td>
+                                <td colspan="4" class="text-left">
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 2px solid #34495e;
+                                        display: inline-block;
+                                        ">
+                                    </div>
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 5px solid #00793D;
+                                        background: #00793D;
+                                        color: #ecf0f1;
+                                        display: inline-block;
+                                        padding: 20px 10px;
+                                        margin: 0 10px;
+                                        cursor: pointer;
+                                        text-align: center;
+                                        " id="idOficinaPresupuestoPlanificacion">
+                                        OFICINA DE PRESUPUESTO Y PLANIFICACIÓN
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+
+                                <td colspan="4" class="text-right">
+
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 5px solid #00793D;
+                                        background: #00793D;
+                                        color: #ecf0f1;
+                                        display: inline-block;
+                                        padding: 20px 10px;
+                                        margin: 0 10px;
+                                        cursor: pointer;
+                                        text-align: center;
+                                        " id="idOficinaAdministracion">
+                                        OFICINA DE ADMINISTACION
+                                    </div>
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 2px solid #34495e;
+                                        display: inline-block;
+                                        ">
+                                    </div>
+                                </td>
+                                <td colspan="4" 
+                                    style="
+                                    border-width: 2px;
+                                    border-left: 2px solid #34495e;
+                                    height: 30px
+                                    ">                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" 
+                                    style="
+                                    border-width: 2px;
+                                    border-right: 2px solid #34495e;
+                                    height: 30px
+                                    ">                                    
+                                </td>
+                                <td colspan="4" class="text-left">
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 2px solid #34495e;
+                                        display: inline-block;
+                                        ">
+                                    </div>
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 5px solid #00793D;
+                                        background: #00793D;
+                                        color: #ecf0f1;
+                                        display: inline-block;
+                                        padding: 20px 10px;
+                                        margin: 0 10px;
+                                        cursor: pointer;
+                                        text-align: center;
+                                        " id="idOficinaAsesoriaJuridica">
+                                        OFICINA DE ASESARÍA JURÍDICA
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="4" 
+                                    style="
+                                    border-width: 2px;
+                                    border-right: 2px solid #34495e;
+                                    height: 30px
+                                    ">                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="text-center"
+                                    style="
+                                    border-width: 2px;
+                                    border-right: 2px solid #34495e;
+                                    height: 30px;
+                                    ">                                    
+                                </td>
+                                <td colspan="3" class="text-center"
+                                    style="
+                                    border-width: 2px;
+                                    border-top: 2px solid #34495e;
+                                    border-right: 2px solid #34495e;
+                                    height: 30px;
+                                    ">                                    
+                                </td>
+                                <td colspan="3" class="text-center"
+                                    style="
+                                    border-width: 2px;
+                                    border-top: 2px solid #34495e;
+                                    border-left: 2px solid #34495e;
+                                    height: 30px;
+                                    ">                                    
+                                </td>                                
+                                <td class="text-center"
+                                    style="
+                                    border-width: 2px;
+                                    border-left: 2px solid #34495e;
+                                    height: 30px;
+                                    ">                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="text-center">
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 5px solid #f3a486;
+                                        background: #f3a486;
+                                        color: #ecf0f1;
+                                        display: inline-block;
+                                        padding: 20px 10px;
+                                        margin: 0 10px;
+                                        cursor: pointer;
+                                        text-align: center;
+                                        " id="idDireccionManejoAmbiental">
+                                        DIRECCIÓN DE MANEJO AMBIENTAL
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td colspan="2" class="text-center">
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 5px solid #f3a486;
+                                        background: #f3a486;
+                                        color: #ecf0f1;
+                                        display: inline-block;
+                                        padding: 20px 10px;
+                                        margin: 0 10px;
+                                        cursor: pointer;
+                                        text-align: center;
+                                        " id="idDireccionInfraestructura">
+                                        DIRECCIÓN DE INFRAESTRUCTURA
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td colspan="2" class="text-center">
+                                    <div 
+                                        style="
+                                        position: relative;
+                                        width: 120px;
+                                        border-bottom: 5px solid #f3a486;
+                                        background: #f3a486;
+                                        color: #ecf0f1;
+                                        display: inline-block;
+                                        padding: 20px 10px;
+                                        margin: 0 10px;
+                                        cursor: pointer;
+                                        text-align: center;
+                                        " id="idDireccionDesarrolloAgropecuario">
+                                        DIRECCIÓN DE DESARROLLO AGROPECUARIO
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>                
+            </div>
+            <div class="row">
+                <!--div class="col-xs-12" id="organigrama">
+
+                </div-->
             </div>
             <br>
             <hr>

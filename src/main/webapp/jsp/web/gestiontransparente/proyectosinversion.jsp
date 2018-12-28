@@ -50,7 +50,7 @@
                                     <div role="tabpanel" class="tab-pane fade in active" id="tab-base_legal" style="font-size: 16px;text-align: justify">
                                         <p class="text-peam">
                                             Obtenga información de los proyectos de inversión del PEAM, desde el Portal de Transparencia Estádar (PTE), en el cual la entidad actualiza información, para este caso, en los rubros de "Proyectos de Inversión" y "Rubro InfObras obras públicas"  
-                                            <a href="<%out.print(getServletContext().getContextPath());%>/consultas/portal-de-transparencia" class="btn waves-effect waves-light" style="height: 30px; padding-top: 3px; padding-bottom: 3px;">Portal de Transparencia <i class='fa fa-long-arrow-right'></i></a>
+                                            <a href="<%out.print(getServletContext().getContextPath());%>/consultas/portal-de-transparencia" class="btn waves-effect waves-light" style="height: 30px; padding-top: 3px; padding-bottom: 3px;">Portal de Transparencia</a>
                                         </p>
                                     </div>
                                 </div>

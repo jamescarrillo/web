@@ -62,19 +62,20 @@
                                             <div class="form-group col-lg-5 col-12 mb-3">
                                                 <input type="text" name="txtTituloNotaPrensa" id="txtTituloNotaPrensa" class="form-control form-control-sm" placeholder="TÍTULO">
                                             </div>
-                                            <div class="form-group col-lg-3 col-md-6 col-12 mb-3">
+                                            <div class="form-group col-lg-2 col-md-4 col-12 mb-3">
                                                 <select id="estadoNotaPrensa" name="estadoNotaPrensa" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarNotaPrensa'>
                                                     <option value="-1">TODOS</option>
                                                     <option value="true">ACTIVOS</option>
                                                     <option value="false">INACTIVOS</option>
                                                 </select>
                                             </div>
-                                            <div class="input-group col-lg-4 col-md-6 col-12 mb-3">
+                                            <div class="input-group col-lg-5 col-md-8 col-12 mb-3">
                                                 <select id="comboAnio" name="comboAnio" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarNotaPrensa'>
 
                                                 </select>
                                                 <button type="submit" id="btnBuscarNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Nota de Prensa" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
-                                                <button type="button" id="btnAbrirNuevoNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Registrar Nota de Prensa" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                <button type="button" id="btnAbrirNuevoNotaPrensa" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Registrar Nota de Prensa" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                                <button type="button" id="btnAbrirDestacados" class="btn waves-effect waves-light btn-info btn-sm" data-toggle="tooltip" title="Destacados" style="height: 31px"><i class="fa fa-file-text" aria-hidden="true"></i> DESTACADOS</button>
                                             </div>
                                         </div>
                                     </form>
@@ -208,8 +209,143 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="modal fade" id="ventanaDestacados" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title">DESTACADOS</h6>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="hidden" id="nameFormDestacado" value="FrmDestacado">
+                                <input type="hidden" id="actionDestacado" name="action" value="paginarDestacado">
+                                <input type="hidden" id="numberPageDestacado" name="numberPageDestacado" value="1">
+                                <form id="FrmDestacado">
+                                    <div class="row mt-3">
+                                        <div class="form-group col-lg-4 col-12 mb-3">
+                                            <input type="text" name="txtTituloDestacado" id="txtTituloDestacado" class="form-control form-control-sm" placeholder="TÍTULO">
+                                        </div>
+                                        <div class="form-group col-lg-3 col-md-6 col-12 mb-3">
+                                            <select id="estadoDestacado" name="estadoDestacado" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarDestacado'>
+                                                <option value="-1">TODOS</option>
+                                                <option value="true">PUBLICADOS</option>
+                                                <option value="false">OCULTOS</option>
+                                            </select>
+                                        </div>
+                                        <div class="input-group col-lg-5 col-md-6 col-12">
+                                            <select id="comboAnioDestacado" name="comboAnioDestacado" class="form-control form-control-sm combo-paginar mr-3" idBtnBuscar='btnBuscarDestacado'>
+
+                                            </select>
+                                            <button type="submit" id="btnBuscarDestacado" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Buscar Destacado" style="height: 31px"><i class="fas fa-search" aria-hidden="true"></i> BUSCAR</button>
+                                            <button type="button" id="btnAbrirNuevoDestacado" class="btn waves-effect waves-light btn-info btn-sm mr-3" data-toggle="tooltip" title="Registrar Destacado" style="height: 31px"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="row" id="containerRegistrosDestacados">
+                                </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="card "
+                                             style="height: 50px; margin-bottom: 0px">
+                                            <div class="card-body"
+                                                 style="padding-top: 10px; padding-bottom: 10px">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-3 col-4">
+                                                        <select id="sizePageDestacado" name="sizePageDestacado" class="form-control form-control-sm combo-paginar" idBtnBuscar='btnBuscarDestacado'>
+                                                            <option value="6">6</option>
+                                                            <option value="8">8</option>
+                                                            <option value="10">10</option>
+                                                            <option value="16">16</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-9 col-8">
+                                                        <nav aria-label="Page navigation example">
+                                                            <ul id="paginationDestacado"
+                                                                class="pagination pagination-sm justify-content-end">
+
+                                                            </ul>
+
+                                                        </nav>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CERRAR</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="ventanaManDestacado" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="FrmDestacadoModal">
+                            <div class="modal-header">
+                                <h6 class="modal-title" id="txtTituloModalManDestacado"></h6>
+                                <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="form-group col-12 mb-3">
+                                        <label for="datePickerFechaDestacadoER">FECHA PUBLICACIÓN</label>
+                                        <input type="text" class="form-control form-control-sm" id="datePickerFechaDestacadoER" name="datePickerFechaDestacadoER" placeholder="DD/MM/AAAA"> 
+                                    </div>
+                                    <div class="form-group col-12 mb-3">
+                                        <label for="txtTituloDestacadoER">TÍTULO</label>
+                                        <textarea rows="2" class="form-control form-control-sm" id="txtTituloDestacadoER" name="txtTituloDestacadoER" type="text" placeholder="TÍTULO"></textarea>
+                                    </div>
+                                    <div class="col-12 mb-3">
+                                        <label for="txtContenidoDestacadoER">CONTENIDO</label>
+                                        <textarea id="txtContenidoDestacadoER" name="txtContenidoDestacadoER" class="form-control" rows="3" placeholder="CONTENIDO"></textarea>
+                                    </div>
+                                    <div class="form-group col-12 mb-3">
+                                        <label for="txtUrlDestacadoER" title="Ejm: id=21 | Para los destacados antiguos, no modificar. Estan versión soporta ambos enlaces">ENLACE(Ejm: id=21)</label>
+                                        <input class="form-control form-control-sm" id="txtUrlDestacadoER" name="txtUrlDestacadoER" type="text" placeholder="ENLACE" title="Ejm: id=21 | Para los destacados antiguos, no modificar. Estan versión soporta ambos enlaces">
+                                    </div>
+                                    <div class="form-group col-12 mb-3">
+                                        <label for="txtFotoDestacadoER">FOTO(Flickr)</label>
+                                        <input class="form-control form-control-sm" id="txtFotoDestacadoER" name="txtFotoDestacadoER" type="text" placeholder="FOTO">
+                                    </div>
+                                    <input id="txtIdDestacadoER" name="txtIdDestacadoER" type="hidden" value="">
+                                    <input id="txtAnhoDestacadoER" name="txtAnhoDestacadoER" type="hidden" value="">
+                                    <input id="txtEstadoDestacadoER" name="txtEstadoDestacadoER" type="hidden" value="">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-secondary btn-sm" data-dismiss="modal">CANCELAR</button>
+                                <button type="submit" class="btn btn-outline-info btn-sm">
+                                    <i class="fa fa-floppy-o"></i> GUARDAR
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
             <div class="modal fade" id="modalCargandoNotaPrensa" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <div class="progress" style="margin-bottom: 0px;">
+                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                                    Cargando...
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalCargandoDestacado" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-hidden="true" style="padding-top: 18%; overflow-y: visible;">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-body">
@@ -253,6 +389,7 @@
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/notaPrensa.js"></script>
+        <script src="<%out.print(getServletContext().getContextPath());%>/js_app/gc/destacado.js"></script>
 
     </body>
 

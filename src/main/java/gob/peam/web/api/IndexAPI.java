@@ -8,11 +8,13 @@ package gob.peam.web.api;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import gob.peam.web.dao.AnuncioDAO;
+import gob.peam.web.dao.DestacadoDAO;
 import gob.peam.web.dao.FuncionarioDAO;
 import gob.peam.web.dao.MultimediaDAO;
 import gob.peam.web.dao.NotaPrensaDAO;
 import gob.peam.web.dao.impl.AnuncioDAOImpl;
 import gob.peam.web.dao.impl.BusquedaDAOImpl;
+import gob.peam.web.dao.impl.DestacadoDAOImpl;
 import gob.peam.web.dao.impl.FuncionarioDAOImpl;
 import gob.peam.web.dao.impl.MultimediaDAOImpl;
 import gob.peam.web.dao.impl.NotaPrensaDAOImpl;
@@ -50,6 +52,7 @@ public class IndexAPI extends HttpServlet {
     private String action;
     
     private NotaPrensaDAO notaPrensaDAO;
+    private DestacadoDAO destacadoDAO;
     private MultimediaDAO multimediaDAO;
     private AnuncioDAO anuncioDAO;
     private FuncionarioDAO funcionarioDAO;
@@ -65,6 +68,7 @@ public class IndexAPI extends HttpServlet {
         this.action = "";
         
         this.notaPrensaDAO = new NotaPrensaDAOImpl(this.pool);
+        this.destacadoDAO = new DestacadoDAOImpl(this.pool);
         this.multimediaDAO = new MultimediaDAOImpl(this.pool);
         this.anuncioDAO = new AnuncioDAOImpl(this.pool);
         this.funcionarioDAO = new FuncionarioDAOImpl(this.pool);
@@ -130,6 +134,7 @@ public class IndexAPI extends HttpServlet {
         try {
             Conf_Web conf_web = Utilities.getConf_Web(getServletContext().getRealPath("/peam_resources_app/conf_app/files/"), "conf_web.properties");
             this.JSONROOT.clear();
+            this.JSONROOT.put("DATA_DESTACADOS", this.destacadoDAO.getPagination(getParametersNotasPrensa()));
             this.JSONROOT.put("DATA_NOTASPRENSA", this.notaPrensaDAO.getPagination(getParametersNotasPrensa()));
             this.JSONROOT.put("DATA_MULTIMEDIA", this.multimediaDAO.getPagination(getParametersMultimedia(conf_web)));
             this.JSONROOT.put("DATA_ANUNCIOS", this.anuncioDAO.getAnunciosDia(Integer.parseInt(conf_web.getNumero_anuncios_mostrar())));

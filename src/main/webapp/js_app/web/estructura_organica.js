@@ -9,12 +9,112 @@ $(document).ready(function () {
         $('#header').css('display', 'block');
         $('#myModalDirectivos').css('display', 'none');
     });
-    
+
     $('#btnCerrarModalPEAM').click(function () {
         $('#header').css('display', 'block');
         $('#myModalPEAM').css('display', 'none');
     });
+
+    $('#idgrsm').click(function () {
+        $('#header').css('display', 'none');
+        $('#myModalPEAM').css('display', 'block');
+    });
+
+    $('#idConsejoDirectivo').click(function () {
+        $('#header').css('display', 'none');
+        $('#myModalDirectivos').css('display', 'block');
+    });
+
+    var columnasCard = "col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1";
+
+    $('#idGerenciaGeneral').click(function () {
+        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
+        $('#containerModalFuncionarios').empty();
+        var id = buscarId("GERENCIA GENERAL");
+        if (id !== -1) {
+            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
+        }
+        $('#header').css('display', 'none');
+        $('#myModal').css('display', 'block');
+    });
+
+    $('#idOrganoControlInstitucional').click(function () {
+        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
+        $('#containerModalFuncionarios').empty();
+        var id = buscarId("ORGANO DE CONTROL INSTITUCIONAL");
+        if (id !== -1) {
+            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
+        }
+        $('#header').css('display', 'none');
+        $('#myModal').css('display', 'block');
+    });
     
+    $('#idOficinaPresupuestoPlanificacion').click(function () {
+        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
+        $('#containerModalFuncionarios').empty();
+        var id = buscarId("OFICINA DE PRESUPUESTO Y PLANIFICACION");
+        if (id !== -1) {
+            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
+        }
+        $('#header').css('display', 'none');
+        $('#myModal').css('display', 'block');
+    });
+    
+    $('#idOficinaAdministracion').click(function () {
+        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
+        $('#containerModalFuncionarios').empty();
+        var id = buscarId("OFICINA DE ADMINISTRACION");
+        if (id !== -1) {
+            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
+        }
+        $('#header').css('display', 'none');
+        $('#myModal').css('display', 'block');
+    });
+    
+    $('#idOficinaAsesoriaJuridica').click(function () {
+        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
+        $('#containerModalFuncionarios').empty();
+        var id = buscarId("OFICINA DE ASESORIA JURIDICA");
+        if (id !== -1) {
+            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
+        }
+        $('#header').css('display', 'none');
+        $('#myModal').css('display', 'block');
+    });
+    
+    $('#idDireccionManejoAmbiental').click(function () {
+        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
+        $('#containerModalFuncionarios').empty();
+        var id = buscarId("DIRECCION DE MANEJO AMBIENTAL");
+        if (id !== -1) {
+            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
+        }
+        $('#header').css('display', 'none');
+        $('#myModal').css('display', 'block');
+    });
+    
+    $('#idDireccionInfraestructura').click(function () {
+        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
+        $('#containerModalFuncionarios').empty();
+        var id = buscarId("DIRECCION DE INFRAESTRUCTURA");
+        if (id !== -1) {
+            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
+        }
+        $('#header').css('display', 'none');
+        $('#myModal').css('display', 'block');
+    });
+    
+    $('#idDireccionDesarrolloAgropecuario').click(function () {
+        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
+        $('#containerModalFuncionarios').empty();
+        var id = buscarId("DIRECCION DE DESARROLLO AGROPECUARIO");
+        if (id !== -1) {
+            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
+        }
+        $('#header').css('display', 'none');
+        $('#myModal').css('display', 'block');
+    });
+
     procesarAjaxOrganigramaWeb();
 
 });
@@ -51,76 +151,15 @@ function procesarAjaxOrganigramaWeb() {
             for (var i = 0; i < representantes.length; i++) {
                 $('#containerModalDirectivos').append(representantes[i]);
             }
-            crearDiagrama(jsonResponse.DATA_FUNCIONARIOS);
+            console.log(jsonResponse.DATA_FUNCIONARIOS.LIST);
+            var myJsonCadena = JSON.stringify(jsonResponse.DATA_FUNCIONARIOS);
+            $('#jsonFuncionarios').val(myJsonCadena);
         },
         error: function () {
             viewAlertWeb('error', 'Error interno en el servidor!');
         }
     });
     return false;
-}
-
-function crearDiagrama(DATA_FUNCIONARIOS) {
-    var funcionarios = [];
-    $(DATA_FUNCIONARIOS.LIST).each(function (index, value) {
-        funcionarios.push(
-                {
-                    "id": value.id,
-                    "puesto": value.cargo,
-                    "nombre": "",
-                    "hijos": []
-                }
-        );
-    });
-    var myJsonCadena = JSON.stringify(DATA_FUNCIONARIOS.LIST);
-    $('#jsonFuncionarios').val(myJsonCadena);
-    var data = {
-        "id": "idgoresam",
-        "puesto": "GRSM",
-        "nombre": "",
-        "hijos": [
-            {
-                "id": "idconsejodirectivo",
-                "puesto": "Consejo Directivo",
-                "nombre": "",
-                "hijos": funcionarios
-            }
-        ]
-    };
-    organigrama.data = data;
-    // creación del organigrama, se le manda el id del contenedor
-    organigrama.create('organigrama');
-    // Agregamos los eventos para los nodos
-
-//    $('.nodo-puesto').click(function () {
-//        $('#header').css('display', 'none');
-//        $('#myModal').css('display', 'block');
-//    });
-
-    $('.nodo-puesto').each(function (index, value) {
-        $(this).click(function () {
-            if ($(this).attr("iditem-caja") === "idconsejodirectivo") {
-                $('#header').css('display', 'none');
-                $('#myModalDirectivos').css('display', 'block');
-            } else {
-                if ($(this).attr("iditem-caja") !== "idgoresam") {
-                    var id = $(this).attr("iditem-caja");
-                    var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
-                    $(jsonFuncionarios).each(function (index, value) {
-                        if (value.id.toString() === id.toString()) {
-                            $('#containerModalFuncionarios').empty();
-                            $('#containerModalFuncionarios').append(getCard(value, "col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1"));
-                        }
-                    });
-                    $('#header').css('display', 'none');
-                    $('#myModal').css('display', 'block');
-                }else{
-                    $('#header').css('display', 'none');
-                    $('#myModalPEAM').css('display', 'block');
-                }
-            }
-        });
-    });
 }
 
 function getCard(value, columnas) {
@@ -154,3 +193,80 @@ function getCard(value, columnas) {
     card += "</div>";
     return card;
 }
+
+function buscarId(organigrama) {
+    var id = -1;
+    var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
+    $(jsonFuncionarios.LIST).each(function (index, value) {
+        if (value.organigrama.toLowerCase() === organigrama.toLowerCase()) {
+            id = index;
+            return false;
+        }
+    });
+    return id;
+}
+
+
+//function crearDiagrama(DATA_FUNCIONARIOS) {
+//    var funcionarios = [];
+//    $(DATA_FUNCIONARIOS.LIST).each(function (index, value) {
+//        funcionarios.push(
+//                {
+//                    "id": value.id,
+//                    "puesto": value.cargo,
+//                    "nombre": "",
+//                    "hijos": []
+//                }
+//        );
+//    });
+//    var myJsonCadena = JSON.stringify(DATA_FUNCIONARIOS.LIST);
+//    $('#jsonFuncionarios').val(myJsonCadena);
+//    var data = {
+//        "id": "idgoresam",
+//        "puesto": "GRSM",
+//        "nombre": "",
+//        "hijos": [
+//            {
+//                "id": "idconsejodirectivo",
+//                "puesto": "Consejo Directivo",
+//                "nombre": "",
+//                "hijos": funcionarios
+//            }
+//        ]
+//    };
+//    organigrama.data = data;
+//    // creación del organigrama, se le manda el id del contenedor
+//    organigrama.create('organigrama');
+//    // Agregamos los eventos para los nodos
+//
+////    $('.nodo-puesto').click(function () {
+////        $('#header').css('display', 'none');
+////        $('#myModal').css('display', 'block');
+////    });
+//
+//    $('.nodo-puesto').each(function (index, value) {
+//        $(this).click(function () {
+//            if ($(this).attr("iditem-caja") === "idconsejodirectivo") {
+//                $('#header').css('display', 'none');
+//                $('#myModalDirectivos').css('display', 'block');
+//            } else {
+//                if ($(this).attr("iditem-caja") !== "idgoresam") {
+//                    var id = $(this).attr("iditem-caja");
+//                    var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
+//                    $(jsonFuncionarios).each(function (index, value) {
+//                        if (value.id.toString() === id.toString()) {
+//                            $('#containerModalFuncionarios').empty();
+//                            $('#containerModalFuncionarios').append(getCard(value, "col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1"));
+//
+//                        }
+//                    });
+//                    $('#header').css('display', 'none');
+//                    $('#myModal').css('display', 'block');
+//                } else {
+//                    $('#header').css('display', 'none');
+//                    $('#myModalPEAM').css('display', 'block');
+//                }
+//            }
+//        });
+//    });
+//}

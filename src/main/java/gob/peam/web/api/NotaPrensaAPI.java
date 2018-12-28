@@ -7,8 +7,11 @@ package gob.peam.web.api;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import gob.peam.web.dao.DestacadoDAO;
 import gob.peam.web.dao.NotaPrensaDAO;
+import gob.peam.web.dao.impl.DestacadoDAOImpl;
 import gob.peam.web.dao.impl.NotaPrensaDAOImpl;
+import gob.peam.web.model.Destacado;
 import gob.peam.web.model.NotaPrensa;
 import gob.peam.web.model.Persona;
 import gob.peam.web.model.Usuario;
@@ -47,6 +50,7 @@ public class NotaPrensaAPI extends HttpServlet {
     private String action;
 
     private NotaPrensaDAO notaPrensaDAO;
+    private DestacadoDAO destacadoDAO;
 
     @Override
     public void init() throws ServletException {
@@ -55,7 +59,8 @@ public class NotaPrensaAPI extends HttpServlet {
         this.parameters = new HashMap<>();
         this.action = "";
 
-        notaPrensaDAO = new NotaPrensaDAOImpl(this.pool);
+        this.notaPrensaDAO = new NotaPrensaDAOImpl(this.pool);
+        this.destacadoDAO = new DestacadoDAOImpl(this.pool);
 
     }
 
@@ -89,6 +94,22 @@ public class NotaPrensaAPI extends HttpServlet {
                 case "activateNotaPrensa":
                     LOG.info(request.getParameter("txtEstadoNotaPrensaER"));
                     procesarNotaPrensa(this.notaPrensaDAO.cambiarEstado(Integer.parseInt(request.getParameter("txtIdNotaPrensaER")), Boolean.parseBoolean(request.getParameter("txtEstadoNotaPrensaER")), getParametersNotasPrensa(request)), response);
+                    break;
+                case "paginarDestacado":
+                    procesarDestacados(new BEAN_CRUD(this.destacadoDAO.getPagination(getParametersDestacado(request))), response);
+                    break;
+                case "addDestacado":
+                    procesarDestacados(this.destacadoDAO.add(getDestacado(request), getParametersDestacado(request)), response);
+                    break;
+                case "updateDestacado":
+                    procesarDestacados(this.destacadoDAO.update(getDestacado(request), getParametersDestacado(request)), response);
+                    break;
+                case "deleteDestacado":
+                    procesarDestacados(this.destacadoDAO.delete(Long.parseLong(request.getParameter("txtIdDestacadoER")), getParametersDestacado(request)), response);
+                    break;
+                case "activateDestacado":
+                    LOG.info(request.getParameter("txtEstadoDestacadoER"));
+                    procesarDestacados(this.destacadoDAO.cambiarEstado(Integer.parseInt(request.getParameter("txtIdDestacadoER")), Boolean.parseBoolean(request.getParameter("txtEstadoDestacadoER")), getParametersDestacado(request)), response);
                     break;
                 default:
                     request.getRequestDispatcher("/jsp/gc/publicaciones/notaPrensa.jsp").forward(request, response);
@@ -150,6 +171,17 @@ public class NotaPrensaAPI extends HttpServlet {
         }
     }
 
+    private void procesarDestacados(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(NotaPrensaAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private HashMap getParametersNotasPrensa(HttpServletRequest request) {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtTituloNotaPrensa").toLowerCase());
@@ -169,6 +201,48 @@ public class NotaPrensaAPI extends HttpServlet {
                 + (Integer.parseInt(request.getParameter("numberPageNotaPrensa")) - 1)
                 * Integer.parseInt(request.getParameter("sizePageNotaPrensa")));
         return this.parameters;
+    }
+
+    private HashMap getParametersDestacado(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", request.getParameter("txtTituloDestacado").toLowerCase());
+        if (request.getParameter("comboAnioDestacado").equals("-1")) {
+            this.parameters.put("SQL_ANIO", "");
+        } else {
+            this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioDestacado") + "' ");
+        }
+        if (request.getParameter("estadoDestacado").equals("-1")) {
+            this.parameters.put("SQL_ESTADO", "");
+        } else {
+            this.parameters.put("SQL_ESTADO", "AND ESTADO = " + request.getParameter("estadoDestacado"));
+        }
+        this.parameters.put("SQL_ORDERS", "FECHA DESC");
+        this.parameters.put("LIMIT",
+                " LIMIT " + request.getParameter("sizePageDestacado") + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageDestacado")) - 1)
+                * Integer.parseInt(request.getParameter("sizePageDestacado")));
+        return this.parameters;
+    }
+
+    private Destacado getDestacado(HttpServletRequest request) {
+        Destacado destacado = new Destacado();
+        Persona per = ((Usuario) this.session.getAttribute("user")).getPersona();
+        if (request.getParameter("action").equals("updateDestacado")) {
+            destacado.setId(Integer.parseInt(request.getParameter("txtIdDestacadoER")));
+            destacado.setEditado_por(per);
+        } else {
+            destacado.setCreado_por(per);
+            destacado.setEditado_por(per);
+        }
+        destacado.setAnho(request.getParameter("txtAnhoDestacadoER"));
+        destacado.setFecha(Utilities.getDateSQLFORMAT(request.getParameter("datePickerFechaDestacadoER"), "dd/MM/yyyy"));
+        destacado.setTitulo(request.getParameter("txtTituloDestacadoER"));
+        destacado.setContenido(request.getParameter("txtContenidoDestacadoER"));
+        destacado.setUrl(request.getParameter("txtUrlDestacadoER"));
+        destacado.setFoto(request.getParameter("txtFotoDestacadoER"));
+        destacado.setEstado(Boolean.parseBoolean(request.getParameter("txtEstadoDestacadoER")));
+
+        return destacado;
     }
 
     private NotaPrensa getNotaPrensa(HttpServletRequest request) {

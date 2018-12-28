@@ -455,7 +455,7 @@
 
                         </div>
                     </div>
-                    <div class="col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-0 col-xs-8 col-xs-offset-2 mt-15">
+                    <div class="col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2 mt-15">
                         <div class="text-center mb-0">
                             <h1 class="section-title text-peam-verde-subrayado">
                                 <strong>Agenda</strong>
@@ -753,35 +753,35 @@
                 </div>
                 <div class="row" style="margin-bottom: 10px">
                     <div class="col-xs-3">
-                        <a href="http://www.bn.com.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">Banco de la Nación</a>
+                        <a href="http://www.bn.com.pe/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo">Banco de la Nación</a>
                     </div>
                     <div class="col-xs-3">
-                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=article&id=1592&Itemid=101376&lang=es" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">FONIPREL</a>
+                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=article&id=1592&Itemid=101376&lang=es" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo">FONIPREL</a>
                     </div>
                     <div class="col-xs-3">
-                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">GORESAM</a>
+                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo">GORESAM</a>
                     </div>
                     <div class="col-xs-3">
-                        <a href="https://apps.contraloria.gob.pe/infobras/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">INFObras</a>
-                    </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px">
-                    <div class="col-xs-3">
-                        <a href="http://www.sanciones.gob.pe/transparencia/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">Transparencia RNSDD</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="http://www2.seace.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">SE@CE</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">SNIP</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="http://www.sunat.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">SUNAT</a>
+                        <a href="https://apps.contraloria.gob.pe/infobras/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo">INFObras</a>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom: 10px">
                     <div class="col-xs-3">
-                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=section&id=37&Itemid=100143&lang=es" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 18px;background-color: white;color: black">Transparencia Económica</a>
+                        <a href="http://www.sanciones.gob.pe/transparencia/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo">Transparencia RNSDD</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="http://www2.seace.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo">SE@CE</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo">SNIP</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="http://www.sunat.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo">SUNAT</a>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-xs-3">
+                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=section&id=37&Itemid=100143&lang=es" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo">Transparencia Económica</a>
                     </div>
                 </div>
             </div>

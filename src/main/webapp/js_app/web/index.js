@@ -15,7 +15,7 @@ function procesarAjaxIndexWeb() {
             $('#loader_contenido').css('display', 'none');
             addDataGerencia(jsonResponse.DATA_FUNCIONARIOS);
             procesarAjaxGaleriaWeb(jsonResponse.GALERIA_APIKEY, jsonResponse.GALERIA_IDUSUARIO, jsonResponse.GALERIA_IDALBUM, jsonResponse.GALERIA_NUM_FOTOS_MOSTRAR);
-            addNoticiasWeb(jsonResponse.DATA_NOTASPRENSA);
+            addNoticiasWeb(jsonResponse.DATA_NOTASPRENSA, jsonResponse.DATA_DESTACADOS);
             addAnunciosWeb(jsonResponse.DATA_ANUNCIOS);
             addMultimediaWeb(jsonResponse.DATA_MULTIMEDIA);
         },
@@ -43,22 +43,30 @@ function addDataGerencia(DATA_FUNCIONARIOS) {
     });
 }
 
-function addNoticiasWeb(DATA_NOTASPRENSA) {
+function addNoticiasWeb(DATA_NOTASPRENSA, DATA_DESTACADOS) {
     /*PAGINATION*/
     if (DATA_NOTASPRENSA.COUNT_FILTER > 0) {
         var cadenaContenido;
         $.each(DATA_NOTASPRENSA.LIST, function (index, value) {
             cadenaContenido = removeTagHTML(value.contenido);
-            if (index < 5) {
-                $('#idNota' + (index + 1)).val(value.id);
-                $('#tituloNotaPrensa' + (index + 1)).html(getTituloWeb(value.titulo, 45));
-                $('#resumenNotaPrensa' + (index + 1)).html(getTituloWeb(getResumenContenidoWeb(cadenaContenido, 150), 90) + ". . .");
-            }
             //LAS NOTICIAS EN LA SECCIÓN NOTICIAS
             $('#myCarouselNoticias').append(getItemNoticia(value.titulo, value.foto, value.id));
             //$('#imgCNotaPrensa' + index).attr('src', value.foto);
             //$('#tituloCNotaPrensa' + index).html(value.titulo + getFormViewNoticeWeb(value.id));
         });
+        $.each(DATA_DESTACADOS.LIST, function (index, value) {
+            cadenaContenido = value.contenido;
+            if (index < 5) {
+                $('#idNota' + (index + 1)).val(value.id);
+                $('#tituloNotaPrensa' + (index + 1)).html(getTituloWeb(value.titulo, 45));
+                if (cadenaContenido.length > 90) {
+                    $('#resumenNotaPrensa' + (index + 1)).html(getTituloWeb(getResumenContenidoWeb(cadenaContenido, 150), 90) + ". . .");
+                } else {
+                    $('#resumenNotaPrensa' + (index + 1)).html(cadenaContenido);
+                }
+            }
+        });
+
         $("#myCarouselNoticias").owlCarousel({
             loop: true,
             margin: 2,
@@ -85,7 +93,7 @@ function getItemNoticia(title, foto, idnoticia) {
     div += "<img src='" + foto + "'>";
     div += "<div class='btn_float_noticias text-center'>";
     //div += "<a class='waves-effect waves-light btn' style='height: 30px;padding-top: 2px;padding-bottom: 2px;'>Leer</a>";
-    div +=  getFormViewNoticeWeb(idnoticia);
+    div += getFormViewNoticeWeb(idnoticia);
     div += "</div>";
     div += "<div class='description_float_noticias text-center'>";
     div += "<h5>" + title + "</h5>";
