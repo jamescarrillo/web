@@ -1,19 +1,60 @@
 $(document).ready(function () {
 
     cargarAniosCombo($('#comboAnioDocumento'), 2005, "-1", 'Año');
+    cargarAniosCombo($('#comboAnioDocumento_AS'), 2005, "-1", 'Año');
+    cargarAniosCombo($('#comboAnioDocumento_DG'), 2005, "-1", 'Año');
+    cargarAniosCombo($('#comboAnioDocumento_ND'), 2005, "-1", 'Año');
+    cargarAniosCombo($('#comboAnioDocumento_ID'), 2005, "-1", 'Año');
 
     $("#FrmDocumentos").submit(function () {
         $('#tbodyDocumentos').empty();
         $('#numberPageDocumentos').val("1");
         $('#actionDocumentos').val("paginarDocumentos");
         $('#loader_contenido').css('display', 'block');
-        procesarAjaxDocumentosWeb();
+        procesarAjaxDocumentosWeb('');
         return false;
     });
+
+    $("#FrmDocumentos_AS").submit(function () {
+        $('#tbodyDocumentos_AS').empty();
+        $('#numberPageDocumentos_AS').val("1");
+        $('#actionDocumentos_AS').val("paginarDocumentos");
+        $('#loader_contenido_AS').css('display', 'block');
+        procesarAjaxDocumentosWeb('_AS');
+        return false;
+    });
+
+    $("#FrmDocumentos_DG").submit(function () {
+        $('#tbodyDocumentos_DG').empty();
+        $('#numberPageDocumentos_DG').val("1");
+        $('#actionDocumentos_DG').val("paginarDocumentos");
+        $('#loader_contenido_DG').css('display', 'block');
+        procesarAjaxDocumentosWeb('_DG');
+        return false;
+    });
+
+    $("#FrmDocumentos_ND").submit(function () {
+        $('#tbodyDocumentos_ND').empty();
+        $('#numberPageDocumentos_ND').val("1");
+        $('#actionDocumentos_ND').val("paginarDocumentos");
+        $('#loader_contenido_ND').css('display', 'block');
+        procesarAjaxDocumentosWeb('_ND');
+        return false;
+    });
+
+    $("#FrmDocumentos_ID").submit(function () {
+        $('#tbodyDocumentos_ID').empty();
+        $('#numberPageDocumentos_ID').val("1");
+        $('#actionDocumentos_ID').val("paginarDocumentos");
+        $('#loader_contenido_ID').css('display', 'block');
+        procesarAjaxDocumentosWeb('_ID');
+        return false;
+    });
+
     var parameters;
     $('.view-reporte').each(function () {
         $(this).click(function () {
-            if ($('#comboAnioDocumento').val() !== "-1" && $("#cate_id option:selected").attr('tido_id') !== "11") {
+            if ($('#' + $('#nombreComboAnio').val()).val() !== "-1" && $('#tido_id').val() !== "11") {
                 parameters = "report=reporte_documentos_normativos_gestion";
                 parameters += "&format=" + $(this).attr('format');
                 parameters += "&anho=" + $('#comboAnioDocumento').val();
@@ -21,7 +62,7 @@ $(document).ready(function () {
                 parameters += "&tido_id=" + $('#tido_id').val();
                 openReport(parameters);
             } else {
-                if ($("#cate_id option:selected").attr('tido_id') === "12" || $("#cate_id option:selected").attr('tido_id') === "11") {
+                if ($('#tido_id').val() === "12" || $('#tido_id').val() === "11") {
                     parameters = "report=reporte_documentos_normativos_gestion";
                     parameters += "&format=" + $(this).attr('format');
                     parameters += "&anho=";
@@ -36,39 +77,63 @@ $(document).ready(function () {
         });
     });
 
+    $('.item-documento').each(function (index, value) {
+        $(this).click(function () {
+            $('#nombreComboAnio').val($(this).attr("combo_anio"));
+            $('#cate_id').val($(this).attr("cate_id"));
+            $('#tido_id').val($(this).attr("tido_id"));
+            $("#" + $(this).attr("formulario")).submit();
+        });
+    });
+
     $('#cate_id').on('change', function () {
         $('#tido_id').val($("#cate_id option:selected").attr('tido_id'));
     });
 
     addEventoCombosPaginar();
-    procesarAjaxDocumentosWeb();
+    procesarAjaxDocumentosWeb('');
+//    $('#cate_id').val("2800");
+//    $('#tido_id').val("");
+//    procesarAjaxDocumentosWeb('_AS');
+//    $('#cate_id').val("100");
+//    $('#tido_id').val("11");
+//    procesarAjaxDocumentosWeb('_DG');
+//    $('#cate_id').val("100");
+//    $('#tido_id').val("12");
+//    procesarAjaxDocumentosWeb('_ND');
+//    $('#cate_id').val("900");
+//    $('#tido_id').val("");
+//    procesarAjaxDocumentosWeb('_ID');
 
 });
 
-function procesarAjaxDocumentosWeb() {
-    var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
+function procesarAjaxDocumentosWeb(nombre_complemento) {
+    var datosSerializadosCompletos = $('#' + $('#nameForm' + nombre_complemento).val()).serialize();
+    datosSerializadosCompletos += "&cate_id=" + $('#cate_id').val();
+    datosSerializadosCompletos += "&tido_id=" + $('#tido_id').val();
+    datosSerializadosCompletos += "&txtComplemento=" + nombre_complemento;
     $.ajax({
         url: getContext() + '/documentos/operacionesweb',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            $('#loader_contenido').css('display', 'none');
-            listarDocumentos(jsonResponse.BEAN_PAGINATION);
+            $('#loader_contenido' + nombre_complemento).css('display', 'none');
+            listarDocumentos(jsonResponse.BEAN_PAGINATION, nombre_complemento);
         },
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
-            $('#loader_contenido').css('display', 'none');
+            $('#loader_contenido' + nombre_complemento).css('display', 'none');
             viewAlertWeb('error', 'Error interno en el servidor!');
         }
     });
     return false;
 }
 
-function listarDocumentos(BEAN_PAGINATION) {
+function listarDocumentos(BEAN_PAGINATION, nombre_complemento) {
     /*PAGINATION*/
-    var $pagination = $('#paginationDocumentos');
-    $('#tbodyDocumentos').empty();
+    var $pagination = $('#paginationDocumentos' + nombre_complemento);
+    $('#tbodyDocumentos' + nombre_complemento).empty();
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var fila;
         var cadenaFecha;
@@ -110,13 +175,13 @@ function listarDocumentos(BEAN_PAGINATION) {
             fila += "<td class='align-middle'>" + value.docu_resumen + "</td>";
             fila += "<td class='text-center align-middle'>" + a + "</td>";
             fila += "</tr>";
-            $('#tbodyDocumentos').append(fila);
+            $('#tbodyDocumentos' + nombre_complemento).append(fila);
         });
         var defaultOptions = getDefaultOptionsPagination();
-        var totalPages = getTotalPages(BEAN_PAGINATION.COUNT_FILTER, parseInt($('#sizePageDocumentos').val()));
+        var totalPages = getTotalPages(BEAN_PAGINATION.COUNT_FILTER, parseInt($('#sizePageDocumentos' + nombre_complemento).val()));
         var options =
                 {
-                    startPage: parseInt($('#numberPageDocumentos').val()),
+                    startPage: parseInt($('#numberPageDocumentos' + nombre_complemento).val()),
                     totalPages: totalPages,
                     visiblePages: 5,
                     initiateStartPageClick: false,
@@ -125,11 +190,11 @@ function listarDocumentos(BEAN_PAGINATION) {
                     next: "<i class='fa fa-angle-right' aria-hidden='true'></i>",
                     last: "<i class='fa fa-angle-double-right' aria-hidden='true'></i>",
                     onPageClick: function (evt, page) {
-                        $('#actionDocumentos').val('paginarDocumentos');
-                        $('#numberPageDocumentos').val(page);
-                        $('#nameForm').val('FrmDocumentos');
-                        $('#loader_contenido').css('display', 'block');
-                        procesarAjaxDocumentosWeb();
+                        $('#actionDocumentos' + nombre_complemento).val('paginarDocumentos');
+                        $('#numberPageDocumentos' + nombre_complemento).val(page);
+                        $('#nameForm' + nombre_complemento).val('FrmDocumentos' + nombre_complemento);
+                        $('#loader_contenido' + nombre_complemento).css('display', 'block');
+                        procesarAjaxDocumentosWeb(nombre_complemento);
                     }
                 };
         $pagination.twbsPagination('destroy');

@@ -76,7 +76,7 @@
                                         background: #466c92;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 20px 10px;
+                                        padding: 10px 5px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         " id="idgrsm">
@@ -85,7 +85,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="8" style="height: 10px"></td>
+                                <td colspan="8" style="height: 2px"></td>
                             </tr>
                             <tr>
                                 <td colspan="4" 
@@ -114,7 +114,7 @@
                                         background: #466c92;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 20px 10px;
+                                        padding: 10px 5px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         " id="idConsejoDirectivo">
@@ -123,7 +123,7 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="8" style="height: 10px"></td>
+                                <td colspan="8" style="height: 2px"></td>
                             </tr>
                             <tr>
                                 <td colspan="4" 
@@ -141,18 +141,17 @@
                                     ">                                    
                                 </td>
                             </tr>
-
                             <tr>
                                 <td colspan="6" class="text-center">
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 180px;
                                         border-bottom: 5px solid #00793D;
                                         background: #00793D;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 20px 10px;
+                                        padding: 10px 5px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         text-align: center;
@@ -162,7 +161,7 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 50px;
                                         border-bottom: 2px solid #34495e;
                                         display: inline-block;
                                         ">
@@ -175,7 +174,7 @@
                                         background: #466c92;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 20px 10px;
+                                        padding: 10px 5px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         " id="idGerenciaGeneral">
@@ -185,7 +184,7 @@
                                 <td colspan="2"></td>
                             </tr>
                             <tr>
-                                <td colspan="8" style="height: 10px"></td>
+                                <td colspan="8" style="height: 2px"></td>
                             </tr>
                             <tr>
                                 <td colspan="4" 
@@ -207,12 +206,12 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 180px;
                                         border-bottom: 5px solid #00793D;
                                         background: #00793D;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 20px 10px;
+                                        padding: 10px 5px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         text-align: center;
@@ -228,12 +227,12 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 180px;
                                         border-bottom: 5px solid #00793D;
                                         background: #00793D;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 20px 10px;
+                                        padding: 10px 5px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         text-align: center;
@@ -253,7 +252,7 @@
                                     style="
                                     border-width: 2px;
                                     border-left: 2px solid #34495e;
-                                    height: 30px
+                                    height: 10px
                                     ">                                    
                                 </td>
                             </tr>
@@ -277,17 +276,17 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 180px;
                                         border-bottom: 5px solid #00793D;
                                         background: #00793D;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 20px 10px;
+                                        padding: 10px 5px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         text-align: center;
                                         " id="idOficinaAsesoriaJuridica">
-                                        OFICINA DE ASESARÍA JURÍDICA
+                                        OFICINA DE ASESORÍA JURÍDICA
                                     </div>
                                 </td>
                             </tr>
@@ -296,7 +295,7 @@
                                     style="
                                     border-width: 2px;
                                     border-right: 2px solid #34495e;
-                                    height: 30px
+                                    height: 20px
                                     ">                                    
                                 </td>
                             </tr>
@@ -305,7 +304,7 @@
                                     style="
                                     border-width: 2px;
                                     border-right: 2px solid #34495e;
-                                    height: 30px;
+                                    height: 20px;
                                     ">                                    
                                 </td>
                                 <td colspan="3" class="text-center"
@@ -313,7 +312,7 @@
                                     border-width: 2px;
                                     border-top: 2px solid #34495e;
                                     border-right: 2px solid #34495e;
-                                    height: 30px;
+                                    height: 20px;
                                     ">                                    
                                 </td>
                                 <td colspan="3" class="text-center"
@@ -321,14 +320,14 @@
                                     border-width: 2px;
                                     border-top: 2px solid #34495e;
                                     border-left: 2px solid #34495e;
-                                    height: 30px;
+                                    height: 20px;
                                     ">                                    
                                 </td>                                
                                 <td class="text-center"
                                     style="
                                     border-width: 2px;
                                     border-left: 2px solid #34495e;
-                                    height: 30px;
+                                    height: 20px;
                                     ">                                    
                                 </td>
                             </tr>
@@ -337,12 +336,12 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 180px;
                                         border-bottom: 5px solid #f3a486;
                                         background: #f3a486;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 20px 10px;
+                                        padding: 10px 5px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         text-align: center;
@@ -355,12 +354,12 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 180px;
                                         border-bottom: 5px solid #f3a486;
                                         background: #f3a486;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 20px 10px;
+                                        padding: 10px 5px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         text-align: center;
@@ -373,12 +372,12 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 180px;
                                         border-bottom: 5px solid #f3a486;
                                         background: #f3a486;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 20px 10px;
+                                        padding: 10px 5px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         text-align: center;

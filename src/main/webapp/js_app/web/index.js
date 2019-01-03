@@ -1,5 +1,11 @@
 $(document).ready(function () {
 
+//    $('.img-portal-index').hover(function () {
+//        $(this).attr('src','/web/peam_resources/logos_principales/portal_x200_azul.png');
+//    }, function () {
+//        $(this).attr('src','/web/peam_resources/logos_principales/portal_x200.png');
+//    });
+
     procesarAjaxIndexWeb();
 });
 
@@ -28,7 +34,9 @@ function procesarAjaxIndexWeb() {
 
 function addDataGerencia(DATA_FUNCIONARIOS) {
     $(DATA_FUNCIONARIOS.LIST).each(function (index, value) {
+        var url_foto = "/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto;
         $('#imgGG').attr("src", "/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto);
+
         $('#nombreGG').html(value.nombres_apellidos);
         $('#cargoGG').html(value.cargo);
         var valoresTele = value.telefono.split(" ");
@@ -57,7 +65,16 @@ function addNoticiasWeb(DATA_NOTASPRENSA, DATA_DESTACADOS) {
         $.each(DATA_DESTACADOS.LIST, function (index, value) {
             cadenaContenido = value.contenido;
             if (index < 5) {
-                $('#idNota' + (index + 1)).val(value.id);
+                console.log(value);
+                var url_values = value.url.toLowerCase().split("id=");
+                var id = "";
+                if (url_values.length === 2) {
+                    id = url_values[1];
+                } else {
+                    //SI NO ENCUENTRA EL ARREGLO TENDRÁ TAMAÑO = 1, VALIDAMOS LA CADENA
+                    id = url_values[0];
+                }
+                $('#idNota' + (index + 1)).val(id);
                 $('#tituloNotaPrensa' + (index + 1)).html(getTituloWeb(value.titulo, 45));
                 if (cadenaContenido.length > 90) {
                     $('#resumenNotaPrensa' + (index + 1)).html(getTituloWeb(getResumenContenidoWeb(cadenaContenido, 150), 90) + ". . .");

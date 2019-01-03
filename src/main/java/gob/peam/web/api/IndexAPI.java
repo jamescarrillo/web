@@ -167,9 +167,10 @@ public class IndexAPI extends HttpServlet {
     
     private HashMap<String, Object> getParametersNotasPrensa() {
         this.parameters.clear();
-        LocalDate localdate = LocalDate.now();
+        //LocalDate localdate = LocalDate.now();
         this.parameters.put("FILTER", "");
-        this.parameters.put("SQL_ANIO", "AND ANHO = '" + localdate.getYear() + "' ");
+        //this.parameters.put("SQL_ANIO", "AND ANHO = '" + localdate.getYear() + "' ");
+        this.parameters.put("SQL_ANIO", "");
         this.parameters.put("SQL_ESTADO", "AND ESTADO = true ");
         this.parameters.put("SQL_ORDERS", "FECHA DESC ");
         this.parameters.put("LIMIT", " LIMIT 10 OFFSET 0");

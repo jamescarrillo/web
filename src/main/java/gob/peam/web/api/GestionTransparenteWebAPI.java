@@ -185,11 +185,12 @@ public class GestionTransparenteWebAPI extends HttpServlet {
 
     private HashMap<String, Object> getParametersDocumentos(HttpServletRequest request) {
         this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtTituloDocumento").toLowerCase());
-        if (request.getParameter("comboAnioDocumento").equals("-1")) {
+        String complemento = request.getParameter("txtComplemento");
+        this.parameters.put("FILTER", request.getParameter("txtTituloDocumento" + complemento).toLowerCase());
+        if (request.getParameter("comboAnioDocumento" + complemento).equals("-1")) {
             this.parameters.put("SQL_ANIO", "");
         } else {
-            this.parameters.put("SQL_ANIO", "AND SUBSTRING(DOCU_FECHA_DOCX,7,4) = '" + request.getParameter("comboAnioDocumento") + "' ");
+            this.parameters.put("SQL_ANIO", "AND SUBSTRING(DOCU_FECHA_DOCX,7,4) = '" + request.getParameter("comboAnioDocumento" + complemento) + "' ");
         }
         this.parameters.put("SQL_ESTADO", "AND DOCU_ESTADO = TRUE");
         this.parameters.put("SQL_CATE_ID", " " + getCategoriaIdFinal(request));
@@ -197,9 +198,9 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         //this.parameters.put("SQL_ORDERS", "TO_DATE(DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
         this.parameters.put("SQL_ORDERS", "DOCU_TITULO ASC");
         this.parameters.put("LIMIT",
-                " LIMIT " + request.getParameter("sizePageDocumentos") + " OFFSET "
-                + (Integer.parseInt(request.getParameter("numberPageDocumentos")) - 1)
-                * Integer.parseInt(request.getParameter("sizePageDocumentos")));
+                " LIMIT " + request.getParameter("sizePageDocumentos" + complemento) + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageDocumentos" + complemento)) - 1)
+                * Integer.parseInt(request.getParameter("sizePageDocumentos" + complemento)));
         return this.parameters;
     }
 
