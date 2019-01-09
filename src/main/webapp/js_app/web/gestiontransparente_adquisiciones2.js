@@ -1,8 +1,12 @@
 $(document).ready(function () {
 
     cargarAniosCombo($('#comboAnioPenalidad'), 2005, "-1", 'AÑO');
-    cargarAniosCombo($('#comboAnioDocumento'), 2005, "-1", 'Año');
     cargarAniosCombo($('#comboAnioViatico'), 2010, "-1", 'AÑO');
+    cargarAniosCombo($('#comboAnioDocumento'), 2005, "-1", 'Año');
+    cargarAniosCombo($('#comboAnioDocumento_MFO'), 2005, "-1", 'Año');
+    cargarAniosCombo($('#comboAnioDocumento_MAO'), 2005, "-1", 'Año');
+    cargarAniosCombo($('#comboAnioDocumento_IFC'), 2005, "-1", 'Año');
+
 
     $("#FrmPenalidad").submit(function () {
         $("#nameFormPenalidad").val("FrmPenalidad");
@@ -18,17 +22,59 @@ $(document).ready(function () {
         $('#numberPageDocumentos').val("1");
         $('#actionDocumentos').val("paginarDocumentos");
         $('#loader_contenido').css('display', 'block');
-        procesarAjaxDocumentosWeb();
+        procesarAjaxDocumentosWeb('');
+        return false;
+    });
+
+    $("#FrmDocumentos_MFO").submit(function () {
+        $('#tbodyDocumentos_MFO').empty();
+        $('#numberPageDocumentos_MFO').val("1");
+        $('#actionDocumentos_MFO').val("paginarDocumentos");
+        $('#loader_contenido_MFO').css('display', 'block');
+        procesarAjaxDocumentosWeb('_MFO');
+        return false;
+    });
+
+    $("#FrmDocumentos_MAO").submit(function () {
+        $('#tbodyDocumentos_MAO').empty();
+        $('#numberPageDocumentos_MAO').val("1");
+        $('#actionDocumentos_MAO').val("paginarDocumentos");
+        $('#loader_contenido_MAO').css('display', 'block');
+        procesarAjaxDocumentosWeb('_MAO');
+        return false;
+    });
+
+    $("#FrmDocumentos_IFC").submit(function () {
+        $('#tbodyDocumentos_IFC').empty();
+        $('#numberPageDocumentos_IFC').val("1");
+        $('#actionDocumentos_IFC').val("paginarDocumentos");
+        $('#loader_contenido_IFC').css('display', 'block');
+        procesarAjaxDocumentosWeb('_IFC');
         return false;
     });
 
     var parameters;
     $('.view-reporte').each(function () {
         $(this).click(function () {
-            if ($('#comboAnioDocumento').val() !== "-1") {
+            var complemento;
+            switch ($('#cate_id').val()) {
+                case "1100":
+                    complemento = "";
+                    break;
+                case "100":
+                    complemento = "_MFO";
+                    break;
+                case "200":
+                    complemento = "_MAO";
+                    break;
+                default :
+                    complemento = "_IFC";
+                    break;
+            }
+            if ($('#comboAnioDocumento' + complemento).val() !== "-1") {
                 parameters = "report=reporte_documentos_adquisiciones";
                 parameters += "&format=" + $(this).attr('format');
-                parameters += "&anho=" + $('#comboAnioDocumento').val();
+                parameters += "&anho=" + $('#comboAnioDocumento' + complemento).val();
                 parameters += "&cate_id=" + $('#cate_id').val();
                 parameters += "&tido_id=";
                 openReport(parameters);
@@ -48,6 +94,14 @@ $(document).ready(function () {
         return false;
     });
 
+    $('.item-documento-ad').each(function (index, value) {
+        $(this).click(function () {
+            $('#cate_id').val($(this).attr("cate_id"));
+            $('#comboAnioDocumento' + $(this).attr("complemento")).val("-1");
+            $('#FrmDocumentos' + $(this).attr("complemento")).submit();
+        });
+    });
+
     addEventoCombosPaginar();
     processAjaxDataAdquisiciones2();
 });
@@ -60,13 +114,14 @@ function processAjaxDataAdquisiciones2() {
     datosSerializadosCompletos = datosSerializadosCompletos.replace("&action=paginarPenalidad", "");
     datosSerializadosCompletos = datosSerializadosCompletos.replace("&action=paginarViatico", "");
     datosSerializadosCompletos += "&action=getDataAdquisiciones2";
+    datosSerializadosCompletos += "&cate_id=" + $('#cate_id').val();
     $.ajax({
         url: getContext() + '/documentos/operacionesweb',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            listarDocumentosWeb(jsonResponse.DATA_DOCUMENTO);
+            listarDocumentosWeb(jsonResponse.DATA_DOCUMENTO, '');
             listarPenalidadWeb(jsonResponse.DATA_PENALIDAD);
             listarViaticoWeb(jsonResponse.DATA_VIATICO);
         },
@@ -77,29 +132,31 @@ function processAjaxDataAdquisiciones2() {
     return false;
 }
 
-function procesarAjaxDocumentosWeb() {
-    var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();
+function procesarAjaxDocumentosWeb(complemento) {
+    var datosSerializadosCompletos = $('#' + $('#nameForm' + complemento).val()).serialize();
+    datosSerializadosCompletos += "&cate_id=" + $('#cate_id').val();
+    datosSerializadosCompletos += "&txtComplemento=" + complemento;
     $.ajax({
         url: getContext() + '/documentos/operacionesweb',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            $('#loader_contenido').css('display', 'none');
-            listarDocumentosWeb(jsonResponse.BEAN_PAGINATION);
+            $('#loader_contenido' + complemento).css('display', 'none');
+            listarDocumentosWeb(jsonResponse.BEAN_PAGINATION, complemento);
         },
         error: function () {
-            $('#loader_contenido').css('display', 'none');
+            $('#loader_contenido' + complemento).css('display', 'none');
             console.log('Error interno en el servidor!');
         }
     });
     return false;
 }
 
-function listarDocumentosWeb(BEAN_PAGINATION) {
+function listarDocumentosWeb(BEAN_PAGINATION, complemento) {
     /*PAGINATION*/
-    var $pagination = $('#paginationDocumentos');
-    $('#tbodyDocumentos').empty();
+    var $pagination = $('#paginationDocumentos' + complemento);
+    $('#tbodyDocumentos' + complemento).empty();
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var fila;
         var cadenaFecha;
@@ -127,13 +184,13 @@ function listarDocumentosWeb(BEAN_PAGINATION) {
             fila += "<td class='align-middle'>" + value.docu_resumen + "</td>";
             fila += "<td class='text-center align-middle'>" + a + "</td>";
             fila += "</tr>";
-            $('#tbodyDocumentos').append(fila);
+            $('#tbodyDocumentos' + complemento).append(fila);
         });
         var defaultOptions = getDefaultOptionsPagination();
-        var totalPages = getTotalPages(BEAN_PAGINATION.COUNT_FILTER, parseInt($('#sizePageDocumentos').val()));
+        var totalPages = getTotalPages(BEAN_PAGINATION.COUNT_FILTER, parseInt($('#sizePageDocumentos' + complemento).val()));
         var options =
                 {
-                    startPage: parseInt($('#numberPageDocumentos').val()),
+                    startPage: parseInt($('#numberPageDocumentos' + complemento).val()),
                     totalPages: totalPages,
                     visiblePages: 5,
                     initiateStartPageClick: false,
@@ -142,16 +199,16 @@ function listarDocumentosWeb(BEAN_PAGINATION) {
                     next: "<i class='fa fa-angle-right' aria-hidden='true'></i>",
                     last: "<i class='fa fa-angle-double-right' aria-hidden='true'></i>",
                     onPageClick: function (evt, page) {
-                        $('#actionDocumentos').val('paginarDocumentos');
-                        $('#numberPageDocumentos').val(page);
-                        $('#nameForm').val('FrmDocumentos');
-                        $('#loader_contenido').css('display', 'block');
-                        procesarAjaxDocumentosWeb();
+                        $('#actionDocumentos' + complemento).val('paginarDocumentos');
+                        $('#numberPageDocumentos' + complemento).val(page);
+                        $('#nameForm' + complemento).val('FrmDocumentos' + complemento);
+                        $('#loader_contenido' + complemento).css('display', 'block');
+                        procesarAjaxDocumentosWeb(complemento);
                     }
                 };
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
-        $('#txtTituloDocumento').focus();
+        $('#txtTituloDocumento' + complemento).focus();
     } else {
         $pagination.twbsPagination('destroy');
         viewAlertWeb('warning', 'No se enconntraron resultados');

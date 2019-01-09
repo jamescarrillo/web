@@ -35,11 +35,11 @@
 		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CONEXION_PEAM"/>
 		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="258"/>
 		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="734"/>
-		<parameter name="tipo_tabla" class="java.lang.Integer">
-			<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+		<parameter name="tipo_tabla" class="java.lang.String">
+			<defaultValueExpression><![CDATA["WHERE ESTADO = TRUE AND TIPO = 1"]]></defaultValueExpression>
 		</parameter>
 		<parameter name="anho_tabla" class="java.lang.String">
-			<defaultValueExpression><![CDATA["2018"]]></defaultValueExpression>
+			<defaultValueExpression><![CDATA[" AND ANHO = '2018'"]]></defaultValueExpression>
 		</parameter>
 		<queryString language="SQL">
 			<![CDATA[SELECT CASE WHEN NUMERO_DNI IS NULL THEN '' ELSE NUMERO_DNI END AS DNI, APELLIDOS_NOMBRES, 
@@ -49,9 +49,8 @@ CASE WHEN CARGO IS NULL THEN '' ELSE CARGO END AS CARGO,
 CASE WHEN PENSION IS NULL THEN '' ELSE PENSION END AS PENSION,
 REMUNERACION_MENSUAL, 
 BONIFICACION_QUINQ, BENEFICIOS, INGRESO_TOTAL  FROM WEB.F00010 
-WHERE ESTADO = TRUE 
-AND TIPO = $P{tipo_tabla} 
-AND ANHO = $P{anho_tabla}   
+$P!{tipo_tabla} 
+$P!{anho_tabla}   
 ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 		</queryString>
 		<field name="dni" class="java.lang.String">
@@ -106,9 +105,7 @@ ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 		<defaultValueExpression><![CDATA["C:/Users/JamesCarrillo/JaspersoftWorkspace/reportes_peam/web/cabecera_horizontal.jasper"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="path_logo_goresam" class="java.lang.String"/>
-	<parameter name="tipo" class="java.lang.Integer">
-		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
-	</parameter>
+	<parameter name="tipo" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT 21 AS NUMERO]]>
 	</queryString>
@@ -150,7 +147,7 @@ ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 					<property name="com.jaspersoft.studio.table.style.detail" value="Table_TD"/>
 				</reportElement>
 				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
-					<datasetRun subDataset="Dataset_tabla" uuid="716fddce-6556-4d86-aa16-8547479d0902">
+					<datasetRun subDataset="Dataset_tabla" uuid="8d549217-3533-4630-88d5-ed5947639a3b">
 						<datasetParameter name="anho_tabla">
 							<datasetParameterExpression><![CDATA[$P{anho}]]></datasetParameterExpression>
 						</datasetParameter>

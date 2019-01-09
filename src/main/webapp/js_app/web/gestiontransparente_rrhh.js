@@ -1,6 +1,8 @@
 $(document).ready(function () {
 
     cargarAniosCombo($('#comboAnioPersonal'), 2007, "-1", 'Año');
+    cargarAniosCombo($('#comboAnioPersonal_CLS'), 2007, "-1", 'Año');
+    cargarAniosCombo($('#comboAnioPersonal_CAS'), 2007, "-1", 'Año');
     cargarAniosCombo($('#comboAnioPersonalCategoria'), 2008, "-1", 'Año');
 
     $("#FrmPersonal").submit(function () {
@@ -8,7 +10,25 @@ $(document).ready(function () {
         $("#numberPagePersonal").val(1);
         $('#actionPersonal').val("paginarPersonal");
         $('#loader_contenido_personal').css("display", "block");
-        procesarAjaxPersonalWeb();
+        procesarAjaxPersonalWeb('');
+        return false;
+    });
+
+    $("#FrmPersonal_CLS").submit(function () {
+        $("#nameFormPersonal_CLS").val("FrmPersonal_CLS");
+        $("#numberPagePersonal_CLS").val(1);
+        $('#actionPersonal_CLS').val("paginarPersonal");
+        $('#loader_contenido_personal_CLS').css("display", "block");
+        procesarAjaxPersonalWeb('_CLS');
+        return false;
+    });
+
+    $("#FrmPersonal_CAS").submit(function () {
+        $("#nameFormPersonal_CAS").val("FrmPersonal_CAS");
+        $("#numberPagePersonal_CAS").val(1);
+        $('#actionPersonal_CAS').val("paginarPersonal");
+        $('#loader_contenido_personal_CAS').css("display", "block");
+        procesarAjaxPersonalWeb('_CAS');
         return false;
     });
 
@@ -42,15 +62,42 @@ $(document).ready(function () {
 
     $('.view-reporte-personal').each(function () {
         $(this).click(function () {
-            if ($('#comboAnioPersonal').val() !== "-1") {
+            var complemento;
+            switch ($('#cboTipoPersonal').val()) {
+                case "1":
+                    complemento = "";
+                    break;
+                case "2":
+                    complemento = "_CLS";
+                    break;
+                default :
+                    complemento = "_CAS";
+                    break;
+            }
+            if ($('#comboAnioPersonal' + complemento).val() !== "-1") {
                 parameters = "report=reporte_personal";
                 parameters += "&format=" + $(this).attr('format');
-                parameters += "&anho=" + $('#comboAnioPersonal').val();
+                parameters += "&anho=" + $('#comboAnioPersonal' + complemento).val();
                 parameters += "&tipo=" + $('#cboTipoPersonal').val();
                 openReport(parameters);
             } else {
-                viewAlertWeb('warning', 'Por favor seleccione un Año');
+                if (complemento.toLowerCase() === "_cas") {
+                    parameters = "report=reporte_personal";
+                    parameters += "&format=" + $(this).attr('format');
+                    parameters += "&anho=-1";
+                    parameters += "&tipo=" + $('#cboTipoPersonal').val();
+                    openReport(parameters);
+                } else {
+                    viewAlertWeb('warning', 'Por favor seleccione un Año');
+                }
             }
+        });
+    });
+
+    $('.item-personal-remuneracines').each(function (index, value) {
+        $(this).click(function () {
+            $('#cboTipoPersonal').val($(this).attr("tipo-personal"));
+            $('#FrmPersonal' + $(this).attr("complemento")).submit();
         });
     });
 
@@ -59,9 +106,9 @@ $(document).ready(function () {
 });
 
 function processAjaxDataRRHH() {
-    var datosSerializadosCompletos = $('#' + $('#nameFormPersonal').val()).serialize();
-    datosSerializadosCompletos += "&" + $('#' + $('#nameFormPersonalCategoria').val()).serialize();
-    datosSerializadosCompletos = datosSerializadosCompletos.replace("&action=paginarPersonal", "");
+    var datosSerializadosCompletos = $('#' + $('#nameFormPersonalCategoria').val()).serialize();
+    //datosSerializadosCompletos += "&" + $('#' + $('#nameFormPersonalCategoria').val()).serialize();
+    //datosSerializadosCompletos = datosSerializadosCompletos.replace("&action=paginarPersonal", "");
     datosSerializadosCompletos = datosSerializadosCompletos.replace("&action=paginarPersonalCategoria", "");
     datosSerializadosCompletos += "&action=getDataRRHH";
     $.ajax({
@@ -71,7 +118,7 @@ function processAjaxDataRRHH() {
         dataType: 'json',
         success: function (jsonResponse) {
             console.log(jsonResponse);
-            listarPersonalWeb(jsonResponse.DATA_PERSONAL);
+            //listarPersonalWeb(jsonResponse.DATA_PERSONAL);
             listarPersonalCategoriaWeb(jsonResponse.DATA_PERSONAL_PORCATEGORIAS);
             addFuncionarios(jsonResponse.DATA_FUNCIONARIOS);
             addDirectivos(jsonResponse.DATA_DIRECTIVOS);
@@ -149,29 +196,31 @@ function addDirectivos(DATA) {
     });
 }
 
-function procesarAjaxPersonalWeb() {
-    var datosSerializadosCompletos = $('#' + $('#nameFormPersonal').val()).serialize();
+function procesarAjaxPersonalWeb(complemento) {
+    var datosSerializadosCompletos = $('#' + $('#nameFormPersonal' + complemento).val()).serialize();
+    datosSerializadosCompletos += "&cboTipoPersonal=" + $('#cboTipoPersonal').val();
+    datosSerializadosCompletos += "&complemento=" + complemento;
     $.ajax({
         url: getContext() + '/gestiontransparente/recursos-humanos',
         type: 'POST',
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            $('#loader_contenido_personal').css('display', 'none');
-            listarPersonalWeb(jsonResponse.BEAN_PAGINATION);
+            $('#loader_contenido_personal' + complemento).css('display', 'none');
+            listarPersonalWeb(jsonResponse.BEAN_PAGINATION, complemento);
         },
         error: function () {
-            $('#loader_contenido_personal').css('display', 'none');
+            $('#loader_contenido_personal' + complemento).css('display', 'none');
             console.log('Error interno en el servidor!');
         }
     });
     return false;
 }
 
-function listarPersonalWeb(BEAN_PAGINATION) {
+function listarPersonalWeb(BEAN_PAGINATION, complemento) {
     /*PAGINATION*/
-    var $pagination = $('#paginationPersonal');
-    $('#tbodyPersonal').empty();
+    var $pagination = $('#paginationPersonal' + complemento);
+    $('#tbodyPersonal' + complemento).empty();
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var fila;
         var dni;
@@ -217,13 +266,13 @@ function listarPersonalWeb(BEAN_PAGINATION) {
             fila += "<td class='text-medium-table text-middle text-center'>" + value.beneficios.toFixed(2) + "</td>";
             fila += "<td class='text-medium-table text-middle text-center'>" + value.ingreso_total.toFixed(2) + "</td>";
             fila += "</tr>";
-            $('#tbodyPersonal').append(fila);
+            $('#tbodyPersonal' + complemento).append(fila);
         });
         var defaultOptions = getDefaultOptionsPagination();
-        var totalPages = getTotalPages(BEAN_PAGINATION.COUNT_FILTER, parseInt($('#sizePagePersonal').val()));
+        var totalPages = getTotalPages(BEAN_PAGINATION.COUNT_FILTER, parseInt($('#sizePagePersonal' + complemento).val()));
         var options =
                 {
-                    startPage: parseInt($('#numberPagePersonal').val()),
+                    startPage: parseInt($('#numberPagePersonal' + complemento).val()),
                     totalPages: totalPages,
                     visiblePages: 5,
                     initiateStartPageClick: false,
@@ -232,16 +281,16 @@ function listarPersonalWeb(BEAN_PAGINATION) {
                     next: "<i class='fa fa-angle-right' aria-hidden='true'></i>",
                     last: "<i class='fa fa-angle-double-right' aria-hidden='true'></i>",
                     onPageClick: function (evt, page) {
-                        $('#actionPersonal').val('paginarPersonal');
-                        $('#numberPagePersonal').val(page);
-                        $('#nameFormPersonal').val('FrmPersonal');
-                        $('#loader_contenido_personal').css('display', 'block');
-                        procesarAjaxPersonalWeb();
+                        $('#actionPersonal' + complemento).val('paginarPersonal');
+                        $('#numberPagePersonal' + complemento).val(page);
+                        $('#nameFormPersonal' + complemento).val('FrmPersonal' + complemento);
+                        $('#loader_contenido_personal' + complemento).css('display', 'block');
+                        procesarAjaxPersonalWeb(complemento);
                     }
                 };
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
-        $('#txtPersonal').focus();
+        $('#txtPersonal' + complemento).focus();
     } else {
         $pagination.twbsPagination('destroy');
         viewAlertWeb('warning', 'No se enconntraron resultados');

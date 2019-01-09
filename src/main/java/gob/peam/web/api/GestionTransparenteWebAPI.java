@@ -185,7 +185,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
 
     private HashMap<String, Object> getParametersDocumentos(HttpServletRequest request) {
         this.parameters.clear();
-        String complemento = request.getParameter("txtComplemento");
+        String complemento = request.getParameter("txtComplemento") == null ? "" : request.getParameter("txtComplemento");
         this.parameters.put("FILTER", request.getParameter("txtTituloDocumento" + complemento).toLowerCase());
         if (request.getParameter("comboAnioDocumento" + complemento).equals("-1")) {
             this.parameters.put("SQL_ANIO", "");
@@ -383,9 +383,9 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtTituloViatico").toLowerCase());
         if (request.getParameter("comboAnioViatico").equals("-1")) {
-            this.parameters.put("SQL_ANIO", "ESTADO = TRUE  ");
+            this.parameters.put("SQL_ANIO", " AND ESTADO = TRUE ");
         } else {
-            this.parameters.put("SQL_ANIO", "ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioViatico") + "' ");
+            this.parameters.put("SQL_ANIO", " AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioViatico") + "' ");
         }
         this.parameters.put("SQL_ORDERS", "ID DESC");
         this.parameters.put("LIMIT",

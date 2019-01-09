@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-//    $('.img-portal-index').hover(function () {
-//        $(this).attr('src','/web/peam_resources/logos_principales/portal_x200_azul.png');
-//    }, function () {
-//        $(this).attr('src','/web/peam_resources/logos_principales/portal_x200.png');
-//    });
+    $('.img-portal-index').hover(function () {
+        $(this).attr('src','/web/peam_resources/logos_principales/portal_x200_rojo.png');
+    }, function () {
+        $(this).attr('src','/web/peam_resources/logos_principales/portal_x200.png');
+    });
 
     procesarAjaxIndexWeb();
 });

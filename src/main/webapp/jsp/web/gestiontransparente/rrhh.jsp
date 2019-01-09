@@ -181,27 +181,28 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-personal-y-remuneraciones" aria-expanded="false">
-                                            Personal y Remuneraciones
+                                        <a class="collapsed item-personal-remuneracines" data-toggle="collapse" data-parent="#tab" href="#tab-personal-y-remuneraciones" tipo-personal="1" complemento="" aria-expanded="false">
+                                            Personal y Remuneraciones - Régimen Laboral D.L. 728
                                         </a>
                                     </h3>
                                 </div>
                                 <div id="tab-personal-y-remuneraciones" class="panel-collapse collapse" aria-expanded="false">
                                     <div class="panel-body">
+                                        <input type="hidden" id="cboTipoPersonal" name="cboTipoPersonal" value="1">
                                         <div class="row">
                                             <form id="FrmPersonal">     
-                                                <div class="col-md-4 col-xs-12">
+                                                <!--div class="col-md-4 col-xs-12">
                                                     <select id="cboTipoPersonal" name="cboTipoPersonal" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal' style="border: 1px solid #00793D; margin-top: 40px">
                                                         <option value="1">Régimen Laboral D.L. 728</option>
                                                         <option value="2">Contrato por Locación de Servicios</option>
                                                         <option value="3">Contrato Administrativo de Servicios</option>
                                                     </select>
-                                                </div>
+                                                </div-->
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
                                                     <select id="comboAnioPersonal" name="comboAnioPersonal" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-4 col-sm-9 col-xs-12">
+                                                <div class="col-md-8 col-sm-9 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtPersonal" id="txtPersonal">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Personal</font></font></label>
@@ -258,6 +259,166 @@
                                             </div>
                                             <div class="col-md-9 col-xs-12 text-right">
                                                 <ul id="paginationPersonal" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed item-personal-remuneracines" data-toggle="collapse" data-parent="#tab" href="#tab-personal-y-remuneraciones-cls" tipo-personal="2" complemento="_CLS" aria-expanded="false">
+                                            Personal y Remuneraciones - Contrato por Locación de Servicios 
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-personal-y-remuneraciones-cls" class="panel-collapse collapse" aria-expanded="false">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <form id="FrmPersonal_CLS">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioPersonal_CLS" name="comboAnioPersonal_CLS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtPersonal_CLS" id="txtPersonal_CLS">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Personal</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarPersonal_CLS" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormPersonal_CLS" value="FrmPersonal_CLS">
+                                                <input type="hidden" id="actionPersonal_CLS" name="action" value="paginarPersonal">
+                                                <input type="hidden" id="numberPagePersonal_CLS" name="numberPagePersonal_CLS" value="1">
+                                                <input type="hidden" id="sizePagePersonal_CLS" name="sizePagePersonal_CLS" value="10">                                                
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_personal_CLS" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%" class="text-medium-table text-center">DNI</th>
+                                                                <th style="width: 25%" class="text-medium-table">Apellidos y Nombres</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha Ingreso</th>
+                                                                <th style="width: 20%" class="text-medium-table">Área</th>
+                                                                <th style="width: 20%" class="text-medium-table">Cargo</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Régimen Pensionario</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Remuneración S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Gratif. Escol. S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Otros Ingresos. S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Ingreso Total. S/</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyPersonal_CLS">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a class="view-reporte-personal" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a class="view-reporte-personal" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a class="view-reporte-personal" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                    <li><a class="view-reporte-personal" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationPersonal_CLS" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed item-personal-remuneracines" data-toggle="collapse" data-parent="#tab" href="#tab-personal-y-remuneraciones-cas" tipo-personal="3" complemento="_CAS" aria-expanded="false">
+                                            Personal y Remuneraciones - Contrato Administrativo de Servicios
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-personal-y-remuneraciones-cas" class="panel-collapse collapse" aria-expanded="false">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <form id="FrmPersonal_CAS">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioPersonal_CAS" name="comboAnioPersonal_CAS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CAS' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtPersonal_CAS" id="txtPersonal_CAS">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Personal</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarPersonal_CAS" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormPersonal_CAS" value="FrmPersonal_CAS">
+                                                <input type="hidden" id="actionPersonal_CAS" name="action" value="paginarPersonal">
+                                                <input type="hidden" id="numberPagePersonal_CAS" name="numberPagePersonal_CAS" value="1">
+                                                <input type="hidden" id="sizePagePersonal_CAS" name="sizePagePersonal_CAS" value="10">                                                
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_personal_CAS" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%" class="text-medium-table text-center">DNI</th>
+                                                                <th style="width: 25%" class="text-medium-table">Apellidos y Nombres</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha Ingreso</th>
+                                                                <th style="width: 20%" class="text-medium-table">Área</th>
+                                                                <th style="width: 20%" class="text-medium-table">Cargo</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Régimen Pensionario</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Remuneración S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Gratif. Escol. S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Otros Ingresos. S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">Ingreso Total. S/</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyPersonal_CAS">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a class="view-reporte-personal" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a class="view-reporte-personal" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a class="view-reporte-personal" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                    <li><a class="view-reporte-personal" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationPersonal_CAS" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                 </ul>
                                             </div>

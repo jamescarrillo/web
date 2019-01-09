@@ -47,14 +47,15 @@
                 <div class="text-center mb-30" style="margin-top: 20px;">
                     <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Adquisiciones y Contrataciones</h2>
                 </div>
+                <input type="hidden" id="cate_id" value="1100">
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="panel-group feature-accordion brand-accordion icon angle-icon" id="tab">
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#tab" href="#tab-documentos" aria-expanded="true" class="">
-                                            Documentos
+                                        <a class="item-documento-ad" data-toggle="collapse" data-parent="#tab" href="#tab-documentos" cate_id="1100" complemento="" aria-expanded="true">
+                                            PAC y Modificatorias
                                         </a>
                                     </h3>
                                 </div>
@@ -62,19 +63,11 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <form id="FrmDocumentos">
-                                                <div class="col-md-4 col-sm-3 col-xs-12">
-                                                    <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
-                                                        <option value="1100">PAC y Modificatorias</option>
-                                                        <option value="100">Monto de Liquidación Final de Obra</option>
-                                                        <option value="200">Montos Adicionales de las Obras</option>
-                                                        <option value="300">Informes de Supervición de Contratos</option>
-                                                    </select>
-                                                </div>
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
                                                     <select id="comboAnioDocumento" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-4 col-sm-3 col-xs-12">
+                                                <div class="col-md-8 col-sm-6 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtTituloDocumento" id="txtTituloDocumento">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
@@ -133,6 +126,7 @@
                                     </div>
                                 </div>
                             </div>
+
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
@@ -733,6 +727,231 @@
                                             </div-->
                                             <div class="col-xs-12 text-right">
                                                 <ul id="paginationPenalidad" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed item-documento-ad" data-toggle="collapse" data-parent="#tab" href="#tab-monto-liquidacion-final-de-obra" cate_id="100" complemento="_MFO" aria-expanded="false">
+                                            Monto de Liquidación Final de Obra
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-monto-liquidacion-final-de-obra" class="panel-collapse collapse" aria-expanded="false" style="">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <form id="FrmDocumentos_MFO">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioDocumento_MFO" name="comboAnioDocumento_MFO" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento_MFO' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-6 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtTituloDocumento_MFO" id="txtTituloDocumento_MFO">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <button type="submit" id="btnBuscarDocumento_MFO" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameForm_MFO" value="FrmDocumentos_MFO">
+                                                <input type="hidden" id="actionDocumentos_MFO" name="action" value="paginarDocumentos">
+                                                <input type="hidden" id="numberPageDocumentos_MFO" name="numberPageDocumentos_MFO" value="1">
+                                                <input type="hidden" id="sizePageDocumentos_MFO" name="sizePageDocumentos_MFO" value="10">
+                                                <input type="hidden" id="comboTipoListaDocumentos_MFO" name="comboTipoListaDocumentos_MFO" value="-1">
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_MFO" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
+                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyDocumentos_MFO">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a class="view-reporte" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a class="view-reporte" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a class="view-reporte" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                    <li><a class="view-reporte" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationDocumentos_MFO" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed item-documento-ad" data-toggle="collapse" data-parent="#tab" href="#tab-monto-adicionales-de-obra" cate_id="200" complemento="_MAO" aria-expanded="false">
+                                            Monto Adicionales de las Obras
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-monto-adicionales-de-obra" class="panel-collapse collapse" aria-expanded="false" style="">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <form id="FrmDocumentos_MAO">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioDocumento_MAO" name="comboAnioDocumento_MAO" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento_MAO' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-6 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtTituloDocumento_MAO" id="txtTituloDocumento_MAO">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <button type="submit" id="btnBuscarDocumento_MAO" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameForm_MAO" value="FrmDocumentos_MAO">
+                                                <input type="hidden" id="actionDocumentos_MAO" name="action" value="paginarDocumentos">
+                                                <input type="hidden" id="numberPageDocumentos_MAO" name="numberPageDocumentos_MAO" value="1">
+                                                <input type="hidden" id="sizePageDocumentos_MAO" name="sizePageDocumentos_MAO" value="10">
+                                                <input type="hidden" id="comboTipoListaDocumentos_MAO" name="comboTipoListaDocumentos_MAO" value="-1">
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_MAO" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
+                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyDocumentos_MAO">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a class="view-reporte" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a class="view-reporte" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a class="view-reporte" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                    <li><a class="view-reporte" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationDocumentos_MAO" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed item-documento-ad" data-toggle="collapse" data-parent="#tab" href="#tab-informes-supervision-contratos" cate_id="300" complemento="_IFC" aria-expanded="false">
+                                            Informes de Supervición de Contratos
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-informes-supervision-contratos" class="panel-collapse collapse" aria-expanded="false" style="">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <form id="FrmDocumentos_IFC">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboAnioDocumento_IFC" name="comboAnioDocumento_IFC" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento_IFC' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-6 col-xs-12">
+                                                    <div class="input-field">
+                                                        <input type="text" name="txtTituloDocumento_IFC" id="txtTituloDocumento_MAO">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <button type="submit" id="btnBuscarDocumento_IFC" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameForm_IFC" value="FrmDocumentos_IFC">
+                                                <input type="hidden" id="actionDocumentos_IFC" name="action" value="paginarDocumentos">
+                                                <input type="hidden" id="numberPageDocumentos_IFC" name="numberPageDocumentos_IFC" value="1">
+                                                <input type="hidden" id="sizePageDocumentos_IFC" name="sizePageDocumentos_IFC" value="10">
+                                                <input type="hidden" id="comboTipoListaDocumentos_IFC" name="comboTipoListaDocumentos_IFC" value="-1">
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_IFC" style="display: none">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
+                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyDocumentos_IFC">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row">
+                                            <div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a class="view-reporte" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a class="view-reporte" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a class="view-reporte" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                    <li><a class="view-reporte" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-md-9 col-xs-12 text-right">
+                                                <ul id="paginationDocumentos_IFC" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                 </ul>
                                             </div>

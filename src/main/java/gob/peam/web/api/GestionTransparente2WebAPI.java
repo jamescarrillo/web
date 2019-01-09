@@ -234,7 +234,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
     private void procesarDataRRHH(HttpServletRequest request, HttpServletResponse response) {
         try {
             this.JSONROOT.clear();
-            this.JSONROOT.put("DATA_PERSONAL", this.personalDAO.getPagination(getParametersPersonal(request)));
+            //this.JSONROOT.put("DATA_PERSONAL", this.personalDAO.getPagination(getParametersPersonal(request)));
             this.JSONROOT.put("DATA_PERSONAL_PORCATEGORIAS", this.personalCategoriaDAO.getPagination(getParametersPersonalCategoria(request)));
             this.JSONROOT.put("DATA_FUNCIONARIOS", this.funcionarioDAO.getPagination(getParametersFuncionarios()));
             this.JSONROOT.put("DATA_DIRECTIVOS", this.directivoDAO.getPagination(getParametersDirectivos()));
@@ -454,18 +454,28 @@ public class GestionTransparente2WebAPI extends HttpServlet {
 
     private HashMap<String, Object> getParametersPersonal(HttpServletRequest request) {
         this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtPersonal").toLowerCase());
+        String complemento = request.getParameter("complemento") == null ? "" : request.getParameter("complemento");
+        this.parameters.put("FILTER", request.getParameter("txtPersonal" + complemento).toLowerCase());
         this.parameters.put("SQL_ORDERS", "ID DESC, APELLIDOS_NOMBRES ASC");
         this.parameters.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("cboTipoPersonal"));
-        if (request.getParameter("comboAnioPersonal").equals("-1")) {
-            this.parameters.put("SQL_ANIO", "AND ESTADO = TRUE ");
+        if (request.getParameter("comboAnioPersonal" + complemento).equals("-1")) {
+            if (request.getParameter("cboTipoPersonal").equals("3")) {
+                this.parameters.put("SQL_ANIO", "");
+            } else {
+                this.parameters.put("SQL_ANIO", "AND ESTADO = TRUE ");
+            }
         } else {
-            this.parameters.put("SQL_ANIO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonal") + "' ");
+            if (request.getParameter("cboTipoPersonal").equals("3")) {
+                this.parameters.put("SQL_ANIO", " AND ANHO = '" + request.getParameter("comboAnioPersonal" + complemento) + "' ");
+            } else {
+                this.parameters.put("SQL_ANIO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonal" + complemento) + "' ");
+
+            }
         }
         this.parameters.put("LIMIT",
-                " LIMIT " + request.getParameter("sizePagePersonal") + " OFFSET "
-                + (Integer.parseInt(request.getParameter("numberPagePersonal")) - 1)
-                * Integer.parseInt(request.getParameter("sizePagePersonal")));
+                " LIMIT " + request.getParameter("sizePagePersonal" + complemento) + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPagePersonal" + complemento)) - 1)
+                * Integer.parseInt(request.getParameter("sizePagePersonal" + complemento)));
         return this.parameters;
     }
 

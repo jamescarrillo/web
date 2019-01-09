@@ -112,9 +112,8 @@ public class ViewReportAPI extends HttpServlet {
             case "reporte_personal":
                 exportarPersonal(request, response);
                 break;
-
             default:
-                response.sendRedirect("");
+                response.sendRedirect("/index");
                 break;
         }
     }
@@ -413,9 +412,19 @@ public class ViewReportAPI extends HttpServlet {
         cargarParametrosGenerales();
         /*PARAMETROS ESPECIFICOS*/
         this.parameters.put("title_reporte", getTitleReportePersonal(request.getParameter("tipo")));
-        this.parameters.put("field_encabezado_tabla", "AÑO: " + request.getParameter("anho"));
-        this.parameters.put("anho", request.getParameter("anho"));
-        this.parameters.put("tipo", Integer.parseInt(request.getParameter("tipo")));
+        if (request.getParameter("anho").equals("-1")) {
+            this.parameters.put("anho", "");
+            this.parameters.put("field_encabezado_tabla", "");
+        } else {
+            this.parameters.put("anho", " AND ANHO = '" + request.getParameter("anho") + "' ");
+            this.parameters.put("field_encabezado_tabla", "AÑO: " + request.getParameter("anho"));
+        }
+        if (request.getParameter("tipo").equals("3")) {
+            this.parameters.put("tipo", " WHERE TIPO = 3");
+        } else {
+            this.parameters.put("tipo", " WHERE ESTADO = TRUE AND TIPO = " + request.getParameter("tipo"));
+        }
+        LOG.info(this.parameters.get("tipo").toString());
         try (Connection conn = pool.getConnection()) {
             LOG.info(this.parameters.toString());
             this.jasperPrint = JasperFillManager.fillReport((JasperReport) this.reports.get("reporte_personal"), parameters, conn);
