@@ -1,10 +1,11 @@
 /*
-Template Name: materialize
-Author: TrendyTheme
-Version: 1.5
-*/
+ Template Name: materialize
+ Author: TrendyTheme
+ Version: 1.5
+ */
 
-;(function () {
+;
+(function () {
 
     "use strict"; // use strict to start
 
@@ -36,8 +37,7 @@ Version: 1.5
                 if (w > 768) {
                     if ($(this).scrollTop() > 1) {
                         $('header').addClass("sticky");
-                    }
-                    else {
+                    } else {
                         $('header').removeClass("sticky");
                     }
                 }
@@ -45,8 +45,7 @@ Version: 1.5
                 if (w > 768) {
                     if ($(this).scrollTop() > navBottom.top + 100) {
                         $('header').addClass("sticky");
-                    }
-                    else {
+                    } else {
                         $('header').removeClass("sticky");
                     }
                 }
@@ -65,8 +64,7 @@ Version: 1.5
                         $('.menu-appear-alt').slideDown();
                     });
 
-                }
-                else {
+                } else {
                     $('.menu-appear-alt').slideUp(function () {
                         $('.menu-appear-alt').css({position: "relative", top: 0, left: 0, width: w, zIndex: 99999});
                         $('.mainmenu').slideDown();
@@ -78,7 +76,7 @@ Version: 1.5
 
             $(".nav-bottom").css("z-Index", 100000);
 
-            if(navBottom) {
+            if (navBottom) {
                 if ($(window).scrollTop() > (navBottom.top)) {
                     $(".nav-bottom").css({"position": "fixed", "top": "0px", "left": "0px"});
                 } else {
@@ -90,8 +88,8 @@ Version: 1.5
 
 
         /* === Onepage Menu === */
-        $(".op-nav li").on("click",function(){
-            if($(".showhide").is(":visible")){
+        $(".op-nav li").on("click", function () {
+            if ($(".showhide").is(":visible")) {
                 $(".showhide").trigger("click");
             }
             $(".op-nav li").removeClass("active");
@@ -114,17 +112,17 @@ Version: 1.5
 
         /* === Page scrolling feature - requires jQuery Easing plugin === */
 
-        $('a.page-scroll').on('click', function(event) {
+        $('a.page-scroll').on('click', function (event) {
             var $anchor = $(this);
             $('html, body').stop().animate({
                 scrollTop: $($anchor.attr('href')).offset().top - 60
             }, 1500, 'easeInOutExpo');
             event.preventDefault();
         });
-        
-        
+
+
         /* === for onepage menu scroll === */
-        if( typeof smoothScroll == 'object'){
+        if (typeof smoothScroll == 'object') {
             smoothScroll.init();
         }
 
@@ -135,7 +133,8 @@ Version: 1.5
         });
 
         $(window).resize(function () {
-            if (this.resizeTO) clearTimeout(this.resizeTO);
+            if (this.resizeTO)
+                clearTimeout(this.resizeTO);
             this.resizeTO = setTimeout(function () {
                 $(this).trigger('resizeEnd');
             }, 300);
@@ -145,21 +144,28 @@ Version: 1.5
 
 
         /* === Tab to Collapse === */
-        if ($('.nav-tabs').length > 0) {
-           $('.nav-tabs').tabCollapse();
+        if ($('.nav-tabs-small').length > 0) {
+            $('.nav-tabs-small').tabCollapse();
+        }
+        
+        if ($('.nav-tabs-gt').length > 0) {
+            $('.nav-tabs-gt').tabCollapse({
+                tabsClass: 'hidden-md hidden-sm hidden-xs',
+                accordionClass: 'visible-md visible-sm visible-xs'
+            });
         }
 
 
         /* === Detect IE version === */
         (function () {
-            
+
             function getIEVersion() {
                 var match = navigator.userAgent.match(/(?:MSIE |Trident\/.*; rv:)(\d+)/);
                 return match ? parseInt(match[1], 10) : false;
             }
 
-            if( getIEVersion() ){
-                $('html').addClass('ie'+getIEVersion());
+            if (getIEVersion()) {
+                $('html').addClass('ie' + getIEVersion());
             }
 
         }());
@@ -167,11 +173,11 @@ Version: 1.5
 
 
         /* === Counter === */
-        $('.counter-section').on('inview', function(event, visible, visiblePartX, visiblePartY) {
+        $('.counter-section').on('inview', function (event, visible, visiblePartX, visiblePartY) {
             if (visible) {
                 $(this).find('.timer').each(function () {
                     var $this = $(this);
-                    $({ Counter: 0 }).animate({ Counter: $this.text() }, {
+                    $({Counter: 0}).animate({Counter: $this.text()}, {
                         duration: 2000,
                         easing: 'swing',
                         step: function () {
@@ -194,7 +200,7 @@ Version: 1.5
          * Get your access token from http://jelled.com/instagram/access-token and folow the instruction
          * You can also generate access token from here: http://instagram.pixelunion.net/.
          * Use your userId and accessToken as below instead!
-
+         
          */
 
 
@@ -226,7 +232,7 @@ Version: 1.5
                 mainClass: 'mfp-fade',
                 removalDelay: 160,
                 fixedContentPos: false
-                // other options
+                        // other options
             });
         }
 
@@ -296,17 +302,17 @@ Version: 1.5
         if ($('.quote-carousel').length > 0) {
 
             $('.quote-carousel').owlCarousel({
-                loop:true,
-                autoHeight : true,
-                responsive:{
-                    0:{
-                        items:1
+                loop: true,
+                autoHeight: true,
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:1
+                    600: {
+                        items: 1
                     },
-                    1000:{
-                        items:1
+                    1000: {
+                        items: 1
                     }
                 }
             });
@@ -317,18 +323,18 @@ Version: 1.5
         if ($('.featured-carousel').length > 0) {
 
             $('.featured-carousel').owlCarousel({
-                loop:true,
-                margin:12,
+                loop: true,
+                margin: 12,
 
-                responsive:{
-                    0:{
-                        items:3
+                responsive: {
+                    0: {
+                        items: 3
                     },
-                    600:{
-                        items:5
+                    600: {
+                        items: 5
                     },
-                    1000:{
-                        items:8
+                    1000: {
+                        items: 8
                     }
                 }
             });
@@ -340,18 +346,18 @@ Version: 1.5
         if ($('.seo-featured-carousel').length > 0) {
 
             $('.seo-featured-carousel').owlCarousel({
-                loop:true,
-                margin:30,
+                loop: true,
+                margin: 30,
 
-                responsive:{
-                    0:{
-                        items:1
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:2
+                    600: {
+                        items: 2
                     },
-                    1000:{
-                        items:4
+                    1000: {
+                        items: 4
                     }
                 }
             });
@@ -364,18 +370,18 @@ Version: 1.5
         if ($('.blog-carousel').length > 0) {
 
             $('.blog-carousel').owlCarousel({
-                loop:true,
-                margin:26,
+                loop: true,
+                margin: 26,
 
-                responsive:{
-                    0:{
-                        items:1
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:2
+                    600: {
+                        items: 2
                     },
-                    1000:{
-                        items:3
+                    1000: {
+                        items: 3
                     }
                 }
             });
@@ -388,16 +394,16 @@ Version: 1.5
         if ($('.project-carousel').length > 0) {
 
             $('.project-carousel').owlCarousel({
-                loop:true,
-                responsive:{
-                    0:{
-                        items:1
+                loop: true,
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:1
+                    600: {
+                        items: 1
                     },
-                    1000:{
-                        items:1
+                    1000: {
+                        items: 1
                     }
                 }
             });
@@ -409,17 +415,17 @@ Version: 1.5
         if ($('.career-carousel').length > 0) {
 
             $('.career-carousel').owlCarousel({
-                loop:true,
-                autoPlay:true,
-                responsive:{
-                    0:{
-                        items:1
+                loop: true,
+                autoPlay: true,
+                responsive: {
+                    0: {
+                        items: 1
                     },
-                    600:{
-                        items:1
+                    600: {
+                        items: 1
                     },
-                    1000:{
-                        items:1
+                    1000: {
+                        items: 1
                     }
                 }
             });
@@ -430,20 +436,20 @@ Version: 1.5
         /* === blogGrid === */
         if ($('#blogGrid').length > 0) {
 
-            var $grid = $('#blogGrid').imagesLoaded( function() {
-              // init Masonry after all images have loaded
-              $grid.masonry({
-                itemSelector: '.blog-grid-item',
-              });
+            var $grid = $('#blogGrid').imagesLoaded(function () {
+                // init Masonry after all images have loaded
+                $grid.masonry({
+                    itemSelector: '.blog-grid-item',
+                });
             });
         }
 
 
         /* === Progress Bar === */
-        $('.progress').on('inview', function(event, visible, visiblePartX, visiblePartY) {
+        $('.progress').on('inview', function (event, visible, visiblePartX, visiblePartY) {
             if (visible) {
-                $.each($('div.progress-bar'),function(){
-                    $(this).css('width', $(this).attr('aria-valuenow')+'%');
+                $.each($('div.progress-bar'), function () {
+                    $(this).css('width', $(this).attr('aria-valuenow') + '%');
                 });
                 $(this).off('inview');
             }
@@ -452,7 +458,7 @@ Version: 1.5
 
 
         /* ======= Contact Form ======= */
-        $('#contactForm').on('submit',function(e){
+        $('#contactForm').on('submit', function (e) {
 
             e.preventDefault();
 
@@ -462,16 +468,16 @@ Version: 1.5
 
             $this.prevAll('.alert').remove();
 
-            $.post( $action, $data, function( data ) {
+            $.post($action, $data, function (data) {
 
-                if( data.response=='error' ){
+                if (data.response == 'error') {
 
-                    $this.before( '<div class="alert danger-border"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> <i class="fa fa-times-circle"></i> '+data.message+'</div>' );
+                    $this.before('<div class="alert danger-border"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button> <i class="fa fa-times-circle"></i> ' + data.message + '</div>');
                 }
 
-                if( data.response=='success' ){
+                if (data.response == 'success') {
 
-                    $this.before( '<div class="alert success-border"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><i class="fa fa-thumbs-o-up"></i> '+data.message+'</div>' );
+                    $this.before('<div class="alert success-border"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><i class="fa fa-thumbs-o-up"></i> ' + data.message + '</div>');
                     $this.find('input, textarea').val('');
                 }
 
@@ -483,9 +489,9 @@ Version: 1.5
 
         /* ======= Stellar for background scrolling ======= */
         if ($('.parallax-bg').length > 0) {
-            $('.parallax-bg').imagesLoaded( function() {
+            $('.parallax-bg').imagesLoaded(function () {
 
-            	$(window).stellar({
+                $(window).stellar({
                     horizontalScrolling: false,
                     verticalOffset: 0,
                     horizontalOffset: 0,
@@ -499,7 +505,7 @@ Version: 1.5
         /* ======= shuffle js ======= */
         $(window).on('load', function () {
 
-            $('.portfolio-container').each(function(i, e){
+            $('.portfolio-container').each(function (i, e) {
 
                 var ttGrid = $(this).find('.portfolio');
                 var self = this;
@@ -508,7 +514,7 @@ Version: 1.5
                 });
 
                 /* reshuffle when user clicks button filter item */
-                $(this).find('.portfolio-filter li').on('click',function (e) {
+                $(this).find('.portfolio-filter li').on('click', function (e) {
                     e.preventDefault();
 
                     // set active class
@@ -531,34 +537,34 @@ Version: 1.5
         $(window).on('load', function () {
 
             if ($('.portfolio-slider').length > 0) {
-                $('.portfolio-wrapper').each(function(i, e){
+                $('.portfolio-wrapper').each(function (i, e) {
 
                     var ttPortfolio = $(this).find('.portfolio-slider');
 
                     var ttDirection = ttPortfolio.attr('data-direction');
-                    
+
                     ttPortfolio.flexslider({
                         animation: "slide",
                         direction: ttDirection,
                         slideshowSpeed: 3000,
-                        start:function(){
-                            imagesLoaded($(".portfolio"),function(){
-                                setTimeout(function(){
+                        start: function () {
+                            imagesLoaded($(".portfolio"), function () {
+                                setTimeout(function () {
                                     $('.portfolio-filter li:eq(0)').trigger("click");
-                                },500);
+                                }, 500);
                             });
                         }
                     });
 
                 });
 
-            }    
+            }
 
         });
 
 
         /* ======= Portfolio Individual Gallery ======= */
-        $('.portfolio-slider').each(function () { 
+        $('.portfolio-slider').each(function () {
             var _items = $(this).find("li > a");
             var items = [];
             for (var i = 0; i < _items.length; i++) {

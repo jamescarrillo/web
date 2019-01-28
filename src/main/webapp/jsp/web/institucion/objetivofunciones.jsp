@@ -44,7 +44,7 @@
                     <div class="col-md-12">
                         <div class="border-tab transparent-nav">
                             <!-- Nav tabs -->
-                            <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <ul class="nav nav-tabs nav-tabs-small nav-justified" role="tablist">
                                 <li role="presentation" class="active"><a href="#tab-objetivos" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Objetivos Estratégicos</a></li>
                                 <li role="presentation"><a href="#tab-funciones" class="waves-effect waves-dark" role="tab" data-toggle="tab">Funciones</a></li>
                             </ul>

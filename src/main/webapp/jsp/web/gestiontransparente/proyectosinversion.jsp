@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="border-tab transparent-nav">
-                            <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <ul class="nav nav-tabs nav-tabs-small nav-justified" role="tablist">
                                 <li role="presentation" class="active"><a href="#tab-base_legal" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Proyectos en Ejecución y Terminados</a></li>
                             </ul>
                             <div class="panel-body">

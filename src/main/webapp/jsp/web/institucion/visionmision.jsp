@@ -44,7 +44,7 @@
                     <div class="col-md-12">
                         <div class="border-tab transparent-nav">
                             <!-- Nav tabs -->
-                            <ul class="nav nav-tabs nav-justified" role="tablist">
+                            <ul class="nav nav-tabs nav-tabs-small nav-justified" role="tablist">
                                 <li role="presentation" class="active"><a href="#tab-vision" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Nuestra Visión</a></li>
                                 <li role="presentation"><a href="#tab-mision" class="waves-effect waves-dark" role="tab" data-toggle="tab">Nuestra Misión</a></li>
                             </ul>

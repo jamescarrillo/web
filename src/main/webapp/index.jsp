@@ -446,9 +446,11 @@
         <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-9" id="idColumnaCarrusel">
-                        <div class="text-center mb-20">
-                            <h1 class="section-title text-peam-verde-subrayado">
+                    <div class="col-md-1 col-sm-2 col-xs-0">
+                    </div>
+                    <div class="col-md-7 col-sm-8 col-xs-12" id="idColumnaCarrusel">
+                        <div class="text-center">
+                            <h1 class="section-title text-peam-verde-subrayado" style="margin-top: 15px;margin-bottom: 20px">
                                 <strong>Noticias</strong>
                             </h1>
                         </div>
@@ -456,8 +458,10 @@
 
                         </div>
                     </div>
+                    <div class="col-md-0 col-sm-2 col-xs-0">
+                    </div>
                     <div class="col-md-3 col-md-offset-0 col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2 mt-15">
-                        <div class="text-center mb-0">
+                        <div class="text-center">
                             <h1 class="section-title text-peam-verde-subrayado">
                                 <strong>Agenda</strong>
                             </h1>
@@ -478,13 +482,24 @@
                                 <h5 class="text-peam-negrita" id="telefonoGG">
                                     <i class='fa fa-phone'></i> (042) - 562522
                                 </h5>
+                                <div class="text-center">
+                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/agenda-institucional"> 
+                                        <h5 class="text-peam-verde-index">
+                                            <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
+                                            <br>
+                                            Ver Agenda
+                                        </h5>
+                                    </a>
+                                </div>
                                 <h5 class="mb-20 text-peam-verde-index" id="correoGG">
                                     <i class='fa fa-envelope-o'></i> <a href='mailto:gerencia@peam.gob.pe'>gerencia@peam.gob.pe</a>
                                 </h5>
                             </div>
-
                         </article>
                     </div>
+                </div>
+                <div class="col-md-1 col-xs-0">
+
                 </div>
             </div>
         </section>
@@ -576,11 +591,20 @@
                             </div>
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 mb-20 mt-20">
-                            <div class="text-center" id="contenedorPortal">
+                            <div class="text-center">
+                                <a href="http://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13940&id_tema=1&ver=D#.XB7yO1xKg_6" target="_blank">
+                                    <h5 class="text-peam-verde-index" style="margin-top: 5px">
+                                        <i class="fa fa-search fa-4x" aria-hidden="true"></i>
+                                        <br>
+                                        Portal de Transparencia
+                                    </h5>
+                                </a>
+                            </div>
+                            <!--div class="text-center" id="contenedorPortal">
                                 <a href="http://www.transparencia.gob.pe/enlaces/pte_transparencia_enlaces.aspx?id_entidad=13940&id_tema=1&ver=D#.XB7yO1xKg_6" target="_blank">
                                     <img class="img-responsive img-portal-index" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/portal_x200.png" style="margin: 10px auto">
                                 </a>
-                            </div>
+                            </div-->
                         </div>
                     </div>
                 </div>
@@ -745,44 +769,44 @@
             </div>
         </section>
 
-        <section style="background-color: #00793D; padding-bottom: 40px; padding-top: 40px">
+        <section style="padding-bottom: 40px; padding-top: 0px">
             <div class="container">
-                <div class="mb-10">
-                    <h3 class="text-peam-subrayado-enlaces-externos">
+                <div class="mb-20 text-center">
+                    <h1 class="section-title text-peam-verde-subrayado">
                         <strong>Enlaces Externos</strong>
-                    </h3>
+                    </h1>
                 </div>
                 <div class="row" style="margin-bottom: 10px">
                     <div class="col-xs-3">
-                        <a href="http://www.bn.com.pe/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo"><i class="fa fa-university fa-2x"></i> Banco de la Nación</a>
+                        <a href="http://www.bn.com.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-university fa-2x"></i> Banco de la Nación</a>
                     </div>
                     <div class="col-xs-3">
-                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=article&id=1592&Itemid=101376&lang=es" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo"><i class="fa fa-road fa-2x"></i> FONIPREL</a>
+                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=article&id=1592&Itemid=101376&lang=es" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-road fa-2x"></i> FONIPREL</a>
                     </div>
                     <div class="col-xs-3">
-                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo"><i class="fa fa-home fa-2x" aria-hidden="true"></i> GORESAM</a>
+                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-home fa-2x" aria-hidden="true"></i> GORESAM</a>
                     </div>
                     <div class="col-xs-3">
-                        <a href="https://apps.contraloria.gob.pe/infobras/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo"><i class="fa fa-book fa-2x" aria-hidden="true"></i> INFObras</a>
-                    </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px">
-                    <div class="col-xs-3">
-                        <a href="http://www.sanciones.gob.pe/transparencia/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo"><i class="fa fa-share-alt fa-2x" aria-hidden="true"></i> Transparencia RNSDD</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="http://www2.seace.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo"><i class="fa fa-tag fa-2x" aria-hidden="true"></i> SE@CE</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo"><i class="fa fa-recycle fa-2x" aria-hidden="true"></i> SNIP</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="http://www.sunat.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo"><i class="fa fa-balance-scale fa-2x" aria-hidden="true"></i> SUNAT</a>
+                        <a href="https://apps.contraloria.gob.pe/infobras/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-book fa-2x" aria-hidden="true"></i> INFObras</a>
                     </div>
                 </div>
                 <div class="row" style="margin-bottom: 10px">
                     <div class="col-xs-3">
-                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=section&id=37&Itemid=100143&lang=es" target="_blank" class="waves-effect waves-light btn btn-block btn-enlace-externo"><i class="fa fa-search fa-2x" aria-hidden="true"></i> Transparencia Económica</a>
+                        <a href="http://www.sanciones.gob.pe/transparencia/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-share-alt fa-2x" aria-hidden="true"></i> Transparencia RNSDD</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="http://www2.seace.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-tag fa-2x" aria-hidden="true"></i> SE@CE</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-recycle fa-2x" aria-hidden="true"></i> SNIP</a>
+                    </div>
+                    <div class="col-xs-3">
+                        <a href="http://www.sunat.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-balance-scale fa-2x" aria-hidden="true"></i> SUNAT</a>
+                    </div>
+                </div>
+                <div class="row" style="margin-bottom: 10px">
+                    <div class="col-xs-3">
+                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=section&id=37&Itemid=100143&lang=es" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px;padding-left: 15px;padding-right: 15px;"><i class="fa fa-search fa-2x" aria-hidden="true"></i> Transparencia Económica</a>
                     </div>
                 </div>
             </div>

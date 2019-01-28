@@ -85,9 +85,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="8" style="height: 2px"></td>
-                            </tr>
-                            <tr>
                                 <td colspan="4" 
                                     style="
                                     border-width: 2px;
@@ -123,9 +120,6 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td colspan="8" style="height: 2px"></td>
-                            </tr>
-                            <tr>
                                 <td colspan="4" 
                                     style="
                                     border-width: 2px;
@@ -152,7 +146,7 @@
                                         color: #ecf0f1;
                                         display: inline-block;
                                         padding: 10px 5px;
-                                        margin: 0 10px;
+                                        margin: 0 0px;
                                         cursor: pointer;
                                         text-align: center;
                                         " id="idOrganoControlInstitucional">
@@ -161,7 +155,7 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 50px;
+                                        width: 70px;
                                         border-bottom: 2px solid #34495e;
                                         display: inline-block;
                                         ">
@@ -175,16 +169,13 @@
                                         color: #ecf0f1;
                                         display: inline-block;
                                         padding: 10px 5px;
-                                        margin: 0 10px;
+                                        margin: 0 0px;
                                         cursor: pointer;
                                         " id="idGerenciaGeneral">
                                         GERENCIA GENERAL
                                     </div>
                                 </td>
                                 <td colspan="2"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="8" style="height: 2px"></td>
                             </tr>
                             <tr>
                                 <td colspan="4" 
@@ -212,7 +203,7 @@
                                         color: #ecf0f1;
                                         display: inline-block;
                                         padding: 10px 5px;
-                                        margin: 0 10px;
+                                        margin: 0 0px;
                                         cursor: pointer;
                                         text-align: center;
                                         " id="idOficinaPresupuestoPlanificacion">
@@ -233,7 +224,7 @@
                                         color: #ecf0f1;
                                         display: inline-block;
                                         padding: 10px 5px;
-                                        margin: 0 10px;
+                                        margin: 0 0px;
                                         cursor: pointer;
                                         text-align: center;
                                         " id="idOficinaAdministracion">
@@ -242,7 +233,7 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 135px;
                                         border-bottom: 2px solid #34495e;
                                         display: inline-block;
                                         ">
@@ -282,7 +273,7 @@
                                         color: #ecf0f1;
                                         display: inline-block;
                                         padding: 10px 5px;
-                                        margin: 0 10px;
+                                        margin: 0 0px;
                                         cursor: pointer;
                                         text-align: center;
                                         " id="idOficinaAsesoriaJuridica">
@@ -336,7 +327,7 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 180px;
+                                        width: 210px;
                                         border-bottom: 5px solid #f3a486;
                                         background: #f3a486;
                                         color: #ecf0f1;
@@ -354,7 +345,7 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 180px;
+                                        width: 210px;
                                         border-bottom: 5px solid #f3a486;
                                         background: #f3a486;
                                         color: #ecf0f1;
@@ -372,7 +363,7 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 180px;
+                                        width: 210px;
                                         border-bottom: 5px solid #f3a486;
                                         background: #f3a486;
                                         color: #ecf0f1;

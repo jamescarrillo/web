@@ -1,9 +1,9 @@
 $(document).ready(function () {
 
     $('.img-portal-index').hover(function () {
-        $(this).attr('src','/web/peam_resources/logos_principales/portal_x200_rojo.png');
+        $(this).attr('src', '/web/peam_resources/logos_principales/portal_x200_rojo.png');
     }, function () {
-        $(this).attr('src','/web/peam_resources/logos_principales/portal_x200.png');
+        $(this).attr('src', '/web/peam_resources/logos_principales/portal_x200.png');
     });
 
     procesarAjaxIndexWeb();
@@ -65,7 +65,7 @@ function addNoticiasWeb(DATA_NOTASPRENSA, DATA_DESTACADOS) {
         $.each(DATA_DESTACADOS.LIST, function (index, value) {
             cadenaContenido = value.contenido;
             if (index < 5) {
-                console.log(value);
+                //console.log(value);
                 var url_values = value.url.toLowerCase().split("id=");
                 var id = "";
                 if (url_values.length === 2) {
@@ -86,17 +86,20 @@ function addNoticiasWeb(DATA_NOTASPRENSA, DATA_DESTACADOS) {
 
         $("#myCarouselNoticias").owlCarousel({
             loop: true,
-            margin: 2,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            margin: 10,
             responsiveClass: true,
             responsive: {
                 0: {
                     items: 1
                 },
                 600: {
-                    items: 2
+                    items: 1
                 },
                 1000: {
-                    items: 2
+                    items: 1
                 }
             }
         });

@@ -43,139 +43,129 @@
                     <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Directorio de Contactos</h2>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div class="posts-content single-post">
-                            <article class="post-wrapper">
-                                <div class="entry-content">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="border-bottom-tab">
-                                                <ul class="nav nav-tabs" role="tablist">
-                                                    <li role="presentation" class="active"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-directorio-contactos" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Directorio de Contactos</a></li>
-                                                    <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-directorio-de-telefono-interno" class="waves-effect waves-dark" role="tab" data-toggle="tab">Directorio de Teléfono Interno</a></li>
-                                                </ul>
-                                                <div class="panel-body" style="padding-bottom: 0px;">
-                                                    <div class="tab-content">
-                                                        <div role="tabpanel" class="tab-pane fade in active" id="tab-directorio-contactos">
-                                                            <div class="row">
-                                                                <form id="FrmFuncionario">
-                                                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                                                        <div class="input-field" style="margin-top: 0px">
-                                                                            <input type="text" name="txtFuncionario" id="txtFuncionario">
-                                                                            <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Contacto . . .</font></font></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-2 col-sm-3 col-xs-12">
-                                                                        <button type="submit" id="btnBuscarFuncionario" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px;">Buscar</button>
-                                                                    </div>
-                                                                    <input type="hidden" id="nameFormFuncionario" value="FrmFuncionario">
-                                                                    <input type="hidden" id="actionFuncionario" name="action" value="paginarFuncionario">
-                                                                    <input type="hidden" id="numberPageFuncionario" name="numberPageFuncionario" value="1">
-                                                                    <input type="hidden" id="sizePageFuncionario" name="sizePageFuncionario" value="10">
-                                                                </form>
-                                                            </div>
-                                                            <div class="row" id="loader_contenido_Funcionario">
-                                                                <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-6 mt-30">
-                                                                    <div class="loader-peam_small"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div class="table table-hover table-responsive" style="margin-top: 20px">
-                                                                        <table class="table">
-                                                                            <thead class="bg-success">
-                                                                                <tr>
-                                                                                    <th style="width: 30%;" class="align-middle">CARGO</th>
-                                                                                    <th style="width: 30%;" class="align-middle">NOMBRES Y APELLIDOS</th>
-                                                                                    <th style="width: 20%;" class="align-middle">TELEFONO</th>
-                                                                                    <th style="width: 20%;" class="align-middle">CORREO ELECTRONICO</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody id="tbodyFuncionario">
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                            <br>
-                                                            <div class="row">
-                                                                <!--div class="col-md-3 col-xs-12">
-                                                                    <ul class="list-inline pull-left">
-                                                                        <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
-                                                                        <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
-                                                                        <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
-                                                                    </ul>
-                                                                </div-->
-                                                                <div class="col-xs-12 text-right">
-                                                                    <ul id="paginationFuncionario" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
-
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div role="tabpanel" class="tab-pane fade" id="tab-directorio-de-telefono-interno">
-                                                            <div class="row">
-                                                                <form id="FrmDirectorio">
-                                                                    <div class="col-md-10 col-sm-9 col-xs-12">
-                                                                        <div class="input-field" style="margin-top: 0px">
-                                                                            <input type="text" name="txtDirectorioTelefonico" id="txtDirectorioTelefonico">
-                                                                            <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Directorio Teléfonico . . .</font></font></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-2 col-sm-3 col-xs-12">
-                                                                        <button type="submit" id="btnBuscarDirectorio" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px;">Buscar</button>
-                                                                    </div>
-                                                                    <input type="hidden" id="nameFormDirectorio" value="FrmDirectorio">
-                                                                    <input type="hidden" id="actionDirectorio" name="action" value="paginarDirectorio">
-                                                                    <input type="hidden" id="numberPageDirectorio" name="numberPageDirectorio" value="1">
-                                                                    <input type="hidden" id="sizePageDirectorio" name="sizePageDirectorio" value="10">
-                                                                </form>
-                                                            </div>
-                                                            <div class="row" id="loader_contenido_Directorio">
-                                                                <div class="col-md-1 col-md-offset-6 col-xs-2 col-xs-offset-6 mt-30">
-                                                                    <div class="loader-peam_small"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div class="table-responsive table-hover" style="margin-top: 20px">
-                                                                        <table class="table">
-                                                                            <thead class="bg-success">
-                                                                                <tr>
-                                                                                    <th style="width: 45%;" class="align-middle">OFICINA</th>
-                                                                                    <th style="width: 45%;" class="align-middle">SECCION</th>
-                                                                                    <th style="width: 10%;" class="align-middle">ANEXO</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody id="tbodyDirectorio">
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <!--div class="col-md-3 col-xs-12">
-                                                                    <ul class="list-inline pull-left">
-                                                                        <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
-                                                                        <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
-                                                                        <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
-                                                                    </ul>
-                                                                </div-->
-                                                                <div class="col-xs-12 text-right">
-                                                                    <ul id="paginationDirectorio" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
-
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                    <div class="col-md-12">
+                        <div class="border-tab transparent-nav">
+                            <ul class="nav nav-tabs nav-tabs-small nav-justified" role="tablist">
+                                <li role="presentation" class="active"><a href="#tab-directorio-contactos" class="waves-effect waves-dark"  role="tab" data-toggle="tab">Directorio de Contactos</a></li>
+                                <li role="presentation"><a href="#tab-directorio-de-telefono-interno" class="waves-effect waves-dark" role="tab" data-toggle="tab">Directorio de Teléfono Interno</a></li>
+                            </ul>
+                            <div class="panel-body" style="padding-bottom: 0px;">
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="tab-directorio-contactos">
+                                        <div class="row-not">
+                                            <form id="FrmFuncionario">
+                                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                                    <div class="input-field" style="margin-top: 0px">
+                                                        <input type="text" name="txtFuncionario" id="txtFuncionario">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Contacto . . .</font></font></label>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <button type="submit" id="btnBuscarFuncionario" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormFuncionario" value="FrmFuncionario">
+                                                <input type="hidden" id="actionFuncionario" name="action" value="paginarFuncionario">
+                                                <input type="hidden" id="numberPageFuncionario" name="numberPageFuncionario" value="1">
+                                                <input type="hidden" id="sizePageFuncionario" name="sizePageFuncionario" value="10">
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_Funcionario">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-6 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row-not">
+                                            <div class="col-xs-12">
+                                                <div class="table table-hover table-responsive" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 30%;" class="align-middle">CARGO</th>
+                                                                <th style="width: 30%;" class="align-middle">NOMBRES Y APELLIDOS</th>
+                                                                <th style="width: 20%;" class="align-middle">TELEFONO</th>
+                                                                <th style="width: 20%;" class="align-middle">CORREO ELECTRONICO</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyFuncionario">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row-not">
+                                            <!--div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div-->
+                                            <div class="col-xs-12 text-right">
+                                                <ul id="paginationFuncionario" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="tab-directorio-de-telefono-interno">
+                                        <div class="row-not">
+                                            <form id="FrmDirectorio">
+                                                <div class="col-md-10 col-sm-9 col-xs-12">
+                                                    <div class="input-field" style="margin-top: 0px">
+                                                        <input type="text" name="txtDirectorioTelefonico" id="txtDirectorioTelefonico">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Directorio Teléfonico . . .</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <button type="submit" id="btnBuscarDirectorio" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormDirectorio" value="FrmDirectorio">
+                                                <input type="hidden" id="actionDirectorio" name="action" value="paginarDirectorio">
+                                                <input type="hidden" id="numberPageDirectorio" name="numberPageDirectorio" value="1">
+                                                <input type="hidden" id="sizePageDirectorio" name="sizePageDirectorio" value="10">
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_Directorio">
+                                            <div class="col-md-1 col-md-offset-6 col-xs-2 col-xs-offset-6 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row-not">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 45%;" class="align-middle">OFICINA</th>
+                                                                <th style="width: 45%;" class="align-middle">SECCION</th>
+                                                                <th style="width: 10%;" class="align-middle">ANEXO</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyDirectorio">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row-not">
+                                            <!--div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div-->
+                                            <div class="col-xs-12 text-right">
+                                                <ul id="paginationDirectorio" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </article>
+                            </div>
                         </div>
                     </div>
                 </div>
