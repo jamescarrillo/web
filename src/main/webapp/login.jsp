@@ -43,7 +43,7 @@
         <!-- Main wrapper - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <section id="wrapper">
-            <div class="login-register" style="background-image:url(<%out.print(getServletContext().getContextPath());%>/assets/images/background/login-register.jpg); padding-top: 60px">
+            <div class="login-register" style="background-image:url(<%out.print(getServletContext().getContextPath());%>/assets/images/background/login-register.jpg); padding-top: 80px">
                 <div class="login-box card">
                     <div class="card-body">
                         <form class="form-horizontal form-material" method="POST" id="FrmLogin">
