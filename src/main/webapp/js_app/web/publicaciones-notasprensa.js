@@ -54,12 +54,12 @@ function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
             } else {
                 contador++;
                 if (contador % 3 === 0) {
-                    row += getCardViewNoticia(value.foto, getResumenContenidoWeb(cadenaNoticiaTitulo, 70), getResumenContenidoWeb(cadenaContenido, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
+                    row += getCardViewNoticia(value.foto, getTituloWeb(cadenaNoticiaTitulo, 40), getResumenContenidoWeb(cadenaContenido, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
                     row += "</div>";
                     $('#contenedorArticulos').append(row);
                     row = "<div class='row'>";
                 } else {
-                    row += getCardViewNoticia(value.foto, getResumenContenidoWeb(cadenaNoticiaTitulo, 70), getResumenContenidoWeb(cadenaContenido, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
+                    row += getCardViewNoticia(value.foto, getTituloWeb(cadenaNoticiaTitulo, 40), getResumenContenidoWeb(cadenaContenido, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
                 }
             }
         });

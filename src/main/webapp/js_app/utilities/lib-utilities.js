@@ -230,6 +230,19 @@ function getTituloWeb(titulo, tamFila) {
     return cadenaTituloFormateado;
 }
 
+function getTituloWeb(contenido, tam) {
+    var cadenaResumen = "";
+    for (var i = 0; i < contenido.length; i++) {
+        if (cadenaResumen.length + 1 > tam) {
+            break;
+        } else {
+            cadenaResumen += contenido.substring(i, i + 1);
+        }
+    }
+    console.log(cadenaResumen.length)
+    return cadenaResumen;
+}
+
 function getResumenContenidoWeb(contenido, tam) {
     var cadenaResumen = "";
     var palabras = contenido.split(' ');
