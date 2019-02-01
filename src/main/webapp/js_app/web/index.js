@@ -202,24 +202,15 @@ function addAnunciosWeb(DATA_ANUNCIOS) {
 function addMultimediaWeb(DATA_MULTIMEDIA) {
     var card;
     $.each(DATA_MULTIMEDIA.LIST, function (index, value) {
-        card = "<div class='col-lg-3 col-md-4 col-sm-6 col-xs-12'>";
-
-        card += "<div class='featured-item' style='padding: 5px'>";
-
+        card = "<article class='col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-10'>";
         card += "<div class='embed-responsive embed-responsive-16by9'>";
-
         card += "<iframe class='embed-responsive-item' src='" + value.fuente + "' allowfullscreen></iframe>";
-
         card += "</div>";
-
-        card += "</div>";
-
-        card += "</div>";
-
-        $('#containerMultimedia').append(card);
+        card += "</article>";
+        $('#containerVideosGaleria').append(card);
     });
     //ADD BUTTON VIEW ALL
-    $('#containerMultimedia').append("<div class='col-md-12 mt-10 text-center'><a class='waves-effect waves-light btn' href='publicaciones/noticias/multimedia' style='font-size: 18px;'>Ver todos</a></div>");
+    $('#containerVideosGaleria').append("<div class='col-md-12 mt-10 text-center'><a class='waves-effect waves-light btn' href='publicaciones/noticias/multimedia' style='font-size: 18px;'>Ver todos</a></div>");
 }
 
 function procesarAjaxGaleriaWeb(apikey, idusuario, idalbum, numero_fotos_mostrar) {
@@ -240,40 +231,20 @@ function procesarAjaxGaleriaWeb(apikey, idusuario, idalbum, numero_fotos_mostrar
             extras: "url_c,url_m"
         },
         success: function (response) {
-            var portafolio;
-            var dataGrupo;
+            var article;
             $.each($(response).find('photo'), function (i, item) {
-                dataGrupo = "[\"all\"]";
-                portafolio = "<div class='portfolio-item' data-groups='" + dataGrupo + "'>";
-
-                portafolio += "<div class='portfolio-wrapper'>";
-                portafolio += "<div class='thumb'>";
-                portafolio += "<div class='bg-overlay'></div>";
-                portafolio += "<img src='" + $(item).attr('url_c') + "' alt=''>";
-                portafolio += "<div class='portfolio-intro'>";
-
-                portafolio += "<div class='action-btn'>";
-                portafolio += "<a href='" + $(item).attr('url_c') + "' class='tt-lightbox' title=''><i class='fa fa-search'></i></a>";
-                portafolio += "</div>";
-                portafolio += "<h2><a>Ver</a></h2>";
-                portafolio += "<p><a>Peam</a></p>";
-
-                portafolio += "</div>";
-
-                portafolio += "</div>";
-
-                portafolio += "</div>";
-
-                $('#containerGaleriaFotosPeam').append(portafolio);
+                 article = `
+                 <article class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-10">
+                 <a href="${$(item).attr('url_c')}" data-lightbox="example-set" data-title="${$(item).attr('title')}">
+                 <img src="${$(item).attr('url_c')}" alt="Regala" class="img-thumbnail"></a>
+                 </article>
+                 `;
+                 $('#containerFotosGaleria').append(article);
             });
-            if ($('.tt-lightbox').length > 0) {
-                $('.tt-lightbox').magnificPopup({
-                    type: 'image',
-                    mainClass: 'mfp-fade',
-                    removalDelay: 160,
-                    fixedContentPos: false
-                });
-            }
+
+            lightbox.option({
+                'albumLabel': "Imagen %1 de %2"
+            })
 
         },
         error: function (e) {

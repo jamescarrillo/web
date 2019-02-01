@@ -25,6 +25,7 @@
         <!-- Style CSS -->
         <link href="<%out.print(getServletContext().getContextPath());%>/css/style_web.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/css/views/estilos.css" rel="stylesheet">
+        <link href="<%out.print(getServletContext().getContextPath());%>/css/views/lightbox.min.css" rel="stylesheet">
         <link href="<%out.print(getServletContext().getContextPath());%>/assets/css/skins/corporate.css" rel="stylesheet">
         <!-- RS5.0 Main Stylesheet -->
         <link rel="stylesheet" type="text/css" href="<%out.print(getServletContext().getContextPath());%>/assets/revolution/css/settings.css">
@@ -752,20 +753,13 @@
                         <strong>Galería y Multimedia</strong>
                     </h1>
                 </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="portfolio-container text-center">
-                            <ul class="portfolio-filter brand-filter" style="display: none">
-                                <li class="active waves-effect waves-light" data-group="all">All</li>
-                            </ul>
-                            <div class="portfolio col-4 mt-15 gutter" id="containerGaleriaFotosPeam">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row mt-10" id="containerMultimedia">
-                </div>
+                <articles class="row" id="containerFotosGaleria">
+                    
+                </articles>
+                <articles class="row" id="containerVideosGaleria">
+                    
+                </articles>
+                
             </div>
         </section>
 
@@ -811,61 +805,6 @@
                 </div>
             </div>
         </section>
-
-        <section class="section-padding" style="padding-top: 0px; padding-bottom: 110px;">
-            <div class="container">			
-                <!--div class="row">
-                    <div class="featured-carousel brand-dot">
-                        <div class="featured-item" style="padding: 0px;">
-                            <a href="http://www.bn.com.pe/" target="_blank">
-                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/bn2013.png">
-                            </a>						
-                        </div>					
-                        <div class="featured-item" style="padding: 0px;">
-                            <a href="http://www.mef.gob.pe/index.php?option=com_content&view=article&id=1592&Itemid=101376&lang=es" target="_blank">
-                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/foniprel2013.png">
-                            </a>						
-                        </div>
-                        <div class="featured-item" style="padding: 0px;">
-                            <a href="http://www.regionsanmartin.gob.pe/" target="_blank">
-                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/grsm2013.png">
-                            </a>						
-                        </div>
-                        <div class="featured-item" style="padding: 0px;">
-                            <a href="https://apps.contraloria.gob.pe/infobras/" target="_blank">
-                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/infoobras2013.png">
-                            </a>						
-                        </div>
-                        <div class="featured-item" style="padding: 0px;">
-                            <a href="http://www.sanciones.gob.pe/transparencia/" target="_blank">
-                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/rnsddc2013.png">
-                            </a>						
-                        </div>
-                        <div class="featured-item" style="padding: 0px;">
-                            <a href="http://www2.seace.gob.pe/" target="_blank">
-                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/seace2013.png">
-                            </a>						
-                        </div>
-                        <div class="featured-item" style="padding: 0px;">
-                            <a href="http://www.regionsanmartin.gob.pe/" target="_blank">
-                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/snip2013.png">
-                            </a>						
-                        </div>
-                        <div class="featured-item" style="padding: 0px;">
-                            <a href="http://www.sunat.gob.pe/" target="_blank">
-                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/sunat2013.png">
-                            </a>						
-                        </div>
-                        <div class="featured-item" style="padding: 0px;">
-                            <a href="http://www.mef.gob.pe/index.php?option=com_content&view=section&id=37&Itemid=100143&lang=es" target="_blank">
-                                <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_complementos/2013/tmef2013.png">
-                            </a>						
-                        </div>
-                    </div>
-                </div-->
-            </div>
-        </section>
-
         <%@ include file="footer.jsp"%>
         <!-- jQuery -->
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/js/jquery-2.1.3.min.js"></script>
@@ -900,6 +839,7 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/lightbox.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/index.js"></script>
     </body>
