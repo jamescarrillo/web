@@ -116,7 +116,7 @@ function getItemNoticia(title, foto, idnoticia) {
     div += getFormViewNoticeWeb(idnoticia);
     div += "</div>";
     div += "<div class='description_float_noticias text-center'>";
-    div += "<h5>" + title + "</h5>";
+    div += "<h5 style='font-family: century Gothic !important'>" + title + "</h5>";
     div += "</div>";
     div += "</div>";
     return div;
