@@ -127,7 +127,7 @@ function getFormViewNoticeWeb(idNoticia) {
     form += "<form class='form-ver-noticia' method='POST' action='publicaciones/noticias/notas-de-prensa'>";
     form += "<input type='hidden' name='idNota' value='" + idNoticia + "'>";
     form += "<input type='hidden' name='action' value='readNotaPrensa'>";
-    form += "<button type='submit' class='waves-effect waves-light btn' style='height: 30px;padding-top: 2px;padding-bottom: 2px;'>Leer</button>";
+    form += "<button type='submit' class='waves-effect waves-light btn' style='height: 30px;padding-top: 2px;padding-bottom: 2px;font-family: century Gothic'>Leer</button>";
     form += "</form>";
     return form;
 }

@@ -42,6 +42,7 @@ function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
         var encontro_noticia = false;
         var cadenaNoticiaTitulo;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            console.log(value)
             cadenaContenido = removeTagHTML(value.contenido);
             cadenaNoticiaTitulo = removeTagHTML(value.titulo);
             if (value.id.toString() === $('#idNota').val()) {
@@ -54,12 +55,12 @@ function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
             } else {
                 contador++;
                 if (contador % 3 === 0) {
-                    row += getCardViewNoticia(value.foto, getTituloWeb(cadenaNoticiaTitulo, 40), getResumenContenidoWeb(cadenaContenido, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
+                    row += getCardViewNoticia(value.foto, cadenaNoticiaTitulo, getResumenContenidoWeb(cadenaContenido, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
                     row += "</div>";
                     $('#contenedorArticulos').append(row);
                     row = "<div class='row'>";
                 } else {
-                    row += getCardViewNoticia(value.foto, getTituloWeb(cadenaNoticiaTitulo, 40), getResumenContenidoWeb(cadenaContenido, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
+                    row += getCardViewNoticia(value.foto, cadenaNoticiaTitulo, getResumenContenidoWeb(cadenaContenido, 300 - value.titulo.length), value.id, value.fecha, value.fuente) + "";
                 }
             }
         });
@@ -120,10 +121,10 @@ function getCardCarrusel(urlImage, titulo, contenido) {
 
 function getCardViewNoticia(foto, titulo, contenido, idnota, fecha_publicacion, fuente) {
     var article = "";
-    article += "<div class='col-sm-4 col-xs-6'>";
-    article += "<article class='post-wrapper'>";
+    article += "<div class='col-md-4 col-sm-6 col-xs-12'>";
+    article += "<article class='post-wrapper' >";
     article += "<div class='thumb-wrapper waves-effect waves-block waves-light'><a><img src='" + foto + "' class='img-responsive' alt=''></a></div>";
-    article += "<div class='blog-content'>";
+    article += "<div class='blog-content' style='height: 145px'>";
     article += "<header class='entry-header-wrapper'>";
     article += "<div class=''>";
     //article += "<div class='entry-header'>";

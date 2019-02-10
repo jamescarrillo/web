@@ -239,7 +239,7 @@ function getTituloWeb(contenido, tam) {
             cadenaResumen += contenido.substring(i, i + 1);
         }
     }
-    console.log(cadenaResumen.length)
+    //console.log(cadenaResumen.length)
     return cadenaResumen;
 }
 

@@ -71,14 +71,15 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 100px;
                                         border-bottom: 5px solid #466c92;
                                         background: #466c92;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 10px 5px;
+                                        padding: 5px 2px;
                                         margin: 0 10px;
                                         cursor: pointer;
+                                        font-size: 13px;
                                         " id="idgrsm">
                                         GRSM
                                     </div>
@@ -106,16 +107,17 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 100px;
                                         border-bottom: 5px solid #466c92;
                                         background: #466c92;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 10px 5px;
+                                        padding: 4px 2px;
                                         margin: 0 10px;
                                         cursor: pointer;
+                                        font-size: 13px;
                                         " id="idConsejoDirectivo">
-                                        CONSEJO DIRECTIVO
+                                        Consejo Directivo
                                     </div>
                                 </td>
                             </tr>
@@ -145,12 +147,13 @@
                                         background: #00793D;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 10px 5px;
+                                        padding: 3px 2px;
                                         margin: 0 0px;
                                         cursor: pointer;
                                         text-align: center;
+                                        font-size: 13px;
                                         " id="idOrganoControlInstitucional">
-                                        ÓRGANO DE CONTROL INSTITUCIONAL
+                                        Órgano de Control Institucional
                                     </div>
                                     <div 
                                         style="
@@ -163,16 +166,17 @@
                                     <div
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 100px;
                                         border-bottom: 5px solid #466c92;
                                         background: #466c92;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 10px 5px;
+                                        padding: 4px 2px;
                                         margin: 0 0px;
                                         cursor: pointer;
+                                        font-size: 13px;
                                         " id="idGerenciaGeneral">
-                                        GERENCIA GENERAL
+                                        Gerencia General
                                     </div>
                                 </td>
                                 <td colspan="2"></td>
@@ -189,7 +193,7 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 100px;
                                         border-bottom: 2px solid #34495e;
                                         display: inline-block;
                                         ">
@@ -202,12 +206,13 @@
                                         background: #00793D;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 10px 5px;
+                                        padding: 3px 2px;
                                         margin: 0 0px;
                                         cursor: pointer;
                                         text-align: center;
+                                        font-size: 13px;
                                         " id="idOficinaPresupuestoPlanificacion">
-                                        OFICINA DE PRESUPUESTO Y PLANIFICACIÓN
+                                        Oficina de Presupuesto y Planificación
                                     </div>
                                 </td>
                             </tr>
@@ -218,17 +223,18 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 180px;
+                                        width: 160px;
                                         border-bottom: 5px solid #00793D;
                                         background: #00793D;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 10px 5px;
+                                        padding: 3px 4px;
                                         margin: 0 0px;
                                         cursor: pointer;
                                         text-align: center;
+                                        font-size: 13px;
                                         " id="idOficinaAdministracion">
-                                        OFICINA DE ADMINISTACION
+                                        Oficina de Administración
                                     </div>
                                     <div 
                                         style="
@@ -259,7 +265,7 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 120px;
+                                        width: 100px;
                                         border-bottom: 2px solid #34495e;
                                         display: inline-block;
                                         ">
@@ -272,12 +278,13 @@
                                         background: #00793D;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 10px 5px;
+                                        padding: 3px 3px;
                                         margin: 0 0px;
                                         cursor: pointer;
                                         text-align: center;
+                                        font-size: 13px;
                                         " id="idOficinaAsesoriaJuridica">
-                                        OFICINA DE ASESORÍA JURÍDICA
+                                        Oficina de Asesoría Jurídica
                                     </div>
                                 </td>
                             </tr>
@@ -327,17 +334,18 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 210px;
+                                        width: 180px;
                                         border-bottom: 5px solid #f3a486;
                                         background: #f3a486;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 10px 5px;
+                                        padding: 3px 4px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         text-align: center;
+                                        font-size: 13px;
                                         " id="idDireccionManejoAmbiental">
-                                        DIRECCIÓN DE MANEJO AMBIENTAL
+                                        Dirección de Manejo Ambiental
                                     </div>
                                 </td>
                                 <td></td>
@@ -345,17 +353,18 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 210px;
+                                        width: 180px;
                                         border-bottom: 5px solid #f3a486;
                                         background: #f3a486;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 10px 5px;
+                                        padding: 3px 4px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         text-align: center;
+                                        font-size: 13px;
                                         " id="idDireccionInfraestructura">
-                                        DIRECCIÓN DE INFRAESTRUCTURA
+                                        Dirección de Infraestructura
                                     </div>
                                 </td>
                                 <td></td>
@@ -363,17 +372,18 @@
                                     <div 
                                         style="
                                         position: relative;
-                                        width: 210px;
+                                        width: 180px;
                                         border-bottom: 5px solid #f3a486;
                                         background: #f3a486;
                                         color: #ecf0f1;
                                         display: inline-block;
-                                        padding: 10px 5px;
+                                        padding: 5px 2px;
                                         margin: 0 10px;
                                         cursor: pointer;
                                         text-align: center;
+                                        font-size: 13px;
                                         " id="idDireccionDesarrolloAgropecuario">
-                                        DIRECCIÓN DE DESARROLLO AGROPECUARIO
+                                        Dirección de Desarrollo Agropecuario
                                     </div>
                                 </td>
                             </tr>
