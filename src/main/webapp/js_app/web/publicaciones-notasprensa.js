@@ -42,7 +42,6 @@ function listarNotaPrensaWebVerNoticias(BEAN_PAGINATION) {
         var encontro_noticia = false;
         var cadenaNoticiaTitulo;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
-            console.log(value)
             cadenaContenido = removeTagHTML(value.contenido);
             cadenaNoticiaTitulo = removeTagHTML(value.titulo);
             if (value.id.toString() === $('#idNota').val()) {
