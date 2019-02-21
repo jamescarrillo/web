@@ -11,6 +11,7 @@ $(document).ready(function () {
 
 function procesarAjaxIndexWeb() {
     var datosSerializadosCompletos = "action=getDataIndex";
+    let fecha = new Date();
     $.ajax({
         url: getContext() + '/index',
         type: 'POST',
@@ -24,6 +25,15 @@ function procesarAjaxIndexWeb() {
             addNoticiasWeb(jsonResponse.DATA_NOTASPRENSA, jsonResponse.DATA_DESTACADOS);
             addAnunciosWeb(jsonResponse.DATA_ANUNCIOS);
             addMultimediaWeb(jsonResponse.DATA_MULTIMEDIA);
+            //DATOS DE LA AGENDA
+            if (jsonResponse.DATA_AGENDA !== "") {
+                $('#txtFechaAgenda').html(" " + fecha.getDate());
+                $('#txtTituloAgenda').html(jsonResponse.DATA_AGENDA);
+            } else {
+                $('#txtFechaAgenda').html("");
+                $('#txtTituloAgenda').html("");
+            }
+
         },
         error: function () {
             console.log("error al traer datos del index");
@@ -34,7 +44,6 @@ function procesarAjaxIndexWeb() {
 
 function addDataGerencia(DATA_FUNCIONARIOS) {
     $(DATA_FUNCIONARIOS.LIST).each(function (index, value) {
-        var url_foto = "/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto;
         $('#imgGG').attr("src", "/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto);
 
         $('#nombreGG').html(value.nombres_apellidos);
@@ -57,30 +66,20 @@ function addNoticiasWeb(DATA_NOTASPRENSA, DATA_DESTACADOS) {
         var cadenaContenido;
         $.each(DATA_NOTASPRENSA.LIST, function (index, value) {
             cadenaContenido = removeTagHTML(value.contenido);
-            //LAS NOTICIAS EN LA SECCIÓN NOTICIAS
             $('#myCarouselNoticias').append(getItemNoticia(value.titulo, value.foto, value.id));
-            //$('#imgCNotaPrensa' + index).attr('src', value.foto);
-            //$('#tituloCNotaPrensa' + index).html(value.titulo + getFormViewNoticeWeb(value.id));
         });
         $.each(DATA_DESTACADOS.LIST, function (index, value) {
-            cadenaContenido = value.contenido;
             if (index < 5) {
-                //console.log(value);
                 var url_values = value.url.toLowerCase().split("id=");
                 var id = "";
                 if (url_values.length === 2) {
                     id = url_values[1];
                 } else {
-                    //SI NO ENCUENTRA EL ARREGLO TENDRÁ TAMAÑO = 1, VALIDAMOS LA CADENA
                     id = url_values[0];
                 }
                 $('#idNota' + (index + 1)).val(id);
-                $('#tituloNotaPrensa' + (index + 1)).html(getTituloWeb(value.titulo, 45));
-                if (cadenaContenido.length > 90) {
-                    $('#resumenNotaPrensa' + (index + 1)).html(getTituloWeb(getResumenContenidoWeb(cadenaContenido, 150), 90) + ". . .");
-                } else {
-                    $('#resumenNotaPrensa' + (index + 1)).html(cadenaContenido);
-                }
+                $('#tituloNotaPrensa' + (index + 1)).html(getTitleDestacado(value.titulo));
+                $('#resumenNotaPrensa' + (index + 1)).html(getContenidoDestacado(value.contenido));
             }
         });
 
@@ -108,11 +107,34 @@ function addNoticiasWeb(DATA_NOTASPRENSA, DATA_DESTACADOS) {
     }
 }
 
+function getTitleDestacado(titulo) {
+    let palabras = titulo.split(" ");
+    let title_new = "";
+    for (var i = 0; i < palabras.length; i++) {
+        title_new += palabras[i] + " ";
+        if (i === 6) {
+            title_new += "<br>";
+        }
+    }
+    return title_new;
+}
+
+function getContenidoDestacado(titulo) {
+    let palabras = titulo.split(" ");
+    let destacado_new = "";
+    for (var i = 0; i < palabras.length; i++) {
+        destacado_new += palabras[i] + " ";
+        if (i === 10) {
+            destacado_new += "<br>";
+        }
+    }
+    return destacado_new;
+}
+
 function getItemNoticia(title, foto, idnoticia) {
-    var div = "<div class= 'item item-noticia-slider'>";
+    var div = "<div class= 'item item-noticia-slider '>";
     div += "<img src='" + foto + "'>";
     div += "<div class='btn_float_noticias text-center'>";
-    //div += "<a class='waves-effect waves-light btn' style='height: 30px;padding-top: 2px;padding-bottom: 2px;'>Leer</a>";
     div += getFormViewNoticeWeb(idnoticia);
     div += "</div>";
     div += "<div class='description_float_noticias text-center'>";
@@ -127,11 +149,16 @@ function getFormViewNoticeWeb(idNoticia) {
     form += "<form class='form-ver-noticia' method='POST' action='publicaciones/noticias/notas-de-prensa'>";
     form += "<input type='hidden' name='idNota' value='" + idNoticia + "'>";
     form += "<input type='hidden' name='action' value='readNotaPrensa'>";
-    form += "<button type='submit' class='waves-effect waves-light btn' style='height: 30px;padding-top: 2px;padding-bottom: 2px;font-family: century Gothic'>Leer</button>";
+    form += "<button type='submit' class='waves-effect waves-light btn' style='height: 30px;padding-top: 2px;padding-bottom: 2px;font-family: century Gothic;'>Leer</button>";
     form += "</form>";
     return form;
 }
-
+/*
+ * 
+ display: flex !important;
+ justify-content: center !important;
+ align-items: center !important;
+ */
 function addEventsNoticias() {
     jQuery(document).ready(function () {
         jQuery(".materialize-slider").revolution({
@@ -233,13 +260,13 @@ function procesarAjaxGaleriaWeb(apikey, idusuario, idalbum, numero_fotos_mostrar
         success: function (response) {
             var article;
             $.each($(response).find('photo'), function (i, item) {
-                 article = `
+                article = `
                  <article class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-10">
                  <a href="${$(item).attr('url_c')}" data-lightbox="example-set" data-title="${$(item).attr('title')}">
                  <img src="${$(item).attr('url_c')}" alt="Regala" class="img-thumbnail"></a>
                  </article>
                  `;
-                 $('#containerFotosGaleria').append(article);
+                $('#containerFotosGaleria').append(article);
             });
 
             lightbox.option({

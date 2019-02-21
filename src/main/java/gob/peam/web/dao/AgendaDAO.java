@@ -18,4 +18,5 @@ public interface AgendaDAO extends CRUD<Agenda> {
     
     BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException;
     
+    String getAgendaDia() throws SQLException;
 }

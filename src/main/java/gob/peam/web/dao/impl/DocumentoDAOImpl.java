@@ -7,6 +7,7 @@ package gob.peam.web.dao.impl;
 
 import gob.peam.web.dao.DocumentoDAO;
 import gob.peam.web.dao.SQLCloseable;
+import gob.peam.web.model.CategoriaDoc;
 import gob.peam.web.model.Documento;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
@@ -203,6 +204,29 @@ public class DocumentoDAOImpl implements DocumentoDAO {
             throw ex;
         }
         return beancrud;
+    }
+
+    @Override
+    public List<CategoriaDoc> listarCategorias() throws SQLException {
+        List<CategoriaDoc> list = new ArrayList();
+        try (Connection conn = this.pool.getConnection()) {
+            try (PreparedStatement pst = conn.prepareStatement("SELECT * FROM WEB.CATEGORIA_DOC")) {
+                LOG.info(pst.toString());
+                try (ResultSet rs = pst.executeQuery()) {
+                    while (rs.next()) {
+                        CategoriaDoc categoria = new CategoriaDoc();
+                        categoria.setId_cate(rs.getInt("ID_CATE"));
+                        categoria.setNombre(rs.getString("NOMBRE"));
+                        categoria.setTido_id(rs.getInt("TIDO_ID"));
+                        list.add(categoria);
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            throw e;
+
+        }
+        return list;
     }
 
 }

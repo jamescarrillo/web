@@ -191,7 +191,11 @@
                                                             <select id="comboAnioDocumento_DG" name="comboAnioDocumento_DG" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento_DG' style="border: 1px solid #00793D; margin-top: 40px">
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-8 col-sm-3 col-xs-12">
+                                                        <div class="col-md-2 col-sm-3 col-xs-12">
+                                                            <select id="cboCategoria_Doc" name="cboCategoria_Doc" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento_DG' style="border: 1px solid #00793D; margin-top: 40px">
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-6 col-sm-3 col-xs-12">
                                                             <div class="input-field">
                                                                 <input type="text" name="txtTituloDocumento_DG" id="txtTituloDocumento_DG">
                                                                 <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento . . .</font></font></label>
@@ -248,17 +252,17 @@
                                             <div role="tabpanel" class="tab-pane fade" id="tab-normas-y-directivas">
                                                 <div class="row-not">
                                                     <form id="FrmDocumentos_ND">
-                                                        <div class="col-md-2 col-sm-3 col-xs-12">
+                                                        <div style="display: none">
                                                             <select id="comboAnioDocumento_ND" name="comboAnioDocumento_ND" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento_ND' style="border: 1px solid #00793D; margin-top: 40px">
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-8 col-sm-3 col-xs-12">
+                                                        <div class="col-md-10 col-sm-8 col-xs-12">
                                                             <div class="input-field">
                                                                 <input type="text" name="txtTituloDocumento_ND" id="txtTituloDocumento_ND">
                                                                 <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento . . .</font></font></label>
                                                             </div>
                                                         </div>
-                                                        <div class="col-md-2 col-sm-3 col-xs-12">
+                                                        <div class="col-md-2 col-sm-4 col-xs-12">
                                                             <button type="submit" id="btnBuscarDocumento_ND" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 45px;">Buscar</button>
                                                         </div>
                                                         <input type="hidden" id="nameForm_ND" value="FrmDocumentos_ND">

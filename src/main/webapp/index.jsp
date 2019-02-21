@@ -484,15 +484,15 @@
                                     <i class='fa fa-phone'></i> (042) - 562522
                                 </h5>
                                 <div class="text-center">
-                                    <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/agenda-institucional"> 
-                                        <h5 class="text-peam-verde-index">
-                                            <i class="fa fa-calendar fa-2x" aria-hidden="true"></i>
-                                            <br>
-                                            Ver Agenda
-                                        </h5>
+                                    <div class="row">
+                                        <i class="fa fa-calendar fa-2x" aria-hidden="true" id="txtFechaAgenda">21</i>
+                                        <h5 style="margin-bottom: 0px;" id="txtTituloAgenda"></h5>
+                                    </div>
+                                    <a class="text-peam-verde-index" href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/agenda-institucional"> 
+                                        Ver Agenda
                                     </a>
                                 </div>
-                                <h5 class="mb-20 text-peam-verde-index" id="correoGG">
+                                <h5 class="mb-10 text-peam-verde-index" id="correoGG">
                                     <i class='fa fa-envelope-o'></i> <a href='mailto:gerencia@peam.gob.pe'>gerencia@peam.gob.pe</a>
                                 </h5>
                             </div>
@@ -754,12 +754,12 @@
                     </h1>
                 </div>
                 <articles class="row" id="containerFotosGaleria">
-                    
+
                 </articles>
                 <articles class="row" id="containerVideosGaleria">
-                    
+
                 </articles>
-                
+
             </div>
         </section>
 

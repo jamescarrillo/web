@@ -204,5 +204,23 @@ public class AgendaDAOImpl implements AgendaDAO {
         }
         return beancrud;
     }
+
+    @Override
+    public String getAgendaDia() throws SQLException {
+        String actividad = "";
+        try(Connection conn = this.pool.getConnection()){
+            try(PreparedStatement pst = conn.prepareStatement("SELECT ACTIVIDAD FROM WEB.f00019 WHERE FECHA_INICIO = DATE(NOW()) AND ESTADO = TRUE AND TIPO = 1 LIMIT 1")){
+                LOG.info(pst.toString());
+                try(ResultSet rs = pst.executeQuery()){
+                    while(rs.next()){
+                        actividad = rs.getString("ACTIVIDAD");
+                    }
+                }
+            }
+        }catch(SQLException e){
+            throw e;
+        }
+        return actividad;
+    }
     
 }

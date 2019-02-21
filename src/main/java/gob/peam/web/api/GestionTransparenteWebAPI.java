@@ -118,6 +118,9 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                 case "paginarViatico":
                     procesarViatico(new BEAN_CRUD(this.viaticoDAO.getPagination(getParametersViatico(request))), response);
                     break;
+                case "getCategoriasDoc":
+                    procesarCategoriaDOC(response);
+                    break;
                 default:
                     request.getRequestDispatcher("/jsp/web/gestiontransparente/" + getJSP(request)).forward(request, response);
                     break;
@@ -166,6 +169,19 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             this.jsonResponse = json.toJson(this.JSONROOT);
             response.getWriter().write(this.jsonResponse);
             LOG.info(this.jsonResponse);
+        } catch (IOException | SQLException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void procesarCategoriaDOC(HttpServletResponse response) {
+        try {
+            HashMap<String, Object> JSON_CA = new HashMap<>();
+            JSON_CA.put("DATA_CATEGORIAS", this.documentoDAO.listarCategorias());
+            response.setContentType("application/json");
+            String jsonResponseCat = json.toJson(JSON_CA);
+            response.getWriter().write(jsonResponseCat);
+            LOG.info(jsonResponseCat);
         } catch (IOException | SQLException ex) {
             Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
         }

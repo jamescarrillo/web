@@ -89,21 +89,9 @@ $(document).ready(function () {
     $('#cate_id').on('change', function () {
         $('#tido_id').val($("#cate_id option:selected").attr('tido_id'));
     });
-
+    addComboCategoriaDoc();
     addEventoCombosPaginar();
     procesarAjaxDocumentosWeb('');
-//    $('#cate_id').val("2800");
-//    $('#tido_id').val("");
-//    procesarAjaxDocumentosWeb('_AS');
-//    $('#cate_id').val("100");
-//    $('#tido_id').val("11");
-//    procesarAjaxDocumentosWeb('_DG');
-//    $('#cate_id').val("100");
-//    $('#tido_id').val("12");
-//    procesarAjaxDocumentosWeb('_ND');
-//    $('#cate_id').val("900");
-//    $('#tido_id').val("");
-//    procesarAjaxDocumentosWeb('_ID');
 
 });
 
@@ -124,7 +112,7 @@ function procesarAjaxDocumentosWeb(nombre_complemento) {
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
             $('#loader_contenido' + nombre_complemento).css('display', 'none');
-            viewAlertWeb('error', 'Error interno en el servidor!');
+            //viewAlertWeb('error', 'Error interno en el servidor!');
         }
     });
     return false;
@@ -204,4 +192,30 @@ function listarDocumentos(BEAN_PAGINATION, nombre_complemento) {
         $pagination.twbsPagination('destroy');
         viewAlertWeb('warning', 'No se enconntraron resultados');
     }
+}
+
+
+function addComboCategoriaDoc() {
+    $.ajax({
+        url: getContext() + '/documentos/operacionesweb?action=getCategoriasDoc',
+        type: 'POST',
+        data: "",
+        dataType: 'json',
+        success: function (jsonResponse) {
+            $('#cboCategoria_Doc').append(`<option value="">TODOS</option>`);
+            $(jsonResponse.DATA_CATEGORIAS).each(function (index, value) {
+                $('#cboCategoria_Doc').append(`<option value="${value.id_cate}">${value.nombre}</option>`);
+            });
+        },
+        error: function () {
+            /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
+        }
+    });
+    $('#cboCategoria_Doc').on('change', function () {
+        if (this.value !== "") {
+            $('#cate_id').val(this.value);
+        } else {
+            $('#cate_id').val("100");
+        }
+    });
 }
