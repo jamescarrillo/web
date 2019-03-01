@@ -49,11 +49,16 @@ color del peam
 @import url(https://fonts.googleapis.com/css?family=Great+Vibes);
 
 
+@font-face {
+    font-family: myFontGothic;
+    src: url('fuente_gothic/century_gothic.ttf');
+         /*url('URL/CenturyGothic.eot'); IE9 */
+}
 
 /* ================= General ==================== */
 
 body{
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
     font-size: 14px;
     line-height: 29px;
     font-weight: 500;
@@ -67,7 +72,7 @@ body{
 }
 
 html {
-    font-family: 'Raleway', sans-serif!important;
+    font-family: myFontGothic !important;
 }
 
 html,
@@ -112,7 +117,7 @@ a,
 /* ================ Typography ================== */
 
 h1, h2, h3, h4, h5, h6{
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
     font-weight: 400;
     color: #202020;
     margin: 0 0 15px;

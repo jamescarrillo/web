@@ -187,7 +187,7 @@
                                             <div role="tabpanel" class="tab-pane fade" id="tab-documentos-de-gestion">
                                                 <div class="row-not">
                                                     <form id="FrmDocumentos_DG">
-                                                        <div class="col-md-2 col-sm-3 col-xs-12">
+                                                        <div class="col-md-2 col-sm-3 col-xs-12" style="display: none">
                                                             <select id="comboAnioDocumento_DG" name="comboAnioDocumento_DG" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento_DG' style="border: 1px solid #00793D; margin-top: 40px">
                                                             </select>
                                                         </div>
@@ -195,7 +195,7 @@
                                                             <select id="cboCategoria_Doc" name="cboCategoria_Doc" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento_DG' style="border: 1px solid #00793D; margin-top: 40px">
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-6 col-sm-3 col-xs-12">
+                                                        <div class="col-md-8 col-sm-6 col-xs-12">
                                                             <div class="input-field">
                                                                 <input type="text" name="txtTituloDocumento_DG" id="txtTituloDocumento_DG">
                                                                 <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento . . .</font></font></label>

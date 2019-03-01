@@ -195,20 +195,17 @@
 
 .text-peam{
     color: #000000;
-    /*font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif!important;*/
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
 }
 
 .text-peam-negrita-negro{
     color: #000000;
-    /*font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif!important;*/
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
 }
 
 .text-peam-negrita-verde{
     color: #00793D !important;
-    /*font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif!important;*/
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
 }
 
 .text-peam-negrita-verde:hover{
@@ -217,19 +214,17 @@
 
 .text-peam-anaranjado{
     color: #ef8a08;
-    /*font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif!important;*/
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
 }
 
 .text-peam-verde{
     color: #00793D;
-    /*font-family: Tofino, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif!important;*/
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
 }
 
 .text-peam-verde-index{
     color: #00793D;
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
 }
 
 .text-peam-verde-index:hover{
@@ -238,7 +233,7 @@
 
 .text-peam-verde-subrayado{
     color: #00793D;
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
     border-bottom: 2px solid #FF0000;
     display: inline-block;
     line-height: 1.3;
@@ -246,25 +241,25 @@
 
 .text-peam-subrayado-enlaces-externos{
     color: #ffffff;
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
     border-bottom: 2px solid #ffffff;
     display: inline-block;
     line-height: 1.3;
 }
 
 .text-peam-negrita{
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
     font-weight: bold;
 }
 
 .text-peam-negrita-sombreado{
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
     font-weight: bold;
     text-shadow: 1px 2px #e4e4e4;
 }
 
 .text-peam-negrita-fondo{
-    font-family: century Gothic !important;
+    font-family: myFontGothic !important;
     font-weight: bold;
     background: #f5f5f582;
 }

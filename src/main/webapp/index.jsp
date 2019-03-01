@@ -87,7 +87,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa1" style="font-family: century Gothic !important; ">
+                            <div class="text-center" id="tituloNotaPrensa1" style="font-family: myFontGothic !important; ">
 
                             </div>
                         </div>
@@ -104,7 +104,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div id="resumenNotaPrensa1" class="text-left" style="font-family: century Gothic !important">
+                            <div id="resumenNotaPrensa1" class="text-left" style="font-family: myFontGothic !important">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -124,7 +124,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota1" value="">
                                 <input type="hidden" name="action" id="action1" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;font-family: century Gothic !important">Leer más</button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;font-family: myFontGothic !important">Leer más</button>
                             </form>
                         </div>
                     </li>
@@ -152,7 +152,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa2" style="font-family: century Gothic !important">
+                            <div class="text-center" id="tituloNotaPrensa2" style="font-family: myFontGothic !important">
                             </div>
                         </div>
                         <div
@@ -168,7 +168,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa2" style="font-family: century Gothic !important">
+                            <div class="text-left" id="resumenNotaPrensa2" style="font-family: myFontGothic !important">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -188,7 +188,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota2" value="">
                                 <input type="hidden" name="action" id="action2" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;font-family: century Gothic !important">Leer más</button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;font-family: myFontGothic !important">Leer más</button>
                             </form>
                         </div>
                     </li>
@@ -216,7 +216,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa3" style="font-family: century Gothic !important">
+                            <div class="text-center" id="tituloNotaPrensa3" style="font-family: myFontGothic !important">
                             </div>
                         </div>
                         <div
@@ -232,7 +232,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa3" style="font-family: century Gothic !important">
+                            <div class="text-left" id="resumenNotaPrensa3" style="font-family: myFontGothic !important">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -252,7 +252,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota3" value="">
                                 <input type="hidden" name="action" id="action3" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;font-family: century Gothic !important">Leer más</button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;font-family: myFontGothic !important">Leer más</button>
                             </form>
                         </div>
                     </li>
@@ -280,7 +280,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa4" style="font-family: century Gothic !important">
+                            <div class="text-center" id="tituloNotaPrensa4" style="font-family: myFontGothic !important">
                             </div>
                         </div>
                         <div
@@ -296,7 +296,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa4" style="font-family: century Gothic !important">
+                            <div class="text-left" id="resumenNotaPrensa4" style="font-family: myFontGothic !important">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -316,7 +316,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota4" value="">
                                 <input type="hidden" name="action" id="action4" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px; font-family: century Gothic !important">Leer más</button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px; font-family: myFontGothic !important">Leer más</button>
                             </form>
                         </div>
                     </li>
@@ -344,7 +344,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa5" style="font-family: century Gothic !important">
+                            <div class="text-center" id="tituloNotaPrensa5" style="font-family: myFontGothic !important">
                             </div>
                         </div>
                         <div
@@ -360,7 +360,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa5" style="font-family: century Gothic !important">
+                            <div class="text-left" id="resumenNotaPrensa5" style="font-family: myFontGothic !important">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -380,7 +380,7 @@
                             <form class="form-ver-noticia" method="POST" action="publicaciones/noticias/notas-de-prensa">
                                 <input type="hidden" name="idNota" id="idNota5" value="">
                                 <input type="hidden" name="action" id="action5" value="readNotaPrensa">
-                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;font-family: century Gothic !important">Leer más</button>
+                                <button type="submit" class="btn btn-lg  waves-effect waves-light" style="font-size: 18px;font-family: myFontGothic !important">Leer más</button>
                             </form>
                         </div>
                     </li>
@@ -486,7 +486,9 @@
                                 <div class="text-center">
                                     <div class="row">
                                         <i class="fa fa-calendar fa-2x" aria-hidden="true" id="txtFechaAgenda">21</i>
-                                        <h5 style="margin-bottom: 0px;" id="txtTituloAgenda"></h5>
+                                        <div class="col-xs-12">
+                                            <h5 style="margin-bottom: 0px;" id="txtTituloAgenda"></h5>
+                                        </div>
                                     </div>
                                     <a class="text-peam-verde-index" href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/agenda-institucional"> 
                                         Ver Agenda
@@ -770,7 +772,10 @@
                         <strong>Enlaces Externos</strong>
                     </h1>
                 </div>
-                <div class="row" style="margin-bottom: 10px">
+                <div class="row" id="row_enlaces_externos" style="margin-bottom: 10px">
+                    
+                </div>
+                <!--div class="row" style="margin-bottom: 10px">
                     <div class="col-xs-3">
                         <a href="http://www.bn.com.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-university fa-2x"></i> Banco de la Nación</a>
                     </div>
@@ -802,7 +807,7 @@
                     <div class="col-xs-3">
                         <a href="http://www.mef.gob.pe/index.php?option=com_content&view=section&id=37&Itemid=100143&lang=es" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px;padding-left: 15px;padding-right: 15px;"><i class="fa fa-search fa-2x" aria-hidden="true"></i> Transparencia Económica</a>
                     </div>
-                </div>
+                </div-->
             </div>
         </section>
         <%@ include file="footer.jsp"%>

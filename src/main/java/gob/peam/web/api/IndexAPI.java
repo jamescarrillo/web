@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import gob.peam.web.dao.AgendaDAO;
 import gob.peam.web.dao.AnuncioDAO;
 import gob.peam.web.dao.DestacadoDAO;
+import gob.peam.web.dao.EnlaceDAO;
 import gob.peam.web.dao.FuncionarioDAO;
 import gob.peam.web.dao.MultimediaDAO;
 import gob.peam.web.dao.NotaPrensaDAO;
@@ -17,6 +18,7 @@ import gob.peam.web.dao.impl.AgendaDAOImpl;
 import gob.peam.web.dao.impl.AnuncioDAOImpl;
 import gob.peam.web.dao.impl.BusquedaDAOImpl;
 import gob.peam.web.dao.impl.DestacadoDAOImpl;
+import gob.peam.web.dao.impl.EnlaceDAOImpl;
 import gob.peam.web.dao.impl.FuncionarioDAOImpl;
 import gob.peam.web.dao.impl.MultimediaDAOImpl;
 import gob.peam.web.dao.impl.NotaPrensaDAOImpl;
@@ -60,6 +62,7 @@ public class IndexAPI extends HttpServlet {
     private FuncionarioDAO funcionarioDAO;
     private BusquedaDAOImpl busquedaDAO;
     private AgendaDAO agendaDAO;
+    private EnlaceDAO enlaceDAO;
 
     @Override
     public void init() throws ServletException {
@@ -77,6 +80,7 @@ public class IndexAPI extends HttpServlet {
         this.funcionarioDAO = new FuncionarioDAOImpl(this.pool);
         this.busquedaDAO = new BusquedaDAOImpl(this.pool);
         this.agendaDAO = new AgendaDAOImpl(this.pool);
+        this.enlaceDAO = new EnlaceDAOImpl(this.pool);
     }
 
     /**
@@ -144,6 +148,7 @@ public class IndexAPI extends HttpServlet {
             this.JSONROOT.put("DATA_ANUNCIOS", this.anuncioDAO.getAnunciosDia(Integer.parseInt(conf_web.getNumero_anuncios_mostrar())));
             this.JSONROOT.put("DATA_FUNCIONARIOS", this.funcionarioDAO.getPagination(getParametersFuncionarios()));
             this.JSONROOT.put("DATA_AGENDA", this.agendaDAO.getAgendaDia());
+            this.JSONROOT.put("DATA_ENLACES", this.enlaceDAO.getPagination(getParametersEnlaces()));
             this.JSONROOT.put("GALERIA_APIKEY", conf_web.getApikey());
             this.JSONROOT.put("GALERIA_IDUSUARIO", conf_web.getIdusuario());
             this.JSONROOT.put("GALERIA_IDALBUM", conf_web.getIdalbum());
@@ -168,6 +173,14 @@ public class IndexAPI extends HttpServlet {
         } catch (SQLException | IOException ex) {
             Logger.getLogger(IndexAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private HashMap<String, Object> getParametersEnlaces() {
+        HashMap<String, Object> parameters_enlaces = new HashMap<>();
+        parameters_enlaces.put("FILTER", "");
+        parameters_enlaces.put("SQL_ORDERS", "");
+        parameters_enlaces.put("LIMIT", "");
+        return parameters_enlaces;
     }
 
     private HashMap<String, Object> getParametersNotasPrensa() {

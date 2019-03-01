@@ -28,12 +28,22 @@ function procesarAjaxIndexWeb() {
             //DATOS DE LA AGENDA
             if (jsonResponse.DATA_AGENDA !== "") {
                 $('#txtFechaAgenda').html(" " + fecha.getDate());
-                $('#txtTituloAgenda').html(jsonResponse.DATA_AGENDA);
+                $('#txtTituloAgenda').html(getTitleAgenda(jsonResponse.DATA_AGENDA));
             } else {
                 $('#txtFechaAgenda').html("");
                 $('#txtTituloAgenda').html("");
             }
-
+            if (jsonResponse.DATA_ENLACES !== "") {
+                let div_enlace;
+                $(jsonResponse.DATA_ENLACES.LIST).each(function (index, value) {
+                    div_enlace = `
+                    <div class="col-xs-3" style="margin-bottom: 10px">
+                        <a href="${value.url}" target="_blank" title='${value.descripcion}' class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-link fa-2x"></i> ${value.abreviatura}</a>
+                    </div>
+                        `;
+                    $('#row_enlaces_externos').append(div_enlace);
+                });
+            }
         },
         error: function () {
             console.log("error al traer datos del index");
@@ -126,6 +136,19 @@ function getContenidoDestacado(titulo) {
         destacado_new += palabras[i] + " ";
         if (i === 10) {
             destacado_new += "<br>";
+        }
+    }
+    return destacado_new;
+}
+
+function getTitleAgenda(titulo) {
+    let palabras = titulo.split(" ");
+    let destacado_new = "";
+    for (var i = 0; i < palabras.length; i++) {
+        destacado_new += palabras[i] + " ";
+        if (i === 14) {
+            destacado_new += ". . .";
+            break;
         }
     }
     return destacado_new;
