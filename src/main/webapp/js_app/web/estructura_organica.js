@@ -114,6 +114,10 @@ $(document).ready(function () {
         $('#header').css('display', 'none');
         $('#myModal').css('display', 'block');
     });
+    
+    $('#map-infraestructura').click(function  (){
+        verFuncionario("DIRECCION DE INFRAESTRUCTURA");
+    });
 
     procesarAjaxOrganigramaWeb();
 
@@ -131,6 +135,18 @@ $(window).resize(function () {
         $('.contentMyModal').css("width", "40%");
     }
 });
+
+function verFuncionario(organigrama){
+    for (var i = 0, max = 10; i < list_funcionarios.length; i++) {
+        if(organigrama === list_funcionarios[i]){
+            $('#containerOrg').empty();
+            $('#containerOrg').append(getCard(list_funcionarios[i]), 'col-md-6 col-xs-12');
+            break;
+        }
+    }
+}
+
+var list_funcionarios;
 
 function procesarAjaxOrganigramaWeb() {
     $.ajax({
@@ -151,6 +167,9 @@ function procesarAjaxOrganigramaWeb() {
             for (var i = 0; i < representantes.length; i++) {
                 $('#containerModalDirectivos').append(representantes[i]);
             }
+            list_funcionarios = jsonResponse.DATA_FUNCIONARIOS.LIST;
+            
+            
             console.log(jsonResponse.DATA_FUNCIONARIOS.LIST);
             var myJsonCadena = JSON.stringify(jsonResponse.DATA_FUNCIONARIOS);
             $('#jsonFuncionarios').val(myJsonCadena);

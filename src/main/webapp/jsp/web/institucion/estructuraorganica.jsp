@@ -392,9 +392,30 @@
                 </div>                
             </div>
             <div class="row">
-                <!--div class="col-xs-12" id="organigrama">
+                <div class="col-md-6 col-xs-12">
+                    <div id="sp1">
+                        <div class="row">
+                            <div class="col-sm-1"></div>
+                            <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/organigrama/Organigrama.png" usemap="#organigrama" />
+                            <map name="organigrama" id="organigrama" style="display: none;">
+                                <area shape="rect" coords="141,7,232,29" id="map-grsm" href="javascript:void(0)">
+                                <area shape="rect" coords="141,56,232,83" id="map-consejo" href="javascript:void(0)">
+                                <area shape="rect" coords="141,107,232,134" id="map-gerencia" href="javascript:void(0)">
+                                <area shape="rect" coords="10,105,115,134" id="map-osi" href="javascript:void(0)">
+                                <area shape="rect" coords="31,197,116,226" id="map-administracion" href="javascript:void(0)">
+                                <area shape="rect" coords="232,166,352,195" id="map-opp" href="javascript:void(0)">
+                                <area shape="rect" coords="243,231,345,264" id="map-asesoria" href="javascript:void(0)">
+                                <area shape="rect" coords="18,307,126,337" id="map-dma" href="javascript:void(0)">
+                                <area shape="rect" coords="140,307,234,337" id="map-infraestructura" href="javascript:void(0)">
+                                <area shape="rect" coords="247,307,386,337" id="map-agropecuaria" href="javascript:void(0)">
+                            </map>
+                            <p class="col-sm-6" id="marco"></p>
+                        </div>
+                    </div>
+                </div>
+                <div id="containerOrg">
 
-                </div-->
+                </div>
             </div>
             <br>
             <hr>
