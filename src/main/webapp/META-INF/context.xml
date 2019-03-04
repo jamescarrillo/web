@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context path="/web">
-    <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="100" 
-              maxIdle="100" maxWait="40000" name="jdbc/dbweb" password="userWebApp" 
+    <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="200" 
+              maxIdle="200" maxWait="40000" name="jdbc/dbweb" password="userWebApp" 
               type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/WebApp" 
               username="userWebApp">
     </Resource>
-    <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="100"
-              maxIdle="100" maxWait="40000" name="jdbc/dbarcdig" password="root"
+    <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="200"
+              maxIdle="200" maxWait="40000" name="jdbc/dbarcdig" password="root"
               type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/ArcDig" 
               username="postgres">
     </Resource>

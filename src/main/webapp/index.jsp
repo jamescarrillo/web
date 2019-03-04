@@ -470,7 +470,7 @@
                         <article class='post-wrapper' style="padding: 0px; margin: 0px">
                             <div class='thumb-wrapper waves-effect waves-block waves-light' 
                                  style="margin-bottom: 0px; height: 180px">
-                                <a><img id="imgGG" src='' class='img-responsive' alt='imgNoticia'></a>
+                                <a><img id="imgGG" src='' class='img-responsive' style="height: 180px" alt='Imgen Gerente'></a>
                                 <div class="description_float_gerente">
                                     <span class="text-peam-negrita" id="cargoGG" style="color: white">
                                         Gerente General
