@@ -160,8 +160,10 @@ function getItemNoticia(title, foto, idnoticia) {
     div += "<div class='btn_float_noticias text-center'>";
     div += getFormViewNoticeWeb(idnoticia);
     div += "</div>";
+    //justify-content: center;
+   //align-items: center;
     div += "<div class='description_float_noticias text-center'>";
-    div += "<h5 style='font-family: century Gothic !important'>" + title + "</h5>";
+    div += "<div style='height: 100%;justify-content: center;align-items: center;-ms-display: flex;display: flex;'><h5>" + title + "</h5></div>";
     div += "</div>";
     div += "</div>";
     return div;
@@ -172,7 +174,7 @@ function getFormViewNoticeWeb(idNoticia) {
     form += "<form class='form-ver-noticia' method='POST' action='publicaciones/noticias/notas-de-prensa'>";
     form += "<input type='hidden' name='idNota' value='" + idNoticia + "'>";
     form += "<input type='hidden' name='action' value='readNotaPrensa'>";
-    form += "<button type='submit' class='waves-effect waves-light btn' style='height: 30px;padding-top: 2px;padding-bottom: 2px;font-family: century Gothic;'>Leer</button>";
+    form += "<button type='submit' class='waves-effect waves-light btn' style='height: 45px;width: 120px;padding-top: 2px;padding-bottom: 2px;'>Leer más</button>";
     form += "</form>";
     return form;
 }

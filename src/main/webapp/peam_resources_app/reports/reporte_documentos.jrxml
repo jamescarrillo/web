@@ -117,7 +117,7 @@ ORDER BY DOCU_TITULO ASC]]>
 					<subreportParameterExpression><![CDATA[$P{path_logo_goresam}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:/Users/JamesCarrillo/JaspersoftWorkspace/reportes_peam/web/cabecera_horizontal.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{path_cabecera}]]></subreportExpression>
 			</subreport>
 			<textField>
 				<reportElement x="0" y="80" width="800" height="20" uuid="fa117a43-119c-42b7-995e-8dcee7b172db"/>

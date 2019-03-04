@@ -38,427 +38,139 @@
         <%@ include file = "../../../header.jsp" %> 
         <section class="padding-bottom-100">
             <div class="container">
-                <div class="text-center mb-0" style="margin-top: 60px;">
+                <div class="text-center mb-0" style="margin-top: 80px;">
                     <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Estructura Orgánica</h2>
-                    <input type="hidden" name="jsonFuncionarios" id="jsonFuncionarios">
+                    <input type="hidden" id="pathLogoGORESAM" value="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/<%out.print(conf_web.getNombre_logo_goresam());%>">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1 col-xs-12- col-xs-offset-0" style="
-                     overflow: auto;
-                     /* background: #ecf0f1; */
-                     background: #ffffff;
-                     padding: 50px;
-                     -webkit-user-select: none;
-                     -moz-user-select: none;
-                     -ms-user-select: none;
-                     user-select: none;
-                     ">
-                    <table>
-                        <tbody id="tbodyOrganigrama">
-                            <tr>
-                                <td style="width: 12.5%"></td>
-                                <td style="width: 12.5%"></td>
-                                <td style="width: 12.5%"></td>
-                                <td style="width: 12.5%"></td>
-                                <td style="width: 12.5%"></td>
-                                <td style="width: 12.5%"></td>
-                                <td style="width: 12.5%"></td>
-                                <td style="width: 12.5%"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="8" class="text-center">
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 100px;
-                                        border-bottom: 5px solid #466c92;
-                                        background: #466c92;
-                                        color: #ecf0f1;
-                                        display: inline-block;
-                                        padding: 5px 2px;
-                                        margin: 0 10px;
-                                        cursor: pointer;
-                                        font-size: 13px;
-                                        " id="idgrsm">
-                                        GRSM
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" 
-                                    style="
-                                    border-width: 2px;
-                                    border-right: 2px solid #34495e;
-                                    height: 30px
-                                    ">                                    
-                                </td>
-                                <td colspan="4" 
-                                    style="
-                                    border-width: 2px;
-                                    border-left: 2px solid #34495e;
-                                    height: 30px
-                                    ">                                    
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td colspan="8" class="text-center">
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 100px;
-                                        border-bottom: 5px solid #466c92;
-                                        background: #466c92;
-                                        color: #ecf0f1;
-                                        display: inline-block;
-                                        padding: 4px 2px;
-                                        margin: 0 10px;
-                                        cursor: pointer;
-                                        font-size: 13px;
-                                        " id="idConsejoDirectivo">
-                                        Consejo Directivo
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" 
-                                    style="
-                                    border-width: 2px;
-                                    border-right: 2px solid #34495e;
-                                    height: 30px
-                                    ">                                    
-                                </td>
-                                <td colspan="4" 
-                                    style="
-                                    border-width: 2px;
-                                    border-left: 2px solid #34495e;
-                                    height: 30px
-                                    ">                                    
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="6" class="text-center">
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 180px;
-                                        border-bottom: 5px solid #00793D;
-                                        background: #00793D;
-                                        color: #ecf0f1;
-                                        display: inline-block;
-                                        padding: 3px 2px;
-                                        margin: 0 0px;
-                                        cursor: pointer;
-                                        text-align: center;
-                                        font-size: 13px;
-                                        " id="idOrganoControlInstitucional">
-                                        Órgano de Control Institucional
-                                    </div>
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 70px;
-                                        border-bottom: 2px solid #34495e;
-                                        display: inline-block;
-                                        ">
-                                    </div>
-                                    <div
-                                        style="
-                                        position: relative;
-                                        width: 100px;
-                                        border-bottom: 5px solid #466c92;
-                                        background: #466c92;
-                                        color: #ecf0f1;
-                                        display: inline-block;
-                                        padding: 4px 2px;
-                                        margin: 0 0px;
-                                        cursor: pointer;
-                                        font-size: 13px;
-                                        " id="idGerenciaGeneral">
-                                        Gerencia General
-                                    </div>
-                                </td>
-                                <td colspan="2"></td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" 
-                                    style="
-                                    border-width: 2px;
-                                    border-right: 2px solid #34495e;
-                                    height: 30px
-                                    ">                                    
-                                </td>
-                                <td colspan="4" class="text-left">
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 100px;
-                                        border-bottom: 2px solid #34495e;
-                                        display: inline-block;
-                                        ">
-                                    </div>
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 180px;
-                                        border-bottom: 5px solid #00793D;
-                                        background: #00793D;
-                                        color: #ecf0f1;
-                                        display: inline-block;
-                                        padding: 3px 2px;
-                                        margin: 0 0px;
-                                        cursor: pointer;
-                                        text-align: center;
-                                        font-size: 13px;
-                                        " id="idOficinaPresupuestoPlanificacion">
-                                        Oficina de Presupuesto y Planificación
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-
-                                <td colspan="4" class="text-right">
-
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 160px;
-                                        border-bottom: 5px solid #00793D;
-                                        background: #00793D;
-                                        color: #ecf0f1;
-                                        display: inline-block;
-                                        padding: 3px 4px;
-                                        margin: 0 0px;
-                                        cursor: pointer;
-                                        text-align: center;
-                                        font-size: 13px;
-                                        " id="idOficinaAdministracion">
-                                        Oficina de Administración
-                                    </div>
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 135px;
-                                        border-bottom: 2px solid #34495e;
-                                        display: inline-block;
-                                        ">
-                                    </div>
-                                </td>
-                                <td colspan="4" 
-                                    style="
-                                    border-width: 2px;
-                                    border-left: 2px solid #34495e;
-                                    height: 10px
-                                    ">                                    
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" 
-                                    style="
-                                    border-width: 2px;
-                                    border-right: 2px solid #34495e;
-                                    height: 30px
-                                    ">                                    
-                                </td>
-                                <td colspan="4" class="text-left">
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 100px;
-                                        border-bottom: 2px solid #34495e;
-                                        display: inline-block;
-                                        ">
-                                    </div>
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 180px;
-                                        border-bottom: 5px solid #00793D;
-                                        background: #00793D;
-                                        color: #ecf0f1;
-                                        display: inline-block;
-                                        padding: 3px 3px;
-                                        margin: 0 0px;
-                                        cursor: pointer;
-                                        text-align: center;
-                                        font-size: 13px;
-                                        " id="idOficinaAsesoriaJuridica">
-                                        Oficina de Asesoría Jurídica
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="4" 
-                                    style="
-                                    border-width: 2px;
-                                    border-right: 2px solid #34495e;
-                                    height: 20px
-                                    ">                                    
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center"
-                                    style="
-                                    border-width: 2px;
-                                    border-right: 2px solid #34495e;
-                                    height: 20px;
-                                    ">                                    
-                                </td>
-                                <td colspan="3" class="text-center"
-                                    style="
-                                    border-width: 2px;
-                                    border-top: 2px solid #34495e;
-                                    border-right: 2px solid #34495e;
-                                    height: 20px;
-                                    ">                                    
-                                </td>
-                                <td colspan="3" class="text-center"
-                                    style="
-                                    border-width: 2px;
-                                    border-top: 2px solid #34495e;
-                                    border-left: 2px solid #34495e;
-                                    height: 20px;
-                                    ">                                    
-                                </td>                                
-                                <td class="text-center"
-                                    style="
-                                    border-width: 2px;
-                                    border-left: 2px solid #34495e;
-                                    height: 20px;
-                                    ">                                    
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="text-center">
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 180px;
-                                        border-bottom: 5px solid #f3a486;
-                                        background: #f3a486;
-                                        color: #ecf0f1;
-                                        display: inline-block;
-                                        padding: 3px 4px;
-                                        margin: 0 10px;
-                                        cursor: pointer;
-                                        text-align: center;
-                                        font-size: 13px;
-                                        " id="idDireccionManejoAmbiental">
-                                        Dirección de Manejo Ambiental
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td colspan="2" class="text-center">
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 180px;
-                                        border-bottom: 5px solid #f3a486;
-                                        background: #f3a486;
-                                        color: #ecf0f1;
-                                        display: inline-block;
-                                        padding: 3px 4px;
-                                        margin: 0 10px;
-                                        cursor: pointer;
-                                        text-align: center;
-                                        font-size: 13px;
-                                        " id="idDireccionInfraestructura">
-                                        Dirección de Infraestructura
-                                    </div>
-                                </td>
-                                <td></td>
-                                <td colspan="2" class="text-center">
-                                    <div 
-                                        style="
-                                        position: relative;
-                                        width: 180px;
-                                        border-bottom: 5px solid #f3a486;
-                                        background: #f3a486;
-                                        color: #ecf0f1;
-                                        display: inline-block;
-                                        padding: 5px 2px;
-                                        margin: 0 10px;
-                                        cursor: pointer;
-                                        text-align: center;
-                                        font-size: 13px;
-                                        " id="idDireccionDesarrolloAgropecuario">
-                                        Dirección de Desarrollo Agropecuario
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>                
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-xs-12">
-                    <div id="sp1">
-                        <div class="row">
-                            <div class="col-sm-1"></div>
-                            <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/organigrama/Organigrama.png" usemap="#organigrama" />
-                            <map name="organigrama" id="organigrama" style="display: none;">
-                                <area shape="rect" coords="141,7,232,29" id="map-grsm" href="javascript:void(0)">
-                                <area shape="rect" coords="141,56,232,83" id="map-consejo" href="javascript:void(0)">
-                                <area shape="rect" coords="141,107,232,134" id="map-gerencia" href="javascript:void(0)">
-                                <area shape="rect" coords="10,105,115,134" id="map-osi" href="javascript:void(0)">
-                                <area shape="rect" coords="31,197,116,226" id="map-administracion" href="javascript:void(0)">
-                                <area shape="rect" coords="232,166,352,195" id="map-opp" href="javascript:void(0)">
-                                <area shape="rect" coords="243,231,345,264" id="map-asesoria" href="javascript:void(0)">
-                                <area shape="rect" coords="18,307,126,337" id="map-dma" href="javascript:void(0)">
-                                <area shape="rect" coords="140,307,234,337" id="map-infraestructura" href="javascript:void(0)">
-                                <area shape="rect" coords="247,307,386,337" id="map-agropecuaria" href="javascript:void(0)">
-                            </map>
-                            <p class="col-sm-6" id="marco"></p>
-                        </div>
+            <div class="row" style="margin-top: 30px">
+                <div class="col-md-5 col-xs-12" style="margin-top: 20px">
+                    <div class="row" style="margin-left: 50px; ">
+                        <img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/organigrama/Organigrama.png" usemap="#organigrama" />
+                        <map name="organigrama" id="organigrama" style="display: none;">
+                            <area shape="rect" coords="141,7,232,29" id="map-grsm" href="javascript:void(0)">
+                            <area shape="rect" coords="141,56,232,83" id="map-consejo-directivo" href="javascript:void(0)">
+                            <area shape="rect" coords="141,107,232,134" id="map-gerencia" href="javascript:void(0)">
+                            <area shape="rect" coords="10,105,115,134" id="map-oci" href="javascript:void(0)">
+                            <area shape="rect" coords="31,197,116,226" id="map-administracion" href="javascript:void(0)">
+                            <area shape="rect" coords="232,166,352,195" id="map-opp" href="javascript:void(0)">
+                            <area shape="rect" coords="243,231,345,264" id="map-asesoria" href="javascript:void(0)">
+                            <area shape="rect" coords="18,307,126,337" id="map-dma" href="javascript:void(0)">
+                            <area shape="rect" coords="140,307,234,337" id="map-infraestructura" href="javascript:void(0)">
+                            <area shape="rect" coords="247,307,386,337" id="map-agropecuaria" href="javascript:void(0)">
+                        </map>
                     </div>
                 </div>
-                <div id="containerOrg">
-
+                <div id=containerDynamicOrganigrama style="margin-left: 50px; margin-right: 50px">
+                    <!--h3>DIRECCIÓN DE INFRAESTRUCTURA</h3>
+                    <div class="col-md-7 col-xs-12">
+                        <div class="row col-xs-12" style="border: 3px solid;color: #00793D">
+                            <div class="col-sm-4">
+                                <img class="img-responsive" style="border: 3px solid;color: #00793D;height: 180px; width: 200px; margin-top: 30px; margin-left: 5px" 
+                                     src="https://farm1.staticflickr.com/839/42893417504_57850b3fc5.jpg" 
+                                     alt="Image">
+                            </div>
+                            <div class="col-sm-8" style="margin-top: 20px; margin-bottom: 20px">
+                                <h5><strong>Nombres y Apellidos: </strong>Marco Antonio LOzano Rios</h5>
+                                <h5><strong>Número de D.N.I: </strong>721555722</h5>
+                                <h5><strong>Cargo: </strong>Jefe - Oficina de Presupuesto, Planificación, EStudios y OT.</h5>
+                                <h5><strong>Nivel Remunerativo: D-2</strong>Jefe - Oficina de Presupuesto, Planificación, EStudios y OT.</h5>
+                                <h5><strong>Designado Por: </strong>R.G. N° 001-2019-GRSM-PEAM-01.00</h5>
+                                <h5><strong>Teléfono: </strong>(042) - 562522 Ext. 225</h5>
+                                <h5><strong>Correo Electrónico: </strong>(042) - 562522 Ext. 225</h5>
+                                <h5><strong>Régimen Laboral: </strong>(042) - 562522 Ext. 225</h5>
+                            </div>
+                        </div>
+                    </div-->
+                    <!--h5 class="text-peam-verde text-peam-negrita" style="margin-top: 15px;">
+                        GOBIERNO REGIONAL DE SAN MARTÍN
+                    </h5>
+                    <div class="col-md-7 col-xs-12">
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 mt-20 mb-10">
+                                <a href="http://www.regionsanmartin.gob.pe/"><img src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/logo-goresam.png" class="img-responsive" alt="Imagen"></a>
+                            </div>
+                            <div class="col-xs-12">
+                                <h5 class="text-peam-negrita">
+                                    El Proyecto Especial Alto Mayo (PEAM) es una unidad ejecutora del Gobierno Regional de San Martín desde el 
+                                    09 de setiembre del año 2003, fecha en que mediante D.S. Nº. 024-2003-VIVIENDA se dispone su transferencia 
+                                    definitiva desde el Instituto Nacional de Desarrollo (INADE).
+                                    <a href="http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=26794">Ver Documento de Aprobación</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div-->
+                    <!--div class="col-md-7 col-xs-12">
+                        <div class="panel-group feature-accordion brand-accordion icon angle-icon" id="tab-consejo-directivo">
+                            
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#tab" href="#tab-presidente" aria-expanded="true">
+                                            Presidente
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-presidente" class="panel-collapse collapse in" aria-expanded="true" style="">
+                                    <div style="margin-left: 15px; margin-right: 15px">
+                                        <div class="row" style="border: 3px solid;color: #00793D">
+                                            <div class="col-sm-4">
+                                                <img class="img-responsive" style="border: 3px solid;color: #00793D;height: 180px; width: 200px; margin-top: 30px; margin-left: 5px" 
+                                                     src="https://farm1.staticflickr.com/839/42893417504_57850b3fc5.jpg" 
+                                                     alt="Image">
+                                            </div>
+                                            <div class="col-sm-8" style="margin-top: 20px; margin-bottom: 20px">
+                                                <h5><strong>Nombres y Apellidos: </strong>Marco Antonio LOzano Rios</h5>
+                                                <h5><strong>Número de D.N.I: </strong>721555722</h5>
+                                                <h5><strong>Cargo: </strong>Jefe - Oficina de Presupuesto, Planificación, EStudios y OT.</h5>
+                                                <h5><strong>Nivel Remunerativo: D-2</strong>Jefe - Oficina de Presupuesto, Planificación, EStudios y OT.</h5>
+                                                <h5><strong>Designado Por: </strong>R.G. N° 001-2019-GRSM-PEAM-01.00</h5>
+                                                <h5><strong>Teléfono: </strong>(042) - 562522 Ext. 225</h5>
+                                                <h5><strong>Correo Electrónico: </strong>(042) - 562522 Ext. 225</h5>
+                                                <h5><strong>Régimen Laboral: </strong>(042) - 562522 Ext. 225</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-representante-1" aria-expanded="false">
+                                            Representante-1
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-representante-1" class="panel-collapse collapse" aria-expanded="false">
+                                    <div style="margin-left: 15px; margin-right: 15px">
+                                        <div class="row" style="border: 3px solid;color: #00793D">
+                                            <div class="col-sm-4">
+                                                <img class="img-responsive" style="border: 3px solid;color: #00793D;height: 180px; width: 200px; margin-top: 30px; margin-left: 5px" 
+                                                     src="https://farm1.staticflickr.com/839/42893417504_57850b3fc5.jpg" 
+                                                     alt="Image">
+                                            </div>
+                                            <div class="col-sm-8" style="margin-top: 20px; margin-bottom: 20px">
+                                                <h5><strong>Nombres y Apellidos: </strong>Juan Antonio LOzano Rios</h5>
+                                                <h5><strong>Número de D.N.I: </strong>721555722</h5>
+                                                <h5><strong>Cargo: </strong>Jefe - Oficina de Presupuesto, Planificación, EStudios y OT.</h5>
+                                                <h5><strong>Nivel Remunerativo: D-2</strong>Jefe - Oficina de Presupuesto, Planificación, EStudios y OT.</h5>
+                                                <h5><strong>Designado Por: </strong>R.G. N° 001-2019-GRSM-PEAM-01.00</h5>
+                                                <h5><strong>Teléfono: </strong>(042) - 562522 Ext. 225</h5>
+                                                <h5><strong>Correo Electrónico: </strong>(042) - 562522 Ext. 225</h5>
+                                                <h5><strong>Régimen Laboral: </strong>(042) - 562522 Ext. 225</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div-->
                 </div>
             </div>
             <br>
             <hr>
             </div>
         </section>
-        <div id="myModal" class="modal-peam">
-            <!-- Modal content -->
-            <div class="modal-content-peam  modal-dialog-scroll contentMyModal" style="width: 80%">
-                <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
-                    <span class="close" id="btnCerrarModal">&times;</span>
-                    <h5 class="text-peam-verde text-peam-negrita" style="margin-top: 15px;">
-                        FUNCIONARIOS
-                    </h5>
-                </div>
-                <div class="modal-body-peam modal-body-scroll">
-                    <div class="row" style="margin-top: 20px" id="containerModalFuncionarios">
-
-                    </div>
-                </div>
-                <div class="modal-footer-peam" style="background-color: #ffffff; border-top: #00793D solid; border-width: 2px">
-                    <h6 style="margin-top: 10px;" class="text-peam-negrita">PROYECTO ESPECIAL ALTO MAYO</h6>
-                </div>
-            </div>
-        </div>
-        <div id="myModalDirectivos" class="modal-peam">
-            <!-- Modal content -->
-            <div class="modal-content-peam  modal-dialog-scroll contentMyModal" style="width: 80%">
-                <div class="modal-header-peam" style="background-color: #ffffff; border-bottom: #00793D solid; border-width: 2px">
-                    <span class="close" id="btnCerrarModalDirectivos">&times;</span>
-                    <h5 class="text-peam-verde text-peam-negrita" style="margin-top: 15px;">
-                        CONSEJO DIRECTIVO
-                    </h5>
-                </div>
-                <div class="modal-body-peam modal-body-scroll">
-                    <div class="row" style="margin-top: 20px;" id="containerModalDirectivos">
-
-                    </div>
-                </div>
-                <div class="modal-footer-peam" style="background-color: #ffffff; border-top: #00793D solid; border-width: 2px">
-                    <h6 style="margin-top: 10px;" class="text-peam-negrita">PROYECTO ESPECIAL ALTO MAYO</h6>
-                </div>
-            </div>
-        </div>
         <div id="myModalPEAM" class="modal-peam">
             <!-- Modal content -->
             <div class="modal-content-peam  modal-dialog-scroll contentMyModal" style="width: 80%">

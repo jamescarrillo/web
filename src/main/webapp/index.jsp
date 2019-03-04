@@ -468,7 +468,8 @@
                             </h1>
                         </div>
                         <article class='post-wrapper' style="padding: 0px; margin: 0px">
-                            <div class='thumb-wrapper waves-effect waves-block waves-light' style="margin-bottom: 0px">
+                            <div class='thumb-wrapper waves-effect waves-block waves-light' 
+                                 style="margin-bottom: 0px; height: 180px">
                                 <a><img id="imgGG" src='' class='img-responsive' alt='imgNoticia'></a>
                                 <div class="description_float_gerente">
                                     <span class="text-peam-negrita" id="cargoGG" style="color: white">

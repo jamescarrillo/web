@@ -1,152 +1,75 @@
 $(document).ready(function () {
 
-    $('#btnCerrarModal').click(function () {
-        $('#header').css('display', 'block');
-        $('#myModal').css('display', 'none');
+    $('#map-grsm').click(function () {
+        document.querySelector('#containerDynamicOrganigrama').innerHTML = '';
+        let grsm = 
+        `
+        <h5 class="text-peam-verde text-peam-negrita" style="margin-top: 15px;">
+                        GOBIERNO REGIONAL DE SAN MARTÍN
+                    </h5>
+                    <div class="col-md-7 col-xs-12">
+                        <div class="row" style="margin-top: 20px;">
+                            <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1 mt-20 mb-10">
+                                <a href="http://www.regionsanmartin.gob.pe/"><img src="${document.querySelector('#pathLogoGORESAM').value}" class="img-responsive" alt="Imagen"></a>
+                            </div>
+                            <div class="col-xs-12">
+                                <h5 class="text-peam-negrita">
+                                    El Proyecto Especial Alto Mayo (PEAM) es una unidad ejecutora del Gobierno Regional de San Martín desde el 
+                                    09 de setiembre del año 2003, fecha en que mediante D.S. Nº. 024-2003-VIVIENDA se dispone su transferencia 
+                                    definitiva desde el Instituto Nacional de Desarrollo (INADE).
+                                    <a href="http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=26794">Ver Documento de Aprobación</a>
+                                </h5>
+                            </div>
+                        </div>
+                    </div>
+        `;
+        document.querySelector('#containerDynamicOrganigrama').innerHTML = grsm;
     });
 
-    $('#btnCerrarModalDirectivos').click(function () {
-        $('#header').css('display', 'block');
-        $('#myModalDirectivos').css('display', 'none');
-    });
-
-    $('#btnCerrarModalPEAM').click(function () {
-        $('#header').css('display', 'block');
-        $('#myModalPEAM').css('display', 'none');
-    });
-
-    $('#idgrsm').click(function () {
-        $('#header').css('display', 'none');
-        $('#myModalPEAM').css('display', 'block');
-    });
-
-    $('#idConsejoDirectivo').click(function () {
-        $('#header').css('display', 'none');
-        $('#myModalDirectivos').css('display', 'block');
-    });
-
-    var columnasCard = "col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1";
-
-    $('#idGerenciaGeneral').click(function () {
-        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
-        $('#containerModalFuncionarios').empty();
-        var id = buscarId("GERENCIA GENERAL");
-        if (id !== -1) {
-            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
-        }
-        $('#header').css('display', 'none');
-        $('#myModal').css('display', 'block');
-    });
-
-    $('#idOrganoControlInstitucional').click(function () {
-        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
-        $('#containerModalFuncionarios').empty();
-        var id = buscarId("ORGANO DE CONTROL INSTITUCIONAL");
-        if (id !== -1) {
-            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
-        }
-        $('#header').css('display', 'none');
-        $('#myModal').css('display', 'block');
+    $('#map-consejo-directivo').click(function () {
+        setDirectivos();
     });
     
-    $('#idOficinaPresupuestoPlanificacion').click(function () {
-        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
-        $('#containerModalFuncionarios').empty();
-        var id = buscarId("OFICINA DE PRESUPUESTO Y PLANIFICACION");
-        if (id !== -1) {
-            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
-        }
-        $('#header').css('display', 'none');
-        $('#myModal').css('display', 'block');
+    $('#map-gerencia').click(function () {
+        setFuncionario("GERENCIA GENERAL");
     });
     
-    $('#idOficinaAdministracion').click(function () {
-        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
-        $('#containerModalFuncionarios').empty();
-        var id = buscarId("OFICINA DE ADMINISTRACION");
-        if (id !== -1) {
-            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
-        }
-        $('#header').css('display', 'none');
-        $('#myModal').css('display', 'block');
+    $('#map-oci').click(function () {
+        setFuncionario("ORGANO DE CONTROL INSTITUCIONAL");
     });
     
-    $('#idOficinaAsesoriaJuridica').click(function () {
-        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
-        $('#containerModalFuncionarios').empty();
-        var id = buscarId("OFICINA DE ASESORIA JURIDICA");
-        if (id !== -1) {
-            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
-        }
-        $('#header').css('display', 'none');
-        $('#myModal').css('display', 'block');
+    $('#map-administracion').click(function () {
+        setFuncionario("OFICINA DE ADMINISTRACION");
     });
     
-    $('#idDireccionManejoAmbiental').click(function () {
-        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
-        $('#containerModalFuncionarios').empty();
-        var id = buscarId("DIRECCION DE MANEJO AMBIENTAL");
-        if (id !== -1) {
-            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
-        }
-        $('#header').css('display', 'none');
-        $('#myModal').css('display', 'block');
+    $('#map-opp').click(function () {
+        setFuncionario("OFICINA DE PRESUPUESTO Y PLANIFICACION");
     });
     
-    $('#idDireccionInfraestructura').click(function () {
-        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
-        $('#containerModalFuncionarios').empty();
-        var id = buscarId("DIRECCION DE INFRAESTRUCTURA");
-        if (id !== -1) {
-            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
-        }
-        $('#header').css('display', 'none');
-        $('#myModal').css('display', 'block');
+    $('#map-asesoria').click(function () {
+        setFuncionario("OFICINA DE ASESORIA JURIDICA");
     });
     
-    $('#idDireccionDesarrolloAgropecuario').click(function () {
-        var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
-        $('#containerModalFuncionarios').empty();
-        var id = buscarId("DIRECCION DE DESARROLLO AGROPECUARIO");
-        if (id !== -1) {
-            $('#containerModalFuncionarios').append(getCard(jsonFuncionarios.LIST[id], columnasCard));
-        }
-        $('#header').css('display', 'none');
-        $('#myModal').css('display', 'block');
+    $('#map-dma').click(function () {
+        setFuncionario("DIRECCION DE MANEJO AMBIENTAL");
+    });    
+    
+    $('#map-infraestructura').click(function () {
+        setFuncionario("DIRECCION DE INFRAESTRUCTURA");
     });
     
-    $('#map-infraestructura').click(function  (){
-        verFuncionario("DIRECCION DE INFRAESTRUCTURA");
-    });
-
+     $('#map-agropecuaria').click(function () {
+        setFuncionario("DIRECCION DE DESARROLLO AGROPECUARIO");
+    });  
+    
+    $('#map-grsm').trigger('click');
+    
     procesarAjaxOrganigramaWeb();
 
 });
 
-$(window).resize(function () {
-    var ancho = $(window).width();
-    if (ancho <= 400) {
-        $('.contentMyModal').css("width", "80%");
-    } else if (ancho <= 700) {
-        $('.contentMyModal').css("width", "70%");
-    } else if (ancho <= 900) {
-        $('.contentMyModal').css("width", "60%");
-    } else {
-        $('.contentMyModal').css("width", "40%");
-    }
-});
-
-function verFuncionario(organigrama){
-    for (var i = 0, max = 10; i < list_funcionarios.length; i++) {
-        if(organigrama === list_funcionarios[i]){
-            $('#containerOrg').empty();
-            $('#containerOrg').append(getCard(list_funcionarios[i]), 'col-md-6 col-xs-12');
-            break;
-        }
-    }
-}
-
-var list_funcionarios;
+var funcionarios;
+var directivos;
 
 function procesarAjaxOrganigramaWeb() {
     $.ajax({
@@ -156,23 +79,10 @@ function procesarAjaxOrganigramaWeb() {
         dataType: 'json',
         success: function (jsonResponse) {
             //console.log(jsonResponse);
-            var representantes = new Array();
-            $(jsonResponse.DATA_DIRECTIVOS.LIST).each(function (index, value) {
-                if (value.cargo.toLowerCase() !== "representante") {
-                    $('#containerModalDirectivos').append(getCard(value, "col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1"));
-                } else {
-                    representantes.push(getCard(value, "col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1"));
-                }
-            });
-            for (var i = 0; i < representantes.length; i++) {
-                $('#containerModalDirectivos').append(representantes[i]);
-            }
+            directivos = jsonResponse.DATA_DIRECTIVOS.LIST;
             list_funcionarios = jsonResponse.DATA_FUNCIONARIOS.LIST;
-            
-            
-            console.log(jsonResponse.DATA_FUNCIONARIOS.LIST);
-            var myJsonCadena = JSON.stringify(jsonResponse.DATA_FUNCIONARIOS);
-            $('#jsonFuncionarios').val(myJsonCadena);
+            //console.log(jsonResponse.DATA_DIRECTIVOS.LIST);
+            //console.log(jsonResponse.DATA_FUNCIONARIOS.LIST);
         },
         error: function () {
             viewAlertWeb('error', 'Error interno en el servidor!');
@@ -181,111 +91,120 @@ function procesarAjaxOrganigramaWeb() {
     return false;
 }
 
-function getCard(value, columnas) {
-    var card;
-//    card = "<div class='col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 mt-15'>";
-    card = "<div class='" + columnas + "'>";
 
-    card += "<div class='team-wrapper text-center'>";
-
-    card += "<div class='team-img'>";
-    card += "<a href=''><img src='/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto + "' class='img-responsive' alt='Imagen'></a>";
-
-    card += "<div class='team-title' style='padding-top: 10px;padding-left: 10px; padding-right: 10px'>";
-    card += "<h3 class='text-peam-negrita'><a style='text-transform: none'>" + value.nombres_apellidos + "</a></h3>";
-    card += "<span class='mb-10'>" + value.cargo + "</span>";
-    card += "<div class='row'>";
-    card += "<div class='col-xs-12'><h5 class='text-peam' style='margin-bottom: 5px'>Régimel Laboral:</h5></div><div class='col-xs-12'><h5 style='margin-bottom: 5px'>" + value.regimen_laboral + "</h5></div>";
-    card += "<div class='col-xs-12'><h5 class='text-peam' style='margin-bottom: 5px'>Designado Por:</h5></div><div class='col-xs-12'><h5 style='margin-bottom: 5px'>" + value.resolucion + "</h5></div>";
-    card += "<div class='col-xs-12'><h5 class='text-peam' style='margin-bottom: 5px'>Fecha Designación:</h5></div><div class='col-xs-12'><h5 style='margin-bottom: 5px'>" + value.fecha_designacion + "</h5></div>";
-    //CIERRE row
-    card += "</div>";
-    card += "<h5 class='text-peam'><i class='fa fa-phone'></i> " + value.telefono + "</h5>";
-    card += "<h5 class='mb-20 text-peam-verde-index'><i class='fa fa-envelope-o'></i> <a href='mailto:" + value.e_mail + "'>" + value.e_mail + "</a></h5>";
-    //CIERRE team-title
-    card += "</div>";
-    //CIERRE team-img
-    card += "</div>";
-    //CIERRE DE team-wrapper 
-    card += "</div>";
-    //CIERRE DEL LA COLUMNA
-    card += "</div>";
-    return card;
-}
-
-function buscarId(organigrama) {
-    var id = -1;
-    var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
-    $(jsonFuncionarios.LIST).each(function (index, value) {
-        if (value.organigrama.toLowerCase() === organigrama.toLowerCase()) {
-            id = index;
-            return false;
+function setFuncionario(organigrama) {
+    document.querySelector('#containerDynamicOrganigrama').innerHTML = '';
+    for (var i = 0; i < list_funcionarios.length; i++) {
+        if (organigrama === list_funcionarios[i].organigrama) {
+            var funcionario = list_funcionarios[i];
+            div_HTML = 
+            `
+            <h3>${organigrama}</h3>
+                    <div class="col-md-7 col-xs-12">
+                        <div class="row col-xs-12" style="border: 3px solid;color: #00793D">
+                            <div class="col-sm-4">
+                                <img class="img-responsive" style="border: 3px solid;color: #00793D;height: 180px; width: 200px; margin-top: 30px; margin-left: 5px" 
+                                     src="/web/peam_resources_app/conf_app/DirectivoFuncionario/img/${funcionario.foto}" 
+                                     alt="Image">
+                            </div>
+                            <div class="col-sm-8" style="margin-top: 20px; margin-bottom: 20px">
+                                <h5><strong>Nombres y Apellidos: </strong>${funcionario.nombres_apellidos}</h5>
+                                <h5><strong>Número de D.N.I: </strong>${funcionario.numero_dni}</h5>
+                                <h5><strong>Cargo: </strong>${funcionario.cargo}</h5>
+                                <h5><strong>Nivel Remunerativo: D-2</strong>${funcionario.nivel_remunerativo}</h5>
+                                <h5><strong>Designado Por: </strong>${funcionario.resolucion}</h5>
+                                <h5><strong>Teléfono: </strong>${funcionario.telefono}</h5>
+                                <h5><strong>Correo Electrónico: </strong>${funcionario.e_mail}</h5>
+                                <h5><strong>Régimen Laboral: </strong>${funcionario.regimen_laboral}</h5>
+                            </div>
+                        </div>
+                    </div>
+            `;
+            document.querySelector('#containerDynamicOrganigrama').innerHTML = div_HTML;
+            break;
         }
-    });
-    return id;
+    }
 }
 
+function setDirectivos() {
+    document.querySelector('#containerDynamicOrganigrama').innerHTML = '';
+    let div_general = `
+        <div class="col-md-7 col-xs-12">
+            <h3>CONSEJO DIRECTIVO</h3>
+            <div class="panel-group feature-accordion brand-accordion icon angle-icon" id="tab-consejo-directivo">
+    `;
+    let i = 1;
+    let html_representantes = "";
+    for (let it = 0; it < directivos.length; it++) {
+        let directivo = directivos[it];
+        i++;
+        if (directivo.cargo.toLowerCase() === "representante") {
+            html_representantes +=
+                    `
+            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-representante-${i}" aria-expanded="false">
+                                            ${directivo.nombres_apellidos}
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-representante-${i}" class="panel-collapse collapse" aria-expanded="false">
+                                    <div style="margin-left: 15px; margin-right: 15px">
+                                        <div class="row" style="border: 3px solid;color: #00793D">
+                                            <div class="col-sm-4">
+                                                <img class="img-responsive" style="border: 3px solid;color: #00793D;height: 180px; width: 200px; margin-top: 5px;margin-left: 5px;margin-bottom: 5px;" 
+                                                    src="/web/peam_resources_app/conf_app/DirectivoFuncionario/img/${directivo.foto}" 
+                                                     alt="Image">
+                                            </div>
+                                            <div class="col-sm-8" style="margin-top: 20px; margin-bottom: 20px">
+                                                <h5><strong>Cargo: </strong>${directivo.cargo}</h5>
+                                                <h5><strong>Designado Por: </strong>${directivo.resolucion}</h5>
+                                                <h5><strong>Representante de: </strong>${directivo.institucion}</h5>
+                                                <h5><strong>Correo Electrónico: </strong>${directivo.e_mail}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    `;
+        } else {
+            div_general +=
+                    `
+            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a data-toggle="collapse" data-parent="#tab" href="#tab-presidente" aria-expanded="true">
+                                            ${directivo.nombres_apellidos}
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-presidente" class="panel-collapse collapse in" aria-expanded="true" style="">
+                                    <div style="margin-left: 15px; margin-right: 15px">
+                                        <div class="row" style="border: 3px solid;color: #00793D">
+                                            <div class="col-sm-4">
+                                                <img class="img-responsive" style="border: 3px solid;color: #00793D;height: 180px; width: 200px; margin-top: 5px;margin-left: 5px;margin-bottom: 5px;" 
+                                                    src="/web/peam_resources_app/conf_app/DirectivoFuncionario/img/${directivo.foto}" 
+                                                     alt="Image">
+                                            </div>
+                                            <div class="col-sm-8" style="margin-top: 20px; margin-bottom: 20px">
+                                                <h5><strong>Cargo: </strong>${directivo.cargo}</h5>
+                                                <h5><strong>Designado Por: </strong>${directivo.resolucion}</h5>
+                                                <h5><strong>Representante de: </strong>${directivo.institucion}</h5>
+                                                <h5><strong>Correo Electrónico: </strong>${directivo.e_mail}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-//function crearDiagrama(DATA_FUNCIONARIOS) {
-//    var funcionarios = [];
-//    $(DATA_FUNCIONARIOS.LIST).each(function (index, value) {
-//        funcionarios.push(
-//                {
-//                    "id": value.id,
-//                    "puesto": value.cargo,
-//                    "nombre": "",
-//                    "hijos": []
-//                }
-//        );
-//    });
-//    var myJsonCadena = JSON.stringify(DATA_FUNCIONARIOS.LIST);
-//    $('#jsonFuncionarios').val(myJsonCadena);
-//    var data = {
-//        "id": "idgoresam",
-//        "puesto": "GRSM",
-//        "nombre": "",
-//        "hijos": [
-//            {
-//                "id": "idconsejodirectivo",
-//                "puesto": "Consejo Directivo",
-//                "nombre": "",
-//                "hijos": funcionarios
-//            }
-//        ]
-//    };
-//    organigrama.data = data;
-//    // creación del organigrama, se le manda el id del contenedor
-//    organigrama.create('organigrama');
-//    // Agregamos los eventos para los nodos
-//
-////    $('.nodo-puesto').click(function () {
-////        $('#header').css('display', 'none');
-////        $('#myModal').css('display', 'block');
-////    });
-//
-//    $('.nodo-puesto').each(function (index, value) {
-//        $(this).click(function () {
-//            if ($(this).attr("iditem-caja") === "idconsejodirectivo") {
-//                $('#header').css('display', 'none');
-//                $('#myModalDirectivos').css('display', 'block');
-//            } else {
-//                if ($(this).attr("iditem-caja") !== "idgoresam") {
-//                    var id = $(this).attr("iditem-caja");
-//                    var jsonFuncionarios = JSON.parse($('#jsonFuncionarios').val());
-//                    $(jsonFuncionarios).each(function (index, value) {
-//                        if (value.id.toString() === id.toString()) {
-//                            $('#containerModalFuncionarios').empty();
-//                            $('#containerModalFuncionarios').append(getCard(value, "col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1"));
-//
-//                        }
-//                    });
-//                    $('#header').css('display', 'none');
-//                    $('#myModal').css('display', 'block');
-//                } else {
-//                    $('#header').css('display', 'none');
-//                    $('#myModalPEAM').css('display', 'block');
-//                }
-//            }
-//        });
-//    });
-//}
+            `;
+        }
+    }
+    div_general += html_representantes;
+    div_general += `
+            </div>
+        </div>`;
+    document.querySelector('#containerDynamicOrganigrama').innerHTML = div_general;
+
+}

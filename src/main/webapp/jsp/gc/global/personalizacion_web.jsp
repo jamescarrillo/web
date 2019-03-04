@@ -161,7 +161,7 @@
                                                                         path_director_infraestructura = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/" + conf_web.getNombre_foto_director_infraestructura();
                                                                         if (!new File(path_director_infraestructura).exists()) {
                                                                             path_director_infraestructura = getServletContext().getContextPath() + "/peam_resources/logos_complementos/lineas_accion/directores/default_director.png";
-                                                                            System.out.println(path_director_infraestructura);
+                                                                            //System.out.println(path_director_infraestructura);
                                                                         }
                                                                     %>
                                                                     <img id="visorFotoDirInfra" src='<%out.print(path_director_infraestructura);%>' alt="director-img" class="rounded mx-auto d-block img-responsive" >
