@@ -54,12 +54,12 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="item-documento-ad" data-toggle="collapse" data-parent="#tab" href="#tab-documentos" cate_id="1100" complemento="" aria-expanded="true">
+                                        <a class="item-documento-ad collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-documentos" cate_id="1100" complemento="" aria-expanded="false">
                                             PAC y Modificatorias
                                         </a>
                                     </h3>
                                 </div>
-                                <div id="tab-documentos" class="panel-collapse collapse in" aria-expanded="true" style="">
+                                <div id="tab-documentos" class="panel-collapse collapse" aria-expanded="false" style="">
                                     <div class="panel-body">
                                         <div class="row">
                                             <form id="FrmDocumentos">
@@ -94,9 +94,9 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
-                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
-                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 10%;" class="text-center align-middle">FECHA</th>
+                                                                <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
+                                                                <th style="width: 65%" class="align-middle">RESUMEN</th>
                                                                 <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                             </tr>
                                                         </thead>
@@ -169,12 +169,12 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%" class="text-medium-table text-center">N° Orden</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">N° ORDEN</th>
                                                                 <th style="width: 10%" class="text-medium-table text-center">N° SIAF</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha de Emisión</th>
-                                                                <th style="width: 35%" class="text-medium-table">Fuente Financiamiento</th>
-                                                                <th style="width: 35%" class="text-medium-table">Proveedor</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Monto</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">FECHA DE EMISIÓN</th>
+                                                                <th style="width: 35%" class="text-medium-table">FUENTE FINANCIAMIENTO</th>
+                                                                <th style="width: 35%" class="text-medium-table">PROVEEDOR</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">MONTO</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyOrdenCompra">
@@ -245,12 +245,12 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%" class="text-medium-table text-center">N° Orden</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">N° ORDEN</th>
                                                                 <th style="width: 10%" class="text-medium-table text-center">N° SIAF</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha de Emisión</th>
-                                                                <th style="width: 35%" class="text-medium-table">Fuente Financiamiento</th>
-                                                                <th style="width: 35%" class="text-medium-table">Proveedor</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Monto</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">FECHA DE EMISIÓN</th>
+                                                                <th style="width: 35%" class="text-medium-table">FUENTE FINANCIAMIENTO</th>
+                                                                <th style="width: 35%" class="text-medium-table">PROVEEDOR</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">MONTO</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyOrdenServicio">
@@ -321,12 +321,12 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 20%" class="text-medium-table text-center">N° Contrato</th>
-                                                                <th style="width: 25%" class="text-medium-table">Objeto de Contrato</th>
+                                                                <th style="width: 20%" class="text-medium-table text-center">N° CONTRATO</th>
+                                                                <th style="width: 25%" class="text-medium-table">OBJETO DE CONTRATO</th>
                                                                 <th style="width: 10%" class="text-medium-table text-center">RUC</th>
-                                                                <th style="width: 20%" class="text-medium-table">Proveedor</th>
-                                                                <th style="width: 10%" class="text-medium-table">Penalidad S/</th>
-                                                                <th style="width: 12%" class="text-medium-table text-center">Costo Final S/</th>
+                                                                <th style="width: 20%" class="text-medium-table">PROVEEDOR</th>
+                                                                <th style="width: 10%" class="text-medium-table">PENALIDAD S/</th>
+                                                                <th style="width: 12%" class="text-medium-table text-center">COSTO FINAL S/</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyPublicidad">
@@ -397,12 +397,12 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Tipo</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Número</th>
-                                                                <th style="width: 25%" class="text-medium-table">Área/Oficina</th>
-                                                                <th style="width: 25%" class="text-medium-table">Asignado a</th>
-                                                                <th style="width: 20%" class="text-medium-table">Cargo</th>
-                                                                <th style="width: 15%" class="text-medium-table text-center">Importe S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">TIPO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">NÚMERO</th>
+                                                                <th style="width: 25%" class="text-medium-table">ÁREA/OFICINA</th>
+                                                                <th style="width: 25%" class="text-medium-table">ASIGNADO A</th>
+                                                                <th style="width: 20%" class="text-medium-table">CARGO</th>
+                                                                <th style="width: 15%" class="text-medium-table text-center">IMPORTE S/</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyTelefonia">
@@ -473,14 +473,14 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Vehículo</th>
-                                                                <th style="width: 20%" class="text-medium-table">Asignado a</th>
-                                                                <th style="width: 20%" class="text-medium-table">Chofer</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Recorrido KM</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Vencimiento de SOAT</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Tipo de Combustible</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Combustible S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Placa</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">VEHÍCULO</th>
+                                                                <th style="width: 20%" class="text-medium-table">ASIGNADO A</th>
+                                                                <th style="width: 20%" class="text-medium-table">CHOFER</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">RECORRIDO KM</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">VENCIMIENTO DE SOAT</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">TIPO DE COMBUSTIBLE</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">COMBUSTIBLE S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">PLACA</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyVehiculo">
@@ -552,8 +552,8 @@
                                                         <thead class="bg-success">
                                                             <tr>
                                                                 <th style="width: 10%" class="text-medium-table text-center">RUC</th>
-                                                                <th style="width: 80%" class="text-medium-table">Proveedor</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Importe</th>
+                                                                <th style="width: 80%" class="text-medium-table">PROVEEDOR</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">IMPORTE</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyProveedor">
@@ -624,13 +624,13 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 20%" class="text-medium-table">Oficia/Área</th>
-                                                                <th style="width: 20%" class="text-medium-table">Usuario</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Salida</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Retorno</th>
-                                                                <th style="width: 20%" class="text-medium-table">Ruta</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Pasaje</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Viático</th>
+                                                                <th style="width: 20%" class="text-medium-table">OFICINA/ÁREA</th>
+                                                                <th style="width: 20%" class="text-medium-table">USUARIO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">SALIDA</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">RETORNO</th>
+                                                                <th style="width: 20%" class="text-medium-table">RUTA</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">PASAJE</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">VIÁTICO</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyViatico">
@@ -777,9 +777,9 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
-                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
-                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 10%;" class="text-center align-middle">FECHA</th>
+                                                                <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
+                                                                <th style="width: 65%" class="align-middle">RESUMEN</th>
                                                                 <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                             </tr>
                                                         </thead>
@@ -852,9 +852,9 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
-                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
-                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 10%;" class="text-center align-middle">FECHA</th>
+                                                                <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
+                                                                <th style="width: 65%" class="align-middle">RESUMEN</th>
                                                                 <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                             </tr>
                                                         </thead>
@@ -928,8 +928,8 @@
                                                         <thead class="bg-success">
                                                             <tr>
                                                                 <th style="width: 10%;" class="text-center align-middle">Fecha</th>
-                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
-                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
+                                                                <th style="width: 65%" class="align-middle">RESUMEN</th>
                                                                 <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                             </tr>
                                                         </thead>

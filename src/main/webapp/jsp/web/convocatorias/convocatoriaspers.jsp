@@ -95,11 +95,11 @@
                                                                         <table class="table">
                                                                             <thead class="bg-success">
                                                                                 <tr>
-                                                                                    <th style="width: 25%;" class="align-middle">Convocatoria</th>
-                                                                                    <th style="width: 55%;" class="align-middle">Descripción</th>
-                                                                                    <th style="width: 10%;" class="align-middle text-center">Fecha</th>
-                                                                                    <th style="width: 10%;" class="align-middle text-center">Estado</th>
-                                                                                    <th style="width: 20%;" colspan="2" class="align-middle text-center">Acciones</th>
+                                                                                    <th style="width: 25%;" class="align-middle">CONVOCATORIA</th>
+                                                                                    <th style="width: 55%;" class="align-middle">DESCRIPCIÓN</th>
+                                                                                    <th style="width: 10%;" class="align-middle text-center">FECHA</th>
+                                                                                    <th style="width: 10%;" class="align-middle text-center">ESTADO</th>
+                                                                                    <th style="width: 20%;" colspan="2" class="align-middle text-center">ACCIONES</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody id="tbodyConvocatoria">
@@ -167,10 +167,10 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 45%;" class="align-middle">Actividad</th>
-                                                                <th style="width: 20%;" class="align-middle">Fecha Inicio</th>
-                                                                <th style="width: 20%;" class="align-middle">Fecha Fin</th>
-                                                                <th style="width: 20%;" class="align-middle">Acciones</th>
+                                                                <th style="width: 45%;" class="align-middle">ACTIVIDAD</th>
+                                                                <th style="width: 20%;" class="align-middle">FECHA INICIO</th>
+                                                                <th style="width: 20%;" class="align-middle">FECHA FIN</th>
+                                                                <th style="width: 20%;" class="align-middle">ACCIONES</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyCalendario">
@@ -237,8 +237,8 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 80%;" class="align-middle">Documento</th>
-                                                                <th style="width: 20%;" class="align-middle">Acción</th>
+                                                                <th style="width: 80%;" class="align-middle">DOCUMENTO</th>
+                                                                <th style="width: 20%;" class="align-middle">ACCIÓN</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyDocumentCal">
@@ -289,10 +289,10 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 50%;" class="align-middle">Cargo</th>
-                                                                <th style="width: 15%;" class="align-middle">Ingreso Mensual</th>
-                                                                <th style="width: 15%;" class="align-middle">Modalidad</th>
-                                                                <th style="width: 15%;" class="align-middle">Vacantes</th>
+                                                                <th style="width: 50%;" class="align-middle">CARGO</th>
+                                                                <th style="width: 15%;" class="align-middle">INGRESO MENSUAL</th>
+                                                                <th style="width: 15%;" class="align-middle">MODALIDAD</th>
+                                                                <th style="width: 15%;" class="align-middle">VACANTES</th>
                                                             </tr>
 
                                                         </thead>

@@ -55,28 +55,32 @@
                                         <div class="container text-peam" style="font-size: 17px;text-align: justify">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Fortalecer la especializaci&oacute;n de las personas por desempe&ntilde;o.
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Fortalecer la especializaci&oacute;n de las personas por desempe&ntilde;o.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Implementar metodolog&iacute;as con evidencia comprobada sectoriales.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Desarrollar mecanismos simplificados de acceso a la informaci&oacute;n y &eacute;tica p&uacute;blica.
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Implementar metodolog&iacute;as con evidencia comprobada sectoriales.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Desarrollar mecanismos simplificados de acceso a la informaci&oacute;n y &eacute;tica p&uacute;blica.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Producir bienes y servicios especializados estandarizados de acuerdo a las expectativas de la ciudadan&iacute;a.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Implementar la gesti&oacute;n por procesos mediante el fortalecimiento organizacional.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Desarrollar intervenciones operativas mediante la inversi&oacute;n p&uacute;blica y privada.
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Producir bienes y servicios especializados estandarizados de acuerdo a las expectativas de la ciudadan&iacute;a.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Implementar la gesti&oacute;n por procesos mediante el fortalecimiento organizacional.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Desarrollar intervenciones operativas mediante la inversi&oacute;n p&uacute;blica y privada.
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -85,49 +89,52 @@
                                         <div class="container text-peam" style="font-size: 17px;text-align: justify">
                                             <div class="row">
                                                 <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Formular el Plan Estratégico de Desarrollo del PEAM, en armonía con los Planes Estratégicos Regional y Nacional, y los objetivos del Proyecto, y de acuerdo a lo establecido en los Convenios de Cooperación Técnica Internacional que le corresponda ejecutar.
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Formular el Plan Estratégico de Desarrollo del PEAM, en armonía con los Planes Estratégicos Regional y Nacional, y los objetivos del Proyecto, y de acuerdo a lo establecido en los Convenios de Cooperación Técnica Internacional que le corresponda ejecutar.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Formular los Poyectos Anuales de Presupuesto de la Institución y gestiona su aprobación en los diferentes niveles: GRSM, Dirección Nacional del Presuspuesto Público-MEF y Comisión de Presupuesto del Congreso de la República.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Programa, dirige, ejecuta, controla y supervisa las diferentes obras y actividades para el cumplimiento de las metas físicas y financieras en función de los recursos económicos asignados.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Contratación de empresas y personas naturales o jurídicas para la ejecución de estudios y obras de los Proyectos a su cargo, de acuerdo con las exigencias de la Ley y Reglamento de Adquisiciones y Contrataciones del Estado.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Evalúa la gestión y el nivel de ejecución de las diferentes obras o proyectos productivos, en función de la programación anual, teniendo en cuenta el diseño total del Proyecto sujeto a evaluación.
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Formular los Poyectos Anuales de Presupuesto de la Institución y gestiona su aprobación en los diferentes niveles: GRSM, Dirección Nacional del Presuspuesto Público-MEF y Comisión de Presupuesto del Congreso de la República.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Programa, dirige, ejecuta, controla y supervisa las diferentes obras y actividades para el cumplimiento de las metas físicas y financieras en función de los recursos económicos asignados.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Contratación de empresas y personas naturales o jurídicas para la ejecución de estudios y obras de los Proyectos a su cargo, de acuerdo con las exigencias de la Ley y Reglamento de Adquisiciones y Contrataciones del Estado.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Evalúa la gestión y el nivel de ejecución de las diferentes obras o proyectos productivos, en función de la programación anual, teniendo en cuenta el diseño total del Proyecto sujeto a evaluación.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Realizar el seguimiento y evaluación de los efectos e impactos de la ejecución del PEAM, sobre el incremento de la producción y productividad agropecuaria en el area de influencia y aréas adyacentes, sobre el nivel de vida de la población y sobre la economía en conjunto, estableciendo compraciones con las metas obtenidas en períodos anteriores.
-                                                </div>
-
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Coordina con el GRSM, los aspectos técnicos, jurídicos, normativos, laborales, económicos y financieros relacionados con la ejecución del PEAM.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Investiga y realiza acciones de difusión en aspectos relevantes para el desarrollo de los proyectos a su cargo, tales tales como la conservación, mejoramiento y uso adecuado de los recursos agua, suelo y bosques, manejo integral de cuencas, ecosistemas y aprovechamiento adecuado de los recursos naturales.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Promueve la participación de los beneficios de las obras o proyectos ejecutados, ademas de propiciar la inversión privado en proyectos agropecuarios y agroindustriales, principalmente de aquellos orientados a la exportación.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Ejecuta los estudios de factibilidad que sean necesarios en apoyo al desarrollo de proyectos específicos de inversión.
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <i class="fa fa-check-square-o"></i>
-                                                    Otras que le asigne el GRSM.
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Realizar el seguimiento y evaluación de los efectos e impactos de la ejecución del PEAM, sobre el incremento de la producción y productividad agropecuaria en el area de influencia y aréas adyacentes, sobre el nivel de vida de la población y sobre la economía en conjunto, estableciendo compraciones con las metas obtenidas en períodos anteriores.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Coordina con el GRSM, los aspectos técnicos, jurídicos, normativos, laborales, económicos y financieros relacionados con la ejecución del PEAM.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Investiga y realiza acciones de difusión en aspectos relevantes para el desarrollo de los proyectos a su cargo, tales tales como la conservación, mejoramiento y uso adecuado de los recursos agua, suelo y bosques, manejo integral de cuencas, ecosistemas y aprovechamiento adecuado de los recursos naturales.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Promueve la participación de los beneficios de las obras o proyectos ejecutados, ademas de propiciar la inversión privado en proyectos agropecuarios y agroindustriales, principalmente de aquellos orientados a la exportación.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Ejecuta los estudios de factibilidad que sean necesarios en apoyo al desarrollo de proyectos específicos de inversión.
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <i class="fa fa-check-square-o"></i>
+                                                        Otras que le asigne el GRSM.
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

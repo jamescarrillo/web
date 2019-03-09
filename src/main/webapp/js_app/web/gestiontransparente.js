@@ -158,7 +158,10 @@ function listarDocumentos(BEAN_PAGINATION, nombre_complemento) {
              fila += "docu_metadata='" + value.docu_metadata + "' ";
              */
             fila += ">";
-            fila += "<td class='text-center align-middle'>" + fecha + "</td>";
+            if (nombre_complemento==='_DG' || nombre_complemento==='_ND') {
+            }else{
+               fila += "<td class='text-center align-middle'>" + fecha + "</td>";
+            }
             fila += "<td class='align-middle'>" + value.docu_titulo + "</td>";
             fila += "<td class='align-middle'>" + value.docu_resumen + "</td>";
             fila += "<td class='text-center align-middle'>" + a + "</td>";

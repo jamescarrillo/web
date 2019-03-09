@@ -93,9 +93,9 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha</th>
-                                                                <th style="width: 35%" class="text-medium-table">Descripción</th>
-                                                                <th style="width: 35%" class="text-medium-table">Documento de Aprobación</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">FECHA</th>
+                                                                <th style="width: 35%" class="text-medium-table">DESCRIPCIÓN</th>
+                                                                <th style="width: 35%" class="text-medium-table">DOCUMENTO DE APROBACIÓN</th>
                                                                 <th style="width: 10%;" class="align-middle text-center">PDF</th>
                                                             </tr>
                                                         </thead>
@@ -164,8 +164,8 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha</th>
-                                                                <th style="width: 45%" class="text-medium-table">Descripción</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">FECHA</th>
+                                                                <th style="width: 45%" class="text-medium-table">DESCRIPCIÓN</th>
                                                                 <th style="width: 10%;" class="align-middle text-center">PDF</th>
                                                             </tr>
                                                         </thead>
@@ -232,8 +232,8 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha</th>
-                                                                <th style="width: 45%" class="text-medium-table">Descrpción</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">FECHA</th>
+                                                                <th style="width: 45%" class="text-medium-table">DESCRIPCIÓN</th>
                                                                 <th style="width: 10%;" class="align-middle text-center">PDF</th>
                                                             </tr>
                                                         </thead>

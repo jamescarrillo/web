@@ -41,7 +41,8 @@ public class ConvocatoriaBienDAOImpl implements ConvocatoriaBienDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(CONVO_ID) AS CANT FROM WEB.CONVOCATORIA_BIEN WHERE "
-                    + "(LOWER(REFERENCIA) LIKE CONCAT('%',?,'%')) " + String.valueOf(parameters.get("SQL_ESTADO")));
+                    + "(LOWER(REFERENCIA) LIKE CONCAT('%',?,'%')) " + String.valueOf(parameters.get("SQL_ESTADO"))
+                    + String.valueOf(parameters.get("SQL_ANIO")));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             logger.info(pst);
             rs = pst.executeQuery();

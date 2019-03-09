@@ -63,6 +63,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
     private String jsonResponseProveedor;
     private HashMap<String, Object> JSONROOT;
     private HashMap<String, Object> parameters;
+    private HashMap<String, Object> parametersanhios;
     private HashMap<String, Object> parametersFuncionario;
     private HashMap<String, Object> parametersDirectivo;
     private HashMap<String, Object> parametersOrdenCompra;
@@ -92,6 +93,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
 
         this.parameters = new HashMap<>();
+        this.parametersanhios = new HashMap<>();
         this.parametersFuncionario = new HashMap<>();
         this.parametersDirectivo = new HashMap<>();
         this.JSONROOT = new HashMap<>();
@@ -164,6 +166,9 @@ public class GestionTransparente2WebAPI extends HttpServlet {
                     break;
                 case "paginarPersonalCategoria":
                     procesarPersonalCategoria(new BEAN_CRUD(this.personalCategoriaDAO.getPagination(getParametersPersonalCategoria(request))), response);
+                    break;
+                case "listarAnhos":
+                    procesarAnhos(new BEAN_CRUD(this.personalDAO.getAnhos(getParametersAnhos(request))), response);
                     break;
                 default:
                     request.getRequestDispatcher("/jsp/web/gestiontransparente/" + getJSP(request)).forward(request, response);
@@ -472,11 +477,35 @@ public class GestionTransparente2WebAPI extends HttpServlet {
 
             }
         }
+        if (request.getParameter("cboTipoPersonal").equals("2")) {
+            String trimestre = "";
+            if (!request.getParameter("comboTrimestrePersonal_CLS").equals("-1")) {
+                trimestre = " AND TRIMESTRE = " + request.getParameter("comboTrimestrePersonal"+complemento);
+            }
+            if (request.getParameter("comboAnioPersonal"+complemento).equals("-1")) {
+                this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE ");
+            } else {
+                this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonal"+complemento) + "' ");
+            }
+        }
+
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePagePersonal" + complemento) + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPagePersonal" + complemento)) - 1)
                 * Integer.parseInt(request.getParameter("sizePagePersonal" + complemento)));
         return this.parameters;
+    }
+    
+    private HashMap<String, Object> getParametersAnhos(HttpServletRequest request) {
+        this.parametersanhios.clear();
+        this.parametersanhios.put("FILTER", "");
+        this.parametersanhios.put("SQL_ORDERS", "ANHO DESC");
+        if (Integer.parseInt(request.getParameter("tipo"))==3) {
+            this.parametersanhios.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("tipo"));
+        }else{
+            this.parametersanhios.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("tipo")+ " AND ESTADO = TRUE ");
+        }
+        return this.parametersanhios;
     }
 
     private void procesarPersonalCategoria(BEAN_CRUD beanCrud, HttpServletResponse response) {
@@ -519,5 +548,16 @@ public class GestionTransparente2WebAPI extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void procesarAnhos(BEAN_CRUD bean_crud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(bean_crud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

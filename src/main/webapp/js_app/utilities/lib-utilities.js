@@ -177,6 +177,11 @@ function addEventoCombosPaginar() {
     $('.combo-paginar').on('change', function () {
         $("#" + $(this).attr('idBtnBuscar')).trigger("click");
     });
+    
+    $('.combo-paginarRRHH').on('change', function () {
+        cargarTrimestreComboActuales($("#"+$(this).attr('name')).val(),$("#"+$(this).attr('destino')));
+        $("#" + $(this).attr('idBtnBuscar')).trigger("click");
+    });
 }
 
 function addEventoCombosPaginarFormulario() {
@@ -209,6 +214,65 @@ function cargarAniosCombo($combo, anioInicio, valueInicial, texto_Inicial) {
         $combo.append(opcion);
     }
     $combo.val(valueInicial);
+}
+
+function cargarAniosComboActuales($combo, anioInicio) {
+    var date = new Date();
+    var opcion;
+    for (var i = date.getFullYear(); i >= anioInicio; i--) {
+        opcion = "<option value='" + i + "'>" + i + "</option>";
+        $combo.append(opcion);
+    }
+    $combo.val(date.getFullYear());
+}
+
+function cargarTrimestreComboActuales(año, $combo) {
+    var date = new Date();
+    var opcion;
+    var mes = date.getMonth() + 1;
+    $combo.empty();
+    if (año.toString() === date.getFullYear().toString()) {
+        if (mes < 4) {
+            opcion = "<option value='" + 1 + "'>Primer Trimestre</option>";
+        } else {
+            if (mes < 7) {
+                opcion += "<option value='" + 2 + "'>Segundo Trimestre</option>";
+            } else {
+                if (mes < 9) {
+                    opcion += "<option value='" + 3 + "'>Tercer Trimestre</option>";
+                } else {
+                    if (mes < 12) {
+                        opcion += "<option value='" + 4 + "'>Cuarto Trimestre</option>";
+                    }
+                }
+            }
+        }
+        $combo.append(opcion);
+        if (mes < 4) {
+            $combo.val(1);
+        } else {
+            if (mes < 7) {
+                $combo.val(2);
+            } else {
+                if (mes < 9) {
+                    $combo.val(3);
+                } else {
+                    if (mes < 12) {
+                        $combo.val(4);
+                    }
+                }
+            }
+        }
+    } else {
+        opcion = "<option value='" + 1 + "'>Primer Trimestre</option>";
+        opcion += "<option value='" + 2 + "'>Segundo Trimestre</option>";
+        opcion += "<option value='" + 3 + "'>Tercer Trimestre</option>";
+        opcion += "<option value='" + 4 + "'>Cuarto Trimestre</option>";
+        $combo.append(opcion);
+        $combo.val(4);
+    }
+
+
 }
 
 function replaceAll(str, find, replace) {

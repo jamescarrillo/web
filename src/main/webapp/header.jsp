@@ -55,7 +55,7 @@
                                 <div class="col12">
                                     <h2>La Institución</h2>
                                     <ul class="list-unstyled clearfix">
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/quienes-somos">Quienes Somos</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/quienes-somos">Quiénes Somos</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/vision-y-mision">Visión / Misión</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/objetivos-y-funciones">Objetivos / Funciones</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/institucion/codigo-de-etica">Código de Ética</a></li>

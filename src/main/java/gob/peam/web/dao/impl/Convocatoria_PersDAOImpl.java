@@ -41,9 +41,11 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(COPER_ID) AS CANT FROM WEB.CONVOCATORIA_PERS WHERE "
-                    + "(LOWER(CONVOCATORIA) LIKE CONCAT('%',?,'%'))");
+                    + "(LOWER(CONVOCATORIA) LIKE CONCAT('%',?,'%'))"
+                    + String.valueOf(parameters.get("SQL_ANIO")));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
+            logger.info(pst.toString());
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
             }
@@ -54,6 +56,7 @@ public class Convocatoria_PersDAOImpl implements Convocatoria_PersDAO {
                     + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             rs = pst.executeQuery();
+            logger.info(pst.toString());
             List<Convocatoria_Pers> list = new ArrayList<>();
             while (rs.next()) {
                 Convocatoria_Pers obj = new Convocatoria_Pers();

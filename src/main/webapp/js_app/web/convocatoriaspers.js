@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnioConvocatoria'), 2005, "-1", 'AÑOS');
+    //cargarAniosCombo($('#comboAnioConvocatoria'), 2005, "-1", 'AÑOS');
+    cargarAniosComboActuales($('#comboAnioConvocatoria'), 2005);
 
     $("#FrmConvocatoria").submit(function () {
         $('#tbodyConvocatoria').empty();
@@ -99,6 +100,7 @@ function listarConvocatoria(BEAN_PAGINATION) {
     } else {
         $pagination.twbsPagination('destroy');
         viewAlertWeb('warning', 'No se enconntraron resultados');
+        $('#tbodyConvocatoria').append("<td class='text-center' colspan='6'>No se encontraton resultados</td>");
     }
 }
 
@@ -106,6 +108,7 @@ function agregarEventosConvocatoria() {
     $('.ver-Cronograma').each(function () {
         $(this).click(function () {
             $('#TitularCalendario').css('display', 'block');
+            $('#numberPageCalendario').val(1);
             $('#ConvocatoriaTitulo').html($(this.parentElement.parentElement).attr('text'));
             procesarAjaxCalendarioWeb($(this.parentElement.parentElement).attr('coper_id'));
             $('#header').css('display', 'none');

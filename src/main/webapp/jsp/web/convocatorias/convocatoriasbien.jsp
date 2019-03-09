@@ -94,11 +94,11 @@
                                                                         <table class="table">
                                                                             <thead class="bg-success">
                                                                                 <tr>
-                                                                                    <th style="width: 10%;" class="align-middle text-center">Fecha</th>
-                                                                                    <th style="width: 60%;" class="align-middle">Síntesis</th>
-                                                                                    <th style="width: 10%;" class="align-middle text-center">Tipo</th>
-                                                                                    <th style="width: 15%;" class="align-middle text-center">Proceso</th>
-                                                                                    <th style="width: 10%;" class="align-middle text-center">Acción</th>
+                                                                                    <th style="width: 10%;" class="align-middle text-center">FECHA</th>
+                                                                                    <th style="width: 60%;" class="align-middle">SÍNTESIS</th>
+                                                                                    <th style="width: 10%;" class="align-middle text-center">TIPO</th>
+                                                                                    <th style="width: 15%;" class="align-middle text-center">PROCESO</th>
+                                                                                    <th style="width: 10%;" class="align-middle text-center">ACCIÓN</th>
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody id="tbodyConvocatoriaBien">

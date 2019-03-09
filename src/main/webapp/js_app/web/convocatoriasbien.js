@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnio'), 2005, "-1", 'AÑOS');
+    //cargarAniosCombo($('#comboAnio'), 2005, "-1", 'AÑOS');
+    cargarAniosComboActuales($('#comboAnio'), 2005);
 
     $("#FrmConvocatoria").submit(function () {
         $('#tbodyConvocatoriaBien').empty();
@@ -115,6 +116,7 @@ function listarConvocatoriaWeb(BEAN_PAGINATION) {
     } else {
         $pagination.twbsPagination('destroy');
         viewAlertWeb('warning', 'No se enconntraron resultados');
+        $('#tbodyConvocatoriaBien').append("<td class='text-center' colspan='5'>No se encontraton resultados</td>");
     }
 }
 
@@ -205,6 +207,7 @@ function listarDatosPrincipales(titulo, valor, costo, lugar, f1, f2, f3, f4, f5,
     var files = [f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14];
     var filaArchivo;
     var nombre;
+    var vacio=0;
     for (var i = 0; i < 14; i++) {
         if (files[i] !== "") {
             nombre = listadearchivos(i + 1);
@@ -213,7 +216,12 @@ function listarDatosPrincipales(titulo, valor, costo, lugar, f1, f2, f3, f4, f5,
             filaArchivo += "<td><a href='" + getContext() + "/downloadfile?type_file=downloadDocumentConvocatorias&full_file=n&file=" + files[i] + "' class='waves-effect waves-light btn' title='Descargar' style='height: 40px; padding-top: 5px; padding-bottom: 5px;'><i class='fa fa-download' aria-hidden='true'></i> DESCARGAR</a></td>";
             filaArchivo += "</tr>";
             $('#tbodyArchivos').append(filaArchivo);
+        }else{
+           vacio++; 
         }
+    }
+    if (vacio===14) {
+        $('#tbodyArchivos').append("<td class='text-center' colspan='2'>Sin Documentos Publicados</td>");
     }
 }
 

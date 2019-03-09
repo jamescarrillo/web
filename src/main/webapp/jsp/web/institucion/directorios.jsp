@@ -82,7 +82,7 @@
                                                             <tr>
                                                                 <th style="width: 30%;" class="align-middle">CARGO</th>
                                                                 <th style="width: 30%;" class="align-middle">NOMBRES Y APELLIDOS</th>
-                                                                <th style="width: 20%;" class="align-middle">TELEFONO</th>
+                                                                <th style="width: 20%;" class="align-middle">TELÉFONO</th>
                                                                 <th style="width: 20%;" class="align-middle">CORREO ELECTRONICO</th>
                                                             </tr>
                                                         </thead>

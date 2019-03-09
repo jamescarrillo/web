@@ -1,9 +1,7 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnioPersonal'), 2007, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioPersonal_CLS'), 2007, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioPersonal_CAS'), 2007, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioPersonalCategoria'), 2008, "-1", 'Año');
+    cargarAniosComboActuales($('#comboAnioPersonalCategoria'), 2007);
+    cargarTrimestreComboActuales($('#comboAnioPersonalCategoria').val(), $('#comboTrimestrePersonalCategoria'));
 
     $("#FrmPersonal").submit(function () {
         $("#nameFormPersonal").val("FrmPersonal");
@@ -96,14 +94,29 @@ $(document).ready(function () {
 
     $('.item-personal-remuneracines').each(function (index, value) {
         $(this).click(function () {
-            $('#cboTipoPersonal').val($(this).attr("tipo-personal"));
-            $('#FrmPersonal' + $(this).attr("complemento")).submit();
+            ejecucion($(this).attr("complemento"));
         });
     });
 
     addEventoCombosPaginar();
     processAjaxDataRRHH();
 });
+
+function ejecucion(comp) {
+    var tipo;
+    switch (comp) {
+        case "" :
+            tipo = 1;
+            break;
+        case "_CLS":
+            tipo = 2;
+            break;
+        case "_CAS" :
+            tipo = 3;
+            break;
+    }
+    procesarAjaxAnhos(tipo, comp);
+}
 
 function processAjaxDataRRHH() {
     var datosSerializadosCompletos = $('#' + $('#nameFormPersonalCategoria').val()).serialize();
@@ -217,6 +230,42 @@ function procesarAjaxPersonalWeb(complemento) {
     return false;
 }
 
+function procesarAjaxAnhos(tipo, complemento) {
+    var datosSerializadosCompletos = "action=listarAnhos";
+    datosSerializadosCompletos += "&tipo=" + tipo;
+    datosSerializadosCompletos += "&complemento=" + complemento;
+    $.ajax({
+        url: getContext() + '/gestiontransparente/recursos-humanos',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhos(jsonResponse.BEAN_PAGINATION, tipo, complemento);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhos(BEAN_PAGINATION, tipo, complemento) {
+    $('#comboAnioPersonal' + complemento).empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioPersonal' + complemento).append(option);
+        });
+        cargarTrimestreComboActuales($('#comboAnioPersonal' + complemento).val(), $('#comboTrimestrePersonal' + complemento));
+        $('#cboTipoPersonal').val(tipo);
+        $('#FrmPersonal' + complemento).submit();
+
+    } else {
+        console.log("vacio");
+    }
+}
 function listarPersonalWeb(BEAN_PAGINATION, complemento) {
     /*PAGINATION*/
     var $pagination = $('#paginationPersonal' + complemento);

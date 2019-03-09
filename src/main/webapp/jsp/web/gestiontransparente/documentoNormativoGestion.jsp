@@ -95,9 +95,9 @@
                                                             <table class="table">
                                                                 <thead class="bg-success">
                                                                     <tr>
-                                                                        <th style="width: 10%;" class="text-center align-middle">Fecha</th>
-                                                                        <th style="width: 25%" class="align-middle">Título Documento</th>
-                                                                        <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                        <th style="width: 10%;" class="text-center align-middle">FECHA</th>
+                                                                        <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
+                                                                        <th style="width: 65%" class="align-middle">RESUMEN</th>
                                                                         <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                                     </tr>
                                                                 </thead>
@@ -156,9 +156,9 @@
                                                             <table class="table">
                                                                 <thead class="bg-success">
                                                                     <tr>
-                                                                        <th style="width: 10%;" class="text-center align-middle">Fecha</th>
-                                                                        <th style="width: 25%" class="align-middle">Título Documento</th>
-                                                                        <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                        <th style="width: 10%;" class="text-center align-middle">FECHA</th>
+                                                                        <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
+                                                                        <th style="width: 65%" class="align-middle">RESUMEN</th>
                                                                         <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                                     </tr>
                                                                 </thead>
@@ -221,9 +221,9 @@
                                                             <table class="table">
                                                                 <thead class="bg-success">
                                                                     <tr>
-                                                                        <th style="width: 10%;" class="text-center align-middle">Fecha</th>
-                                                                        <th style="width: 25%" class="align-middle">Título Documento</th>
-                                                                        <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                        
+                                                                        <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
+                                                                        <th style="width: 65%" class="align-middle">RESUMEN</th>
                                                                         <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                                     </tr>
                                                                 </thead>
@@ -282,9 +282,9 @@
                                                             <table class="table">
                                                                 <thead class="bg-success">
                                                                     <tr>
-                                                                        <th style="width: 10%;" class="text-center align-middle">Fecha</th>
-                                                                        <th style="width: 25%" class="align-middle">Título Documento</th>
-                                                                        <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                        
+                                                                        <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
+                                                                        <th style="width: 65%" class="align-middle">RESUMEN</th>
                                                                         <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                                     </tr>
                                                                 </thead>
@@ -343,9 +343,9 @@
                                                             <table class="table">
                                                                 <thead class="bg-success">
                                                                     <tr>
-                                                                        <th style="width: 10%;" class="text-center align-middle">Fecha</th>
-                                                                        <th style="width: 25%" class="align-middle">Título Documento</th>
-                                                                        <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                        <th style="width: 10%;" class="text-center align-middle">FECHA</th>
+                                                                        <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
+                                                                        <th style="width: 65%" class="align-middle">RESUMEN</th>
                                                                         <th style="width: 10%" class="text-center align-middle">PDF</th>
                                                                     </tr>
                                                                 </thead>

@@ -54,12 +54,12 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#tab" href="#tab-plan-gerencial-y-directivos" aria-expanded="true" class="">
+                                        <a data-toggle="collapse" data-parent="#tab" href="#tab-plan-gerencial-y-directivos" aria-expanded="false" class="collapsed">
                                             Plan Gerencial y Directivos
                                         </a>
                                     </h3>
                                 </div>
-                                <div id="tab-plan-gerencial-y-directivos" class="panel-collapse collapse in" aria-expanded="true" style="">
+                                <div id="tab-plan-gerencial-y-directivos" class="panel-collapse collapse" aria-expanded="false" style="">
                                     <div class="panel-body">
                                         <div class="row" id="containerFuncionarios">
 
@@ -109,14 +109,11 @@
                                         <div class="row">
                                             <form id="FrmPersonalCategoria">                                               
                                                 <div class="col-md-2 col-sm-6 col-xs-12">
-                                                    <select id="comboAnioPersonalCategoria" name="comboAnioPersonalCategoria" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonalCategoria' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="comboAnioPersonalCategoria" destino="comboTrimestrePersonalCategoria" name="comboAnioPersonalCategoria" class="form-control combo-paginarRRHH" idBtnBuscar='btnBuscarPersonalCategoria' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-6 col-xs-12">
                                                     <select id="comboTrimestrePersonalCategoria" name="comboTrimestrePersonalCategoria" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonalCategoria' style="border: 1px solid #00793D; margin-top: 40px">
-                                                        <option value="-1">Trimestre</option>
-                                                        <option value="1">Primero</option>
-                                                        <option value="2">Segundo</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-9 col-xs-12">
@@ -145,11 +142,11 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Código</th>
-                                                                <th style="width: 35%" class="text-medium-table">Categoría</th>
-                                                                <th style="width: 15%" class="text-medium-table text-center">Remuneración Mínima</th>
-                                                                <th style="width: 15%" class="text-medium-table">Remuneración Máxima</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">N° Trabajadores</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">CÓDIGO</th>
+                                                                <th style="width: 35%" class="text-medium-table">CATEGORÍA</th>
+                                                                <th style="width: 15%" class="text-medium-table text-center">REMUNERACIÓN MÍNIMA</th>
+                                                                <th style="width: 15%" class="text-medium-table">REMUNERACIÓN MÁXIMA</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">N° TRABAJADORES</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyPersonalCategoria">
@@ -181,7 +178,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed item-personal-remuneracines" data-toggle="collapse" data-parent="#tab" href="#tab-personal-y-remuneraciones" tipo-personal="1" complemento="" aria-expanded="false">
+                                        <a class="collapsed item-personal-remuneracines" data-toggle="collapse" data-parent="#tab" href="#tab-personal-y-remuneraciones" tipo-personal="1" complemento="" aria-expanded="true">
                                             Personal y Remuneraciones - Régimen Laboral D.L. 728
                                         </a>
                                     </h3>
@@ -198,11 +195,15 @@
                                                         <option value="3">Contrato Administrativo de Servicios</option>
                                                     </select>
                                                 </div-->
-                                                <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioPersonal" name="comboAnioPersonal" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal' style="border: 1px solid #00793D; margin-top: 40px">
+                                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                                    <select id="comboAnioPersonal" name="comboAnioPersonal" destino="comboTrimestrePersonal" class="form-control combo-paginarRRHH" idBtnBuscar='btnBuscarPersonal' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                                    <select id="comboTrimestrePersonal" name="comboTrimestrePersonal" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-9 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtPersonal" id="txtPersonal">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Personal</font></font></label>
@@ -229,15 +230,15 @@
                                                         <thead class="bg-success">
                                                             <tr>
                                                                 <th style="width: 10%" class="text-medium-table text-center">DNI</th>
-                                                                <th style="width: 25%" class="text-medium-table">Apellidos y Nombres</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha Ingreso</th>
-                                                                <th style="width: 20%" class="text-medium-table">Área</th>
-                                                                <th style="width: 20%" class="text-medium-table">Cargo</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Régimen Pensionario</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Remuneración S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Gratif. Escol. S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Otros Ingresos. S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Ingreso Total. S/</th>
+                                                                <th style="width: 25%" class="text-medium-table">APELLIDOS NOMBRES</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">FECHA INGRESO</th>
+                                                                <th style="width: 20%" class="text-medium-table">ÁREA</th>
+                                                                <th style="width: 20%" class="text-medium-table">CARGO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">RÉGIMEN PENSIONARIO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">REMUNERACIÓN S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">GRATIG. ESCOL. S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">OTROS INGRESOS S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">INGRESO TOTAL S/</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyPersonal">
@@ -278,11 +279,15 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <form id="FrmPersonal_CLS">
-                                                <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioPersonal_CLS" name="comboAnioPersonal_CLS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
+                                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                                    <select id="comboAnioPersonal_CLS" name="comboAnioPersonal_CLS" destino="comboTrimestrePersonal_CLS" class="form-control combo-paginarRRHH" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                                    <select id="comboTrimestrePersonal_CLS" name="comboTrimestrePersonal_CLS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-9 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtPersonal_CLS" id="txtPersonal_CLS">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Personal</font></font></label>
@@ -296,6 +301,7 @@
                                                 <input type="hidden" id="numberPagePersonal_CLS" name="numberPagePersonal_CLS" value="1">
                                                 <input type="hidden" id="sizePagePersonal_CLS" name="sizePagePersonal_CLS" value="10">                                                
                                             </form>
+
                                         </div>
                                         <div class="row" id="loader_contenido_personal_CLS" style="display: none">
                                             <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
@@ -309,15 +315,15 @@
                                                         <thead class="bg-success">
                                                             <tr>
                                                                 <th style="width: 10%" class="text-medium-table text-center">DNI</th>
-                                                                <th style="width: 25%" class="text-medium-table">Apellidos y Nombres</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha Ingreso</th>
-                                                                <th style="width: 20%" class="text-medium-table">Área</th>
-                                                                <th style="width: 20%" class="text-medium-table">Cargo</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Régimen Pensionario</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Remuneración S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Gratif. Escol. S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Otros Ingresos. S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Ingreso Total. S/</th>
+                                                                <th style="width: 25%" class="text-medium-table">APELLIDOS NOMBRES</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">FECHA INGRESO</th>
+                                                                <th style="width: 20%" class="text-medium-table">ÁREA</th>
+                                                                <th style="width: 20%" class="text-medium-table">CARGO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">RÉGIMEN PENSIONARIO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">REMUNERACIÓN S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">GRATIG. ESCOL. S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">OTROS INGRESOS S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">INGRESO TOTAL S/</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyPersonal_CLS">
@@ -358,11 +364,15 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <form id="FrmPersonal_CAS">
-                                                <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioPersonal_CAS" name="comboAnioPersonal_CAS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CAS' style="border: 1px solid #00793D; margin-top: 40px">
+                                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                                    <select id="comboAnioPersonal_CAS" name="comboAnioPersonal_CAS" destino="comboTrimestrePersonal_CAS" class="form-control combo-paginarRRHH" idBtnBuscar='btnBuscarPersonal_CAS' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                <div class="col-md-2 col-sm-6 col-xs-12">
+                                                    <select id="comboTrimestrePersonal_CAS" name="comboTrimestrePersonal_CAS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-9 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtPersonal_CAS" id="txtPersonal_CAS">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Personal</font></font></label>
@@ -389,15 +399,15 @@
                                                         <thead class="bg-success">
                                                             <tr>
                                                                 <th style="width: 10%" class="text-medium-table text-center">DNI</th>
-                                                                <th style="width: 25%" class="text-medium-table">Apellidos y Nombres</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Fecha Ingreso</th>
-                                                                <th style="width: 20%" class="text-medium-table">Área</th>
-                                                                <th style="width: 20%" class="text-medium-table">Cargo</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Régimen Pensionario</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Remuneración S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Gratif. Escol. S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Otros Ingresos. S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">Ingreso Total. S/</th>
+                                                                <th style="width: 25%" class="text-medium-table">APELLIDOS NOMBRES</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">FECHA INGRESO</th>
+                                                                <th style="width: 20%" class="text-medium-table">ÁREA</th>
+                                                                <th style="width: 20%" class="text-medium-table">CARGO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">RÉGIMEN PENSIONARIO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">REMUNERACIÓN S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">GRATIG. ESCOL. S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">OTROS INGRESOS. S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">INGRESO TOTAL. S/</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyPersonal_CAS">
