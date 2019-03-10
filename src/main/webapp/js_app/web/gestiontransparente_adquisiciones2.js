@@ -1,11 +1,7 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnioPenalidad'), 2005, "-1", 'AÑO');
+    //cargarAniosCombo($('#comboAnioPenalidad'), 2005, "-1", 'AÑO');
     cargarAniosCombo($('#comboAnioViatico'), 2010, "-1", 'AÑO');
-    cargarAniosCombo($('#comboAnioDocumento'), 2005, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioDocumento_MFO'), 2005, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioDocumento_MAO'), 2005, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioDocumento_IFC'), 2005, "-1", 'Año');
 
 
     $("#FrmPenalidad").submit(function () {
@@ -96,15 +92,111 @@ $(document).ready(function () {
 
     $('.item-documento-ad').each(function (index, value) {
         $(this).click(function () {
-            $('#cate_id').val($(this).attr("cate_id"));
-            $('#comboAnioDocumento' + $(this).attr("complemento")).val("-1");
-            $('#FrmDocumentos' + $(this).attr("complemento")).submit();
+            ejecucionDocumento($(this).attr("complemento"));
+//            $('#cate_id').val($(this).attr("cate_id"));
+//            $('#comboAnioDocumento' + $(this).attr("complemento")).val("-1");
+//            $('#FrmDocumentos' + $(this).attr("complemento")).submit();
         });
     });
-
+    ejecucionDocumento("");
     addEventoCombosPaginar();
     processAjaxDataAdquisiciones2();
 });
+
+function procesarAjaxAnhosPenalidad() {
+    var datosSerializadosCompletos = "action=listarAnhosPenalidad";
+    $.ajax({
+        url: getContext() + '/documentos/operacionesweb',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosPenalidad(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosPenalidad(BEAN_PAGINATION) {
+    $('#comboAnioPenalidad').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioPenalidad').append(option);
+        });
+        procesarAjaxPenalidadWeb();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function ejecucionDocumento(comp) {
+    var cate_id;
+    var tido="";
+    switch (comp) {
+        case "" :
+            cate_id = 1100;
+            break;
+        case "_MFO":
+            cate_id = 100;
+            tido="10";
+            break;
+        case "_MAO" :
+            cate_id = 200;
+            break;
+        case "_IFC" :
+            cate_id = 300;
+            tido="27";
+            break;
+    }
+    procesarAjaxAnhosDocumentos(cate_id, comp, tido);
+}
+
+function procesarAjaxAnhosDocumentos(tipo, complemento,tido) {
+    var datosSerializadosCompletos = "action=listarAnhos";
+    datosSerializadosCompletos += "&cate_id=" + tipo;
+    datosSerializadosCompletos += "&complemento=" + complemento;
+    datosSerializadosCompletos += "&tido_id="+tido;
+    $.ajax({
+        url: getContext() + '/documentos/operacionesweb',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosDocumentos(jsonResponse.BEAN_PAGINATION, tipo, complemento);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosDocumentos(BEAN_PAGINATION, tipo, complemento) {
+    $('#comboAnioDocumento' + complemento).empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.docu_metadata + "'>" + value.docu_metadata + "</option>";
+            $('#comboAnioDocumento' + complemento).append(option);
+        });
+        //cargarTrimestreComboActuales($('#comboAnioPersonal' + complemento).val(), $('#comboTrimestrePersonal' + complemento));
+        //$('#cboTipoPersonal').val(tipo);
+        // $('#FrmPersonal' + complemento).submit();
+        $('#cate_id').val(tipo);
+        //$('#comboAnioDocumento' + complemento).val("-1");
+        $('#FrmDocumentos' + complemento).submit();
+
+    } else {
+        console.log("vacio");
+    }
+}
 
 function processAjaxDataAdquisiciones2() {
     var datosSerializadosCompletos = $('#' + $('#nameForm').val()).serialize();

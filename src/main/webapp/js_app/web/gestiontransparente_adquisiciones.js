@@ -1,13 +1,5 @@
 $(document).ready(function () {
 
-
-    cargarAniosCombo($('#comboAnioOrdenCompra'), 2007, "-1", "AÑO");
-    cargarAniosCombo($('#comboAnioOrdenServicio'), 2007, "-1", "AÑO");
-    cargarAniosCombo($('#comboAnioPublicidad'), 2009, "-1", "AÑO");
-    cargarAniosCombo($('#comboAnioTelefonia'), 2009, "-1", "AÑO");
-    cargarAniosCombo($('#comboAnioVehiculo'), 2007, "-1", "AÑO");
-    cargarAniosCombo($('#comboAnioProveedor'), 2007, "-1", "AÑO");
-
     $("#FrmOrdenCompra").submit(function () {
         $("#nameFormOrdenCompra").val("FrmOrdenCompra");
         $("#numberPageOrdenCompra").val(1);
@@ -153,11 +145,433 @@ $(document).ready(function () {
             }
         });
     });
+    $('.combo-paginarOrden').on('change', function () {
+        if ($(this).attr('tipo') === "2") {
+            procesarAjaxMesOrdenesServicios();
+        } if ($(this).attr('tipo') === "1") {
+            procesarAjaxMesOrdenesCompra();
+        }
+        if ($(this).attr('tipo') === "3") {
+            procesarAjaxMesTelefonia();
+        }
+        if ($(this).attr('tipo') === "4") {
+            procesarAjaxMesVehiculo();
+        }
+        $("#" + $(this).attr('idBtnBuscar')).trigger("click");
+    });
+
+    $('.AnioOrdenTipo').each(function (index, value) {
+        $(this).click(function () {
+            if ($(this).attr('tipo') === "2") {
+                procesarAjaxAnhosOrdenesServicios();
+            }
+            if ($(this).attr('tipo') === "1") {
+                procesarAjaxAnhosOrdenesCompra();
+            }
+            if ($(this).attr('tipo') === "3") {
+                procesarAjaxAnhosPublicidad();
+            }
+            if ($(this).attr('tipo') === "4") {
+                procesarAjaxAnhosPenalidad();
+            }
+            if ($(this).attr('tipo') === "5") {
+                procesarAjaxAnhosTelefonia();
+            }
+            if ($(this).attr('tipo') === "6") {
+                procesarAjaxAnhosVehiculo();
+            }
+            if ($(this).attr('tipo') === "7") {
+                procesarAjaxAnhosProveedor();
+            }
+        });
+    });
 
     addEventoCombosPaginar();
     processAjaxDataAdquisiciones();
 
 });
+
+function procesarAjaxAnhosProveedor() {
+    var datosSerializadosCompletos = "action=listarAnhosProveedor";
+    $.ajax({
+        url: getContext() + '/gestiontransparente/adquisiciones-y-contrataciones',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosProveedor(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosProveedor(BEAN_PAGINATION) {
+    $('#comboAnioProveedor').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioProveedor').append(option);
+        });
+        cargarTrimestreComboActuales($('#comboAnioProveedor').val(), $('#comboMesesProveedor'));
+        processAjaxProveedor();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function procesarAjaxAnhosVehiculo() {
+    var datosSerializadosCompletos = "action=listarAnhosVehiculo";
+    $.ajax({
+        url: getContext() + '/gestiontransparente/adquisiciones-y-contrataciones',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosVehiculo(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosVehiculo(BEAN_PAGINATION) {
+    $('#comboAnioVehiculo').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioVehiculo').append(option);
+        });
+        procesarAjaxMesVehiculo();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function procesarAjaxMesVehiculo() {
+    var datosSerializadosCompletos = "action=listarMesVehiculo";
+    datosSerializadosCompletos += "&anho=" + $('#comboAnioVehiculo').val().toString();
+    $.ajax({
+        url: getContext() + '/gestiontransparente/adquisiciones-y-contrataciones',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarMesVehiculo(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarMesVehiculo(BEAN_PAGINATION) {
+    $('#comboMesesVehiculo').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        var mes;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            mes = traerNombreMes(value.mes);
+            option = "<option value='" + value.mes + "'>" + mes + "</option>";
+            $('#comboMesesVehiculo').append(option);
+        });
+        processAjaxVehiculo();
+    } else {
+        console.log("vacio");
+    }
+}
+
+
+function procesarAjaxAnhosTelefonia() {
+    var datosSerializadosCompletos = "action=listarAnhosTelefonia";
+    $.ajax({
+        url: getContext() + '/gestiontransparente/adquisiciones-y-contrataciones',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosTelefonia(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosTelefonia(BEAN_PAGINATION) {
+    $('#comboAnioTelefonia').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioTelefonia').append(option);
+        });
+        procesarAjaxMesTelefonia();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function procesarAjaxMesTelefonia() {
+    var datosSerializadosCompletos = "action=listarMesTelefonia";
+    datosSerializadosCompletos += "&anho=" + $('#comboAnioTelefonia').val().toString();
+    $.ajax({
+        url: getContext() + '/gestiontransparente/adquisiciones-y-contrataciones',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarMesTelefonia(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarMesTelefonia(BEAN_PAGINATION) {
+    $('#comboMesesTelefonia').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        var mes;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            mes = traerNombreMes(value.mes);
+            option = "<option value='" + value.mes + "'>" + mes + "</option>";
+            $('#comboMesesTelefonia').append(option);
+        });
+        processAjaxTelefonia();
+    } else {
+        console.log("vacio");
+    }
+}
+
+
+
+function procesarAjaxAnhosPublicidad() {
+    var datosSerializadosCompletos = "action=listarAnhosPublicidad";
+    $.ajax({
+        url: getContext() + '/gestiontransparente/adquisiciones-y-contrataciones',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosPublicidad(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosPublicidad(BEAN_PAGINATION) {
+    $('#comboAnioPublicidad').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioPublicidad').append(option);
+        });
+        processAjaxPublicidad();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function procesarAjaxAnhosOrdenesServicios() {
+    var datosSerializadosCompletos = "action=listarAnhosOS";
+    $.ajax({
+        url: getContext() + '/gestiontransparente/adquisiciones-y-contrataciones',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosOrdenesServicios(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosOrdenesServicios(BEAN_PAGINATION) {
+    $('#comboAnioOrdenServicio').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioOrdenServicio').append(option);
+        });
+        procesarAjaxMesOrdenesServicios();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function procesarAjaxMesOrdenesServicios() {
+    var datosSerializadosCompletos = "action=listarMesOS";
+    datosSerializadosCompletos += "&anho=" + $('#comboAnioOrdenServicio').val().toString();
+    $.ajax({
+        url: getContext() + '/gestiontransparente/adquisiciones-y-contrataciones',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarMesOrdenesServicios(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarMesOrdenesServicios(BEAN_PAGINATION) {
+    $('#comboMesesOrdenServicio').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        var mes;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            mes = traerNombreMes(value.mes);
+            option = "<option value='" + value.mes + "'>" + mes + "</option>";
+            $('#comboMesesOrdenServicio').append(option);
+        });
+        processAjaxOrdenServicio();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function procesarAjaxAnhosOrdenesCompra() {
+    var datosSerializadosCompletos = "action=listarAnhosOC";
+    $.ajax({
+        url: getContext() + '/gestiontransparente/adquisiciones-y-contrataciones',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosOrdenesCompra(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosOrdenesCompra(BEAN_PAGINATION) {
+    $('#comboAnioOrdenCompra').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioOrdenCompra').append(option);
+        });
+        procesarAjaxMesOrdenesCompra();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function procesarAjaxMesOrdenesCompra() {
+    var datosSerializadosCompletos = "action=listarMesOC";
+    datosSerializadosCompletos += "&anho=" + $('#comboAnioOrdenCompra').val().toString();
+    $.ajax({
+        url: getContext() + '/gestiontransparente/adquisiciones-y-contrataciones',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarMesOrdenesCompra(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarMesOrdenesCompra(BEAN_PAGINATION) {
+    $('#comboMesesOrdenCompra').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        var mes;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            mes = traerNombreMes(value.mes);
+            option = "<option value='" + value.mes + "'>" + mes + "</option>";
+            $('#comboMesesOrdenCompra').append(option);
+        });
+        processAjaxOrdenCompra();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function traerNombreMes(orden) {
+    var mes;
+    switch (orden) {
+        case "01":
+            mes = "Enero";
+            break;
+        case "1 ":
+            mes = "Enero";
+            break;
+        case "02":
+            mes = "Febrero";
+            break;
+        case "03":
+            mes = "Marzo";
+            break;
+        case "04":
+            mes = "Abril";
+            break;
+        case "05":
+            mes = "Mayo";
+            break;
+        case "06":
+            mes = "Junio";
+            break;
+        case "07":
+            mes = "Julio";
+            break;
+        case "08":
+            mes = "Agosto";
+            break;
+        case "09":
+            mes = "Setiembre";
+            break;
+        case "10":
+            mes = "Octubre";
+            break;
+        case "11":
+            mes = "Noviembre";
+            break;
+        case "12":
+            mes = "Diciembre";
+            break;
+    }
+    return mes;
+}
 
 function processAjaxDataAdquisiciones() {
     var datosSerializadosCompletos = $('#' + $('#nameFormOrdenCompra').val()).serialize();
@@ -262,7 +676,7 @@ function listarOrdenCompra(BEAN_PAGINATION) {
         $('#txtProveedorOrdenCompra').focus();
     } else {
         $pagination.twbsPagination('destroy');
-        viewAlertWeb('warning', 'No se encontraron resultados');
+        //viewAlertWeb('warning', 'No se encontraron resultados');
     }
 }
 
@@ -334,7 +748,7 @@ function listarOrdenServicio(BEAN_PAGINATION) {
         $('#txtProveedorOrdenServicio').focus();
     } else {
         $pagination.twbsPagination('destroy');
-        viewAlertWeb('warning', 'No se encontraron resultados');
+        //viewAlertWeb('warning', 'No se encontraron resultados');
     }
 }
 

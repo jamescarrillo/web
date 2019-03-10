@@ -130,7 +130,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-ordenes-de-compra" aria-expanded="false">
+                                        <a class="AnioOrdenTipo collapsed" tipo="1" data-toggle="collapse" data-parent="#tab" href="#tab-ordenes-de-compra" aria-expanded="false">
                                             Ordenes de Compras de Bienes
                                         </a>
                                     </h3>
@@ -140,10 +140,14 @@
                                         <div class="row">
                                             <form id="FrmOrdenCompra">                                               
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioOrdenCompra" name="comboAnioOrdenCompra" class="form-control combo-paginar" idBtnBuscar='btnBuscarOrdenCompra' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="comboAnioOrdenCompra" name="comboAnioOrdenCompra" tipo="1" class="form-control combo-paginarOrden" idBtnBuscar='btnBuscarOrdenCompra' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboMesesOrdenCompra" name="comboMesesOrdenCompra" class="form-control combo-paginar" idBtnBuscar='btnBuscarOrdenCompra' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-9 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtProveedorOrdenCompra" id="txtProveedorOrdenCompra">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Orden Compra</font></font></label>
@@ -206,7 +210,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-ordenes-de-servicio" aria-expanded="false">
+                                        <a class="AnioOrdenTipo collapsed" data-toggle="collapse" tipo="2" data-parent="#tab" href="#tab-ordenes-de-servicio" aria-expanded="false">
                                             Ordenes de Servicios
                                         </a>
                                     </h3>
@@ -216,10 +220,14 @@
                                         <div class="row">
                                             <form id="FrmOrdenServicio">                                               
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioOrdenServicio" name="comboAnioOrdenServicio" class="form-control combo-paginar" idBtnBuscar='btnBuscarOrdenServicio' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="comboAnioOrdenServicio" name="comboAnioOrdenServicio" tipo="2" class="form-control combo-paginarOrden" idBtnBuscar='btnBuscarOrdenServicio' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboMesesOrdenServicio" name="comboMesesOrdenServicio" class="form-control combo-paginar" idBtnBuscar='btnBuscarOrdenServicio' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-9 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtProveedorOrdenServicio" id="txtProveedorOrdenServicio">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Orden Servicio</font></font></label>
@@ -282,7 +290,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-gastos-en-publicidad" aria-expanded="false">
+                                        <a class="AnioOrdenTipo collapsed" tipo="3" data-toggle="collapse" data-parent="#tab" href="#tab-gastos-en-publicidad" aria-expanded="false">
                                             Gastos en Publicidad
                                         </a>
                                     </h3>
@@ -358,7 +366,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-gastos-en-telefonia" aria-expanded="false">
+                                        <a class="AnioOrdenTipo collapsed" tipo="5" data-toggle="collapse" data-parent="#tab" href="#tab-gastos-en-telefonia" aria-expanded="false">
                                             Gastos en Telefonía
                                         </a>
                                     </h3>
@@ -368,10 +376,14 @@
                                         <div class="row">
                                             <form id="FrmTelefonia">                                               
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioTelefonia" name="comboAnioTelefonia" class="form-control combo-paginar" idBtnBuscar='btnBuscarTelefonia' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="comboAnioTelefonia" name="comboAnioTelefonia" tipo="3" class="form-control combo-paginarOrden" idBtnBuscar='btnBuscarTelefonia' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboMesesTelefonia" name="comboMesesTelefonia" class="form-control combo-paginar" idBtnBuscar='btnBuscarTelefonia' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-9 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtAreaTelefonia" id="txtAreaTelefonia">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Área/Oficina</font></font></label>
@@ -434,7 +446,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-uso-de-vehiculos" aria-expanded="false">
+                                        <a class="AnioOrdenTipo collapsed" tipo="6" data-toggle="collapse" data-parent="#tab" href="#tab-uso-de-vehiculos" aria-expanded="false">
                                             Uso de Vehículos
                                         </a>
                                     </h3>
@@ -444,10 +456,14 @@
                                         <div class="row">
                                             <form id="FrmVehiculo">                                               
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioVehiculo" name="comboAnioVehiculo" class="form-control combo-paginar" idBtnBuscar='btnBuscarVehiculo' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="comboAnioVehiculo" name="comboAnioVehiculo" tipo="4" class="form-control combo-paginarOrden" idBtnBuscar='btnBuscarVehiculo' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboMesesVehiculo" name="comboMesesVehiculo" class="form-control combo-paginar" idBtnBuscar='btnBuscarVehiculo' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-9 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtAreaVehiculo" id="txtAreaVehiculo">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Chofer</font></font></label>
@@ -512,7 +528,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-principales-de-proveedores" aria-expanded="false">
+                                        <a class="AnioOrdenTipo collapsed" tipo="7" data-toggle="collapse" data-parent="#tab" href="#tab-principales-de-proveedores" aria-expanded="false">
                                             Principales Proveedores
                                         </a>
                                     </h3>
@@ -522,10 +538,14 @@
                                         <div class="row">
                                             <form id="FrmProveedor">                                               
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioProveedor" name="comboAnioProveedor" class="form-control combo-paginar" idBtnBuscar='btnBuscarProveedor' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="comboAnioProveedor" destino="comboMesesProveedor" name="comboAnioProveedor" class="form-control combo-paginarRRHH" idBtnBuscar='btnBuscarProveedor' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboMesesProveedor" name="comboMesesProveedor" class="form-control combo-paginar" idBtnBuscar='btnBuscarProveedor' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-9 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtProveedor" id="txtProveedor">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Proveedor</font></font></label>
@@ -662,7 +682,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-penalidades-aplicadas" aria-expanded="false">
+                                        <a class="AnioOrdenTipo collapsed" tipo="4" data-toggle="collapse" data-parent="#tab" href="#tab-penalidades-aplicadas" aria-expanded="false">
                                             Penalidades Aplicadas
                                         </a>
                                     </h3>

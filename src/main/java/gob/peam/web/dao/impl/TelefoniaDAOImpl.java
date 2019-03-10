@@ -179,4 +179,94 @@ public class TelefoniaDAOImpl implements gob.peam.web.dao.TelefoniaDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters, Connection conn) throws SQLException {
+        BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
+        List<Telefonia> list = new ArrayList<>();
+        PreparedStatement pst;
+        ResultSet rs;
+        try {
+            pst = conn.prepareStatement("SELECT COUNT(DISTINCT(ANHO)) AS COUNT FROM WEB.F00020 WHERE "
+                    + "LOWER(AREA_OFICINA) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            LOG.info(pst.toString());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
+                if (rs.getInt("COUNT") > 0) {
+                    pst = conn.prepareStatement("SELECT DISTINCT(ANHO) FROM WEB.F00020 WHERE "
+                            + "LOWER(AREA_OFICINA) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
+                            + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")));
+                    pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    LOG.info(pst.toString());
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
+                        Telefonia orden = new Telefonia();
+                        orden.setAnho(rs.getString("ANHO"));
+                        list.add(orden);
+                    }
+                }
+            }
+            beanpagination.setLIST(list);
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beanpagination;
+    }
+
+    @Override
+    public BEAN_PAGINATION getMes(HashMap<String, Object> parameters, Connection conn) throws SQLException {
+        BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
+        List<Telefonia> list = new ArrayList<>();
+        PreparedStatement pst;
+        ResultSet rs;
+        try {
+            pst = conn.prepareStatement("SELECT COUNT(DISTINCT(MES)) AS COUNT FROM WEB.F00020 WHERE "
+                    + "LOWER(AREA_OFICINA) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            LOG.info(pst.toString());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
+                if (rs.getInt("COUNT") > 0) {
+                    pst = conn.prepareStatement("SELECT DISTINCT(MES) FROM WEB.F00020 WHERE "
+                            + "LOWER(AREA_OFICINA) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
+                            + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")));
+                    pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    LOG.info(pst.toString());
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
+                        Telefonia orden = new Telefonia();
+                        orden.setMes(rs.getString("MES"));
+                        list.add(orden);
+                    }
+                }
+            }
+            beanpagination.setLIST(list);
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beanpagination;
+    }
+
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters, int tipo) throws SQLException {
+        BEAN_PAGINATION beansPagination = null;
+        try (Connection conn = pool.getConnection()) {
+            if (tipo == 1) {
+                beansPagination = getAnhos(parameters, conn);//años
+            } else {
+                beansPagination = getMes(parameters, conn);//mese
+            }
+
+        } catch (SQLException e) {
+            throw e;
+        }
+        return beansPagination;
+    }
+
 }

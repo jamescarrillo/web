@@ -170,4 +170,48 @@ public class PenalidadDAOImpl implements PenalidadDAO {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters, Connection conn) throws SQLException {
+        BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
+        PreparedStatement pst;
+        ResultSet rs;
+        try {
+            pst = conn.prepareStatement("SELECT COUNT(DISTINCT(ANHO)) AS CANT FROM WEB.PENALIDAD WHERE "
+                    + "(LOWER(CONTRATISTA) LIKE CONCAT('%',?,'%'))");
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
+            }
+            pst = conn.prepareStatement("SELECT DISTINCT(ANHO) FROM WEB.PENALIDAD WHERE "
+                    + "(LOWER(CONTRATISTA) LIKE CONCAT('%',?,'%'))"
+                    + "ORDER BY "+ String.valueOf(parameters.get("SQL_ORDERS")));
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            rs = pst.executeQuery();
+            List<Penalidad> list = new ArrayList<>();
+            while (rs.next()) {
+                Penalidad obj = new Penalidad();
+                obj.setAnho(rs.getString("ANHO"));
+                list.add(obj);
+            }
+            beanpagination.setLIST(list);
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beanpagination;
+    }
+
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters) throws SQLException {
+        BEAN_PAGINATION beansPagination = null;
+        try (Connection conn = pool.getConnection()) {
+            beansPagination = getAnhos(parameters, conn);
+        } catch (SQLException e) {
+            throw e;
+        }
+        return beansPagination;
+    }
+
 }

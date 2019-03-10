@@ -227,6 +227,7 @@ function cargarAniosComboActuales($combo, anioInicio) {
 }
 
 function cargarTrimestreComboActuales(año, $combo) {
+    
     var date = new Date();
     var opcion;
     var mes = date.getMonth() + 1;

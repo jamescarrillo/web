@@ -24,14 +24,14 @@ import javax.sql.DataSource;
  * @author JamesCarrillo
  */
 public class VehiculoDAOImpl implements gob.peam.web.dao.VehiculoDAO {
-    
+
     private static final Logger LOG = Logger.getLogger(VehiculoDAOImpl.class.getName());
     private final DataSource pool;
-    
+
     public VehiculoDAOImpl(DataSource pool) {
         this.pool = pool;
     }
-    
+
     @Override
     public BEAN_PAGINATION getPagination(HashMap<String, Object> parameters, Connection conn) throws SQLException {
         BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
@@ -81,7 +81,7 @@ public class VehiculoDAOImpl implements gob.peam.web.dao.VehiculoDAO {
         }
         return beanpagination;
     }
-    
+
     @Override
     public BEAN_PAGINATION getPagination(HashMap<String, Object> parameters) throws SQLException {
         BEAN_PAGINATION beansPagination = null;
@@ -92,7 +92,7 @@ public class VehiculoDAOImpl implements gob.peam.web.dao.VehiculoDAO {
         }
         return beansPagination;
     }
-    
+
     @Override
     public BEAN_CRUD add(Vehiculo obj, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
@@ -129,7 +129,7 @@ public class VehiculoDAOImpl implements gob.peam.web.dao.VehiculoDAO {
         }
         return beancrud;
     }
-    
+
     @Override
     public BEAN_CRUD update(Vehiculo obj, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
@@ -166,7 +166,7 @@ public class VehiculoDAOImpl implements gob.peam.web.dao.VehiculoDAO {
         }
         return beancrud;
     }
-    
+
     @Override
     public BEAN_CRUD delete(long id, HashMap<String, Object> parameters) throws SQLException {
         BEAN_CRUD beancrud = new BEAN_CRUD();
@@ -187,10 +187,100 @@ public class VehiculoDAOImpl implements gob.peam.web.dao.VehiculoDAO {
         }
         return beancrud;
     }
-    
+
     @Override
     public Vehiculo get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters, Connection conn) throws SQLException {
+        BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
+        List<Vehiculo> list = new ArrayList<>();
+        PreparedStatement pst;
+        ResultSet rs;
+        try {
+            pst = conn.prepareStatement("SELECT COUNT(DISTINCT(ANHO)) AS COUNT FROM WEB.F00014 WHERE "
+                    + "LOWER(ASIGNADO_A) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            LOG.info(pst.toString());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
+                if (rs.getInt("COUNT") > 0) {
+                    pst = conn.prepareStatement("SELECT DISTINCT(ANHO) FROM WEB.F00014 WHERE "
+                            + "LOWER(ASIGNADO_A) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
+                            + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")));
+                    pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    LOG.info(pst.toString());
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
+                        Vehiculo orden = new Vehiculo();
+                        orden.setAnho(rs.getString("ANHO"));
+                        list.add(orden);
+                    }
+                }
+            }
+            beanpagination.setLIST(list);
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beanpagination;
+    }
+
+    @Override
+    public BEAN_PAGINATION getMes(HashMap<String, Object> parameters, Connection conn) throws SQLException {
+        BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
+        List<Vehiculo> list = new ArrayList<>();
+        PreparedStatement pst;
+        ResultSet rs;
+        try {
+            pst = conn.prepareStatement("SELECT COUNT(DISTINCT(MES)) AS COUNT FROM WEB.F00014 WHERE "
+                    + "LOWER(ASIGNADO_A) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            LOG.info(pst.toString());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
+                if (rs.getInt("COUNT") > 0) {
+                    pst = conn.prepareStatement("SELECT DISTINCT(MES) FROM WEB.F00014 WHERE "
+                            + "LOWER(ASIGNADO_A) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
+                            + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")));
+                    pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    LOG.info(pst.toString());
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
+                        Vehiculo orden = new Vehiculo();
+                        orden.setMes(rs.getString("MES"));
+                        list.add(orden);
+                    }
+                }
+            }
+            beanpagination.setLIST(list);
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beanpagination;
+    }
+
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters, int tipo) throws SQLException {
+        BEAN_PAGINATION beansPagination = null;
+        try (Connection conn = pool.getConnection()) {
+            if (tipo == 1) {
+                beansPagination = getAnhos(parameters, conn);//años
+            } else {
+                beansPagination = getMes(parameters, conn);//mese
+            }
+
+        } catch (SQLException e) {
+            throw e;
+        }
+        return beansPagination;
+    }
+
 }

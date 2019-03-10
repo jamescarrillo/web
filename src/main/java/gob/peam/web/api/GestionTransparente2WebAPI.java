@@ -170,6 +170,36 @@ public class GestionTransparente2WebAPI extends HttpServlet {
                 case "listarAnhos":
                     procesarAnhos(new BEAN_CRUD(this.personalDAO.getAnhos(getParametersAnhos(request))), response);
                     break;
+                case "listarAnhosOS":
+                    procesarAnhos(new BEAN_CRUD(this.ordenServicioDAO.getAnhos(getParametersAnhosyMES(request, 1), 1)), response);
+                    break;
+                case "listarAnhosPublicidad":
+                    procesarAnhos(new BEAN_CRUD(this.publicidadDAO.getAnhos(getParametersAnhos(request))), response);
+                    break;
+                case "listarMesOS":
+                    procesarAnhos(new BEAN_CRUD(this.ordenServicioDAO.getAnhos(getParametersAnhosyMES(request, 2), 2)), response);
+                    break;
+                case "listarAnhosOC":
+                    procesarAnhos(new BEAN_CRUD(this.ordenCompraDAO.getAnhos(getParametersAnhosyMES(request, 1), 1)), response);
+                    break;
+                case "listarMesOC":
+                    procesarAnhos(new BEAN_CRUD(this.ordenCompraDAO.getAnhos(getParametersAnhosyMES(request, 2), 2)), response);
+                    break;
+                case "listarAnhosTelefonia":
+                    procesarAnhos(new BEAN_CRUD(this.telefoniaDAO.getAnhos(getParametersAnhosyMES(request, 1), 1)), response);
+                    break;
+                case "listarMesTelefonia":
+                    procesarAnhos(new BEAN_CRUD(this.telefoniaDAO.getAnhos(getParametersAnhosyMES(request, 2), 2)), response);
+                    break;
+                case "listarAnhosVehiculo":
+                    procesarAnhos(new BEAN_CRUD(this.vehiculoDAO.getAnhos(getParametersAnhosyMES(request, 1), 1)), response);
+                    break;
+                case "listarMesVehiculo":
+                    procesarAnhos(new BEAN_CRUD(this.vehiculoDAO.getAnhos(getParametersAnhosyMES(request, 2), 2)), response);
+                    break;
+                case "listarAnhosProveedor":
+                    procesarAnhos(new BEAN_CRUD(this.proveedorDAO.getAnhos(getParametersAnhos(request))), response);
+                    break;
                 default:
                     request.getRequestDispatcher("/jsp/web/gestiontransparente/" + getJSP(request)).forward(request, response);
                     break;
@@ -302,7 +332,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         if (request.getParameter("comboAnioOrdenCompra").equals("-1")) {
             this.parametersOrdenCompra.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersOrdenCompra.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioOrdenCompra") + "' ");
+            this.parametersOrdenCompra.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioOrdenCompra") + "' AND MES = '" + request.getParameter("comboMesesOrdenCompra") + "'");
         }
         this.parametersOrdenCompra.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageOrdenCompra") + " OFFSET "
@@ -329,7 +359,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         if (request.getParameter("comboAnioOrdenServicio").equals("-1")) {
             this.parametersOrdenServicio.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersOrdenServicio.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioOrdenServicio") + "' ");
+            this.parametersOrdenServicio.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioOrdenServicio") + "' AND MES = '" + request.getParameter("comboMesesOrdenServicio") + "'");
         }
         this.parametersOrdenServicio.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageOrdenServicio") + " OFFSET "
@@ -480,12 +510,12 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         if (request.getParameter("cboTipoPersonal").equals("2")) {
             String trimestre = "";
             if (!request.getParameter("comboTrimestrePersonal_CLS").equals("-1")) {
-                trimestre = " AND TRIMESTRE = " + request.getParameter("comboTrimestrePersonal"+complemento);
+                trimestre = " AND TRIMESTRE = " + request.getParameter("comboTrimestrePersonal" + complemento);
             }
-            if (request.getParameter("comboAnioPersonal"+complemento).equals("-1")) {
+            if (request.getParameter("comboAnioPersonal" + complemento).equals("-1")) {
                 this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE ");
             } else {
-                this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonal"+complemento) + "' ");
+                this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonal" + complemento) + "' ");
             }
         }
 
@@ -495,16 +525,33 @@ public class GestionTransparente2WebAPI extends HttpServlet {
                 * Integer.parseInt(request.getParameter("sizePagePersonal" + complemento)));
         return this.parameters;
     }
-    
+
     private HashMap<String, Object> getParametersAnhos(HttpServletRequest request) {
         this.parametersanhios.clear();
         this.parametersanhios.put("FILTER", "");
         this.parametersanhios.put("SQL_ORDERS", "ANHO DESC");
-        if (Integer.parseInt(request.getParameter("tipo"))==3) {
-            this.parametersanhios.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("tipo"));
-        }else{
-            this.parametersanhios.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("tipo")+ " AND ESTADO = TRUE ");
+        if (this.action.equals("listarAnhos")) {
+            if (Integer.parseInt(request.getParameter("tipo")) == 3) {
+                this.parametersanhios.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("tipo"));
+            } else {
+                this.parametersanhios.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("tipo") + " AND ESTADO = TRUE ");
+            }
         }
+        this.parametersanhios.put("SQL_ESTADO", " AND ESTADO = TRUE ");
+        return this.parametersanhios;
+    }
+
+    private HashMap<String, Object> getParametersAnhosyMES(HttpServletRequest request, int tipo) {
+        this.parametersanhios.clear();
+        this.parametersanhios.put("FILTER", "");
+        if (tipo == 1) {
+            this.parametersanhios.put("SQL_ESTADO", " AND ESTADO = TRUE ");
+            this.parametersanhios.put("SQL_ORDERS", " ANHO DESC");
+        } else {
+            this.parametersanhios.put("SQL_ESTADO", " AND ESTADO = TRUE AND ANHO ='" + String.valueOf(request.getParameter("anho") + "'"));
+            this.parametersanhios.put("SQL_ORDERS", " MES DESC");
+        }
+
         return this.parametersanhios;
     }
 

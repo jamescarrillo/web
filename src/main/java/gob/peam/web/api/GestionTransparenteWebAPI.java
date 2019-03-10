@@ -51,6 +51,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
     private String jsonResponseFinanza;
     private String jsonResponsePenalidad;
     private HashMap<String, Object> parameters;
+    private HashMap<String, Object> parametersAnhiosDocumentos;
     private HashMap<String, Object> JSONROOT;
     private HashMap<String, Object> parametersF;
     private HashMap<String, Object> parametersF2;
@@ -69,6 +70,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         super.init(); // To change body of generated methods, choose Tools | Templates.
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
         this.parameters = new HashMap<>();
+        this.parametersAnhiosDocumentos = new HashMap<>();
         this.JSONROOT = new HashMap<>();
         this.parametersF = new HashMap<>();
         this.parametersF2 = new HashMap<>();
@@ -120,6 +122,12 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                     break;
                 case "getCategoriasDoc":
                     procesarCategoriaDOC(response);
+                    break;
+                case "listarAnhos":
+                    procesarAnhios(new BEAN_CRUD(this.documentoDAO.getAnhos(getParametersAnhios(request))), response);
+                    break;
+                case "listarAnhosPenalidad":
+                    procesarAnhios(new BEAN_CRUD(this.penalidadDAO.getAnhos(getParametersAnhiosPenalidad(request))), response);
                     break;
                 default:
                     request.getRequestDispatcher("/jsp/web/gestiontransparente/" + getJSP(request)).forward(request, response);
@@ -199,6 +207,17 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         }
     }
 
+    private void procesarAnhios(BEAN_CRUD beanCrud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(beanCrud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            LOG.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionTransparenteWebAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     private HashMap<String, Object> getParametersDocumentos(HttpServletRequest request) {
         this.parameters.clear();
         String complemento = request.getParameter("txtComplemento") == null ? "" : request.getParameter("txtComplemento");
@@ -220,10 +239,28 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         return this.parameters;
     }
 
+    private HashMap<String, Object> getParametersAnhiosPenalidad(HttpServletRequest request) {
+        this.parametersPenalidad.clear();
+        this.parametersPenalidad.put("FILTER","");
+        this.parametersPenalidad.put("SQL_ORDERS", " ANHO DESC");
+
+        return this.parametersPenalidad;
+    }
+    private HashMap<String, Object> getParametersAnhios(HttpServletRequest request) {
+        this.parametersAnhiosDocumentos.clear();
+        this.parametersAnhiosDocumentos.put("FILTER", "");
+        this.parametersAnhiosDocumentos.put("SQL_ESTADO", "AND DOCU_ESTADO = TRUE");
+        this.parametersAnhiosDocumentos.put("SQL_CATE_ID", " " + getCategoriaIdFinal(request));
+        this.parametersAnhiosDocumentos.put("SQL_TIDO_ID", " " + getTidoIdFinal(request));
+        //this.parameters.put("SQL_ORDERS", "TO_DATE(DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
+        this.parametersAnhiosDocumentos.put("SQL_ORDERS", " SUBSTRING(DOCU_FECHA_DOCX,7,4) DESC");
+        return this.parametersAnhiosDocumentos;
+    }
+
     private String getCategoriaIdFinal(HttpServletRequest request) {
         String categoria_id;
         if (request.getParameter("cate_id").equals("100")) {
-            categoria_id = "AND CATE_ID <" + request.getParameter("cate_id");
+            categoria_id = "AND CATE_ID =" + request.getParameter("cate_id");
         } else {
             categoria_id = "AND DOCU_FECHA_DOCX != ''  AND CATE_ID =" + request.getParameter("cate_id");
         }

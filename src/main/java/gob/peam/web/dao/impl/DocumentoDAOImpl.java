@@ -229,4 +229,57 @@ public class DocumentoDAOImpl implements DocumentoDAO {
         return list;
     }
 
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters, Connection conn) throws SQLException {
+        BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
+        List<Documento> list = new ArrayList<>();
+        PreparedStatement pst;
+        ResultSet rs;
+        try {
+            pst = conn.prepareStatement("SELECT COUNT(distinct(SUBSTRING(DOCU_FECHA_DOCX,7,4))) AS COUNT FROM WEB.DOCUMENTO WHERE "
+                    + "LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') "
+                    + parameters.get("SQL_ESTADO") + " "
+                    + parameters.get("SQL_TIDO_ID") + " "
+                    + parameters.get("SQL_CATE_ID"));
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            LOG.info(pst.toString());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
+                if (rs.getInt("COUNT") > 0) {
+                    pst = conn.prepareStatement("SELECT distinct(SUBSTRING(DOCU_FECHA_DOCX,7,4)) as ANHO FROM WEB.DOCUMENTO WHERE "
+                            + "LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') "
+                            + parameters.get("SQL_ESTADO") + " "
+                            + parameters.get("SQL_TIDO_ID") + " "
+                            + parameters.get("SQL_CATE_ID") + " "
+                            + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")));
+                    pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    LOG.info(pst.toString());
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
+                        Documento obj = new Documento();
+                        obj.setDocu_metadata(rs.getString("ANHO"));
+                        list.add(obj);
+                    }
+                    beanpagination.setLIST(list);
+                }
+            }
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beanpagination;
+    }
+
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters) throws SQLException {
+        BEAN_PAGINATION beansPagination = null;
+        try (Connection conn = pool.getConnection()) {
+            beansPagination = getAnhos(parameters, conn);
+        } catch (SQLException e) {
+            throw e;
+        }
+        return beansPagination;
+    }
 }
