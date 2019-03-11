@@ -244,16 +244,6 @@ public class OrdenCompraDAOImpl implements gob.peam.web.dao.OrdenCompraDAO {
         return beanpagination;
     }
 
-    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters) throws SQLException {
-        BEAN_PAGINATION beansPagination = null;
-        try (Connection conn = pool.getConnection()) {
-            beansPagination = getAnhos(parameters, conn);
-        } catch (SQLException e) {
-            throw e;
-        }
-        return beansPagination;
-    }
-
     @Override
     public BEAN_PAGINATION getMes(HashMap<String, Object> parameters, Connection conn) throws SQLException {
         BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();

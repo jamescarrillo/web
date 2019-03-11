@@ -157,6 +157,9 @@ $(document).ready(function () {
         if ($(this).attr('tipo') === "4") {
             procesarAjaxMesVehiculo();
         }
+        if ($(this).attr('tipo') === "5") {
+            procesarAjaxMesViatico();
+        }
         $("#" + $(this).attr('idBtnBuscar')).trigger("click");
     });
 
@@ -182,6 +185,9 @@ $(document).ready(function () {
             }
             if ($(this).attr('tipo') === "7") {
                 procesarAjaxAnhosProveedor();
+            }
+            if ($(this).attr('tipo') === "8") {
+                procesarAjaxAnhosViatico();
             }
         });
     });

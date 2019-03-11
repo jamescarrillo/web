@@ -413,7 +413,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         if (request.getParameter("comboAnioTelefonia").equals("-1")) {
             this.parametersTelefonia.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersTelefonia.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioTelefonia") + "' ");
+            this.parametersTelefonia.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioTelefonia") + "' AND MES = '" + request.getParameter("comboMesesTelefonia") + "'");
         }
         this.parametersTelefonia.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageTelefonia") + " OFFSET "
@@ -440,7 +440,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         if (request.getParameter("comboAnioVehiculo").equals("-1")) {
             this.parametersVehiculo.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersVehiculo.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioVehiculo") + "' ");
+            this.parametersVehiculo.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioVehiculo")  + "' AND MES = '" + request.getParameter("comboMesesVehiculo") + "'");
         }
         this.parametersVehiculo.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageVehiculo") + " OFFSET "
@@ -467,7 +467,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         if (request.getParameter("comboAnioProveedor").equals("-1")) {
             this.parametersProveedor.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersProveedor.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioProveedor") + "' ");
+            this.parametersProveedor.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioProveedor")  + "' AND TRIMESTRE = '" + request.getParameter("comboMesesProveedor") + "'");
         }
         this.parametersProveedor.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageProveedor") + " OFFSET "

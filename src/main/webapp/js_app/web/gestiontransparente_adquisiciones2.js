@@ -1,9 +1,5 @@
 $(document).ready(function () {
 
-    //cargarAniosCombo($('#comboAnioPenalidad'), 2005, "-1", 'AÑO');
-    cargarAniosCombo($('#comboAnioViatico'), 2010, "-1", 'AÑO');
-
-
     $("#FrmPenalidad").submit(function () {
         $("#nameFormPenalidad").val("FrmPenalidad");
         $("#numberPagePenalidad").val(1);
@@ -102,6 +98,73 @@ $(document).ready(function () {
     addEventoCombosPaginar();
     processAjaxDataAdquisiciones2();
 });
+
+function procesarAjaxAnhosViatico() {
+    var datosSerializadosCompletos = "action=listarAnhosViatico";
+    $.ajax({
+        url: getContext() + '/documentos/operacionesweb',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosViatico(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosViatico(BEAN_PAGINATION) {
+    $('#comboAnioViatico').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioViatico').append(option);
+        });
+        procesarAjaxMesViatico();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function procesarAjaxMesViatico() {
+    var datosSerializadosCompletos = "action=listarMesViatico";
+    datosSerializadosCompletos += "&anho=" + $('#comboAnioViatico').val().toString();
+    $.ajax({
+        url: getContext() + '/documentos/operacionesweb',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarMesViatico(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarMesViatico(BEAN_PAGINATION) {
+    $('#comboMesesViatico').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        var mes;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            mes = traerNombreMes(value.mes);
+            option = "<option value='" + value.mes + "'>" + mes + "</option>";
+            $('#comboMesesViatico').append(option);
+        });
+        procesarAjaxViaticoWeb();
+    } else {
+        console.log("vacio");
+    }
+}
 
 function procesarAjaxAnhosPenalidad() {
     var datosSerializadosCompletos = "action=listarAnhosPenalidad";
@@ -436,6 +499,6 @@ function listarViaticoWeb(BEAN_PAGINATION) {
         $('#txtTituloViatico').focus();
     } else {
         $pagination.twbsPagination('destroy');
-        viewAlertWeb('warning', 'No se encontraron resultados');
+        //viewAlertWeb('warning', 'No se encontraron resultados');
     }
 }

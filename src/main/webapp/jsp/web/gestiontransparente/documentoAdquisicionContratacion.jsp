@@ -605,7 +605,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-viaticos-y-pasajes" aria-expanded="false">
+                                        <a class="AnioOrdenTipo collapsed" tipo="8" data-toggle="collapse" data-parent="#tab" href="#tab-viaticos-y-pasajes" aria-expanded="false">
                                             Viáticos y Pasajes
                                         </a>
                                     </h3>
@@ -615,10 +615,14 @@
                                         <div class="row">
                                             <form id="FrmViatico">                                               
                                                 <div class="col-md-2 col-sm-3 col-xs-12">
-                                                    <select id="comboAnioViatico" name="comboAnioViatico" class="form-control combo-paginar" idBtnBuscar='btnBuscarViatico' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="comboAnioViatico" tipo="5" name="comboAnioViatico" class="form-control combo-paginarOrden" idBtnBuscar='btnBuscarViatico' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
-                                                <div class="col-md-8 col-sm-9 col-xs-12">
+                                                <div class="col-md-2 col-sm-3 col-xs-12">
+                                                    <select id="comboMesesViatico" name="comboMesesViatico" class="form-control combo-paginar" idBtnBuscar='btnBuscarViatico' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-9 col-xs-12">
                                                     <div class="input-field">
                                                         <input type="text" name="txtTituloViatico" id="txtTituloViatico">
                                                         <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Ruta o Usuario</font></font></label>

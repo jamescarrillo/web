@@ -129,6 +129,12 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                 case "listarAnhosPenalidad":
                     procesarAnhios(new BEAN_CRUD(this.penalidadDAO.getAnhos(getParametersAnhiosPenalidad(request))), response);
                     break;
+                case "listarAnhosViatico":
+                    procesarAnhios(new BEAN_CRUD(this.viaticoDAO.getAnhos(getParametersAnhosyMES(request, 1), 1)), response);
+                    break;
+                case "listarMesViatico":
+                    procesarAnhios(new BEAN_CRUD(this.viaticoDAO.getAnhos(getParametersAnhosyMES(request, 2), 2)), response);
+                    break;
                 default:
                     request.getRequestDispatcher("/jsp/web/gestiontransparente/" + getJSP(request)).forward(request, response);
                     break;
@@ -348,6 +354,20 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             Logger.getLogger(FinanzaAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    private HashMap<String, Object> getParametersAnhosyMES(HttpServletRequest request, int tipo) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", "");
+        if (tipo == 1) {
+            this.parameters.put("SQL_ESTADO", " AND ESTADO = TRUE ");
+            this.parameters.put("SQL_ORDERS", " ANHO DESC");
+        } else {
+            this.parameters.put("SQL_ESTADO", " AND ESTADO = TRUE AND ANHO ='" + String.valueOf(request.getParameter("anho") + "'"));
+            this.parameters.put("SQL_ORDERS", " MES DESC");
+        }
+
+        return this.parameters;
+    }
 
     private HashMap<String, Object> getParametersFinanzas(HttpServletRequest request) {
         this.parametersF.clear();
@@ -438,7 +458,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         if (request.getParameter("comboAnioViatico").equals("-1")) {
             this.parameters.put("SQL_ANIO", " AND ESTADO = TRUE ");
         } else {
-            this.parameters.put("SQL_ANIO", " AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioViatico") + "' ");
+            this.parameters.put("SQL_ANIO", " AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioViatico") + "' AND MES = '" + request.getParameter("comboMesesViatico") + "'");
         }
         this.parameters.put("SQL_ORDERS", "ID DESC");
         this.parameters.put("LIMIT",
