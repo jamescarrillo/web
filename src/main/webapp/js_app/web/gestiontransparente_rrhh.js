@@ -277,6 +277,8 @@ function listarPersonalWeb(BEAN_PAGINATION, complemento) {
         var pension;
         var fecha_ingreso;
         var oficina_area;
+        var ocultar;
+        var inverso;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
             fila = "<tr>";
             if (value.numero_dni !== undefined) {
@@ -304,16 +306,32 @@ function listarPersonalWeb(BEAN_PAGINATION, complemento) {
             } else {
                 oficina_area = "";
             }
-            fila += "<td class='text-medium-table text-middle text-center'>" + dni + "</td>";
-            fila += "<td class='text-medium-table text-middle'>" + value.apellidos_nombres + "</td>";
-            fila += "<td class='text-medium-table text-middle'>" + fecha_ingreso + "</td>";
-            fila += "<td class='text-medium-table text-middle'>" + oficina_area + "</td>";
-            fila += "<td class='text-medium-table text-middle'>" + cargo + "</td>";
-            fila += "<td class='text-medium-table text-middle text-center'>" + pension + "</td>";
+            switch (complemento) {
+                case "" :
+                    ocultar = "";
+                    inverso = "ocultar";
+                    break;
+                case "_CLS":
+                    ocultar = "ocultar";
+                    inverso = "";
+                    break;
+                case "_CAS" :
+                    ocultar = "ocultar";
+                    inverso = "";
+                    break;
+            }
+
+            fila += "<td class='text-medium-table text-middle '>" + value.apellidos_nombres + "</td>";
+            fila += "<td class='text-medium-table text-middle " + ocultar + " text-center'>" + dni + "</td>";
+            fila += "<td class='text-medium-table text-middle " + ocultar + "'>" + fecha_ingreso + "</td>";
+            fila += "<td class='text-medium-table text-middle '>" + oficina_area + "</td>";
+            fila += "<td class='text-medium-table text-middle " + ocultar + "'>" + cargo + "</td>";
+            fila += "<td class='text-medium-table text-middle " + ocultar + " text-center'>" + pension + "</td>";
+            fila += "<td class='text-medium-table text-middle text-center "+inverso+"'>" + value.codigo_civil + "</td>";
             fila += "<td class='text-medium-table text-middle text-center'>" + value.remuneracion_mensual.toFixed(2) + "</td>";
-            fila += "<td class='text-medium-table text-middle text-center'>" + value.bonificacion_quinq.toFixed(2) + "</td>";
-            fila += "<td class='text-medium-table text-middle text-center'>" + value.beneficios.toFixed(2) + "</td>";
-            fila += "<td class='text-medium-table text-middle text-center'>" + value.ingreso_total.toFixed(2) + "</td>";
+            fila += "<td class='text-medium-table text-middle " + ocultar + " text-center'>" + value.bonificacion_quinq.toFixed(2) + "</td>";
+            fila += "<td class='text-medium-table text-middle " + ocultar + " text-center'>" + value.beneficios.toFixed(2) + "</td>";
+            fila += "<td class='text-medium-table text-middle " + ocultar + " text-center'>" + value.ingreso_total.toFixed(2) + "</td>";
             fila += "</tr>";
             $('#tbodyPersonal' + complemento).append(fila);
         });
