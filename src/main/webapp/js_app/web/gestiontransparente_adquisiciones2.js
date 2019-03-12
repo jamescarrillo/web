@@ -96,7 +96,7 @@ $(document).ready(function () {
     });
     ejecucionDocumento("");
     addEventoCombosPaginar();
-    processAjaxDataAdquisiciones2();
+    //processAjaxDataAdquisiciones2();
 });
 
 function procesarAjaxAnhosViatico() {

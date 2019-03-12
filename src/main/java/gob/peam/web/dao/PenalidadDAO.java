@@ -17,5 +17,6 @@ import java.util.HashMap;
  */
 public interface PenalidadDAO extends CRUD<Penalidad> {
     BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters, Connection conn) throws SQLException;
+
     BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters) throws SQLException;
 }

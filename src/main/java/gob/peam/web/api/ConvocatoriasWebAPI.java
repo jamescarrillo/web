@@ -1,4 +1,4 @@
-    /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -103,6 +103,9 @@ public class ConvocatoriasWebAPI extends HttpServlet {
                         case "paginarPuestoConv":
                             procesarPuestoConv(new BEAN_CRUD(this.puestoconvDAO.getPagination(getParametersPuestoConv(request))), response);
                             break;
+                        case "listarAnhosConvocatoriaPers":
+                            procesarAnhos(new BEAN_CRUD(this.convocatoriapersDAO.getAnhos(getParametersAnhos(request))), response);
+                            break;
                         default:
                             request.getRequestDispatcher("/jsp/web/convocatorias/convocatoriaspers.jsp").forward(request, response);
                             break;
@@ -117,6 +120,9 @@ public class ConvocatoriasWebAPI extends HttpServlet {
                             break;
                         case "paginarCalendario":
                             procesarCalendario(new BEAN_CRUD(this.calendarioDAO.getPagination(getParametersCalendario(request))), response);
+                            break;
+                        case "listarAnhosConvocatoriaBien":
+                            procesarAnhos(new BEAN_CRUD(this.convocatoriapersDAO.getAnhos(getParametersAnhos(request))), response);
                             break;
                         default:
                             request.getRequestDispatcher("/jsp/web/convocatorias/convocatoriasbien.jsp").forward(request, response);
@@ -179,6 +185,16 @@ public class ConvocatoriasWebAPI extends HttpServlet {
         }
     }
 
+    private void procesarAnhos(BEAN_CRUD bean_crud, HttpServletResponse response) {
+        try {
+            this.jsonResponse = this.json.toJson(bean_crud);
+            response.setContentType("application/json");
+            response.getWriter().write(this.jsonResponse);
+            logger.info(this.jsonResponse);
+        } catch (IOException ex) {
+            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private HashMap<String, Object> getParametersConvocatoriaPers(HttpServletRequest request) {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtTituloConvocatoria").toLowerCase());
@@ -261,6 +277,18 @@ public class ConvocatoriasWebAPI extends HttpServlet {
         this.parameters.clear();
         this.parameters.put("FILTER", "");
         this.parameters.put("IDCONVO", " AND COPER_ID = " + Integer.parseInt(request.getParameter("CoperID")));
+        return this.parameters;
+    }
+    
+    private HashMap<String, Object> getParametersAnhos(HttpServletRequest request) {
+        this.parameters.clear();
+        this.parameters.put("FILTER", " ");
+        if (request.getParameter("comboTipoEstado").equals("-1")) {
+            this.parameters.put("SQL_ESTADO", "");
+        } else {
+            this.parameters.put("SQL_ESTADO", " AND ESTADO = " + request.getParameter("comboTipoEstado") + " ");
+        }
+        this.parameters.put("SQL_ORDERS", " ORDER BY ANHO DESC");
         return this.parameters;
     }
 

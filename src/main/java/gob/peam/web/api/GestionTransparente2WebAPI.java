@@ -440,7 +440,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         if (request.getParameter("comboAnioVehiculo").equals("-1")) {
             this.parametersVehiculo.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersVehiculo.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioVehiculo")  + "' AND MES = '" + request.getParameter("comboMesesVehiculo") + "'");
+            this.parametersVehiculo.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioVehiculo") + "' AND MES = '" + request.getParameter("comboMesesVehiculo") + "'");
         }
         this.parametersVehiculo.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageVehiculo") + " OFFSET "
@@ -467,7 +467,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         if (request.getParameter("comboAnioProveedor").equals("-1")) {
             this.parametersProveedor.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
-            this.parametersProveedor.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioProveedor")  + "' AND TRIMESTRE = '" + request.getParameter("comboMesesProveedor") + "'");
+            this.parametersProveedor.put("SQL_ESTADO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioProveedor") + "' AND TRIMESTRE = '" + request.getParameter("comboMesesProveedor") + "'");
         }
         this.parametersProveedor.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageProveedor") + " OFFSET "
@@ -532,12 +532,18 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         this.parametersanhios.put("SQL_ORDERS", "ANHO DESC");
         if (this.action.equals("listarAnhos")) {
             if (Integer.parseInt(request.getParameter("tipo")) == 3) {
-                this.parametersanhios.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("tipo"));
+                this.parametersanhios.put("SQL_ESTADO", "AND TIPO = 3");
             } else {
-                this.parametersanhios.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("tipo") + " AND ESTADO = TRUE ");
+                if (Integer.parseInt(request.getParameter("tipo")) == 2) {
+                    this.parametersanhios.put("SQL_ESTADO", "AND TIPO = 2");
+                } else {
+                    this.parametersanhios.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("tipo") + " AND ESTADO = TRUE ");
+                }
             }
+        } else {
+            this.parametersanhios.put("SQL_ESTADO", " AND ESTADO = TRUE ");
         }
-        this.parametersanhios.put("SQL_ESTADO", " AND ESTADO = TRUE ");
+
         return this.parametersanhios;
     }
 

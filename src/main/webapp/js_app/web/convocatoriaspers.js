@@ -1,8 +1,5 @@
 $(document).ready(function () {
 
-    //cargarAniosCombo($('#comboAnioConvocatoria'), 2005, "-1", 'AÑOS');
-    cargarAniosComboActuales($('#comboAnioConvocatoria'), 2005);
-
     $("#FrmConvocatoria").submit(function () {
         $('#tbodyConvocatoria').empty();
         $('#numberPageConvocatoria').val("1");
@@ -26,9 +23,42 @@ $(document).ready(function () {
     });
 
     addEventoCombosPaginar();
-    procesarAjaxConvocatoriaWeb();
+    procesarAjaxAnhosConvocatoriaPers();
 
 });
+
+function procesarAjaxAnhosConvocatoriaPers() {
+    var datosSerializadosCompletos = "action=listarAnhosConvocatoriaPers";
+    datosSerializadosCompletos += "&comboTipoEstado="+$('#comboTipoEstado').val();
+    $.ajax({
+        url: getContext() + '/convocatorias/convocatoria-de-personal',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosConvocatoriaPers(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosConvocatoriaPers(BEAN_PAGINATION) {
+    $('#comboAnioConvocatoria').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioConvocatoria').append(option);
+        });
+        procesarAjaxConvocatoriaWeb();
+    } else {
+        console.log("vacio");
+    }
+}
 
 function procesarAjaxConvocatoriaWeb() {
     var datosSerializadosCompletos = $('#' + $('#nameFormConvocatoria').val()).serialize();
