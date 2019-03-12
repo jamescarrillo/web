@@ -200,4 +200,56 @@ public class FinanzaDAOImpl implements FinanzaDAO {
         return beancrud;
     }
 
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters, Connection conn) throws SQLException {
+        BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
+        List<Finanza> list = new ArrayList<>();
+        PreparedStatement pst;
+        ResultSet rs;
+        try {
+            pst = conn.prepareStatement("SELECT COUNT(DOCU_ID) AS COUNT FROM WEB.f00017 WHERE "
+                    + "LOWER(DESCRIPCION) LIKE CONCAT('%',?,'%') "
+                    + parameters.get("SQL_ESTADO") + " "
+                    + parameters.get("SQL_TIPO"));
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            LOG.info(pst.toString());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
+                if (rs.getInt("COUNT") > 0) {
+                    pst = conn.prepareStatement("SELECT * FROM WEB.f00017 WHERE "
+                            + "LOWER(DESCRIPCION) LIKE CONCAT('%',?,'%') "
+                            + parameters.get("SQL_ESTADO") + " "
+                            + parameters.get("SQL_TIPO") + " "
+                            + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")));
+                    pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    LOG.info(pst.toString());
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
+                        Finanza obj = new Finanza();
+                        obj.setAnho(rs.getString("ANHO"));
+                        list.add(obj);
+                    }
+                    beanpagination.setLIST(list);
+                }
+            }
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beanpagination;
+    }
+
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters) throws SQLException {
+        BEAN_PAGINATION beansPagination = null;
+        try (Connection conn = pool.getConnection()) {
+                beansPagination = getAnhos(parameters, conn);//años
+        } catch (SQLException e) {
+            throw e;
+        }
+        return beansPagination;
+    }
+
 }

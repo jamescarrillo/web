@@ -51,6 +51,9 @@ public class GestionTransparenteWebAPI extends HttpServlet {
     private String jsonResponseFinanza;
     private String jsonResponsePenalidad;
     private HashMap<String, Object> parameters;
+    private HashMap<String, Object> parametersFA1;
+    private HashMap<String, Object> parametersFA2;
+    private HashMap<String, Object> parametersPA;
     private HashMap<String, Object> parametersAnhiosDocumentos;
     private HashMap<String, Object> JSONROOT;
     private HashMap<String, Object> parametersF;
@@ -74,6 +77,9 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         this.JSONROOT = new HashMap<>();
         this.parametersF = new HashMap<>();
         this.parametersF2 = new HashMap<>();
+        this.parametersFA1 = new HashMap<>();
+        this.parametersFA2 = new HashMap<>();
+        this.parametersPA = new HashMap<>();
         this.parametersPenalidad = new HashMap<>();
         this.action = "";
 
@@ -107,6 +113,15 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                     break;
                 case "paginarPresupuesto":
                     procesarPresupuesto(new BEAN_CRUD(this.presupuestoDAO.getPagination(getParametersPresupuesto(request))), response);
+                    break;
+                case "paginarPresupuestoAnhos":
+                    procesarAnhios(new BEAN_CRUD(this.presupuestoDAO.getAnhos(getParametersPresupuestoAnhos(request))), response);
+                    break;
+                case "paginarFinanzasAnhos1":
+                    procesarAnhios(new BEAN_CRUD(this.finanzaDAO.getAnhos(getParametersFinanzasAnhos1(request))), response);
+                    break;
+                case "paginarFinanzasAnhos2":
+                    procesarAnhios(new BEAN_CRUD(this.finanzaDAO.getAnhos(getParametersFinanzasAnhos2(request))), response);
                     break;
                 case "paginarFinanza":
                     procesarFinanza(new BEAN_CRUD(this.finanzaDAO.getPagination(getParametersFinanzas(request))), response);
@@ -247,11 +262,12 @@ public class GestionTransparenteWebAPI extends HttpServlet {
 
     private HashMap<String, Object> getParametersAnhiosPenalidad(HttpServletRequest request) {
         this.parametersPenalidad.clear();
-        this.parametersPenalidad.put("FILTER","");
+        this.parametersPenalidad.put("FILTER", "");
         this.parametersPenalidad.put("SQL_ORDERS", " ANHO DESC");
 
         return this.parametersPenalidad;
     }
+
     private HashMap<String, Object> getParametersAnhios(HttpServletRequest request) {
         this.parametersAnhiosDocumentos.clear();
         this.parametersAnhiosDocumentos.put("FILTER", "");
@@ -322,6 +338,20 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         }
     }
 
+    private HashMap<String, Object> getParametersPresupuestoAnhos(HttpServletRequest request) {
+        this.parametersPA.clear();
+        this.parametersPA.put("FILTER", "");
+        this.parametersPA.put("SQL_ESTADO", "AND ESTADO = TRUE");
+        if (request.getParameter("comboTipoPresupuestoInstitucional").equals("-1")) {
+            this.parametersPA.put("SQL_TIDO_ID", "");
+        } else {
+            this.parametersPA.put("SQL_TIDO_ID", "AND TIPO = " + request.getParameter("comboTipoPresupuestoInstitucional"));
+        }
+        this.parametersPA.put("SQL_ORDERS", "ANHO DESC");
+
+        return this.parametersPA;
+    }
+
     private HashMap<String, Object> getParametersPresupuesto(HttpServletRequest request) {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtPresupuestoInstitucional").toLowerCase());
@@ -354,7 +384,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             Logger.getLogger(FinanzaAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private HashMap<String, Object> getParametersAnhosyMES(HttpServletRequest request, int tipo) {
         this.parameters.clear();
         this.parameters.put("FILTER", "");
@@ -389,6 +419,35 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                 + (Integer.parseInt(request.getParameter("numberPageInfoFinanciera")) - 1)
                 * Integer.parseInt(request.getParameter("sizePageInfoFinanciera")));
         return this.parametersF;
+    }
+
+    private HashMap<String, Object> getParametersFinanzasAnhos1(HttpServletRequest request) {
+        this.parametersFA1.clear();
+        this.parametersFA1.put("FILTER", "");
+        this.parametersFA1.put("SQL_ESTADO", "AND ESTADO = TRUE");
+        if (request.getParameter("comboCategoriaInfoFinanciera").equals("-1")) {
+            this.parametersFA1.put("SQL_TIPO", "");
+        } else {
+            this.parametersFA1.put("SQL_TIPO", "AND TIPO = " + request.getParameter("comboCategoriaInfoFinanciera"));
+        }
+
+        this.parametersFA1.put("SQL_ORDERS", "ANHO DESC");
+        return this.parametersFA1;
+
+    }
+
+    private HashMap<String, Object> getParametersFinanzasAnhos2(HttpServletRequest request) {
+        this.parametersFA2.clear();
+        this.parametersFA2.put("FILTER", "");
+        this.parametersFA2.put("SQL_ESTADO", "AND ESTADO = TRUE");
+        if (request.getParameter("comboCategoriaInfoPresupuestal").equals("-1")) {
+            this.parametersFA2.put("SQL_TIPO", "");
+        } else {
+            this.parametersFA2.put("SQL_TIPO", "AND TIPO = " + request.getParameter("comboCategoriaInfoPresupuestal"));
+        }
+        this.parametersFA2.put("SQL_ORDERS", "ANHO DESC");
+        return this.parametersFA2;
+
     }
 
     private HashMap<String, Object> getParametersFinanzas2(HttpServletRequest request) {
