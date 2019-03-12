@@ -58,9 +58,7 @@
                                             PAC y Modificatorias
                                         </a>
                                     </h3>
-                                </div>
-                                <div id="tab-documentos" class="panel-collapse collapse" aria-expanded="false" style="">
-                                    <div class="panel-body">
+                                </div> 
                                         <div class="row">
                                             <form id="FrmDocumentos">
                                                 <div class="col-md-2 col-sm-3 col-xs-12">

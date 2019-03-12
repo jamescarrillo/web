@@ -1,10 +1,10 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnioDocumento'), 2005, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioDocumento_AS'), 2005, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioDocumento_DG'), 2005, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioDocumento_ND'), 2005, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioDocumento_ID'), 2005, "-1", 'Año');
+    cargarAniosCombo($('#comboAnioDocumento'), 2005, new Date().getFullYear(), 'Año');
+    cargarAniosCombo($('#comboAnioDocumento_AS'), 2005, new Date().getFullYear(), 'Año');
+    //cargarAniosCombo($('#comboAnioDocumento_DG'), 2005, new Date().getFullYear(), 'Año');
+    //cargarAniosCombo($('#comboAnioDocumento_ND'), 2005, new Date().getFullYear(), 'Año');
+    cargarAniosCombo($('#comboAnioDocumento_ID'), 2005, new Date().getFullYear(), 'Año');
 
     $("#FrmDocumentos").submit(function () {
         $('#tbodyDocumentos').empty();
@@ -89,9 +89,12 @@ $(document).ready(function () {
     $('#cate_id').on('change', function () {
         $('#tido_id').val($("#cate_id option:selected").attr('tido_id'));
     });
+
     addComboCategoriaDoc();
     addEventoCombosPaginar();
-    procesarAjaxDocumentosWeb('');
+
+    $('#item-documento-inicial ').trigger("click");
+    //procesarAjaxDocumentosWeb('');
 
 });
 
@@ -158,9 +161,9 @@ function listarDocumentos(BEAN_PAGINATION, nombre_complemento) {
              fila += "docu_metadata='" + value.docu_metadata + "' ";
              */
             fila += ">";
-            if (nombre_complemento==='_DG' || nombre_complemento==='_ND') {
-            }else{
-               fila += "<td class='text-center align-middle'>" + fecha + "</td>";
+            if (nombre_complemento === '_DG' || nombre_complemento === '_ND') {
+            } else {
+                fila += "<td class='text-center align-middle'>" + fecha + "</td>";
             }
             fila += "<td class='align-middle'>" + value.docu_titulo + "</td>";
             fila += "<td class='align-middle'>" + value.docu_resumen + "</td>";
@@ -199,21 +202,6 @@ function listarDocumentos(BEAN_PAGINATION, nombre_complemento) {
 
 
 function addComboCategoriaDoc() {
-    $.ajax({
-        url: getContext() + '/documentos/operacionesweb?action=getCategoriasDoc',
-        type: 'POST',
-        data: "",
-        dataType: 'json',
-        success: function (jsonResponse) {
-            $('#cboCategoria_Doc').append(`<option value="">TODOS</option>`);
-            $(jsonResponse.DATA_CATEGORIAS).each(function (index, value) {
-                $('#cboCategoria_Doc').append(`<option value="${value.id_cate}">${value.nombre}</option>`);
-            });
-        },
-        error: function () {
-            /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
-        }
-    });
     $('#cboCategoria_Doc').on('change', function () {
         if (this.value !== "") {
             $('#cate_id').val(this.value);
@@ -221,4 +209,27 @@ function addComboCategoriaDoc() {
             $('#cate_id').val("100");
         }
     });
+    $.ajax({
+        url: getContext() + '/documentos/operacionesweb?action=getCategoriasDoc',
+        type: 'POST',
+        data: "",
+        dataType: 'json',
+        success: function (jsonResponse) {
+            //$('#cboCategoria_Doc').append(`<option value="">TODOS</option>`);
+            var primero;
+            $(jsonResponse.DATA_CATEGORIAS).each(function (index, value) {
+                if(index === 0){
+                    primero = value.id_cate;
+                }
+                $('#cboCategoria_Doc').append(`<option value="${value.id_cate}">${value.nombre}</option>`);
+            });
+            //SET
+            //$('#cboCategoria_Doc').val(primero);
+            
+        },
+        error: function () {
+            /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
+        }
+    });
+    
 }

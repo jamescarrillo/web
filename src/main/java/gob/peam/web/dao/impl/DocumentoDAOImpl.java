@@ -42,25 +42,29 @@ public class DocumentoDAOImpl implements DocumentoDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(DOCU_ID) AS COUNT FROM WEB.DOCUMENTO WHERE "
-                    + "LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') "
+                    + "(LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') OR "
+                    + "LOWER(DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
                     + parameters.get("SQL_ANIO") + " "
                     + parameters.get("SQL_ESTADO") + " "
                     + parameters.get("SQL_TIDO_ID") + " "
                     + parameters.get("SQL_CATE_ID"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            pst.setString(2, String.valueOf(parameters.get("FILTER")));
             LOG.info(pst.toString());
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
                 if (rs.getInt("COUNT") > 0) {
                     pst = conn.prepareStatement("SELECT * FROM WEB.DOCUMENTO WHERE "
-                            + "LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') "
+                            + "(LOWER(DOCU_TITULO) LIKE CONCAT('%',?,'%') OR "
+                            + "LOWER(DOCU_RESUMEN) LIKE CONCAT('%',?,'%')) "
                             + parameters.get("SQL_ANIO") + " "
                             + parameters.get("SQL_ESTADO") + " "
                             + parameters.get("SQL_TIDO_ID") + " "
                             + parameters.get("SQL_CATE_ID") + " "
                             + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
                     pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    pst.setString(2, String.valueOf(parameters.get("FILTER")));
                     LOG.info(pst.toString());
                     rs = pst.executeQuery();
                     while (rs.next()) {

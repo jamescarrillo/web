@@ -256,7 +256,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         this.parametersAnhiosDocumentos.clear();
         this.parametersAnhiosDocumentos.put("FILTER", "");
         this.parametersAnhiosDocumentos.put("SQL_ESTADO", "AND DOCU_ESTADO = TRUE");
-        this.parametersAnhiosDocumentos.put("SQL_CATE_ID", " " + getCategoriaIdFinal(request));
+        this.parametersAnhiosDocumentos.put("SQL_CATE_ID", getCategoriaIdFinal(request));
         this.parametersAnhiosDocumentos.put("SQL_TIDO_ID", " " + getTidoIdFinal(request));
         //this.parameters.put("SQL_ORDERS", "TO_DATE(DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
         this.parametersAnhiosDocumentos.put("SQL_ORDERS", " SUBSTRING(DOCU_FECHA_DOCX,7,4) DESC");

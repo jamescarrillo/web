@@ -54,10 +54,11 @@
                             <div class="col-md-12">
                                 <div class="border-tab transparent-nav">
                                     <ul class="nav nav-tabs nav-tabs-gt nav-justified" role="tablist">
-                                        <li role="presentation" class="active"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-resoluciones-gerenciales" role="tab" class="waves-effect waves-dark item-documento" cate_id="100" tido_id="10" formulario="FrmDocumentos" combo_anio="comboAnioDocumento" data-toggle="tab">Resoluciones Gerenciales</a></li>
+                                        <li role="presentation" class="active"><a id="item-documento-inicial" style="padding-top: 5px; padding-bottom: 5px" href="#tab-resoluciones-gerenciales" role="tab" class="waves-effect waves-dark item-documento" cate_id="100" tido_id="10" formulario="FrmDocumentos" combo_anio="comboAnioDocumento" data-toggle="tab">Resoluciones Gerenciales</a></li>
                                         <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-actas-de-sesion" role="tab" class="waves-effect waves-dark item-documento" cate_id="2800" tido_id="" formulario="FrmDocumentos_AS" combo_anio="comboAnioDocumento_AS" data-toggle="tab">Actas de Sesión del Consejo Directivo</a></li>
-                                        <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-documentos-de-gestion" role="tab" class="waves-effect waves-dark item-documento" cate_id="100" tido_id="11" formulario="FrmDocumentos_DG" combo_anio="comboAnioDocumento_DG" data-toggle="tab">Documentos de Gestión</a></li>
+                                        <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-documentos-de-gestion" role="tab" class="waves-effect waves-dark item-documento" cate_id="2" tido_id="10" formulario="FrmDocumentos_DG" combo_anio="comboAnioDocumento_DG" data-toggle="tab">Documentos de Gestión</a></li>
                                         <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-normas-y-directivas" role="tab" class="waves-effect waves-dark item-documento" cate_id="100" tido_id="12" formulario="FrmDocumentos_ND" combo_anio="comboAnioDocumento_ND" data-toggle="tab">Normas y <br> Directivas</a></li>
+                                        <!--li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-normas-y-directivas" role="tab" class="waves-effect waves-dark item-documento" cate_id="100" tido_id="12" formulario="FrmDocumentos_ND" combo_anio="comboAnioDocumento_ND" data-toggle="tab">Normas y <br> Directivas</a></li-->
                                         <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-indicadores-de-desempenio" role="tab" class="waves-effect waves-dark item-documento" cate_id="900" tido_id="" formulario="FrmDocumentos_ID" combo_anio="comboAnioDocumento_ID" data-toggle="tab">Indicadores de Desempeño</a></li>
                                     </ul>
                                     <div class="panel-body" style="padding-top: 0px">
@@ -189,6 +190,7 @@
                                                     <form id="FrmDocumentos_DG">
                                                         <div class="col-md-2 col-sm-3 col-xs-12" style="display: none">
                                                             <select id="comboAnioDocumento_DG" name="comboAnioDocumento_DG" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento_DG' style="border: 1px solid #00793D; margin-top: 40px">
+                                                                <option value="-1"></option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-2 col-sm-3 col-xs-12">
@@ -221,7 +223,7 @@
                                                             <table class="table">
                                                                 <thead class="bg-success">
                                                                     <tr>
-                                                                        
+
                                                                         <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
                                                                         <th style="width: 65%" class="align-middle">RESUMEN</th>
                                                                         <th style="width: 10%" class="text-center align-middle">PDF</th>
@@ -254,6 +256,7 @@
                                                     <form id="FrmDocumentos_ND">
                                                         <div style="display: none">
                                                             <select id="comboAnioDocumento_ND" name="comboAnioDocumento_ND" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumento_ND' style="border: 1px solid #00793D; margin-top: 40px">
+                                                                <option value="-1"></option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-10 col-sm-8 col-xs-12">
@@ -282,7 +285,7 @@
                                                             <table class="table">
                                                                 <thead class="bg-success">
                                                                     <tr>
-                                                                        
+
                                                                         <th style="width: 25%" class="align-middle">TÍTULO DOCUMENTO</th>
                                                                         <th style="width: 65%" class="align-middle">RESUMEN</th>
                                                                         <th style="width: 10%" class="text-center align-middle">PDF</th>

@@ -13,7 +13,7 @@ $(document).ready(function () {
                                 <a href="http://www.regionsanmartin.gob.pe/"><img src="${document.querySelector('#pathLogoGORESAM').value}" class="img-responsive" alt="Imagen"></a>
                             </div>
                             <div class="col-xs-12">
-                                <h5 class="text-peam-negrita">
+                                <h5 class="">
                                     El Proyecto Especial Alto Mayo (PEAM) es una unidad ejecutora del Gobierno Regional de San Martín desde el 
                                     09 de setiembre del año 2003, fecha en que mediante D.S. Nº. 024-2003-VIVIENDA se dispone su transferencia 
                                     definitiva desde el Instituto Nacional de Desarrollo (INADE).
@@ -138,7 +138,41 @@ function setDirectivos() {
     for (let it = 0; it < directivos.length; it++) {
         let directivo = directivos[it];
         i++;
-        if (directivo.cargo.toLowerCase() === "representante") {
+        if (directivo.cargo.toLowerCase() === "presidente del consejo") {
+            
+            div_general +=
+                    `
+            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-presidente" aria-expanded="false">
+                                            ${directivo.nombres_apellidos}
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-presidente" class="panel-collapse collapse" aria-expanded="false" style="">
+                                    <div style="margin-left: 15px; margin-right: 15px">
+                                        <div class="row" style="border: 3px solid;color: #00793D">
+                                            <div class="col-sm-4">
+                                                <img class="img-responsive" style="border: 3px solid;color: #00793D;height: 180px; width: 200px; margin-top: 5px;margin-left: 5px;margin-bottom: 5px;" 
+                                                    src="/web/peam_resources_app/conf_app/DirectivoFuncionario/img/${directivo.foto}" 
+                                                     alt="Image">
+                                            </div>
+                                            <div class="col-sm-8" style="margin-top: 20px; margin-bottom: 20px">
+                                                <h5><strong>Cargo: </strong>${directivo.cargo}</h5>
+                                                <h5><strong>Designado Por: </strong>${directivo.resolucion}</h5>
+                                                <h5><strong>Representante de: </strong>${directivo.institucion}</h5>
+                                                <h5><strong>Correo Electrónico: </strong>${directivo.e_mail}</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+            `;
+            
+        } else {
+            console.log("entro diferente ")
             html_representantes +=
                     `
             <div class="panel panel-default">
@@ -168,37 +202,9 @@ function setDirectivos() {
                                 </div>
                             </div>
                     `;
-        } else {
-            div_general +=
-                    `
-            <div class="panel panel-default">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#tab" href="#tab-presidente" aria-expanded="true">
-                                            ${directivo.nombres_apellidos}
-                                        </a>
-                                    </h3>
-                                </div>
-                                <div id="tab-presidente" class="panel-collapse collapse in" aria-expanded="true" style="">
-                                    <div style="margin-left: 15px; margin-right: 15px">
-                                        <div class="row" style="border: 3px solid;color: #00793D">
-                                            <div class="col-sm-4">
-                                                <img class="img-responsive" style="border: 3px solid;color: #00793D;height: 180px; width: 200px; margin-top: 5px;margin-left: 5px;margin-bottom: 5px;" 
-                                                    src="/web/peam_resources_app/conf_app/DirectivoFuncionario/img/${directivo.foto}" 
-                                                     alt="Image">
-                                            </div>
-                                            <div class="col-sm-8" style="margin-top: 20px; margin-bottom: 20px">
-                                                <h5><strong>Cargo: </strong>${directivo.cargo}</h5>
-                                                <h5><strong>Designado Por: </strong>${directivo.resolucion}</h5>
-                                                <h5><strong>Representante de: </strong>${directivo.institucion}</h5>
-                                                <h5><strong>Correo Electrónico: </strong>${directivo.e_mail}</h5>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-            `;
+            console.log(html_representantes)
+            
+            
         }
     }
     div_general += html_representantes;
