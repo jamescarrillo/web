@@ -7,6 +7,8 @@ package gob.peam.web.dao;
 
 import gob.peam.web.model.ConvocatoriaBien;
 import gob.peam.web.utilities.BEAN_CRUD;
+import gob.peam.web.utilities.BEAN_PAGINATION;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.HashMap;
 
@@ -19,5 +21,9 @@ public interface ConvocatoriaBienDAO extends CRUD<ConvocatoriaBien>{
     BEAN_CRUD activate(long id, HashMap<String, Object> parameters) throws SQLException;
     
     BEAN_CRUD upload(ConvocatoriaBien obj, HashMap<String, Object> parameters) throws SQLException;
+    
+    BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters, Connection conn) throws SQLException;
+
+    BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters) throws SQLException;
     
 }

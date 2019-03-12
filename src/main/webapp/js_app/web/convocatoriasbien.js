@@ -1,8 +1,5 @@
 $(document).ready(function () {
 
-    //cargarAniosCombo($('#comboAnio'), 2005, "-1", 'AÑOS');
-    cargarAniosComboActuales($('#comboAnio'), 2005);
-
     $("#FrmConvocatoria").submit(function () {
         $('#tbodyConvocatoriaBien').empty();
         $('#numberPageConvocatoria').val("1");
@@ -22,9 +19,42 @@ $(document).ready(function () {
     });
 
     addEventoCombosPaginar();
-    procesarAjaxConvocatoriaWeb();
+    procesarAjaxAnhosConvocatoriaBien();
 
 });
+
+function procesarAjaxAnhosConvocatoriaBien() {
+    var datosSerializadosCompletos = "action=listarAnhosConvocatoriaBien";
+    datosSerializadosCompletos += "&comboTipoEstado="+$('#comboTipoListaConvocatoria').val();
+    $.ajax({
+        url: getContext() + '/convocatorias/convocatoria-de-bienes-y-servicios',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosConvocatoriaBien(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosConvocatoriaBien(BEAN_PAGINATION) {
+    $('#comboAnio').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnio').append(option);
+        });
+        procesarAjaxConvocatoriaWeb();
+    } else {
+        console.log("vacio");
+    }
+}
 
 function procesarAjaxConvocatoriaWeb() {
     var datosSerializadosCompletos = $('#' + $('#nameFormConvocatoria').val()).serialize();
