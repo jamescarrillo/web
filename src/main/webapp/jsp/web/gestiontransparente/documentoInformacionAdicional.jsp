@@ -47,11 +47,346 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
+                        <div class="panel-group feature-accordion brand-accordion icon angle-icon" id="tab">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="item-recomendaciones collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-recomendaciones" cate_id="700" complemento="" aria-expanded="false">
+                                            Recomendaciones de los Informes de Auditoría Orientadas al Mejoramiento de la Gestión
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-recomendaciones" class="panel-collapse collapse" aria-expanded="false" style="">
+                                    <div class="panel-body">
+                                        <form id="FrmDocumentosRecomendaciones">
+                                            <div class="row">
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <select id="comboAnioDocumentoRecomendaciones" name="comboAnioDocumentoRecomendaciones" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumentoRecomendaciones' style="border: 1px solid #00793D; margin-top: 20px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <div class="input-field" style="margin-top: 25px">
+                                                        <input type="text" name="txtTituloDocumentoRecomendaciones" id="txtTituloDocumentoRecomendaciones">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarDocumentoRecomendaciones" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 25px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormRecomendaciones" value="FrmDocumentosRecomendaciones">
+                                                <input type="hidden" id="actionDocumentosRecomendaciones" name="action" value="paginarDocumentos">
+                                                <input type="hidden" id="numberPageDocumentosRecomendaciones" name="numberPageDocumentosRecomendaciones" value="1">
+                                                <input type="hidden" id="sizePageDocumentosRecomendaciones" name="sizePageDocumentosRecomendaciones" value="10">
+                                                <input type="hidden" id="comboTipoListaDocumentosRecomendaciones" name="comboTipoListaDocumentosRecomendaciones" value="-1">
+                                            </div>
+                                        </form>
+                                        <!--TABLA-->
+                                        <div class="row" id="loader_contenido_recomendaciones">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
+                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyDocumentosRecomendaciones">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 text-right">
+                                                <ul id="paginationDocumentosRecomandaciones" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="item-evaluacion collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-evaluacion" cate_id="800" complemento="" aria-expanded="false">
+                                            Evaluación de Cumplimiento de Actualización del Portal
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-evaluacion" class="panel-collapse collapse" aria-expanded="false" style="">
+                                    <div class="panel-body">
+                                        <form id="FrmDocumentosEvaluacion">
+                                            <div class="row">
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <select id="comboAnioDocumentoEvaluacion" name="comboAnioDocumentoEvaluacion" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumentoRecomendaciones' style="border: 1px solid #00793D; margin-top: 20px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <div class="input-field" style="margin-top: 25px">
+                                                        <input type="text" name="txtTituloDocumentoEvaluacion" id="txtTituloDocumentoEvaluacion">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarDocumentoEvaluacion" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 25px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormEvaluacion" value="FrmDocumentosRecomendaciones">
+                                                <input type="hidden" id="actionDocumentosEvaluacion" name="action" value="paginarDocumentos">
+                                                <input type="hidden" id="numberPageDocumentosEvaluacion" name="numberPageDocumentosEvaluacion" value="1">
+                                                <input type="hidden" id="sizePageDocumentosEvaluacion" name="sizePageDocumentosEvaluacion" value="10">
+                                                <input type="hidden" id="comboTipoListaDocumentosEvaluacion" name="comboTipoListaDocumentosEvaluacion" value="-1">
+                                            </div>
+                                        </form>
+                                        <!--TABLA-->
+                                        <div class="row" id="loader_contenido_evaluacion">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
+                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyDocumentosEvaluacion">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 text-right">
+                                                <ul id="paginationDocumentosEvaluacion" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="item-documentos collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-laudos" cate_id="500" complemento="" aria-expanded="false">
+                                            Laudos
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-laudos" class="panel-collapse collapse" aria-expanded="false" style="">
+                                    <div class="panel-body">
+                                        <form id="FrmDocumentosLaudos">
+                                            <div class="row">
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <select id="comboAnioDocumentoLaudos" name="comboAnioDocumentoLaudos" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumentoRecomendaciones' style="border: 1px solid #00793D; margin-top: 20px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <div class="input-field" style="margin-top: 25px">
+                                                        <input type="text" name="txtTituloDocumentoLaudos" id="txtTituloDocumentoLaudos">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarDocumentoLaudos" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 25px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormLaudos" value="FrmDocumentosLaudos">
+                                                <input type="hidden" id="actionDocumentosLaudos" name="action" value="paginarDocumentos">
+                                                <input type="hidden" id="numberPageDocumentosLaudos" name="numberPageDocumentosLaudos" value="1">
+                                                <input type="hidden" id="sizePageDocumentosLaudos" name="sizePageDocumentosLaudos" value="10">
+                                                <input type="hidden" id="comboTipoListaDocumentosLaudos" name="comboTipoListaDocumentosLaudos" value="-1">
+                                            </div>
+                                        </form>
+                                        <!--TABLA-->
+                                        <div class="row" id="loader_contenido_laudos">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
+                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyDocumentosLaudos">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 text-right">
+                                                <ul id="paginationDocumentosLaudos" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="item-documentos collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-actas" cate_id="600" complemento="" aria-expanded="false">
+                                            Actas de Conciliación
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-actas" class="panel-collapse collapse" aria-expanded="false" style="">
+                                    <div class="panel-body">
+                                        <form id="FrmDocumentosActas">
+                                            <div class="row">
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <select id="comboAnioDocumentoActas" name="comboAnioDocumentoActas" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumentoRecomendaciones' style="border: 1px solid #00793D; margin-top: 20px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <div class="input-field" style="margin-top: 25px">
+                                                        <input type="text" name="txtTituloDocumentoActas" id="txtTituloDocumentoActas">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarDocumentoActas" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 25px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormLaudos" value="FrmDocumentosActas">
+                                                <input type="hidden" id="actionDocumentosActas" name="action" value="paginarDocumentos">
+                                                <input type="hidden" id="numberPageDocumentosActas" name="numberPageDocumentosActas" value="1">
+                                                <input type="hidden" id="sizePageDocumentosActas" name="sizePageDocumentosActas" value="10">
+                                                <input type="hidden" id="comboTipoListaDocumentosActas" name="comboTipoListaDocumentosActas" value="-1">
+                                            </div>
+                                        </form>
+                                        <!--TABLA-->
+                                        <div class="row" id="loader_contenido_actas">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
+                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyDocumentosActas">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 text-right">
+                                                <ul id="paginationDocumentosActas" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
+                                        <a class="item-documentos collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-informes" cate_id="1300" complemento="" aria-expanded="false">
+                                            Informes Técnicos Previstos de Evaluación de Software
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-informes" class="panel-collapse collapse" aria-expanded="false" style="">
+                                    <div class="panel-body">
+                                        <form id="FrmDocumentosInformes">
+                                            <div class="row">
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <select id="comboAnioDocumentoInformes" name="comboAnioDocumentoInformes" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumentoRecomendaciones' style="border: 1px solid #00793D; margin-top: 20px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <div class="input-field" style="margin-top: 25px">
+                                                        <input type="text" name="txtTituloDocumentoInformes" id="txtTituloDocumentoInformes">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarDocumentoInformes" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 25px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormInformes" value="FrmDocumentosActas">
+                                                <input type="hidden" id="actionDocumentosInformes" name="action" value="paginarDocumentos">
+                                                <input type="hidden" id="numberPageDocumentosInformes" name="numberPageDocumentosInformes" value="1">
+                                                <input type="hidden" id="sizePageDocumentosInformes" name="sizePageDocumentosInformes" value="10">
+                                                <input type="hidden" id="comboTipoListaDocumentosInformes" name="comboTipoListaDocumentosInformes" value="-1">
+                                            </div>
+                                        </form>
+                                        <!--TABLA-->
+                                        <div class="row" id="loader_contenido_informes">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="text-center align-middle">Fecha</th>
+                                                                <th style="width: 25%" class="align-middle">Título Documento</th>
+                                                                <th style="width: 65%" class="align-middle">Resumen</th>
+                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyDocumentosInformes">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 text-right">
+                                                <ul id="paginationDocumentosInformes" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
                         <div class="posts-content single-post">
                             <article class="post-wrapper">
                                 <header class="entry-header-wrapper clearfix">                                    
                                     <div class="entry-header">
                                         <div class="row">
+
                                             <form id="FrmDocumentos">
                                                 <div class="col-xs-12">
                                                     <select id="cate_id" name="cate_id" class="form-control combo-paginar " idBtnBuscar='btnBuscarDocumento' style="border: 1px solid #00793D; margin-top: 20px">
@@ -106,6 +441,7 @@
                                                 </div>
                                             </div>
                                         </div>
+
                                     </div>
                                 </header>
                                 <div class="entry-content">
@@ -181,7 +517,7 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
-        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/gestiontransparente.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/gestiontransparente_info_adicional.js"></script>
 
     </body>
 </html>

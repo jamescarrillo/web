@@ -262,7 +262,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponseOrdenCompra);
             LOG.info(this.jsonResponseOrdenCompra);
         } catch (IOException | SQLException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -278,7 +278,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponseRRHH);
             LOG.info(this.jsonResponseRRHH);
         } catch (IOException | SQLException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -292,7 +292,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponseRRHH);
             LOG.info(this.jsonResponseRRHH);
         } catch (IOException | SQLException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -321,7 +321,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponseOrdenCompra);
             LOG.info(this.jsonResponseOrdenCompra);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -348,7 +348,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponseOrdenServicio);
             LOG.info(this.jsonResponseOrdenServicio);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -375,7 +375,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponsePublicidad);
             LOG.info(this.jsonResponsePublicidad);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -402,7 +402,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponseTelefonia);
             LOG.info(this.jsonResponseTelefonia);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -429,7 +429,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponseVehiculo);
             LOG.info(this.jsonResponseVehiculo);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -456,7 +456,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponseProveedor);
             LOG.info(this.jsonResponseProveedor);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -483,7 +483,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             LOG.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -568,7 +568,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             LOG.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -609,7 +609,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
             response.getWriter().write(this.jsonResponse);
             LOG.info(this.jsonResponse);
         } catch (IOException ex) {
-            Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GestionTransparente2WebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
