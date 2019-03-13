@@ -126,7 +126,7 @@ ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 					<subreportParameterExpression><![CDATA[$P{path_logo_goresam}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:/Users/JamesCarrillo/JaspersoftWorkspace/reportes_peam/web/cabecera_horizontal.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{path_cabecera}]]></subreportExpression>
 			</subreport>
 			<textField>
 				<reportElement x="1" y="75" width="800" height="20" uuid="4e57fc16-3c97-4f59-8154-a7973d5fed90"/>

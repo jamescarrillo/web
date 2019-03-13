@@ -60,7 +60,7 @@
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
                                         <a data-toggle="collapse" data-parent="#tab" href="#tab-plan-gerencial-y-directivos" aria-expanded="false" class="collapsed">
-                                            Plan Gerencial y Directivos
+                                            Plana Gerencial y Directivos
                                         </a>
                                     </h3>
                                 </div>

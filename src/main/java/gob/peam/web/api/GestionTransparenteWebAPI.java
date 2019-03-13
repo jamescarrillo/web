@@ -275,8 +275,8 @@ public class GestionTransparenteWebAPI extends HttpServlet {
     private HashMap<String, Object> getParametersAnhios(HttpServletRequest request) {
         this.parametersAnhiosDocumentos.clear();
         this.parametersAnhiosDocumentos.put("FILTER", "");
-        this.parametersAnhiosDocumentos.put("SQL_ESTADO", "AND DOCU_ESTADO = TRUE");
-        this.parametersAnhiosDocumentos.put("SQL_CATE_ID", getCategoriaIdFinal(request));
+        this.parametersAnhiosDocumentos.put("SQL_ESTADO", " AND DOCU_ESTADO = TRUE");
+        this.parametersAnhiosDocumentos.put("SQL_CATE_ID", " "+getCategoriaIdFinal(request));
         this.parametersAnhiosDocumentos.put("SQL_TIDO_ID", " " + getTidoIdFinal(request));
         //this.parameters.put("SQL_ORDERS", "TO_DATE(DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
         this.parametersAnhiosDocumentos.put("SQL_ORDERS", " SUBSTRING(DOCU_FECHA_DOCX,7,4) DESC");
@@ -305,7 +305,6 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                 }
                 */
                 categoria_id = " AND CATE_ID =" + request.getParameter("cate_id");
-
             }
         }
         return categoria_id;
@@ -314,7 +313,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
     private String getTidoIdFinal(HttpServletRequest request) {
         String tido_id = "";
         if (request.getParameter("tido_id") != null) {
-            if (request.getParameter("cate_id").contains("100")) {
+            if (request.getParameter("cate_id").equals("< 100")) {
                 tido_id = "AND TIDO_ID = " + request.getParameter("tido_id");
             }
         }

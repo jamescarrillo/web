@@ -42,7 +42,7 @@
         <section class="blog-section section-padding" style="padding-top: 50px">
             <div class="container">
                 <div class="text-center mb-30" style="margin-top: 20px;">
-                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Convocatorias de Bienes, Servicios y Conseciones</h2>
+                    <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Convocatorias de Bienes, Servicios y Concesiones</h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
@@ -110,14 +110,14 @@
                                                             <hr>
                                                             <br>
                                                             <div class="row">
-                                                                <div class="col-md-3 col-xs-12">
+                                                                <!--div class="col-md-3 col-xs-12">
                                                                     <ul class="list-inline pull-left">
                                                                         <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
                                                                         <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
                                                                         <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
                                                                     </ul>
-                                                                </div>
-                                                                <div class="col-md-9 col-xs-12 text-right">
+                                                                </div-->
+                                                                <div class="col-xs-12 text-right">
                                                                     <ul id="paginationConvocatoria" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                                     </ul>
@@ -207,14 +207,14 @@
                                         <hr>
                                         <br>
                                         <div class="row">
-                                            <div class="col-md-3 col-xs-12">
+                                            <!--div class="col-md-3 col-xs-12">
                                                 <ul class="list-inline pull-left">
                                                     <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
                                                     <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
                                                     <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
                                                 </ul>
-                                            </div>
-                                            <div class="col-md-9 col-xs-12 text-right">
+                                            </div-->
+                                            <div class="col-xs-12 text-right">
                                                 <ul id="paginationCalendario" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                 </ul>
