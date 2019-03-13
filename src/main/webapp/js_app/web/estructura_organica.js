@@ -172,7 +172,6 @@ function setDirectivos() {
             `;
             
         } else {
-            console.log("entro diferente ")
             html_representantes +=
                     `
             <div class="panel panel-default">
@@ -206,7 +205,6 @@ function setDirectivos() {
             
         }
     }
-            console.log(html_representantes)
 
     div_general += html_representantes;
     div_general += `
