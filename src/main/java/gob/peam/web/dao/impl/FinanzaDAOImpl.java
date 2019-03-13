@@ -207,7 +207,7 @@ public class FinanzaDAOImpl implements FinanzaDAO {
         PreparedStatement pst;
         ResultSet rs;
         try {
-            pst = conn.prepareStatement("SELECT COUNT(DOCU_ID) AS COUNT FROM WEB.f00017 WHERE "
+            pst = conn.prepareStatement("SELECT COUNT(DISTINCT(ANHO)) AS COUNT FROM WEB.f00017 WHERE "
                     + "LOWER(DESCRIPCION) LIKE CONCAT('%',?,'%') "
                     + parameters.get("SQL_ESTADO") + " "
                     + parameters.get("SQL_TIPO"));
@@ -217,7 +217,7 @@ public class FinanzaDAOImpl implements FinanzaDAO {
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
                 if (rs.getInt("COUNT") > 0) {
-                    pst = conn.prepareStatement("SELECT * FROM WEB.f00017 WHERE "
+                    pst = conn.prepareStatement("SELECT DISTINCT(ANHO) FROM WEB.f00017 WHERE "
                             + "LOWER(DESCRIPCION) LIKE CONCAT('%',?,'%') "
                             + parameters.get("SQL_ESTADO") + " "
                             + parameters.get("SQL_TIPO") + " "
