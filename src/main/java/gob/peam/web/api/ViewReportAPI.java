@@ -523,13 +523,29 @@ public class ViewReportAPI extends HttpServlet {
                 title += "Informes de Supervición de Contratos";
                 break;
         }
+        if (cate_id.contains("< 100")) {
+            switch (tido_id) {
+                case "10":
+                    title += "Resoluciones Gerenciales";
+                    break;
+                case "11":
+                    title += "Documentos de Gestión";
+                    break;
+                case "12":
+                    title += "Normas y Directivas 12";
+                    break;
+                case "":
+                    title += "Monto de Liquidación Final de Obra";
+                    break;
+            }
+        }
         return title.toUpperCase();
     }
 
     private String getSQLCate_id(String cate_id, String tido_id) {
         String sql_cate_id = " AND CATE_ID ";
-        if (cate_id.equals("100")) {
-            sql_cate_id += "< " + cate_id;
+        if (cate_id.contains("<")) {
+            sql_cate_id += cate_id;
         } else {
             sql_cate_id += "= " + cate_id;
         }

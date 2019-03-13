@@ -1,17 +1,11 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnioDocumento'), 2005, new Date().getFullYear(), 'Año');
-    cargarAniosCombo($('#comboAnioDocumento_AS'), 2005, new Date().getFullYear(), 'Año');
-    //cargarAniosCombo($('#comboAnioDocumento_DG'), 2005, new Date().getFullYear(), 'Año');
-    //cargarAniosCombo($('#comboAnioDocumento_ND'), 2005, new Date().getFullYear(), 'Año');
-    cargarAniosCombo($('#comboAnioDocumento_ID'), 2005, new Date().getFullYear(), 'Año');
-
     $("#FrmDocumentos").submit(function () {
         $('#tbodyDocumentos').empty();
         $('#numberPageDocumentos').val("1");
         $('#actionDocumentos').val("paginarDocumentos");
         $('#loader_contenido').css('display', 'block');
-        procesarAjaxDocumentosWeb('');
+        procesarAjaxDocumentosWeb('', "< 100", "10");
         return false;
     });
 
@@ -20,7 +14,7 @@ $(document).ready(function () {
         $('#numberPageDocumentos_AS').val("1");
         $('#actionDocumentos_AS').val("paginarDocumentos");
         $('#loader_contenido_AS').css('display', 'block');
-        procesarAjaxDocumentosWeb('_AS');
+        procesarAjaxDocumentosWeb('_AS', '2800', '');
         return false;
     });
 
@@ -29,7 +23,7 @@ $(document).ready(function () {
         $('#numberPageDocumentos_DG').val("1");
         $('#actionDocumentos_DG').val("paginarDocumentos");
         $('#loader_contenido_DG').css('display', 'block');
-        procesarAjaxDocumentosWeb('_DG');
+        procesarAjaxDocumentosWeb('_DG', $('#cboCategoria_Doc').val(), '10');
         return false;
     });
 
@@ -38,7 +32,7 @@ $(document).ready(function () {
         $('#numberPageDocumentos_ND').val("1");
         $('#actionDocumentos_ND').val("paginarDocumentos");
         $('#loader_contenido_ND').css('display', 'block');
-        procesarAjaxDocumentosWeb('_ND');
+        procesarAjaxDocumentosWeb('_ND', '< 100', '12');
         return false;
     });
 
@@ -47,7 +41,7 @@ $(document).ready(function () {
         $('#numberPageDocumentos_ID').val("1");
         $('#actionDocumentos_ID').val("paginarDocumentos");
         $('#loader_contenido_ID').css('display', 'block');
-        procesarAjaxDocumentosWeb('_ID');
+        procesarAjaxDocumentosWeb('_ID', '900', '');
         return false;
     });
 
@@ -93,15 +87,16 @@ $(document).ready(function () {
     addComboCategoriaDoc();
     addEventoCombosPaginar();
 
+    toLoadAnios();
+
     $('#item-documento-inicial ').trigger("click");
-    //procesarAjaxDocumentosWeb('');
 
 });
 
-function procesarAjaxDocumentosWeb(nombre_complemento) {
-    var datosSerializadosCompletos = $('#' + $('#nameForm' + nombre_complemento).val()).serialize();
-    datosSerializadosCompletos += "&cate_id=" + $('#cate_id').val();
-    datosSerializadosCompletos += "&tido_id=" + $('#tido_id').val();
+function procesarAjaxDocumentosWeb(nombre_complemento, cate_id, tido_id) {
+    var datosSerializadosCompletos = $('#FrmDocumentos' + nombre_complemento).serialize();
+    datosSerializadosCompletos += "&cate_id=" + cate_id;
+    datosSerializadosCompletos += "&tido_id=" + tido_id;
     datosSerializadosCompletos += "&txtComplemento=" + nombre_complemento;
     $.ajax({
         url: getContext() + '/documentos/operacionesweb',
@@ -110,7 +105,7 @@ function procesarAjaxDocumentosWeb(nombre_complemento) {
         dataType: 'json',
         success: function (jsonResponse) {
             $('#loader_contenido' + nombre_complemento).css('display', 'none');
-            listarDocumentos(jsonResponse.BEAN_PAGINATION, nombre_complemento);
+            listarDocumentos(jsonResponse.BEAN_PAGINATION, nombre_complemento, cate_id, tido_id);
         },
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
@@ -121,7 +116,7 @@ function procesarAjaxDocumentosWeb(nombre_complemento) {
     return false;
 }
 
-function listarDocumentos(BEAN_PAGINATION, nombre_complemento) {
+function listarDocumentos(BEAN_PAGINATION, nombre_complemento, cate_id, tido_id) {
     /*PAGINATION*/
     var $pagination = $('#paginationDocumentos' + nombre_complemento);
     $('#tbodyDocumentos' + nombre_complemento).empty();
@@ -186,28 +181,23 @@ function listarDocumentos(BEAN_PAGINATION, nombre_complemento) {
                     onPageClick: function (evt, page) {
                         $('#actionDocumentos' + nombre_complemento).val('paginarDocumentos');
                         $('#numberPageDocumentos' + nombre_complemento).val(page);
-                        $('#nameForm' + nombre_complemento).val('FrmDocumentos' + nombre_complemento);
                         $('#loader_contenido' + nombre_complemento).css('display', 'block');
-                        procesarAjaxDocumentosWeb(nombre_complemento);
+                        procesarAjaxDocumentosWeb(nombre_complemento, cate_id, tido_id);
                     }
                 };
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
-        $('#txtTituloDocumento').focus();
+        $('#txtTituloDocumento' + nombre_complemento).focus();
     } else {
         $pagination.twbsPagination('destroy');
-        viewAlertWeb('warning', 'No se enconntraron resultados');
+        viewAlertWeb('warning', 'No se encontraron resultados');
     }
 }
 
 
 function addComboCategoriaDoc() {
     $('#cboCategoria_Doc').on('change', function () {
-        if (this.value !== "") {
-            $('#cate_id').val(this.value);
-        } else {
-            $('#cate_id').val("100");
-        }
+        $('#item-documento-gestion').attr("cate_id", this.value);
     });
     $.ajax({
         url: getContext() + '/documentos/operacionesweb?action=getCategoriasDoc',
@@ -215,21 +205,56 @@ function addComboCategoriaDoc() {
         data: "",
         dataType: 'json',
         success: function (jsonResponse) {
-            //$('#cboCategoria_Doc').append(`<option value="">TODOS</option>`);
-            var primero;
+            $('#cboCategoria_Doc').append(`<option value="-1">TODOS</option>`);
             $(jsonResponse.DATA_CATEGORIAS).each(function (index, value) {
-                if(index === 0){
-                    primero = value.id_cate;
-                }
                 $('#cboCategoria_Doc').append(`<option value="${value.id_cate}">${value.nombre}</option>`);
             });
-            //SET
-            //$('#cboCategoria_Doc').val(primero);
-            
         },
         error: function () {
             /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
         }
     });
-    
+}
+
+function toLoadAnios() {
+    $('.item-documento').each(function (index, value) {
+        $(this).click(function () {
+            let complemento = $(this).attr("complemento");
+            var datosSerializadosCompletos = "action=listarAnhos";
+            datosSerializadosCompletos += "&cate_id=" + $(this).attr("cate_id");
+            datosSerializadosCompletos += "&complemento=" + complemento;
+            datosSerializadosCompletos += "&tido_id=" + $(this).attr("tido_id");
+            if ($(this).attr("complemento").toLowerCase() == "_dg") {
+                $('#loader_contenido').css('display', 'block');
+                procesarAjaxDocumentosWeb('_DG', $('#cboCategoria_Doc').val(), '10');
+            } else if ($(this).attr("complemento").toLowerCase() == "_nd") {
+                $('#loader_contenido').css('display', 'block');
+                procesarAjaxDocumentosWeb('_ND', '< 100', '12');
+            } else {
+                addCombosAnios(datosSerializadosCompletos, complemento, $(this).attr("cate_id"), $(this).attr("tido_id"));
+            }
+            
+        });
+    });
+}
+
+function addCombosAnios(datosSerializadosCompletos, complemento, cate_id, tido_id) {
+    $('#comboAnioDocumento' + complemento).empty();
+    $.ajax({
+        url: getContext() + '/documentos/operacionesweb?' + datosSerializadosCompletos,
+        type: 'POST',
+        data: "",
+        dataType: 'json',
+        success: function (jsonResponse) {
+            $(jsonResponse.BEAN_PAGINATION.LIST).each(function (index, value) {
+                $('#comboAnioDocumento' + complemento).append(`<option value="${value.docu_metadata}">${value.docu_metadata}</option>`);
+            });
+            //CARGAMOS LOS DOCUMENTOS
+            $('#loader_contenido').css('display', 'block');
+            procesarAjaxDocumentosWeb(complemento, cate_id, tido_id);
+        },
+        error: function () {
+            /*MOSTRAMOS MENSAJE ERROR SERVIDOR*/
+        }
+    });
 }

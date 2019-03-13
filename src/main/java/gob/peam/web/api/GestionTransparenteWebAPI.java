@@ -234,10 +234,14 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             this.parameters.put("SQL_ANIO", "AND SUBSTRING(DOCU_FECHA_DOCX,7,4) = '" + request.getParameter("comboAnioDocumento" + complemento) + "' ");
         }
         this.parameters.put("SQL_ESTADO", "AND DOCU_ESTADO = TRUE");
-        this.parameters.put("SQL_CATE_ID", " " + getCategoriaIdFinal(request));
+        if (request.getParameter("cate_id").equals("-1")) {
+            this.parameters.put("SQL_CATE_ID", " ");
+        } else {
+            this.parameters.put("SQL_CATE_ID", getCategoriaIdFinal(request));
+        }
         this.parameters.put("SQL_TIDO_ID", " " + getTidoIdFinal(request));
         //this.parameters.put("SQL_ORDERS", "TO_DATE(DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
-        this.parameters.put("SQL_ORDERS", "DOCU_TITULO ASC");
+        this.parameters.put("SQL_ORDERS", "DOCU_TITULO DESC");
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageDocumentos" + complemento) + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageDocumentos" + complemento)) - 1)
@@ -247,11 +251,12 @@ public class GestionTransparenteWebAPI extends HttpServlet {
 
     private HashMap<String, Object> getParametersAnhiosPenalidad(HttpServletRequest request) {
         this.parametersPenalidad.clear();
-        this.parametersPenalidad.put("FILTER","");
+        this.parametersPenalidad.put("FILTER", "");
         this.parametersPenalidad.put("SQL_ORDERS", " ANHO DESC");
 
         return this.parametersPenalidad;
     }
+
     private HashMap<String, Object> getParametersAnhios(HttpServletRequest request) {
         this.parametersAnhiosDocumentos.clear();
         this.parametersAnhiosDocumentos.put("FILTER", "");
@@ -265,10 +270,28 @@ public class GestionTransparenteWebAPI extends HttpServlet {
 
     private String getCategoriaIdFinal(HttpServletRequest request) {
         String categoria_id;
+        LOG.info(request.getParameter("cate_id"));
         if (request.getParameter("cate_id").equals("100")) {
-            categoria_id = "AND CATE_ID =" + request.getParameter("cate_id");
+            if (request.getParameter("cate_id").contains("<") || request.getParameter("cate_id").contains(">")) {
+                categoria_id = "AND CATE_ID " + request.getParameter("cate_id");
+            } else {
+                categoria_id = "AND CATE_ID =" + request.getParameter("cate_id");
+            }
         } else {
-            categoria_id = "AND DOCU_FECHA_DOCX != ''  AND CATE_ID =" + request.getParameter("cate_id");
+            if (request.getParameter("cate_id").contains("<") || request.getParameter("cate_id").contains(">")) {
+                //categoria_id = "AND DOCU_FECHA_DOCX != ''  AND CATE_ID " + request.getParameter("cate_id");
+                categoria_id = " AND CATE_ID " + request.getParameter("cate_id");
+            } else {
+                /*
+                if (request.getParameter("cate_id").equals("8")) {
+                    categoria_id = " AND CATE_ID =" + request.getParameter("cate_id");
+                } else {
+                    //categoria_id = "AND DOCU_FECHA_DOCX != ''  AND CATE_ID =" + request.getParameter("cate_id");
+                }
+                */
+                categoria_id = " AND CATE_ID =" + request.getParameter("cate_id");
+
+            }
         }
         return categoria_id;
     }
@@ -276,7 +299,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
     private String getTidoIdFinal(HttpServletRequest request) {
         String tido_id = "";
         if (request.getParameter("tido_id") != null) {
-            if (request.getParameter("cate_id").equals("100")) {
+            if (request.getParameter("cate_id").contains("100")) {
                 tido_id = "AND TIDO_ID = " + request.getParameter("tido_id");
             }
         }
@@ -354,7 +377,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             Logger.getLogger(FinanzaAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     private HashMap<String, Object> getParametersAnhosyMES(HttpServletRequest request, int tipo) {
         this.parameters.clear();
         this.parameters.put("FILTER", "");

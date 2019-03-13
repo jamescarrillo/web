@@ -63,7 +63,7 @@ $P!{sql_anho_tabla}
 $P!{sql_fecha_tabla} 
 $P!{sql_tido_tabla} 
 $P!{sql_cate_tabla} 
-ORDER BY DOCU_TITULO ASC]]>
+ORDER BY DOCU_ID DESC]]>
 		</queryString>
 		<field name="docu_fecha_docx" class="java.lang.String">
 			<property name="com.jaspersoft.studio.field.label" value="docu_fecha_docx"/>
