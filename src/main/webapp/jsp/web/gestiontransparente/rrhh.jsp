@@ -35,6 +35,11 @@
           <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
     </head>
+    <style>
+        .ocultar {
+            display: none;
+        }
+    </style>
     <body id="top" class="has-header-search">
         <%@ include file = "../../../top_bar.jsp" %> 
         <div class="header-sticky light-header">
@@ -229,8 +234,9 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%" class="text-medium-table text-center">DNI</th>
+
                                                                 <th style="width: 25%" class="text-medium-table">APELLIDOS NOMBRES</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">DNI</th>
                                                                 <th style="width: 10%" class="text-medium-table text-center">FECHA INGRESO</th>
                                                                 <th style="width: 20%" class="text-medium-table">ÁREA</th>
                                                                 <th style="width: 20%" class="text-medium-table">CARGO</th>
@@ -314,16 +320,17 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%" class="text-medium-table text-center">DNI</th>
+
                                                                 <th style="width: 25%" class="text-medium-table">APELLIDOS NOMBRES</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">FECHA INGRESO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center ocultar">DNI</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center ocultar">FECHA INGRESO</th>
                                                                 <th style="width: 20%" class="text-medium-table">ÁREA</th>
-                                                                <th style="width: 20%" class="text-medium-table">CARGO</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">RÉGIMEN PENSIONARIO</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">REMUNERACIÓN S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">GRATIG. ESCOL. S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">OTROS INGRESOS S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">INGRESO TOTAL S/</th>
+                                                                <th style="width: 20%" class="text-medium-table ocultar">CARGO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">CÓDIGO CIVIL</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">RETRIBUCION MENSUAL S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center ocultar">GRATIG. ESCOL. S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center ocultar">OTROS INGRESOS S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center ocultar">INGRESO TOTAL S/</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyPersonal_CLS">
@@ -398,16 +405,17 @@
                                                     <table class="table">
                                                         <thead class="bg-success">
                                                             <tr>
-                                                                <th style="width: 10%" class="text-medium-table text-center">DNI</th>
+
                                                                 <th style="width: 25%" class="text-medium-table">APELLIDOS NOMBRES</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">FECHA INGRESO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center ocultar">DNI</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center ocultar">FECHA INGRESO</th>
                                                                 <th style="width: 20%" class="text-medium-table">ÁREA</th>
-                                                                <th style="width: 20%" class="text-medium-table">CARGO</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">RÉGIMEN PENSIONARIO</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">REMUNERACIÓN S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">GRATIG. ESCOL. S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">OTROS INGRESOS. S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">INGRESO TOTAL. S/</th>
+                                                                <th style="width: 20%" class="text-medium-table ocultar">CARGO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">CÓDIGO CIVIL</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">RETRIBUCION MENSUAL S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center ocultar">GRATIG. ESCOL. S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center ocultar">OTROS INGRESOS S/</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center ocultar">INGRESO TOTAL S/</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyPersonal_CAS">

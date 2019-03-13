@@ -11,7 +11,8 @@ $(document).ready(function () {
         todayHighlight: true,
         autoclose: true
     });
-
+    
+    iniciar();
     $('#comboFecha').on('change', function () {
         var date = new Date();
         switch ($('#comboFecha').val()) {
@@ -71,6 +72,21 @@ $(document).ready(function () {
     $('#modalCargandoAgenda').modal("show");
 
 });
+
+function iniciar(){
+    var date = new Date();
+        switch ($('#comboFecha').val()) {
+            case "dia":
+                $('#tFecha').val(date.getDay());
+                break;
+            case "mes":
+                $('#tFecha').val(date.getMonth() + 1);
+                break;
+            case "anho":
+                $('#tFecha').val(date.getFullYear());
+                break;
+        }
+}
 
 function procesarAjaxAgenda() {
     var pathname = window.location.pathname;

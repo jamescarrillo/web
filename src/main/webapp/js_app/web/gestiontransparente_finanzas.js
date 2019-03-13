@@ -1,9 +1,5 @@
 $(document).ready(function () {
 
-    cargarAniosCombo($('#comboAnioPresupuestoInstitucional'), 2010, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioInfoFinanciera'), 2010, "-1", 'Año');
-    cargarAniosCombo($('#comboAnioInfoPresupuestal'), 2010, "-1", 'Año');
-
     $("#FrmPresupuestoInstitucional").submit(function () {
         $('#tbodyPresupuestoInstitucional').empty();
         $('#numberPagePresupuestoInstitucional').val("1");
@@ -32,11 +28,110 @@ $(document).ready(function () {
     });
 
     addEventoCombosPaginar();
-    procesarAjaxPresupuestosInstitucionalWeb();
-    procesarAjaxInformacionFinancieraWeb();
-    procesarAjaxInformacionPresupustalWeb();
+    procesarAjaxAnhosPresupuestoInstitucional();
+    procesarAjaxAnhosInfoFinanciera();
+    procesarAjaxAnhosPresupuestal();
 
 });
+
+function procesarAjaxAnhosPresupuestoInstitucional() {
+    var datosSerializadosCompletos = "action=paginarPresupuestoAnhos";
+    datosSerializadosCompletos += "&comboTipoPresupuestoInstitucional="+$('#comboTipoPresupuestoInstitucional').val();
+    $.ajax({
+        url: getContext() + '/documentos/operacionesweb',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosPresupuestoInstitucional(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosPresupuestoInstitucional(BEAN_PAGINATION) {
+    $('#comboAnioPresupuestoInstitucional').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioPresupuestoInstitucional').append(option);
+        });
+        procesarAjaxPresupuestosInstitucionalWeb();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function procesarAjaxAnhosInfoFinanciera() {
+    var datosSerializadosCompletos = "action=paginarFinanzasAnhos1";
+    datosSerializadosCompletos += "&comboCategoriaInfoFinanciera="+$('#comboCategoriaInfoFinanciera').val();
+    $.ajax({
+        url: getContext() + '/documentos/operacionesweb',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosInfoFinanciera(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosInfoFinanciera(BEAN_PAGINATION) {
+    $('#comboAnioInfoFinanciera').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioInfoFinanciera').append(option);
+        });
+        procesarAjaxInformacionFinancieraWeb();
+    } else {
+        console.log("vacio");
+    }
+}
+
+function procesarAjaxAnhosPresupuestal() {
+    var datosSerializadosCompletos = "action=paginarFinanzasAnhos2";
+    datosSerializadosCompletos += "&comboCategoriaInfoPresupuestal="+$('#comboCategoriaInfoPresupuestal').val();
+    $.ajax({
+        url: getContext() + '/documentos/operacionesweb',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhosPresupuestal(jsonResponse.BEAN_PAGINATION);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+function listarAnhosPresupuestal(BEAN_PAGINATION) {
+    $('#comboAnioInfoPresupuestal').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioInfoPresupuestal').append(option);
+        });
+        procesarAjaxInformacionPresupustalWeb();
+    } else {
+        console.log("vacio");
+    }
+}
 
 function procesarAjaxPresupuestosInstitucionalWeb() {
     var datosSerializadosCompletos = $('#' + $('#namePresupuestoInstitucional').val()).serialize();
@@ -56,6 +151,52 @@ function procesarAjaxPresupuestosInstitucionalWeb() {
         }
     });
     return false;
+}
+
+function traerNombreMes(orden) {
+    var mes;
+    switch (orden) {
+        case "01":
+            mes = "Enero";
+            break;
+        case "1 ":
+            mes = "Enero";
+            break;
+        case "02":
+            mes = "Febrero";
+            break;
+        case "03":
+            mes = "Marzo";
+            break;
+        case "04":
+            mes = "Abril";
+            break;
+        case "05":
+            mes = "Mayo";
+            break;
+        case "06":
+            mes = "Junio";
+            break;
+        case "07":
+            mes = "Julio";
+            break;
+        case "08":
+            mes = "Agosto";
+            break;
+        case "09":
+            mes = "Setiembre";
+            break;
+        case "10":
+            mes = "Octubre";
+            break;
+        case "11":
+            mes = "Noviembre";
+            break;
+        case "12":
+            mes = "Diciembre";
+            break;
+    }
+    return mes;
 }
 
 function listarPresupuestosInstitucional(BEAN_PAGINATION) {
@@ -140,11 +281,13 @@ function listarInformacionFinanciera(BEAN_PAGINATION) {
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var fila;
         var a;
+        var mes;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            mes = traerNombreMes(value.mes);
             a = "<a href='http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=" + value.docu_id + "' target='_blank' class='pdf-documento-web' title='Ver PDF'><i class='fa fa-file-pdf-o'></i></a>";
             fila = "<tr";
             fila += ">";
-            fila += "<td class='text-center align-middle'>" + value.mes + "/" + value.anho + "</td>";
+            fila += "<td class='text-center align-middle'>" + mes + "</td>";
             fila += "<td class='align-middle'>" + value.descripcion + "</td>";
             fila += "<td class='text-center align-middle'>" + a + "</td>";
             fila += "</tr>";
@@ -207,11 +350,13 @@ function listarInformacionPresupustal(BEAN_PAGINATION) {
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var fila;
         var a;
+        var mes;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            mes = traerNombreMes(value.mes);
             a = "<a href='http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=" + value.docu_id + "' target='_blank' class='pdf-documento-web' title='Ver PDF'><i class='fa fa-file-pdf-o'></i></a>";
             fila = "<tr";
             fila += ">";
-            fila += "<td class='text-center align-middle'>" + value.mes + "/" + value.anho + "</td>";
+            fila += "<td class='text-center align-middle'>" + mes +"</td>";
             fila += "<td class='align-middle'>" + value.descripcion + "</td>";
             fila += "<td class='text-center align-middle'>" + a + "</td>";
             fila += "</tr>";

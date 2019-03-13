@@ -208,7 +208,7 @@ function getDateJS(string_date) {
 function cargarAniosCombo($combo, anioInicio, valueInicial, texto_Inicial) {
     var date = new Date();
     var opcion;
-    //$combo.append("<option value='-1'>" + texto_Inicial + "</option>");
+    $combo.append("<option value='-1'>" + texto_Inicial + "</option>");
     for (var i = date.getFullYear(); i >= anioInicio; i--) {
         opcion = "<option value='" + i + "'>" + i + "</option>";
         $combo.append(opcion);

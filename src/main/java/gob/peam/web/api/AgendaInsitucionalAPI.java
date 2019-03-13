@@ -166,24 +166,42 @@ public class AgendaInsitucionalAPI extends HttpServlet {
         this.parameters.put("FILTER", request.getParameter("txtActividad").toLowerCase());
         switch (request.getParameter("comboFecha")) {
             case "dia":
-                this.parameters.put("SQL_FECHA", "AND EXTRACT(DAY FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
+                if (request.getParameter("txtCalendario").equals("")) {
+                    this.parameters.put("SQL_CALENDARIO", "");
+                    this.parameters.put("SQL_FECHA", "AND EXTRACT(DAY FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
+                    LOG.info("fecha " + request.getParameter("txtCalendario"));
+                } else {
+                    LOG.info("fecha " + request.getParameter("txtCalendario"));
+                    this.parameters.put("SQL_CALENDARIO", "AND EXTRACT(DAY FROM FECHA_INICIO) = '" + request.getParameter("txtCalendario").substring(0, 2) + "' ");
+                    this.parameters.put("SQL_FECHA", "");
+                }
                 break;
             case "mes":
-                this.parameters.put("SQL_FECHA", "AND EXTRACT(MONTH FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
+                if (request.getParameter("txtCalendario").equals("")) {
+                    this.parameters.put("SQL_CALENDARIO", "");
+                    this.parameters.put("SQL_FECHA", "AND EXTRACT(DAY FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
+                } else {
+                    LOG.info("fecha " + request.getParameter("txtCalendario"));
+                    this.parameters.put("SQL_CALENDARIO", "AND EXTRACT(MONTH FROM FECHA_INICIO) = '" + request.getParameter("txtCalendario").substring(3, 5) + "' ");
+                    this.parameters.put("SQL_FECHA", "");
+                }
                 break;
             case "anho":
-                this.parameters.put("SQL_FECHA", "AND EXTRACT(YEAR FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
+                if (request.getParameter("txtCalendario").equals("")) {
+                    this.parameters.put("SQL_CALENDARIO", "");
+                    this.parameters.put("SQL_FECHA", "AND EXTRACT(DAY FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
+                } else {
+                    LOG.info("fecha " + request.getParameter("txtCalendario"));
+                    this.parameters.put("SQL_CALENDARIO", "AND EXTRACT(YEAR FROM FECHA_INICIO) = '" + request.getParameter("txtCalendario").substring(6) + "' ");
+                    this.parameters.put("SQL_FECHA", "");
+                }
                 break;
             case "todo":
+                this.parameters.put("SQL_CALENDARIO", "");
                 this.parameters.put("SQL_FECHA", "");
                 break;
         }
 
-        if (request.getParameter("txtCalendario").equals("")) {
-            this.parameters.put("SQL_CALENDARIO", "");
-        } else {
-            this.parameters.put("SQL_CALENDARIO", "OR FECHA_INICIO = '" + Utilities.getDateSQLFORMAT(request.getParameter("txtCalendario"), "dd/MM/yyyy") + "' ");
-        }
         if (request.getParameter("comboTipoListaAgenda").equals("-1")) {
             this.parameters.put("SQL_ESTADO", "");
         } else {
