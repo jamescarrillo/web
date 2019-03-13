@@ -111,7 +111,7 @@ function setFuncionario(organigrama) {
                                 <h5><strong>Nombres y Apellidos: </strong>${funcionario.nombres_apellidos}</h5>
                                 <h5><strong>Número de D.N.I: </strong>${funcionario.numero_dni}</h5>
                                 <h5><strong>Cargo: </strong>${funcionario.cargo}</h5>
-                                <h5><strong>Nivel Remunerativo: D-2</strong>${funcionario.nivel_remunerativo}</h5>
+                                <h5><strong>Nivel Remunerativo: </strong>${funcionario.nivel_remunerativo}</h5>
                                 <h5><strong>Designado Por: </strong>${funcionario.resolucion}</h5>
                                 <h5><strong>Teléfono: </strong>${funcionario.telefono}</h5>
                                 <h5><strong>Correo Electrónico: </strong>${funcionario.e_mail}</h5>
@@ -172,7 +172,6 @@ function setDirectivos() {
             `;
             
         } else {
-            console.log("entro diferente ")
             html_representantes +=
                     `
             <div class="panel panel-default">
@@ -202,11 +201,11 @@ function setDirectivos() {
                                 </div>
                             </div>
                     `;
-            console.log(html_representantes)
             
             
         }
     }
+
     div_general += html_representantes;
     div_general += `
             </div>

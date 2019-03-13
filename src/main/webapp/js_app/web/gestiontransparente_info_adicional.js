@@ -203,7 +203,6 @@ function toLoadAnios() {
             addCombosAnios(datosSerializadosCompletos, complemento, $(this).attr("cate_id"));
         });
     });
-
 }
 
 

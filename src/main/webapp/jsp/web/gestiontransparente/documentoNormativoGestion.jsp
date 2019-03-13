@@ -54,12 +54,11 @@
                             <div class="col-md-12">
                                 <div class="border-tab transparent-nav">
                                     <ul class="nav nav-tabs nav-tabs-gt nav-justified" role="tablist">
-                                        <li role="presentation" class="active"><a id="item-documento-inicial" style="padding-top: 5px; padding-bottom: 5px" href="#tab-resoluciones-gerenciales" role="tab" class="waves-effect waves-dark item-documento" cate_id="100" tido_id="10" formulario="FrmDocumentos" combo_anio="comboAnioDocumento" data-toggle="tab">Resoluciones Gerenciales</a></li>
-                                        <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-actas-de-sesion" role="tab" class="waves-effect waves-dark item-documento" cate_id="2800" tido_id="" formulario="FrmDocumentos_AS" combo_anio="comboAnioDocumento_AS" data-toggle="tab">Actas de Sesión del Consejo Directivo</a></li>
-                                        <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-documentos-de-gestion" role="tab" class="waves-effect waves-dark item-documento" cate_id="2" tido_id="10" formulario="FrmDocumentos_DG" combo_anio="comboAnioDocumento_DG" data-toggle="tab">Documentos de Gestión</a></li>
-                                        <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-normas-y-directivas" role="tab" class="waves-effect waves-dark item-documento" cate_id="100" tido_id="12" formulario="FrmDocumentos_ND" combo_anio="comboAnioDocumento_ND" data-toggle="tab">Normas y <br> Directivas</a></li>
-                                        <!--li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-normas-y-directivas" role="tab" class="waves-effect waves-dark item-documento" cate_id="100" tido_id="12" formulario="FrmDocumentos_ND" combo_anio="comboAnioDocumento_ND" data-toggle="tab">Normas y <br> Directivas</a></li-->
-                                        <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-indicadores-de-desempenio" role="tab" class="waves-effect waves-dark item-documento" cate_id="900" tido_id="" formulario="FrmDocumentos_ID" combo_anio="comboAnioDocumento_ID" data-toggle="tab">Indicadores de Desempeño</a></li>
+                                        <li role="presentation" class="active"><a id="item-documento-inicial" style="padding-top: 5px; padding-bottom: 5px" href="#tab-resoluciones-gerenciales" role="tab" class="waves-effect waves-dark item-documento" cate_id="< 100" tido_id="10" complemento="" data-toggle="tab">Resoluciones Gerenciales</a></li>
+                                        <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-actas-de-sesion" role="tab" class="waves-effect waves-dark item-documento" cate_id="2800" tido_id="" complemento="_AS" data-toggle="tab">Actas de Sesión del Consejo Directivo</a></li>
+                                        <li role="presentation"><a id="item-documento-gestion" style="padding-top: 5px; padding-bottom: 5px" href="#tab-documentos-de-gestion" role="tab" class="waves-effect waves-dark item-documento" cate_id="2" tido_id="10" complemento="_DG" data-toggle="tab">Documentos de Gestión</a></li>
+                                        <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-normas-y-directivas" role="tab" class="waves-effect waves-dark item-documento" cate_id="< 100" tido_id="12" complemento="_ND" data-toggle="tab">Normas y <br> Directivas</a></li>
+                                        <li role="presentation"><a style="padding-top: 5px; padding-bottom: 5px" href="#tab-indicadores-de-desempenio" role="tab" class="waves-effect waves-dark item-documento" cate_id="900" tido_id="" complemento="_ID" data-toggle="tab">Indicadores de Desempeño</a></li>
                                     </ul>
                                     <div class="panel-body" style="padding-top: 0px">
                                         <div class="tab-content">
@@ -170,15 +169,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="row-not">
-                                                    <div class="col-md-3 col-xs-12">
+                                                    <!--div class="col-md-3 col-xs-12">
                                                         <ul class="list-inline pull-left">
                                                             <li><a class="view-reporte" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
                                                             <li><a class="view-reporte" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
                                                             <li><a class="view-reporte" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
                                                             <li><a class="view-reporte" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
                                                         </ul>
-                                                    </div>
-                                                    <div class="col-md-9 col-xs-12 text-right">
+                                                    </div-->
+                                                    <div class="col-xs-12 text-right">
                                                         <ul id="paginationDocumentos_AS" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                         </ul>
@@ -236,15 +235,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="row-not">
-                                                    <div class="col-md-3 col-xs-12">
+                                                    <!--div class="col-md-3 col-xs-12">
                                                         <ul class="list-inline pull-left">
                                                             <li><a class="view-reporte" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
                                                             <li><a class="view-reporte" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
                                                             <li><a class="view-reporte" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
                                                             <li><a class="view-reporte" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
                                                         </ul>
-                                                    </div>
-                                                    <div class="col-md-9 col-xs-12 text-right">
+                                                    </div-->
+                                                    <div class="col-xs-12 text-right">
                                                         <ul id="paginationDocumentos_DG" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                         </ul>
@@ -298,15 +297,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="row-not">
-                                                    <div class="col-md-3 col-xs-12">
+                                                    <!--div class="col-md-3 col-xs-12">
                                                         <ul class="list-inline pull-left">
                                                             <li><a class="view-reporte" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
                                                             <li><a class="view-reporte" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
                                                             <li><a class="view-reporte" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
                                                             <li><a class="view-reporte" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
                                                         </ul>
-                                                    </div>
-                                                    <div class="col-md-9 col-xs-12 text-right">
+                                                    </div-->
+                                                    <div class="col-xs-12 text-right">
                                                         <ul id="paginationDocumentos_ND" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                         </ul>
@@ -359,15 +358,15 @@
                                                     </div>
                                                 </div>
                                                 <div class="row-not">
-                                                    <div class="col-md-3 col-xs-12">
+                                                    <!--div class="col-md-3 col-xs-12"">
                                                         <ul class="list-inline pull-left">
                                                             <li><a class="view-reporte" format="pdf" title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
                                                             <li><a class="view-reporte" format="docx" title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
                                                             <li><a class="view-reporte" format="pptx" title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
                                                             <li><a class="view-reporte" format="xlsx" title="Descargar en EXCEL" style="padding-right: 10px"><i class="fa fa-file-excel-o"></i></a></li>
                                                         </ul>
-                                                    </div>
-                                                    <div class="col-md-9 col-xs-12 text-right">
+                                                    </div-->
+                                                    <div class="col-xs-12 text-right">
                                                         <ul id="paginationDocumentos_ID" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
 
                                                         </ul>
