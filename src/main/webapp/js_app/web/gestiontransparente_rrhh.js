@@ -151,7 +151,7 @@ function addFuncionarios(DATA) {
         card += "<div class='team-wrapper text-center'>";
 
         card += "<div class='team-img'>";
-        card += "<a href=''><img src='/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto + "' class='img-responsive' alt='Imagen'></a>";
+        card += "<a href='javascript.void(0)'><img style='height: 250px' src='/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto + "' class='img-responsive' alt='Imagen'></a>";
 
         card += "<div class='team-title' style='padding-top: 10px;padding-left: 10px; padding-right: 10px'>";
         card += "<h3 class='text-peam-negrita'><a style='text-transform: none'>" + value.nombres_apellidos + "</a></h3>";
@@ -178,13 +178,16 @@ function addFuncionarios(DATA) {
 
 function addDirectivos(DATA) {
     var card;
+    var lista_cards = [];
     $(DATA.LIST).each(function (index, value) {
+        
+        //card = "<div class='col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 mt-15'>";
         card = "<div class='col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 mt-15'>";
 
-        card += "<div class='team-wrapper text-center'>";
+        card += "<div class='team-wrapper text-center' style='height: 620px'>";
 
         card += "<div class='team-img'>";
-        card += "<a href=''><img src='/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto + "' class='img-responsive' alt='Imagen'></a>";
+        card += "<a href='javascript.void(0)'><img style='height: 250px' src='/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto + "' class='img-responsive' alt='Imagen'></a>";
 
         card += "<div class='team-title' style='padding-top: 10px;padding-left: 10px; padding-right: 10px'>";
         card += "<h3 class='text-peam-negrita'><a style='text-transform: none'>" + value.nombres_apellidos + "</a></h3>";
@@ -205,8 +208,16 @@ function addDirectivos(DATA) {
         card += "</div>";
         //CIERRE DEL LA COLUMNA
         card += "</div>";
-        $('#containerDirectivos').append(card);
+        if (value.cargo.toLowerCase() == "presidente del consejo") {
+            $('#containerDirectivos').append(card);
+        } else {
+            lista_cards.push(card);
+        }
     });
+
+    for (var i = 0; i < lista_cards.length; i++) {
+        $('#containerDirectivos').append(lista_cards[i]);
+    }
 }
 
 function procesarAjaxPersonalWeb(complemento) {
@@ -327,7 +338,7 @@ function listarPersonalWeb(BEAN_PAGINATION, complemento) {
             fila += "<td class='text-medium-table text-middle '>" + oficina_area + "</td>";
             fila += "<td class='text-medium-table text-middle " + ocultar + "'>" + cargo + "</td>";
             fila += "<td class='text-medium-table text-middle " + ocultar + " text-center'>" + pension + "</td>";
-            fila += "<td class='text-medium-table text-middle text-center "+inverso+"'>" + value.codigo_civil + "</td>";
+            fila += "<td class='text-medium-table text-middle text-center " + inverso + "'>" + value.codigo_civil + "</td>";
             fila += "<td class='text-medium-table text-middle text-center'>" + value.remuneracion_mensual.toFixed(2) + "</td>";
             fila += "<td class='text-medium-table text-middle " + ocultar + " text-center'>" + value.bonificacion_quinq.toFixed(2) + "</td>";
             fila += "<td class='text-medium-table text-middle " + ocultar + " text-center'>" + value.beneficios.toFixed(2) + "</td>";

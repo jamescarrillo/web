@@ -88,6 +88,7 @@ function addNoticiasWeb(DATA_NOTASPRENSA, DATA_DESTACADOS) {
                     id = url_values[0];
                 }
                 $('#idNota' + (index + 1)).val(id);
+                $('#imgNotaPrensa' + (index + 1)).attr("src", value.foto);
                 $('#tituloNotaPrensa' + (index + 1)).html(getTitleDestacado(value.titulo));
                 $('#resumenNotaPrensa' + (index + 1)).html(getContenidoDestacado(value.contenido));
             }
@@ -120,9 +121,11 @@ function addNoticiasWeb(DATA_NOTASPRENSA, DATA_DESTACADOS) {
 function getTitleDestacado(titulo) {
     let palabras = titulo.split(" ");
     let title_new = "";
+    let multiplo = 1;
     for (var i = 0; i < palabras.length; i++) {
         title_new += palabras[i] + " ";
-        if (i === 6) {
+        if (i === 6 * multiplo) {
+            multiplo++;
             title_new += "<br>";
         }
     }
@@ -132,9 +135,11 @@ function getTitleDestacado(titulo) {
 function getContenidoDestacado(titulo) {
     let palabras = titulo.split(" ");
     let destacado_new = "";
+    let multiplo = 1;
     for (var i = 0; i < palabras.length; i++) {
         destacado_new += palabras[i] + " ";
-        if (i === 10) {
+        if (i === 10 * multiplo) {
+            multiplo++;
             destacado_new += "<br>";
         }
     }
@@ -161,7 +166,7 @@ function getItemNoticia(title, foto, idnoticia) {
     div += getFormViewNoticeWeb(idnoticia);
     div += "</div>";
     //justify-content: center;
-   //align-items: center;
+    //align-items: center;
     div += "<div class='description_float_noticias text-center'>";
     div += "<div style='height: 100%;justify-content: center;align-items: center;-ms-display: flex;display: flex;'><h5>" + title + "</h5></div>";
     div += "</div>";
@@ -249,6 +254,7 @@ function addAnunciosWeb(DATA_ANUNCIOS) {
     $('.jq-toast-heading').addClass('text-peam text-center');
     $('.jq-toast-heading').css('color', '#00793D');
     $('.jq-toast-heading').css('font-weight', 'bold');
+    //$('.jq-toast-heading').css('font-family:', 'myFontGothic !important;');
 }
 
 function addMultimediaWeb(DATA_MULTIMEDIA) {

@@ -106,7 +106,7 @@ ORDER BY FECHA_COMPRA DESC]]>
 					<subreportParameterExpression><![CDATA[$P{path_logo_goresam}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:/Users/JamesCarrillo/JaspersoftWorkspace/reportes_peam/web/cabecera_horizontal.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{path_cabecera}]]></subreportExpression>
 			</subreport>
 			<textField>
 				<reportElement x="1" y="75" width="800" height="20" uuid="e80f376c-d3bf-4167-8a85-eba18a0b0676"/>

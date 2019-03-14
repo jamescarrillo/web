@@ -68,7 +68,8 @@
                         data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
-                        data-title="materialize Material" data-description=""><img
+                        data-title="materialize Material" data-description="">
+                        <img id="imgNotaPrensa1"
                             src="assets/img/banner/banner-2.jpg" alt=""
                             data-bgposition="center center" data-bgfit="cover"
                             data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
@@ -87,7 +88,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa1" style="font-family: myFontGothic !important; ">
+                            <div class="text-center" id="tituloNotaPrensa1" style="font-family: myFontGothic !important; color: #ffffff;">
 
                             </div>
                         </div>
@@ -95,7 +96,7 @@
                             class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
                             data-fontsize="['20','20','15','10']"
-                            data-lineheight="['20','20','15','10']" data-width="none"
+                            data-lineheight="['30','20','15','10']" data-width="none"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
@@ -104,7 +105,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div id="resumenNotaPrensa1" class="text-left" style="font-family: myFontGothic !important">
+                            <div id="resumenNotaPrensa1" class="text-left" style="font-family: myFontGothic !important; color: #ffffff;">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -134,6 +135,7 @@
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="materialize Material" data-description=""><img
+                            id="imgNotaPrensa2"
                             src="assets/img/banner/banner-2.jpg" alt=""
                             data-bgposition="center center" data-bgfit="cover"
                             data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
@@ -142,7 +144,7 @@
                             class="tp-caption rev-heading text-extrabold dark-text tp-resizeme "
                             data-x="center" data-y="center" data-voffset="-50"
                             data-fontsize="['30','25','20','15']"
-                            data-lineheight="['30','25','20','20']" data-width="none"
+                            data-lineheight="['30','25','20','15']" data-width="none"
                             data-height="none" data-whitespace="nowrap"
                             data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
@@ -152,14 +154,14 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa2" style="font-family: myFontGothic !important">
+                            <div class="text-center" id="tituloNotaPrensa2" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
                             class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
                             data-fontsize="['20','20','15','10']"
-                            data-lineheight="['20','20','15','10']" data-width="none"
+                            data-lineheight="['30','20','15','10']" data-width="none"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
@@ -168,7 +170,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa2" style="font-family: myFontGothic !important">
+                            <div class="text-left" id="resumenNotaPrensa2" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -198,6 +200,7 @@
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="materialize Material" data-description=""><img
+                            id="imgNotaPrensa3"
                             src="assets/img/banner/banner-2.jpg" alt=""
                             data-bgposition="center center" data-bgfit="cover"
                             data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
@@ -206,7 +209,7 @@
                             class="tp-caption rev-heading text-extrabold dark-text tp-resizeme "
                             data-x="center" data-y="center" data-voffset="-50"
                             data-fontsize="['30','25','20','15']"
-                            data-lineheight="['30','25','20','20']" data-width="none"
+                            data-lineheight="['30','25','20','15']" data-width="none"
                             data-height="none" data-whitespace="nowrap"
                             data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
@@ -216,14 +219,14 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa3" style="font-family: myFontGothic !important">
+                            <div class="text-center" id="tituloNotaPrensa3" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
                             class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
                             data-fontsize="['20','20','15','10']"
-                            data-lineheight="['20','20','15','10']" data-width="none"
+                            data-lineheight="['30','20','15','10']" data-width="none"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
@@ -232,7 +235,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa3" style="font-family: myFontGothic !important">
+                            <div class="text-left" id="resumenNotaPrensa3" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -262,6 +265,7 @@
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="materialize Material" data-description=""><img
+                            id="imgNotaPrensa4"
                             src="assets/img/banner/banner-2.jpg" alt=""
                             data-bgposition="center center" data-bgfit="cover"
                             data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
@@ -280,14 +284,14 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa4" style="font-family: myFontGothic !important">
+                            <div class="text-center" id="tituloNotaPrensa4" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
                             class="tp-caption tp-resizeme rev-subheading  dark-text text-center"
                             data-x="center" data-y="center" data-voffset="30"
                             data-fontsize="['20','20','15','10']"
-                            data-lineheight="['20','20','15','10']" data-width="none"
+                            data-lineheight="[30','20','15','10']" data-width="none"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
@@ -296,7 +300,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa4" style="font-family: myFontGothic !important">
+                            <div class="text-left" id="resumenNotaPrensa4" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -326,6 +330,7 @@
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
                         data-title="materialize Material" data-description=""><img
+                            id="imgNotaPrensa5"
                             src="assets/img/banner/banner-2.jpg" alt=""
                             data-bgposition="center center" data-bgfit="cover"
                             data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
@@ -344,7 +349,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa5" style="font-family: myFontGothic !important">
+                            <div class="text-center" id="tituloNotaPrensa5" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
@@ -352,7 +357,7 @@
                             data-x="center" data-y="center" data-voffset="30"
                             data-whitespace="nowrap" data-transform_idle="o:1;"
                             data-fontsize="['20','20','15','10']"
-                            data-lineheight="['20','20','15','10']" data-width="none"
+                            data-lineheight="['30','20','15','10']" data-width="none"
                             data-transform_in="y:[100%];z:0;rX:0deg;rY:0;rZ:0;sX:1;sY:1;skX:0;skY:0;opacity:0;s:600;e:Power4.easeInOut;"
                             data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
                             data-mask_in="x:0px;y:[100%];s:inherit;e:inherit;"
@@ -360,7 +365,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa5" style="font-family: myFontGothic !important">
+                            <div class="text-left" id="resumenNotaPrensa5" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"

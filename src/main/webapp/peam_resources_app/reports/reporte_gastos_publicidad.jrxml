@@ -128,7 +128,7 @@ ORDER BY ANHO DESC]]>
 					<subreportParameterExpression><![CDATA[$P{path_logo_goresam}]]></subreportParameterExpression>
 				</subreportParameter>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA["C:/Users/JamesCarrillo/JaspersoftWorkspace/reportes_peam/web/cabecera_horizontal.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{path_cabecera}]]></subreportExpression>
 			</subreport>
 			<textField>
 				<reportElement x="0" y="75" width="800" height="20" uuid="b6ad7a4b-6b52-4ef9-8d96-95096dc23bab"/>
