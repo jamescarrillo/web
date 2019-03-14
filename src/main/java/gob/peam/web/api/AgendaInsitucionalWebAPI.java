@@ -130,34 +130,25 @@ public class AgendaInsitucionalWebAPI extends HttpServlet {
 
     private HashMap<String, Object> getParametersAgenda(HttpServletRequest request) {
         this.parameters.clear();
-        this.parameters.put("FILTER", request.getParameter("txtActividad").toLowerCase());
+        String complemento = request.getParameter("complemento");
+        this.parameters.put("FILTER", request.getParameter("txtActividad"+complemento).toLowerCase());
         switch (request.getParameter("comboFecha")) {
-            case "dia":
-                this.parameters.put("SQL_FECHA", "AND EXTRACT(DAY FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
-                break;
-            case "mes":
-                this.parameters.put("SQL_FECHA", "AND EXTRACT(MONTH FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
-                break;
-            case "anho":
-                this.parameters.put("SQL_FECHA", "AND EXTRACT(YEAR FROM FECHA_INICIO)=" + request.getParameter("tFecha") + " ");
-                break;
             case "todo":
                 this.parameters.put("SQL_FECHA", "");
                 break;
         }
-
-        if (request.getParameter("txtCalendario").equals("")) {
+        if (request.getParameter("txtCalendario"+complemento).equals("")) {
             this.parameters.put("SQL_CALENDARIO", "");
         } else {
-            this.parameters.put("SQL_CALENDARIO", "OR FECHA_INICIO = '" + Utilities.getDateSQLFORMAT(request.getParameter("txtCalendario"), "dd/MM/yyyy") + "' ");
+            this.parameters.put("SQL_CALENDARIO", " AND FECHA_INICIO = '" + Utilities.getDateSQLFORMAT(request.getParameter("txtCalendario"+complemento), "dd/MM/yyyy") + "' ");
         }
         this.parameters.put("SQL_ESTADO", "AND ESTADO = true ");
         this.parameters.put("SQL_TIPO", "AND TIPO = " + request.getParameter("cbotipo"));
         this.parameters.put("SQL_ORDERS", "FECHA_INICIO DESC");
         this.parameters.put("LIMIT",
-                " LIMIT " + request.getParameter("sizePageAgenda") + " OFFSET "
-                + (Integer.parseInt(request.getParameter("numberPageAgenda")) - 1)
-                * Integer.parseInt(request.getParameter("sizePageAgenda")));
+                " LIMIT " + request.getParameter("sizePageAgenda"+complemento) + " OFFSET "
+                + (Integer.parseInt(request.getParameter("numberPageAgenda"+complemento)) - 1)
+                * Integer.parseInt(request.getParameter("sizePageAgenda"+complemento)));
         return this.parameters;
     }
 

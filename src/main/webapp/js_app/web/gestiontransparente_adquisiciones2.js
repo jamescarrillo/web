@@ -89,9 +89,6 @@ $(document).ready(function () {
     $('.item-documento-ad').each(function (index, value) {
         $(this).click(function () {
             ejecucionDocumento($(this).attr("complemento"));
-//            $('#cate_id').val($(this).attr("cate_id"));
-//            $('#comboAnioDocumento' + $(this).attr("complemento")).val("-1");
-//            $('#FrmDocumentos' + $(this).attr("complemento")).submit();
         });
     });
     ejecucionDocumento("");
