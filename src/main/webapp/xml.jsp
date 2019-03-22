@@ -14,7 +14,6 @@
     <body>
         <h1>Hello Worldsssss!</h1>
         <input type="submit" id="btn">
-
         <script src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/jquery/jquery.min.js"></script>
         <script type="text/javascript" src="js/conf_web.js"></script>
     </body>
