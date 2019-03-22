@@ -68,7 +68,7 @@
                         data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
-                        data-title="materialize Material" data-description="">
+                        data-title="materialize Material">
                         <img id="imgNotaPrensa1"
                             src="assets/img/banner/banner-2.jpg" alt=""
                             data-bgposition="center center" data-bgfit="cover"
@@ -88,7 +88,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa1" style="font-family: myFontGothic !important; color: #ffffff;">
+                            <div class="text-center text-noticia-index-peam" id="tituloNotaPrensa1" style="font-family: myFontGothic !important; color: #ffffff;">
 
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div id="resumenNotaPrensa1" class="text-left" style="font-family: myFontGothic !important; color: #ffffff;">
+                            <div id="resumenNotaPrensa1" class="text-left text-noticia-index-peam" style="font-family: myFontGothic !important; color: #ffffff;">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -154,7 +154,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa2" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-center text-noticia-index-peam" id="tituloNotaPrensa2" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
@@ -170,7 +170,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa2" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-left text-noticia-index-peam" id="resumenNotaPrensa2" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -219,7 +219,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa3" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-center text-noticia-index-peam" id="tituloNotaPrensa3" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
@@ -235,7 +235,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa3" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-left text-noticia-index-peam" id="resumenNotaPrensa3" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -284,7 +284,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa4" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-center text-noticia-index-peam" id="tituloNotaPrensa4" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
@@ -300,7 +300,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa4" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-left text-noticia-index-peam" id="resumenNotaPrensa4" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -349,7 +349,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa5" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-center text-noticia-index-peam" id="tituloNotaPrensa5" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
@@ -365,7 +365,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa5" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-left text-noticia-index-peam" id="resumenNotaPrensa5" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"

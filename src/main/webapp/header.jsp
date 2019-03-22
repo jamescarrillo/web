@@ -121,9 +121,9 @@
                                     <h2>Servicios</h2>
                                     <ul class="list-unstyled clearfix">
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/login" target="_blank">Gestor de Contenidos</a></li>
-                                        <li><a href="http://doc.peam.gob.pe/sisgedo/app/main.php" target="_blank">Sistema de Trámite Documentario (SisGedo)</a></li>
-                                        <li><a href="http://siga.peam.gob.pe:8080/SIGAWEB/" target="_blank">Siga Web</a></li>
-                                        <li><a href="http://lib.peam.gob.pe:8081/ArcDig/" target="_blank">ArcDig</a></li>
+                                        <li><a href="http://doc.peam.gob.pe/sisgedo/app/main.php" target="_blank">Sistema de Trámite Documentario (SISGEDO)</a></li>
+                                        <li><a href="http://siga.peam.gob.pe:8080/SIGAWEB/" target="_blank">SIGA Web</a></li>
+                                        <li><a href="http://lib.peam.gob.pe:8081/ArcDig/" target="_blank">Sistema de Archivos Digitales (ARCDIG)</a></li>
                                         <li><a href="http://lib.peam.gob.pe/Visitas/controlVisitas/index.php?r=consultas/visitaConsulta" target="_blank">Registro de Visitas en Línea</a></li>
                                         <li><a href="https://correo.peam.gob.pe/" target="_blank">Correo Institucional</a></li>
                                     </ul>

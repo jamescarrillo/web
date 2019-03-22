@@ -458,3 +458,14 @@
 .container-card-peam {
     padding: 2px 16px;
 }
+
+.text-noticia-index-peam{
+    /*text-shadow: black 0.1em 0.1em 0.2em*/
+    /*color: #060;*/
+}
+
+
+.tp-bgimg{
+    -webkit-filter: brightness(50%);
+    /*background: #00000052 !important;*/
+}
