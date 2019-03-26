@@ -36,11 +36,9 @@ function procesarAjaxIndexWeb() {
             if (jsonResponse.DATA_ENLACES !== "") {
                 let div_enlace;
                 $(jsonResponse.DATA_ENLACES.LIST).each(function (index, value) {
-                    div_enlace = `
-                    <div class="col-xs-3" style="margin-bottom: 10px">
-                        <a href="${value.url}" target="_blank" title='${value.descripcion}' class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-link fa-2x"></i> ${value.abreviatura}</a>
-                    </div>
-                        `;
+                    div_enlace = '<div class="col-xs-3" style="margin-bottom: 10px">';
+                    div_enlace += '<a href=' + value.url + ' target="_blank" title=' + value.descripcion + ' class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-link fa-2x"></i> ' + value.abreviatura + '</a>';
+                    div_enlace += '</div>';
                     $('#row_enlaces_externos').append(div_enlace);
                 });
             }
@@ -291,12 +289,10 @@ function procesarAjaxGaleriaWeb(apikey, idusuario, idalbum, numero_fotos_mostrar
         success: function (response) {
             var article;
             $.each($(response).find('photo'), function (i, item) {
-                article = `
-                 <article class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-10">
-                 <a href="${$(item).attr('url_c')}" data-lightbox="example-set" data-title="${$(item).attr('title')}">
-                 <img src="${$(item).attr('url_c')}" alt="Regala" class="img-thumbnail"></a>
-                 </article>
-                 `;
+                article = '<article class="col-lg-3 col-md-4 col-sm-6 col-xs-12 mb-10">';
+                article += '<a href=' + $(item).attr('url_c') + ' data-lightbox="example-set" data-title=' + $(item).attr('title') + '>';
+                article += '<img src=' + $(item).attr('url_c') + ' alt="Regala" class="img-thumbnail"></a>';
+                article += '</article>';
                 $('#containerFotosGaleria').append(article);
             });
 
@@ -312,3 +308,18 @@ function procesarAjaxGaleriaWeb(apikey, idusuario, idalbum, numero_fotos_mostrar
     return false;
 }
 
+function getContext() {
+    return "/web";
+}
+
+function removeTagHTML(cadena) {
+    cadena = cadena.replace(/<\/?[^>]+(>|$)/g, "");
+    return cadena;
+    /*
+     if ((str===null) || (str===''))
+     return false;
+     else
+     str = str.toString();
+     return str.replace(/<[^>]*>/g, ''); 
+     */
+}
