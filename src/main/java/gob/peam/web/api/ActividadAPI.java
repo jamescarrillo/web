@@ -48,7 +48,6 @@ public class ActividadAPI extends HttpServlet {
         this.json = new GsonBuilder().setDateFormat("dd/MM/yyyy").create();
         this.parameters = new HashMap<>();
         this.action = "";
-
         this.actividadDAO = new ActividadDAOImpl(this.pool);
     }
 
