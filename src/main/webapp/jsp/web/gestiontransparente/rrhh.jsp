@@ -59,7 +59,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a data-toggle="collapse" data-parent="#tab" href="#tab-plan-gerencial-y-directivos" aria-expanded="false" class="collapsed">
+                                        <a data-toggle="collapse" data-parent="#tab" complemento="rrhh1" href="#tab-plan-gerencial-y-directivos" aria-expanded="false" class="collapsed item-personal-remuneracines">
                                             Plana Gerencial y Directivos
                                         </a>
                                     </h3>
@@ -86,7 +86,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-consejo-directivo" aria-expanded="false">
+                                        <a class="collapsed item-personal-remuneracines"  complemento="rrhh2" data-toggle="collapse" data-parent="#tab" href="#tab-consejo-directivo" aria-expanded="false">
                                             Consejo Directivo
                                         </a>
                                     </h3>
@@ -104,8 +104,8 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
-                                        <a class="collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-personal-por-categorias" aria-expanded="false">
-                                            Remunaración por Categorías
+                                        <a class="collapsed item-personal-remuneracines"  complemento="rrhh3" data-toggle="collapse" data-parent="#tab" href="#tab-personal-por-categorias" aria-expanded="false">
+                                            Remuneración por Categorías
                                         </a>
                                     </h3>
                                 </div>
@@ -119,6 +119,10 @@
                                                 </div>
                                                 <div class="col-md-2 col-sm-6 col-xs-12">
                                                     <select id="comboTrimestrePersonalCategoria" name="comboTrimestrePersonalCategoria" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonalCategoria' style="border: 1px solid #00793D; margin-top: 40px">
+                                                        <option value="1">Primer Trimestre</option>
+                                                        <option value="2">Segundo Trimestre</option>
+                                                        <option value="3">Tercer Trimestre</option>
+                                                        <option value="4">Cuarto Trimestre</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-9 col-xs-12">
@@ -205,7 +209,11 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-6 col-xs-12">
-                                                    <select id="comboTrimestrePersonal" name="comboTrimestrePersonal" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="comboTrimestrePersonal" name="comboTrimestrePersonal" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal' style="border: 1px solid #00793D; margin-top: 40px">
+                                                        <option value="1">Primer Trimestre</option>
+                                                        <option value="2">Segundo Trimestre</option>
+                                                        <option value="3">Tercer Trimestre</option>
+                                                        <option value="4">Cuarto Trimestre</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-9 col-xs-12">
@@ -291,6 +299,10 @@
                                                 </div>
                                                 <div class="col-md-2 col-sm-6 col-xs-12">
                                                     <select id="comboTrimestrePersonal_CLS" name="comboTrimestrePersonal_CLS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
+                                                        <option value="1">Primer Trimestre</option>
+                                                        <option value="2">Segundo Trimestre</option>
+                                                        <option value="3">Tercer Trimestre</option>
+                                                        <option value="4">Cuarto Trimestre</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-9 col-xs-12">
@@ -377,6 +389,10 @@
                                                 </div>
                                                 <div class="col-md-2 col-sm-6 col-xs-12">
                                                     <select id="comboTrimestrePersonal_CAS" name="comboTrimestrePersonal_CAS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
+                                                        <option value="1">Primer Trimestre</option>
+                                                        <option value="2">Segundo Trimestre</option>
+                                                        <option value="3">Tercer Trimestre</option>
+                                                        <option value="4">Cuarto Trimestre</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-9 col-xs-12">
