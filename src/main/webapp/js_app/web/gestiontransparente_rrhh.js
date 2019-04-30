@@ -1,7 +1,6 @@
 $(document).ready(function () {
 
-    cargarAniosComboActuales($('#comboAnioPersonalCategoria'), 2007);
-    cargarTrimestreComboActuales($('#comboAnioPersonalCategoria').val(), $('#comboTrimestrePersonalCategoria'));
+
 
     $("#FrmPersonal").submit(function () {
         $("#nameFormPersonal").val("FrmPersonal");
@@ -99,26 +98,30 @@ $(document).ready(function () {
     });
 
     addEventoCombosPaginar();
-    processAjaxDataRRHH();
+
 });
 
 function ejecucion(comp) {
     var tipo;
-    switch (comp) {
-        case "" :
-            tipo = 1;
-            break;
-        case "_CLS":
-            tipo = 2;
-            break;
-        case "_CAS" :
-            tipo = 3;
-            break;
+    if (comp.substring(0, 4) === "rrhh") {
+        procesarAjaxAnhos22(comp);
+    } else {
+        switch (comp) {
+            case "" :
+                tipo = 1;
+                break;
+            case "_CLS":
+                tipo = 2;
+                break;
+            case "_CAS" :
+                tipo = 3;
+                break;
+        }
+        procesarAjaxAnhos(tipo, comp);
     }
-    procesarAjaxAnhos(tipo, comp);
 }
 
-function processAjaxDataRRHH() {
+function processAjaxDataRRHH(tipo) {
     var datosSerializadosCompletos = $('#' + $('#nameFormPersonalCategoria').val()).serialize();
     //datosSerializadosCompletos += "&" + $('#' + $('#nameFormPersonalCategoria').val()).serialize();
     //datosSerializadosCompletos = datosSerializadosCompletos.replace("&action=paginarPersonal", "");
@@ -132,9 +135,15 @@ function processAjaxDataRRHH() {
         success: function (jsonResponse) {
             console.log(jsonResponse);
             //listarPersonalWeb(jsonResponse.DATA_PERSONAL);
-            listarPersonalCategoriaWeb(jsonResponse.DATA_PERSONAL_PORCATEGORIAS);
-            addFuncionarios(jsonResponse.DATA_FUNCIONARIOS);
-            addDirectivos(jsonResponse.DATA_DIRECTIVOS);
+            if (tipo === "rrhh3") {
+                listarPersonalCategoriaWeb(jsonResponse.DATA_PERSONAL_PORCATEGORIAS);
+            } else {
+                if (tipo === "rrhh1") {
+                    addFuncionarios(jsonResponse.DATA_FUNCIONARIOS);
+                } else {
+                    addDirectivos(jsonResponse.DATA_DIRECTIVOS);
+                }
+            }
         },
         error: function () {
             console.log('Error interno al trear datos de rrhh!');
@@ -144,6 +153,8 @@ function processAjaxDataRRHH() {
 }
 
 function addFuncionarios(DATA) {
+    $('#containerFuncionarios').empty();
+    var lista_cards = [];
     var card;
     $(DATA.LIST).each(function (index, value) {
         card = "<div class='col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 mt-15'>";
@@ -151,7 +162,7 @@ function addFuncionarios(DATA) {
         card += "<div class='team-wrapper text-center'>";
 
         card += "<div class='team-img'>";
-        card += "<a href='javascript.void(0)'><img style='height: 250px' src='/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto + "' class='img-responsive' alt='Imagen'></a>";
+        card += "<img style='height: 250px' src='/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto + "' class='img-responsive' alt='Imagen'>";
 
         card += "<div class='team-title' style='padding-top: 10px;padding-left: 10px; padding-right: 10px'>";
         card += "<h3 class='text-peam-negrita'><a style='text-transform: none'>" + value.nombres_apellidos + "</a></h3>";
@@ -172,22 +183,31 @@ function addFuncionarios(DATA) {
         card += "</div>";
         //CIERRE DEL LA COLUMNA
         card += "</div>";
-        $('#containerFuncionarios').append(card);
+        if (value.cargo.toLowerCase() === "gerente general") {
+            $('#containerFuncionarios').append(card);
+        } else {
+            lista_cards.push(card);
+        }
     });
+
+    for (var i = 0; i < lista_cards.length; i++) {
+        $('#containerFuncionarios').append(lista_cards[i]);
+    }
 }
 
 function addDirectivos(DATA) {
     var card;
     var lista_cards = [];
+    $('#containerDirectivos').empty();
     $(DATA.LIST).each(function (index, value) {
-        
+
         //card = "<div class='col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 mt-15'>";
         card = "<div class='col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 mt-15'>";
 
         card += "<div class='team-wrapper text-center' style='height: 620px'>";
 
         card += "<div class='team-img'>";
-        card += "<a href='javascript.void(0)'><img style='height: 250px' src='/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto + "' class='img-responsive' alt='Imagen'></a>";
+        card += "<img style='height: 250px' src='/web/peam_resources_app/conf_app/DirectivoFuncionario/img/" + value.foto + "' class='img-responsive' alt='Imagen'>";
 
         card += "<div class='team-title' style='padding-top: 10px;padding-left: 10px; padding-right: 10px'>";
         card += "<h3 class='text-peam-negrita'><a style='text-transform: none'>" + value.nombres_apellidos + "</a></h3>";
@@ -208,7 +228,7 @@ function addDirectivos(DATA) {
         card += "</div>";
         //CIERRE DEL LA COLUMNA
         card += "</div>";
-        if (value.cargo.toLowerCase() == "presidente del consejo") {
+        if (value.cargo.toLowerCase() === "presidente del consejo") {
             $('#containerDirectivos').append(card);
         } else {
             lista_cards.push(card);
@@ -261,6 +281,25 @@ function procesarAjaxAnhos(tipo, complemento) {
 //    }
     return false;
 }
+function procesarAjaxAnhos22(comp) {
+    var datosSerializadosCompletos = "action=listarAnhosRemuneracion";
+    $.ajax({
+        url: getContext() + '/gestiontransparente/recursos-humanos',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarAnhos22(jsonResponse.BEAN_PAGINATION, comp);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+
 function listarAnhos(BEAN_PAGINATION, tipo, complemento) {
     $('#comboAnioPersonal' + complemento).empty();
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
@@ -269,7 +308,7 @@ function listarAnhos(BEAN_PAGINATION, tipo, complemento) {
             option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
             $('#comboAnioPersonal' + complemento).append(option);
         });
-        cargarTrimestreComboActuales($('#comboAnioPersonal' + complemento).val(), $('#comboTrimestrePersonal' + complemento));
+        //cargarTrimestreComboActuales($('#comboAnioPersonal' + complemento).val(), $('#comboTrimestrePersonal' + complemento));
         $('#cboTipoPersonal').val(tipo);
         $('#FrmPersonal' + complemento).submit();
 
@@ -277,6 +316,22 @@ function listarAnhos(BEAN_PAGINATION, tipo, complemento) {
         console.log("vacio");
     }
 }
+
+function listarAnhos22(BEAN_PAGINATION, comp) {
+    $('#comboAnioPersonalCategoria').empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            $('#comboAnioPersonalCategoria').append(option);
+        });
+        //cargarTrimestreComboActuales($('#comboAnioPersonalCategoria').val(), $('#comboTrimestrePersonalCategoria'));
+        processAjaxDataRRHH(comp);
+    } else {
+        console.log("vacio");
+    }
+}
+
 function listarPersonalWeb(BEAN_PAGINATION, complemento) {
     /*PAGINATION*/
     var $pagination = $('#paginationPersonal' + complemento);

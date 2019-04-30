@@ -170,6 +170,9 @@ public class GestionTransparente2WebAPI extends HttpServlet {
                 case "listarAnhos":
                     procesarAnhos(new BEAN_CRUD(this.personalDAO.getAnhos(getParametersAnhos(request))), response);
                     break;
+                case "listarAnhosRemuneracion":
+                    procesarAnhos(new BEAN_CRUD(this.personalCategoriaDAO.getAnhos(getParametersAnhosCategoria(request))), response);
+                    break;
                 case "listarAnhosOS":
                     procesarAnhos(new BEAN_CRUD(this.ordenServicioDAO.getAnhos(getParametersAnhosyMES(request, 1), 1)), response);
                     break;
@@ -541,6 +544,18 @@ public class GestionTransparente2WebAPI extends HttpServlet {
                 }
             }
         } else {
+            this.parametersanhios.put("SQL_ESTADO", " AND ESTADO = TRUE ");
+        }
+
+        return this.parametersanhios;
+    }
+    
+    private HashMap<String, Object> getParametersAnhosCategoria(HttpServletRequest request) {
+        this.parametersanhios.clear();
+        this.parametersanhios.put("FILTER", "");
+        this.parametersanhios.put("SQL_ORDERS", "ANHO DESC");
+        if (this.action.equals("listarAnhosRemuneracion")) {
+            
             this.parametersanhios.put("SQL_ESTADO", " AND ESTADO = TRUE ");
         }
 
