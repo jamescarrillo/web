@@ -16,6 +16,7 @@ import gob.peam.web.utilities.Utilities;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.SQLException;
@@ -97,7 +98,6 @@ public class PersonalizacionAPI extends HttpServlet {
                     break;
                 case "/personalizacion/correo":
                     this.action = request.getParameter("action") == null ? "" : request.getParameter("action");
-                    LOG.info("------" + action);
                     switch (this.action) {
                         case "paginarCorreo":
                             procesarCorreo(new BEAN_CRUD(this.correoDAO.getPagination(getParametersCorreo(request))), response);
@@ -180,10 +180,10 @@ public class PersonalizacionAPI extends HttpServlet {
         conf.setIdusuario(request.getParameter("idusuario"));
         conf.setIdalbum(request.getParameter("idalbum"));
         //DIRECTORES
-        conf.setDirector_infraestructura(request.getParameter("txtDirectorInfraestructura"));
-        conf.setDirector_manejo_ambiental(request.getParameter("txtDirectorManejoAmbiental"));
-        conf.setDirector_desarrollo_agropecuario(request.getParameter("txtDirectorDesarrolloAgropecuario"));
-        conf.setDirector_area_estudios(request.getParameter("txtResponsableEstudios"));
+        conf.setDirector_infraestructura(new String(request.getParameter("txtDirectorInfraestructura").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+        conf.setDirector_manejo_ambiental(new String(request.getParameter("txtDirectorManejoAmbiental").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+        conf.setDirector_desarrollo_agropecuario(new String(request.getParameter("txtDirectorManejoAmbiental").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+        conf.setDirector_area_estudios(new String(request.getParameter("txtResponsableEstudios").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
         boolean copiar;
         try {
             Part filePart = request.getPart("fileFotoLogoPeam");
@@ -364,7 +364,6 @@ public class PersonalizacionAPI extends HttpServlet {
         return conf_web;
     }
 
-    
     private Conf_Web uploadFileDirector(Part filePart, Conf_Web conf_web, String campo) {
         String path = getServletContext().getRealPath("/peam_resources/logos_complementos/lineas_accion/directores/");
         File file = new File(path + Paths.get(filePart.getSubmittedFileName()).getFileName().toString());
@@ -394,6 +393,7 @@ public class PersonalizacionAPI extends HttpServlet {
         }
         return conf_web;
     }
+
     /**
      * Returns a short description of the servlet.
      *

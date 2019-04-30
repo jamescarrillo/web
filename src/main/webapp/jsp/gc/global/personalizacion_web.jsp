@@ -4,6 +4,7 @@
     Author     : James Carrillo
 --%>
 
+<%@page import="java.nio.charset.StandardCharsets"%>
 <%@page import="java.io.File"%>
 <%@page import="gob.peam.web.model.others.Conf_Web"%>
 <!DOCTYPE html>
@@ -56,6 +57,10 @@
                                 </div>
                                 <%
                                     Conf_Web conf_web = (Conf_Web) request.getAttribute("conf_web");
+                                    conf_web.setDirector_infraestructura(new String(conf_web.getDirector_infraestructura().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+                                    conf_web.setDirector_desarrollo_agropecuario(new String(conf_web.getDirector_desarrollo_agropecuario().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+                                    conf_web.setDirector_manejo_ambiental(new String(conf_web.getDirector_manejo_ambiental().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+                                    conf_web.setDirector_area_estudios(new String(conf_web.getDirector_area_estudios().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
                                 %>
                                 <div class="card-body pt-1">
                                     <div class="row mt-3">

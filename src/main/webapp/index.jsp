@@ -68,12 +68,12 @@
                         data-masterspeed="2000" data-thumb="assets/img/banner/banner-2.jpg"
                         data-rotate="0" data-fstransition="fade" data-fsmasterspeed="1500"
                         data-fsslotamount="7" data-saveperformance="off"
-                        data-title="materialize Material" data-description="">
+                        data-title="materialize Material">
                         <img id="imgNotaPrensa1"
-                            src="assets/img/banner/banner-2.jpg" alt=""
-                            data-bgposition="center center" data-bgfit="cover"
-                            data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
-                            data-no-retina>
+                             src="assets/img/banner/banner-2.jpg" alt=""
+                             data-bgposition="center center" data-bgfit="cover"
+                             data-bgrepeat="no-repeat" data-bgparallax="10" class="rev-slidebg"
+                             data-no-retina>
                         <div
                             class="tp-caption rev-heading text-extrabold dark-text tp-resizeme "
                             data-x="center" data-y="center" data-voffset="-50"
@@ -88,7 +88,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa1" style="font-family: myFontGothic !important; color: #ffffff;">
+                            <div class="text-center text-noticia-index-peam" id="tituloNotaPrensa1" style="font-family: myFontGothic !important; color: #ffffff;">
 
                             </div>
                         </div>
@@ -105,7 +105,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div id="resumenNotaPrensa1" class="text-left" style="font-family: myFontGothic !important; color: #ffffff;">
+                            <div id="resumenNotaPrensa1" class="text-left text-noticia-index-peam" style="font-family: myFontGothic !important; color: #ffffff;">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -154,7 +154,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa2" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-center text-noticia-index-peam" id="tituloNotaPrensa2" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
@@ -170,7 +170,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa2" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-left text-noticia-index-peam" id="resumenNotaPrensa2" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -219,7 +219,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa3" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-center text-noticia-index-peam" id="tituloNotaPrensa3" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
@@ -235,7 +235,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa3" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-left text-noticia-index-peam" id="resumenNotaPrensa3" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -284,7 +284,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa4" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-center text-noticia-index-peam" id="tituloNotaPrensa4" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
@@ -300,7 +300,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa4" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-left text-noticia-index-peam" id="resumenNotaPrensa4" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -349,7 +349,7 @@
                             data-start="800" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 5; white-space: nowrap;">
-                            <div class="text-center" id="tituloNotaPrensa5" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-center text-noticia-index-peam" id="tituloNotaPrensa5" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div>
                         <div
@@ -365,7 +365,7 @@
                             data-start="1000" data-splitin="none" data-splitout="none"
                             data-responsive_offset="on"
                             style="z-index: 6; white-space: nowrap;">
-                            <div class="text-left" id="resumenNotaPrensa5" style="font-family: myFontGothic !important; color: #ffffff">
+                            <div class="text-left text-noticia-index-peam" id="resumenNotaPrensa5" style="font-family: myFontGothic !important; color: #ffffff">
                             </div>
                         </div> 
                         <div class="tp-caption tp-resizeme rev-btn"
@@ -617,6 +617,7 @@
                         </div>
                     </div>
                 </div>
+            </div>
         </section>
         <section class="section-padding" style="padding-top: 0px; padding-bottom: 40px;">
             <div class="container">
@@ -770,7 +771,6 @@
 
             </div>
         </section>
-
         <section style="padding-bottom: 40px; padding-top: 0px">
             <div class="container">
                 <div class="mb-20 text-center">
@@ -779,41 +779,8 @@
                     </h1>
                 </div>
                 <div class="row" id="row_enlaces_externos" style="margin-bottom: 10px">
-                    
+
                 </div>
-                <!--div class="row" style="margin-bottom: 10px">
-                    <div class="col-xs-3">
-                        <a href="http://www.bn.com.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-university fa-2x"></i> Banco de la Nación</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=article&id=1592&Itemid=101376&lang=es" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-road fa-2x"></i> FONIPREL</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-home fa-2x" aria-hidden="true"></i> GORESAM</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="https://apps.contraloria.gob.pe/infobras/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-book fa-2x" aria-hidden="true"></i> INFObras</a>
-                    </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px">
-                    <div class="col-xs-3">
-                        <a href="http://www.sanciones.gob.pe/transparencia/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-share-alt fa-2x" aria-hidden="true"></i> Transparencia RNSDD</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="http://www2.seace.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-tag fa-2x" aria-hidden="true"></i> SE@CE</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="http://www.regionsanmartin.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-recycle fa-2x" aria-hidden="true"></i> SNIP</a>
-                    </div>
-                    <div class="col-xs-3">
-                        <a href="http://www.sunat.gob.pe/" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px"><i class="fa fa-balance-scale fa-2x" aria-hidden="true"></i> SUNAT</a>
-                    </div>
-                </div>
-                <div class="row" style="margin-bottom: 10px">
-                    <div class="col-xs-3">
-                        <a href="http://www.mef.gob.pe/index.php?option=com_content&view=section&id=37&Itemid=100143&lang=es" target="_blank" class="waves-effect waves-light btn btn-block" style="font-size: 17px;padding-left: 15px;padding-right: 15px;"><i class="fa fa-search fa-2x" aria-hidden="true"></i> Transparencia Económica</a>
-                    </div>
-                </div-->
             </div>
         </section>
         <%@ include file="footer.jsp"%>
@@ -848,10 +815,11 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.migration.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/revolution/js/extensions/revolution.extension.parallax.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/assets/plugins/toast-master/js/jquery.toast.js"></script>
-        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+        <!--script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-utilities.js"></script-->
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/lightbox.min.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
-        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/index.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/index_init.js"></script>
     </body>
 </html>

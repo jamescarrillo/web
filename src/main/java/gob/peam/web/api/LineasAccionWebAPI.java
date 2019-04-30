@@ -14,6 +14,7 @@ import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.Utilities;
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -245,6 +246,10 @@ public class LineasAccionWebAPI extends HttpServlet {
 
     private String getFotoDirector(HttpServletRequest request, Conf_Web conf) {
         String r = "";
+        conf.setDirector_infraestructura(new String(conf.getDirector_infraestructura().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+        conf.setDirector_desarrollo_agropecuario(new String(conf.getDirector_desarrollo_agropecuario().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+        conf.setDirector_manejo_ambiental(new String(conf.getDirector_manejo_ambiental().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+        conf.setDirector_area_estudios(new String(conf.getDirector_area_estudios().getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
         switch (request.getRequestURI().substring(request.getContextPath().length())) {
             case "/lineas-de-accion/direccion-de-infraestructura":
                 //r = "director_infraestructura.jpg";

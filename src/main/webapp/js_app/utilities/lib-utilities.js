@@ -2,75 +2,6 @@ $(document).ready(function () {
 
 });
 
-function viewAlert(type, message) {
-    swal({
-        title: "PEAM",
-        text: message,
-        /*7
-         html : "<img src='/sisbu/img/logo_ceplomo.png' alt='Logo' style='width:150px;'><br><h5>"
-         + message + "</h5>",*/
-        type: type,
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: "Aceptar",
-        confirmButtonClass: 'btn btn-info',
-        buttonsStyling: false
-    });
-    $('.swal2-icon').css("margin-bottom", "20px");
-}
-
-function viewAlertWeb(type, message) {
-    swal({
-        title: "PEAM",
-        text: message,
-        /*7
-         html : "<img src='/sisbu/img/logo_ceplomo.png' alt='Logo' style='width:150px;'><br><h5>"
-         + message + "</h5>",*/
-        type: type,
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: "Aceptar",
-        confirmButtonClass: 'btn btn-success',
-        buttonsStyling: false
-    });
-    $('.swal2-icon').css("margin-bottom", "20px");
-}
-
-function viewAlertDelete(entidad) {
-    swal({
-        title: 'PEAM',
-        text: "¿Desea eliminar este registro?",
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí, continuar!',
-        cancelButtonText: 'No, cancelar!',
-        confirmButtonClass: 'btn btn-info',
-        cancelButtonClass: 'btn btn-danger',
-        buttonsStyling: false
-    }).then((result) => {
-        if (result.value) {
-            $('#action' + entidad).val("delete" + entidad);
-            $("#nameForm").val("Frm" + entidad + "Modal");
-            $('#modalCargando' + entidad).modal("show");
-        } else {
-            swal(
-                    {
-                        title: "PEAM!",
-                        text: "Operación Cancelada",
-                        type: "success",
-                        showCancelButton: false,
-                        confirmButtonColor: '#3085d6',
-                        confirmButtonText: "Aceptar",
-                        confirmButtonClass: 'btn btn-info',
-                        buttonsStyling: false
-                    }
-            );
-        }
-    });
-    $('.swal2-confirm').css("margin-right", "15px");
-    $('.swal2-container').css('z-index', '2000');
-}
-
 function cargarFiltros(idimput_filter, classcheck, nameattrcheck) {
     var cadenaFiltros = "";
     $('.' + classcheck + ':checked').each(function (index, value) {
@@ -344,4 +275,74 @@ function getStringDateFormat(cadenaFecha) {
 function openReport(parametros) {
     var cadena = "/web/viewreport?" + parametros;
     window.open(cadena, "");
+}
+
+
+function viewAlert(type, message) {
+    swal({
+        title: "PEAM",
+        text: message,
+        /*7
+         html : "<img src='/sisbu/img/logo_ceplomo.png' alt='Logo' style='width:150px;'><br><h5>"
+         + message + "</h5>",*/
+        type: type,
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: "Aceptar",
+        confirmButtonClass: 'btn btn-info',
+        buttonsStyling: false
+    });
+    $('.swal2-icon').css("margin-bottom", "20px");
+}
+
+function viewAlertWeb(type, message) {
+    swal({
+        title: "PEAM",
+        text: message,
+        /*7
+         html : "<img src='/sisbu/img/logo_ceplomo.png' alt='Logo' style='width:150px;'><br><h5>"
+         + message + "</h5>",*/
+        type: type,
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: "Aceptar",
+        confirmButtonClass: 'btn btn-success',
+        buttonsStyling: false
+    });
+    $('.swal2-icon').css("margin-bottom", "20px");
+}
+
+function viewAlertDelete(entidad) {
+    swal({
+        title: 'PEAM',
+        text: "¿Desea eliminar este registro?",
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, continuar!',
+        cancelButtonText: 'No, cancelar!',
+        confirmButtonClass: 'btn btn-info',
+        cancelButtonClass: 'btn btn-danger',
+        buttonsStyling: false
+    }).then((result) => {
+        if (result.value) {
+            $('#action' + entidad).val("delete" + entidad);
+            $("#nameForm").val("Frm" + entidad + "Modal");
+            $('#modalCargando' + entidad).modal("show");
+        } else {
+            swal(
+                    {
+                        title: "PEAM!",
+                        text: "Operación Cancelada",
+                        type: "success",
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        confirmButtonText: "Aceptar",
+                        confirmButtonClass: 'btn btn-info',
+                        buttonsStyling: false
+                    }
+            );
+        }
+    });
+    $('.swal2-confirm').css("margin-right", "15px");
+    $('.swal2-container').css('z-index', '2000');
 }

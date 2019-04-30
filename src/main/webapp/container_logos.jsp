@@ -28,7 +28,7 @@
             </a>
         </div>
         <div class="col-md-3" style="padding-top: 10px;width: 160px">
-            <a href="<%out.print(conf_web.getUrl_logo_portal());%>"target="_blank">
+            <a href="<%out.print(conf_web.getUrl_logo_portal());%>" target="_blank">
                 <img class="img-responsive" src="<%out.print(getServletContext().getContextPath());%>/peam_resources/logos_principales/<%out.print(conf_web.getNombre_logo_portal());%>" alt=""/>
             </a>
         </div>
