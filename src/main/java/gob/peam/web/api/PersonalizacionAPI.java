@@ -182,7 +182,7 @@ public class PersonalizacionAPI extends HttpServlet {
         //DIRECTORES
         conf.setDirector_infraestructura(new String(request.getParameter("txtDirectorInfraestructura").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
         conf.setDirector_manejo_ambiental(new String(request.getParameter("txtDirectorManejoAmbiental").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
-        conf.setDirector_desarrollo_agropecuario(new String(request.getParameter("txtDirectorManejoAmbiental").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
+        conf.setDirector_desarrollo_agropecuario(new String(request.getParameter("txtDirectorDesarrolloAgropecuario").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
         conf.setDirector_area_estudios(new String(request.getParameter("txtResponsableEstudios").getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8));
         boolean copiar;
         try {
