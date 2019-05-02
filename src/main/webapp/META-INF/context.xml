@@ -10,4 +10,9 @@
               type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/ArcDig" 
               username="postgres">
     </Resource>
+    <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="200"
+              maxIdle="200" maxWait="40000" name="jdbc/dbsisai" password="root"
+              type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/SISAI" 
+              username="postgres">
+    </Resource>
 </Context>

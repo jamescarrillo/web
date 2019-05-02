@@ -30,7 +30,7 @@ import javax.sql.DataSource;
 @WebServlet(name = "SessionController", urlPatterns = {"/session"})
 public class SessionAPI extends HttpServlet {
 
-    @Resource(name = "jdbc/dbweb")
+    @Resource(name = "jdbc/dbsisai")
     private DataSource pool;
 
     private UsuarioDAOImpl usuarioDAO;

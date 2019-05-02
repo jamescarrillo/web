@@ -24,6 +24,7 @@ public class UsuarioDAOImpl {
 
     public UsuarioDAOImpl(DataSource pool) {
         this.pool = pool;
+        //10205114
     }
 
     public Usuario getUserValidation(String login) throws SQLException {
