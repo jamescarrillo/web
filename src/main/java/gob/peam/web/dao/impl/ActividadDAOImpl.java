@@ -28,6 +28,8 @@ public class ActividadDAOImpl implements ActividadDAO {
 
     private static final Logger LOG = Logger.getLogger(ActividadDAOImpl.class.getName());
     private final DataSource pool;
+    
+    
 
     public ActividadDAOImpl(DataSource pool) {
         this.pool = pool;
