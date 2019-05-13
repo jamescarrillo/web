@@ -112,7 +112,7 @@ function listarAgenda(BEAN_PAGINATION, complemento) {
             }
             fila = "<tr ";
             fila += ">";
-            fila += "<td class='text-center align-middle " + text_color + "'>" + value.hora_inicio + "</td>";
+            fila += "<td class='text-center align-middle " + text_color + "'>" + value.hora_inicio +"-"+value.hora_final+"</td>";
             fila += "<td class='align-middle " + text_color + "'>" + value.fecha_inicio + "</td>";
             fila += "<td class='align-middle " + text_color + "'>" + value.actividad + "</td>";
             fila += "<td class='align-middle " + text_color + "'>" + value.ciudad + "</td>";

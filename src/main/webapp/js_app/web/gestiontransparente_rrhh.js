@@ -104,7 +104,7 @@ $(document).ready(function () {
 function ejecucion(comp) {
     var tipo;
     if (comp.substring(0, 4) === "rrhh") {
-        procesarAjaxAnhos22(comp);
+        procesarAjaxAnhosRemuneracion(comp);
     } else {
         switch (comp) {
             case "" :
@@ -244,6 +244,7 @@ function procesarAjaxPersonalWeb(complemento) {
     var datosSerializadosCompletos = $('#' + $('#nameFormPersonal' + complemento).val()).serialize();
     datosSerializadosCompletos += "&cboTipoPersonal=" + $('#cboTipoPersonal').val();
     datosSerializadosCompletos += "&complemento=" + complemento;
+    console.log(datosSerializadosCompletos);
     $.ajax({
         url: getContext() + '/gestiontransparente/recursos-humanos',
         type: 'POST',
@@ -281,7 +282,32 @@ function procesarAjaxAnhos(tipo, complemento) {
 //    }
     return false;
 }
-function procesarAjaxAnhos22(comp) {
+
+function procesarMes(complemento, tipo) {
+    var datosSerializadosCompletos = "action=listarAnhosMes";
+    datosSerializadosCompletos += "&anho=" + $('#comboAnioPersonal'+complemento).val();
+    datosSerializadosCompletos += "&complemento=" + complemento;
+    datosSerializadosCompletos += "&tipo=" + tipo;
+
+
+    $.ajax({
+        url: getContext() + '/gestiontransparente/recursos-humanos',
+        type: 'POST',
+        data: datosSerializadosCompletos,
+        dataType: 'json',
+        success: function (jsonResponse) {
+            listarMes(jsonResponse.BEAN_PAGINATION, complemento);
+        },
+        error: function () {
+            console.log('Error interno en el servidor!');
+        }
+    });
+
+//    }
+    return false;
+}
+
+function procesarAjaxAnhosRemuneracion(comp) {
     var datosSerializadosCompletos = "action=listarAnhosRemuneracion";
     $.ajax({
         url: getContext() + '/gestiontransparente/recursos-humanos',
@@ -289,7 +315,7 @@ function procesarAjaxAnhos22(comp) {
         data: datosSerializadosCompletos,
         dataType: 'json',
         success: function (jsonResponse) {
-            listarAnhos22(jsonResponse.BEAN_PAGINATION, comp);
+            listarAnhosRemuneracion(jsonResponse.BEAN_PAGINATION, comp);
         },
         error: function () {
             console.log('Error interno en el servidor!');
@@ -310,14 +336,79 @@ function listarAnhos(BEAN_PAGINATION, tipo, complemento) {
         });
         //cargarTrimestreComboActuales($('#comboAnioPersonal' + complemento).val(), $('#comboTrimestrePersonal' + complemento));
         $('#cboTipoPersonal').val(tipo);
-        $('#FrmPersonal' + complemento).submit();
+
+//        if (complemento==="") {
+            procesarMes(complemento, tipo);
+//        }else{
+//           $('#FrmPersonal' + complemento).submit(); 
+//        }
+        
 
     } else {
         console.log("vacio");
     }
 }
 
-function listarAnhos22(BEAN_PAGINATION, comp) {
+function listarMes(BEAN_PAGINATION, complemeto) {
+    $('#comboTrimestrePersonal'+complemeto).empty();
+    if (BEAN_PAGINATION.COUNT_FILTER > 0) {
+        var option;
+        $.each(BEAN_PAGINATION.LIST, function (index, value) {
+            option = "<option value='" + value.fecha_ingreso + "'>" + traerNombreMes(value.fecha_ingreso) + "</option>";
+            $('#comboTrimestrePersonal'+complemeto).append(option);
+        });
+        $('#FrmPersonal'+complemeto).submit();
+
+
+    } else {
+        console.log("vacio");
+    }
+}
+
+function traerNombreMes(orden) {
+    var mes;
+    switch (orden) {
+        case "1 ":
+            mes = "Enero";
+            break;
+        case "2":
+            mes = "Febrero";
+            break;
+        case "3":
+            mes = "Marzo";
+            break;
+        case "4":
+            mes = "Abril";
+            break;
+        case "5":
+            mes = "Mayo";
+            break;
+        case "6":
+            mes = "Junio";
+            break;
+        case "7":
+            mes = "Julio";
+            break;
+        case "8":
+            mes = "Agosto";
+            break;
+        case "9":
+            mes = "Setiembre";
+            break;
+        case "10":
+            mes = "Octubre";
+            break;
+        case "11":
+            mes = "Noviembre";
+            break;
+        case "12":
+            mes = "Diciembre";
+            break;
+    }
+    return mes;
+}
+
+function listarAnhosRemuneracion(BEAN_PAGINATION, comp) {
     $('#comboAnioPersonalCategoria').empty();
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var option;

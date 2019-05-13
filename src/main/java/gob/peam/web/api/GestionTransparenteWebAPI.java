@@ -376,7 +376,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
     private HashMap<String, Object> getParametersPresupuesto(HttpServletRequest request) {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtPresupuestoInstitucional").toLowerCase());
-        if (request.getParameter("comboAnioPresupuestoInstitucional").equals("-1")) {
+        if (request.getParameter("comboTipoPresupuestoInstitucional").equals("1")) {
             this.parameters.put("SQL_ANIO", "");
         } else {
             this.parameters.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioPresupuestoInstitucional") + "' ");

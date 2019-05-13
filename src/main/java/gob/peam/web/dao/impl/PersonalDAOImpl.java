@@ -227,4 +227,52 @@ public class PersonalDAOImpl implements PersonalDAO {
         return beansPagination;
     }
 
+    @Override
+    public BEAN_PAGINATION getMes(HashMap<String, Object> parameters, Connection conn) throws SQLException {
+        BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
+        List<Personal> list = new ArrayList<>();
+        PreparedStatement pst;
+        ResultSet rs;
+        try {
+            pst = conn.prepareStatement("SELECT COUNT(DISTINCT(TRIMESTRE)) AS COUNT FROM WEB.F00010 WHERE "
+                    + "LOWER(APELLIDOS_NOMBRES) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO"));
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            LOG.info(pst.toString());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
+                if (rs.getInt("COUNT") > 0) {
+                    pst = conn.prepareStatement("SELECT DISTINCT(TRIMESTRE) AS MES FROM WEB.F00010 WHERE "
+                            + "LOWER(APELLIDOS_NOMBRES) LIKE CONCAT('%',?,'%') " + parameters.get("SQL_ESTADO")
+                            + "ORDER BY " + String.valueOf(parameters.get("SQL_ORDERS")));
+                    pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    LOG.info(pst.toString());
+                    rs = pst.executeQuery();
+                    while (rs.next()) {
+                        Personal orden = new Personal();
+                        orden.setFecha_ingreso(rs.getString("MES"));
+                        list.add(orden);
+                    }
+                }
+            }
+            beanpagination.setLIST(list);
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beanpagination;
+    }
+
+    @Override
+    public BEAN_PAGINATION getMes(HashMap<String, Object> parameters) throws SQLException {
+        BEAN_PAGINATION beansPagination = null;
+        try (Connection conn = pool.getConnection()) {
+            beansPagination = getMes(parameters, conn);
+        } catch (SQLException e) {
+            throw e;
+        }
+        return beansPagination;
+    }
+
 }

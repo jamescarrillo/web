@@ -170,6 +170,9 @@ public class GestionTransparente2WebAPI extends HttpServlet {
                 case "listarAnhos":
                     procesarAnhos(new BEAN_CRUD(this.personalDAO.getAnhos(getParametersAnhos(request))), response);
                     break;
+                case "listarAnhosMes":
+                    procesarAnhos(new BEAN_CRUD(this.personalDAO.getMes(getParametersMes(request))), response);
+                    break;
                 case "listarAnhosRemuneracion":
                     procesarAnhos(new BEAN_CRUD(this.personalCategoriaDAO.getAnhos(getParametersAnhosCategoria(request))), response);
                     break;
@@ -496,31 +499,36 @@ public class GestionTransparente2WebAPI extends HttpServlet {
         this.parameters.put("FILTER", request.getParameter("txtPersonal" + complemento).toLowerCase());
         this.parameters.put("SQL_ORDERS", "ID DESC, APELLIDOS_NOMBRES ASC");
         this.parameters.put("SQL_ESTADO", "AND TIPO = " + request.getParameter("cboTipoPersonal"));
-        if (request.getParameter("comboAnioPersonal" + complemento).equals("-1")) {
-            if (request.getParameter("cboTipoPersonal").equals("3")) {
-                this.parameters.put("SQL_ANIO", "");
-            } else {
-                this.parameters.put("SQL_ANIO", "AND ESTADO = TRUE ");
-            }
+        if (String.valueOf(request.getParameter("cboTipoPersonal")).equals("3")) {
+            this.parameters.put("SQL_ANIO", " AND ANHO = '" + request.getParameter("comboAnioPersonal" + complemento) + "' AND TRIMESTRE = " + request.getParameter("comboTrimestrePersonal" + complemento));
         } else {
-            if (request.getParameter("cboTipoPersonal").equals("3")) {
-                this.parameters.put("SQL_ANIO", " AND ANHO = '" + request.getParameter("comboAnioPersonal" + complemento) + "' ");
-            } else {
-                this.parameters.put("SQL_ANIO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonal" + complemento) + "' ");
-
-            }
+            this.parameters.put("SQL_ANIO", " AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonal" + complemento) + "' AND TRIMESTRE = " + request.getParameter("comboTrimestrePersonal" + complemento));
         }
-        if (request.getParameter("cboTipoPersonal").equals("2")) {
-            String trimestre = "";
-            if (!request.getParameter("comboTrimestrePersonal_CLS").equals("-1")) {
-                trimestre = " AND TRIMESTRE = " + request.getParameter("comboTrimestrePersonal" + complemento);
-            }
-            if (request.getParameter("comboAnioPersonal" + complemento).equals("-1")) {
-                this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE ");
-            } else {
-                this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonal" + complemento) + "' ");
-            }
-        }
+//        if (request.getParameter("comboAnioPersonal" + complemento).equals("-1")) {
+//            if (request.getParameter("cboTipoPersonal").equals("3")) {
+//                this.parameters.put("SQL_ANIO", "");
+//            } else {
+//                this.parameters.put("SQL_ANIO", "AND ESTADO = TRUE ");
+//            }
+//        } else {
+//            if (request.getParameter("cboTipoPersonal").equals("3")) {
+//                this.parameters.put("SQL_ANIO", " AND ANHO = '" + request.getParameter("comboAnioPersonal" + complemento) + "' ");
+//            } else {
+//                this.parameters.put("SQL_ANIO", "AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonal" + complemento) + "' ");
+//
+//            }
+//        }
+//        if (request.getParameter("cboTipoPersonal").equals("2")) {
+//            String trimestre = "";
+//            if (!request.getParameter("comboTrimestrePersonal_CLS").equals("-1")) {
+//                trimestre = " AND TRIMESTRE = " + request.getParameter("comboTrimestrePersonal" + complemento);
+//            }
+//            if (request.getParameter("comboAnioPersonal" + complemento).equals("-1")) {
+//                this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE ");
+//            } else {
+//                this.parameters.put("SQL_ANIO", trimestre + " AND ESTADO = TRUE AND ANHO = '" + request.getParameter("comboAnioPersonal" + complemento) + "' ");
+//            }
+//        }
 
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePagePersonal" + complemento) + " OFFSET "
@@ -549,16 +557,30 @@ public class GestionTransparente2WebAPI extends HttpServlet {
 
         return this.parametersanhios;
     }
-    
+
     private HashMap<String, Object> getParametersAnhosCategoria(HttpServletRequest request) {
         this.parametersanhios.clear();
         this.parametersanhios.put("FILTER", "");
         this.parametersanhios.put("SQL_ORDERS", "ANHO DESC");
         if (this.action.equals("listarAnhosRemuneracion")) {
-            
+
             this.parametersanhios.put("SQL_ESTADO", " AND ESTADO = TRUE ");
         }
 
+        return this.parametersanhios;
+    }
+
+    private HashMap<String, Object> getParametersMes(HttpServletRequest request) {
+        this.parametersanhios.clear();
+        this.parametersanhios.put("FILTER", "");
+        if (String.valueOf(request.getParameter("tipo")).equals("3")) {
+            this.parametersanhios.put("SQL_ESTADO", " AND TIPO = " + Integer.parseInt(String.valueOf(request.getParameter("tipo"))) + " AND ANHO ='" + String.valueOf(request.getParameter("anho")) + "'");
+
+        } else {
+            this.parametersanhios.put("SQL_ESTADO", " AND TIPO = " + Integer.parseInt(String.valueOf(request.getParameter("tipo"))) + " AND ESTADO = TRUE AND ANHO ='" + String.valueOf(request.getParameter("anho")) + "'");
+
+        }
+        this.parametersanhios.put("SQL_ORDERS", " MES DESC");
         return this.parametersanhios;
     }
 

@@ -210,10 +210,7 @@
                                                 </div>
                                                 <div class="col-md-2 col-sm-6 col-xs-12">
                                                     <select id="comboTrimestrePersonal" name="comboTrimestrePersonal" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal' style="border: 1px solid #00793D; margin-top: 40px">
-                                                        <option value="1">Primer Trimestre</option>
-                                                        <option value="2">Segundo Trimestre</option>
-                                                        <option value="3">Tercer Trimestre</option>
-                                                        <option value="4">Cuarto Trimestre</option>
+                                                        
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-9 col-xs-12">
@@ -299,10 +296,7 @@
                                                 </div>
                                                 <div class="col-md-2 col-sm-6 col-xs-12">
                                                     <select id="comboTrimestrePersonal_CLS" name="comboTrimestrePersonal_CLS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
-                                                        <option value="1">Primer Trimestre</option>
-                                                        <option value="2">Segundo Trimestre</option>
-                                                        <option value="3">Tercer Trimestre</option>
-                                                        <option value="4">Cuarto Trimestre</option>
+          
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-9 col-xs-12">
@@ -389,10 +383,7 @@
                                                 </div>
                                                 <div class="col-md-2 col-sm-6 col-xs-12">
                                                     <select id="comboTrimestrePersonal_CAS" name="comboTrimestrePersonal_CAS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
-                                                        <option value="1">Primer Trimestre</option>
-                                                        <option value="2">Segundo Trimestre</option>
-                                                        <option value="3">Tercer Trimestre</option>
-                                                        <option value="4">Cuarto Trimestre</option>
+                                                       
                                                     </select>
                                                 </div>
                                                 <div class="col-md-6 col-sm-9 col-xs-12">

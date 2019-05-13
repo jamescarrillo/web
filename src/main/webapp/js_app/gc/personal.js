@@ -261,7 +261,7 @@ function validarFormularioPersonal() {
     } else {
         $($('#txtAnhoPersonalER').parent()).removeClass('has-danger');
     }
-    if ($('#txtTrimestrePersonalER').val() === "") {
+    if ($('#txtTrimestrePersonalER').val() === "-1") {
         $($('#txtTrimestrePersonalER').parent()).addClass('has-danger');
         return false;
     } else {

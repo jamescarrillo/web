@@ -108,9 +108,9 @@ function addEventoCombosPaginar() {
     $('.combo-paginar').on('change', function () {
         $("#" + $(this).attr('idBtnBuscar')).trigger("click");
     });
-    
+
     $('.combo-paginarRRHH').on('change', function () {
-        cargarTrimestreComboActuales($("#"+$(this).attr('name')).val(),$("#"+$(this).attr('destino')));
+        cargarTrimestreComboActuales($("#" + $(this).attr('name')).val(), $("#" + $(this).attr('destino')));
         $("#" + $(this).attr('idBtnBuscar')).trigger("click");
     });
 }
@@ -158,7 +158,7 @@ function cargarAniosComboActuales($combo, anioInicio) {
 }
 
 function cargarTrimestreComboActuales(año, $combo) {
-    
+
     var date = new Date();
     var opcion;
     var mes = date.getMonth() + 1;
@@ -168,33 +168,39 @@ function cargarTrimestreComboActuales(año, $combo) {
             opcion = "<option value='" + 1 + "'>Primer Trimestre</option>";
         } else {
             if (mes < 7) {
+                opcion = "<option value='" + 1 + "'>Primer Trimestre</option>";
                 opcion += "<option value='" + 2 + "'>Segundo Trimestre</option>";
             } else {
                 if (mes < 9) {
+                    opcion = "<option value='" + 1 + "'>Primer Trimestre</option>";
+                    opcion += "<option value='" + 2 + "'>Segundo Trimestre</option>";
                     opcion += "<option value='" + 3 + "'>Tercer Trimestre</option>";
                 } else {
                     if (mes < 12) {
+                        opcion = "<option value='" + 1 + "'>Primer Trimestre</option>";
+                        opcion += "<option value='" + 2 + "'>Segundo Trimestre</option>";
+                        opcion += "<option value='" + 3 + "'>Tercer Trimestre</option>";
                         opcion += "<option value='" + 4 + "'>Cuarto Trimestre</option>";
                     }
                 }
             }
         }
         $combo.append(opcion);
-        if (mes < 4) {
+//        if (mes < 4) {
             $combo.val(1);
-        } else {
-            if (mes < 7) {
-                $combo.val(2);
-            } else {
-                if (mes < 9) {
-                    $combo.val(3);
-                } else {
-                    if (mes < 12) {
-                        $combo.val(4);
-                    }
-                }
-            }
-        }
+//        } else {
+//            if (mes < 7) {
+//                $combo.val(2);
+//            } else {
+//                if (mes < 9) {
+//                    $combo.val(3);
+//                } else {
+//                    if (mes < 12) {
+//                        $combo.val(4);
+//                    }
+//                }
+//            }
+//        }
     } else {
         opcion = "<option value='" + 1 + "'>Primer Trimestre</option>";
         opcion += "<option value='" + 2 + "'>Segundo Trimestre</option>";

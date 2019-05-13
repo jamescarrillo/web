@@ -18,4 +18,6 @@ import java.util.HashMap;
 public interface PersonalDAO extends CRUD<Personal>{
     BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters, Connection conn) throws SQLException;
     BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters) throws SQLException;
+    BEAN_PAGINATION getMes(HashMap<String, Object> parameters, Connection conn) throws SQLException;
+    BEAN_PAGINATION getMes(HashMap<String, Object> parameters) throws SQLException;
 }

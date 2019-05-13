@@ -58,7 +58,7 @@
                                         <div class="row-not">
                                             <form id="FrmPresupuestoInstitucional">
                                                 <div class="col-md-4 col-sm-9 col-xs-12 mt-30">
-                                                    <select id="comboTipoPresupuestoInstitucional" name="comboTipoPresupuestoInstitucional" class="form-control combo-paginar" idBtnBuscar='btnBuscarPresupuestoInstitucional' style="border: 1px solid #00793D;">
+                                                    <select id="comboTipoPresupuestoInstitucional" name="comboTipoPresupuestoInstitucional" onchange="sinAño(this.value)" class="form-control combo-paginar" idBtnBuscar='btnBuscarPresupuestoInstitucional' style="border: 1px solid #00793D;">
                                                         <option value="1">Presupuesto Institucional de Apertura (PIA)</option>
                                                         <option value="2">Presupuesto Institucional Modificado (PIM)</option>
                                                     </select>
@@ -126,7 +126,7 @@
                                         <div class="row-not">
                                             <form id="FrmInfoFinanciera">
                                                 <div class="col-md-4 col-sm-9 col-xs-12 mt-30">
-                                                    <select id="comboCategoriaInfoFinanciera" name="comboCategoriaInfoFinanciera" class="form-control combo-paginar" idBtnBuscar='btnBuscarInfoFinanciera' style="border: 1px solid #00793D;">
+                                                    <select id="comboCategoriaInfoFinanciera" name="comboCategoriaInfoFinanciera" onchange="cambioFinanciero(this.value)" class="form-control combo-paginar" style="border: 1px solid #00793D;">
                                                         <option value="2">Estados de Situación Financiera</option>
                                                         <option value="8">Estados de Gestión</option>
                                                         <option value="6">Estados de Cambio en el Patrimonio Neto</option>
@@ -196,7 +196,7 @@
                                         <div class="row-not">
                                             <form id="FrmInfoPresupuestal">
                                                 <div class="col-md-4 col-sm-9 col-xs-12 mt-30">
-                                                    <select id="comboCategoriaInfoPresupuestal" name="comboCategoriaInfoPresupuestal" class="form-control combo-paginar" idBtnBuscar='btnBuscarInfoPresupuestal' style="border: 1px solid #00793D;">
+                                                    <select id="comboCategoriaInfoPresupuestal" name="comboCategoriaInfoPresupuestal" onchange="cambioPresupuesto(this.value)" class="form-control combo-paginar" style="border: 1px solid #00793D;">
                                                         <option value="1">Ejecución Presupuestal</option>
                                                         <option value="3">Evaluación de Ingresos</option>
                                                         <option value="4">Resumen de Gastos por Especificación</option>

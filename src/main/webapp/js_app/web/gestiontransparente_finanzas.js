@@ -26,6 +26,8 @@ $(document).ready(function () {
         procesarAjaxInformacionPresupustalWeb();
         return false;
     });
+    
+    $('#comboAnioPresupuestoInstitucional').hide();
 
     addEventoCombosPaginar();
     procesarAjaxAnhosPresupuestoInstitucional();
@@ -53,6 +55,15 @@ function procesarAjaxAnhosPresupuestoInstitucional() {
 //    }
     return false;
 }
+
+function sinAño(tipo){
+    if (tipo==="1") {
+        $('#comboAnioPresupuestoInstitucional').hide();
+    }else{
+        $('#comboAnioPresupuestoInstitucional').show();
+    }
+}
+
 function listarAnhosPresupuestoInstitucional(BEAN_PAGINATION) {
     $('#comboAnioPresupuestoInstitucional').empty();
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
@@ -98,6 +109,14 @@ function listarAnhosInfoFinanciera(BEAN_PAGINATION) {
     } else {
         console.log("vacio");
     }
+}
+
+function cambioPresupuesto(value){
+    procesarAjaxAnhosPresupuestal();
+}
+
+function cambioFinanciero(value){
+    procesarAjaxAnhosInfoFinanciera();
 }
 
 function procesarAjaxAnhosPresupuestal() {

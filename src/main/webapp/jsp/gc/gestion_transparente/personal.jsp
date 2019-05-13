@@ -230,8 +230,22 @@
                                         <input type="text" class="form-control form-control-sm input-text" id="txtAnhoPersonalER" name="txtAnhoPersonalER" placeholder="AÑO"> 
                                     </div>
                                     <div class="form-group col-lg-3 col-sm-6 col-12 mb-3">
-                                        <label for="txtTrimestrePersonalER">TRIMESTRE</label>
-                                        <input type="text" class="form-control form-control-sm input-text" id="txtTrimestrePersonalER" name="txtTrimestrePersonalER" placeholder="TRIMESTRE"> 
+                                        <label for="txtTrimestrePersonalER">MES</label>
+                                        <select class="form-control form-control-sm input-select" id="txtTrimestrePersonalER" name="txtTrimestrePersonalER">
+                                            <option value="-1">Seleccione...</option>
+                                            <option value="1">Enero</option>
+                                            <option value="2">Febrero</option>
+                                            <option value="3">Marzo</option>
+                                            <option value="4">Abril</option>
+                                            <option value="5">Mayo</option>
+                                            <option value="6">Junio</option>
+                                            <option value="7">Julio</option>
+                                            <option value="8">Agosto</option>
+                                            <option value="9">Setiembre</option>
+                                            <option value="10">Octubre</option>
+                                            <option value="11">Noviembre</option>
+                                            <option value="12">Diciembre</option>
+                                        </select>
                                     </div>
                                     <div class="form-group col-lg-3 col-sm-6 col-12 mb-3">
                                         <label for="txtFechaIngresoPersonalER">FECHA INGRESO</label>
