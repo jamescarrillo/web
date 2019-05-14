@@ -115,6 +115,7 @@ function setFuncionario(organigrama) {
                                 <h5><strong>Designado Por: </strong>${funcionario.resolucion}</h5>
                                 <h5><strong>Teléfono: </strong>${funcionario.telefono}</h5>
                                 <h5><strong>Correo Electrónico: </strong>${funcionario.e_mail}</h5>
+                                <h5><strong>Hoja de Vida: </strong><a target="_blank" href="/web/downloadfile?type_file=downloadCV&full_file=n&file=${funcionario.hoja_vida}">Descargar</a></h5>
                                 <h5><strong>Régimen Laboral: </strong>${funcionario.regimen_laboral}</h5>
                             </div>
                         </div>
@@ -163,6 +164,7 @@ function setDirectivos() {
                                                 <h5><strong>Designado Por: </strong>${directivo.resolucion}</h5>
                                                 <h5><strong>Representante de: </strong>${directivo.institucion}</h5>
                                                 <h5><strong>Correo Electrónico: </strong>${directivo.e_mail}</h5>
+                                                <h5><strong>Hoja de Vida: </strong><a target="_blank" href="/web/downloadfile?type_file=downloadCV&full_file=n&file=${directivo.hoja_vida}">Descargar</a></h5>
                                             </div>
                                         </div>
                                     </div>
@@ -195,6 +197,7 @@ function setDirectivos() {
                                                 <h5><strong>Designado Por: </strong>${directivo.resolucion}</h5>
                                                 <h5><strong>Representante de: </strong>${directivo.institucion}</h5>
                                                 <h5><strong>Correo Electrónico: </strong>${directivo.e_mail}</h5>
+                                                <h5><strong>Hoja de Vida: </strong><a target="_blank" href="/web/downloadfile?type_file=downloadCV&full_file=n&file=${directivo.hoja_vida}">Descargar</a></h5>
                                             </div>
                                         </div>
                                     </div>

@@ -175,7 +175,9 @@ function addFuncionarios(DATA) {
         card += "</div>";
         card += "<h5 class='text-peam'><i class='fa fa-phone'></i> " + value.telefono + "</h5>";
         card += "<h5 class='mb-20 text-peam-verde-index'><i class='fa fa-envelope-o'></i> <a href='mailto:" + value.e_mail + "'>" + value.e_mail + "</a></h5>";
-        //CIERRE team-title
+
+        card += "<h5 class='mb-20 text-peam-verde-index'><a target='_blank' href='/web/downloadfile?type_file=downloadCV&full_file=n&file=" + value.hoja_vida + "'>Curriculum Vitae</a></h5>";
+        //CIERRE team-titless='fa fa-download' aria-hidden='true'></i> Ver CV</a>"
         card += "</div>";
         //CIERRE team-img
         card += "</div>";
@@ -220,6 +222,7 @@ function addDirectivos(DATA) {
         card += "</div>";
         card += "<h5 class='text-peam'><i class='fa fa-phone'></i> " + value.telefono + "</h5>";
         card += "<h5 class='mb-20 text-peam-verde-index'><i class='fa fa-envelope-o'></i> <a href='mailto:" + value.e_mail + "'>" + value.e_mail + "</a></h5>";
+        card += "<h5 class='mb-20 text-peam-verde-index'><a target='_blank' href='/web/downloadfile?type_file=downloadCV&full_file=n&file=" + value.hoja_vida + "'>Curriculum Vitae</a></h5>";
         //CIERRE team-title
         card += "</div>";
         //CIERRE team-img
@@ -285,7 +288,7 @@ function procesarAjaxAnhos(tipo, complemento) {
 
 function procesarMes(complemento, tipo) {
     var datosSerializadosCompletos = "action=listarAnhosMes";
-    datosSerializadosCompletos += "&anho=" + $('#comboAnioPersonal'+complemento).val();
+    datosSerializadosCompletos += "&anho=" + $('#comboAnioPersonal' + complemento).val();
     datosSerializadosCompletos += "&complemento=" + complemento;
     datosSerializadosCompletos += "&tipo=" + tipo;
 
@@ -338,11 +341,11 @@ function listarAnhos(BEAN_PAGINATION, tipo, complemento) {
         $('#cboTipoPersonal').val(tipo);
 
 //        if (complemento==="") {
-            procesarMes(complemento, tipo);
+        procesarMes(complemento, tipo);
 //        }else{
 //           $('#FrmPersonal' + complemento).submit(); 
 //        }
-        
+
 
     } else {
         console.log("vacio");
@@ -350,14 +353,14 @@ function listarAnhos(BEAN_PAGINATION, tipo, complemento) {
 }
 
 function listarMes(BEAN_PAGINATION, complemeto) {
-    $('#comboTrimestrePersonal'+complemeto).empty();
+    $('#comboTrimestrePersonal' + complemeto).empty();
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var option;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
             option = "<option value='" + value.fecha_ingreso + "'>" + traerNombreMes(value.fecha_ingreso) + "</option>";
-            $('#comboTrimestrePersonal'+complemeto).append(option);
+            $('#comboTrimestrePersonal' + complemeto).append(option);
         });
-        $('#FrmPersonal'+complemeto).submit();
+        $('#FrmPersonal' + complemeto).submit();
 
 
     } else {
