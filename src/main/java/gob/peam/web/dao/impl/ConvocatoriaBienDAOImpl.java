@@ -256,7 +256,7 @@ public class ConvocatoriaBienDAOImpl implements ConvocatoriaBienDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(DISTINCT(ANHO)) AS CANT FROM WEB.CONVOCATORIA_BIEN WHERE "
-                    + "(LOWER(CONVOCATORIA) LIKE CONCAT('%',?,'%'))");
+                    + "(LOWER(REFERENCIA) LIKE CONCAT('%',?,'%'))");
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             logger.info(pst.toString());
             rs = pst.executeQuery();
@@ -264,7 +264,7 @@ public class ConvocatoriaBienDAOImpl implements ConvocatoriaBienDAO {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
             }
             pst = conn.prepareStatement("SELECT DISTINCT(ANHO) FROM WEB.CONVOCATORIA_BIEN WHERE "
-                    + "(LOWER(CONVOCATORIA) LIKE CONCAT('%',?,'%'))"
+                    + "(LOWER(REFERENCIA) LIKE CONCAT('%',?,'%'))"
                     + String.valueOf(parameters.get("SQL_ESTADO"))
                     + String.valueOf(parameters.get("SQL_ORDERS")));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));

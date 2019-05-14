@@ -47,13 +47,26 @@ function listarAnhosConvocatoriaBien(BEAN_PAGINATION) {
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var option;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
-            option = "<option value='" + value.anho + "'>" + value.anho + "</option>";
+            if (value.anho!=="2012") {
+             option = "<option value='" + value.anho + "'>" + añocorrecto(value.anho) + "</option>";   
+            }
             $('#comboAnio').append(option);
         });
         procesarAjaxConvocatoriaWeb();
     } else {
         console.log("vacio");
     }
+}
+
+function añocorrecto(dato){
+    var añosinespacio=dato.trim();
+    var añocorrecto;
+    if (añosinespacio.substring(0,1)==="1") {
+        añocorrecto="20"+añosinespacio.substring(1);
+    }else{
+        añocorrecto = añosinespacio;
+    }
+    return añocorrecto;
 }
 
 function procesarAjaxConvocatoriaWeb() {

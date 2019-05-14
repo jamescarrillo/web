@@ -122,7 +122,7 @@ public class ConvocatoriasWebAPI extends HttpServlet {
                             procesarCalendario(new BEAN_CRUD(this.calendarioDAO.getPagination(getParametersCalendario(request))), response);
                             break;
                         case "listarAnhosConvocatoriaBien":
-                            procesarAnhos(new BEAN_CRUD(this.convocatoriapersDAO.getAnhos(getParametersAnhos(request))), response);
+                            procesarAnhos(new BEAN_CRUD(this.convocatoriabienDAO.getAnhos(getParametersAnhos(request))), response);
                             break;
                         default:
                             request.getRequestDispatcher("/jsp/web/convocatorias/convocatoriasbien.jsp").forward(request, response);
@@ -309,7 +309,7 @@ public class ConvocatoriasWebAPI extends HttpServlet {
         if (request.getParameter("comboAnio").equals("-1")) {
             this.parameters.put("SQL_ANIO", "");
         } else {
-            this.parameters.put("SQL_ANIO", "AND ANHO = '1" + String.valueOf(request.getParameter("comboAnio")).substring(2, 4) + "' ");
+            this.parameters.put("SQL_ANIO", "AND ANHO = '"+ String.valueOf(request.getParameter("comboAnio")) + "' ");
         }
         if (request.getParameter("comboTipoListaConvocatoria").equals("-1")) {
             this.parameters.put("SQL_ESTADO", "");
