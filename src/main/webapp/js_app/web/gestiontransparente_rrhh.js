@@ -356,13 +356,15 @@ function listarMes(BEAN_PAGINATION, complemeto) {
     $('#comboTrimestrePersonal' + complemeto).empty();
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var option;
-        $.each(BEAN_PAGINATION.LIST, function (index, value) {
-            option = "<option value='" + value.fecha_ingreso + "'>" + traerNombreMes(value.fecha_ingreso) + "</option>";
-            $('#comboTrimestrePersonal' + complemeto).append(option);
-        });
+        if (complemeto === "") {
+            $.each(BEAN_PAGINATION.LIST, function (index, value) {
+                option = "<option value='" + value.fecha_ingreso + "'>" + traerNombreMes(value.fecha_ingreso) + "</option>";
+                $('#comboTrimestrePersonal' + complemeto).append(option);
+            });
+        } else {
+            cargarTrimestreComboActuales($('#comboAnioPersonal' + complemeto).val(), $('#comboTrimestrePersonal' + complemeto));
+        }
         $('#FrmPersonal' + complemeto).submit();
-
-
     } else {
         console.log("vacio");
     }
@@ -371,7 +373,7 @@ function listarMes(BEAN_PAGINATION, complemeto) {
 function traerNombreMes(orden) {
     var mes;
     switch (orden) {
-        case "1 ":
+        case "1":
             mes = "Enero";
             break;
         case "2":
@@ -439,6 +441,7 @@ function listarPersonalWeb(BEAN_PAGINATION, complemento) {
         var oficina_area;
         var ocultar;
         var inverso;
+        var nuevo;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
             fila = "<tr>";
             if (value.numero_dni !== undefined) {
@@ -468,24 +471,27 @@ function listarPersonalWeb(BEAN_PAGINATION, complemento) {
             }
             switch (complemento) {
                 case "" :
-                    ocultar = "";
-                    inverso = "ocultar";
+                    ocultar = "ocultar";
+                    inverso = "";
+                    nuevo="";
                     break;
                 case "_CLS":
                     ocultar = "ocultar";
                     inverso = "";
+                    nuevo="ocultar";
                     break;
                 case "_CAS" :
                     ocultar = "ocultar";
                     inverso = "";
+                    nuevo="ocultar";
                     break;
             }
 
             fila += "<td class='text-medium-table text-middle '>" + value.apellidos_nombres + "</td>";
-            fila += "<td class='text-medium-table text-middle " + ocultar + " text-center'>" + dni + "</td>";
-            fila += "<td class='text-medium-table text-middle " + ocultar + "'>" + fecha_ingreso + "</td>";
+            fila += "<td class='text-medium-table text-middle " + inverso + nuevo + " text-center'>" + dni + "</td>";
+            fila += "<td class='text-medium-table text-middle " + inverso + nuevo +"'>" + fecha_ingreso + "</td>";
             fila += "<td class='text-medium-table text-middle '>" + oficina_area + "</td>";
-            fila += "<td class='text-medium-table text-middle " + ocultar + "'>" + cargo + "</td>";
+            fila += "<td class='text-medium-table text-middle " + inverso + nuevo+ "'>" + cargo + "</td>";
             fila += "<td class='text-medium-table text-middle " + ocultar + " text-center'>" + pension + "</td>";
             fila += "<td class='text-medium-table text-middle text-center " + inverso + "'>" + value.codigo_civil + "</td>";
             fila += "<td class='text-medium-table text-middle text-center'>" + value.remuneracion_mensual.toFixed(2) + "</td>";

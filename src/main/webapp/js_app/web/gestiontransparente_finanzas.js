@@ -60,6 +60,7 @@ function sinAño(tipo){
     if (tipo==="1") {
         $('#comboAnioPresupuestoInstitucional').hide();
     }else{
+        procesarAjaxAnhosPresupuestoInstitucional();
         $('#comboAnioPresupuestoInstitucional').show();
     }
 }

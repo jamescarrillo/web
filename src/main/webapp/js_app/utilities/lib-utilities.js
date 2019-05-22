@@ -207,7 +207,7 @@ function cargarTrimestreComboActuales(año, $combo) {
         opcion += "<option value='" + 3 + "'>Tercer Trimestre</option>";
         opcion += "<option value='" + 4 + "'>Cuarto Trimestre</option>";
         $combo.append(opcion);
-        $combo.val(4);
+        $combo.val(1);
     }
 
 

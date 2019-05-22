@@ -245,11 +245,9 @@
                                                                 <th style="width: 10%" class="text-medium-table text-center">FECHA INGRESO</th>
                                                                 <th style="width: 20%" class="text-medium-table">ÁREA</th>
                                                                 <th style="width: 20%" class="text-medium-table">CARGO</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">RÉGIMEN PENSIONARIO</th>
+                                                                <th style="width: 10%" class="text-medium-table text-center">CODIGO CIVIL</th>
                                                                 <th style="width: 10%" class="text-medium-table text-center">REMUNERACIÓN S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">GRATIG. ESCOL. S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">OTROS INGRESOS S/</th>
-                                                                <th style="width: 10%" class="text-medium-table text-center">INGRESO TOTAL S/</th>
+                                                                
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyPersonal">
@@ -382,7 +380,7 @@
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-6 col-xs-12">
-                                                    <select id="comboTrimestrePersonal_CAS" name="comboTrimestrePersonal_CAS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CLS' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="comboTrimestrePersonal_CAS" name="comboTrimestrePersonal_CAS" class="form-control combo-paginar" idBtnBuscar='btnBuscarPersonal_CAS' style="border: 1px solid #00793D; margin-top: 40px">
                                                        
                                                     </select>
                                                 </div>
