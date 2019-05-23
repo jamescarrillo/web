@@ -76,6 +76,7 @@ function addNoticiasWeb(DATA_NOTASPRENSA, DATA_DESTACADOS) {
             cadenaContenido = removeTagHTML(value.contenido);
             $('#myCarouselNoticias').append(getItemNoticia(value.titulo, value.foto, value.id));
         });
+        //console.log(DATA_DESTACADOS.LIST)
         $.each(DATA_DESTACADOS.LIST, function (index, value) {
             if (index < 5) {
                 var url_values = value.url.toLowerCase().split("id=");

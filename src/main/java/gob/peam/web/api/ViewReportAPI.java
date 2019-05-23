@@ -60,6 +60,8 @@ public class ViewReportAPI extends HttpServlet {
             reports.put("reporte_viaticos", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_viaticos.jrxml")));
             reports.put("reporte_personal_categorias", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_personal_categorias.jrxml")));
             reports.put("reporte_personal", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_personal.jrxml")));
+
+            reports.put("reporte_nota_prensa", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_nota_prensa.jrxml")));
         } catch (JRException ex) {
             Logger.getLogger(ViewReportAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -111,6 +113,9 @@ public class ViewReportAPI extends HttpServlet {
                 break;
             case "reporte_personal":
                 exportarPersonal(request, response);
+                break;
+            case "reporte_nota_prensa":
+                exportarNotaPrensa(request, response);
                 break;
             default:
                 response.sendRedirect("/index");
@@ -444,6 +449,32 @@ public class ViewReportAPI extends HttpServlet {
             }
         }
     }
+    
+    private void exportarNotaPrensa(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        /*PARAMETROS GENERALES*/
+        cargarParametrosGeneralesVertical();
+        /*PARAMETROS ESPECIFICOS*/
+        this.parameters.put("title_reporte", "NOTA DE PRENSA");
+        this.parameters.put("idnota_prensa", request.getParameter("id"));
+        try (Connection conn = pool.getConnection()) {
+            LOG.info(this.parameters.toString());
+            this.jasperPrint = JasperFillManager.fillReport((JasperReport) this.reports.get("reporte_nota_prensa"), parameters, conn);
+            this.extension = getFormato(request);
+            this.byts = JeccFormatReport.getReport(this.jasperPrint, this.extension);
+            response.setContentLength(this.byts.length);
+            response.setHeader("Content-disposition", "inline; filename=reporte." + this.extension);
+            response.setContentType("application/" + this.extension);
+            try (ServletOutputStream ouputstream = response.getOutputStream()) {
+                ouputstream.write(this.byts, 0, this.byts.length);
+            }
+        } catch (SQLException | JRException ex) {
+            try {
+                throw ex;
+            } catch (SQLException | JRException ex1) {
+                Logger.getLogger(ViewReportAPI.class.getName()).log(Level.SEVERE, null, ex1);
+            }
+        }
+    }
 
     private String getTitleReportePersonal(String tipo) {
         String title = "REPORTE ";
@@ -468,6 +499,12 @@ public class ViewReportAPI extends HttpServlet {
     private void cargarParametrosGenerales() {
         this.parameters.clear();
         this.parameters.put("path_cabecera", getServletContext().getRealPath("/peam_resources_app/reports/cabecera_horizontal.jasper")); // .jasper
+        this.parameters.put("path_logo_goresam", getServletContext().getRealPath("/peam_resources_app/reports/img/logo-goresam.png"));
+    }
+    
+    private void cargarParametrosGeneralesVertical() {
+        this.parameters.clear();
+        this.parameters.put("path_cabecera", getServletContext().getRealPath("/peam_resources_app/reports/cabecera_vertical.jasper")); // .jasper
         this.parameters.put("path_logo_goresam", getServletContext().getRealPath("/peam_resources_app/reports/img/logo-goresam.png"));
     }
 

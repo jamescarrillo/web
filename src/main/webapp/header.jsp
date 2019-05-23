@@ -74,7 +74,7 @@
                                     <h2>Gestión Transparente</h2>
                                     <ul class="list-unstyled clearfix">
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/documentos-normativos-y-de-gestion">Documentos Normativos y de Gestión</a></li>
-                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/presupuestos-y-finanzas">Presupuestos y Finanzas</a></li>
+                                        <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/presupuestos-y-finanzas">Presupuesto y Finanzas</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/proyectos-de-inversion">Proyectos de Inversión</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/recursos-humanos">Recursos Humanos</a></li>
                                         <li><a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/adquisiciones-y-contrataciones">Adquisiciones y Contrataciones</a></li>

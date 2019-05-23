@@ -276,7 +276,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         this.parametersAnhiosDocumentos.clear();
         this.parametersAnhiosDocumentos.put("FILTER", "");
         this.parametersAnhiosDocumentos.put("SQL_ESTADO", " AND DOCU_ESTADO = TRUE");
-        this.parametersAnhiosDocumentos.put("SQL_CATE_ID", " "+getCategoriaIdFinal(request));
+        this.parametersAnhiosDocumentos.put("SQL_CATE_ID", " " + getCategoriaIdFinal(request));
         this.parametersAnhiosDocumentos.put("SQL_TIDO_ID", " " + getTidoIdFinal(request));
         //this.parameters.put("SQL_ORDERS", "TO_DATE(DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
         this.parametersAnhiosDocumentos.put("SQL_ORDERS", " SUBSTRING(DOCU_FECHA_DOCX,7,4) DESC");
@@ -303,7 +303,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                 } else {
                     //categoria_id = "AND DOCU_FECHA_DOCX != ''  AND CATE_ID =" + request.getParameter("cate_id");
                 }
-                */
+                 */
                 categoria_id = " AND CATE_ID =" + request.getParameter("cate_id");
             }
         }
@@ -366,6 +366,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         if (request.getParameter("comboTipoPresupuestoInstitucional").equals("-1")) {
             this.parametersPA.put("SQL_TIDO_ID", "");
         } else {
+            //this.parametersPA.put("SQL_TIDO_ID", "");
             this.parametersPA.put("SQL_TIDO_ID", "AND TIPO = " + request.getParameter("comboTipoPresupuestoInstitucional"));
         }
         this.parametersPA.put("SQL_ORDERS", "ANHO DESC");
@@ -434,7 +435,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         } else {
             this.parametersF.put("SQL_TIPO", "AND TIPO = " + request.getParameter("comboCategoriaInfoFinanciera"));
         }
-        this.parametersF.put("SQL_ORDERS", "ANHO DESC");
+        this.parametersF.put("SQL_ORDERS", "MES ASC");
         this.parametersF.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageInfoFinanciera") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageInfoFinanciera")) - 1)
@@ -485,7 +486,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         } else {
             this.parametersF2.put("SQL_TIPO", "AND TIPO = " + request.getParameter("comboCategoriaInfoPresupuestal"));
         }
-        this.parametersF2.put("SQL_ORDERS", "ANHO DESC");
+        this.parametersF2.put("SQL_ORDERS", "MES ASC");
         this.parametersF2.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageInfoPresupuestal") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageInfoPresupuestal")) - 1)

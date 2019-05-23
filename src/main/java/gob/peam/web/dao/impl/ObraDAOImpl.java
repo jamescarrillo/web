@@ -43,8 +43,10 @@ public class ObraDAOImpl implements ObraDAO {
         ResultSet rs;
         try {
             pst = conn.prepareStatement("SELECT COUNT(ID) AS CANT FROM WEB.OBRA WHERE "
-                    + "(LOWER(DESCRIPCION) LIKE CONCAT('%',?,'%'))");
+                    + "(LOWER(DESCRIPCION) LIKE CONCAT('%',?,'%'))"
+                    + String.valueOf(parameters.get("SQL_ANIO")));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            logger.info(pst.toString());
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));

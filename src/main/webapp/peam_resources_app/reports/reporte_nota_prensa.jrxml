@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_nota_prensa" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="3ef0eae8-08c0-44f2-b081-4939291813ed">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PEAM"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="387"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="602"/>
+	<parameter name="title_reporte" class="java.lang.String"/>
+	<parameter name="path_cabecera" class="java.lang.String">
+		<defaultValueExpression><![CDATA["/home/james/JaspersoftWorkspace/MyReports/cabecera_vertical.jasper"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="path_logo_goresam" class="java.lang.String">
+		<defaultValueExpression><![CDATA["/home/james/NetBeansProjects/web/target/web-1.0/peam_resources_app/reports/img/logo-goresam.png"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idnota_prensa" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[select * from web.F00021 where id =  $P{idnota_prensa}]]>
+	</queryString>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="f00021"/>
+	</field>
+	<field name="anho" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="anho"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="f00021"/>
+	</field>
+	<field name="titulo" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="titulo"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="f00021"/>
+	</field>
+	<field name="contenido" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="contenido"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="f00021"/>
+	</field>
+	<field name="fuente" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fuente"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="f00021"/>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="f00021"/>
+	</field>
+	<field name="foto" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="foto"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="f00021"/>
+	</field>
+	<field name="estado" class="java.lang.Boolean">
+		<property name="com.jaspersoft.studio.field.label" value="estado"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="f00021"/>
+	</field>
+	<field name="subido_por" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="subido_por"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="f00021"/>
+	</field>
+	<field name="fecha_creacion" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_creacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="f00021"/>
+	</field>
+	<field name="fecha_actualizacion" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_actualizacion"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="f00021"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="550" height="75" uuid="8269a914-10e5-4eac-8295-c32a7531cc2b"/>
+				<subreportParameter name="title_reporte_cabecera">
+					<subreportParameterExpression><![CDATA[$P{title_reporte}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="path_logo_goresam_cabecera">
+					<subreportParameterExpression><![CDATA[$P{path_logo_goresam}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{path_cabecera}]]></subreportExpression>
+			</subreport>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="21">
+			<textField>
+				<reportElement x="0" y="0" width="550" height="20" uuid="71a9de71-111f-4fc9-b657-eb5090faf7cf"/>
+				<box leftPadding="4" rightPadding="4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{titulo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="c12f4a9c-7c43-4ff9-b58f-6c88b624c788"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineColor="#00793D"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="256" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="62" y="10" width="430" height="150" uuid="3dbcc51f-e95f-4428-8957-c91829db4c3f"/>
+				<imageExpression><![CDATA[$F{foto}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" stretchType="ContainerHeight" x="10" y="190" width="540" height="20" isPrintWhenDetailOverflows="true" uuid="30126590-801e-4809-9382-2341d32a7012"/>
+				<textElement markup="html"/>
+				<textFieldExpression><![CDATA[$F{contenido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="62" y="160" width="100" height="20" uuid="4051610e-4142-4b64-8dba-ff3ec26359ff"/>
+				<textElement verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd/MM/yyyy").format($F{fecha})]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="339" y="230" width="211" height="12" uuid="866f44c9-a59a-441d-a9b6-b438237b16b2"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Fuente: "+$F{fuente}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<pageFooter>
+		<band height="28" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="0" width="550" height="3" uuid="deabd375-f765-4740-9587-a1efe0df7445"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineColor="#00793D"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="0" y="8" width="550" height="20" uuid="bd4354d9-1049-4a6f-9ea8-58e5302f3378"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Proyecto Especial Alto Mayo]]></text>
+			</staticText>
+			<textField hyperlinkType="Reference" hyperlinkTarget="Blank">
+				<reportElement x="10" y="8" width="100" height="20" uuid="7edf5985-a6da-48be-bc26-ba5ac194fc01"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["www.peam.gob.pe"]]></textFieldExpression>
+				<hyperlinkReferenceExpression><![CDATA["http://www.peam.gob.pe/"]]></hyperlinkReferenceExpression>
+				<hyperlinkTooltipExpression><![CDATA["Proyecto Especial Alto Mayo"]]></hyperlinkTooltipExpression>
+			</textField>
+			<textField>
+				<reportElement x="420" y="8" width="70" height="20" uuid="b0657636-c3a6-46f0-8992-96bdfc1a85f2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="490" y="8" width="60" height="20" uuid="9ea1484f-9269-48df-bf1c-b5a74087908c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

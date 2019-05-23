@@ -205,7 +205,7 @@
                                                     </select>
                                                 </div-->
                                                 <div class="col-md-2 col-sm-6 col-xs-12">
-                                                    <select id="comboAnioPersonal" name="comboAnioPersonal" destino="comboTrimestrePersonal" class="form-control combo-paginarRRHH" idBtnBuscar='btnBuscarPersonal' style="border: 1px solid #00793D; margin-top: 40px">
+                                                    <select id="comboAnioPersonal" name="comboAnioPersonal" destino="comboTrimestrePersonal" class="form-control" idBtnBuscar='btnBuscarPersonal' style="border: 1px solid #00793D; margin-top: 40px">
                                                     </select>
                                                 </div>
                                                 <div class="col-md-2 col-sm-6 col-xs-12">

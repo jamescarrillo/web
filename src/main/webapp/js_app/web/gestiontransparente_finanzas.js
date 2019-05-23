@@ -26,9 +26,12 @@ $(document).ready(function () {
         procesarAjaxInformacionPresupustalWeb();
         return false;
     });
-    
-    $('#comboAnioPresupuestoInstitucional').hide();
 
+/*
+    $("#comboAnioPresupuestoInstitucional").change(function () {
+        console.log(this.value)
+    });
+*/
     addEventoCombosPaginar();
     procesarAjaxAnhosPresupuestoInstitucional();
     procesarAjaxAnhosInfoFinanciera();
@@ -38,7 +41,8 @@ $(document).ready(function () {
 
 function procesarAjaxAnhosPresupuestoInstitucional() {
     var datosSerializadosCompletos = "action=paginarPresupuestoAnhos";
-    datosSerializadosCompletos += "&comboTipoPresupuestoInstitucional="+$('#comboTipoPresupuestoInstitucional').val();
+    //datosSerializadosCompletos += "&comboTipoPresupuestoInstitucional="+$('#comboTipoPresupuestoInstitucional').val();
+    datosSerializadosCompletos += "&comboTipoPresupuestoInstitucional=2";
     $.ajax({
         url: getContext() + '/documentos/operacionesweb',
         type: 'POST',
@@ -56,14 +60,18 @@ function procesarAjaxAnhosPresupuestoInstitucional() {
     return false;
 }
 
-function sinAño(tipo){
-    if (tipo==="1") {
-        $('#comboAnioPresupuestoInstitucional').hide();
-    }else{
+
+function sinAnho(tipo) {
+    if (tipo === "1") {
+        //$('#comboAnioPresupuestoInstitucional').hide();
+        $('#div_anho_presupuesto').hide();
+    } else {
         procesarAjaxAnhosPresupuestoInstitucional();
-        $('#comboAnioPresupuestoInstitucional').show();
+        //$('#comboAnioPresupuestoInstitucional').show();
+        $('#div_anho_presupuesto').show();
     }
 }
+
 
 function listarAnhosPresupuestoInstitucional(BEAN_PAGINATION) {
     $('#comboAnioPresupuestoInstitucional').empty();
@@ -81,7 +89,7 @@ function listarAnhosPresupuestoInstitucional(BEAN_PAGINATION) {
 
 function procesarAjaxAnhosInfoFinanciera() {
     var datosSerializadosCompletos = "action=paginarFinanzasAnhos1";
-    datosSerializadosCompletos += "&comboCategoriaInfoFinanciera="+$('#comboCategoriaInfoFinanciera').val();
+    datosSerializadosCompletos += "&comboCategoriaInfoFinanciera=" + $('#comboCategoriaInfoFinanciera').val();
     $.ajax({
         url: getContext() + '/documentos/operacionesweb',
         type: 'POST',
@@ -112,17 +120,17 @@ function listarAnhosInfoFinanciera(BEAN_PAGINATION) {
     }
 }
 
-function cambioPresupuesto(value){
+function cambioPresupuesto(value) {
     procesarAjaxAnhosPresupuestal();
 }
 
-function cambioFinanciero(value){
+function cambioFinanciero(value) {
     procesarAjaxAnhosInfoFinanciera();
 }
 
 function procesarAjaxAnhosPresupuestal() {
     var datosSerializadosCompletos = "action=paginarFinanzasAnhos2";
-    datosSerializadosCompletos += "&comboCategoriaInfoPresupuestal="+$('#comboCategoriaInfoPresupuestal').val();
+    datosSerializadosCompletos += "&comboCategoriaInfoPresupuestal=" + $('#comboCategoriaInfoPresupuestal').val();
     $.ajax({
         url: getContext() + '/documentos/operacionesweb',
         type: 'POST',
@@ -376,7 +384,7 @@ function listarInformacionPresupustal(BEAN_PAGINATION) {
             a = "<a href='http://lib.peam.gob.pe:8081/ArcDig/OriArc.pdf?id=" + value.docu_id + "' target='_blank' class='pdf-documento-web' title='Ver PDF'><i class='fa fa-file-pdf-o'></i></a>";
             fila = "<tr";
             fila += ">";
-            fila += "<td class='text-center align-middle'>" + mes +"</td>";
+            fila += "<td class='text-center align-middle'>" + mes + "</td>";
             fila += "<td class='align-middle'>" + value.descripcion + "</td>";
             fila += "<td class='text-center align-middle'>" + a + "</td>";
             fila += "</tr>";

@@ -8,6 +8,15 @@ $(document).ready(function () {
         return false;
     });
 
+    $('.print-np').each(function () {
+        $(this).click(function () {
+            let parameters = "report=reporte_nota_prensa";
+            parameters += "&format=" + $(this).attr('format');
+            parameters += "&id=" + $('#idNota').val();
+            openReport(parameters);
+        });
+    });
+
     addEventoCombosPaginarFormulario();
     procesarAjaxPublicacionesNotasPrensaWeb();
 

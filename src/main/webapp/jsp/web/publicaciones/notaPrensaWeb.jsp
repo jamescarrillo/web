@@ -69,13 +69,13 @@
                                 </ul-->
                                 <div class='entry-content text-peam' id="idContenidoNoticiaPrincipal" style="font-size: 17px;text-align: justify;">
                                 </div>
-                                <!--footer class="entry-footer">
+                                <footer class="entry-footer">
                                     <ul class="list-inline pull-left">
-                                        <li><a href="#" title="Descargar en PDF"><i class="fa fa-file-pdf-o"></i></a></li>
-                                        <li><a href="#" title="Descargar en WORD"><i class="fa fa-file-text"></i></a></li>
-                                        <li><a href="#" title="Descargar en PPT"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                        <li><a class="print-np" href="#" format="pdf" title="Descargar en PDF"><i class="fa fa-file-pdf-o"></i></a></li>
+                                        <li><a class="print-np" href="#" format="docx" title="Descargar en WORD"><i class="fa fa-file-text"></i></a></li>
+                                        <li><a class="print-np" href="#" format="ppt" title="Descargar en PPT"><i class="fa fa-file-powerpoint-o"></i></a></li>
                                     </ul>
-                                </footer-->
+                                </footer>
                             </div>
                         </article>
                     </div>

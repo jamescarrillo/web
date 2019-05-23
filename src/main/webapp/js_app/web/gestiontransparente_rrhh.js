@@ -97,6 +97,10 @@ $(document).ready(function () {
         });
     });
 
+    $("#comboAnioPersonal").change(function () {
+        procesarMes('', $('#cboTipoPersonal').val());
+    });
+
     addEventoCombosPaginar();
 
 });
@@ -154,7 +158,8 @@ function processAjaxDataRRHH(tipo) {
 
 function addFuncionarios(DATA) {
     $('#containerFuncionarios').empty();
-    var lista_cards = [];
+    var lista_cards_jefes = [];
+    var lista_cards_directores = [];
     var card;
     $(DATA.LIST).each(function (index, value) {
         card = "<div class='col-lg-3 col-lg-offset-0 col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-0 col-xs-10 col-xs-offset-1 mt-15'>";
@@ -187,13 +192,18 @@ function addFuncionarios(DATA) {
         card += "</div>";
         if (value.cargo.toLowerCase() === "gerente general") {
             $('#containerFuncionarios').append(card);
+        } else if (value.cargo.toLowerCase().includes("director")) {
+            lista_cards_directores.push(card)
         } else {
-            lista_cards.push(card);
+            lista_cards_jefes.push(card);
         }
     });
+    for (var i = 0; i < lista_cards_directores.length; i++) {
+        $('#containerFuncionarios').append(lista_cards_directores[i]);
+    }
 
-    for (var i = 0; i < lista_cards.length; i++) {
-        $('#containerFuncionarios').append(lista_cards[i]);
+    for (var i = 0; i < lista_cards_jefes.length; i++) {
+        $('#containerFuncionarios').append(lista_cards_jefes[i]);
     }
 }
 
@@ -473,25 +483,25 @@ function listarPersonalWeb(BEAN_PAGINATION, complemento) {
                 case "" :
                     ocultar = "ocultar";
                     inverso = "";
-                    nuevo="";
+                    nuevo = "";
                     break;
                 case "_CLS":
                     ocultar = "ocultar";
                     inverso = "";
-                    nuevo="ocultar";
+                    nuevo = "ocultar";
                     break;
                 case "_CAS" :
                     ocultar = "ocultar";
                     inverso = "";
-                    nuevo="ocultar";
+                    nuevo = "ocultar";
                     break;
             }
 
             fila += "<td class='text-medium-table text-middle '>" + value.apellidos_nombres + "</td>";
             fila += "<td class='text-medium-table text-middle " + inverso + nuevo + " text-center'>" + dni + "</td>";
-            fila += "<td class='text-medium-table text-middle " + inverso + nuevo +"'>" + fecha_ingreso + "</td>";
+            fila += "<td class='text-medium-table text-middle " + inverso + nuevo + "'>" + fecha_ingreso + "</td>";
             fila += "<td class='text-medium-table text-middle '>" + oficina_area + "</td>";
-            fila += "<td class='text-medium-table text-middle " + inverso + nuevo+ "'>" + cargo + "</td>";
+            fila += "<td class='text-medium-table text-middle " + inverso + nuevo + "'>" + cargo + "</td>";
             fila += "<td class='text-medium-table text-middle " + ocultar + " text-center'>" + pension + "</td>";
             fila += "<td class='text-medium-table text-middle text-center " + inverso + "'>" + value.codigo_civil + "</td>";
             fila += "<td class='text-medium-table text-middle text-center'>" + value.remuneracion_mensual.toFixed(2) + "</td>";

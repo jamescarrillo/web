@@ -534,7 +534,7 @@
                         </div>
                         <div class="col-lg-3 col-md-4 col-sm-6 mt-20">
                             <div class="text-center">
-                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/presupuesto-y-finanzas">
+                                <a href="<%out.print(getServletContext().getContextPath());%>/gestiontransparente/presupuestos-y-finanzas">
                                     <h5 class="text-peam-verde-index" style="margin-top: 5px">
                                         <i class="fa fa-money fa-4x" aria-hidden="true"></i>
                                         <br>

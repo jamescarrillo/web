@@ -57,13 +57,13 @@
                                     <div role="tabpanel" class="tab-pane fade in active" id="tab-presupuesto-insitucional">
                                         <div class="row-not">
                                             <form id="FrmPresupuestoInstitucional">
-                                                <div class="col-md-4 col-sm-9 col-xs-12 mt-30">
-                                                    <select id="comboTipoPresupuestoInstitucional" name="comboTipoPresupuestoInstitucional" onchange="sinAño(this.value)" class="form-control combo-paginar" idBtnBuscar='btnBuscarPresupuestoInstitucional' style="border: 1px solid #00793D;">
+                                                <div class="col-md-4 col-sm-9 col-xs-12 mt-30" id="div_tipo_presupuesto">
+                                                    <select id="comboTipoPresupuestoInstitucional" name="comboTipoPresupuestoInstitucional" onchange="sinAnho(this.value)" class="form-control combo-paginar" idBtnBuscar='btnBuscarPresupuestoInstitucional' style="border: 1px solid #00793D;">
                                                         <option value="1">Presupuesto Institucional de Apertura (PIA)</option>
                                                         <option value="2">Presupuesto Institucional Modificado (PIM)</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-2 col-sm-3 col-xs-12 mt-30">
+                                                <div class="col-md-2 col-sm-3 col-xs-12 mt-30" id="div_anho_presupuesto" style="display: none">
                                                     <select id="comboAnioPresupuestoInstitucional" name="comboAnioPresupuestoInstitucional" class="form-control combo-paginar" idBtnBuscar='btnBuscarPresupuestoInstitucional' style="border: 1px solid #00793D;">
                                                     </select>
                                                 </div>

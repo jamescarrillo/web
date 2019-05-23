@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_vertical" pageWidth="555" pageHeight="842" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="c1ae9b60-60f9-4fcc-8bef-87552a3f9578">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PEAM"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<parameter name="title_reporte_cabecera" class="java.lang.String"/>
+	<parameter name="path_logo_goresam_cabecera" class="java.lang.String">
+		<defaultValueExpression><![CDATA["/home/james/NetBeansProjects/web/target/web-1.0/peam_resources_app/reports/img/logo-goresam.png"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 1 AS NUMERO]]>
+	</queryString>
+	<field name="numero" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="numero"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="113" y="40" width="348" height="24" uuid="55954cab-3ffd-4850-b881-65166b714606"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{title_reporte_cabecera}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="5" width="140" height="35" forecolor="#00793D" uuid="cd3c0283-b99d-4eb0-a724-8ccaa592dc5d"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ALTO MAYO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="113" y="5" width="207" height="35" forecolor="#FF0000" uuid="e0f90cb6-36a3-45b9-bdfe-d1cbe59e52c1"/>
+				<box rightPadding="4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROYECTO ESPECIAL]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="2" width="555" height="1" uuid="9210897b-44ad-41a3-9306-a99d69112dfc"/>
+				<graphicElement>
+					<pen lineWidth="3.0" lineColor="#00793D"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="1" y="70" width="555" height="1" uuid="be1a5d1a-4a0e-4232-a289-46fcb289544a"/>
+				<graphicElement>
+					<pen lineWidth="6.0" lineColor="#00793D"/>
+				</graphicElement>
+			</line>
+			<image scaleImage="FillFrame">
+				<reportElement x="3" y="5" width="110" height="59" uuid="b08adc53-86fa-4ced-ac8c-eff38e513d76"/>
+				<box topPadding="5"/>
+				<imageExpression><![CDATA[$P{path_logo_goresam_cabecera}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+</jasperReport>
