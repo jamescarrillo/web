@@ -312,6 +312,73 @@
                             <div class="panel panel-default">
                                 <div class="panel-heading">
                                     <h3 class="panel-title">
+                                        <a class="item-documentos collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-declaraciones" cate_id="1200" complemento="Declaraciones" aria-expanded="false">
+                                            Declaraciones juradas de ingresos, bienes y rentas 
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div id="tab-declaraciones" class="panel-collapse collapse" aria-expanded="false" style="">
+                                    <div class="panel-body">
+                                        <form id="FrmDocumentosDeclaraciones">
+                                            <div class="row">
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <select id="comboAnioDocumentoDeclaraciones" name="comboAnioDocumento" class="form-control combo-paginar" idBtnBuscar='btnBuscarDocumentoDeclaraciones' style="border: 1px solid #00793D; margin-top: 20px">
+                                                    </select>
+                                                </div>
+                                                <div class="col-sm-8 col-xs-12">
+                                                    <div class="input-field" style="margin-top: 25px">
+                                                        <input type="text" name="txtTituloDocumento" id="txtTituloDocumentoDeclaraciones">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Documento</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-2 col-xs-12">
+                                                    <button type="submit" id="btnBuscarDocumentoDeclaraciones" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px; margin-top: 25px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormDeclaraciones" value="FrmDocumentosDeclaraciones">
+                                                <input type="hidden" id="actionDocumentosDeclaraciones" name="action" value="paginarDocumentos">
+                                                <input type="hidden" id="numberPageDocumentosDeclaraciones" name="numberPageDocumentos" value="1">
+                                                <input type="hidden" id="sizePageDocumentosDeclaraciones" name="sizePageDocumentos" value="10">
+                                            </div>
+                                        </form>
+                                        <!--TABLA-->
+                                        <div class="row" id="loader_contenido_declaraciones">
+                                            <div class="col-md-1 col-md-offset-5 col-xs-2 col-xs-offset-5 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                
+                                                                <th style="width: 15%" class="align-middle">DNI</th>
+                                                                <th style="width: 35%" class="align-middle">DECLARANTE</th>
+                                                                <th style="width: 55%" class="align-middle ">CARGO</th>
+                                                                <th style="width: 25%" class="align-middle">PRESENTACION</th>
+                                                                <th style="width: 10%" class="text-center align-middle">PDF</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyDocumentosDeclaraciones">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 text-right">
+                                                <ul id="paginationDocumentosDeclaraciones" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">
                                         <a class="item-documentos collapsed" data-toggle="collapse" data-parent="#tab" href="#tab-informes" cate_id="1300" complemento="Informes" aria-expanded="false">
                                             Informes Técnicos Previstos de Evaluación de Software
                                         </a>
