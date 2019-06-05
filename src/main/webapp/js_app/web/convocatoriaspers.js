@@ -29,7 +29,7 @@ $(document).ready(function () {
 
 function procesarAjaxAnhosConvocatoriaPers() {
     var datosSerializadosCompletos = "action=listarAnhosConvocatoriaPers";
-    datosSerializadosCompletos += "&comboTipoEstado="+$('#comboTipoEstado').val();
+    datosSerializadosCompletos += "&comboTipoEstado=" + $('#comboTipoEstado').val();
     $.ajax({
         url: getContext() + '/convocatorias/convocatoria-de-personal',
         type: 'POST',
@@ -142,6 +142,7 @@ function agregarEventosConvocatoria() {
             $('#ConvocatoriaTitulo').html($(this.parentElement.parentElement).attr('text'));
             procesarAjaxCalendarioWeb($(this.parentElement.parentElement).attr('coper_id'));
             $('#header').css('display', 'none');
+            $('#ModalCronogramas').css('z-index', '1600');
             $('#ModalCronogramas').css('display', 'block');
 
         });
@@ -152,6 +153,7 @@ function agregarEventosConvocatoria() {
             $('#TitularPlaza').css('display', 'block');
             $('#PlazaTitulo').html($(this.parentElement.parentElement).attr('text'));
             $('#header').css('display', 'none');
+            $('#ModalPlazas').css('z-index', '1600');
             $('#ModalPlazas').css('display', 'block');
 
         });
@@ -188,12 +190,17 @@ function listarCalendario(BEAN_PAGINATION, id) {
     $('#tbodyDocumentCal').append("<tr><td class='text-center' colspan='2'>Escoga una Actividad</td></tr>");
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var fila;
+        var dato;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
             fila = "<tr id='" + value.id + "' desc='" + value.acti_id.descripcion + "'>";
             fila += "<td class='align-middle'>" + value.acti_id.descripcion + "</td>";
             fila += "<td class='align-middle'>" + value.fecha_inicio + "</td>";
             fila += "<td class='align-middle'>" + value.fecha_fin + "</td>";
-            fila += "<td class='align-middle'><button class='waves-effect waves-light btn ver-Documentos' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Ver Documentos</button></td>";
+            if (parseInt(value.cant_documentos) > 0) {
+                fila += "<td class='align-middle text-center'><button class='waves-effect waves-light btn ver-Documentos' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Ver Documentos</button></td>";
+            } else {
+                fila += "<td class='align-middle text-center'><button class='waves-effect waves-light btn disabled' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Vacio</button></td>";
+            }
             fila += "</tr>";
             $('#tbodyCalendario').append(fila);
         });
@@ -256,9 +263,9 @@ function listarPuestoConv(BEAN_PAGINATION) {
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
             fila = "<tr id='" + value.pues_id + "'>";
             fila += "<td class='align-middle'>" + value.cargo + "</td>";
-            fila += "<td class='align-middle'>" + value.ingre_mensual + "</td>";
-            fila += "<td class='align-middle'>" + value.modaidad + "</td>";
-            fila += "<td class='align-middle'>" + value.nroplaza + "</td>";
+            fila += "<td class='align-middle text-center'>" + value.ingre_mensual + "</td>";
+            fila += "<td class='align-middle text-center'>" + value.modaidad + "</td>";
+            fila += "<td class='align-middle text-center'>" + value.nroplaza + "</td>";
             fila += "</tr>";
             $('#tbodyPlaza').append(fila);
         });
@@ -316,9 +323,10 @@ function listarDocumentoCal(BEAN_PAGINATION) {
             fila += "</tr>";
             $('#tbodyDocumentCal').append(fila);
         });
+        $('#ModalDocumentos').css('z-index', '1900');
         $('#ModalDocumentos').css('display', 'block');
     } else {
-        viewAlertWeb('warning', "No se encontraron Documentos");
+        //viewAlertWeb('warning', "No se encontraron Documentos");
         var fila;
         fila = "<tr><td class='text-center' colspan='2'>Sin Documentos</td></tr>";
         $('#tbodyDocumentCal').append(fila);

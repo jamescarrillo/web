@@ -19,10 +19,21 @@ public class CalendarioConv {
     private Integer convo_id;
     private Actividad acti_id;
     private Integer tipo;
+    private Integer cant_documentos;
 
     public CalendarioConv(Integer id) {
         this.id=id;
     }
+
+    public Integer getCant_documentos() {
+        return cant_documentos;
+    }
+
+    public void setCant_documentos(Integer cant_documentos) {
+        this.cant_documentos = cant_documentos;
+    }
+    
+    
     
     public CalendarioConv() {
     }

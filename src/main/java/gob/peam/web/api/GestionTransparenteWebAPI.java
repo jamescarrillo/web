@@ -43,7 +43,7 @@ import javax.sql.DataSource;
     "/gestiontransparente/agenda-institucional",
     "/gestiontransparente/informacion-adicional",})
 public class GestionTransparenteWebAPI extends HttpServlet {
-
+    
     @Resource(name = "jdbc/dbweb")
     private DataSource pool;
     private Gson json;
@@ -61,13 +61,13 @@ public class GestionTransparenteWebAPI extends HttpServlet {
     private HashMap<String, Object> parametersPenalidad;
     private static final Logger LOG = Logger.getLogger(GestionTransparenteWebAPI.class.getName());
     private String action;
-
+    
     private DocumentoDAO documentoDAO;
     private PresupuestoDAO presupuestoDAO;
     private FinanzaDAO finanzaDAO;
     private PenalidadDAO penalidadDAO;
     private ViaticoDAO viaticoDAO;
-
+    
     @Override
     public void init() throws ServletException {
         super.init(); // To change body of generated methods, choose Tools | Templates.
@@ -82,7 +82,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         this.parametersPA = new HashMap<>();
         this.parametersPenalidad = new HashMap<>();
         this.action = "";
-
+        
         this.documentoDAO = new DocumentoDAOImpl(this.pool);
         this.presupuestoDAO = new PresupuestoDAOImpl(this.pool);
         this.finanzaDAO = new FinanzaDAOImpl(this.pool);
@@ -187,7 +187,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             throws ServletException, IOException {
         processRequest(request, response);
     }
-
+    
     private void procesarDataAdquisiciones2(HttpServletRequest request, HttpServletResponse response) {
         try {
             this.JSONROOT.clear();
@@ -202,7 +202,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             Logger.getLogger(GestionTransparenteAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void procesarCategoriaDOC(HttpServletResponse response) {
         try {
             HashMap<String, Object> JSON_CA = new HashMap<>();
@@ -227,7 +227,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             Logger.getLogger(GestionTransparenteWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private void procesarAnhios(BEAN_CRUD beanCrud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(beanCrud);
@@ -238,7 +238,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             Logger.getLogger(GestionTransparenteWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private HashMap<String, Object> getParametersDocumentos(HttpServletRequest request) {
         this.parameters.clear();
         String complemento = request.getParameter("txtComplemento") == null ? "" : request.getParameter("txtComplemento");
@@ -255,23 +255,33 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             this.parameters.put("SQL_CATE_ID", getCategoriaIdFinal(request));
         }
         this.parameters.put("SQL_TIDO_ID", " " + getTidoIdFinal(request));
+        
+        if (request.getParameter("cate_id").equals("< 100")) {
+            if (getTidoIdFinal(request).equals("AND TIDO_ID = 12")) {
+                this.parameters.put("SQL_ORDERS", "SUBSTRING(DOCU_TITULO,18,4) DESC");
+            }else{
+                this.parameters.put("SQL_ORDERS", "DOCU_TITULO DESC");
+            }
+        }else{
+            this.parameters.put("SQL_ORDERS", "DOCU_TITULO DESC");
+        }
         //this.parameters.put("SQL_ORDERS", "TO_DATE(DOCU_FECHA_DOCX,'DD/MM/YYYY') DESC");
-        this.parameters.put("SQL_ORDERS", "DOCU_TITULO DESC");
+        
         this.parameters.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageDocumentos" + complemento) + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageDocumentos" + complemento)) - 1)
                 * Integer.parseInt(request.getParameter("sizePageDocumentos" + complemento)));
         return this.parameters;
     }
-
+    
     private HashMap<String, Object> getParametersAnhiosPenalidad(HttpServletRequest request) {
         this.parametersPenalidad.clear();
         this.parametersPenalidad.put("FILTER", "");
         this.parametersPenalidad.put("SQL_ORDERS", " ANHO DESC");
-
+        
         return this.parametersPenalidad;
     }
-
+    
     private HashMap<String, Object> getParametersAnhios(HttpServletRequest request) {
         this.parametersAnhiosDocumentos.clear();
         this.parametersAnhiosDocumentos.put("FILTER", "");
@@ -282,7 +292,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         this.parametersAnhiosDocumentos.put("SQL_ORDERS", " SUBSTRING(DOCU_FECHA_DOCX,7,4) DESC");
         return this.parametersAnhiosDocumentos;
     }
-
+    
     private String getCategoriaIdFinal(HttpServletRequest request) {
         String categoria_id;
         LOG.info(request.getParameter("cate_id"));
@@ -309,7 +319,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         }
         return categoria_id;
     }
-
+    
     private String getTidoIdFinal(HttpServletRequest request) {
         String tido_id = "";
         if (request.getParameter("tido_id") != null) {
@@ -317,9 +327,10 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                 tido_id = "AND TIDO_ID = " + request.getParameter("tido_id");
             }
         }
+        LOG.info(tido_id);
         return tido_id;
     }
-
+    
     private String getJSP(HttpServletRequest request) {
         String page;
         switch (request.getRequestURI().substring(request.getContextPath().length())) {
@@ -347,7 +358,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         }
         return page;
     }
-
+    
     private void procesarPresupuesto(BEAN_CRUD beanCrud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(beanCrud);
@@ -358,7 +369,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             Logger.getLogger(GestionTransparenteWebAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private HashMap<String, Object> getParametersPresupuestoAnhos(HttpServletRequest request) {
         this.parametersPA.clear();
         this.parametersPA.put("FILTER", "");
@@ -370,10 +381,10 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             this.parametersPA.put("SQL_TIDO_ID", "AND TIPO = " + request.getParameter("comboTipoPresupuestoInstitucional"));
         }
         this.parametersPA.put("SQL_ORDERS", "ANHO DESC");
-
+        
         return this.parametersPA;
     }
-
+    
     private HashMap<String, Object> getParametersPresupuesto(HttpServletRequest request) {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtPresupuestoInstitucional").toLowerCase());
@@ -395,7 +406,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                 * Integer.parseInt(request.getParameter("sizePagePresupuestoInstitucional")));
         return this.parameters;
     }
-
+    
     private void procesarFinanza(BEAN_CRUD beanCrud, HttpServletResponse response) {
         try {
             this.jsonResponseFinanza = this.json.toJson(beanCrud);
@@ -406,7 +417,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             Logger.getLogger(FinanzaAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private HashMap<String, Object> getParametersAnhosyMES(HttpServletRequest request, int tipo) {
         this.parameters.clear();
         this.parameters.put("FILTER", "");
@@ -417,10 +428,10 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             this.parameters.put("SQL_ESTADO", " AND ESTADO = TRUE AND ANHO ='" + String.valueOf(request.getParameter("anho") + "'"));
             this.parameters.put("SQL_ORDERS", " MES DESC");
         }
-
+        
         return this.parameters;
     }
-
+    
     private HashMap<String, Object> getParametersFinanzas(HttpServletRequest request) {
         this.parametersF.clear();
         this.parametersF.put("FILTER", request.getParameter("txtInfoFinanciera").toLowerCase());
@@ -435,14 +446,14 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         } else {
             this.parametersF.put("SQL_TIPO", "AND TIPO = " + request.getParameter("comboCategoriaInfoFinanciera"));
         }
-        this.parametersF.put("SQL_ORDERS", "MES ASC");
+        this.parametersF.put("SQL_ORDERS", "MES DESC");
         this.parametersF.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageInfoFinanciera") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageInfoFinanciera")) - 1)
                 * Integer.parseInt(request.getParameter("sizePageInfoFinanciera")));
         return this.parametersF;
     }
-
+    
     private HashMap<String, Object> getParametersFinanzasAnhos1(HttpServletRequest request) {
         this.parametersFA1.clear();
         this.parametersFA1.put("FILTER", "");
@@ -452,12 +463,12 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         } else {
             this.parametersFA1.put("SQL_TIPO", "AND TIPO = " + request.getParameter("comboCategoriaInfoFinanciera"));
         }
-
+        
         this.parametersFA1.put("SQL_ORDERS", "ANHO DESC");
         return this.parametersFA1;
-
+        
     }
-
+    
     private HashMap<String, Object> getParametersFinanzasAnhos2(HttpServletRequest request) {
         this.parametersFA2.clear();
         this.parametersFA2.put("FILTER", "");
@@ -469,9 +480,9 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         }
         this.parametersFA2.put("SQL_ORDERS", "ANHO DESC");
         return this.parametersFA2;
-
+        
     }
-
+    
     private HashMap<String, Object> getParametersFinanzas2(HttpServletRequest request) {
         this.parametersF2.clear();
         this.parametersF2.put("FILTER", request.getParameter("txtInfoPresupuestal").toLowerCase());
@@ -486,14 +497,14 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         } else {
             this.parametersF2.put("SQL_TIPO", "AND TIPO = " + request.getParameter("comboCategoriaInfoPresupuestal"));
         }
-        this.parametersF2.put("SQL_ORDERS", "MES ASC");
+        this.parametersF2.put("SQL_ORDERS", "MES DESC");
         this.parametersF2.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePageInfoPresupuestal") + " OFFSET "
                 + (Integer.parseInt(request.getParameter("numberPageInfoPresupuestal")) - 1)
                 * Integer.parseInt(request.getParameter("sizePageInfoPresupuestal")));
         return this.parametersF2;
     }
-
+    
     private void procesarPenalidad(BEAN_CRUD bean_crud, HttpServletResponse response) {
         try {
             this.jsonResponsePenalidad = this.json.toJson(bean_crud);
@@ -504,7 +515,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             Logger.getLogger(PenalidadAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private HashMap<String, Object> getParametersPenalidad(HttpServletRequest request) {
         this.parametersPenalidad.clear();
         this.parametersPenalidad.put("FILTER", request.getParameter("txtPenalidad").toLowerCase());
@@ -513,7 +524,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
         } else {
             this.parametersPenalidad.put("SQL_ANIO", "AND ANHO = '" + request.getParameter("comboAnioPenalidad") + "' ");
         }
-
+        
         this.parametersPenalidad.put("SQL_ORDERS", "CONTRATISTA, ANHO DESC");
         this.parametersPenalidad.put("LIMIT",
                 " LIMIT " + request.getParameter("sizePagePenalidad") + " OFFSET "
@@ -521,7 +532,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
                 * Integer.parseInt(request.getParameter("sizePagePenalidad")));
         return this.parametersPenalidad;
     }
-
+    
     private void procesarViatico(BEAN_CRUD beanCrud, HttpServletResponse response) {
         try {
             this.jsonResponse = this.json.toJson(beanCrud);
@@ -532,7 +543,7 @@ public class GestionTransparenteWebAPI extends HttpServlet {
             Logger.getLogger(PublicacionAPI.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
+    
     private HashMap<String, Object> getParametersViatico(HttpServletRequest request) {
         this.parameters.clear();
         this.parameters.put("FILTER", request.getParameter("txtTituloViatico").toLowerCase());

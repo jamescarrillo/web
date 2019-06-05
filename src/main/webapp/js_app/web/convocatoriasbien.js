@@ -25,7 +25,7 @@ $(document).ready(function () {
 
 function procesarAjaxAnhosConvocatoriaBien() {
     var datosSerializadosCompletos = "action=listarAnhosConvocatoriaBien";
-    datosSerializadosCompletos += "&comboTipoEstado="+$('#comboTipoListaConvocatoria').val();
+    datosSerializadosCompletos += "&comboTipoEstado=" + $('#comboTipoListaConvocatoria').val();
     $.ajax({
         url: getContext() + '/convocatorias/convocatoria-de-bienes-y-servicios',
         type: 'POST',
@@ -47,8 +47,8 @@ function listarAnhosConvocatoriaBien(BEAN_PAGINATION) {
     if (BEAN_PAGINATION.COUNT_FILTER > 0) {
         var option;
         $.each(BEAN_PAGINATION.LIST, function (index, value) {
-            if (value.anho!=="2012") {
-             option = "<option value='" + value.anho + "'>" + añocorrecto(value.anho) + "</option>";   
+            if (value.anho !== "2012") {
+                option = "<option value='" + value.anho + "'>" + añocorrecto(value.anho) + "</option>";
             }
             $('#comboAnio').append(option);
         });
@@ -58,12 +58,12 @@ function listarAnhosConvocatoriaBien(BEAN_PAGINATION) {
     }
 }
 
-function añocorrecto(dato){
-    var añosinespacio=dato.trim();
+function añocorrecto(dato) {
+    var añosinespacio = dato.trim();
     var añocorrecto;
-    if (añosinespacio.substring(0,1)==="1") {
-        añocorrecto="20"+añosinespacio.substring(1);
-    }else{
+    if (añosinespacio.substring(0, 1) === "1") {
+        añocorrecto = "20" + añosinespacio.substring(1);
+    } else {
         añocorrecto = añosinespacio;
     }
     return añocorrecto;
@@ -126,8 +126,8 @@ function listarConvocatoriaWeb(BEAN_PAGINATION) {
             fila = "<tr convo_id='" + value.convo_id + "' " + datos + " text='" + value.referencia + "' " + archivos + " >";
             fila += "<td class='align-middle'>" + value.fecha + "</td>";
             fila += "<td class='align-middle'>" + value.referencia + "</td>";
-            fila += "<td class='align-middle'>" + tipo + "</td>";
-            fila += "<td class='align-middle'>" + proceso + "</td>";
+            fila += "<td class='align-middle text-center'>" + tipo + "</td>";
+            fila += "<td class='align-middle text-center'>" + proceso + "</td>";
             fila += "<td class='align-middle'><button class='waves-effect waves-light btn ver-Info' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Info</button></td>";
             fila += "</tr>";
             $('#tbodyConvocatoriaBien').append(fila);
@@ -242,15 +242,13 @@ function listarDatosPrincipales(titulo, valor, costo, lugar, f1, f2, f3, f4, f5,
     fila += "<td class='align-middle text-center'>" + valor + "</td>";
     fila += "<td class='align-middle text-center'>" + costo + "</td>";
     fila += "<td class='align-middle text-center'>" + lugar + "</td>";
-    fila += "<td class='align-middle text-center' style='padding-top: 5px; padding-bottom: 0px;'><button class='waves-effect waves-light btn ver-Documentos' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Documentos</button></td>";
-    fila += "</tr>";
-    $('#tbodyDocumentCal').append(fila);
-    agregarEventosDocumentos();
+
+
     $('#tbodyArchivos').empty();
     var files = [f1, f2, f3, f4, f5, f6, f7, f8, f9, f10, f11, f12, f13, f14];
     var filaArchivo;
     var nombre;
-    var vacio=0;
+    var vacio = 0;
     for (var i = 0; i < 14; i++) {
         if (files[i] !== "") {
             nombre = listadearchivos(i + 1);
@@ -259,18 +257,29 @@ function listarDatosPrincipales(titulo, valor, costo, lugar, f1, f2, f3, f4, f5,
             filaArchivo += "<td><a href='" + getContext() + "/downloadfile?type_file=downloadDocumentConvocatorias&full_file=n&file=" + files[i] + "' class='waves-effect waves-light btn' title='Descargar' style='height: 40px; padding-top: 5px; padding-bottom: 5px;'><i class='fa fa-download' aria-hidden='true'></i> DESCARGAR</a></td>";
             filaArchivo += "</tr>";
             $('#tbodyArchivos').append(filaArchivo);
-        }else{
-           vacio++; 
+        } else {
+            vacio++;
         }
     }
-    if (vacio===14) {
+    if (vacio === 14) {
+        fila += "<td class='align-middle text-center' style='padding-top: 5px; padding-bottom: 0px;'><button class='waves-effect waves-light btn disabled' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Sin Documentos</button></td>";
+        fila += "</tr>";
+        $('#tbodyDocumentCal').append(fila);
         $('#tbodyArchivos').append("<td class='text-center' colspan='2'>Sin Documentos Publicados</td>");
+    } else {
+        fila += "<td class='align-middle text-center' style='padding-top: 5px; padding-bottom: 0px;'><button class='waves-effect waves-light btn ver-Documentos' style='height: 30px; padding-top: 2px; padding-bottom: 2px;'>Documentos</button></td>";
+        fila += "</tr>";
+        $('#tbodyDocumentCal').append(fila);
+        agregarEventosDocumentos();
     }
+
+
 }
 
 function agregarEventosDocumentos() {
     $('.ver-Documentos').each(function () {
         $(this).click(function () {
+            $('#ModalDocumentosBien').css('z-index', '1900');
             $('#ModalDocumentosBien').css('display', 'block');
         });
     });
@@ -385,10 +394,11 @@ function listarCalendario(BEAN_PAGINATION, id) {
         $pagination.twbsPagination('destroy');
         $pagination.twbsPagination($.extend({}, defaultOptions, options));
         $('#header').css('display', 'none');
+        $('#ModalDatos').css('z-index', '1600');
         $('#ModalDatos').css('display', 'block');
     } else {
         $pagination.twbsPagination('destroy');
-        viewAlertWeb('warning', 'No se enconntraron resultados');
+        viewAlertWeb('warning', 'Cronograma aún no Publicado');
     }
 }
 

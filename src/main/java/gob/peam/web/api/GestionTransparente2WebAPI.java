@@ -334,7 +334,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
     private HashMap<String, Object> getParametersOrdenCompra(HttpServletRequest request) {
         this.parametersOrdenCompra.clear();
         this.parametersOrdenCompra.put("FILTER", request.getParameter("txtProveedorOrdenCompra").toLowerCase());
-        this.parametersOrdenCompra.put("SQL_ORDERS", "FECHA_COMPRA DESC");
+        this.parametersOrdenCompra.put("SQL_ORDERS", "ORDEN_COMPRA DESC");
         if (request.getParameter("comboAnioOrdenCompra").equals("-1")) {
             this.parametersOrdenCompra.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {
@@ -361,7 +361,7 @@ public class GestionTransparente2WebAPI extends HttpServlet {
     private HashMap<String, Object> getParametersOrdenServicio(HttpServletRequest request) {
         this.parametersOrdenServicio.clear();
         this.parametersOrdenServicio.put("FILTER", request.getParameter("txtProveedorOrdenServicio").toLowerCase());
-        this.parametersOrdenServicio.put("SQL_ORDERS", "FECHA_COMPRA DESC");
+        this.parametersOrdenServicio.put("SQL_ORDERS", "ORDEN_SERVICIO DESC");
         if (request.getParameter("comboAnioOrdenServicio").equals("-1")) {
             this.parametersOrdenServicio.put("SQL_ESTADO", "AND ESTADO = TRUE ");
         } else {

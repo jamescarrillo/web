@@ -373,6 +373,9 @@ function listarMes(BEAN_PAGINATION, complemeto) {
             });
         } else {
             cargarTrimestreComboActuales($('#comboAnioPersonal' + complemeto).val(), $('#comboTrimestrePersonal' + complemeto));
+            if(complemeto === "_CLS"){
+                $('#comboTrimestrePersonal' + complemeto).val(4);
+            }
         }
         $('#FrmPersonal' + complemeto).submit();
     } else {
