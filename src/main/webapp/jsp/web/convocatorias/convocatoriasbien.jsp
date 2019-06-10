@@ -45,94 +45,216 @@
                     <h2 class="text-peam-verde-subrayado" style="font-size: 30px">Convocatorias de Bienes, Servicios y Concesiones</h2>
                 </div>
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div class="posts-content single-post">
-                            <article class="post-wrapper">
-                                <div class="entry-content">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="border-bottom-tab">
-                                                <div class="panel-body" style="padding-bottom: 0px;">
-                                                    <div class="tab-content">
-                                                        <div role="tabpanel" class="tab-pane fade in active" id="tab-1">
-                                                            <div class="row">
-                                                                <form id="FrmConvocatoria">
-                                                                    <div class="col-md-2 col-sm-3 col-xs-12">
-                                                                        <select id="comboAnio" name="comboAnio" class="form-control combo-paginar" idBtnBuscar='btnBuscarConvocatoria' style="border: 1px solid #00793D;">
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-md-2 col-sm-3 col-xs-12">
-                                                                        <select id="comboTipoListaConvocatoria" name="comboTipoListaConvocatoria" class="form-control combo-paginar" idBtnBuscar='btnBuscarConvocatoria' style="border: 1px solid #00793D;">
-                                                                            <option value="-1">Todos</option>
-                                                                            <option value="true">Vigentes</option>
-                                                                            <option value="false">Finalizados</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-md-6 col-sm-9 col-xs-12">
-                                                                        <div class="input-field" style="margin-top: 0px">
-                                                                            <input type="text" name="txtConvocatoria" id="txtConvocatoria">
-                                                                            <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Convocatoria</font></font></label>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-2 col-sm-3 col-xs-12">
-                                                                        <button type="submit" id="btnBuscarConvocatoria" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px;">Buscar</button>
-                                                                    </div>
-                                                                    <input type="hidden" id="nameFormConvocatoria" value="FrmConvocatoria">
-                                                                    <input type="hidden" id="actionConvocatoria" name="action" value="paginarConvocatoria">
-                                                                    <input type="hidden" id="numberPageConvocatoria" name="numberPageConvocatoria" value="1">
-                                                                    <input type="hidden" id="sizePageConvocatoria" name="sizePageConvocatoria" value="10">
-                                                                </form>
-                                                            </div>
-                                                            <div class="row" id="loader_contenido_Convocatoria">
-                                                                <div class="col-md-1 col-md-offset-6 col-xs-2 col-xs-offset-6 mt-30">
-                                                                    <div class="loader-peam_small"></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row">
-                                                                <div class="col-xs-12">
-                                                                    <div class="table-responsive table-hover" style="margin-top: 20px">
-                                                                        <table class="table">
-                                                                            <thead class="bg-success">
-                                                                                <tr>
-                                                                                    <th style="width: 10%;" class="align-middle text-center">FECHA</th>
-                                                                                    <th style="width: 60%;" class="align-middle">SÍNTESIS</th>
-                                                                                    <th style="width: 10%;" class="align-middle text-center">TIPO</th>
-                                                                                    <th style="width: 15%;" class="align-middle text-center">PROCESO</th>
-                                                                                    <th style="width: 10%;" class="align-middle text-center">ACCIÓN</th>
-                                                                                </tr>
-                                                                            </thead>
-                                                                            <tbody id="tbodyConvocatoriaBien">
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <hr>
-                                                            <br>
-                                                            <div class="row">
-                                                                <!--div class="col-md-3 col-xs-12">
-                                                                    <ul class="list-inline pull-left">
-                                                                        <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
-                                                                        <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
-                                                                        <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
-                                                                    </ul>
-                                                                </div-->
-                                                                <div class="col-xs-12 text-right">
-                                                                    <ul id="paginationConvocatoria" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
-
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                    <div class="col-md-12">
+                        <div class="border-tab transparent-nav">
+                            <ul class="nav nav-tabs nav-tabs-gt nav-justified" role="tablist">
+                                <li role="presentation" class="active"><a href="#tab-convocatorias" role="tab" class="waves-effect waves-dark" data-toggle="tab">Convocatorias</a></li>
+                                <li role="presentation"><a href="#tab-procesos" role="tab" class="waves-effect waves-dark" data-toggle="tab">Procesos Exonerados</a></li>
+                                <li role="presentation"><a href="#tab-comites" role="tab" class="waves-effect waves-dark" data-toggle="tab">Cómites de Selección</a></li>
+                            </ul>
+                            <div class="panel-body" style="padding-bottom: 0px;padding-top: 0px">
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane fade in active" id="tab-convocatorias">
+                                        <div class="row-not">
+                                            <form id="FrmConvocatoria">
+                                                <div class="col-md-2 col-sm-3 col-xs-12 mt-30">
+                                                    <select id="comboAnio" name="comboAnio" class="form-control combo-paginar" idBtnBuscar='btnBuscarConvocatoria' style="border: 1px solid #00793D;">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-12 mt-30">
+                                                    <select id="comboTipoListaConvocatoria" name="comboTipoListaConvocatoria" class="form-control combo-paginar" idBtnBuscar='btnBuscarConvocatoria' style="border: 1px solid #00793D;">
+                                                        <option value="-1">Todos</option>
+                                                        <option value="true">Vigentes</option>
+                                                        <option value="false">Finalizados</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-6 col-sm-9 col-xs-12 mt-30">
+                                                    <div class="input-field" style="margin-top: 0px">
+                                                        <input type="text" name="txtConvocatoria" id="txtConvocatoria">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Convocatoria</font></font></label>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-12 mt-30">
+                                                    <button type="submit" id="btnBuscarConvocatoria" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormConvocatoria" value="FrmConvocatoria">
+                                                <input type="hidden" id="actionConvocatoria" name="action" value="paginarConvocatoria">
+                                                <input type="hidden" id="numberPageConvocatoria" name="numberPageConvocatoria" value="1">
+                                                <input type="hidden" id="sizePageConvocatoria" name="sizePageConvocatoria" value="10">
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_Convocatoria">
+                                            <div class="col-md-1 col-md-offset-6 col-xs-2 col-xs-offset-6 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row-not">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="align-middle text-center">FECHA</th>
+                                                                <th style="width: 60%;" class="align-middle">SÍNTESIS</th>
+                                                                <th style="width: 10%;" class="align-middle text-center">TIPO</th>
+                                                                <th style="width: 15%;" class="align-middle text-center">PROCESO</th>
+                                                                <th style="width: 10%;" class="align-middle text-center">ACCIÓN</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyConvocatoriaBien">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row-not">
+                                            <!--div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div-->
+                                            <div class="col-xs-12 text-right">
+                                                <ul id="paginationConvocatoria" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="tab-procesos">
+                                        <div class="row-not">
+                                            <form id="FrmProcesoExonerado">
+                                                <div class="col-md-2 col-sm-3 col-xs-12 mt-30">
+                                                    <select id="comboAnioProcesoExonerado" name="comboAnioProcesoExonerado" class="form-control combo-paginar" idBtnBuscar='btnBuscarProcesoExonerado' style="border: 1px solid #00793D;">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12 mt-30">
+                                                    <div class="input-field" style="margin-top: 0px">
+                                                        <input type="text" name="txtProcesoExonerado" id="txtProcesoExonerado">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Proceso</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-12 mt-30">
+                                                    <button type="submit" id="btnBuscarProcesoExonerado" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormProcesoExonerado" value="FrmProcesoExonerado">
+                                                <input type="hidden" id="actionProcesoExonerado" name="action" value="paginarProceso">
+                                                <input type="hidden" id="numberPageProcesoExonerado" name="numberPageProcesoExonerado" value="1">
+                                                <input type="hidden" id="sizePageProcesoExonerado" name="sizePageProcesoExonerado" value="10">
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_ProcesoExonerado">
+                                            <div class="col-md-1 col-md-offset-6 col-xs-2 col-xs-offset-6 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row-not">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="align-middle text-center">FECHA</th>
+                                                                <th style="width: 60%;" class="align-middle">DESCRIPCIÓN</th>
+                                                                <th style="width: 10%;" class="align-middle text-center">MONTO</th>
+                                                                <th style="width: 15%;" class="align-middle text-center">CONTRATISTA</th>
+                                                                <th style="width: 10%;" class="align-middle text-center">RUC</th>
+                                                                <th style="width: 10%;" class="align-middle text-center">VER</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyProcesoExonerado">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row-not">
+                                            <!--div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div-->
+                                            <div class="col-xs-12 text-right">
+                                                <ul id="paginationProcesoExonerado" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="tab-comites">
+                                        <div class="row-not">
+                                            <form id="FrmComites">
+                                                <div class="col-md-2 col-sm-3 col-xs-12 mt-30">
+                                                    <select id="comboAnioComites" name="comboAnioComites" class="form-control combo-paginar" idBtnBuscar='btnBuscarComites' style="border: 1px solid #00793D;">
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-8 col-sm-9 col-xs-12 mt-30">
+                                                    <div class="input-field" style="margin-top: 0px">
+                                                        <input type="text" name="txtTituloComite" id="txtTituloComite">
+                                                        <label for="name" class=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buscar Cómite de Selección</font></font></label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-2 col-sm-3 col-xs-12 mt-30">
+                                                    <button type="submit" id="btnBuscarComites" class="waves-effect waves-light btn" style="height: 30px; padding-top: 2px; padding-bottom: 2px;">Buscar</button>
+                                                </div>
+                                                <input type="hidden" id="nameFormComites" value="FrmComites">
+                                                <input type="hidden" id="actionComites" name="action" value="paginarComite">
+                                                <input type="hidden" id="numberPageComites" name="numberPageComite" value="1">
+                                                <input type="hidden" id="sizePageComites" name="sizePageComite" value="10">
+                                            </form>
+                                        </div>
+                                        <div class="row" id="loader_contenido_Comites">
+                                            <div class="col-md-1 col-md-offset-6 col-xs-2 col-xs-offset-6 mt-30">
+                                                <div class="loader-peam_small"></div>
+                                            </div>
+                                        </div>
+                                        <div class="row-not">
+                                            <div class="col-xs-12">
+                                                <div class="table-responsive table-hover" style="margin-top: 20px">
+                                                    <table class="table">
+                                                        <thead class="bg-success">
+                                                            <tr>
+                                                                <th style="width: 10%;" class="align-middle text-center">FECHA</th>
+                                                                <th style="width: 20%;" class="align-middle">TÍTULO</th>
+                                                                <th style="width: 65%;" class="align-middle text-center">RESUMEN</th>
+                                                                <th style="width: 10%;" class="align-middle text-center">VER</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody id="tbodyComites">
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <br>
+                                        <div class="row-not">
+                                            <!--div class="col-md-3 col-xs-12">
+                                                <ul class="list-inline pull-left">
+                                                    <li><a href='' title='Descargar en PDF' style='padding-right: 10px'><i class='fa fa-file-pdf-o'></i></a></li>
+                                                    <li><a href='' title="Descargar en WORD" style="padding-right: 10px"><i class="fa fa-file-text"></i></a></li>
+                                                    <li><a href='' title="Descargar en PPT" style="padding-right: 10px"><i class="fa fa-file-powerpoint-o"></i></a></li>
+                                                </ul>
+                                            </div-->
+                                            <div class="col-xs-12 text-right">
+                                                <ul id="paginationComites" class="pagination pagination-sm" style="margin-top: 0px; margin-top: 0px">
+
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </article>
+                            </div>
                         </div>
                     </div>
+                    
                     <div id="ModalDatos" class="modal-peam">
                         <!-- Modal content -->
                         <div class="modal-content-peam modal-dialog-scroll">
@@ -274,7 +396,8 @@
                             </div>
                         </div>
                     </div>
-
+                    
+                    
                     <div class="col-xs-12 text-center">
                         <div class="widget widget_search mb-20">
                             <div class="fb-page" 
@@ -286,6 +409,8 @@
                     </div>
 
                 </div>
+
+
             </div>
         </section>
         <%@ include file = "../../../footer.jsp" %>  
@@ -326,6 +451,7 @@
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/utilities/lib-validaciones.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js/conf_web.js"></script>
         <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/convocatoriasbien.js"></script>
-
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/procesoExonerado.js"></script>
+        <script type="text/javascript" src="<%out.print(getServletContext().getContextPath());%>/js_app/web/comites.js"></script>
     </body>
 </html>

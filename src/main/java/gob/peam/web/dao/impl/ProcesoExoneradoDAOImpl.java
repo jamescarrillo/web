@@ -7,7 +7,6 @@ package gob.peam.web.dao.impl;
 
 import gob.peam.web.dao.ProcesoExoneradoDAO;
 import gob.peam.web.dao.SQLCloseable;
-import gob.peam.web.model.Convocatoria_Pers;
 import gob.peam.web.model.ProcesoExonerado;
 import gob.peam.web.utilities.BEAN_CRUD;
 import gob.peam.web.utilities.BEAN_PAGINATION;
@@ -45,6 +44,7 @@ public class ProcesoExoneradoDAOImpl implements ProcesoExoneradoDAO {
                     + "(LOWER(CONTRATISTA) LIKE CONCAT('%',?,'%') OR LOWER(DESCRIPCION) LIKE CONCAT('%',?,'%'))");
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             pst.setString(2, String.valueOf(parameters.get("FILTER")));
+            logger.info(pst.toString());
             rs = pst.executeQuery();
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
@@ -55,6 +55,7 @@ public class ProcesoExoneradoDAOImpl implements ProcesoExoneradoDAO {
                     + String.valueOf(parameters.get("SQL_ORDERS")) + " " + parameters.get("LIMIT"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             pst.setString(2, String.valueOf(parameters.get("FILTER")));
+            logger.info(pst.toString());
             rs = pst.executeQuery();
             List<ProcesoExonerado> list = new ArrayList<>();
             while (rs.next()) {
@@ -177,6 +178,55 @@ public class ProcesoExoneradoDAOImpl implements ProcesoExoneradoDAO {
     @Override
     public ProcesoExonerado get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters, Connection conn) throws SQLException {
+        BEAN_PAGINATION beanpagination = new BEAN_PAGINATION();
+        List<ProcesoExonerado> list = new ArrayList<>();
+        PreparedStatement pst;
+        ResultSet rs;
+        try {
+            pst = conn.prepareStatement("SELECT COUNT(distinct(ANHO)) AS COUNT FROM WEB.EXONERADO WHERE "
+                    + "LOWER(descripcion) LIKE CONCAT('%',?,'%') ");
+            pst.setString(1, String.valueOf(parameters.get("FILTER")));
+            logger.info(pst.toString());
+            rs = pst.executeQuery();
+            while (rs.next()) {
+                beanpagination.setCOUNT_FILTER(rs.getInt("COUNT"));
+                if (rs.getInt("COUNT") > 0) {
+                    pst = conn.prepareStatement("SELECT distinct(ANHO) as ANHO FROM WEB.EXONERADO WHERE "
+                            + "LOWER(descripcion) LIKE CONCAT('%',?,'%') "
+                            + String.valueOf(parameters.get("SQL_ESTADO")) + " "
+                            + String.valueOf(parameters.get("SQL_ORDERS")));
+                    pst.setString(1, String.valueOf(parameters.get("FILTER")));
+                    rs = pst.executeQuery();
+                    logger.info(pst.toString());
+                    while (rs.next()) {
+                        ProcesoExonerado obj = new ProcesoExonerado();
+                        obj.setAnho(rs.getString("ANHO"));
+                        list.add(obj);
+                    }
+                    beanpagination.setLIST(list);
+                }
+            }
+            rs.close();
+            pst.close();
+        } catch (SQLException ex) {
+            throw ex;
+        }
+        return beanpagination;
+    }
+
+    @Override
+    public BEAN_PAGINATION getAnhos(HashMap<String, Object> parameters) throws SQLException {
+        BEAN_PAGINATION beansPagination = null;
+        try (Connection conn = pool.getConnection()) {
+            beansPagination = getAnhos(parameters, conn);
+        } catch (SQLException e) {
+            throw e;
+        }
+        return beansPagination;
     }
 
 }

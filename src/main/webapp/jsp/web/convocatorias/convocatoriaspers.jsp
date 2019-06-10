@@ -170,7 +170,7 @@
                                                                 <th style="width: 45%;" class="align-middle">ACTIVIDAD</th>
                                                                 <th style="width: 20%;" class="align-middle">FECHA INICIO</th>
                                                                 <th style="width: 20%;" class="align-middle">FECHA FIN</th>
-                                                                <th style="width: 20%;" class="align-middle">ACCIONES</th>
+                                                                <th style="width: 20%;" class="align-middle text-center">ACCIONES</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody id="tbodyCalendario">

@@ -50,10 +50,10 @@ public class CalendarioConvDAOImpl implements CalendarioConvDAO {
             while (rs.next()) {
                 beanpagination.setCOUNT_FILTER(rs.getInt("CANT"));
             }
-            pst = conn.prepareStatement("SELECT * FROM WEB.CALENDARIO_CONV "
+            pst = conn.prepareStatement("SELECT *, (SELECT COUNT(DOCO_ID) AS CANT FROM WEB.DOCUMENT_CONV WHERE ID = WEB.CALENDARIO_CONV.ID) AS CANTIDADDOC FROM WEB.CALENDARIO_CONV "
                     + "INNER JOIN WEB.ACTIVIDAD ON WEB.CALENDARIO_CONV.ACTI_ID = WEB.ACTIVIDAD.ACTI_ID WHERE "
                     + "(LOWER(WEB.ACTIVIDAD.DESCRIPCION) LIKE CONCAT('%',?,'%')) " + parameters.get("CONVOCATORIA_PERS")
-                    + parameters.get("TIPO") + " ORDER BY WEB.ACTIVIDAD.DESCRIPCION "
+                    + parameters.get("TIPO") + " ORDER BY WEB.CALENDARIO_CONV.FECHA_INICIO ASC "
                     + parameters.get("LIMIT"));
             pst.setString(1, String.valueOf(parameters.get("FILTER")));
             logger.info(pst);
@@ -68,6 +68,7 @@ public class CalendarioConvDAOImpl implements CalendarioConvDAO {
                 obj.setConvo_id(rs.getInt("CONVO_ID"));
                 obj.setActi_id(new Actividad((rs.getInt("ACTI_ID")), (rs.getString("DESCRIPCION"))));
                 obj.setTipo(rs.getInt("TIPO"));
+                obj.setCant_documentos(rs.getInt("CANTIDADDOC"));
                 list.add(obj);
             }
             beanpagination.setLIST(list);
@@ -188,4 +189,5 @@ public class CalendarioConvDAOImpl implements CalendarioConvDAO {
     public CalendarioConv get(long id) throws SQLException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }

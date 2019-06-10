@@ -36,6 +36,15 @@ $(document).ready(function () {
         return false;
     });
     
+    $("#FrmDocumentosDeclaraciones").submit(function () {
+        $('#tbodyDocumentosDeclaraciones').empty();
+        $('#numberPageDocumentosDeclaraciones').val("1");
+        $('#actionDocumentosDeclaraciones').val("paginarDocumentos");
+        $('#loader_contenido_declaraciones').css('display', 'block');
+        procesarAjaxDocumentosWeb('Declaraciones', 1200);
+        return false;
+    });
+
     $("#FrmDocumentosInformes").submit(function () {
         $('#tbodyDocumentosInformes').empty();
         $('#numberPageDocumentosInformes').val("1");
@@ -156,10 +165,32 @@ function listarDocumentos(BEAN_PAGINATION, nombre_complemento, cate_id) {
             fila += ">";
             if (nombre_complemento === '_DG' || nombre_complemento === '_ND') {
             } else {
-                fila += "<td class='text-center align-middle'>" + fecha + "</td>";
+                if (cate_id.toString() !== "1200") {
+                    fila += "<td class='text-center align-middle'>" + fecha + "</td>";
+                }                
             }
             fila += "<td class='align-middle'>" + value.docu_titulo + "</td>";
             fila += "<td class='align-middle'>" + value.docu_resumen + "</td>";
+            if (cate_id.toString() === "1200") {
+                /*GET VALUES OF METADATA*/
+            var xml = value.docu_metadata;
+
+            var xmlDoc = $.parseXML(xml);
+
+            var $xml = $(xmlDoc);
+
+            var $docu_metadata = $xml.find("docu_metadata");
+
+            $docu_metadata.each(function (index, value) {
+                if (index > 0) {
+                    fila += "<td class='align-middle'>" + $(this).find('meta_descripcion').text() + "</td>";
+                }
+            });
+                
+                
+                    //fila += "<td class='text-center align-middle'>" + arreglartexto(value.docu_metadata,0,(value.docu_titulo).toString()) + "</td>";
+                    //fila += "<td class='text-center align-middle'>" + arreglartexto(value.docu_metadata,1,(value.docu_titulo).toString()) + "</td>";
+                }
             fila += "<td class='text-center align-middle'>" + a + "</td>";
             fila += "</tr>";
             $('#tbodyDocumentos' + nombre_complemento).append(fila);
@@ -189,6 +220,26 @@ function listarDocumentos(BEAN_PAGINATION, nombre_complemento, cate_id) {
     } else {
         $pagination.twbsPagination('destroy');
         viewAlertWeb('warning', 'No se enconntraron resultados');
+    }
+}
+
+function arreglartexto(valor, tipo, dni){
+    var primeracadena = valor.replace("\u003cmetadata\u003e\u003cdocu_metadata\u003e\u003cmeta_id\u003e1\u003c/meta_id\u003e\u003cmeta_nombre\u003eDNI\u003c/meta_nombre\u003e\u003cmeta_descripcion\u003e46009383\u003c/meta_descripcion\u003e\u003c/docu_metadata\u003e\u003cdocu_metadata\u003e\u003cmeta_id\u003e4\u003c/meta_id\u003e\u003cmeta_nombre\u003eCARGO\u003c/meta_nombre\u003e\u003cmeta_descripcion\u003e","");
+    var segundacadena= primeracadena.replace("\u003c/meta_descripcion\u003e\u003c/docu_metadata\u003e\u003cdocu_metadata\u003e\u003cmeta_id\u003e5\u003c/meta_id\u003e\u003cmeta_nombre\u003ePRESENTACIÓN\u003c/meta_nombre\u003e\u003cmeta_descripcion\u003e","||");
+    var terceracadena = segundacadena.replace("\u003c/meta_descripcion\u003e\u003c/docu_metadata\u003e\u003c/metadata\u003e","");
+    var cadenafinal = terceracadena.split("||");
+    
+    if(tipo===0){
+        
+       var cuartacadena = cadenafinal[tipo].replace("CARGO","");
+       var final = cuartacadena.replace("DNI","");
+       var final2 = final.replace(dni,"");
+       var final3 = final2.replace("1","");
+       var final4 = final3.replace("4","");
+       return final4;
+       
+    }else{
+       return cadenafinal[tipo];
     }
 }
 
