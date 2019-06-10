@@ -20,6 +20,7 @@ $(document).ready(function () {
 function validarErrores() {
     $.ajax({
         url: 'session',
+        //contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         type: 'POST',
         data: $('#FrmLogin').serialize(),

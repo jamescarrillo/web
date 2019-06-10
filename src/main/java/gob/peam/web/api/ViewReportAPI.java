@@ -60,6 +60,7 @@ public class ViewReportAPI extends HttpServlet {
             reports.put("reporte_viaticos", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_viaticos.jrxml")));
             reports.put("reporte_personal_categorias", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_personal_categorias.jrxml")));
             reports.put("reporte_personal", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_personal.jrxml")));
+            reports.put("reporte_personal_ls", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_personal_ls.jrxml")));
 
             reports.put("reporte_nota_prensa", JasperCompileManager.compileReport(getServletContext().getRealPath("/peam_resources_app/reports/reporte_nota_prensa.jrxml")));
         } catch (JRException ex) {
@@ -422,7 +423,14 @@ public class ViewReportAPI extends HttpServlet {
             this.parameters.put("field_encabezado_tabla", "");
         } else {
             this.parameters.put("anho", " AND ANHO = '" + request.getParameter("anho") + "' ");
-            this.parameters.put("field_encabezado_tabla", "AÑO: " + request.getParameter("anho"));
+            this.parameters.put("anho", " AND TRIMESTRE = '" + request.getParameter("trimestre_mes") + "' ");
+            if (request.getParameter("tipo").equals("1")) {
+                this.parameters.put("field_encabezado_tabla", getMes(request.getParameter("trimestre_mes")));
+            } else {
+                //TRIMESTRE
+                this.parameters.put("field_encabezado_tabla", getTrimestre(request.getParameter("trimestre_mes")));
+            }
+            this.parameters.put("field_encabezado_tabla", this.parameters.get("field_encabezado_tabla") + " - " + request.getParameter("anho"));
         }
         if (request.getParameter("tipo").equals("3")) {
             this.parameters.put("tipo", " WHERE TIPO = 3");
@@ -432,7 +440,12 @@ public class ViewReportAPI extends HttpServlet {
         LOG.info(this.parameters.get("tipo").toString());
         try (Connection conn = pool.getConnection()) {
             LOG.info(this.parameters.toString());
-            this.jasperPrint = JasperFillManager.fillReport((JasperReport) this.reports.get("reporte_personal"), parameters, conn);
+            
+            if (request.getParameter("tipo").equals("2")) {
+                this.jasperPrint = JasperFillManager.fillReport((JasperReport) this.reports.get("reporte_personal_ls"), parameters, conn);
+            } else {
+                this.jasperPrint = JasperFillManager.fillReport((JasperReport) this.reports.get("reporte_personal"), parameters, conn);
+            }
             this.extension = getFormato(request);
             this.byts = JeccFormatReport.getReport(this.jasperPrint, this.extension);
             response.setContentLength(this.byts.length);
@@ -449,7 +462,69 @@ public class ViewReportAPI extends HttpServlet {
             }
         }
     }
-    
+
+    private String getTrimestre(String trimestre) {
+        String s_trimestre = "";
+        switch (trimestre) {
+            case "1":
+                s_trimestre = "Primer Trimestre";
+                break;
+            case "2":
+                s_trimestre = "Segundo Trimestre";
+                break;
+            case "3":
+                s_trimestre = "Tercer Trimestre";
+                break;
+            case "4":
+                s_trimestre = "Cuarto Trimestre";
+                break;
+        }
+        return s_trimestre;
+    }
+
+    private String getMes(String mes) {
+        String s_mes = "";
+        switch (mes) {
+            case "1":
+                s_mes = "Enero";
+                break;
+            case "2":
+                s_mes = "Febrero";
+                break;
+            case "3":
+                s_mes = "Marzo";
+                break;
+            case "4":
+                s_mes = "Abril";
+                break;
+            case "5":
+                s_mes = "Mayo";
+                break;
+            case "6":
+                s_mes = "Junio";
+                break;
+            case "7":
+                s_mes = "Julio";
+                break;
+            case "8":
+                s_mes = "Agosto";
+                break;
+            case "9":
+                s_mes = "Septiembre";
+                break;
+            case "10":
+                s_mes = "Octubre";
+                break;
+            case "11":
+                s_mes = "Noviembre";
+                break;
+            case "12":
+                s_mes = "Diciembre";
+                break;
+        }
+        return s_mes;
+    }
+
     private void exportarNotaPrensa(HttpServletRequest request, HttpServletResponse response) throws IOException {
         /*PARAMETROS GENERALES*/
         cargarParametrosGeneralesVertical();
@@ -501,7 +576,7 @@ public class ViewReportAPI extends HttpServlet {
         this.parameters.put("path_cabecera", getServletContext().getRealPath("/peam_resources_app/reports/cabecera_horizontal.jasper")); // .jasper
         this.parameters.put("path_logo_goresam", getServletContext().getRealPath("/peam_resources_app/reports/img/logo-goresam.png"));
     }
-    
+
     private void cargarParametrosGeneralesVertical() {
         this.parameters.clear();
         this.parameters.put("path_cabecera", getServletContext().getRealPath("/peam_resources_app/reports/cabecera_vertical.jasper")); // .jasper

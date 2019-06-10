@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-
-
     $("#FrmPersonal").submit(function () {
         $("#nameFormPersonal").val("FrmPersonal");
         $("#numberPagePersonal").val(1);
@@ -71,23 +69,36 @@ $(document).ready(function () {
                     complemento = "_CAS";
                     break;
             }
-            if ($('#comboAnioPersonal' + complemento).val() !== "-1") {
+            if ($('#comboAnioPersonal' + complemento).val() !== "-1" && $('#comboTrimestrePersonal' + complemento).val() !== "") {
                 parameters = "report=reporte_personal";
                 parameters += "&format=" + $(this).attr('format');
                 parameters += "&anho=" + $('#comboAnioPersonal' + complemento).val();
                 parameters += "&tipo=" + $('#cboTipoPersonal').val();
+                parameters += "&trimestre_mes=" + $('#comboTrimestrePersonal' + complemento).val();
                 openReport(parameters);
             } else {
-                if (complemento.toLowerCase() === "_cas") {
-                    parameters = "report=reporte_personal";
-                    parameters += "&format=" + $(this).attr('format');
-                    parameters += "&anho=-1";
-                    parameters += "&tipo=" + $('#cboTipoPersonal').val();
-                    openReport(parameters);
-                } else {
-                    viewAlertWeb('warning', 'Por favor seleccione un Año');
-                }
+                viewAlertWeb('warning', 'Por favor ingrese correctamente los filtros');
             }
+
+            /*
+             if ($('#comboAnioPersonal' + complemento).val() !== "-1") {
+             parameters = "report=reporte_personal";
+             parameters += "&format=" + $(this).attr('format');
+             parameters += "&anho=" + $('#comboAnioPersonal' + complemento).val();
+             parameters += "&tipo=" + $('#cboTipoPersonal').val();
+             openReport(parameters);
+             } else {
+             if (complemento.toLowerCase() === "_cas") {
+             parameters = "report=reporte_personal";
+             parameters += "&format=" + $(this).attr('format');
+             parameters += "&anho=-1";
+             parameters += "&tipo=" + $('#cboTipoPersonal').val();
+             openReport(parameters);
+             } else {
+             viewAlertWeb('warning', 'Por favor seleccione un Año');
+             }
+             }
+             */
         });
     });
 

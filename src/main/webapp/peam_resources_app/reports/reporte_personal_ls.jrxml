@@ -32,7 +32,7 @@
 	</style>
 	<subDataset name="Dataset_tabla" uuid="5c760358-fbf8-4bdd-be3a-b3f3102f1272">
 		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
-		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CONEXION_PEAM"/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="PEAM"/>
 		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="258"/>
 		<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="734"/>
 		<parameter name="tipo_tabla" class="java.lang.String">
@@ -47,7 +47,7 @@ CASE WHEN FECHA_INGRESO IS NULL THEN '' ELSE FECHA_INGRESO END AS FECHA_INGRESO,
 CASE WHEN OFICINA_AREA IS NULL THEN '' ELSE OFICINA_AREA END AS OFICINA_AREA, 
 CASE WHEN CARGO IS NULL THEN '' ELSE CARGO END AS CARGO,
 CASE WHEN PENSION IS NULL THEN '' ELSE PENSION END AS PENSION,
-REMUNERACION_MENSUAL, 
+REMUNERACION_MENSUAL, CODIGO_CIVIL,
 BONIFICACION_QUINQ, BENEFICIOS, INGRESO_TOTAL  FROM WEB.F00010 
 $P!{tipo_tabla} 
 $P!{anho_tabla}   
@@ -77,6 +77,10 @@ ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 		</field>
 		<field name="remuneracion_mensual" class="java.math.BigDecimal">
 			<property name="com.jaspersoft.studio.field.label" value="remuneracion_mensual"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="f00010"/>
+		</field>
+		<field name="codigo_civil" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.label" value="codigo_civil"/>
 			<property name="com.jaspersoft.studio.field.tree.path" value="f00010"/>
 		</field>
 		<field name="bonificacion_quinq" class="java.math.BigDecimal">
@@ -156,11 +160,11 @@ ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column width="45" uuid="ea2ad671-1014-4be8-b9c8-f4dd08f37eb5">
+					<jr:column width="55" uuid="ea2ad671-1014-4be8-b9c8-f4dd08f37eb5">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
 						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="45" height="25" uuid="d612cff9-afd3-40c3-b595-cd5292d902bd"/>
+								<reportElement x="0" y="0" width="55" height="25" uuid="d612cff9-afd3-40c3-b595-cd5292d902bd"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8" isBold="true"/>
 								</textElement>
@@ -169,17 +173,17 @@ ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="45" height="20" uuid="27b03d43-a52d-44e4-a815-d689f32a79bd"/>
+								<reportElement x="0" y="0" width="55" height="20" uuid="27b03d43-a52d-44e4-a815-d689f32a79bd"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{dni}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="155" uuid="a1158659-7515-430a-91c4-bcf9c9db8c6f">
+					<jr:column width="215" uuid="a1158659-7515-430a-91c4-bcf9c9db8c6f">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column2"/>
 						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="155" height="25" uuid="ed92c5b1-bdd0-4159-bb01-7153c681fa51"/>
+								<reportElement x="0" y="0" width="215" height="25" uuid="ed92c5b1-bdd0-4159-bb01-7153c681fa51"/>
 								<box leftPadding="4"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle">
 									<font size="8" isBold="true"/>
@@ -189,7 +193,7 @@ ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField isStretchWithOverflow="true">
-								<reportElement x="0" y="0" width="155" height="20" uuid="b78bdbd5-aadb-4c1a-905d-4443957ff105"/>
+								<reportElement x="0" y="0" width="215" height="20" uuid="b78bdbd5-aadb-4c1a-905d-4443957ff105"/>
 								<box leftPadding="4"/>
 								<textElement verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{apellidos_nombres}]]></textFieldExpression>
@@ -215,11 +219,11 @@ ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="120" uuid="443b375b-cce6-423b-9b25-4ae2af60e987">
+					<jr:column width="170" uuid="443b375b-cce6-423b-9b25-4ae2af60e987">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column4"/>
 						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="120" height="25" uuid="486461d2-efa5-40e7-b278-766554c24c1f"/>
+								<reportElement x="0" y="0" width="170" height="25" uuid="486461d2-efa5-40e7-b278-766554c24c1f"/>
 								<box leftPadding="4"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle">
 									<font size="8" isBold="true"/>
@@ -229,18 +233,18 @@ ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField isStretchWithOverflow="true">
-								<reportElement x="0" y="0" width="120" height="20" uuid="01fb7ed5-412d-4f71-aa6e-80587b6a37ab"/>
+								<reportElement x="0" y="0" width="170" height="20" uuid="01fb7ed5-412d-4f71-aa6e-80587b6a37ab"/>
 								<box leftPadding="4"/>
 								<textElement verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{oficina_area}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="120" uuid="3ae85ded-50a4-455a-91c5-96955085e543">
+					<jr:column width="160" uuid="3ae85ded-50a4-455a-91c5-96955085e543">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column5"/>
 						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="120" height="25" uuid="9f71b07e-f2e5-4dc7-ba90-1b2954f040f2"/>
+								<reportElement x="0" y="0" width="160" height="25" uuid="9f71b07e-f2e5-4dc7-ba90-1b2954f040f2"/>
 								<box leftPadding="4"/>
 								<textElement textAlignment="Left" verticalAlignment="Middle">
 									<font size="8" isBold="true"/>
@@ -250,37 +254,37 @@ ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField isStretchWithOverflow="true">
-								<reportElement x="0" y="0" width="120" height="20" uuid="be0fb74c-df81-49ae-bc1a-470fa8613c3e"/>
+								<reportElement x="0" y="0" width="160" height="20" uuid="be0fb74c-df81-49ae-bc1a-470fa8613c3e"/>
 								<box leftPadding="4"/>
 								<textElement verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{cargo}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="60" uuid="7412706a-3b52-469d-9ff9-3936525ea3c1">
+					<jr:column width="70" uuid="7412706a-3b52-469d-9ff9-3936525ea3c1">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column6"/>
 						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="60" height="25" uuid="d3f09271-9bca-4121-bf75-9eb7bbf57c7d"/>
+								<reportElement x="0" y="0" width="70" height="25" uuid="d3f09271-9bca-4121-bf75-9eb7bbf57c7d"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="8" isBold="true"/>
 								</textElement>
-								<text><![CDATA[RÉGIMEN PENSIONARIO]]></text>
+								<text><![CDATA[CÓDIGO CIVIL]]></text>
 							</staticText>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="60" height="20" uuid="f230d04a-98e5-45f3-a271-7b2648ceda7e"/>
+								<reportElement x="0" y="0" width="70" height="20" uuid="09b8bede-423a-496e-a121-a05df81197d2"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{pension}]]></textFieldExpression>
+								<textFieldExpression><![CDATA[$F{codigo_civil}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column width="60" uuid="6768bb9a-92ff-4e22-8bd4-e843efeebcd0">
+					<jr:column width="70" uuid="6768bb9a-92ff-4e22-8bd4-e843efeebcd0">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
 						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
 							<staticText>
-								<reportElement x="0" y="0" width="60" height="25" uuid="8a7b6da1-14f9-4e26-9f72-2df5df310268"/>
+								<reportElement x="0" y="0" width="70" height="25" uuid="8a7b6da1-14f9-4e26-9f72-2df5df310268"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font size="7" isBold="true"/>
 								</textElement>
@@ -289,70 +293,10 @@ ORDER BY ID DESC, APELLIDOS_NOMBRES ASC]]>
 						</jr:tableHeader>
 						<jr:detailCell style="Table_TD" height="20">
 							<textField>
-								<reportElement x="0" y="0" width="60" height="20" uuid="ad202ee7-eada-46a8-b15c-a4bdc631ef4d"/>
+								<reportElement x="0" y="0" width="70" height="20" uuid="ad202ee7-eada-46a8-b15c-a4bdc631ef4d"/>
 								<box rightPadding="4"/>
 								<textElement textAlignment="Right" verticalAlignment="Middle"/>
 								<textFieldExpression><![CDATA[$F{remuneracion_mensual}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="60" uuid="9c31c0f8-aebc-48b3-a688-491276d2ed49">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column8"/>
-						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="60" height="25" uuid="6a9a50e8-80d4-4131-b537-651bbb292a28"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8" isBold="true"/>
-								</textElement>
-								<text><![CDATA[GRATIF. ESCOL. (S/.)]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:detailCell style="Table_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="60" height="20" uuid="8c9c124c-68ee-479f-860f-6dfcdae47233"/>
-								<box rightPadding="4"/>
-								<textElement textAlignment="Right" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{bonificacion_quinq} == null ? "" :$F{bonificacion_quinq} ]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="60" uuid="1a89f00e-0da7-43cf-bac9-e35c0956a146">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column9"/>
-						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="60" height="25" uuid="189f2155-fd6b-408d-98de-1484bbabc984"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8" isBold="true"/>
-								</textElement>
-								<text><![CDATA[OTROS INGRESOS (S/.)]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:detailCell style="Table_TD" height="20">
-							<textField>
-								<reportElement x="0" y="0" width="60" height="20" uuid="c489e544-daba-47c9-994f-6dbb0ac3db79"/>
-								<box rightPadding="4"/>
-								<textElement textAlignment="Right" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{beneficios}]]></textFieldExpression>
-							</textField>
-						</jr:detailCell>
-					</jr:column>
-					<jr:column width="60" uuid="2555993b-5bbe-4b63-8766-a4a5c7d32efb">
-						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column10"/>
-						<jr:tableHeader style="Table_TH" height="25" rowSpan="1">
-							<staticText>
-								<reportElement x="0" y="0" width="60" height="25" uuid="5cca5933-d27f-4993-b345-3df846a447c1"/>
-								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font size="8" isBold="true"/>
-								</textElement>
-								<text><![CDATA[TOTAL INGRESOS (S/.)]]></text>
-							</staticText>
-						</jr:tableHeader>
-						<jr:detailCell style="Table_TD" height="20">
-							<textField isStretchWithOverflow="true">
-								<reportElement x="0" y="0" width="60" height="20" uuid="f8cbdfce-3432-4a60-a8df-1055a54f5bb4"/>
-								<box rightPadding="4"/>
-								<textElement textAlignment="Right" verticalAlignment="Middle"/>
-								<textFieldExpression><![CDATA[$F{ingreso_total}]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
